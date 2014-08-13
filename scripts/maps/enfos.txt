@@ -1,0 +1,433 @@
+"dota_Enfos"
+{
+	"PrepTimeBetweenRounds"			"10"
+	"ItemExpireTime"				"10"
+	"RestoreHPAfterRound"			"0"
+	"RestoreMPAfterRound"			"0"
+	"RewardForTowersStanding"		"1"
+	"TowerRewardAmount"				"18"
+	"TowerScalingRewardPerRound"	"2"
+	
+	"ItemDrops"
+	{
+	
+	}
+	
+	"RadiantSpawns"
+	{
+		"1"
+		{
+			"SpawnerName"			"radiant_spawner1"
+			"Waypoint"				"r_left_wp_1"
+		}
+		"2"
+		{
+			"SpawnerName"			"radiant_spawner2"
+			"Waypoint"				"r_center_wp_1"
+		}
+		"3"
+		{
+			"SpawnerName"			"radiant_spawner3"
+			"Waypoint"				"r_right_wp_1"
+		}
+	}
+	
+	"DireSpawns"
+	{
+		"1"
+		{
+			"SpawnerName"			"dire_spawner1"
+			"Waypoint"				"d_left_wp_1"
+		}
+		"2"
+		{
+			"SpawnerName"			"dire_spawner2"
+			"Waypoint"				"d_center_wp_1"
+		}
+		"3"
+		{
+			"SpawnerName"			"dire_spawner3"
+			"Waypoint"				"d_right_wp_1"
+		}
+	}
+
+	"LinkedXPEnemies"
+	{
+		// Key enemy spawns sub-value count of subkey enemies
+		// e.g. splitter_a spawns 3 splitter_b
+		"npc_dota_splitter_a"
+		{
+			"npc_dota_splitter_b"	"3"
+		}
+
+		"npc_dota_splitter_b"
+		{
+			"npc_dota_splitter_c"	"4"
+		}
+
+		"npc_dota_creature_boss_skeleton_king_1"
+		{
+			"npc_dota_creature_boss_skeleton_king_2"	"1"
+		}
+
+		"npc_dota_creature_boss_skeleton_king_2"
+		{
+			"npc_dota_creature_boss_skeleton_king_3"	"1"
+		}
+	}
+	
+	"Round1" // Kobolds
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_Spiders_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"1000"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1b" // Duration 80s - Continues with UnitFodderGrouped_2b & 3b to 120s total
+		{
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1c" // Duration 90s + 30s
+		{
+			"WaitForTime"			"30"
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"12"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"3"
+		}
+
+		
+		// Stage 2 ================================================
+		"UnitFodderGrouped_2a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1a"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitFodderGrouped_2b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1b"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitHealer_2a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2a"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_2b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2b"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		
+		// Stage 3 ================================================
+		"UnitFodderGrouped_3a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2a"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodderGrouped_3b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2b"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitHealer_3a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3a"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_3b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3b"
+			
+			"NPCName"				"npc_dota_creature_spiderling"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+	}
+	
+	"Round2" // Kobolds
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Gnolls_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_Gnolls_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"1000"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1b" // Duration 80s - Continues with UnitFodderGrouped_2b & 3b to 120s total
+		{
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1c" // Duration 90s + 30s
+		{
+			"WaitForTime"			"30"
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"12"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"3"
+		}
+
+		
+		// Stage 2 ================================================
+		"UnitFodderGrouped_2a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1a"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitFodderGrouped_2b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1b"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitHealer_2a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2a"
+			
+			"NPCName"				"npc_dota_creature_gnoll_assassin"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_2b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2b"
+			
+			"NPCName"				"npc_dota_creature_gnoll_assassin"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		
+		// Stage 3 ================================================
+		"UnitFodderGrouped_3a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2a"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodderGrouped_3b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2b"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creature_kobold_tunneler"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitHealer_3a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3a"
+			
+			"NPCName"				"npc_dota_creature_gnoll_assassin"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_3b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3b"
+			
+			"NPCName"				"npc_dota_creature_gnoll_assassin"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+	}
+
+	"Round3" // Crazed Madmen
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Crazed_Madmen_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_Crazed_Madmen_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"1000"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1b" // Duration 80s - Continues with UnitFodderGrouped_2b & 3b to 120s total
+		{
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"10"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodder_1c" // Duration 90s + 30s
+		{
+			"WaitForTime"			"30"
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"12"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"3"
+		}
+
+		
+		// Stage 2 ================================================
+		"UnitFodderGrouped_2a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1a"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitFodderGrouped_2b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodder_1b"
+			"WaitForTime"			"12"
+			
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"5"
+		}
+		
+		"UnitHealer_2a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2a"
+			
+			"NPCName"				"npc_dota_creature_corpselord"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_2b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_2b"
+			
+			"NPCName"				"npc_dota_creature_corpselord"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		
+		// Stage 3 ================================================
+		"UnitFodderGrouped_3a" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2a"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitFodderGrouped_3b" // Duration 20s
+		{
+			"WaitForUnit"			"UnitFodderGrouped_2b"
+			"WaitForTime"			"10"
+			
+			"NPCName"				"npc_dota_creep_crazed_madmen"
+			"TotalUnitsToSpawn"		"8"
+			"UnitsPerSpawn"			"2"
+			"SpawnInterval"			"2"
+		}
+		
+		"UnitHealer_3a"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3a"
+			
+			"NPCName"				"npc_dota_creature_corpselord"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+		
+		"UnitHealer_3b"
+		{
+			"GroupWithUnit"			"UnitFodderGrouped_3b"
+			
+			"NPCName"				"npc_dota_creature_corpselord"
+			"TotalUnitsToSpawn"		"1"
+			"UnitsPerSpawn"			"1"
+		}
+	}
+	
+}

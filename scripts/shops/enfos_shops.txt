@@ -1,0 +1,91 @@
+"dota_shops"
+{
+	"consumables"
+	{
+
+	}
+
+	"attributes"
+	{
+		"item"	"item_elder_staff"
+		"item"	"item_tribal_staff"
+		"item"	"item_agani_tayeua"
+		"item"	"item_ruby_inset_ring"
+		"item"	"item_emerald_inset_ring"
+		"item"	"item_sapphire_inset_ring"
+		"item"	"item_crystal_edged_ring"
+		"item"	"item_bloodstone_inset_ring"
+		"item"	"item_zircon_inset_ring"
+		"item"	"item_moonstone_inset_ring"
+		"item"	"item_diamond_etched_ring"
+		"item"	"item_grimstone_inset_ring"
+	}
+
+	"weapons_armor"
+	{
+		"item"	"item_gleaming_longsword"
+		"item"	"item_polished_elven_telo"
+		"item"	"item_spineripper"
+		"item"	"item_nimsha"
+		"item"	"item_tkashi_mirror_blade"
+		"item"	"item_uthmors_skullcleaver"
+		
+	}
+	
+	"misc"
+	{
+		"item"	"item_elven_hunting_boots"
+		"item"	"item_arbelog_paw_boots"
+		"item"	"item_elven_stalking_boots"
+	}	
+	
+	// Level 1 - Green Recipes
+	"basics"
+	{
+
+	}
+
+	// Level 2 - Blue Recipes
+	"support"
+	{
+
+	}
+	
+	"magics"
+	{
+
+	}
+	
+	// Level 3 - Purple Recipes
+	"defense"
+	{
+
+	}
+	
+	"weapons"
+	{
+		"item" "item_fragarach"
+		"item" "item_brisker"
+	}
+	
+	// Level 4 - Orange / Orb / Artifacts
+	"artifacts"
+	{
+
+	}
+
+	"sideshop1"
+	{
+
+	}
+
+	"sideshop2"
+	{
+
+	}
+	
+	"secretshop"
+	{
+
+	}
+}

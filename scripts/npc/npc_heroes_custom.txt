@@ -1,0 +1,388 @@
+// Dota Heroes File
+// NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
+// the specified key-value combinations.  Use override_hero <hero_to_override> for this.
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Naga Siren
+	//=================================================================================================================
+	"npc_dota_hero_naga_siren_enfos"
+	{
+		"override_hero"				"npc_dota_hero_naga_siren"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"				"naga_enfos_apocalyptic_strike"
+		"Ability2"				"generic_enfos_combat_mastery"
+		"Ability3"				"naga_enfos_cataclysmic_strike"
+		"Ability4"				"naga_enfos_dragon_dance"
+		"Ability5"				"naga_enfos_innate"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"									// Physical protection. // 2.94
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.7"									// Speed of attack.
+		"AttackAnimationPoint"		"0.5"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"128"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"0.75"									// Health regeneration rate.
+	}
+
+		//=================================================================================================================
+	// HERO: Juggernaut
+	//=================================================================================================================
+	"npc_dota_hero_juggernaut_enfos"
+	{
+		"override_hero" "npc_dota_hero_juggernaut"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"				"juggernaut_enfos_magic_resistance"						// Ability 1
+		"Ability2"				"juggernaut_enfos_evasion_master"					// Ability 2
+		"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
+		"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
+		"Ability5"				"generic_enfos_bloodlust"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"			"1"											// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"18"									// Damage range min.
+		"AttackDamageMax"			"23"									// Damage range max.
+		"AttackRate"				"1.4"									// Speed of attack.
+		"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"130"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributeBaseStrength"		"6"									// Base strength
+		"AttributeStrengthGain"		"2"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"9"									// Base agility
+		"AttributeAgilityGain"		"3"									// Agility bonus per level.
+
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealthRegen"			"0.75"									// Health regeneration rate.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+	}	
+	
+		//=================================================================================================================
+	// HERO: Beastmaster
+	//=================================================================================================================
+	"npc_dota_hero_beastmaster_enfos"	
+	{
+		"override_hero" "npc_dota_hero_beastmaster"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"beastmaster_enfos_trothfangs_butchery"					// Ability 1
+		"Ability2"					"generic_enfos_combat_mastery"			// Ability 2
+		"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
+		"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
+		"Ability5"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"									// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.4"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"180"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"								// Base strength
+		"AttributeStrengthGain"			"3"								// Strength bonus per level.
+		"AttributeBaseIntelligence"		"3"								// Base intelligence
+		"AttributeIntelligenceGain"		"1"								// Intelligence bonus per level.
+		"AttributeBaseAgility"			"6"								// Base agility
+		"AttributeAgilityGain"			"2"								// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+	}
+	
+	
+	//=================================================================================================================
+	// HERO: Storm Spirit
+	//=================================================================================================================
+	"npc_dota_hero_storm_spirit_enfos"
+	{
+		"override_hero" "npc_dota_hero_storm_spirit"
+		"AbilityLayout"			"5"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"					"test_reset"					// Ability 1
+		"Ability2"					"test_experience"					// Ability 2
+		"Ability3"					"storm_spirit_enfos_chain_lightning"							// Ability 3
+		"Ability4"					"test_fireball"					// Ability 4
+		"Ability5"					"storm_spirit_enfos_static_discharge"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"										// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"30"									// Damage range max.
+		"AttackRate"				"1.8"									// Speed of attack.
+		"AttackAnimationPoint"			"0.5"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"		"800"									// Range within a target can be acquired.
+		"AttackRange"				"550"									// Range within a target can be attacked.
+		"ProjectileSpeed"			"1100"									// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"6"									// Base strength
+		"AttributeStrengthGain"			"2"									// Strength bonus per level.
+		"AttributeBaseIntelligence"		"9"									// Base intelligence
+		"AttributeIntelligenceGain"		"3"									// Intelligence bonus per level.
+		"AttributeBaseAgility"			"3"									// Base agility
+		"AttributeAgilityGain"			"1"									// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+	}	
+	
+	
+	//=================================================================================================================
+	// HERO: Obsidian Destroyer
+	//=================================================================================================================
+	"npc_dota_hero_obsidian_destroyer_enfos"	
+	{
+		"override_hero" "npc_dota_hero_obsidian_destroyer"
+		"AbilityLayout"			"5"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"					"obsidian_destroyer_enfos_haste"
+		"Ability2"					"obsidian_destroyer_enfos_slow"
+		"Ability3"					"obsidian_destroyer_enfos_slow_aura"
+		"Ability4"					"obsidian_destroyer_enfos_time_lapse"
+		"Ability5"					"obsidian_destroyer_enfos_teleport"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"								// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.5"									// Speed of attack.
+		"AttackAnimationPoint"		"0.46"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"550"									// Range within a target can be attacked.
+		"ProjectileSpeed"			"900"									// Speed of projectile.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"6"									// Base strength
+		"AttributeStrengthGain"			"2"									// Strength bonus per level.
+		"AttributeBaseAgility"			"3"									// Base agility
+		"AttributeAgilityGain"			"1"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"9"									// Base intelligence
+		"AttributeIntelligenceGain"		"3"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+	
+	//=================================================================================================================
+	// HERO: Ursa
+	//=================================================================================================================
+	"npc_dota_hero_ursa_enfos"	
+	{
+		"override_hero" "npc_dota_hero_ursa"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"ursa_enfos_abandoned_heart"				// Ability 1
+		"Ability2"					"generic_enfos_combat_mastery"				// Ability 2
+		"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
+		"Ability4"					"ursa_enfos_muses_inspiration"
+		"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+		"Ability6"					""
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"								// Physical protection.
+		
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32	"									// Damage range max.
+		"AttackRate"				"1.5"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"140"									// Range within a target can be attacked.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility"			"5"									// Base agility
+		"AttributeAgilityGain"			"1.66"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"4"									// Base intelligence
+		"AttributeIntelligenceGain"		"1.33"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	}
+
+	//=================================================================================================================
+	// HERO: Shadow shaman
+	//=================================================================================================================
+	"npc_dota_hero_shadow_shaman_enfos"	
+	{
+		"override_hero" "npc_dota_hero_shadow_shaman"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"warlock_enfos_energy_drain"					// Ability 1
+		"Ability2"					"warlock_enfos_disrupt"					// Ability 2
+		"Ability3"					"warlock_enfos_spellcurse"						// Ability 3
+		"Ability4"					"warlock_enfos_energy_flare"					// Ability 4
+		"Ability5"					"warlock_enfos_deflection"					// Ability 5
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"3"									// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"38"									// Damage range min.
+		"AttackDamageMax"			"52"									// Damage range max.
+		"AttackRate"				"1.6"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"700"									// Range within a target can be attacked.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"2.75"									// Strength bonus per level.
+		"AttributeBaseIntelligence"		"13"									// Base intelligence
+		"AttributeIntelligenceGain"		"4.5"									// Intelligence bonus per level.
+		"AttributeBaseAgility"			"6"									// Base agility
+		"AttributeAgilityGain"			"1.0"										// Agility bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+		"HasAggressiveStance"			"1"
+	}
+
+//=================================================================================================================
+	// HERO: Omniknight
+	//=================================================================================================================
+	"npc_dota_hero_omniknight_enfos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"		"npc_dota_hero_omniknight"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"				"omniknight_enfos_fallen_one"
+		"Ability2"				"omniknight_enfos_sentinels_resolve"
+		"Ability3"				"omniknight_enfos_tipping_the_scales"
+		"Ability4"				"omniknight_guardian_angel"
+		"Ability5"				"generic_enfos_trothgangs_rally"
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"			"2"										// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.8"									// Speed of attack.
+		"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"150"									// Range within a target can be attacked.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3.25"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+	}
+}
