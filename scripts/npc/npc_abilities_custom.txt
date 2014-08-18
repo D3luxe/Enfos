@@ -3,7 +3,56 @@
 {
 	"Version"		"1"
 	
+	//=================================================================================================================
+	// Generic: Empower Armor Innate
+	//=================================================================================================================
+	"generic_enfos_empower_armor"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"tiny_craggy_exterior"
+		"MaxLevel"					"1"
 
+		"Modifiers"
+		{
+			"modifier_empower_armor"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				 
+				"OnTakeDamage"
+				{
+					"Random"
+					{
+						"Chance" "%chance"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"		"custom_scripted_abilities.lua"
+								"Function"		"Empower_Armor"
+							}
+								
+						}
+					}
+				}
+			}		
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"chance"		"3"
+			}	
+		}
+
+		
+	}
 	//=================================================================================================================
 	// Generic: Trothfangs Rally Innate
 	//=================================================================================================================
@@ -13,12 +62,14 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"axe_berserkers_call"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityTextureName"			"juggernaut_healing_ward"
 		"FightRecapLevel"				"1"
 		"MaxLevel"						"1"
 
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastPoint"				"0.3"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCastAnimation"			"ACT_DOTA_OVERRIDE_ABILITY_1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -31,7 +82,9 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"0"	
+
 		
+
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -130,7 +183,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"bounty_hunter_wind_walk"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		
 		"Modifiers"
@@ -146,7 +199,7 @@
 				}
 			}
 			
-			"coup_de_grace_passive"
+			"combat_mastery_passive"
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
@@ -155,22 +208,25 @@
 					"Random"
 					{
 						"Chance" "%crit_chance"
-						"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
 						"OnSuccess"
 						{
 							"ApplyModifier"
 							{
-								"ModifierName" "coup_de_grace_crit"
+								"ModifierName" "combat_mastery_crit"
 								"Target"	   "CASTER"	
 							}	
 								
 						}
 					}
 				}
+			}
 				
 				
-			"coup_de_grace_crit"
+			"combat_mastery_crit"
 			{
+				"Duration"	"1"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -186,14 +242,12 @@
 					}	
 					"RemoveModifier"
 					{
-						"ModifierName"		"coup_de_grace_crit"
+						"ModifierName"		"combat_mastery_crit"
 						"Target"			"CASTER"	
 					}
 				}
 			}
 			
-			
-			}
 		}
 			
 		// Special
@@ -254,12 +308,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 
 		"Modifiers"
 		{
-			"coup_de_grace_passive"
+			"apocalyptic_strike_crit_passive"
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
@@ -268,12 +322,12 @@
 					"Random"
 					{
 						"Chance" "%crit_chance"
-						"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
 						"OnSuccess"
 						{
 							"ApplyModifier"
 							{
-								"ModifierName" "coup_de_grace_crit"
+								"ModifierName" "apocalyptic_strike_crit"
 								"Target"	   "CASTER"	
 							}	
 								
@@ -282,12 +336,14 @@
 				}
 			}
 
-			"coup_de_grace_crit"
+			"apocalyptic_strike_crit"
 			{
+				"Duration"	"1"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					--"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "crit_bonus"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%crit_bonus"
 					
 				}
 				
@@ -306,7 +362,7 @@
 					}
 					"RemoveModifier"
 					{
-						"ModifierName"		"coup_de_grace_crit"
+						"ModifierName"		"apocalyptic_strike_crit"
 						"Target"			"CASTER"	
 					}
 				}
@@ -351,7 +407,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"BaseClass" 					"spirit_breaker_charge_of_darkness"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"6"
 		
@@ -415,7 +471,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"10"
 		
@@ -487,11 +543,11 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"antimage_spell_shield"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 				
 		"Modifiers"
 		{
-			"combat_mastery_evasion"
+			"modifier_magic_resistance"
 			{
 				"Passive" "1"
 				"IsHidden" "1"
@@ -523,12 +579,12 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"brewmaster_drunken_brawler"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 				
 				
 		"Modifiers"
 		{
-			"combat_mastery_evasion"
+			"modifier_evasion_master"
 			{
 				"Passive" "1"
 				"IsHidden" "1"
@@ -562,7 +618,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_slithereen_crush"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"6"
 			
@@ -674,7 +730,7 @@
 		"BaseClass"						"juggernaut_blade_fury"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"								"7"
+		"MaxLevel"								"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"10"
 	
@@ -815,7 +871,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"lycan_howl"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 			
 		// Time		
@@ -920,7 +976,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"troll_warlord_berserkers_rage"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"					"6"
 			
@@ -1012,7 +1068,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"troll_warlord_battle_trance"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"					"10"
 			
@@ -1181,7 +1237,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"RequiredLevel"					"6"
 			
 		// Time		
@@ -1252,7 +1308,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"bristleback_warpath"
-		"MaxLevel"					"7"
+		"MaxLevel"					"10"
 		
 		
 		// Time		
@@ -1326,7 +1382,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"chen_penitence"
-		"MaxLevel"					"7"
+		"MaxLevel"					"10"
 		
 		
 		// Time		
@@ -1398,7 +1454,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"6"
 		
@@ -1437,7 +1493,7 @@
 		"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"	"faceless_void_time_lock"
 		
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"10"
 
@@ -1600,7 +1656,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"omniknight_repel"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 			
@@ -1700,7 +1756,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"nevermore_dark_lord"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"6"
 
@@ -1757,7 +1813,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"brewmaster_storm_dispel_magic"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"10"
 			
@@ -1798,6 +1854,129 @@
 	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
+	"mob_poison_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//--"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"MaxLevel"						"1"
+		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"					"ghost_frost_attack"	
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed_slow"		"-20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attackspeed_slow"		"-20"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"1.5"
+			}
+		}
+
+	}
+	"mob_boar_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"witch_doctor_voodoo_restoration"
+
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_witchdoctor"
+		}
+		// Modifiers
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"fx_boar_heal"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"CASTER"
+						"EffectName"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration.vpcf"
+						"EffectAttachType"	"follow_origin"
+						
+						"ControlPoints"
+						{
+							"00"	"0 0 0"
+							"01"	"%health_radius 0 0"
+							"02"	"0 0 -200"
+						}
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+
+				}
+			}
+			
+			"modifier_boar_heal"
+			{
+				"IsHidden"				"0"
+				"Passive"				"1"
+				
+				"Aura"					"modifier_boar_heal_aura"
+				"Aura_Radius"			"%health_radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			}
+			
+			"modifier_boar_heal_aura"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%regen"
+				}
+			
+			}
+		}
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"health_radius"				"450"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"regen"		"5"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"resistance"		"2"
+			}
+		}
+
+	}
+
+
 	"mob_mana_drain"
 	{
 		// General
@@ -2003,7 +2182,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"lion_mana_drain"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2066,7 +2245,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"warlock_upheaval"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 			
@@ -2122,7 +2301,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityTextureName"			"skywrath_mage_mystic_flare"
 		"BaseClass" 					"ability_datadriven"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"RequiredLevel"					"10"
 		"LevelsBetweenUpgrades"			"2"
 		
@@ -2260,6 +2439,265 @@
 		
 	}
 
+	//=================================================================================================================
+	// Ogre Magi - Antimage - Moradinn the Magic Infuser
+	//=================================================================================================================
+
+	
+	//=================================================================================================================
+	// Empower Hammer
+	//=================================================================================================================
+	"ogre_magi_enfos_empower_hammer"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"kunkka_tidebringer"
+		"MaxLevel"					"10"
+
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_zuus/"
+
+		}
+
+		"Modifiers"
+		{
+			"modifier_empower_weapon"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				 
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance" "%stun_chance"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_empower_weapon_stun"
+								"Target"
+								{
+									"Center"			"CASTER"
+									"Radius"			"%radius"
+									"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+								}	
+							}
+							"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
+							"EffectAttachType"	"attach_hitloc"
+								
+						}
+					}
+				}
+			}
+
+			"modifier_empower_weapon_stun"
+			{
+				"Duration" "%duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}	
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stun_chance"		"3 6 9 12 15 18 21 24 27 30"
+			}	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"900"
+			}	
+			"03"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"1"
+			}	
+		}
+	}
+
+	//=================================================================================================================
+	// Empower Axe
+	//=================================================================================================================
+	"ogre_magi_enfos_empower_axe"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"antimage_mana_break"
+		"MaxLevel"					"10"
+		"RequiredLevel"				"6"
+
+		"precache"
+		{
+			"particle_folder"	"particles/items_fx/"
+		}
+
+		"Modifiers"
+		{
+			"modifier_empower_axe"
+			{
+				"Passive" "1"
+				"IsHidden"	"1"
+				 
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance" "%chance"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_empower_axe_armor"
+								"Target"	"TARGET"
+							}
+							"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
+							"EffectAttachType"	"attach_hitloc"
+								
+						}
+					}
+				}
+			}
+
+			"modifier_empower_axe_armor"
+			{
+				"Duration" "%duration"
+				"EffectName" "particles/items_fx/desolator_projectile_trail_ribbon.vpcf"
+				"EffectAttachType" "follow_overhead"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+				}
+
+			}	
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"chance"		"12 14 16 18 20 22 24 26 28 30"
+			}	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"armor"		"-4 -8 -12 -16 -20 -24 -28 -32 -36 -40"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"3"
+			}		
+		}
+	}
+
+		//=================================================================================================================
+	// Empower Bracers
+	//=================================================================================================================
+	"ogre_magi_enfos_empower_bracers"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"tusk_walrus_punch"
+		"MaxLevel"					"10"
+		"RequiredLevel"				"10"
+
+		"AbilityManaCost"			"65 77 95 119 149 185 227 275 329 389"
+		"AbilityCooldown"			"120"
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_empower_bracers"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_empower_bracers"
+			{
+				"Duration"	"%duration"
+				"EffectName"	"particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+				"EffectAttachType"	"attach_hitloc"
+				"OnAttackStart"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" "modifier_empower_bracers_proc"
+						"Target"	   "CASTER"	
+					}	
+				}
+			}
+
+			"modifier_empower_bracers_proc"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%damage_bonus"
+				}
+				
+				"OnAttackLanded"
+				{
+					"FireEffect"
+					{
+						"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"	 "follow_origin"
+						"Target"			 "TARGET"
+					}	
+					"CleaveAttack"
+					{
+						"CleavePercent"		"100"
+						"CleaveRadius"      "%radius"
+					}
+					"RemoveModifier"
+					{
+						"ModifierName"		"modifier_empower_bracers_proc"
+						"Target"			"CASTER"	
+					}
+				}
+			}
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"damage_bonus"		"200 290 420.5 609.7 884.1 1281.6 1858.8 2695.3 3908.1 5666.8"
+			}	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"250"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"duration"		"120"
+			}		
+		}
+	}
 
 	//=================================================================================================================
 	// Omniknight - Grake the Holy Warrior 
@@ -2274,8 +2712,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
-		"MaxLevel"						"7"
+		"AbilityTextureName" 			"centaur_double_edge"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 		
@@ -2358,8 +2796,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
-		"MaxLevel"						"7"
+		"AbilityTextureName" 			"dragon_knight_dragon_tail"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 		
@@ -2398,30 +2836,186 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
-		"MaxLevel"						"7"
+		"BaseClass" 					"spectre_dispersion"
+		"AbilityTextureName" 			"spectre_dispersion"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
-		"RequiredLevel"			"1"
-		
+		"RequiredLevel"			"6"
 
-		"Modifiers"
+		// Special
+		// ------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
 		{
-			"modifier_tipping_the_scales"
+			"01"
 			{
-				"IsHidden"	"0"
-				"Passive"	"1"
-				 
-				"OnTakeDamage"
+				"var_type"				"FIELD_INTEGER"
+				"min_radius"			"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"max_radius"			"800"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reflection_pct"	"18 36 54 72 90 108 126 144 162 180"
+			}
+		}
+		
+	}
+
+	//=================================================================================================================
+	// Heroic Strength
+	//=================================================================================================================
+	"omniknight_enfos_heroic_strength"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"terrorblade_metamorphosis"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"		"2"
+		"RequiredLevel"			"10"
+
+		"AbilityManaCost"	"100 110 120 130 140 150 160 170 180 190"
+		"AbilityCooldown"	"170 160 150 140 130 120 110 100 90 80"
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_heroic_strength"
+			}	
+			
+		}
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_terrorblade/"
+
+		}
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_heroic_strength"   	// This should be the name of your modifier
+			{
+				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+				"IsDebuff"					"false"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+				//"AllowIllusionDuplicate"	"false"
+				"EffectName"				"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+				"EffectAttachType"			"attach_hitloc"
+				"OverrideAnimation"			"true"
+				//"ThinkInterval"				"10"
+				"Duration"					"%duration"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+					"MODIFIER_PROPERTY_HEALTH_BONUS"			"%health_bonus"
+				}
+
+				"States"
+				{
+				"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"		"custom_scripted_abilities.lua"
-						"Function"		"Tippingthescales"
-						"target"		"TARGET"
-
+						"Function"		"ModelScale"
+						"scale"			"1.2"
 					}
+				}
 
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"custom_scripted_abilities.lua"
+						"Function"		"ModelScale"
+						"scale"			"1"
+					}
+				}
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"			"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"150 250 400 600 850 1150 1500 1900 2350 2850"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_bonus"			"5 10 15 20 25 30 35 40 45 50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health_bonus"			"750 1500 2250 3000 3750 4500 5250 6000 6750 7500"
+			}
+
+		}
+
+	}
+
+	//=================================================================================================================
+	// Phantom Assassin - Steelrose, the Paladin
+	//=================================================================================================================
+
+	//=================================================================================================================
+	// Courage
+	//=================================================================================================================
+	"phantom_assassin_enfos_courage"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"centaur_double_edge"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"		"2"
+		"RequiredLevel"			"1"
+
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_omniknight"
+		}
+
+		"Modifiers"
+		{
+			"modifiers_courage"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				
+				"Aura"					"modifiers_courage_aura"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+			}
+			
+			"modifiers_courage_aura"
+			{
+				"EffectName"	"particles/units/heroes/hero_omniknight/omniknight_repel_buff_cylinder.vpcf"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%regen"
 				}
 			}
 		}
@@ -2432,7 +3026,162 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"return_pct"		"18 36 54 72 90 108 126 144 162 180"
+				"regen"		"1 2 3 4 5 6 7 8 9 10"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"		"100 200 300 400 500 600 700 800 900 1000"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed"		"20 40 60 80 100 120 140 160 180 200"
+			}
+		}
+		
+	}
+
+	//=================================================================================================================
+	// Chadatru's Blessing
+	//=================================================================================================================
+	"phantom_assassin_enfos_chadatrus_blessing"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"centaur_double_edge"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"		"2"
+		"RequiredLevel"			"1"
+
+		"AbilityManaCost"		"30 40 50 60 70 80 90 100 110 120"
+		"AbilityCooldown"		"180 170 160 150 140 130 120 110 100 90"
+
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_omniknight"
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_chadatrus_blessing_aura"
+				"Target"	"CASTER"
+
+			}
+
+		}
+		"Modifiers"
+		{
+			"modifier_chadatrus_blessing_aura"
+			{
+				"Duration"				"%duration"
+
+				"Aura"					"modifier_chadatrus_blessing"
+				"Aura_Radius"			"9999"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"		
+				"Aura_ApplyToCaster"	"0"
+			}
+			"modifier_chadatrus_blessing"
+			{
+				"Properties" 
+				 {
+					"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+				 }
+				 "States"
+				 {
+				   "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+				 }
+			}
+		}
+		// Special
+		// ------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"10"
+			}
+		}
+		
+	}
+
+	//=================================================================================================================
+	// Righteous Wrath
+	//=================================================================================================================
+	"phantom_assassin_enfos_righteous_wrath"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"centaur_double_edge"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"		"2"
+		"RequiredLevel"			"1"
+
+		"AbilityManaCost"		"80 100 120 140 160 180 200 240 260"
+		"AbilityCooldown"		"75"
+		
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_omniknight"
+		}
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_righteous_wrath"
+				"Target"	"CASTER"
+
+			}
+		}
+
+		"Modifiers"
+		{
+			"modifier_righteous_wrath"
+			{
+				"Duration"				"%duration"
+
+				"OnAttackLanded"
+				{
+					"LifeSteal"
+					{
+						"Target" "TARGET"
+						"LifestealPercent"	"%leech"
+					}	
+				}
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
+				}
+			}
+		}
+		// Special
+		// ------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"		"200 400 800 1400 2000 2900 4000 5000 6000 7000"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"leech"		"7 9 11 13 15 17 19 21 23 25"
 			}
 		}
 		
@@ -2451,7 +3200,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_slithereen_crush"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 			
@@ -2499,7 +3248,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_slithereen_crush"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 			
@@ -2536,7 +3285,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_slithereen_crush"
-		"MaxLevel"						"7"
+		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
 			
@@ -2581,4 +3330,5 @@
 			}
 		}
 	}
+
 }

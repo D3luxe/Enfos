@@ -321,7 +321,7 @@ function CEnfosGameSpawner:_DoSpawn()
 			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 			entUnit.Enfos_IsCore = true
-			entUnit:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
+			--entUnit:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
 		end
 		
 		local vDireSpawnLocation = self:_GetDireSpawnLocation()
@@ -354,7 +354,7 @@ function CEnfosGameSpawner:_DoSpawn()
 			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 			entUnit2.Enfos_IsCore = true
-			entUnit2:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
+			--entUnit2:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
 		end
 	end
 end

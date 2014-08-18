@@ -13,4 +13,6 @@
 	"npc_dota_hero_ursa" "1"
 	"npc_dota_hero_shadow_shaman" "1"
 	"npc_dota_hero_omniknight" "1"
+	"npc_dota_hero_antimage" "1"
+	"npc_dota_hero_phantom_assassin" "1"
 }

@@ -353,7 +353,7 @@
 		"Ability1"				"omniknight_enfos_fallen_one"
 		"Ability2"				"omniknight_enfos_sentinels_resolve"
 		"Ability3"				"omniknight_enfos_tipping_the_scales"
-		"Ability4"				"omniknight_guardian_angel"
+		"Ability4"				"omniknight_enfos_heroic_strength"
 		"Ability5"				"generic_enfos_trothgangs_rally"
 
 		// Armor
@@ -384,5 +384,112 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
 		"MovementTurnRate"			"0.6"									// Turning rate.
+
+		"precache"
+		{
+			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+		
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		}
+	}
+
+		//=================================================================================================================
+	// HERO: Ogre Magi - Moradinn the Magic Infuser
+	//=================================================================================================================
+	"npc_dota_hero_ogre_magi_enfos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"		"npc_dota_hero_antimage"
+
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"					"ogre_magi_enfos_empower_hammer"
+		"Ability2"					"generic_enfos_combat_mastery"
+		"Ability3"					"ogre_magi_enfos_empower_axe"
+		"Ability4"					"ogre_magi_enfos_empower_bracers"
+		"Ability5"					"generic_enfos_empower_armor"
+		"Ability6"					""
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1.0"								// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.35"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"150"									// Range within a target can be attacked.
+
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility"			"6"									// Base agility
+		"AttributeAgilityGain"			"1.7"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"3"									// Base intelligence
+		"AttributeIntelligenceGain"		"1"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+	}
+
+	//=================================================================================================================
+	// HERO: Phantom Assassin - Steelrose, the Paladin
+	//=================================================================================================================
+	"npc_dota_hero_phantom_assassin_enfos"
+	{
+		"override_hero"		"npc_dota_hero_phantom_assassin"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"	"5"
+		"Ability1"				"phantom_assassin_enfos_courage"				// Ability 1
+		"Ability2"				"generic_enfos_combat_mastery"						// Ability 2
+		"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
+		"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
+		"Ability5"				"generic_enfos_trothgangs_rally"					// Ability 4
+
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"2"									// Physical protection.
+
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"25"									// Damage range min.
+		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackRate"				"1.6"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"170"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3.7"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+
+		"precache"
+		{
+			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+		}
 	}
 }

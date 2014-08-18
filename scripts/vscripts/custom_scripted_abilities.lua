@@ -93,6 +93,14 @@ function FallenOne(keys)
 
 end
 
-function Tippingthescales(keys)
-	PrintTable(keys)
+function ModelScale(keys)
+	--PrintTable(keys)
+	keys.caster:SetModelScale(keys.scale)
+end
+
+function Empower_Armor(keys)
+	local strength = keys.caster:GetStrength()
+	local healed = strength * 20
+
+	keys.caster:Heal(healed, keys.caster)
 end

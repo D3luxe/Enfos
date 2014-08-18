@@ -32,6 +32,7 @@ end
 
 
 function CEnfosGameMode:InitGameMode()
+	STARTING_GOLD = 250
 	self._nRoundNumber = 1
 	self._currentRound = nil
 	self._flLastThinkGameTime = nil
@@ -61,7 +62,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, 100)
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, 100)
 	GameRules:GetGameModeEntity():SetFogOfWarDisabled( true )
-	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( 50 )
+	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( 125 )
 	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 
 	-- Custom console commands
@@ -386,74 +387,134 @@ end
 XP_PER_LEVEL_TABLE = {
 	0,-- 1
 	200,-- 2
-	400,-- 3
-	600,-- 4
-	800,-- 5
-	1000,-- 6
-	1200,-- 7
-	1400,-- 8
-	1600,-- 9
-	1800,-- 10
-	2000,-- 11
-	2200,-- 12
-	2400,-- 13
-	2600,-- 14
-	2800,-- 15
-	3000,-- 16
-	3200,-- 17
-	3400,-- 18
-	3600,-- 19
-	3800,-- 20
-	4000,-- 21
-	4200,-- 22
-	4400,-- 23
-	4600,-- 24
-	4800, -- 25
-	5000, -- 26
-	5200, -- 27
-	5400, -- 28
-	5600, -- 29
-	5800, -- 30
-	6000, -- 31
-	6200, -- 32
-	6400, -- 33
-	6600, -- 34
-	6800, -- 35
-	7000, -- 36
-	7200, -- 37
-	7400, -- 38
-	7600, -- 39
-	7800, -- 40
-	8000, -- 41
-	8200, -- 42
-	8400, -- 43
-	8600, -- 44
-	8800, -- 45
-	9000, -- 46
-	9200, -- 47
-	9400, -- 48
-	9600, -- 49
-	9800, -- 50
-	10000 -- 51
+	300,-- 3
+	400,-- 4
+	500,-- 5
+	600,-- 6
+	700,-- 7
+	800,-- 8
+	900,-- 9
+	1000,-- 10
+	1100,-- 11
+	1200,-- 12
+	1300,-- 13
+	1400,-- 14
+	1500,-- 15
+	1600,-- 16
+	1700,-- 17
+	1800,-- 18
+	1900,-- 19
+	2000,-- 20
+	2100,-- 21
+	2200,-- 22
+	2300,-- 23
+	2400,-- 24
+	2500, -- 25
+	2600, -- 26
+	2700, -- 27
+	2800, -- 28
+	2900, -- 29
+	3000, -- 30
+	3100, -- 31
+	3200, -- 32
+	3300, -- 33
+	3400, -- 34
+	3500, -- 35
+	3600, -- 36
+	3700, -- 37
+	3800, -- 38
+	3900, -- 39
+	4000, -- 40
+	4100, -- 41
+	4200, -- 42
+	4300, -- 43
+	4400, -- 44
+	4500, -- 45
+	4600, -- 46
+	4700, -- 47
+	4800, -- 48
+	4900, -- 49
+	5000, -- 50
+	5100, -- 51
+	5200, -- 51
+	5300, -- 51
+	5400, -- 51
+	5500, -- 51
+	5600, -- 51
+	5700, -- 51
+	5800, -- 51
+	5900, -- 51
+	6000, -- 51
+	6100, -- 51
+	6200, -- 51
+	6300, -- 51
+	6400, -- 51
+	6500, -- 51
+	6600, -- 51
+	6700, -- 51
+	6800, -- 51
+	6900, -- 51
+	7000, -- 51
+	7100, -- 51
+	7200, -- 51
+	7300, -- 51
+	7400, -- 51
+	7500, -- 51
+	7600, -- 51
+	7700, -- 51
+	7800, -- 51
+	7900, -- 51
+	8000, -- 51
+	8100, -- 51
+	8200, -- 51
+	8300, -- 51
+	8400, -- 51
+	8500, -- 51
+	8600, -- 51
+	8700, -- 51
+	8800, -- 51
+	8900, -- 51
+	9000, -- 51
+	9100, -- 51
+	9200, -- 51
+	9300, -- 51
+	9400, -- 51
+	9500, -- 51
+	9600, -- 51
+	9700, -- 51
+	9800, -- 51
+	9900, -- 51
+	10000, -- 51
+	10100, -- 51
+	10200, -- 51
+	10300, -- 51
+	10400, -- 51
+	10500, -- 51
+	10600, -- 51
+	10700, -- 51
+	10800, -- 51
+	10900, -- 51
+	11000, -- 51
+	11100, -- 51
+	11200, -- 51
+	11300, -- 51
+	11400, -- 51
+	11500, -- 51
+	11600, -- 51
+	11700, -- 51
+	11800, -- 51
+	11900, -- 51
+	12000, -- 51
+	12100, -- 51
+	12200, -- 51
+	12300, -- 51
+	12400, -- 51
+	12500 -- 51
 }
 
-STARTING_GOLD = 1200
+
 ROUND_EXPECTED_VALUES_TABLE = {
-	{ gold = STARTING_GOLD, xp = 0 }, -- 1
-	{ gold = 1054+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[4] }, -- 2
-	{ gold = 2212+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[5] }, -- 3
-	{ gold = 3456+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[6] }, -- 4
-	{ gold = 4804+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[8] }, -- 5
-	{ gold = 6256+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[9] }, -- 6
-	{ gold = 7812+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[9] }, -- 7
-	{ gold = 9471+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[10] }, -- 8
-	{ gold = 11234+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[11] }, -- 9
-	{ gold = 13100+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[13] }, -- 10
-	{ gold = 15071+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[13] }, -- 11
-	{ gold = 17145+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[14] }, -- 12
-	{ gold = 19322+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[16] }, -- 13
-	{ gold = 21604+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[18] }, -- 14
-	{ gold = 23368+STARTING_GOLD, xp = XP_PER_LEVEL_TABLE[18] } -- 15
+
 }
 
 -- Custom game specific console command "Enfos_test_round"
@@ -465,11 +526,11 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 		return
 	end
 
-	local nExpectedGold = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].gold or 600
-	local nExpectedXP = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].xp or 0
+	--local nExpectedGold = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].gold or 600
+	--local nExpectedXP = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].xp or 0
 	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
 		if PlayerResource:IsValidPlayer( nPlayerID ) then
-			PlayerResource:ReplaceHeroWith( nPlayerID, PlayerResource:GetSelectedHeroName( nPlayerID ), nExpectedGold, nExpectedXP )
+			PlayerResource:ReplaceHeroWith( nPlayerID, PlayerResource:GetSelectedHeroName( nPlayerID ), 600, 0 )
 			PlayerResource:SetBuybackCooldownTime( nPlayerID, 0 )
 			PlayerResource:SetBuybackGoldLimitTime( nPlayerID, 0 )
 			PlayerResource:ResetBuybackCostTime( nPlayerID )
