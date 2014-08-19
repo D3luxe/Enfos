@@ -371,13 +371,14 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/items2_fx/"
+			"particle_folder"			"particles/units/heroes/hero_leshrac/"
 		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
 				"ModifierName"			"modifier_ethereal_shield_buff"
-				"Target"				"TARGET"
+				"Target"				"CASTER"
 			}
 		}
 		"Modifiers"
@@ -397,7 +398,6 @@
 						"ModifierName"	"modifier_ethereal_shield_debuff"
 						"Target"		"ATTACKER"
 					}
-
 				}
 				"OnCreated"
 				{
@@ -421,8 +421,8 @@
 				{
 					"AttachEffect"
 					{
-						"Target"				"CASTER"
-						"EffectName"			"particles/items2_fx/mjollnir_shield.vpcf"
+						"Target"				"TARGET"
+						"EffectName"			"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
 						"EffectAttachType"		"follow_origin"
 					}
 				}
@@ -443,7 +443,7 @@
 			"03"
 			{	
 				"var_type"				"FIELD_INTEGER"
-				"attack_speed_slow"		"50"  //this is a complete guess.
+				"attack_speed_slow"		"-50"  //this is a complete guess.
 			}
 		}
 	}		

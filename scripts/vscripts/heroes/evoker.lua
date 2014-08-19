@@ -28,7 +28,6 @@ function GarZeng(keys)
 	local damage = keys.damage
 	local unitsHit = keys.units_hit
 	local cfVec = caster:GetForwardVector()
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
 	if Enfos.appliers[pid].GenericApplier == nil then
 		Enfos.appliers[pid] = {GenericApplier = CreateItem('item_generic_applier', nil, nil)}
 	end
@@ -40,26 +39,34 @@ function GarZeng(keys)
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
 	applier:ApplyDataDrivenModifier(caster, target, "modifier_skill_flag", {}) -- apply a flag to the main unit so that we don't double shock it
 	ParticleManager:SetParticleControl(particle,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))
--- we need to reduce the units table to only valid targets before we do skill processing so that 
+-- we need to reduce the units table to only valid targets before we do skill processing so that. the unit is found here in case the main target was killed by the direct damage.
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+	local inCone = {}
+	PrintTable(units)
 	print (math.cos(45))
 	print ("---")
 	for k,v in pairs (units) do
 		local highVar = cfVec:Dot((v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized())
 		local lowVar = math.cos(45) -- 45 degree cone. a complete guess if this is correct
-		print (highVar)
-		if highVar < lowVar or v:HasModifier("modifier_skill_flag") then -- if the highVar is a higher number than the lowVar, it's in the cone. we want the opposite of that.
-			table.remove(units, k) -- remove the unit if it's not in the cone
+		print (highVar .. "x")
+		print (v:HasModifier("modifier_skill_flag"))
+		if highVar > lowVar or v:HasModifier("modifier_skill_flag") then -- if the highVar is a higher number than the lowVar, it's in the cone.
+			print (highVar .. "y")
+			print (k)
+			table.insert(inCone, v) -- remove the unit if it's not in the cone
 		end
+		PrintTable(inCone)
+		print ("---")
 	end
 -- getting the correct behaviour 
-	if #units < unitsHit then
-		unitsHit = #units
+	if #inCone < unitsHit then
+		unitsHit = #inCone
 	end
-	for k,v in pairs(units) do
+	for k,v in pairs(inCone) do
 		if unitsHit <= 0 then
 			return
 		else
-			local coneParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster)
+			local coneParticle = ParticleManager:CreateParticle("particles/inCone/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster)
 			ParticleManager:SetParticleControl(coneParticle,1,Vector(v:GetAbsOrigin().x,v:GetAbsOrigin().y,v:GetAbsOrigin().z+((v:GetBoundingMaxs().z - v:GetBoundingMins().z)/2)))	
 			v:EmitSound("Hero_ShadowShaman.EtherShock.Target")
 			DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
