@@ -271,9 +271,183 @@
 			}
 		}
 		
-		
+	}		
+
+	//=================================================================================================================
+	// Generic: Focus Moonbeam
+	//=================================================================================================================
+	"generic_focus_moonbeam"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"luna_lucent_beam"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30.0"
+		"AbilityManaCost"				"50"
+		"AbilityCastRange"				"250"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/generic.lua"
+				"Function"				"FocusMoonbeam"
+				"Target"				"POINT"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"100"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"5"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range"			"250"
+			}
+		}
 	}
-		
+	//=================================================================================================================
+	// Subspell (Cast by Focus Moonbeam)
+	//=================================================================================================================
+	"modspell_focus_moonbeam"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"luna_lucent_beam"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"Modifiers"
+		{
+			"modifier_focus_moonbeam"
+			{
+				"IsHidden"				"0"
+				"Passive"				"1"
+				"Aura"					"moonbeam_mana_regen"
+				"Aura_Radius"			"100"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster"	"1"
+			}
+			"moonbeam_mana_regen"
+			{
+				"IsHidden"				"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASE_MANA_REGEN"		"5" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead.
+				}
+			}
+		}
+	}
+	//=================================================================================================================
+	// Generic: Ethereal Shield
+	//=================================================================================================================
+	"generic_ethereal_shield"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"storm_spirit_electric_vortex"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"800" // cast range not provided on website. this one FAQ says "casting range is pretty long"
+		"AbilityCooldown"				"40 36 32 28 24 20 16 12 8 4"
+		"AbilityManaCost"				"5 10 15 20 25 30 35 40 45 50"
+		"Precache"
+		{
+			"particle_folder"			"particles/items2_fx/"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_ethereal_shield_buff"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_ethereal_shield_buff"
+			{
+				"Duration"				"%duration"
+				"IsPurgable"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				}
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_ethereal_shield_debuff"
+						"Target"		"ATTACKER"
+					}
+
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"CASTER"
+						"EffectName"		"particles/items2_fx/mjollnir_shield.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+			}
+			"modifier_ethereal_shield_debuff"
+			{
+				"Duration"				"15"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"				"CASTER"
+						"EffectName"			"particles/items2_fx/mjollnir_shield.vpcf"
+						"EffectAttachType"		"follow_origin"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20 25 30 35 40 45 50 55 60 65"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_bonus"			"2 5 7 10 12 15 17 20 22 25"
+			}
+			"03"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"50"  //this is a complete guess.
+			}
+		}
+	}		
+
 	//=================================================================================================================
 	// Naga: Kaith`Audru Innate
 	//=================================================================================================================
@@ -342,7 +516,7 @@
 				"IsHidden"	"1"
 				"Properties"
 				{
-					--"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+					//"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%crit_bonus"
 					
 				}
@@ -355,10 +529,44 @@
 						"EffectAttachType"	 "follow_origin"
 						"Target"			 "TARGET"
 					}	
-					"CleaveAttack"
+					"ActOnTargets"
 					{
-						"CleavePercent"		"%crit_cleave_damage"
-						"CleaveRadius"      "%crit_radius"
+						"Target"
+						{
+							"Center"		"TARGET"
+							"Radius"		"%full_radius"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+						}
+						"Action"
+						{
+							"Damage"
+							{
+								"Type" 		"DAMAGE_TYPE_PHYSICAL"
+								"Damage" 	"%full_damage"
+								"Target" 	"TARGET"
+							}
+						}
+					}
+					"ActOnTargets"
+
+					{
+						"Target"
+						{
+							"Center"		"TARGET"
+							"Radius"		"%half_radius"
+							"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+						}
+						"Action"
+						{
+							"Damage"
+							{
+								"Type" 		"DAMAGE_TYPE_PHYSICAL"
+								"Damage" 	"%half_damage"
+								"Target" 	"TARGET"
+							}
+						}
 					}
 					"RemoveModifier"
 					{
@@ -376,22 +584,39 @@
 			"01"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"crit_bonus"				"60 90 135 202 303 455 683 1025 1537 2306"
+				"crit_chance"				"10 11 12 14 15 16 18 19 20 22"
+
 			}
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"crit_chance"				"10 11 12 14 15 16 18 19 20 22"
+				"crit_bonus"				"60 90 135 202 303 455 683 1025 1537 2306"
+
+
+
+
+
 			}
 			"03"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"crit_radius"				"215"
+				"full_radius"				"180"
 			}
 			"04"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"crit_cleave_damage"		"100"
+				"half_radius"				"250"
+			}
+			"05"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"full_damage"				"30 60 68 101 152 228 342 513 769 1153" 
+			}
+			"06"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"half_damage"				"30 60 67 101 151 227 341 512 768 1153" 
+
 			}
 		}
 	}
@@ -408,7 +633,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"BaseClass" 					"spirit_breaker_charge_of_darkness"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 		
 		// Casting
@@ -472,7 +697,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
 		
 		// Time		
@@ -619,7 +844,7 @@
 		"AbilityTextureName" 			"slardar_slithereen_crush"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 			
 		// Time		
@@ -731,7 +956,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"MaxLevel"								"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
 	
 		// Casting
@@ -977,7 +1202,7 @@
 		"AbilityTextureName" 			"troll_warlord_berserkers_rage"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"					"6"
 			
 		// Time		
@@ -1069,7 +1294,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"troll_warlord_battle_trance"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"					"10"
 			
 		// Time		
@@ -1151,134 +1376,6 @@
 		}
 		
 	}
-	
-	//=================================================================================================================
-	// Storm Spirit - Static Discharge Innate
-	//=================================================================================================================
-	"storm_spirit_enfos_static_discharge"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_ALL"
-		
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"troll_warlord_battle_trance"
-		"MaxLevel"						"1"
-			
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"0.1"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"450"
-		"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
-		
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"0"
-		
-		"OnSpellStart"
-		{
-			"ApplyModifier"
-			{
-				"Target" "TARGET"
-				"ModifierName" "modifier_static_discharge"
-			}
-		}
-		
-		"OnProjectileHit"
-		{			
-			
-		}
-		"Modifiers"
-		{
-			"modifier_static_discharge"
-			{
-				"Duration" "%duration"
-				
-				 "Properties" 
-				 {
-					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" 	"%damage_decrease"
-				 }
-			}
-		}
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"damage_decrease"	"-50"
-			}
-			
-			"02"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"duration"				"30"
-			}
-		}
-		
-	}
-	
-	//=================================================================================================================
-	// Storm Spirit - Chain Lightning
-	//=================================================================================================================
-	"storm_spirit_enfos_chain_lightning"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"BaseClass" 					"zuus_arc_lightning"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-		"MaxLevel"						"10"
-		"RequiredLevel"					"6"
-			
-		// Time		
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCooldown"				"35 33 32 30 29 27 26 25 23 22"
-
-		// Casting
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"850"
-		"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
-		
-		// Damage
-		// ------------------------------------------------------------------------------------------------------------
-		"AbilityDamage"				"700 1106 1747 2761 4362 6892 10890 17206 27186 43000"
-		
-		// Cost
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
-		
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"radius"				"500 500 500 500"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"jump_count"			"6 7 8 9 10 11 12 13 14 15"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"jump_delay"			"0.25 0.25 0.25 0.25"
-			}
-		}
-	}
-		
 	//=================================================================================================================
 	// Obsidian Destroyer - Teleport
 	//=================================================================================================================	
@@ -1455,7 +1552,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 		
 		// Casting
@@ -1494,7 +1591,7 @@
 		"AbilityTextureName"	"faceless_void_time_lock"
 		
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
 
 		// Time		
@@ -1757,7 +1854,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"nevermore_dark_lord"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 
 		// Modifiers
@@ -1814,7 +1911,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"brewmaster_storm_dispel_magic"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
 			
 		// Time		
@@ -1854,11 +1951,37 @@
 	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
+	"mob_permenant_invisibility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		//"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"MaxLevel"						"1"
+		"BaseClass"					"riki_permanent_invisibility"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"fade_time"					"0.0"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"fade_delay"				"1.0"
+			}
+		}
+
+	}
 	"mob_poison_attack"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		//--"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		//"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"MaxLevel"						"1"
 		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
@@ -2303,7 +2426,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"MaxLevel"						"10"
 		"RequiredLevel"					"10"
-		"LevelsBetweenUpgrades"			"2"
+		"LevelsBetweenUpgrades"			"5"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2379,7 +2502,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"MaxLevel"						"10"
 		"RequiredLevel"					"6"
-		"LevelsBetweenUpgrades"			"2"
+		"LevelsBetweenUpgrades"			"3"
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -2541,6 +2664,7 @@
 		"AbilityTextureName" 			"antimage_mana_break"
 		"MaxLevel"					"10"
 		"RequiredLevel"				"6"
+		"LevelsBetweenUpgrades"		"3"
 
 		"precache"
 		{
@@ -2609,7 +2733,7 @@
 		}
 	}
 
-		//=================================================================================================================
+	//=================================================================================================================
 	// Empower Bracers
 	//=================================================================================================================
 	"ogre_magi_enfos_empower_bracers"
@@ -2621,6 +2745,7 @@
 		"AbilityTextureName" 			"tusk_walrus_punch"
 		"MaxLevel"					"10"
 		"RequiredLevel"				"10"
+		"LevelsBetweenUpgrades"		"5"
 
 		"AbilityManaCost"			"65 77 95 119 149 185 227 275 329 389"
 		"AbilityCooldown"			"120"
@@ -2727,7 +2852,7 @@
 		
 		"OnSpellStart"
 		{
-		
+
 			"AttachEffect"
 			{
 				"Target"					"CASTER"
@@ -2736,25 +2861,37 @@
 				"EffectRadius"				"%radius"
 				"EffectDuration"			"3"
 			}
-			
+
 			"RunScript"
 			{
-				"ScriptFile"		"custom_scripted_abilities.lua"
-				"Function"		"FallenOne"
+				"ScriptFile"	"custom_scripted_abilities.lua"
+				"Function"		"FallenOneHurtCaster"
 			}
-			"ApplyModifier"
+			"ActOnTargets"
 			{
-				"ModifierName" "modifier_fallen_one"
+
 				"Target"
 				{
 					"Center"			"CASTER"
 					"Radius"			"%radius"
-					"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
 				}	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" 	"modifier_fallen_one"
+						"Target"		"TARGET"
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"custom_scripted_abilities.lua"
+						"Function"		"FallenOneHurtEnemies"
+					}	
+				}
 			}
 		}
-
 		"Modifiers"
 		{
 			"modifier_fallen_one"
@@ -2762,7 +2899,7 @@
 				 "Duration" "%duration"
 				 "EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
 				 "EffectAttachType" "follow_overhead"
-				 
+
 				 "States"
 				 {
 				   "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
@@ -2839,7 +2976,7 @@
 		"BaseClass" 					"spectre_dispersion"
 		"AbilityTextureName" 			"spectre_dispersion"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 
 		// Special
@@ -2876,7 +3013,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"terrorblade_metamorphosis"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
+		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
 
 		"AbilityManaCost"	"100 110 120 130 140 150 160 170 180 190"
@@ -2986,7 +3123,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"centaur_double_edge"
+		"AbilityTextureName" 			"terrorblade_metamorphosis"
 		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
@@ -3051,10 +3188,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"centaur_double_edge"
+		"AbilityTextureName" 			"omniknight_purification"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
-		"RequiredLevel"			"1"
+		"LevelsBetweenUpgrades"		"3"
+		"RequiredLevel"			"6"
 
 		"AbilityManaCost"		"30 40 50 60 70 80 90 100 110 120"
 		"AbilityCooldown"		"180 170 160 150 140 130 120 110 100 90"
@@ -3120,17 +3257,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"centaur_double_edge"
+		"AbilityTextureName" 			"axe_battle_hunger"
 		"MaxLevel"						"10"
-		"LevelsBetweenUpgrades"		"2"
-		"RequiredLevel"			"1"
+		"LevelsBetweenUpgrades"		"5"
+		"RequiredLevel"			"10"
 
 		"AbilityManaCost"		"80 100 120 140 160 180 200 240 260"
 		"AbilityCooldown"		"75"
 		
 		"precache"
 		{
-			"particle_folder"				"particles/units/heroes/hero_omniknight"
+			"particle_folder"				"particles/units/heroes/hero_axe"
 		}
 
 		"OnSpellStart"
@@ -3147,16 +3284,26 @@
 		{
 			"modifier_righteous_wrath"
 			{
-				"Duration"				"%duration"
-
-				"OnAttackLanded"
+				"OnCreated"
 				{
-					"LifeSteal"
+					"AttachEffect"
 					{
 						"Target" "TARGET"
-						"LifestealPercent"	"%leech"
-					}	
+						"EffectName"		"particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+						"EffectAttachType"	"follow_overhead"
+					}
 				}
+
+				"Duration"				"%duration"
+
+				"OnDealDamage"
+				{
+					"Lifesteal"
+					{
+						"Target" 				"CASTER"
+						"LifestealPercent"		"%leech"
+					}
+				}	
 				"Properties"
 				{
 					// You may use "modifierProperty" completions within quotes here. Below is an example
@@ -3187,6 +3334,421 @@
 		
 	}
 
+	//=================================================================================================================
+	// Mentalist: Dazzle
+	//=================================================================================================================
+	"mentalist_dazzle"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"wisp_spirits"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"150 140 130 120 110 100 90 80 70 60"
+		"AbilityManaCost"				"0" //?
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+				"Function"				"Dazzle"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cooldown"				"150 140 130 120 110 100 90 80 70 60"
+			}
+		}
+	}
+	"mentalist_seal_of_deflection"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"medusa_mana_shield"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"5"
+		"AbilityManaCost"				"10"
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+				"Function"				"SealOfDeflectionOn"
+			}
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_mentalist_seal_of_deflection"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+				"Function"				"SealOfDeflectionOff"
+			}
+			"RemoveModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_mentalist_seal_of_deflection"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_mentalist_seal_of_deflection"
+			{
+				"EffectName"			"medusa_mana_shield"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MIN_HEALTH"	"1" //to block lethal hits with the mana shield
+				}
+			}
+		}			
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_absorbed"		"55 60 65 70 75 80 85 90 95 100"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_mana"		"1 2 3 4 5 6 7 8 9 10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Mentalist: Moonblade
+	//=================================================================================================================
+	"mentalist_moonblade"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"luna_moon_glaive"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"AbilityCastPoint"				"0.0"
+		"Modifiers"
+		{
+			"modifier_mentalist_moonblade"
+			{
+				"Passive"		"1"
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"		"%cleave_percent"
+						"CleaveRadius"		"%cleave_radius"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_percent"		"20 30 45 60 75 90 110 130 160 200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cleave_radius"			"250"
+			}
+		}
+	}
+	"mentalist_aura_sight"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"puck_dream_coil"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"70 68 66 64 62 60 58 56 54"
+		"AbilityManaCost"				"20"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_mentalist_aura_sight"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_mentalist_aura_sight"
+			{
+				"Duration"				"%duration"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"CASTER"
+						"ControlPointEntities"
+						{
+							"CASTER"		"attach_hand_r"
+							"TARGET"		"attach_hand_l"
+						}
+						"EffectName"		"lion_spell_mana_drain"
+						"EffectAttachType"	"start_at_customorigin"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASE_MANA_REGEN"		"%mana_regen" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead."
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"80 124 190 280 425 600 850 1200 1650"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Evoker: Static Discharge
+	//=================================================================================================================
+	"evoker_static_discharge" //I'm very slightly changing the functionality of this. Instead of being targetted (which causes weird autocast issues), it's just a toggle that randomly zaps enemies.
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"razor_eye_of_the_storm"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"20" //of course they forgot to put the mana cost on the website
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_zuus/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"		"modifier_evoker_static_discharge"
+				"Target"			"CASTER"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"		"modifier_evoker_static_discharge"
+				"Target"			"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_evoker_static_discharge"
+			{
+				"ThinkInterval"		"1" //the actual interval doesn't seem to be posted anywhere
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+						"Function"		"StaticDischarge"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reduction"		"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Evoker: Gar Zeng
+	//=================================================================================================================
+	"evoker_gar_zeng"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"shadow_shaman_ether_shock"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"500" // don't know if I actually have the right value
+		"AbilityCooldown"				"20 19 18 17 17 16 15 15 14 13" //yep, it actually scales this way
+		"AbilityManaCost"				"45 54 64 77 93 111 134 161 193 232"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_zuus/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+				"Function"		"GarZeng"
+				"damage"		"%damage"
+				"units_hit"		"%units_hit"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"100 170 289 491 835 1419 2413 4103 6975 11858"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"units_hit"				"2 3 4 5 6 7 8 9 10 11"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Evoker: Chain Lightning
+	//=================================================================================================================
+	"evoker_chain_lightning"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"zuus_arc_lightning"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" // don't know if I actually have the right value
+		"AbilityCooldown"				"35 33 32 30 29 27 26 25 23 22"
+		"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_zuus/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+				"Function"		"ChainLightning"
+				"damage"		"%damage"
+				"bounces"		"%bounces"
+			}
+		}	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"700 1106 1747 2761 4362 6892 10890 17206 27186 43000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bounces"				"6 7 8 9 10 11 12 13 14 15"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Evoker: Ball Lightning
+	//=================================================================================================================
+	"evoker_ball_lightning"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"storm_spirit_ball_lightning"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" // again, whoever wrote these tooltips on the site is awful
+		"AbilityCooldown"				"120 112 104 96 88 80 72 64 54 48"
+		"AbilityManaCost"				"300 330 360 390 420 450 480 510 540 570"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_stormspirit/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/evoker.lua"
+				"Function"				"BallLightning"
+				"Target"				"POINT"
+				"damage"				"%damage"
+				"duration"				"%duration"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"800 1150 1700 2400 3400 4700 6350 8400 11000 14000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"15"
+			}
+		}	
+	}
+
+	//=================================================================================================================
+	// Dummy unit spell
+	//=================================================================================================================
+	"spell_dummy_unit"
+	{
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"            "rubick_empty1"
+		"MaxLevel"                      "1"
+		"Modifiers"
+		{
+			"dummy_unit"
+			{
+				"Passive"           	"1"
+				"IsHidden"				"1"    
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
 
 	//=================================================================================================================
 	// test

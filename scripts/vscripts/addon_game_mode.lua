@@ -13,9 +13,11 @@ require( "Enfos_game_round" )
 require( "Enfos_game_spawner" )
 require( "util")
 require( "enfos")
+require( "timers")
 
 if CEnfosGameMode == nil then
 	CEnfosGameMode = class({})
+	CEnfosGameMode.__index = CEnfosGameMode
 end
 
 -- Precache resources
@@ -34,6 +36,8 @@ end
 function CEnfosGameMode:InitGameMode()
 	STARTING_GOLD = 250
 	self._nRoundNumber = 1
+	self._iGoodSpawnPoint = 1
+	self._iBadSpawnPoint = 1
 	self._currentRound = nil
 	self._flLastThinkGameTime = nil
 	self._entAncient = Entities:FindByName( nil, "dota_goodguys_fort" )
@@ -68,6 +72,7 @@ function CEnfosGameMode:InitGameMode()
 	-- Custom console commands
 	Convars:RegisterCommand( "Enfos_test_round", function(...) return self:_TestRoundConsoleCommand( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -82,7 +87,8 @@ function CEnfosGameMode:InitGameMode()
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
-	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 ) 
+	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 )
+	-- defining our global tables here. we need to populate them with initial player values or else we won't be able to index them.
 end
 
 function CEnfosGameMode:new (o)
@@ -117,15 +123,17 @@ function CEnfosGameMode:_ReadGameConfiguration()
 	self:_ReadRoundConfigurations( kv )
 end
 
-
 -- Verify spawners if random is set
 function CEnfosGameMode:ChooseRadiantSpawnInfo()
 	if #self._vRadiantSpawnsList == 0 then
 		error( "Attempt to choose a radiant spawn, but no radiant spawns are specified in the data." )
 		return nil
 	end
-
-	return self._vRadiantSpawnsList[ RandomInt( 1, #self._vRadiantSpawnsList ) ]
+	self._iGoodSpawnPoint = self._iGoodSpawnPoint + 1
+	if self._iGoodSpawnPoint > #self._vRadiantSpawnsList then
+		self._iGoodSpawnPoint = 1
+	end
+	return self._vRadiantSpawnsList[self._iGoodSpawnPoint]
 end
 
 -- Verify spawners if random is set
@@ -134,7 +142,11 @@ function CEnfosGameMode:ChooseDireSpawnInfo()
 		error( "Attempt to choose a dire spawn, but no dire spawns are specified in the data." )
 		return nil
 	end
-	return self._vDireSpawnsList[ RandomInt( 1, #self._vDireSpawnsList ) ]
+	self._iBadSpawnPoint = self._iBadSpawnPoint + 1
+	if self._iBadSpawnPoint > #self._vDireSpawnsList then
+		self._iBadSpawnPoint = 1
+	end
+	return self._vDireSpawnsList[self._iBadSpawnPoint]
 end
 
 
@@ -387,129 +399,129 @@ end
 XP_PER_LEVEL_TABLE = {
 	0,-- 1
 	200,-- 2
-	300,-- 3
-	400,-- 4
-	500,-- 5
-	600,-- 6
-	700,-- 7
-	800,-- 8
-	900,-- 9
-	1000,-- 10
-	1100,-- 11
-	1200,-- 12
-	1300,-- 13
-	1400,-- 14
-	1500,-- 15
-	1600,-- 16
-	1700,-- 17
-	1800,-- 18
-	1900,-- 19
-	2000,-- 20
-	2100,-- 21
-	2200,-- 22
-	2300,-- 23
-	2400,-- 24
-	2500, -- 25
-	2600, -- 26
-	2700, -- 27
-	2800, -- 28
-	2900, -- 29
-	3000, -- 30
-	3100, -- 31
-	3200, -- 32
-	3300, -- 33
-	3400, -- 34
-	3500, -- 35
-	3600, -- 36
-	3700, -- 37
-	3800, -- 38
-	3900, -- 39
-	4000, -- 40
-	4100, -- 41
-	4200, -- 42
-	4300, -- 43
-	4400, -- 44
-	4500, -- 45
-	4600, -- 46
-	4700, -- 47
-	4800, -- 48
-	4900, -- 49
-	5000, -- 50
-	5100, -- 51
-	5200, -- 51
-	5300, -- 51
-	5400, -- 51
-	5500, -- 51
-	5600, -- 51
-	5700, -- 51
-	5800, -- 51
-	5900, -- 51
-	6000, -- 51
-	6100, -- 51
-	6200, -- 51
-	6300, -- 51
-	6400, -- 51
-	6500, -- 51
-	6600, -- 51
-	6700, -- 51
-	6800, -- 51
-	6900, -- 51
-	7000, -- 51
-	7100, -- 51
-	7200, -- 51
-	7300, -- 51
-	7400, -- 51
-	7500, -- 51
-	7600, -- 51
-	7700, -- 51
-	7800, -- 51
-	7900, -- 51
-	8000, -- 51
-	8100, -- 51
-	8200, -- 51
-	8300, -- 51
-	8400, -- 51
-	8500, -- 51
-	8600, -- 51
-	8700, -- 51
-	8800, -- 51
-	8900, -- 51
-	9000, -- 51
-	9100, -- 51
-	9200, -- 51
-	9300, -- 51
-	9400, -- 51
-	9500, -- 51
-	9600, -- 51
-	9700, -- 51
-	9800, -- 51
-	9900, -- 51
-	10000, -- 51
-	10100, -- 51
-	10200, -- 51
-	10300, -- 51
-	10400, -- 51
-	10500, -- 51
-	10600, -- 51
-	10700, -- 51
-	10800, -- 51
-	10900, -- 51
-	11000, -- 51
-	11100, -- 51
-	11200, -- 51
-	11300, -- 51
-	11400, -- 51
-	11500, -- 51
-	11600, -- 51
-	11700, -- 51
-	11800, -- 51
-	11900, -- 51
-	12000, -- 51
-	12100, -- 51
-	12200, -- 51
-	12300, -- 51
-	12400, -- 51
-	12500 -- 51
+	500,-- 3
+	900,-- 4
+	1400,-- 5
+	2000,-- 6
+	2700,-- 7
+	3500,-- 8
+	4400,-- 9
+	5400,-- 10
+	6500,-- 11
+	7700,-- 12
+	9000,-- 13
+	10400,-- 14
+	11900,-- 15
+	13500,-- 16
+	15200,-- 17
+	17000,-- 18
+	18900,-- 19
+	20900,-- 20
+	23000,-- 21
+	25200,-- 22
+	27500,-- 23
+	29900,-- 24
+	32400, -- 25
+	35000, -- 26
+	37700, -- 27
+	40500, -- 28
+	43400, -- 29
+	46400, -- 30
+	49500, -- 31
+	52700, -- 32
+	56000, -- 33
+	59400, -- 34
+	62900, -- 35
+	66500, -- 36
+	70200, -- 37
+	74000, -- 38
+	77900, -- 39
+	81900, -- 40
+	86000, -- 41
+	90200, -- 42
+	94500, -- 43
+	98900, -- 44
+	103400, -- 45
+	108000, -- 46
+	112700, -- 47
+	117500, -- 48
+	122400, -- 49
+	127400, -- 50
+	132500, -- 51
+	137700, -- 51
+	143000, -- 51
+	148400, -- 51
+	153900, -- 51
+	159500, -- 51
+	165200, -- 51
+	171000, -- 51
+	176900, -- 51
+	182900, -- 51
+	189000, -- 51
+	195200, -- 51
+	201500, -- 51
+	207900, -- 51
+	214400, -- 51
+	221000, -- 51
+	227700, -- 51
+	234500, -- 51
+	241400, -- 51
+	248400, -- 51
+	255500, -- 51
+	262700, -- 51
+	270000, -- 51
+	277400, -- 51
+	284900, -- 51
+	292500, -- 51
+	300200, -- 51
+	308000, -- 51
+	315900, -- 51
+	323900, -- 51
+	332000, -- 51
+	340200, -- 51
+	348500, -- 51
+	356900, -- 51
+	365400, -- 51
+	374000, -- 51
+	382700, -- 51
+	391500, -- 51
+	400400, -- 51
+	409400, -- 51
+	418500, -- 51
+	427700, -- 51
+	437000, -- 51
+	446400, -- 51
+	455900, -- 51
+	465500, -- 51
+	475200, -- 51
+	485000, -- 51
+	494900, -- 51
+	504900, -- 51
+	515000, -- 51
+	525200, -- 51
+	535500, -- 51
+	545900, -- 51
+	556400, -- 51
+	567000, -- 51
+	577700, -- 51
+	588500, -- 51
+	599400, -- 51
+	610400, -- 51
+	621500, -- 51
+	632700, -- 51
+	644000, -- 51
+	655400, -- 51
+	666900, -- 51
+	678500, -- 51
+	690200, -- 51
+	702000, -- 51
+	713900, -- 51
+	725900, -- 51
+	738000, -- 51
+	750200, -- 51
+	762500, -- 51
+	774900, -- 51
+	787400 -- 51
 }
 
 
@@ -573,6 +585,18 @@ function CEnfosGameMode:_StatusReportConsoleCommand( cmdName )
 		self._currentRound:StatusReport()
 	end
 	print( "*** Enfos Status Report End *** ")
+end
+
+function CEnfosGameMode:_ResetLivesConsoleCommand( cmdName )
+	print( "*** Enfos Life Reset ***" )
+	print(_badLives)
+	print(_goodLives)
+	_badLives = 100
+	_goodLives = 100
+
+	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
+
+	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, _badLives)
 end
 
 

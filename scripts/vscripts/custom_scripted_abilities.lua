@@ -1,13 +1,15 @@
+-- made ResetCooldowns slightly more efficient
+-- fixed an infinite loop on StealMana
+-- fixed FallenOne dealing no damage
+
 function AddExperience(keys)
 	keys.caster:GetPlayerOwner():GetAssignedHero():AddExperience (keys.expamt,false)
 end
 
 function ResetCooldowns(keys) 
-	keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(0):EndCooldown()
-	keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(1):EndCooldown()
-	keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(2):EndCooldown()
-	keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(3):EndCooldown()
-	keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(4):EndCooldown()
+	for i=0,4 do
+		keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(i):EndCooldown()
+	end
 end
 
 function StealMana(keys)
@@ -35,7 +37,7 @@ function StealMana(keys)
 	--PrintTable(keys)
 	enmPlayer = 0
 	enmPlayer = RandomInt(0, HeroList:GetHeroCount()) 
-
+	local safetyValue = 0
 	maxMana = 0
 	-- while PlayerResource:IsValidPlayer( enmPlayer ) do
 	-- 	repeat
@@ -43,9 +45,16 @@ function StealMana(keys)
 	-- 	until PlayerResource:GetTeam(enmPlayer) ~= PlayerResource:GetTeam(keys.caster:GetPlayerID())
 	-- end
 
-	repeat
+	while true do
 		enmPlayer = RandomInt(0, HeroList:GetHeroCount())
-	until PlayerResource:GetTeam(enmPlayer) ~= PlayerResource:GetTeam(keys.caster:GetPlayerID()) and PlayerResource:IsValidPlayer( enmPlayer ) and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsHero() and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsAlive()
+		safetyValue = safetyValue + 1 -- shoutouts to infinite loops
+		if safetyValue > 100 then
+			break
+		end
+		if PlayerResource:GetTeam(enmPlayer) ~= PlayerResource:GetTeam(keys.caster:GetPlayerID()) and PlayerResource:IsValidPlayer( enmPlayer ) and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsHero() and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsAlive() then
+			break
+		end
+	end
 
 	if ( PlayerResource:IsValidPlayer( enmPlayer ) ) then
 		maxMana = tonumber(PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():GetMana())
@@ -64,8 +73,12 @@ function StealMana(keys)
 	end
 
 	--print(PlayerResource:GetPlayer(enmPlayer):GetAssignedHero())
-	PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():ReduceMana(maxMana)
-	keys.caster:GiveMana(manaReplenished)
+	if ( PlayerResource:IsValidPlayer( enmPlayer ) ) then
+		PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():ReduceMana(maxMana)
+		keys.caster:GiveMana(manaReplenished)
+	else
+		print("ENMPLAYER IS NOT VALID PLAYER!")
+	end
 end
 
 function EnergyFlare(keys)
@@ -84,13 +97,11 @@ function EnergyFlare(keys)
 	ApplyDamage(damageTable)
 end
 
-function FallenOne(keys)
-	local caster = keys.caster
-	local dmg = caster:GetMaxHealth() - 1
---print(dmg)
---PrintTable(keys)
-	keys.caster:GetPlayerOwner():GetAssignedHero():SetHealth(1)
-
+function FallenOneHurtCaster(keys)
+	keys.caster:SetHealth(1) -- you don't need to get the hero if you know the hero's gonna be the one casting it
+end
+function FallenOneHurtEnemies(keys)
+	keys.target:SetHealth(1)
 end
 
 function ModelScale(keys)
@@ -103,4 +114,17 @@ function Empower_Armor(keys)
 	local healed = strength * 20
 
 	keys.caster:Heal(healed, keys.caster)
+end
+
+function Permenant_Invisibility(keys)
+	keys.caster:AddNewModifier(keys.caster, nil, "modifier_invisible", {})
+
+	EnfosGameMode:CreateTimer(DoUniqueString("Kill Ward"), {
+	useGameTime = true, 
+	endTime = GameRules:GetGameTime() + keys.Duration, 
+	callback = function(funct, args) 
+		
+		keys.caster:RemoveModifierByName("modifier_invisible")
+			
+	end})
 end

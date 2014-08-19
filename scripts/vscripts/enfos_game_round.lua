@@ -1,6 +1,7 @@
 --[[
 	CEnfosGameRound - A single round of Enfos
 ]]
+ROUND_TIME = 80
 
 if CEnfosGameRound == nil then
 	CEnfosGameRound = class({})
@@ -40,10 +41,9 @@ function CEnfosGameRound:Begin()
 	self._vEnemiesRemaining = {}
 	self._vEventHandles = {
 		ListenToGameEvent( "npc_spawned", Dynamic_Wrap( CEnfosGameRound, "OnNPCSpawned" ), self ),
-		ListenToGameEvent( "entity_killed", Dynamic_Wrap( CEnfosGameRound, "OnEntityKilled" ), self ),
 		--ListenToGameEvent( "dota_item_picked_up", Dynamic_Wrap( CEnfosGameRound, 'OnItemPickedUp' ), self ),
 	}
-
+	ROUND_TIME = 80
 	self._vPlayerStats = {}
 	for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 		self._vPlayerStats[ nPlayerID ] = {
@@ -68,24 +68,30 @@ function CEnfosGameRound:Begin()
 
 	self._entKillCountSubquest = SpawnEntityFromTableSynchronous( "subquest_base", {
 		show_progress_bar = true,
-		progress_bar_hue_shift = -119
+		progress_bar_hue_shift = 0
 	} )
 	self._entQuest:AddSubquest( self._entKillCountSubquest )
-	self._entKillCountSubquest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, self._nCoreUnitsTotal )
+	self._entKillCountSubquest:SetTextReplaceValue( SUBQUEST_TEXT_REPLACE_VALUE_TARGET_VALUE, ROUND_TIME )
+	Timers:CreateTimer(DoUniqueString("round_timer"), {
+		endTime = 1, -- guessing on the interval. it's not listed.
+		callback = function()
+			self._entKillCountSubquest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, ROUND_TIME)
+			ROUND_TIME = ROUND_TIME - 1
+			if ROUND_TIME > 0 then
+				return 1
+			elseif ROUND_TIME <= 0 then
+				return
+			end
+		end
+	})
 end
 
-
+-- function to fire when the round ends.
 function CEnfosGameRound:End()
 	for _, eID in pairs( self._vEventHandles ) do
 		StopListeningToGameEvent( eID )
 	end
 	self._vEventHandles = {}
-
-	for _,unit in pairs( FindUnitsInRadius( DOTA_TEAM_BADGUYS, Vector( 0, 0, 0 ), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NONE, FIND_ANY_ORDER, false )) do
-		if not unit:IsTower() then
-			UTIL_RemoveImmediate( unit )
-		end
-	end
 
 	for _,spawner in pairs( self._vSpawners ) do
 		spawner:End()
@@ -128,7 +134,7 @@ function CEnfosGameRound:Think()
 	end
 end
 
-
+-- ?
 function CEnfosGameRound:ChooseRadiantSpawnInfo()
 	return self._gameMode:ChooseRadiantSpawnInfo()
 end
@@ -137,22 +143,18 @@ function CEnfosGameRound:ChooseDireSpawnInfo()
 	return self._gameMode:ChooseDireSpawnInfo()
 end
 
-
+-- this function checks for the time remaining. if it's 0 or less, the round is over.
 function CEnfosGameRound:IsFinished()
 	for _, spawner in pairs( self._vSpawners ) do
 		if not spawner:IsFinishedSpawning() then
 			return false
 		end
 	end
-	local nEnemiesRemaining = #self._vEnemiesRemaining
-	if nEnemiesRemaining == 0 then
+	if ROUND_TIME <= 0 then
 		return true
 	end
 
-	if not self._lastEnemiesRemaining == nEnemiesRemaining then
-		self._lastEnemiesRemaining = nEnemiesRemaining
-		print ( string.format( "%d enemies remaining in the round...", #self._vEnemiesRemaining ) )
-	end
+	print ( string.format( "%d seconds remaining in the round...", ROUND_TIME ) )
 	return false
 end
 
@@ -175,48 +177,8 @@ function CEnfosGameRound:OnNPCSpawned( event )
 		return
 	end
 
-	if spawnedUnit:GetTeamNumber() == DOTA_TEAM_BADGUYS then
+	if spawnedUnit:GetTeamNumber() == DOTA_TEAM_BADGUYS or spawnedUnit:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
 		spawnedUnit:SetMustReachEachGoalEntity(true)
-		table.insert( self._vEnemiesRemaining, spawnedUnit )
-		spawnedUnit:SetDeathXP( 0 )
-		spawnedUnit.unitName = spawnedUnit:GetUnitName()
-	end
-
-	if spawnedUnit:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
-		spawnedUnit:SetMustReachEachGoalEntity(true)
-		table.insert( self._vEnemiesRemaining, spawnedUnit )
-		spawnedUnit:SetDeathXP( 0 )
-		spawnedUnit.unitName = spawnedUnit:GetUnitName()
-	end
-end
-
-
-function CEnfosGameRound:OnEntityKilled( event )
-	local killedUnit = EntIndexToHScript( event.entindex_killed )
-	if not killedUnit then
-		return
-	end
-
-	for i, unit in pairs( self._vEnemiesRemaining ) do
-		if killedUnit == unit then
-			table.remove( self._vEnemiesRemaining, i )
-			break
-		end
-	end	
-	if killedUnit.Enfos_IsCore then
-		self._nCoreUnitsKilled = self._nCoreUnitsKilled + 1
-		if self._entKillCountSubquest then
-			self._entKillCountSubquest:SetTextReplaceValue( QUEST_TEXT_REPLACE_VALUE_CURRENT_VALUE, self._nCoreUnitsKilled )
-		end
-	end
-
-	local attackerUnit = EntIndexToHScript( event.entindex_attacker or -1 )
-	if attackerUnit then
-		local playerID = attackerUnit:GetPlayerOwnerID()
-		local playerStats = self._vPlayerStats[ playerID ]
-		if playerStats then
-			playerStats.nCreepsKilled = playerStats.nCreepsKilled + 1
-		end
 	end
 end
 
