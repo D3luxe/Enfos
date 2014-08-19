@@ -94,7 +94,8 @@ function EnergyFlare(keys)
 	--damageTable.victim = damageTable.victim.__self
 	--PrintTable(damageTable)
 
-	ApplyDamage(damageTable)
+	--ApplyDamage(damageTable)
+	DealDamage(caster, caster, dmg, DAMAGE_TYPE_MAGICAL, 0)
 end
 
 function FallenOneHurtCaster(keys)
