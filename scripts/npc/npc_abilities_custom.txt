@@ -3410,7 +3410,7 @@
 				"EffectName"			"medusa_mana_shield"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MIN_HEALTH"	"1" //to block lethal hits with the mana shield
+					//"MODIFIER_PROPERTY_MIN_HEALTH"	"1" //to block lethal hits with the mana shield
 				}
 			}
 		}			
