@@ -24,6 +24,7 @@ end
 function Precache( context )
 	PrecacheResource( "model", "models/heroes/lone_druid/spirit_bear.vmdl", context )
 	PrecacheResource( "model", "models/props_gameplay/recipe.mdl", context )
+	--PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf", context )
 end
 
 -- Actually make the game mode when we activate
@@ -35,6 +36,7 @@ end
 
 function CEnfosGameMode:InitGameMode()
 	STARTING_GOLD = 250
+	curRound = 0
 	self._nRoundNumber = 1
 	self._iGoodSpawnPoint = 1
 	self._iBadSpawnPoint = 1
@@ -299,6 +301,16 @@ function CEnfosGameMode:_ThinkPrepTime()
 		end
 		self._currentRound = self._vRounds[ self._nRoundNumber ]
 		self._currentRound:Begin()
+		curRound = curRound + 1
+			print(curRound)
+			local goldAmount = curRound * 250
+			print(goldAmount)
+			for nPlayerID = 0, 9 do
+				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
+					local player = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero()
+					player:SetGold(player:GetGold()+goldAmount, false)
+				end
+			end
 		return
 	end
 
@@ -331,14 +343,13 @@ function CEnfosGameMode:_SpawnHeroClientEffects( hero, nPlayerID )
 end
 
 function CEnfosGameMode:OnPlayerPicked( event )
-	--PrintTable(event)
+	PrintTable(event)
 	local spawnedUnit = event.hero
-	 -- Attach client side hero effects on spawning players
-	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-		if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
-			PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(4):SetLevel(1)
-		end
-	end
+	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
+	spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_bloodseeker_thirst_speed", {duration = 9999})
+	spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
+	spawnedUnitIndex:SetGold(250, false)
+
 end
 
 function CEnfosGameMode:OnNPCSpawned( event )
@@ -382,7 +393,31 @@ end
 
 
 function CEnfosGameMode:OnEntityKilled( event )
+	local killer = EntIndexToHScript( event.entindex_attacker )
+	local killedUnit = EntIndexToHScript( event.entindex_killed )
+	local exp = killedUnit:GetDeathXP()
+	if not killedUnit or killedUnit:GetClassname() == "npc_dota_thinker" or killedUnit:IsPhantom() then
+		return
+	end
+	--print(killer)
+	if killedUnit:IsCreature() then
+		local killerTeam = killer:GetTeam()
+		for nPlayerID = 0, 9 do
+			if PlayerResource:IsValidPlayer( nPlayerID ) then
+				--print(PlayerResource:GetPlayer(nPlayerID):GetAssignedHero())
+				if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero() ~= killer then
+					if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam() == killerTeam then
+						PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():AddExperience(exp, false)
+					end
+				end
+			end
+		end
+	end
 
+	if killedUnit:IsHero() then
+		killedUnit:SetBuybackGoldLimitTime(0)
+		killedUnit:SetBuybackCooldownTime(0)
+	end
 end
 
 function CEnfosGameMode:OnEntityHurt( event )

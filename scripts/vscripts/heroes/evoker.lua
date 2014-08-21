@@ -27,6 +27,7 @@ function GarZeng(keys)
 	local target = keys.target
 	local damage = keys.damage
 	local unitsHit = keys.units_hit
+	unitsHit = unitsHit - 1
 	local cfVec = caster:GetForwardVector()
 	if Enfos.appliers[pid].GenericApplier == nil then
 		Enfos.appliers[pid] = {GenericApplier = CreateItem('item_generic_applier', nil, nil)}
@@ -42,7 +43,7 @@ function GarZeng(keys)
 -- we need to reduce the units table to only valid targets before we do skill processing so that. the unit is found here in case the main target was killed by the direct damage.
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
 	local inCone = {}
-	PrintTable(units)
+	--PrintTable(units)
 	print (math.cos(45))
 	print ("---")
 	for k,v in pairs (units) do
