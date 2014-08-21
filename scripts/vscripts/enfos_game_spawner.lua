@@ -279,7 +279,6 @@ end
 
 function CEnfosGameSpawner:_DoSpawn()
 	CEnfosGameSpawner:_CheckSinglePlayer()
-
 	local nUnitsToSpawn = math.min( self._nUnitsPerSpawn, self._nTotalUnitsToSpawn - self._nUnitsSpawnedThisRound )
 
 	if nUnitsToSpawn <= 0 then

@@ -2,7 +2,45 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
-	
+	//=================================================================================================================
+	// Ability: Bloodseeker's Thirst
+	//=================================================================================================================
+	"enfos_thirst"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"bloodseeker_thirst"
+
+		"IsPurgable" "0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"visibility_threshold_pct"	"50"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"invis_threshold_pct"	"25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_movement_speed"		"0"
+			}			
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bonus_damage"				"0"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Generic: Empower Armor Innate
 	//=================================================================================================================
@@ -2858,14 +2896,7 @@
 		"OnSpellStart"
 		{
 
-			"AttachEffect"
-			{
-				"Target"					"CASTER"
-				"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
-				"EffectAttachType"			"follow_origin"
-				"EffectRadius"				"%radius"
-				"EffectDuration"			"3"
-			}
+			
 
 			"RunScript"
 			{
@@ -2901,15 +2932,32 @@
 		{
 			"modifier_fallen_one"
 			{
-				 "Duration" "%duration"
-				 "EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
-				 "EffectAttachType" "follow_overhead"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"					"CASTER"
+						"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+						"EffectAttachType"			"follow_origin"
+						"EffectRadius"				"%radius"
+					}
+				}
 
-				 "States"
-				 {
-				   "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
-				 }
+				"Duration" "%duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+
+				"States"
+				{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
 			}
+		}
+
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_omniknight/"
+
 		}
 		// Special
 		// ------------------------------------------------------------------------------------------------------------
@@ -3168,7 +3216,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"regen"		"1 2 3 4 5 6 7 8 9 10"
+				"regen"		"4 8 12 16 20 24 28 32 36 40"
 			}
 			"02"
 			{
@@ -3247,7 +3295,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"		"10"
+				"duration"		"15"
 			}
 		}
 		
