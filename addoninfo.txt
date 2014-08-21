@@ -1,5 +1,3 @@
 "AddonInfo"
 {
-maps 		"enfos"
-"IsPlayable" "1"
 }

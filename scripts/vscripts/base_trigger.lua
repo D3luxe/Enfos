@@ -66,7 +66,7 @@ function DireLeftTeleport2(trigger)
 	SendToConsole("dota_camera_center")
 end
 function DireRightTeleport1(trigger)
-	local point = Entities:FindByName( nil, "dire_right_teleport_target_2" ):GetAbsOrigin()
+	local point = Entities:FindByName( nil, "dire_left_teleport_target_2" ):GetAbsOrigin()
 	FindClearSpaceForUnit(trigger.activator, point, false)
 	trigger.activator:Stop()
 	SendToConsole("dota_camera_center")
