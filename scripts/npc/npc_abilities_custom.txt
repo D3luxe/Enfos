@@ -272,7 +272,7 @@
 		}
 		
 	}		
-
+	
 	//=================================================================================================================
 	// Generic: Focus Moonbeam
 	//=================================================================================================================
@@ -286,6 +286,11 @@
 		"AbilityCooldown"				"30.0"
 		"AbilityManaCost"				"50"
 		"AbilityCastRange"				"250"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_mentalist/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -2390,7 +2395,7 @@
 			"RunScript"
 			{
 				"ScriptFile"		"custom_scripted_abilities.lua"
-				"Function"		"StealMana"
+				"Function"		"StealManaDisrupt"
 				"manaStolen"	"%Max_Mana_Stolen"
 				"manaReplenish"	"%Mana_Replenish"
 			}
@@ -3334,6 +3339,7 @@
 		
 	}
 
+
 	//=================================================================================================================
 	// Mentalist: Dazzle
 	//=================================================================================================================
@@ -3346,6 +3352,10 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"150 140 130 120 110 100 90 80 70 60"
 		"AbilityManaCost"				"0" //?
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_silencer/"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -3366,8 +3376,17 @@
 				"var_type"				"FIELD_INTEGER"
 				"cooldown"				"150 140 130 120 110 100 90 80 70 60"
 			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500"
+			}
 		}
 	}
+	
+	//=================================================================================================================
+	// Mentalist: Seal of Deflection
+	//=================================================================================================================
 	"mentalist_seal_of_deflection"
 	{
 		"BaseClass"						"ability_datadriven"
@@ -3377,12 +3396,19 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"5"
 		"AbilityManaCost"				"10"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_medusa/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		}
 		"OnToggleOn"
 		{
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
 				"Function"				"SealOfDeflectionOn"
+				"damage_absorbed"		"%damage_absorbed"
+				"damage_per_mana"		"%damage_per_mana"
 			}
 			"ApplyModifier"
 			{
@@ -3407,7 +3433,7 @@
 		{
 			"modifier_mentalist_seal_of_deflection"
 			{
-				"EffectName"			"medusa_mana_shield"
+				"EffectName"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MIN_HEALTH"	"1" //to block lethal hits with the mana shield
@@ -3469,6 +3495,9 @@
 			}
 		}
 	}
+	//=================================================================================================================
+	// Mentalist: Aura Sight
+	//=================================================================================================================
 	"mentalist_aura_sight"
 	{
 		"BaseClass"						"ability_datadriven"
@@ -3480,6 +3509,11 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"70 68 66 64 62 60 58 56 54"
 		"AbilityManaCost"				"20"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_lion/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -3493,24 +3527,34 @@
 			"modifier_mentalist_aura_sight"
 			{
 				"Duration"				"%duration"
+				"ThinkInterval"			"0.1"
 				"OnCreated"
 				{
 					"AttachEffect"
 					{
-						"Target"			"CASTER"
+						"Target"			"TARGET"
 						"ControlPointEntities"
 						{
 							"CASTER"		"attach_hand_r"
 							"TARGET"		"attach_hand_l"
 						}
-						"EffectName"		"lion_spell_mana_drain"
+						"EffectName"		"particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
 						"EffectAttachType"	"start_at_customorigin"
 					}
 				}
-				"Properties"
+				"OnIntervalThink"
 				{
-					"MODIFIER_PROPERTY_BASE_MANA_REGEN"		"%mana_regen" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead."
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/heroes/mentalist.lua"
+						"Function"			"AuraSight"
+						"mana_regen"		"%mana_regen"
+					}
 				}
+				// "Properties"
+				// {
+					// "MODIFIER_PROPERTY_BASE_MANA_REGEN"		"%mana_regen" //we can't actually do this way because dota's mana regen per second caps out at 500.
+				// }
 			}
 		}
 		"AbilitySpecial"

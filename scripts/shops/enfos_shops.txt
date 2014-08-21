@@ -2,7 +2,10 @@
 {
 	"consumables"
 	{
-
+		"item" "item_ward_sentry_enfos"
+		"item" "item_potion_of_healing"
+		"item" "item_potion_of_greater_healing"
+		"item" "item_potion_of_ultra_healing"
 	}
 
 	"attributes"
@@ -29,7 +32,7 @@
 		"item"	"item_nimsha"
 		"item"	"item_tkashi_mirror_blade"
 		"item"	"item_uthmors_skullcleaver"
-		
+		"item"	"item_bloodthirst"
 	}
 	
 	"misc"

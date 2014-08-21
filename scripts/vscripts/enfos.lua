@@ -14,7 +14,6 @@ Enfos.moonbeamActive = {} -- value for the moonbeam
 Enfos.appliers = {}
 -- we have to populate these tables with the player ID values. if we don't, we'll get an indexing error when we try to use them for the first time.
 for i=0,9 do
-  Enfos.moonbeamActive[i] = ""
   Enfos.appliers[i] = ""
 end
 -- a function that makes dealing damage slightly faster.
@@ -37,6 +36,15 @@ function FastDummy(target, team)
   dummy:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
   dummy:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
   return dummy
+end
+-- quickly destroy a unit
+function DelayDestroy(unit, delayAmount)
+  Timers:CreateTimer(DoUniqueString("delay"), {
+    endTime = delayAmount or 0.03,
+    callback = function()
+      unit:Destroy()
+    end
+  })
 end
 -- some fast math functions
 function AdjustX(vec, xAdj) -- return the vector with x added

@@ -66,6 +66,8 @@ function CEnfosGameSpawner:Begin()
 	self._nUnitsSpawnedThisRound = 0
 	self._nChampionsSpawnedThisRound = 0
 	self._nUnitsCurrentlyAlive = 0
+	_goodGuyPlayer = false
+	_badGuyPlayer = false
 	
 	---------------------------------------------------------------------
 	--- Radiant Spawn Setup initial
@@ -261,8 +263,23 @@ function CEnfosGameSpawner:_UpdateDireSpawn()
 	end
 end
 
+function CEnfosGameSpawner:_CheckSinglePlayer()
+	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
+		if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
+			local team = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam()
+			if(team == 2) then
+				_goodGuyPlayer = true
+			elseif(team == 3) then
+				_badGuyPlayer = true
+			end
+		end
+	end
+end
+
 
 function CEnfosGameSpawner:_DoSpawn()
+	CEnfosGameSpawner:_CheckSinglePlayer()
+
 	local nUnitsToSpawn = math.min( self._nUnitsPerSpawn, self._nTotalUnitsToSpawn - self._nUnitsSpawnedThisRound )
 
 	if nUnitsToSpawn <= 0 then
@@ -278,8 +295,9 @@ function CEnfosGameSpawner:_DoSpawn()
 	if self._szDireSpawnerName == "" then
 		self:_UpdateDireSpawn()
 	end
-
+	
 	local vRadiantSpawnLocation = self:_GetRadiantSpawnLocation()
+	
 	if not vRadiantSpawnLocation then return end
 	for iUnit = 1,nUnitsToSpawn do
 		local bIsChampion = RollPercentage( self._flChampionChance )
@@ -300,28 +318,33 @@ function CEnfosGameSpawner:_DoSpawn()
 		------------------------------------
 		-- Spawn Radiant Mobs
 		------------------------------------
-		local entUnit = CreateUnitByName( szNPCClassToSpawn, vRadSpawnLocation, true, nil, nil, DOTA_TEAM_BADGUYS)
-		if entUnit then
-			if entUnit:IsCreature() then
-				if bIsChampion then
-					self._nChampionsSpawnedThisRound = self._nChampionsSpawnedThisRound + 1
-					entUnit:CreatureLevelUp( ( self._nChampionLevel - 1 ) )
-					entUnit:SetChampion( true )
-					local nParticle = ParticleManager:CreateParticle( "heavens_halberd", PATTACH_ABSORIGIN_FOLLOW, entUnit )
-					ParticleManager:ReleaseParticleIndex( nParticle )
-					entUnit:SetModelScale( 1.1, 0 )
-				else
-					entUnit:CreatureLevelUp( self._nCreatureLevel - 1 )
+		if(_goodGuyPlayer) then
+			local entUnit = CreateUnitByName( szNPCClassToSpawn, vRadSpawnLocation, true, nil, nil, DOTA_TEAM_BADGUYS)
+			if entUnit then
+				if entUnit:IsCreature() then
+					if bIsChampion then
+						self._nChampionsSpawnedThisRound = self._nChampionsSpawnedThisRound + 1
+						entUnit:CreatureLevelUp( ( self._nChampionLevel - 1 ) )
+						entUnit:SetChampion( true )
+						local nParticle = ParticleManager:CreateParticle( "heavens_halberd", PATTACH_ABSORIGIN_FOLLOW, entUnit )
+						ParticleManager:ReleaseParticleIndex( nParticle )
+						entUnit:SetModelScale( 1.1, 0 )
+					else
+						entUnit:CreatureLevelUp( self._nCreatureLevel - 1 )
+					end
 				end
+				local entWp = self:_GetRadiantSpawnWaypoint()
+				if entWp ~= nil then
+					entUnit:SetInitialGoalEntity( entWp )
+				end
+				self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
+				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
+				entUnit.Enfos_IsCore = true
+				--entUnit:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
 			end
-			local entWp = self:_GetRadiantSpawnWaypoint()
-			if entWp ~= nil then
-				entUnit:SetInitialGoalEntity( entWp )
-			end
-			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
+		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
-			entUnit.Enfos_IsCore = true
-			--entUnit:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
+			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 		end
 		
 		local vDireSpawnLocation = self:_GetDireSpawnLocation()
@@ -333,28 +356,33 @@ function CEnfosGameSpawner:_DoSpawn()
 		------------------------------
 		-- Spawn Dire Mobs
 		------------------------------
-		local entUnit2 = CreateUnitByName( szNPCClassToSpawn, vDirSpawnLocation, true, nil, nil, DOTA_TEAM_GOODGUYS)
-		if entUnit2 then
-			if entUnit2:IsCreature() then
-				if bIsChampion then
-					self._nChampionsSpawnedThisRound = self._nChampionsSpawnedThisRound + 1
-					entUnit2:CreatureLevelUp( ( self._nChampionLevel - 1 ) )
-					entUnit2:SetChampion( true )
-					local nParticle = ParticleManager:CreateParticle( "heavens_halberd", PATTACH_ABSORIGIN_FOLLOW, entUnit2 )
-					ParticleManager:ReleaseParticleIndex( nParticle )
-					entUnit2:SetModelScale( 1.1, 0 )
-				else
-					entUnit2:CreatureLevelUp( self._nCreatureLevel - 1 )
+		if(_badGuyPlayer) then
+			local entUnit2 = CreateUnitByName( szNPCClassToSpawn, vDirSpawnLocation, true, nil, nil, DOTA_TEAM_GOODGUYS)
+			if entUnit2 then
+				if entUnit2:IsCreature() then
+					if bIsChampion then
+						self._nChampionsSpawnedThisRound = self._nChampionsSpawnedThisRound + 1
+						entUnit2:CreatureLevelUp( ( self._nChampionLevel - 1 ) )
+						entUnit2:SetChampion( true )
+						local nParticle = ParticleManager:CreateParticle( "heavens_halberd", PATTACH_ABSORIGIN_FOLLOW, entUnit2 )
+						ParticleManager:ReleaseParticleIndex( nParticle )
+						entUnit2:SetModelScale( 1.1, 0 )
+					else
+						entUnit2:CreatureLevelUp( self._nCreatureLevel - 1 )
+					end
 				end
+				local entWp = self:_GetDireSpawnWaypoint()
+				if entWp ~= nil then
+					entUnit2:SetInitialGoalEntity( entWp )
+				end
+				self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
+				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
+				entUnit2.Enfos_IsCore = true
+				--entUnit2:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
 			end
-			local entWp = self:_GetDireSpawnWaypoint()
-			if entWp ~= nil then
-				entUnit2:SetInitialGoalEntity( entWp )
-			end
-			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
+		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
-			entUnit2.Enfos_IsCore = true
-			--entUnit2:SetDeathXP( self._gameRound:GetXPPerCoreUnit() )
+			self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 		end
 	end
 end

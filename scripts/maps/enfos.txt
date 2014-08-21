@@ -49,7 +49,7 @@
 	"Round1" // Spiders
 	{
 		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Spiders_Title"
+		"round_title"				"#DOTA_Enfos_Round_1_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -65,8 +65,8 @@
 	
 	"Round2" // Gnolls / Kobolds
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Gnolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Gnolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_2_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -96,8 +96,8 @@
 
 	"Round3" // Crazed Madmen
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Crazed_Madmen_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Crazed_Madmen_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_3_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -127,8 +127,8 @@
 
 	"Round4" // Wild_Boars
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wild_Boars_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wild_Boars_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_4_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -158,8 +158,8 @@
 
 	"Round5" // Wood Trolls
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_5_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -188,8 +188,8 @@
 	}
 	"Round6" // Satyr Reavers
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_6_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -218,8 +218,8 @@
 	}
 	"Round7" // Blood Wolves
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_7_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -248,8 +248,8 @@
 	}
 	"Round8" // Giant Spiders
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_8_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -278,8 +278,8 @@
 	}
 	"Round9" // Rock Troll
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_9_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -308,8 +308,8 @@
 	}
 	"Round10" // Brown Bear
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_10_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -338,8 +338,8 @@
 	}
 	"Round11" // Dark Fiend
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_11_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -368,8 +368,8 @@
 	}
 	"Round12" // Snowbeast
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_12_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -398,8 +398,8 @@
 	}
 	"Round13" // Lesser Sluagh
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_13_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -428,8 +428,8 @@
 	}
 	"Round14" // Arbelog
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_14_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -456,10 +456,10 @@
 			"SpawnInterval"			"2.5"
 		}
 	}
-	"Round15" // Arbelog
+	"Round15" // Moss Mey
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_15_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -488,8 +488,8 @@
 	}
 	"Round16" // Swamp Troll
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_16_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -518,8 +518,8 @@
 	}
 	"Round17" // Young Ogre
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_17_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -548,8 +548,8 @@
 	}
 	"Round18" // Mottled Westanuryn
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_18_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -578,8 +578,8 @@
 	}
 	"Round19" // Small Peccary
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_19_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
@@ -608,8 +608,8 @@
 	}
 	"Round20" // Giant Thicket Viper
 	{
-		"round_quest_title"			"#DOTA_Enfos_Round_Wood_Trolls_Quest_Title"
-		"round_title"				"#DOTA_Enfos_Round_Wood_Trolls_Title"
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
 		"MaxGold"					"5600"
 		"FixedXP"					"3500"
 		
