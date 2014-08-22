@@ -86,6 +86,10 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent( "player_reconnected", Dynamic_Wrap( CEnfosGameMode, 'OnPlayerReconnected' ), self )
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( CEnfosGameMode, 'OnEntityKilled' ), self )
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( CEnfosGameMode, "OnGameRulesStateChange" ), self )
+	ListenToGameEvent("player_stats_updated", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerStatsUpdated'), self)
+	ListenToGameEvent("dota_player_learned_ability", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLearnedAbility'), self)
+	ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLevelledUp'), self)
+	ListenToGameEvent("dota_inventory_changed", Dynamic_Wrap(CEnfosGameMode, 'OnInventoryChanged'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
@@ -346,11 +350,100 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	PrintTable(event)
 	local spawnedUnit = event.hero
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
-	spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_bloodseeker_thirst_speed", {duration = 9999})
+	print(spawnedUnitIndex)
+	
 	spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
 	spawnedUnitIndex:SetGold(250, false)
+	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
 
 end
+
+function CEnfosGameMode:OnPlayerStatsUpdated( event )
+	print("Stats Updated")
+	PrintTable(event)
+end	
+
+function CEnfosGameMode:OnPlayerLearnedAbility( event )
+	print("Player learned ability")
+
+	local player = event.player - 1
+	if PlayerResource:IsValidPlayer( player ) then
+		local hero = PlayerResource:GetSelectedHeroEntity(player)
+		GameRules.Enfos:UpdateBaseStats(hero)
+	else
+		print("Invalid player!")
+	end
+end
+
+function CEnfosGameMode:OnInventoryChanged( event )
+	print("Player inventory changed")
+	PrintTable(event)
+	local player = event.PlayerID 
+	if PlayerResource:IsValidPlayer( player ) then
+		local hero = PlayerResource:GetSelectedHeroEntity(player)
+		--GameRules.Enfos:UpdateBaseStats(hero)
+	else
+		print("Invalid player!")
+	end
+end
+
+
+function CEnfosGameMode:OnPlayerLevelledUp( event )
+	print("Player levelled up")
+
+	local player = event.player - 1
+	if PlayerResource:IsValidPlayer( player ) then
+		local hero = PlayerResource:GetSelectedHeroEntity(player)
+		GameRules.Enfos:UpdateBaseStats(hero)
+	else
+		print("Invalid player!")
+	end
+end
+
+function CEnfosGameMode:UpdateBaseStats(hero)
+	print("Starting to update base stats")
+	 -- 10 second delayed, run once using gametime (respect pauses)
+	local player = hero
+	local currentHPPercent = player:GetHealthPercent()
+	print (string.format( "Current HP percentage %d", currentHPPercent ) )
+	local currentHP = player:GetHealth()
+	print (string.format( "Current HP %d", currentHP ) )
+	
+	Timers:CreateTimer({
+    endTime = 0.01, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
+    callback = function()
+    	print("Timer fired")
+     	
+		local strength = player:GetStrength()
+		local int = player:GetIntellect()
+		local agi = player:GetAgility()
+
+		--Update players health - Health = 10 + (strength * 40)
+
+		local strengthBase = strength * 40
+		print (string.format( "Str base %d", strengthBase ) )
+		local newBaseHP = 10 + strengthBase
+		print (string.format( "New base HP %d", newBaseHP ) )
+		player:SetMaxHealth(newBaseHP)
+		local newHP = newBaseHP * currentHPPercent / 100
+		print (string.format( "New HP %d", newHP ) )
+		player:SetHealth(newHP)	
+
+
+		--Update players (Armor = agi / 20)
+		print (string.format( "Current base armor %d", player:GetPhysicalArmorValue() ) )
+		local newBaseArmor = agi / 20
+		print (string.format( "New base armor %d", newBaseArmor ) )
+		player:SetPhysicalArmorBaseValue(newBaseArmor)
+
+
+		print(strength)
+		print(int)
+		print(agi)
+    end
+  })
+end
+
 
 function CEnfosGameMode:OnNPCSpawned( event )
 	local spawnedUnit = EntIndexToHScript( event.entindex )

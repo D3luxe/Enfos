@@ -154,7 +154,7 @@ function CEnfosGameRound:IsFinished()
 		return true
 	end
 
-	print ( string.format( "%d seconds remaining in the round...", ROUND_TIME ) )
+	--print ( string.format( "%d seconds remaining in the round...", ROUND_TIME ) )
 	return false
 end
 

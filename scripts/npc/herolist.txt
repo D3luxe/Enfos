@@ -9,7 +9,7 @@
 	"npc_dota_hero_naga_siren" "1"
 	"npc_dota_hero_beastmaster" "1"
 	"npc_dota_hero_storm_spirit" "1"
-	"npc_dota_hero_obsidian_destroyer" "1"
+	"npc_dota_hero_skywrath_mage" "1"
 	"npc_dota_hero_ursa" "1"
 	"npc_dota_hero_shadow_shaman" "1"
 	"npc_dota_hero_omniknight" "1"
