@@ -35,7 +35,7 @@ end
 
 
 function CEnfosGameMode:InitGameMode()
-	STARTING_GOLD = 250
+	STARTING_GOLD = 25
 	curRound = 0
 	self._nRoundNumber = 1
 	self._iGoodSpawnPoint = 1
@@ -307,7 +307,7 @@ function CEnfosGameMode:_ThinkPrepTime()
 		self._currentRound:Begin()
 		curRound = curRound + 1
 			print(curRound)
-			local goldAmount = curRound * 250
+			local goldAmount = curRound * 25
 			print(goldAmount)
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
@@ -343,17 +343,25 @@ end
 function CEnfosGameMode:_SpawnHeroClientEffects( hero, nPlayerID )
 	-- Spawn these effects on the client, since we don't need them to stay in sync or anything
 	-- ParticleManager:ReleaseParticleIndex( ParticleManager:CreateParticleForPlayer( "particles/generic_gameplay/winter_effects_hero.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero, PlayerResource:GetPlayer( nPlayerID ) ) )	-- Attaches the breath effects to players for winter maps
-	ParticleManager:ReleaseParticleIndex( ParticleManager:CreateParticleForPlayer( "particles/frostivus_gameplay/frostivus_hero_light.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero, PlayerResource:GetPlayer( nPlayerID ) ) )
+	--ParticleManager:ReleaseParticleIndex( ParticleManager:CreateParticleForPlayer( "particles/frostivus_gameplay/frostivus_hero_light.vpcf", PATTACH_ABSORIGIN_FOLLOW, hero, PlayerResource:GetPlayer( nPlayerID ) ) )
 end
 
 function CEnfosGameMode:OnPlayerPicked( event )
-	PrintTable(event)
 	local spawnedUnit = event.hero
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
-	print(spawnedUnitIndex)
 	
-	spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
-	spawnedUnitIndex:SetGold(250, false)
+	-- we have to handle exceptions here, since not all units will have their passive on index 4. we can add "ors" here later
+	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_queenofpain" then
+		print("Leveling qop innate")
+		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+		--Moon glaives
+		print("leveling qop glaives")
+		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
+	else
+		print("Leveling innate")
+		spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
+	end
+	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
 	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
 
 end
@@ -369,7 +377,7 @@ function CEnfosGameMode:OnPlayerLearnedAbility( event )
 	local player = event.player - 1
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
-		GameRules.Enfos:UpdateBaseStats(hero)
+		--GameRules.Enfos:UpdateBaseStats(hero)
 	else
 		print("Invalid player!")
 	end
@@ -394,7 +402,7 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	local player = event.player - 1
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
-		GameRules.Enfos:UpdateBaseStats(hero)
+		--GameRules.Enfos:UpdateBaseStats(hero)
 	else
 		print("Invalid player!")
 	end

@@ -46,7 +46,7 @@
 
 	}
 	
-	"Round1" // Spiders
+	"Round1" // Crabs
 	{
 		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
 		"round_title"				"#DOTA_Enfos_Round_1_Title"
@@ -74,21 +74,7 @@
 		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"NPCName"				"npc_dota_creature_kobold_tunneler"
-			"TotalUnitsToSpawn"		"84"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-		
-		// Stage 2 ================================================
-		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_gnoll_assassin"
-			"TotalUnitsToSpawn"		"12"
+			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -105,21 +91,7 @@
 		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"NPCName"				"npc_dota_creep_crazed_madmen"
-			"TotalUnitsToSpawn"		"90"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_corpselord"
-			"TotalUnitsToSpawn"		"6"
+			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -136,21 +108,7 @@
 		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"NPCName"				"npc_dota_creature_boar"
-			"TotalUnitsToSpawn"		"90"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"6"
+			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -171,20 +129,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round6" // Satyr Reavers
 	{
@@ -198,20 +142,6 @@
 		{
 			"NPCName"				"npc_dota_neutral_satyr_reaver"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -231,20 +161,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round8" // Giant Spiders
 	{
@@ -261,20 +177,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round9" // Rock Troll
 	{
@@ -288,20 +190,6 @@
 		{
 			"NPCName"				"npc_dota_rock_troll"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -322,19 +210,6 @@
 			"SpawnInterval"			"2.5"
 		}
 
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round11" // Dark Fiend
 	{
@@ -348,20 +223,6 @@
 		{
 			"NPCName"				"npc_dota_dark_fiend"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -381,20 +242,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round13" // Lesser Sluagh
 	{
@@ -408,20 +255,6 @@
 		{
 			"NPCName"				"npc_dota_lesser_sluagh"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -441,20 +274,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round15" // Moss Mey
 	{
@@ -468,20 +287,6 @@
 		{
 			"NPCName"				"npc_dota_moss_mey"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -501,20 +306,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round17" // Young Ogre
 	{
@@ -528,20 +319,6 @@
 		{
 			"NPCName"				"npc_dota_young_ogre"
 			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
@@ -561,20 +338,6 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
-		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
-		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
-			"UnitsPerSpawn"			"3"
-			"SpawnInterval"			"2.5"
-		}
 	}
 	"Round19" // Small Peccary
 	{
@@ -591,22 +354,24 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
+	}
+	"Round20" // Spirit Hawk bonus wave
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
 		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
+			"NPCName"				"npc_dota_spirit_hawk"
+			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
 	}
-	"Round20" // Giant Thicket Viper
+	"Round21" // Giant Thicket Viper
 	{
 		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
 		"round_title"				"#DOTA_Enfos_Round_20_Title"
@@ -621,17 +386,147 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}
-
-
+	}
+	"Round22" // Yvhh La`tami
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
 		
-		// Stage 2 ================================================		
-		"UnitHealer_2a"
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
-			"WaitForUnit"			"UnitFodder_1a"
-			"WaitForTime"			"6"
-			
-			"NPCName"				"npc_dota_creature_boar_champion"
-			"TotalUnitsToSpawn"		"0"
+			"NPCName"				"npc_dota_yvhh_latami"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round23" // giant Black Leucro
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_giant_black_leucro"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round24" // Fendryad
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_fendryad"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round25" // Death Spirit
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_death_spirit"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round26" // Rock Guardian
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_rock_guardian"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round27" // Pirate
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_pirate"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round28" // Skeletal Sailor
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_skeletal_sailor"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round29" // Giant Sea Turtle
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_giant_sea_turtle"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round30"	// Blood Warrior
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_blood_warrior"
+			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 		}

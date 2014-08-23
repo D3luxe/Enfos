@@ -556,4 +556,43 @@
 		"AttackDamageMin" 			"25"
 		"AttackDamageMax" 			"30" 
 	}
+	//=================================================================================================================
+	// HERO: Queen of Pain (Moon Mage)
+	//=================================================================================================================
+	"npc_dota_hero_queenofpain_enfos"
+	{
+		"override_hero"				"npc_dota_hero_queenofpain"
+		"AbilityLayout"				"5"
+		"Ability1"					"moon_mage_dinazen_olkar"
+		"Ability2"					"moon_mage_starlight_sphere_summon"
+		"Ability3"					"moon_mage_starlight_sphere_detonate"
+		"Ability4"					"moon_mage_moongate"
+		"Ability5"					"moon_mage_burn"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability7"					"moon_mage_glaive"
+		"Ability8"					"attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributeBaseStrength" 	"3"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"5" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "3"
+		"AttackRange"               "500"
+		"StatusHealth"				"130"
+		"StatusMana"				"144"
+		"AttackDamageMin" 			"25"
+		"AttackDamageMax" 			"32" 
+
+		"precache"
+		{
+			"particle_folder"				"particles/unist/heroes/hero_luna/"
+			"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
+		}
+	}
 }

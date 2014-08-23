@@ -6,13 +6,20 @@ _badLives = 100
 
 
 function RadiantLoseLife(trigger)
+
 	if trigger.activator:IsCreature() then 
-		_goodLives = _goodLives - 1
-		trigger.activator:ForceKill(true)
-		GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
-		if _goodLives == 0 then
-			GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
-			return
+		if(trigger.activator:GetUnitName() == "npc_dota_spirit_hawk") then
+			_goodLives = _goodLives + 1
+			trigger.activator:ForceKill(true)
+			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
+		else
+			_goodLives = _goodLives - 1
+			trigger.activator:ForceKill(true)
+			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
+			if _goodLives == 0 then
+				GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
+				return
+			end
 		end
 	end
 end

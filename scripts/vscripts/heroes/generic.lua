@@ -10,8 +10,6 @@ function FocusMoonbeam(keys)
 	end
 -- creates the moonbeam unit and sets a timer to destroy it after the duration expires
 	Enfos.moonbeamActive[pid] = FastDummy(AdjustZ(target, 1536), caster:GetTeamNumber())
-	Enfos.moonbeamActive[pid]:SetDayTimeVisionRange(100)
-	Enfos.moonbeamActive[pid]:SetNightTimeVisionRange(100)
 	Enfos.moonbeamActive[pid]:AddAbility("modspell_focus_moonbeam")
 	Enfos.moonbeamActive[pid]:FindAbilityByName("modspell_focus_moonbeam"):SetLevel(1)
 	Enfos.moonbeamActive[pid]:EmitSound("Hero_Luna.LucentBeam.Cast")

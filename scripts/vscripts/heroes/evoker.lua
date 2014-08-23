@@ -94,7 +94,7 @@ function ChainLightning(keys)
 		endTime = 0.2,
 		callback = function()
 -- unit selection and counting
-			units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), caster, 400, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, true) -- again, cast range not documented. these tooltips suck
+			units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), caster, 1200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, true) -- again, cast range not documented. these tooltips suck
 			PrintTable(units)
 -- end the spell if there are no valid targets
 			if #units < 1 then

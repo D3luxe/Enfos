@@ -16,4 +16,5 @@
 	"npc_dota_hero_antimage" "1"
 	"npc_dota_hero_phantom_assassin" "1"
 	"npc_dota_hero_silencer" "1"
+	"npc_dota_hero_queenofpain" "1"
 }

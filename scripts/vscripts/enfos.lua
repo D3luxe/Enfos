@@ -11,6 +11,7 @@ function Enfos:new (o)
 end
 
 Enfos.moonbeamActive = {} -- value for the moonbeam
+Enfos.starlightSphere = {} -- value for the starlight sphere
 Enfos.appliers = {}
 -- we have to populate these tables with the player ID values. if we don't, we'll get an indexing error when we try to use them for the first time.
 for i=0,9 do
