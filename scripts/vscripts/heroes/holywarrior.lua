@@ -9,6 +9,7 @@ function TippingTheScales(keys)
 	damageTaken = PlayerResource:GetCreepDamageTaken(pid) + PlayerResource:GetHeroDamageTaken(pid) -- you can also add PlayerResource:GetTowerDamageTaken(pid) if that's a thing
 	-- these functions are the most reliable way of tracking how much damage was taken so we can undo the damage with the shield code.
 	currentHealth = caster:GetHealth() -- I need to get the old health as well as the damage taken
+	print(damageTaken)
 -- start timer
 	Timers:CreateTimer("tipping_timer" .. pid, {
 		endTime = 0.03, 	

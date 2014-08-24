@@ -2,6 +2,32 @@
 "DOTAAbilities"
 {
 	"Version"		"1"
+
+	//=================================================================================================================
+	// Ability: Attribute Bonus
+	//=================================================================================================================
+	"enfos_attribute_bonus"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"attribute_bonus"
+		"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"100"
+		
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"attribute_bonus_per_level"		"4.0"
+			}
+		}
+	}
+
+
 	//=================================================================================================================
 	// Ability: Bloodseeker's Thirst
 	//=================================================================================================================
@@ -1525,10 +1551,10 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"chen_penitence"
-		"MaxLevel"					"10"
+		"MaxLevel"						"10"
 		
 		
 		// Time		
@@ -1542,7 +1568,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
-		"AbilityCastRange"				"800"
+		"AbilityCastRange"				"99999"
 		
 		
 		"OnSpellStart"
@@ -2902,7 +2928,11 @@
 		"OnSpellStart"
 		{
 
-			
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_fallen_one_fx"
+				"Target"		"CASTER"
+			}
 
 			"RunScript"
 			{
@@ -2938,6 +2968,19 @@
 		{
 			"modifier_fallen_one"
 			{
+				"Duration" "%duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+
+				"States"
+				{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+
+			"modifier_fallen_one_fx"
+			{
+				"IsHidden"	"1"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -2948,15 +2991,8 @@
 						"EffectRadius"				"%radius"
 					}
 				}
+				"Duration" "2"
 
-				"Duration" "%duration"
-				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
-				"EffectAttachType" "follow_overhead"
-
-				"States"
-				{
-				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
-				}
 			}
 		}
 
@@ -3366,7 +3402,7 @@
 
 				"Duration"				"%duration"
 
-				"OnDealDamage"
+				"OnAttackLanded"
 				{
 					"Lifesteal"
 					{

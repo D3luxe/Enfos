@@ -14,6 +14,7 @@ require( "Enfos_game_spawner" )
 require( "util")
 require( "enfos")
 require( "timers")
+require( "base_trigger")
 
 if CEnfosGameMode == nil then
 	CEnfosGameMode = class({})
@@ -513,6 +514,17 @@ function CEnfosGameMode:OnEntityKilled( event )
 				end
 			end
 		end
+		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
+			local killerTeam = killer:GetTeam()
+			if(killerTeam == 2) then
+
+				Triggers._goodLives = Triggers._goodLives + 1
+				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
+			else
+				Triggers._badLives = Triggers._badLives + 1
+				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
+			end
+		end
 	end
 
 	if killedUnit:IsHero() then
@@ -522,7 +534,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 end
 
 function CEnfosGameMode:OnEntityHurt( event )
-	PrintTable(event)
+	--PrintTable(event)
 end
 
 
@@ -682,6 +694,17 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 			PlayerResource:SetBuybackCooldownTime( nPlayerID, 0 )
 			PlayerResource:SetBuybackGoldLimitTime( nPlayerID, 0 )
 			PlayerResource:ResetBuybackCostTime( nPlayerID )
+			
+			if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetClassname() == "npc_dota_hero_queenofpain" then
+				print("Leveling qop innate")
+				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(5):SetLevel(1)
+				--Moon glaives
+				print("leveling qop glaives")
+				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(6):SetLevel(1)
+			else
+				print("Leveling innate")
+				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(4):SetLevel(1)
+			end
 		end
 	end
 
@@ -725,10 +748,10 @@ end
 
 function CEnfosGameMode:_ResetLivesConsoleCommand( cmdName )
 	print( "*** Enfos Life Reset ***" )
-	print(_badLives)
-	print(_goodLives)
-	_badLives = 100
-	_goodLives = 100
+	print(Triggers._badLives)
+	print(Triggers._goodLives)
+	Triggers._badLives = 100
+	Triggers._goodLives = 100
 
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
 

@@ -17,7 +17,7 @@
 		"Ability3"				"naga_enfos_cataclysmic_strike"
 		"Ability4"				"naga_enfos_dragon_dance"
 		"Ability5"				"naga_enfos_innate"
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -68,7 +68,7 @@
 		"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
 		"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
 		"Ability5"				"generic_enfos_bloodlust"
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -122,7 +122,7 @@
 		"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
 		"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
 		"Ability5"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -176,7 +176,7 @@
 		"Ability3"					"obsidian_destroyer_enfos_slow_aura"
 		"Ability4"					"obsidian_destroyer_enfos_time_lapse"
 		"Ability5"					"obsidian_destroyer_enfos_teleport"
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -234,7 +234,7 @@
 		"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
 		"Ability4"					"ursa_enfos_muses_inspiration"
 		"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -285,7 +285,7 @@
 		"Ability3"					"warlock_enfos_spellcurse"						// Ability 3
 		"Ability4"					"warlock_enfos_energy_flare"					// Ability 4
 		"Ability5"					"warlock_enfos_deflection"					// Ability 5
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -341,7 +341,7 @@
 		"Ability3"				"omniknight_enfos_tipping_the_scales"
 		"Ability4"				"omniknight_enfos_heroic_strength"
 		"Ability5"				"generic_enfos_trothgangs_rally"
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -403,7 +403,7 @@
 		"Ability3"					"ogre_magi_enfos_empower_axe"
 		"Ability4"					"ogre_magi_enfos_empower_bracers"
 		"Ability5"					"generic_enfos_empower_armor"
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -454,7 +454,7 @@
 		"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
 		"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
 		"Ability5"				"generic_enfos_trothgangs_rally"					// Ability 4
-		"Ability6"				"attribute_bonus"
+		"Ability6"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -506,7 +506,7 @@
 		"Ability3"					"mentalist_moonblade"
 		"Ability4"					"mentalist_aura_sight"
 		"Ability5"					"generic_focus_moonbeam"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -537,7 +537,7 @@
 		"Ability3"					"evoker_chain_lightning"
 		"Ability4"					"evoker_ball_lightning"
 		"Ability5"					"evoker_static_discharge"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -570,7 +570,7 @@
 		"Ability5"					"moon_mage_burn"
 		"Ability6"					"generic_focus_moonbeam"
 		"Ability7"					"moon_mage_glaive"
-		"Ability8"					"attribute_bonus"
+		"Ability8"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		

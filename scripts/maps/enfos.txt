@@ -531,5 +531,197 @@
 			"SpawnInterval"			"2.5"
 		}
 	}
+	"Round31" // Zombie Nomad
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_zombie_nomad"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round32" // Shadow Mage
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_shadow_mage"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round33" // Lun`Shele Hunter
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_hunter"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round34" // Kra`hei
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_krahei"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round35" // Poloh`izh
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_polohizh"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round36" // Spirit Owl
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_spirit_owl"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round37" // Misshapen
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_misshapen"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round38" // Armored Warklin
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_armored_warklin"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round39" // Warklin Mauler
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_warklin_mauler"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round40" // S`sugi Malchata
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_ssugi_malchata"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round41" // Snaer Hafwa
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_snaer_hafwa"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
+	"Round42" // S`lai Screamer
+	{
+		"round_quest_title"			"#DOTA_Enfos_Round_Spiders_Quest_Title"
+		"round_title"				"#DOTA_Enfos_Round_20_Title"
+		"MaxGold"					"5600"
+		"FixedXP"					"3500"
+		
+		// Stage 1 ================================================
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"NPCName"				"npc_dota_slai_screamer"
+			"TotalUnitsToSpawn"		"96"
+			"UnitsPerSpawn"			"3"
+			"SpawnInterval"			"2.5"
+		}
+	}
 	
 }
