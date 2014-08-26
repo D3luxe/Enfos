@@ -779,15 +779,7 @@
 		
 		"OnSpellStart"
 		{
-		
-			"AttachEffect"
-			{
-				"Target"					"CASTER"
-				"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
-				"EffectAttachType"			"follow_origin"
-				"EffectRadius"				"300"
-			}
-			
+				
 			
 			"ApplyModifier"
 			{
@@ -801,8 +793,6 @@
 			"modifier_dragon_dance"
 			{
 				 "Duration" "%duration"
-				 "EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
-				 "EffectAttachType" "follow_overhead"
 				 
 				 "Properties" 
 				 {
@@ -811,6 +801,17 @@
 				 "States"
 				 {
 				   "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+				 }
+				 "OnCreated"
+				 {
+				 	"AttachEffect"
+					{
+						"Target"					"CASTER"
+						"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+						"EffectAttachType"			"follow_origin"
+						"EffectRadius"				"300"
+					}
+
 				 }
 			}
 		}
@@ -2938,6 +2939,7 @@
 			{
 				"ScriptFile"	"custom_scripted_abilities.lua"
 				"Function"		"FallenOneHurtCaster"
+
 			}
 			"ActOnTargets"
 			{
@@ -3088,6 +3090,7 @@
 						"ScriptFile"			"scripts/vscripts/heroes/holywarrior.lua"
 						"Function"				"TippingTheScales"
 						"damage_reflected"		"%damage_reflection_pct"
+						"DamageDealt"		"%attack_damage"
 					}
 
 				}
@@ -3504,26 +3507,15 @@
 		}
 		"OnToggleOn"
 		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
-				"Function"				"SealOfDeflectionOn"
-				"damage_absorbed"		"%damage_absorbed"
-				"damage_per_mana"		"%damage_per_mana"
-			}
 			"ApplyModifier"
 			{
 				"Target"				"CASTER"
 				"ModifierName"			"modifier_mentalist_seal_of_deflection"
 			}
+			
 		}
 		"OnToggleOff"
 		{
-			"RunScript"
-			{
-				"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
-				"Function"				"SealOfDeflectionOff"
-			}
 			"RemoveModifier"
 			{
 				"Target"				"CASTER"
@@ -3537,7 +3529,19 @@
 				"EffectName"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_MIN_HEALTH"	"1" //to block lethal hits with the mana shield
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MIN_HEALTH"	"1"
+				}
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+						"Function"				"SealOfDeflection"
+						"damage_absorbed"		"%damage_absorbed"
+						"damage_per_mana"		"%damage_per_mana"
+						"DamageDealt"			"%attack_damage"
+					}
 				}
 			}
 		}			
@@ -4160,6 +4164,189 @@
 		}
 	}
 
+
+	//=================================================================================================================
+	// Dazzle - Hypnotist
+	//=================================================================================================================
+	//=================================================================================================================
+	// Hypnotist: Prediction
+	//=================================================================================================================
+	"hypnotist_prediction"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"chaos_knight_chaos_strike"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" //range not provided on the site
+		"AbilityCooldown"				"200 183 166 149 132 115 98 81 64 47"
+		"AbilityManaCost"				"20 30 45 65 90 120 155 195 240 290"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_ogre_magi/"
+			"particle_folder"			"particles/hero_hypnotist/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts" //maledict
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+				"Function"				"Prediction"
+				"attribute_increase"	"%attribute_increase"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attribute_increase"	"6 6 7 8 9 10 11 12 13 14"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Hypnotist: Hallucination (note: the website spells it "Halucination")
+	//=================================================================================================================
+	"hypnotist_hallucination"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"morphling_replicate"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY | DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" //range not provided on the site
+		"AbilityCooldown"				"25 23 21 19 17 15 13 11 9 7"
+		"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+				"Function"				"Hallucination"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_dealt_percent"	"100 115 130 145 160 175 190 205 220 235" //it says 234 for the last value, but I'm going to assume that's a typo
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_taken_percent"	"100 97 93 88 83 78 74 68 62 55"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20 24 28 32 36 40 44 48 52 56"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Hypnotist: Mind Shout
+	//=================================================================================================================
+	"hypnotist_mind_shout"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"rattletrap_rocket_flare"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"150 140 130 120 110 100 190 80 70 60"
+		"AbilityManaCost"				"160 175 190 205 220 235 250 265 280 305"
+		"Precache"
+		{
+			"model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+				"Function"				"MindShout"
+				"duration"				"%duration"
+				"radius"				"%radius"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"750"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Hypnotist: Telekinetic Storm
+	//=================================================================================================================
+	"hypnotist_telekinetic_storm"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"bounty_hunter_shuriken_toss"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"120"
+		"AbilityManaCost"				"200 220 240 260 280 300 320 340 360 380"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_hypnotist/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_shredder.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+				"Function"				"TelekineticStorm"
+				"damage"				"%damage"
+				"duration"				"%duration"
+				"radius"				"%radius"
+				"slivers"				"%slivers"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"300 700 100 1500 200 2500 3500 4300 5000 6500"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"		
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slivers"				"20 26 32 38 44 50 56 62 68 74"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
@@ -4181,6 +4368,47 @@
 					"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
 				}
+			}
+		}
+	}
+
+	//=================================================================================================================
+	// Dummy unit spell
+	//=================================================================================================================
+	"spell_dummy_modifier"
+	{
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"            "rubick_empty1"
+		"MaxLevel"                      "1"
+		"Modifiers"
+		{
+			"modifier_dummy_modifier"
+			{
+				"Passive"           	"1"
+				"IsHidden"				"0"    
+				//"Properties"
+				//{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+				//	"MODIFIER_PROPERTY_HEALTH_BONUS"	"%health_bonus"
+				//	"MODIFIER_PROPERTY_MANA_BONUS"	"%mana_bonus"
+				//	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				//}
+				"OnCreated"
+				{
+					//"RunScript"
+					//{
+					//	"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
+					//	"Function"				"ModifyHealthStat"
+					//}
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
+						"Function"				"ModifyArmorStat"
+					}
+				}
+		
+
 			}
 		}
 	}

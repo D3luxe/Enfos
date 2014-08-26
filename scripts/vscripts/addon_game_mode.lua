@@ -352,7 +352,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
 	
 	-- we have to handle exceptions here, since not all units will have their passive on index 4. we can add "ors" here later
-	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_queenofpain" then
+	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_luna" then
 		print("Leveling qop innate")
 		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 		--Moon glaives
@@ -362,8 +362,12 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		print("Leveling innate")
 		spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
 	end
+	local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
+	statAbility:SetLevel(1)
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
+	
 	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
+
 
 end
 
@@ -503,7 +507,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 	end
 	--print(killer)
 	if killedUnit:IsCreature() then
-		local killerTeam = killer:GetTeam()
+		--[[local killerTeam = killer:GetTeam()
 		for nPlayerID = 0, 9 do
 			if PlayerResource:IsValidPlayer( nPlayerID ) then
 				--print(PlayerResource:GetPlayer(nPlayerID):GetAssignedHero())
@@ -513,7 +517,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 					end
 				end
 			end
-		end
+		end]]--
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
 			local killerTeam = killer:GetTeam()
 			if(killerTeam == 2) then

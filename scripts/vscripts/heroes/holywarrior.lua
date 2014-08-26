@@ -1,15 +1,23 @@
 -- this DOES work
 function TippingTheScales(keys)
 -- vars
+	local damage = keys.DamageDealt
+	print(damage)
 	local attacker = keys.attacker
 	local caster = keys.caster
-	local pid = caster:GetPlayerID()
-	local thisSpell = caster:FindAbilityByName("omniknight_enfos_tipping_the_scales")
 	local percentReflected = keys.damage_reflected / 100
+
+	local reflectedDamage = damage * percentReflected
+
+	DealDamage(caster, attacker, reflectedDamage, DAMAGE_TYPE_PURE, 0)
+
+	--[[local pid = caster:GetPlayerID()
+	local thisSpell = caster:FindAbilityByName("omniknight_enfos_tipping_the_scales")
+	
 	damageTaken = PlayerResource:GetCreepDamageTaken(pid) + PlayerResource:GetHeroDamageTaken(pid) -- you can also add PlayerResource:GetTowerDamageTaken(pid) if that's a thing
 	-- these functions are the most reliable way of tracking how much damage was taken so we can undo the damage with the shield code.
 	currentHealth = caster:GetHealth() -- I need to get the old health as well as the damage taken
-	print(damageTaken)
+	--print(damageTaken)
 -- start timer
 	Timers:CreateTimer("tipping_timer" .. pid, {
 		endTime = 0.03, 	
@@ -27,5 +35,5 @@ function TippingTheScales(keys)
 				end
 				return 0.03
 		end
-	})
+	})]]--
 end

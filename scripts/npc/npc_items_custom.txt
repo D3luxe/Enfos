@@ -756,7 +756,7 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Attributes"		""
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
@@ -1372,7 +1372,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"1000"
+				"blink_range"			"700"
 			}
 			"02"
 			{
@@ -1382,7 +1382,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range_clamp"		"1000"
+				"blink_range_clamp"		"700"
 			}
 			"04"
 			{
@@ -2597,5 +2597,359 @@
 				}
 			}
 		}	
+	}
+	"item_applier_hallucination" //this is a bad hack but I'm not sure how else to do it
+	{
+		"ID"							"2002"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"morphling_replicate"
+		"AbilityCastRange"				"Global"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"ItemCost"						"0"
+		"ItemInitialCharges"			"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
+		"ItemRequiresCharges"			"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"Modifiers"
+		{
+			"modifier_hypnotist_hallucination_1"
+			{
+				"Duration"				"20"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "0" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "0" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_2"
+			{
+				"Duration"				"24"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "15" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-3" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_3"
+			{
+				"Duration"				"28"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "30" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-7" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_4"
+			{
+				"Duration"				"32"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "45" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-12" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_5"
+			{
+				"Duration"				"36"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "60" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-17" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_6"
+			{
+				"Duration"				"40"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "75" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-22" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_7"
+			{
+				"Duration"				"44"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "90" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-26" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_8"
+			{
+				"Duration"				"48"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "105" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-32" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_9"
+			{
+				"Duration"				"52"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "120" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-38" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}			
+			"modifier_hypnotist_hallucination_10"
+			{
+				"Duration"				"56"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "135" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "-45" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}
+		}	
+	}	
+	"item_stats_modifier"
+	{
+		"ID"							"2100"
+ 
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+ 
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+ 
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+ 
+		"Modifiers"
+		{
+			"modifier_armor_1"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-1"
+				}
+			}
+			"modifier_armor_2"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-2"
+				}
+			}
+			"modifier_armor_3"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-3"
+				}
+			}
+			"modifier_armor_4"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-4"
+				}
+			}
+			"modifier_armor_5"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-5"
+				}
+			}
+			"modifier_armor_6"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-6"
+				}
+			}
+			"modifier_armor_7"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-7"
+				}
+			}
+			"modifier_armor_8"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-8"
+				}
+			}
+			"modifier_armor_9"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-9"
+				}
+			}
+			"modifier_armor_10"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-10"
+				}
+			}
+		}
+	}
+
+	"item_modifier_master"
+	{
+		"ID"							"2101"
+ 
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+ 
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+ 
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+ 
+		"Modifiers"
+		{
+			"modifier_custom"
+			{
+				"TextureName" "item_greater_salve"
+				"EffectName" "particles/items_fx/healing_flask.vpcf"
+				"EffectAttachType" "follow_origin"
+ 
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "100"
+				}
+			}
+		}
 	}
 }
