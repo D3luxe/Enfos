@@ -384,6 +384,11 @@
 		"StatusHealth"				"199"
 		"StatusMana"				"9"
 
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"2000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"2000"									// Range of vision at night time.
+
 		"precache"
 		{
 			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
@@ -642,6 +647,12 @@
 		"StatusMana"				"96"
 		"AttackDamageMin" 			"16"
 		"AttackDamageMax" 			"21" 
+
+
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"8000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"8000"									// Range of vision at night time.
 
 		"precache"
 		{

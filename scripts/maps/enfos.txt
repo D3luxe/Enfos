@@ -18,12 +18,12 @@
 		"2.5"
 		{
 			"SpawnerName"			"radiant_spawner1"
-			"Waypoint"				"r_left_wp_1"
+			"Waypoint"				"r_wp_1"
 		}
 		"2"
 		{
 			"SpawnerName"			"radiant_spawner3"
-			"Waypoint"				"r_right_wp_1"
+			"Waypoint"				"r_wp_13"
 		}
 	}
 	

@@ -1348,12 +1348,24 @@
 
 		// Item Info
 		//--------------------------------------------------------------------
-		"BaseClass"						"item_blink"
+		"BaseClass"						"item_datadriven"
 
 		"AbilityTextureName"			"item_boots"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
 
+		"AbilityCastRange"				"0"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"blink"
+				"Target"	"POINT"
+				"Range"	"%blink_range"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_winged_leather_boots"
@@ -1372,24 +1384,14 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"700"
+				"blink_range"		"1000"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_damage_cooldown"	"0"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"blink_range_clamp"		"700"
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"bonus_agi"				"3"
 			}
-			"05"
+			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_int"				"3"
@@ -1509,7 +1511,7 @@
 	"item_elite_elven_boots"
 	{
 		"ID"                            "1039"
-		"BaseClass"                     "item_blink"
+		"BaseClass"                     "item_datadriven"
 		"AbilityTextureName"			"item_travel_boots"
 
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
@@ -1519,6 +1521,20 @@
 		"ItemCost"                      "0" 		
 		"ItemShopTags"					"boot"
 		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+
+		"AbilityCastRange"	"%blink_range"
+
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"blink"
+				"Target"	"POINT"
+				"Range"	"%blink_range"
+			}
+		}
 
 		"Modifiers"
 		{
@@ -1546,35 +1562,26 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_damage_cooldown"	"0"
+				"bonus_agi"				"3"
 			}
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range_clamp"		"1000"
+				"bonus_int"				"3"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"3"
-			}
-			"05"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_int"				"3"
-			}
-			"06"
-			{
-				"var_type"				"FIELD_INTEGER"
 				"move_speed"				"50"
 			}
-			"07"
+			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"evasion"				"50"
 			}
 		}
 	}
+
 
 	//=================================================================================================================
 	// Small Round Shield
@@ -1586,16 +1593,14 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"						"item_stout_shield"
+		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_poor_mans_shield"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"1200"
-		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
-		"ItemAliases"					"mana;mb"
 
 		"Modifiers"
 		{
@@ -1605,6 +1610,7 @@
 				"IsHidden"	 "1"
 				"Properties"
 				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
 				}
 			}
@@ -1617,19 +1623,9 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_block_melee"	"25"
+				"damage_block"	"25"
 			}
 			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"damage_block_ranged"	"25"
-			}
-			"03"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"block_chance"			"100"
-			}
-			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_armor"			"5"

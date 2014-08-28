@@ -1458,7 +1458,7 @@
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"0"
-		"AbilityCastPoint"				"3 3 3 3"
+		"AbilityCastPoint"				"1"
 		"AbilityCooldown"				"5"
 		"AbilityManaCost"				"0"
 	}
@@ -2027,15 +2027,457 @@
 	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
+	"dark_fiend_cleave"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"bounty_hunter_wind_walk"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_dark_fiend_cleave"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				
+				"OnAttackLanded"
+				{
+					"CleaveAttack"
+					{
+						"CleavePercent"		"%cleave_percent"
+						"CleaveRadius"      "%radius"
+					}
+				}
+			}
+			
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"cleave_percent"				"25"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"radius"				"150"
+			}
+		}	
+
+	}
+	"brown_bear_evasion"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"bounty_hunter_wind_walk"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_brown_bear_evasion"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
+				}
+			}
+			
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"				"15"
+			}
+		}
+	}	
+	"mob_hardened_skin"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"ogre_magi_frost_armor"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_mob_hardened_skin"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+				}
+			}			
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_block"				"12"
+			}
+		}
+		
+	}	
+
+	"mob_war_stomp"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"MaxLevel"						"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"centaur_khan_war_stomp"
+
+		// Unit Targeting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.2"
+		"AbilityCooldown"				"6.0"
+		"AbilityManaCost"				"90"
+
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		 "particles/neutral_fx/neutral_centaur_khan_war_stomp.vpcf"
+				"EffectAttachType"	 "follow_origin"
+				"Target"			 "CASTER"
+			}	
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center" "CASTER"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"ModifierName"		"modifier_mob_war_stomp"
+			}
+			"Damage"
+			{
+				"Type" "DAMAGE_TYPE_MAGICAL"
+				"Damage" "%damage"
+				"Target"
+				{
+					"Center" "CASTER"
+					"Radius" "%radius"
+					"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+			}
+		}
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_mob_war_stomp"   	// This should be the name of your modifier
+			{
+				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+
+				"Duration"					"%duration"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+
+		"precache"
+		{
+			"particle_folder"	"particles/neutral_fx/"
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"2"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"radius"				"250"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage"				"25"
+			}
+		}
+	}
+
+	"mob_ensnare"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"MaxLevel"						"1"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"BaseClass"	"dark_troll_warlord_ensnare"
+
+		// Unit Targeting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"10.0"
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5"
+			}
+		}
+	}
+
+	"mob_ensnare_checker"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"lycan_summon_wolves_critical_strike"
+		"MaxLevel"						"1"
+
+
+		"Modifiers"
+		{
+			"modifier_ensnare_checker"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"Target" 			"ATTACKER"
+						"ModifierName"		"modifier_ensnare_target"
+					}
+				}
+			}
+
+			"modifier_ensnare_target"
+			{
+				"Duration"	"%duration"
+				"IsHidden"	"1"
+			}
+
+		}
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"2"
+			}
+		}
+
+	}
+
+	"mob_critical_strike"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"lycan_summon_wolves_critical_strike"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_mob_critical_strike_passive"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "mob_critical_strike_crit"
+								"Target"	   "CASTER"	
+							}	
+								
+						}
+					}
+				}
+			}
+				
+				
+			"mob_critical_strike_crit"
+			{
+				"Duration"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+				}
+				
+				"OnAttackLanded"
+				{
+					"FireEffect"
+					{
+						"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"	 "follow_origin"
+						"Target"			 "TARGET"
+					}	
+					"RemoveModifier"
+					{
+						"ModifierName"		"mob_critical_strike_crit"
+						"Target"			"CASTER"	
+					}
+				}
+			}
+			
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_bonus"				"200"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"crit_chance"				"20"
+			}
+		}
+		
+	}	
+
 	"mob_permenant_invisibility"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		//"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 		"MaxLevel"						"1"
-		"BaseClass"					"riki_permanent_invisibility"
+		"BaseClass"					"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		
+		"OnOwnerSpawned"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_permenant_invisibility"
+			}
+		}
 
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_permenant_invisibility"   	// This should be the name of your modifier
+			{
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"Target" 			"CASTER"
+						"ModifierName"		"modifier_permenant_invisibility"
+					}
+					"ApplyModifier"
+					{
+						"Target" 			"CASTER"
+						"ModifierName"		"modifier_permenant_invisibility_visible"
+					}
+				}
+
+				"States"
+				{
+					// Sub-keys can be found by using "modifierState" constant completions
+					// Sub-values can be found by using "modifierStateValue" constant completions
+					"MODIFIER_STATE_INVISIBLE"				"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"modifier_permenant_invisibility_visible"
+			{
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+				"Passive"	"0"
+				"IsHidden"	"1"
+				"Duration"	"4"
+
+				"OnDestroy"
+				{
+					"ApplyModifier"
+					{
+						"Target" 			"CASTER"
+						"ModifierName"		"modifier_permenant_invisibility"
+					}
+
+				}
+
+			}
+		}
 		// Special
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilitySpecial"
@@ -2489,7 +2931,7 @@
 	}
 
 	//=================================================================================================================
-	// Energy Drain
+	// Energy Flare
 	//=================================================================================================================
 	"warlock_enfos_energy_flare"
 	{
@@ -2497,7 +2939,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
 		"AbilityTextureName"			"skywrath_mage_mystic_flare"
 		"BaseClass" 					"ability_datadriven"
 		"MaxLevel"						"10"
@@ -4478,6 +4920,32 @@
 		}	
 	}
 
+	"unselectable"
+	{
+		"AbilityBehavior" "DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"	"ability_datadriven"
+
+		"Modifiers"
+	    {
+	      "modifier_unselectable"
+	      {
+	        "Passive" "1"
+	        "States"
+	        {
+	          "MODIFIER_STATE_UNSELECTABLE"         "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_NOT_ON_MINIMAP"       "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_PROVIDES_VISION"      "MODIFIER_STATE_VALUE_DISABLED"
+	          "MODIFIER_STATE_ROOTED"               "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_SOFT_DISARMED"        "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_INVULNERABLE"         "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_FLYING"               "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_BLOCK_DISABLED"       "MODIFIER_STATE_VALUE_ENABLED"
+	        }
+	      }
+	    }
+	}
 	//=================================================================================================================
 	// test
 	//=================================================================================================================

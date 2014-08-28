@@ -68,7 +68,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetTopBarTeamValuesVisible( true )
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, 100)
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, 100)
-	GameRules:GetGameModeEntity():SetFogOfWarDisabled( true )
+	GameRules:GetGameModeEntity():SetFogOfWarDisabled( false )
 	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( 125 )
 	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 
@@ -306,7 +306,7 @@ function CEnfosGameMode:_ThinkPrepTime()
 		end
 		self._currentRound = self._vRounds[ self._nRoundNumber ]
 		self._currentRound:Begin()
-		curRound = curRound + 1
+			curRound = curRound + 1
 			print(curRound)
 			local goldAmount = curRound * 25
 			print(goldAmount)
@@ -315,6 +315,16 @@ function CEnfosGameMode:_ThinkPrepTime()
 					local player = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero()
 					player:SetGold(player:GetGold()+goldAmount, false)
 				end
+			end
+
+			if curRound == 7 or curRound = 8 then
+				GameRules:SendCustomMessage("This wave has invisible monsters -", 0, 0)
+				GameRules:SendCustomMessage("Make sure you buy <font color='#58ACFA'>Sentry Wards</font>!!", 0, 0)
+			end
+
+			if curRound == 21 or curRound = 37 then
+				GameRules:SendCustomMessage("<font color='#58ACFA'>Bonus Wave!!</font>", 0, 0)
+				GameRules:SendCustomMessage("Successfully killing a mob grants a bonus life", 0, 0)
 			end
 		return
 	end
@@ -365,6 +375,12 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
 	statAbility:SetLevel(1)
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
+
+	local unit = CreateUnitByName("npc_vision_dummy", spawnedUnitIndex:GetAbsOrigin(), true, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
+	unit:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+
 	
 	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
 
@@ -519,14 +535,16 @@ function CEnfosGameMode:OnEntityKilled( event )
 			end
 		end]]--
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
-			local killerTeam = killer:GetTeam()
-			if(killerTeam == 2) then
-
-				Triggers._goodLives = Triggers._goodLives + 1
-				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
-			else
-				Triggers._badLives = Triggers._badLives + 1
-				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
+			if killer:IsHero() then
+				local killerTeam = killer:GetTeam()
+				print(killerTeam)
+				if(killerTeam == 2) then
+					Triggers._goodLives = Triggers._goodLives + 1
+					GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
+				elseif(killerTeam == 3) then
+					Triggers._badLives = Triggers._badLives + 1
+					GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
+				end
 			end
 		end
 	end
@@ -689,7 +707,7 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 		Msg( string.format( "Cannot test invalid round %d", nRoundToTest ) )
 		return
 	end
-
+	curRound = nRoundToTest
 	--local nExpectedGold = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].gold or 600
 	--local nExpectedXP = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].xp or 0
 	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do

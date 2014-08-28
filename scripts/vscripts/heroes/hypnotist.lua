@@ -62,9 +62,11 @@ function MindShout(keys) -- warning: the sound effect for this can get a bit lou
 	local pid = caster:GetPlayerID()
 	local hexDuration = keys.duration
 	local radius = keys.radius
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.moonbeamActive[pid]:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	for k,v in pairs(units) do
-		v:AddNewModifier(caster, nil, "modifier_sheepstick_debuff", {duration = hexDuration})
+	if(Enfos.moonbeamActive[pid] ~= nil) then
+		local units = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.moonbeamActive[pid]:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+		for k,v in pairs(units) do
+			v:AddNewModifier(caster, nil, "modifier_sheepstick_debuff", {duration = hexDuration})
+		end
 	end
 end
 
@@ -100,70 +102,73 @@ function TelekineticStorm(keys)
 				endTime = 1,
 				callback = function()
 					-- if the unit's duration is done, return to the caster then kill it
-					if GameRules:GetGameTime() > thisUnit.duration then
-						-- this timer searches for the caster
-						Timers:CreateTimer(DoUniqueString("slvrrtrn"), {
-							endTime = 0.03,
-							callback = function()
-								thisUnit:Destroy()
-								thisUnit = nil
-								thisUnit:StopSound("Hero_Shredder.Chakram")
+					if thisUnit ~= nil then
+						if GameRules:GetGameTime() > thisUnit.duration then
+							-- this timer searches for the caster
+							Timers:CreateTimer(DoUniqueString("slvrrtrn"), {
+								endTime = 0.03,
+								callback = function()
+									thisUnit:StopSound("Hero_Shredder.Chakram")
+									thisUnit:Destroy()
+									thisUnit = nil
+									
+								end
+							})
+						end
+						-- end the function if there's no unit
+						if not thisUnit then
+							return
+						end
+						-- end the function if the caster is dead
+						if not caster:IsAlive() then
+							thisUnit:Destroy()
+							thisUnit = nil
+							return
+						end
+						-- look for enemies if the unit is awake
+						if not thisUnit.asleep then
+							local unitsFound = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+							local unitsHurt = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 100, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+							-- we found a unit but weren't close enough to damage
+							if unitsFound[1] and not unitsHurt[1] then
+								movement = {
+									UnitIndex = thisUnit:entindex(),
+									OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+									Position = unitsFound[1]:GetAbsOrigin()
+								}	
+							-- we were close enough to damage
+							elseif unitsHurt[1] then
+								DealDamage(caster, unitsHurt[1], damage, DAMAGE_TYPE_MAGICAL, 0)
+								unitsHurt[1]:EmitSoundParams("Hero_Shredder.WhirlingDeath.Damage", 100, 0.2, 1)
+								thisUnit.strikeTimer = GameRules:GetGameTime() + 2
+								thisUnit.asleep = true
+								movement = {
+									UnitIndex = thisUnit:entindex(),
+									OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+									Position = caster:GetAbsOrigin()
+								}	
+							-- we didn't find a unit so return home
+							else
+								movement = {
+									UnitIndex = thisUnit:entindex(),
+									OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+									Position = Vector(caster:GetAbsOrigin().x + math.random(-1000, 1000), caster:GetAbsOrigin().y + math.random(-1000, 1000), caster:GetAbsOrigin().z)
+								}							
 							end
-						})
-					end
-					-- end the function if there's no unit
-					if not thisUnit then
-						return
-					end
-					-- end the function if the caster is dead
-					if not caster:IsAlive() then
-						thisUnit:Destroy()
-						thisUnit = nil
-						return
-					end
-					-- look for enemies if the unit is awake
-					if not thisUnit.asleep then
-						local unitsFound = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
-						local unitsHurt = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 100, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
-						-- we found a unit but weren't close enough to damage
-						if unitsFound[1] and not unitsHurt[1] then
+						-- the unit is asleep, so we return to dazzle in order to wake up
+						elseif thisUnit.asleep then
 							movement = {
 								UnitIndex = thisUnit:entindex(),
 								OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-								Position = unitsFound[1]:GetAbsOrigin()
-							}	
-						-- we were close enough to damage
-						elseif unitsHurt[1] then
-							DealDamage(caster, unitsHurt[1], damage, DAMAGE_TYPE_MAGICAL, 0)
-							unitsHurt[1]:EmitSoundParams("Hero_Shredder.WhirlingDeath.Damage", 100, 0.2, 1)
-							thisUnit.strikeTimer = GameRules:GetGameTime() + 2
-							thisUnit.asleep = true
-							movement = {
-								UnitIndex = thisUnit:entindex(),
-								OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-								Position = caster:GetAbsOrigin()
-							}	
-						-- we didn't find a unit so return home
-						else
-							movement = {
-								UnitIndex = thisUnit:entindex(),
-								OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-								Position = Vector(caster:GetAbsOrigin().x + math.random(-1000, 1000), caster:GetAbsOrigin().y + math.random(-1000, 1000), caster:GetAbsOrigin().z)
-							}							
+								Position = caster:GetAbsOrigin(),
+							}
+							local dazzleFound = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 150, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 1, false)
+							if dazzleFound[1] and (thisUnit.strikeTimer > GameRules:GetGameTime()) then
+								thisUnit.asleep = false
+							end
 						end
-					-- the unit is asleep, so we return to dazzle in order to wake up
-					elseif thisUnit.asleep then
-						movement = {
-							UnitIndex = thisUnit:entindex(),
-							OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-							Position = caster:GetAbsOrigin(),
-						}
-						local dazzleFound = FindUnitsInRadius(caster:GetTeamNumber(), thisUnit:GetAbsOrigin(), caster, 150, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 1, false)
-						if dazzleFound[1] and (thisUnit.strikeTimer > GameRules:GetGameTime()) then
-							thisUnit.asleep = false
-						end
+						ExecuteOrderFromTable(movement)
 					end
-					ExecuteOrderFromTable(movement)
 					return 0.1
 				end
 			})
