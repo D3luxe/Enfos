@@ -317,12 +317,12 @@ function CEnfosGameMode:_ThinkPrepTime()
 				end
 			end
 
-			if curRound == 7 or curRound = 8 then
+			if curRound == 7 or curRound == 8 then
 				GameRules:SendCustomMessage("This wave has invisible monsters -", 0, 0)
 				GameRules:SendCustomMessage("Make sure you buy <font color='#58ACFA'>Sentry Wards</font>!!", 0, 0)
 			end
 
-			if curRound == 21 or curRound = 37 then
+			if curRound == 21 or curRound == 37 then
 				GameRules:SendCustomMessage("<font color='#58ACFA'>Bonus Wave!!</font>", 0, 0)
 				GameRules:SendCustomMessage("Successfully killing a mob grants a bonus life", 0, 0)
 			end
