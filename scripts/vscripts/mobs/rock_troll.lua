@@ -28,6 +28,7 @@ function RockTrollThink()
 		local units = FindUnitsInRadius(thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), thisEntity, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 1, false)
 		if units ~= nil then
 			if #units >= 3 then
+				local unitPicked = math.random(1,#units)
 				if not units[unitPicked]:HasModifier("modifier_mob_war_stomp") then
 					thisEntity:CastAbilityImmediately(ABILITY_war_stomp, -1)
 				end
