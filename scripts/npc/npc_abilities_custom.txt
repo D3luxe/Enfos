@@ -79,6 +79,7 @@
 		"AbilityTextureName" 			"tiny_craggy_exterior"
 		"MaxLevel"					"1"
 
+
 		"Modifiers"
 		{
 			"modifier_empower_armor"
@@ -99,7 +100,6 @@
 								"ScriptFile"		"custom_scripted_abilities.lua"
 								"Function"		"Empower_Armor"
 							}
-								
 						}
 					}
 				}
@@ -209,7 +209,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
 				 }
 				
-				"StatusEffectName" "status_effect_generic_enfos_bloodlust"
+	
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
 			}		
@@ -447,7 +447,7 @@
 			"ApplyModifier"
 			{
 				"ModifierName"			"modifier_ethereal_shield_buff"
-				"Target"				"CASTER"
+				"Target"				"TARGET"
 			}
 		}
 		"Modifiers"
@@ -978,7 +978,7 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
 				 }
 				
-				"StatusEffectName" "status_effect_juggernaut_enfos_earth_shaking_strike"
+
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
 			}
@@ -1124,7 +1124,7 @@
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor"
 				}		
 				
-				"StatusEffectName" "status_effect_juggernaut_enfos_earth_shaking_strike"
+		
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
 			}
@@ -1223,13 +1223,13 @@
 			"earth_shaking_strike_modifier"
 			{
 				 "Duration" "%duration"
+				 "OverrideAnimation" "ACT_DOTA_DISABLED"
 				 
 				"States"
 				{
 					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
 				}		
 				
-				"StatusEffectName" "status_effect_juggernaut_enfos_earth_shaking_strike"
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
 			}
@@ -1700,6 +1700,7 @@
 				 "Duration" "%duration"
 				 "EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
 				 "EffectAttachType" "follow_overhead"
+				 "OverrideAnimation" "ACT_DOTA_DISABLED"
 				 
 				 "States"
 				 {
@@ -1786,7 +1787,6 @@
 					"MODIFIER_STATE_MUTED"	 "MODIFIER_STATE_VALUE_ENABLED"
 				 }
 				
-				"StatusEffectName" "status_effect_chorus_of_madmen"
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/generic_gameplay/generic_silenced.vpcf"
 				"EffectAttachType" "follow_overhead"
@@ -1881,7 +1881,6 @@
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
 				 }
 				
-				"StatusEffectName" "status_effect_chorus_of_madmen"
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
 				"EffectAttachType" "follow_origin"
@@ -2022,11 +2021,782 @@
 		}
 		
 	}
+
+	//=================================================================================================================
+	// Dragon Knight - Weaponsmith
+	//=================================================================================================================
+	//=================================================================================================================
+	// Weaponsmith: Cambrinth Charge
+	//=================================================================================================================
+	"weaponsmith_cambrinth_charge"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"omniknight_repel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"10"
+		"AbilityManaCost"				"7"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_clinkz/"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_weaponsmith_cambrinth_charge"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_weaponsmith_cambrinth_charge"
+			{
+				"Duration"				"4.5"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_clinkz/clinkz_death_pact_buff.vpcf"
+						"EffectAttachType"	"follow_overhead"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"modifier_weaponsmith_cleave"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				"OnAttackLanded"
+				{
+					"CleaveAttack" //far
+					{
+						"CleavePercent"	"25"
+						"CleaveRadius"	"260"
+					}
+					"CleaveAttack" //medium
+					{
+						"CleavePercent"	"25"
+						"CleaveRadius"	"180"
+					}
+					"CleaveAttack" //full
+					{
+						"CleavePercent"	"50"
+						"CleaveRadius"	"125"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_increase"		"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"4.5"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Weaponsmith: Thunder Maul
+	//=================================================================================================================
+	"weaponsmith_thunder_maul"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sven_storm_bolt"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"55"
+		"AbilityManaCost"				"16 19 22 25 28 31 34 37 40 43"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_sven/"
+			"particle_folder"			"particles/hero_weaponsmith/"
+			"particle_folder"			"particles/prototype_fx/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/weaponsmith.lua"
+				"Function"				"ThunderMaul"
+				"damage"				"%damage"
+				"stun_area_of_effect"	"%stun_area_of_effect"
+				"stun_duration"			"%stun_duration"
+				"slow_area_of_effect"	"%slow_area_of_effect"
+				"slow_duration"			"%slow_duration"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"30 50 82 132 209 327 505 774 1180 1791" //not doing the decimals. they're pointless
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stun_area_of_effect"	"300"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stun_duration"			"10 11 12 13 14 15 16 17 18 19" //says 12 for levels 3 and 4 on site; assuming it's a typo
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_area_of_effect"	"3000"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_duration"			"30"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Weaponsmith: Concentrate
+	//=================================================================================================================
+	"weaponsmith_concentrate"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"bristleback_warpath"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"60"
+		"AbilityManaCost"				"24 25 26 27 28 29 30 31 32"
+		"Precache"
+		{
+			"model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_weaponsmith_concentrate"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_weaponsmith_concentrate"
+			{
+				"Duration"				"30"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_bonus" //use MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE if it's only supposed to be base
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"			"-50 -40 -30 -20 -10 0 10 20 30 40"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed"			"10 15 20 25 30 35 40 45 50 55"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus"			"100"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Weaponsmith: Forge
+	//=================================================================================================================
+	"weaponsmith_forge"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"chen_holy_persuasion"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"90 95 100 105 110 115 120 125 130 135"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_hypnotist/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_shredder.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/weaponsmith.lua"
+				"Function"				"Forge"
+				"damage_bonus"			"%damage_bonus"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus"			"16 32 48 64 80 96 112 128 144 160"
+			}			
+		}
+	}	
 	
 	
 	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
+	"mob_mana_burn"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"necronomicon_archer_mana_burn"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"			
+				
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"450"
+		"AbilityCastPoint"				"0.5"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"9"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+				
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_amount"			"100"
+			}
+		}
+	}
+
+	"mob_frost_bolt"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"			"skywrath_mage_arcane_bolt"
+		"BaseClass" 					"ability_datadriven"
+		"MaxLevel"						"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"9"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"75"
+
+		"precache"
+		{
+			"particle"	"particles/neutral_fx/ghost_frost_attack.vpcf"
+
+		}
+
+		"OnSpellStart"
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"TARGET"
+				"ModifierName"		"modifier_mob_frost_bolt_target"
+			}
+			"TrackingProjectile"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/neutral_fx/ghost_frost_attack.vpcf"
+				"MoveSpeed"				"1000"
+				"EffectAttachType"		"follow_origin" //attach_hitloc?
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mob_frost_bolt"		
+				"Target"	"TARGET"
+			}
+			"Damage"
+			{
+				"Target"		 "TARGET"
+				"Type"			 "DAMAGE_TYPE_MAGICAL"
+				"Damage"		 "%damage"
+			}
+		}
+
+		"Modifiers"
+		{
+
+			"modifier_mob_frost_bolt"
+			{
+				"IsDebuff"					"1"
+				"IsPurgable"				"0"
+
+				"EffectName"	"particles/units/heroes/hero_tusk/tusk_frozen_sigil.vpcf"
+				"EffectAttachType" "attach_hitloc"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+				"Duration"					"%duration"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED"				"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+
+			"modifier_mod_frost_bolt_checker"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+
+				"OnAttacked"
+				{
+					"ApplyModifier"
+					{
+						"Target" 			"ATTACKER"
+						"ModifierName"		"modifier_mob_frost_bolt_target"
+					}
+				}
+			}
+
+			"modifier_mob_frost_bolt_target"
+			{
+				"Duration"	"2"
+				"IsHidden"	"1"
+			}
+
+		}
+	
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"				"3"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"				"100"
+			}
+		}		
+
+	}
+
+	"mob_spell_damage_reduction"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"antimage_spell_shield"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_spell_damage_reduction"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT"	"%damage_reduction"
+
+				}
+			}	
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage_reduction"			"33"
+			}
+		}
+		
+	}
+
+	"mob_slow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"AbilityTextureName"			"skywrath_mage_ancient_seal"
+		"BaseClass" 					"ability_datadriven"
+		"MaxLevel"						"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"8"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"50"
+
+
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mob_slow"		
+				"Target"	"TARGET"
+			}
+		}
+
+		"Modifiers"
+		{
+
+			"modifier_mob_slow"
+			{
+				"IsDebuff"					"1"
+				"IsPurgable"				"0"
+
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_attack_glow_2.vpcf"
+				"EffectAttachType" "attach_hitloc"
+
+				"Duration"					"%duration"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+				}
+			}
+		}
+	
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"				"10"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_speed"				"-25"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"move_speed"				"-60"
+			}
+		}		
+
+	}
+
+	"mob_poison_attack"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"slardar_bash"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_poison_attack"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName" "modifier_poison_attack_slow"
+						"Target"	   "TARGET"	
+					}
+					"Damage"
+					{
+						"Type" 			"DAMAGE_TYPE_MAGICAL"
+						"Damage" 		"%damage"
+						"Target"		"TARGET"
+					}
+
+				}
+			}	
+
+			"modifier_poison_attack_slow"
+			{
+				"IsDebuff"					"1"
+				"IsPurgable"				"0"
+
+				"EffectName"	"particles/units/heroes/hero_viper/viper_poison_attack_glow_2.vpcf"
+				"EffectAttachType" "attach_hitloc"
+
+				"Duration"					"%duration"
+
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+				}
+
+			}	
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"				"1"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"				"4"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"attack_speed"				"-25"
+			}
+			"04"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"move_speed"				"-50"
+			}
+		}
+		
+	}
+
+	"mob_bash_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"slardar_bash"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"						"1"
+		
+		"Modifiers"
+		{
+			
+			"modifier_mob_bash_1"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance" "%bash_chance"
+						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "modifier_mob_bash_1_stun"
+								"Target"	   "TARGET"	
+							}
+
+							"Damage"
+							{
+								"Type" 			"DAMAGE_TYPE_PHYSICAL"
+								"Damage" 		"%damage"
+								"Target"		"TARGET"
+							}
+
+						}
+					}
+				}
+			}	
+
+			"modifier_mob_bash_1_stun"
+			{
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+				"Duration"					"%duration"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+			}		
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"duration"				"2"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"bash_chance"				"15"
+			}
+			"03"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"damage"				"25"
+			}
+		}
+		
+	}	
+
+	"mob_curse"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+		"AbilityTextureName"			"skywrath_mage_ancient_seal"
+		"BaseClass" 					"ability_datadriven"
+		"MaxLevel"						"1"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.3"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"8"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"40"
+
+		"precache"
+		{
+			"particle"	"particles/generic_gameplay/dropped_dust.vpcf"
+			"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf"
+
+		}
+
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf"
+				"MoveSpeed"				"1000"
+				"EffectAttachType"		"follow_origin" //attach_hitloc?
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_mob_curse"		
+				"Target"	"TARGET"
+			}
+		}
+	
+		"Modifiers"
+		{
+
+			"modifier_mob_curse"
+			{
+				 "Duration" "%duration"
+				 
+				 "Properties"
+				 {
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE"	 "%miss_chance"
+				 }
+				
+				"EffectName" "particles/generic_gameplay/dropped_dust.vpcf"
+				"EffectAttachType" "attach_hitloc"
+			}
+		}
+	
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"duration"					"15"
+			}
+			"02"
+			{
+				"var_type"					"FIELD_FLOAT"
+				"miss_chance"				"33"
+			}
+		}		
+
+	}
 	"dark_fiend_cleave"
 	{
 		// General
@@ -2043,7 +2813,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
-				
+
 				"OnAttackLanded"
 				{
 					"CleaveAttack"
@@ -2211,6 +2981,7 @@
 				"EffectAttachType" "follow_overhead"
 
 				"Duration"					"%duration"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
 
 				"States"
 				{
@@ -2414,6 +3185,7 @@
 		"MaxLevel"						"1"
 		"BaseClass"					"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"		"riki_permanent_invisibility"
 		
 		"OnOwnerSpawned"
 		{
@@ -2491,39 +3263,6 @@
 			{
 				"var_type"					"FIELD_FLOAT"
 				"fade_delay"				"1.0"
-			}
-		}
-
-	}
-	"mob_poison_attack"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		//"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
-		"MaxLevel"						"1"
-		"AbilityType"					"DOTA_ABILITY_TYPE_BASIC"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass"					"ghost_frost_attack"	
-
-
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"movespeed_slow"		"-20"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"attackspeed_slow"		"-20"
-			}			
-			"03"
-			{
-				"var_type"				"FIELD_FLOAT"
-				"duration"				"1.5"
 			}
 		}
 
@@ -3058,8 +3797,7 @@
 				 {
 					"MODIFIER_STATE_SILENCED"	 "MODIFIER_STATE_VALUE_ENABLED"
 				 }
-				
-				"StatusEffectName" "status_effect_spellcurse"
+
 				"StatusEffectPriority" "9"
 				"EffectName" "particles/generic_gameplay/generic_silenced.vpcf"
 				"EffectAttachType" "follow_overhead"
@@ -3097,11 +3835,7 @@
 		"AbilityTextureName" 			"kunkka_tidebringer"
 		"MaxLevel"					"10"
 
-		"precache"
-		{
-			"particle_folder"	"particles/units/heroes/hero_zuus/"
 
-		}
 
 		"Modifiers"
 		{
@@ -3129,9 +3863,13 @@
 									"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
 								}	
 							}
-							"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
-							"EffectAttachType"	"attach_hitloc"
-								
+
+							"FireEffect"
+							{
+								"EffectName"		 "particles/econ/events/coal/coal_projectile_explosion.vpcf"
+								"EffectAttachType"	 "follow_origin"
+								"Target"			 "TARGET"
+							}	
 						}
 					}
 				}
@@ -3142,6 +3880,7 @@
 				"Duration" "%duration"
 				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
 
 				"States"
 				{
@@ -3415,6 +4154,7 @@
 				"Duration" "%duration"
 				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
 				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
 
 				"States"
 				{
@@ -4828,7 +5568,7 @@
 			"modifier_dummy_modifier"
 			{
 				"Passive"           	"1"
-				"IsHidden"				"0"    
+				"IsHidden"				"1"    
 				//"Properties"
 				//{
 					// You may use "modifierProperty" completions within quotes here. Below is an example

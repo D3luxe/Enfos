@@ -71,6 +71,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetFogOfWarDisabled( false )
 	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( 125 )
 	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
+	GameRules:GetGameModeEntity():SetFixedRespawnTime(-1)
 
 	-- Custom console commands
 	Convars:RegisterCommand( "Enfos_test_round", function(...) return self:_TestRoundConsoleCommand( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
@@ -307,22 +308,19 @@ function CEnfosGameMode:_ThinkPrepTime()
 		self._currentRound = self._vRounds[ self._nRoundNumber ]
 		self._currentRound:Begin()
 			curRound = curRound + 1
-			print(curRound)
 			local goldAmount = curRound * 25
-			print(goldAmount)
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
 					local player = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero()
 					player:SetGold(player:GetGold()+goldAmount, false)
 				end
 			end
-
-			if curRound == 7 or curRound == 8 then
+			if curRound == 6 or curRound == 27 then
 				GameRules:SendCustomMessage("This wave has invisible monsters -", 0, 0)
 				GameRules:SendCustomMessage("Make sure you buy <font color='#58ACFA'>Sentry Wards</font>!!", 0, 0)
 			end
 
-			if curRound == 21 or curRound == 37 then
+			if curRound == 20 or curRound == 36 then
 				GameRules:SendCustomMessage("<font color='#58ACFA'>Bonus Wave!!</font>", 0, 0)
 				GameRules:SendCustomMessage("Successfully killing a mob grants a bonus life", 0, 0)
 			end
@@ -393,7 +391,6 @@ function CEnfosGameMode:OnPlayerStatsUpdated( event )
 end	
 
 function CEnfosGameMode:OnPlayerLearnedAbility( event )
-	print("Player learned ability")
 
 	local player = event.player - 1
 	if PlayerResource:IsValidPlayer( player ) then
@@ -418,7 +415,6 @@ end
 
 
 function CEnfosGameMode:OnPlayerLevelledUp( event )
-	print("Player levelled up")
 
 	local player = event.player - 1
 	if PlayerResource:IsValidPlayer( player ) then
@@ -549,10 +545,10 @@ function CEnfosGameMode:OnEntityKilled( event )
 		end
 	end
 
-	if killedUnit:IsHero() then
-		killedUnit:SetBuybackGoldLimitTime(0)
-		killedUnit:SetBuybackCooldownTime(0)
-	end
+	--if killedUnit:IsHero() then
+	--	killedUnit:SetBuybackGoldLimitTime(0)
+	--	killedUnit:SetBuybackCooldownTime(0)
+	--end
 end
 
 function CEnfosGameMode:OnEntityHurt( event )
@@ -707,7 +703,7 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 		Msg( string.format( "Cannot test invalid round %d", nRoundToTest ) )
 		return
 	end
-	curRound = nRoundToTest
+	curRound = nRoundToTest - 1
 	--local nExpectedGold = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].gold or 600
 	--local nExpectedXP = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].xp or 0
 	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
@@ -775,9 +771,9 @@ function CEnfosGameMode:_ResetLivesConsoleCommand( cmdName )
 	Triggers._badLives = 100
 	Triggers._goodLives = 100
 
-	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, _goodLives)
+	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
 
-	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, _badLives)
+	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
 end
 
 

@@ -635,8 +635,7 @@
 
 		"precache"
 		{
-			"particle"		"models/particle/tiny_rocks.vmdl"
-			"model"		"models/particle/tiny_rocks.vmdl"
+			"model"			"models/particle/tiny_rocks.vmdl"
 		}
 
 		// Abilities
@@ -736,7 +735,7 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"mob_permenant_invisibility"			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability2"					"mob_curse"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -790,6 +789,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"vscripts"			"mobs/satyr_reaver.lua"
 	
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -1498,7 +1499,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_bash_1"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -1591,7 +1592,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_poison_attack"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -1684,8 +1685,8 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_slow"			// Ability 1
+		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -1726,7 +1727,7 @@
 		//----------------------------------------------------------------
 		"StatusHealth"				"3750"		// Base health.
 		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
+		"StatusMana"				"500"			// Base mana.
 		"StatusManaRegen"			"0"			// Mana regeneration rate.		 
 		
 		// Vision
@@ -1740,6 +1741,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"vscript"				"swamp_troll.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -1777,7 +1780,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_hardened_skin"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -1875,7 +1878,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_poison_attack"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -1968,7 +1971,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"brown_bear_evasion"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -2066,9 +2069,9 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
+		"Ability1"					"brown_bear_evasion"			// Ability 1
+		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
+		"Ability3"					"mob_hardened_skin"			// Ability 3
 		"Ability4"					""			// Ability 4
 
 		// Armor
@@ -2164,8 +2167,8 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"brown_bear_evasion"			// Ability 1
+		"Ability2"					"mob_poison_attack"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -2257,7 +2260,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_frost_bolt"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -2297,7 +2300,7 @@
 		//----------------------------------------------------------------
 		"StatusHealth"				"6700"		// Base health.
 		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
+		"StatusMana"				"350"			// Base mana.
 		"StatusManaRegen"			"0"			// Mana regeneration rate.		 
 		
 		// Vision
@@ -2311,6 +2314,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"vscripts"	"mobs/yvhh_latami.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -2348,7 +2353,7 @@
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_critical_strike"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -2443,8 +2448,8 @@
 		}
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_curse"			// Ability 1
+		"Ability2"					"mob_mana_burn"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -2485,7 +2490,7 @@
 		//----------------------------------------------------------------
 		"StatusHealth"				"7500"		// Base health.
 		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
-		"StatusMana"				"0"			// Base mana.
+		"StatusMana"				"400"			// Base mana.
 		"StatusManaRegen"			"0"			// Mana regeneration rate.		 
 		
 		// Vision
@@ -2499,6 +2504,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+		"vscripts"			"mobs/fendryad.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------

@@ -18,4 +18,5 @@
 	"npc_dota_hero_silencer" "1"
 	"npc_dota_hero_luna" "1"
 	"npc_dota_hero_dazzle" "1"
+	"npc_dota_hero_dragon_knight" "1"
 }

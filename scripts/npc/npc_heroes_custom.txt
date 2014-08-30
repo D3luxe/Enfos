@@ -331,13 +331,13 @@
 	}
 
 	//=================================================================================================================
-	// HERO: Omniknight - Grake the Holy Warrior
+	// HERO: Dragon Knight - Grake the Holy Warrior
 	//=================================================================================================================
-	"npc_dota_hero_omniknight_enfos"
+	"npc_dota_hero_dragon_knight_enfos"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"override_hero"		"npc_dota_hero_omniknight"
+		"override_hero"		"npc_dota_hero_dragon_knight"
 
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
@@ -451,6 +451,13 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"199"
 		"StatusMana"				"9"
+
+
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_huskar/huskar_inner_vitality_cast.vpcf"
+			"particle_folder"	"particles/units/heroes/hero_zuus/"
+		}
 	}
 
 	//=================================================================================================================
@@ -656,8 +663,41 @@
 
 		"precache"
 		{
-			"particle_folder"				"particles/unist/heroes/hero_luna/"
+			"particle_folder"				"particles/units/heroes/hero_luna/"
 			"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
 		}
+	}
+
+	//=================================================================================================================
+	// HERO: Omniknight (Weaponsmith)
+	//=================================================================================================================
+	"npc_dota_hero_omniknight_enfos"
+	{
+		"override_hero"				"npc_dota_hero_omniknight"
+		"AbilityLayout"				"5"
+		"Ability1"					"weaponsmith_thunder_maul"
+		"Ability2"					"generic_enfos_combat_mastery"
+		"Ability3"					"weaponsmith_concentrate"
+		"Ability4"					"weaponsmith_forge"
+		"Ability5"					"weaponsmith_cambrinth_charge"
+		"Ability6"					"attribute_bonus"
+		"Ability10"				"spell_dummy_modifier"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributeBaseStrength" 	"11"
+		"AttributeStrengthGain" 	"3.7"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "1" 
+		"AttributeIntelligenceGain" "0.33" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "4.65"
+		"AttackRange"               "120"
+		"StatusHealth"				"450"
+		"StatusMana"				"16"
+		"AttackDamageMin" 			"38"
+		"AttackDamageMax" 			"57" 
 	}
 }

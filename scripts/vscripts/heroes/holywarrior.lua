@@ -2,12 +2,15 @@
 function TippingTheScales(keys)
 -- vars
 	local damage = keys.DamageDealt
-	print(damage)
 	local attacker = keys.attacker
 	local caster = keys.caster
 	local percentReflected = keys.damage_reflected / 100
 
-	local reflectedDamage = damage * percentReflected
+	local armor = keys.caster:GetPhysicalArmorValue()
+	local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+
+
+	local reflectedDamage = damage * percentReflected * damageMultiplication
 
 	DealDamage(caster, attacker, reflectedDamage, DAMAGE_TYPE_PURE, 0)
 
