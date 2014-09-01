@@ -4,36 +4,89 @@ function Prediction(keys)
 	local target = keys.target
 	local pid = target:GetPlayerID() -- this is the target's pid, not the caster's pid!
 	local maxIncrease = keys.attribute_increase
-	if Enfos.prediction[pid] == nil then
-		Enfos.prediction[pid] = 0
+	if Enfos.strPrediction[pid] == nil then
+		Enfos.strPrediction[pid] = 0
+	end
+	if Enfos.intPrediction[pid] == nil then
+		Enfos.intPrediction[pid] = 0
+	end
+	if Enfos.agiPrediction[pid] == nil then
+		Enfos.agiPrediction[pid] = 0
 	end
 	if caster == target then -- attribute penalty for self-targetting
 		maxIncrease = maxIncrease - 2
 	end 
 -- reset the values
-	target:SetBaseStrength(target:GetBaseStrength() - Enfos.prediction[pid])
-	target:SetBaseAgility(target:GetBaseAgility() - Enfos.prediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.prediction[pid])
+	target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
+	target:SetBaseAgility(target:GetBaseAgility() - Enfos.agiPrediction[pid])
+	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])
 -- roll the increase
-	local increaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
-	local characters = string.len(tostring(increaseAmount))
-	Enfos.prediction[pid] = Enfos.prediction[pid] + increaseAmount
+	local strIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local agiIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local intIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local characters = string.len(tostring(strIncreaseAmount))
+	Enfos.strPrediction[pid] = Enfos.strPrediction[pid] + strIncreaseAmount
+	Enfos.agiPrediction[pid] = Enfos.agiPrediction[pid] + agiIncreaseAmount
+	Enfos.intPrediction[pid] = Enfos.intPrediction[pid] + intIncreaseAmount
 -- set the increase
-	target:SetBaseStrength(target:GetBaseStrength() + Enfos.prediction[pid])
-	target:SetBaseAgility(target:GetBaseAgility() + Enfos.prediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.prediction[pid])
+	target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
+	target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
+	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
 -- particles and sounds
-	local increaseParticle = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 	local effect = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_symbol.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-	if increaseAmount > 0 then
-		ParticleManager:SetParticleControl(increaseParticle,1,Vector(10,increaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
-		ParticleManager:SetParticleControl(increaseParticle,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
-		target:EmitSound("Hero_WitchDoctor.Maledict_Cast")
-	else
-		ParticleManager:SetParticleControl(increaseParticle,1,Vector(2,0,0)) -- create a sad face
-		ParticleManager:SetParticleControl(increaseParticle,2,Vector(1,0,0))
-		target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
-	end
+
+	Timers:CreateTimer(DoUniqueString("strBonus"), {
+		endTime = 0.01,
+		callback = function()		
+			local increaseParticleStr = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			if strIncreaseAmount > 0 then
+				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(100,strIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,0,0)) -- (plus sign, amount, symbol at the end [never used])
+				target:EmitSound("Hero_WitchDoctor.Maledict_Cast")
+			else
+				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(2,0,0)) -- create a sad face
+				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,0,0))
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
+			end
+		end
+	})
+	Timers:CreateTimer(DoUniqueString("agiBonus"), {
+		endTime = 0.5,
+		callback = function()		
+			local increaseParticleAgi = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			if agiIncreaseAmount > 0 then
+				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(100,agiIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(0,255,0)) -- (plus sign, amount, symbol at the end [never used])
+			else
+				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(2,0,0)) -- create a sad face
+				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,0,0))
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
+			end
+		end
+	})
+	Timers:CreateTimer(DoUniqueString("intBonus"), {
+		endTime = 1,
+		callback = function()		
+			local increaseParticleInt = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			if intIncreaseAmount > 0 then
+				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(100,intIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(0,50,255)) -- (plus sign, amount, symbol at the end [never used])
+			else
+				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(2,0,0)) -- create a sad face
+				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,0,0))
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
+			end
+		end
+	})
+
+
+	
 -- recalculate the stats
 	target:CalculateStatBonus()
 end
@@ -45,9 +98,11 @@ function Hallucination(keys)
 	local spellLevel = caster:GetAbilityByIndex(1):GetLevel()
 	local target = keys.target
 	local targetName = target:GetUnitName()
+	local targetHealth = target:GetHealth()
 -- make the unit and give it the modifiers
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
+	unit:SetHealth(targetHealth)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	if Enfos.appliers[pid].HallucinationApplier == nil then
@@ -75,9 +130,18 @@ function TelekineticStorm(keys)
 	local caster = keys.caster
 	local damage = keys.damage
 	local radius = keys.radius
-	local duration = keys.duration
+	local spellDuration = keys.duration
 	local slivers = keys.slivers
 	local count = 0
+-- if the cooldown is refreshed, we want to kill all the old units.
+	--local oldUnits = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+	local oldUnits = Entities:FindAllByClassname("npc_dota_base_additive")
+	for k,v in pairs(oldUnits) do
+		if v.telekineticStormDuration ~= nil then 
+			v:Destroy()
+			v = nil
+		end
+	end
 -- initial release timer
 	Timers:CreateTimer(DoUniqueString("slvr"), {
 		endTime = 0.03,
@@ -87,7 +151,7 @@ function TelekineticStorm(keys)
 			local movement = {}
 			thisUnit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
 			thisUnit:SetBaseMoveSpeed(500)
-			thisUnit.duration = GameRules:GetGameTime() + duration
+			thisUnit.telekineticStormDuration = GameRules:GetGameTime() + spellDuration
 			ParticleManager:CreateParticle("particles/hero_hypnotist/bounty_hunter_suriken_toss_hidden_hunter.vpcf", PATTACH_OVERHEAD_FOLLOW, thisUnit)
 			local vec = GetPointOnEdge(caster:GetAbsOrigin(), math.random(0,360), radius)
 			local movement = {
@@ -101,17 +165,16 @@ function TelekineticStorm(keys)
 			Timers:CreateTimer(DoUniqueString("slvrthnk"), {
 				endTime = 1,
 				callback = function()
-					-- if the unit's duration is done, return to the caster then kill it
 					if thisUnit ~= nil then
-						if GameRules:GetGameTime() > thisUnit.duration then
+						-- if the unit's duration is done, return to the caster then kill it
+						if GameRules:GetGameTime() > thisUnit.telekineticStormDuration then
 							-- this timer searches for the caster
 							Timers:CreateTimer(DoUniqueString("slvrrtrn"), {
 								endTime = 0.03,
 								callback = function()
-									thisUnit:StopSound("Hero_Shredder.Chakram")
 									thisUnit:Destroy()
+									thisUnit:StopSound("Hero_Shredder.Chakram")
 									thisUnit = nil
-									
 								end
 							})
 						end
@@ -181,7 +244,6 @@ function TelekineticStorm(keys)
 		end
 	})
 end
-
 
 
 

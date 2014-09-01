@@ -22,7 +22,7 @@ function RadiantLoseLife(trigger)
 	if trigger.activator:IsCreature() then 
 		if trigger.activator:GetUnitName() == "npc_dota_spirit_hawk" or trigger.activator:GetUnitName() == "npc_dota_spirit_owl" then
 			trigger.activator:ForceKill(true)
-		else
+		elseif trigger.activator:GetTeam() == DOTA_TEAM_BADGUYS then
 			Triggers._goodLives = Triggers._goodLives - 1
 			trigger.activator:ForceKill(true)
 			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
@@ -38,7 +38,7 @@ function DireLoseLife(trigger)
 	if trigger.activator:IsCreature() then 
 		if trigger.activator:GetUnitName() == "npc_dota_spirit_hawk" or trigger.activator:GetUnitName() == "npc_dota_spirit_owl" then
 			trigger.activator:ForceKill(true)
-		else
+		elseif trigger.activator:GetTeam() == DOTA_TEAM_GOODGUYS then
 			Triggers._badLives = Triggers._badLives - 1
 			trigger.activator:ForceKill(true)
 			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)

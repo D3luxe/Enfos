@@ -2265,8 +2265,181 @@
 	
 	
 	//=================================================================================================================
+	// Spellbringer Abilities
+	//=================================================================================================================
+	"spellbringer_battle_sphere"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"gyrocopter_homing_missile"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		"AbilityManaCost"	"75"
+		"AbilityCooldown"	"25"
+
+		"AbilityCastRange"	"0"
+
+		"precache"
+		{
+			"particle_folder"	"particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/"
+		}
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		 "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_call_down_explosion_impact_a.vpcf"
+				"EffectAttachType"	 "follow_origin"
+				"Target"			 "TARGET"
+			}
+			"ApplyModifier"
+			{
+				"Target" 			"TARGET"
+				"ModifierName"		"modifier_spellbringer_battle_sphere"
+			}
+			"Damage"
+			{
+				"Target"		 "TARGET"
+				"Type"			 "DAMAGE_TYPE_MAGICAL"
+				"Damage"		 "%damage"
+			}
+		}
+
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_spellbringer_battle_sphere"   	// This should be the name of your modifier
+			{
+				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+				"Duration"					"%duration"
+
+				"States"
+				{
+					// Sub-keys can be found by using "modifierState" constant completions
+					// Sub-values can be found by using "modifierStateValue" constant completions
+					"MODIFIER_STATE_STUNNED"				"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"10"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"damage"					"10"
+			}
+		}
+
+	}
+	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
+	"mob_cold_arrow"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"drow_ranger_frost_arrows"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"5"
+
+		// Data-Driven
+		//-------------------------------------------------------------------------------------------------------------
+		"Modifiers"
+		{
+			"modifier_mob_cold_arrow"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}
+
+				"OnOrbImpact"
+				{
+					"SpendMana"
+					{
+						"Mana"	"%AbilityManaCost"
+					}
+					"ApplyModifier"
+					{
+						"Target"			"TARGET"
+						"ModifierName"		"modifier_mob_cold_arrow_slow"
+						"Duration"			"%slow_duration"
+					}
+				}
+			}
+
+			"modifier_mob_cold_arrow_slow"
+			{
+				"Duration"	"%slow_duration"
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%movement_speed"
+				}
+
+			}
+		}
+
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"0.75"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"slow_duration"					"0.75"
+			}
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"movement_speed"	"-25"
+			}
+		}
+	}
+
 	"mob_mana_burn"
 	{
 		// General
@@ -4920,6 +5093,24 @@
 			}
 		}	
 	}
+	"evoker_gar_zeng_proxy"
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"BaseClass" 					"ability_datadriven"
+		"MaxLevel"						"1"
+
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"  "scripts/vscripts/heroes/evoker.lua"
+				"Function"    "OnSpellStart"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Evoker: Gar Zeng
 	//=================================================================================================================
@@ -5401,7 +5592,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCastRange"				"600" //range not provided on the site
+		"AbilityCastRange"				"0" //range not provided on the site
 		"AbilityCooldown"				"25 23 21 19 17 15 13 11 9 7"
 		"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
 		"OnSpellStart"
@@ -5439,6 +5630,7 @@
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"rattletrap_rocket_flare"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"3"
 		"MaxLevel"						"10"
@@ -5526,6 +5718,552 @@
 				"var_type"				"FIELD_INTEGER"
 				"slivers"				"20 26 32 38 44 50 56 62 68 74"
 			}
+		}
+	}
+	//=================================================================================================================
+	// Lich - Revenant
+	//=================================================================================================================
+	//=================================================================================================================
+	// Revenant - Haunting Spirit
+	//=================================================================================================================
+	"revenant_haunting_spirit"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"shadow_demon_demonic_purge"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_skeletonking/"
+		}
+		"Modifiers"
+		{
+			"modifier_revenant_haunting_spirit"
+			{
+				"Passive"				"1"
+				"ThinkInterval"			"10"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/revenant.lua"
+						"Function"		"HauntingSpirit"
+						"radius"		"%radius"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"4000" //it's supposed to be for creeps on your own side. this is close enough
+			}
+		}
+	}
+	//=================================================================================================================
+	// Revenant - Animate Dead
+	//=================================================================================================================
+	"revenant_animate_dead"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"morphling_replicate"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"600" //range not provided on the site
+		"AbilityCooldown"				"40"
+		"AbilityManaCost"				"30 46 65 87 112 141 174 212 256 306"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_visage/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+				"Function"				"AnimateDead"
+				"radius"				"%radius"
+				"duration"				"%duration"
+				"units_raised"			"%units_raised"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"units_raised"			"3 4 5 6 7 8 9 10 11 12"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Revenant: Deathwave
+	//=================================================================================================================
+	"revenant_deathwave"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"vengefulspirit_wave_of_terror"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
+		"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_vengeful/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"			//I'm guessing on so many of these values
+			{
+				"Target"				"POINT"
+				"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
+				"MoveSpeed"				"1100"
+				"StartRadius"			"300"
+				"EndRadius"				"300"
+				"FixedDistance"			"810"
+				"StartPosition"			"follow_origin"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"		"0"
+			}
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"Hero_DeathProphet.Silence"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"0"
+			"Damage"
+			{
+				"Target"				"TARGET"
+				"Type"					"DAMAGE_TYPE_MAGICAL"
+				"Damage"				"%damage"
+			}
+			"ApplyModifier"
+			{
+				"Target"				"TARGET"
+				"ModifierName"			"modifier_revenant_deathwave_debuff"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_revenant_deathwave_debuff"
+			{
+				"Duration"				"%duration"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%slow"
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"45 67 101 151 227 341 512 765 1153 1729"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reduction"		"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"10"	
+			}
+		}
+	}
+	//=================================================================================================================
+	// Revenant: Corpse Explosion
+	//=================================================================================================================
+	"revenant_corpse_explosion"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"nevermore_shadowraze3"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"2"
+		"AbilityManaCost"				"70 77 86 96 107 119 132 147 164 182"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_revenant/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+				"Function"				"CorpseExplosion"
+				"Target"				"POINT"
+				"damage"				"%damage"
+				"radius"				"%radius"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"33" //percent of corpse's maximum HP
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"260 300 340 380 420 460 500 540 580 620" //percent of corpse's maximum HP
+			}		
+		}
+	}
+	//=================================================================================================================
+	// Revenant: Spiritual Swarm
+	//=================================================================================================================
+	"revenant_spiritual_swarm"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"weaver_geminate_attack"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"110"
+		"AbilityManaCost"				"100 135 173 215 262 313 370 432 500 575"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_weaver/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+				"Function"				"SpiritualSwarmCast"
+				"damage"				"%damage"
+				"jumps"					"%jumps"
+			}
+			"FireSound"
+			{
+				"Target"				"CASTER"
+				"EffectName"			"Hero_Weaver.SwarmCast"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_revenant_spiritual_swarm_debuff"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_revenant_spiritual_swarm_debuff"
+			{
+				"ThinkInterval"		"0.1"
+				"OnCreated"
+				{
+					"FireSound"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"Hero_Weaver.SwarmAttach"
+					}
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/units/heroes/hero_weaver/weaver_swarm_infected_debuff.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+					}
+				}
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"	"TARGET"
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Damage"	"%damage_over_time"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/revenant.lua"
+						"Function"		"SpiritualSwarmJump"
+					}
+				}
+			}			
+		}				
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"275 412 618 928 1392 2088 3132 4689 5047 10571" // what the fuck is this damage scaling?
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"jumps"					"31 32 33 34 35 36 37 38 39 40"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-66"		
+			}
+			"04" //don't add this one to addon_english. it's just for the modifier.
+			{
+				"var_type"				"FIELD_FLOAT"
+				"damage_over_time"		"27.5 41.2 61.8 92.8 139.2 208.8 313.2 468.9 504.7 1057.1"
+			}			
+		}
+	}
+	//=================================================================================================================
+	// Sniper - Sniper
+	//=================================================================================================================
+	//=================================================================================================================
+	// Sniper: Technique
+	//=================================================================================================================
+	"sniper_technique" //guessing on cooldown
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sniper_take_aim"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30"
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_sniper_technique"
+				"Target"				"CASTER"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"			"modifier_sniper_technique"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_sniper_technique"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
+				}
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_range"			"3000" //it's supposed to be for creeps on your own side. this is close enough
+			}
+		}
+	}
+	//=================================================================================================================
+	// Sniper: Fire Ammo
+	//=================================================================================================================
+	"sniper_fire_ammo"
+	{
+		"BaseClass"						"clinkz_searing_arrows"
+		"AbilityTextureName"			"sniper_shrapnel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
+
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_clinkz/"
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus"			"100 250 500 1000 1500 2200 3300 4500 5500 7500"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Sniper: Lucky Shot
+	//=================================================================================================================
+	"sniper_lucky_shot"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sniper_headshot"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"Modifiers"
+		{
+			"modifier_sniper_lucky_shot"
+			{
+				"Passive"				"1"
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance"			"%chance"
+						"OnSuccess"
+						{
+							"Damage" //apparently it works on birds so it's fine to do it this way
+							{
+								"Target"	"TARGET"
+								"Damage"	"9999999"
+								"Type"		"DAMAGE_TYPE_PURE"
+							}
+						}
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"1 2 3 4 5 6 7 8 9 10"
+			}			
+		}
+	}
+	//=================================================================================================================
+	// Sniper: Burning Grenade
+	//=================================================================================================================
+	"sniper_burning_grenade" 	//ALL of the values in this spell with the exception of damage are a complete guess. will need verification in the official game.
+	{							//The damage value is taken from a post in 2008, so it's also probably wrong.
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"alchemist_unstable_concoction_throw"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"1800"
+		"AbilityCooldown"				"20"
+		"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_batrider/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target"				"POINT"
+				"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+				"MoveSpeed"				"1100"
+				"StartRadius"			"0"
+				"EndRadius"				"0"
+				"StartPosition"			"follow_origin"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"		"0"
+			}
+		}
+		"OnProjectileFinish"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/sniper.lua"
+				"Function"				"BurningGrenade"
+				"Target"				"POINT"
+				"damage"				"%damage"
+				"radius"				"%radius"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"250 750 1425 2325 3450 4800 6375 8175 10200 12450"
+			}	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"600"
+			}				
+		}
+	}
+
+	//=================================================================================================================
+	// Sniper: Rapid Reload
+	//=================================================================================================================
+	"sniper_rapid_reload"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sniper_assassinate"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"Modifiers"
+		{
+			"modifier_sniper_rapid_reload"
+			{
+				"Passive"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				}
+			}
+		}				
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"			"15 30 45 60 75 90 105 120 135 150"
+			}					
 		}
 	}
 

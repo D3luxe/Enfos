@@ -41,17 +41,9 @@ function Forge(keys)
 	if caster.forge == nil then
 		caster.forge = 0
 	end
-	print (caster:GetBaseDamageMin() .. "a")
-	print (caster:GetBaseDamageMax() .. "b")
-	print (caster.forge .. "c")
 	caster:SetBaseDamageMin(caster:GetBaseDamageMin() - caster.forge - caster:GetStrength())
 	caster:SetBaseDamageMax(caster:GetBaseDamageMax() - caster.forge - caster:GetStrength())
-	print (caster:GetBaseDamageMin() .. "d")
-	print (caster:GetBaseDamageMax() .. "e")
 	caster.forge = caster.forge + damageBonus
 	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - caster:GetStrength())
 	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - caster:GetStrength())
-	print (caster:GetBaseDamageMin() .. "f")
-	print (caster:GetBaseDamageMax() .. "g")
-	print (caster.forge .. "h")
 end	

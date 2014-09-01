@@ -700,4 +700,70 @@
 		"AttackDamageMin" 			"38"
 		"AttackDamageMax" 			"57" 
 	}
+
+	//=================================================================================================================
+	// HERO: Lich (Revenant)
+	//=================================================================================================================
+	"npc_dota_hero_lich_enfos"
+	{
+		"override_hero"				"npc_dota_hero_lich"
+		"AbilityLayout"				"5"
+		"Ability1"					"revenant_animate_dead"
+		"Ability2"					"revenant_deathwave"
+		"Ability3"					"revenant_corpse_explosion"
+		"Ability4"					"revenant_spiritual_swarm"
+		"Ability5"					"revenant_haunting_spirit"
+		"Ability6"					"attribute_bonus"
+		"Ability10"				"spell_dummy_modifier"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.8"
+		"AttackRange"               "550"
+		"StatusHealth"				"250"
+		"StatusMana"				"144"
+		"AttackDamageMin" 			"25"
+		"AttackDamageMax" 			"30" //hm, how do you increase the damage per level? I just noticed that 
+	}
+	//=================================================================================================================
+	// HERO: Sniper (Sniper)
+	//=================================================================================================================
+	"npc_dota_hero_sniper_enfos"
+	{
+		"override_hero"				"npc_dota_hero_sniper"
+		"AbilityLayout"				"5"
+		"Ability1"					"sniper_fire_ammo"
+		"Ability2"					"sniper_lucky_shot"
+		"Ability3"					"sniper_burning_grenade"
+		"Ability4"					"sniper_rapid_reload"
+		"Ability5"					"sniper_technique"
+		"Ability6"					"attribute_bonus"
+		"Ability10"					"spell_dummy_modifier"
+		
+		"ArmorPhysical"				"1"
+		//I had to guess for most of these values. They need to be verified.
+		"AttributeBaseStrength" 	"4"
+		"AttributeStrengthGain" 	"1"
+		"AttributeBaseAgility" 		"1" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "8" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.8"
+		"AttackRange"               "500"
+		"AttackAcquisitionRange"	"3600"	
+		"StatusHealth"				"250"
+		"StatusMana"				"144"
+		"AttackDamageMin" 			"28"
+		"AttackDamageMax" 			"38"
+	}
 }

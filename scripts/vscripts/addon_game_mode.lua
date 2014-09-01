@@ -97,13 +97,37 @@ function CEnfosGameMode:InitGameMode()
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 )
 	-- defining our global tables here. we need to populate them with initial player values or else we won't be able to index them.
+
+	--Catch the Spellbringer UI
+	--register the 'BuyAbilityPoint' command in our console
+	Convars:RegisterCommand( "CastSpellbringerAbility", function(name, p)
+	    --get the player that sent the command
+	    local cmdPlayer = Convars:GetCommandClient()
+	    if cmdPlayer then 
+	        --if the player is valid, execute PlayerBuyAbilityPoint
+	        return self:CastSpellbringerAbility( cmdPlayer, p ) 
+	    end
+	end, "A player casted an ability", 0 )
 end
+
 
 function CEnfosGameMode:new (o)
     o = o or {}
     setmetatable(o, self)
     self.__index = self
     return o
+end
+
+--Spellbringer casting from UI
+function CEnfosGameMode:CastSpellbringerAbility(player, p)
+	local price = 200
+	local pID = player:GetPlayerID()
+	local playerGold = PlayerResource:GetGold(pID)
+	local playerHero = player:GetAssignedHero()
+
+	local abilityToCast = playerHero:FindAbilityByName("evoker_gar_zeng_proxy")
+
+	playerHero:CastAbilityNoTarget(abilityToCast, -1)
 end
 
 -- Read and assign configurable keyvalues if applicable
@@ -371,7 +395,9 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
 	end
 	local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
-	statAbility:SetLevel(1)
+	if statAbility ~= nil then
+		statAbility:SetLevel(1)
+	end
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
 
 	local unit = CreateUnitByName("npc_vision_dummy", spawnedUnitIndex:GetAbsOrigin(), true, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
