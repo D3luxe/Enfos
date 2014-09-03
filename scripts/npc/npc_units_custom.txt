@@ -4273,7 +4273,7 @@
 		// General
 		//
 		"BaseClass"					"npc_dota_tower"	// Class of entity of link to.
-		"Model"						"models/props_structures/tower_good.vmdl"// Model.
+		"Model"						"models/props_structures/tower_good4.vmdl"// Model.
 		"SoundSet"					"Tower.Water"					// Name of sound set.
 		"MinimapIcon"				"minimap_tower90"
 		"MinimapIconSize"			"200"
@@ -4283,8 +4283,8 @@
 		//----------------------------------------------------------------
 		
 		"Ability1"					"spellbringer_battle_sphere"			// Ability 1.
-		"Ability2"					""			// Ability 2.
-		"Ability3"					""			// Ability 3.
+		"Ability2"					"spellbringer_limb_disruption"			// Ability 2.
+		"Ability3"					"spellbringer_whole_displacement"			// Ability 3.
 		"Ability4"					""			// Ability 4.
 		"Ability5"					""			// Ability 5.
 		"Ability6"					""			// Ability 6 - Extra.
@@ -4339,7 +4339,7 @@
 		"StatusHealth"				"99999"		// Base health.
 		"StatusHealthRegen"			"999"			// Health regeneration rate.
 		"StatusMana"				"2000"			// Base mana.
-		"StatusStartingMana"		"50"			// Base mana.
+		"StatusStartingMana"		"500"			// Base mana.
 		"StatusManaRegen"			"1"			// Mana regeneration rate.
 
 		// Team

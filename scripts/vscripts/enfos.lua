@@ -21,6 +21,12 @@ Enfos.spiritualSwarmJumps = 0
 for i=0,9 do
 	Enfos.appliers[i] = ""
 end
+
+function spellAbsorb(keys)
+	PrintTable(keys)
+	--keys.caster:AddNewModifier(keys.caster, nil, "modifier_item_sphere_target", {})
+	print(keys.caster:HasModifier("modifier_item_sphere_target"))
+end
 -- a function that makes dealing damage slightly faster.
 function DealDamage(source, target, damage, dType, flags)
 	local dTable = {

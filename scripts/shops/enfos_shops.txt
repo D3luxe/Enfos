@@ -85,7 +85,15 @@
 	// Level 4 - Orange / Orb / Artifacts
 	"artifacts"
 	{
-
+		"item" "item_tome_of_strength"
+		"item" "item_tome_of_strength_2"
+		"item" "item_tome_of_agility"
+		"item" "item_tome_of_agility_2"
+		"item" "item_tome_of_intellect"
+		"item" "item_tome_of_intellect_2"
+		"item" "item_tome_of_combat"
+		"item" "item_tome_of_retraining"
+		"item" "item_tome_of_knowledge"
 	}
 
 	"sideshop1"

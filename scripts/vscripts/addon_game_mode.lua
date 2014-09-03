@@ -88,10 +88,11 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent( "player_reconnected", Dynamic_Wrap( CEnfosGameMode, 'OnPlayerReconnected' ), self )
 	ListenToGameEvent( "entity_killed", Dynamic_Wrap( CEnfosGameMode, 'OnEntityKilled' ), self )
 	ListenToGameEvent( "game_rules_state_change", Dynamic_Wrap( CEnfosGameMode, "OnGameRulesStateChange" ), self )
-	ListenToGameEvent("player_stats_updated", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerStatsUpdated'), self)
-	ListenToGameEvent("dota_player_learned_ability", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLearnedAbility'), self)
-	ListenToGameEvent("dota_player_gained_level", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLevelledUp'), self)
-	ListenToGameEvent("dota_inventory_changed", Dynamic_Wrap(CEnfosGameMode, 'OnInventoryChanged'), self)
+	ListenToGameEvent( "player_stats_updated", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerStatsUpdated'), self)
+	ListenToGameEvent( "dota_player_learned_ability", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLearnedAbility'), self)
+	ListenToGameEvent( "dota_player_gained_level", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLevelledUp'), self)
+	ListenToGameEvent( "dota_inventory_changed", Dynamic_Wrap(CEnfosGameMode, 'OnInventoryChanged'), self)
+	ListenToGameEvent( "dota_item_purchased", Dynamic_Wrap(CEnfosGameMode, 'OnItemPurchased'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
@@ -400,10 +401,11 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	end
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
 
-	local unit = CreateUnitByName("npc_vision_dummy", spawnedUnitIndex:GetAbsOrigin(), true, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
-	unit:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
-	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
-	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+
+	local unit2 = CreateUnitByName("npc_spellbringer", spawnedUnitIndex:GetAbsOrigin(), true, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
+	unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+	FindClearSpaceForUnit(unit2, unit2:GetAbsOrigin(), true)
+	PrintTable(unit2)
 
 	
 	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
@@ -436,6 +438,30 @@ function CEnfosGameMode:OnInventoryChanged( event )
 		--GameRules.Enfos:UpdateBaseStats(hero)
 	else
 		print("Invalid player!")
+	end
+end
+
+function CEnfosGameMode:OnItemPurchased(event)
+	local itemname = event.itemname
+	local player = event.PlayerID 
+	local hero = nil
+	if PlayerResource:IsValidPlayer( player ) then
+		hero = PlayerResource:GetSelectedHeroEntity(player)
+		
+	else
+		print("Invalid player!")
+	end
+	if string.find(itemname, "item_tome") then
+		local itemSlot = -1
+		for item = 0, 18 do
+			local i = 0
+			if hero:GetItemInSlot(item) ~= nil then
+				if hero:GetItemInSlot(item):GetName() == itemname then
+					itemSlot = item
+				end
+			end
+		end
+		hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
 	end
 end
 

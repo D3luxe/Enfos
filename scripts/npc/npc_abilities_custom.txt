@@ -261,6 +261,7 @@
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
 				}
+				
 			}
 			
 			"combat_mastery_passive"
@@ -800,7 +801,8 @@
 				 }
 				 "States"
 				 {
-				   "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+				   "MODIFIER_STATE_MAGIC_IMMUNE" 		"MODIFIER_STATE_VALUE_ENABLED"
+				   "MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
 				 }
 				 "OnCreated"
 				 {
@@ -2270,8 +2272,8 @@
 	"spellbringer_battle_sphere"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"gyrocopter_homing_missile"
-		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityTextureName"		"sven_storm_bolt"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
@@ -2289,10 +2291,10 @@
 		{
 			"FireEffect"
 			{
-				"EffectName"		 "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_call_down_explosion_impact_a.vpcf"
+				"EffectName"		 "particles/econ/items/gyrocopter/hero_gyrocopter_gyrotechnics/gyro_calldown_first.vpcf"
 				"EffectAttachType"	 "follow_origin"
 				"Target"			 "TARGET"
-			}
+			}	
 			"ApplyModifier"
 			{
 				"Target" 			"TARGET"
@@ -2321,6 +2323,8 @@
 				"OverrideAnimation" "ACT_DOTA_DISABLED"
 				"Duration"					"%duration"
 
+
+			
 				"States"
 				{
 					// Sub-keys can be found by using "modifierState" constant completions
@@ -2347,6 +2351,130 @@
 		}
 
 	}
+	"spellbringer_limb_disruption"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"pugna_decrepify"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		"AbilityManaCost"	"75"
+		"AbilityCooldown"	"45"
+
+		"AbilityCastRange"	"0"
+
+		"precache"
+		{
+			"particle_folder"	"particles/items2_fx/"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"TARGET"
+				"ModifierName"		"modifier_spellbringer_limb_disruption"
+			}
+		}
+
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_spellbringer_limb_disruption"   	// This should be the name of your modifier
+			{
+				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+				"IsDebuff"					"true"
+				"IsPurgable"				"false"
+				"IsStunDebuff"				"true"
+				"IsHidden"					"false"
+
+				"EffectName" "particles/items2_fx/rod_of_atos.vpcf"
+				"EffectAttachType" "follow_origin"
+				"Duration"					"%duration"
+
+
+			
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+				}
+			}
+		}
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"30"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"slow"					"-50"
+			}
+		}
+
+	}
+	"spellbringer_whole_displacement"
+	{
+		"BaseClass"					"ability_datadriven"
+		"AbilityTextureName"		"disruptor_glimpse"
+		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CREEP"
+		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+		"AbilityManaCost"	"10"
+		"AbilityCooldown"	"30"
+
+		"AbilityCastRange"	"0"
+
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_disruptor"
+		}
+
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		 "particles/units/heroes/hero_disruptor/disruptor_glimpse_targetstart.vpcf"
+				"EffectAttachType"	 "follow_origin"
+				"Target"			 "TARGET"
+			}	
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"whole_displacement"
+				"target"		"TARGET"
+			}
+			
+			"ApplyModifier"
+			{
+				"Target" 			"TARGET"
+				"ModifierName"		"modifier_spellbringer_whole_displacement_fx"
+			}
+
+		}
+
+		"Modifiers"
+		{
+			"modifier_spellbringer_whole_displacement_fx"
+			{
+				"Duration"	"1"
+				"EffectName" "particles/units/heroes/hero_disruptor/disruptor_glimpse_targetend.vpcf"
+				"EffectAttachType" "follow_origin"
+			}
+		}
+
+	}
+
+
 	//=================================================================================================================
 	// Creature Abilities
 	//=================================================================================================================
@@ -5121,6 +5249,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCastRange"				"500" // don't know if I actually have the right value
@@ -6321,11 +6450,11 @@
 					//	"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
 					//	"Function"				"ModifyHealthStat"
 					//}
-					"RunScript"
-					{
-						"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
-						"Function"				"ModifyArmorStat"
-					}
+					//"RunScript"
+					//{
+					//	"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
+					//	"Function"				"ModifyArmorStat"
+					//}
 				}
 		
 
