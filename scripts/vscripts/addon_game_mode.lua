@@ -25,6 +25,33 @@ end
 function Precache( context )
 	PrecacheResource( "model", "models/heroes/lone_druid/spirit_bear.vmdl", context )
 	PrecacheResource( "model", "models/props_gameplay/recipe.mdl", context )
+	PrecacheResource( "model", "models/props_structures/tower_good4.vmdl", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", context )
+	PrecacheResource( "particle", "particles/items2_fx/necronomicon_archer_manaburn.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf", context )
+
+	--Arhat
+	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_cape.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_shoulder.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_head.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_hair.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_bracer.vmdl", context )
+	PrecacheResource( "model", "models/heroes/invoker/invoker_dress.vmdl", context )
+
+	--Uthmor
+	PrecacheResource( "model", "models/heroes/elder_titan/ancestral_spirit.vmdl", context )
+
+	--Sidhlot
+	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte_sickle.vmdl", context )
+	PrecacheResource( "model", "models/heroes/necrolyte/beard.vmdl", context )
+	PrecacheResource( "model", "models/heroes/necrolyte/hat.vmdl", context )
+	PrecacheResource( "model", "models/heroes/necrolyte/shoulders.vmdl", context )
+	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte.vmdl", context )
+
+	--Havroth
+	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl", context )
 	--PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf", context )
 end
 
@@ -97,6 +124,7 @@ function CEnfosGameMode:InitGameMode()
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 )
+	GameRules:GetGameModeEntity():SetThink( "XpThink", self, "ExperienceThink", 0.25 )
 	-- defining our global tables here. we need to populate them with initial player values or else we won't be able to index them.
 
 	--Catch the Spellbringer UI
@@ -117,6 +145,39 @@ function CEnfosGameMode:new (o)
     setmetatable(o, self)
     self.__index = self
     return o
+end
+
+function CEnfosGameMode:XpThink()
+
+    -- Check if the game is actual over
+    if GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then
+        return nil
+    else
+
+        -- Loop for every Player
+        for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+            teamID = PlayerResource:GetTeam(xpPlayerID)
+            teamXP = 0
+
+            -- Get the highest XP value in Team of the current player
+            for teamPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+                if PlayerResource:GetTeam(teamPlayerID) == teamID then
+                    if teamXP < PlayerResource:GetTotalEarnedXP(teamPlayerID) then
+                        teamXP = PlayerResource:GetTotalEarnedXP(teamPlayerID)
+                    end
+                end
+            end         
+
+            -- Give XP to current Player if needed
+            if PlayerResource:GetSelectedHeroEntity(xpPlayerID) ~= nil then
+                if teamXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() then
+                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(teamXP - PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP(), false)
+                end
+            end
+        end
+        -- Repeater Thinker every 0.25 seconds
+        return 0.25
+    end
 end
 
 --Spellbringer casting from UI
@@ -381,6 +442,7 @@ function CEnfosGameMode:_SpawnHeroClientEffects( hero, nPlayerID )
 end
 
 function CEnfosGameMode:OnPlayerPicked( event )
+	PrintTable(event)
 	local spawnedUnit = event.hero
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
 	
@@ -401,11 +463,53 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	end
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
 
+	local spellbringerName = nil
+	local spellbringerLocation = nil
+	local playerID = spawnedUnitIndex:GetPlayerID()
+	print(playerID)
+	if playerID == 0 then
+		spellbringerName = "spellbringer_1"
+	elseif playerID == 1 then
+		spellbringerName = "spellbringer_2"
+	elseif playerID == 2 then
+		spellbringerName = "spellbringer_3"
+	elseif playerID == 3 then
+		spellbringerName = "spellbringer_4"
+	elseif playerID == 4 then
+		spellbringerName = "spellbringer_5"
+	elseif playerID == 5 then
+		spellbringerName = "spellbringer_6"
+	elseif playerID == 6 then
+		spellbringerName = "spellbringer_7"
+	elseif playerID == 7 then
+		spellbringerName = "spellbringer_8"
+	elseif playerID == 8 then
+		spellbringerName = "spellbringer_9"
+	elseif playerID == 9 then
+		spellbringerName = "spellbringer_10"
+	else
+		print("Incorrect player ID")
+	end
 
-	local unit2 = CreateUnitByName("npc_spellbringer", spawnedUnitIndex:GetAbsOrigin(), true, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
-	unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
-	FindClearSpaceForUnit(unit2, unit2:GetAbsOrigin(), true)
-	PrintTable(unit2)
+	if spellbringerName ~= nil then
+		print(spellbringerName)
+		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
+	end
+	Timers:CreateTimer(DoUniqueString("spawnSpellbringer"), {
+		endTime = 0.1,
+		callback = function()
+			if spellbringerLocation ~= nil then
+				print(spellbringerLocation)
+				local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
+				unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
+				unit2:RemoveModifierByName("modifier_tower_truesight_aura")
+				unit2:RemoveModifierByName("modifier_invulnerable")
+			else
+				print("Incorrect spellbringer location!!")
+			end
+		end
+	})
 
 	
 	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)

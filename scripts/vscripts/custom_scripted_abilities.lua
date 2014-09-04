@@ -33,51 +33,39 @@ function DrainMana(keys)
 end
 
 function StealManaDisrupt(keys)
+	local caster = keys.caster
 	--print("Draining mana")
 	--PrintTable(keys)
 	enmPlayer = 0
 	enmPlayer = RandomInt(0, HeroList:GetHeroCount()) 
 	local safetyValue = 0
 	maxMana = 0
-	-- while PlayerResource:IsValidPlayer( enmPlayer ) do
-	-- 	repeat
-	-- 		enmPlayer = RandomInt(0, HeroList:GetHeroCount())
-	-- 	until PlayerResource:GetTeam(enmPlayer) ~= PlayerResource:GetTeam(keys.caster:GetPlayerID())
-	-- end
 
-	while true do
-		enmPlayer = RandomInt(0, HeroList:GetHeroCount())
-		safetyValue = safetyValue + 1 -- shoutouts to infinite loops
-		if safetyValue > 100 then
-			break
+	local spellbringers = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, 0, 0, false)
+	if spellbringers ~= nil then
+		local sb = math.random(1, #spellbringers)
+
+		local sbTarget = spellbringers[sb]
+
+		if sbTarget:GetMana() ~= nil then 
+			maxMana = tonumber(sbTarget:GetMana())
+			manaDrain = tonumber(keys.manaReplenish)
+			manaStolen = tonumber(keys.manaStolen)
+			manaReplenished = 0
+			if maxMana >= manaStolen then
+				manaReplenished = manaStolen * manaDrain / 100
+			elseif maxMana < manaStolen then
+				manaStolen = maxMana
+				manaReplenished = manaStolen * manaDrain / 100
+			end
 		end
-		if PlayerResource:GetTeam(enmPlayer) ~= PlayerResource:GetTeam(keys.caster:GetPlayerID()) and PlayerResource:IsValidPlayer( enmPlayer ) and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsHero() and PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():IsAlive() then
-			break
-		end
-	end
 
-	if ( PlayerResource:IsValidPlayer( enmPlayer ) ) then
-		maxMana = tonumber(PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():GetMana())
-	else
-		print("ENMPLAYER IS NOT VALID PLAYER")
-	end
-	
-	manaDrain = tonumber(keys.manaReplenish)
-	manaStolen = tonumber(keys.manaStolen)
-	manaReplenished = 0
-	if maxMana >= manaStolen then
-		manaReplenished = manaStolen * manaDrain / 100
-	elseif maxMana < manaStolen then
-		manaStolen = maxMana
-		manaReplenished = manaStolen * manaDrain / 100
-	end
+		ParticleManager:CreateParticle("particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, sbTarget)
 
-	--print(PlayerResource:GetPlayer(enmPlayer):GetAssignedHero())
-	if ( PlayerResource:IsValidPlayer( enmPlayer ) ) then
-		PlayerResource:GetPlayer(enmPlayer):GetAssignedHero():ReduceMana(maxMana)
-		keys.caster:GiveMana(manaReplenished)
+		sbTarget:ReduceMana(maxMana)
+		caster:GiveMana(manaReplenished)
 	else
-		print("ENMPLAYER IS NOT VALID PLAYER!")
+		keys.ability:EndCooldown()
 	end
 end
 
@@ -90,7 +78,6 @@ function EnergyFlare(keys)
 		damage = dmg,
 		damage_type = DAMAGE_TYPE_PURE,
 	}
-	PrintTable(damageTable)
 	--damageTable.victim = damageTable.victim.__self
 	--PrintTable(damageTable)
 

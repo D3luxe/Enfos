@@ -3265,6 +3265,25 @@
 		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"Modifiers"
 		{
+			"modifier_sidhlot_resurrect"
+			{
+				"Duration"				"20"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Damage"		"9999999"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+					"AttachEffect"
+					{
+						"Target"		"TARGET"
+						"EffectName"	"particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy_explosion.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+			}
 			"modifier_revenant_animate_dead_buff_1"
 			{
 				"Duration"				"20"
