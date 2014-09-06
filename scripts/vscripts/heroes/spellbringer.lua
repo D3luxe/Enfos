@@ -120,7 +120,7 @@ function sidhlot_resurrect(keys)
 		return
 	end
 	for k,v in pairs(units) do
-		if not v:IsAlive() then
+		if not v:IsAlive() and not v.noCorpse then
 			table.insert(validTargets, v)
 		end
 	end

@@ -1,8 +1,8 @@
 enfos
 {
 	material materials/overviews/enfos.vmat
-	pos_x -6669
-	pos_y 6753
-	scale 13.215
+	pos_x -8128
+	pos_y 8128
+	scale 15.813
 }
 

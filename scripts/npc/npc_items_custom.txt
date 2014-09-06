@@ -1390,7 +1390,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"		"1000"
+				"blink_range"		"1050"
 			}
 			"02"
 			{
@@ -3529,7 +3529,6 @@
 		{
 			"modifier_health_mod_1"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3540,7 +3539,6 @@
 			}
 			"modifier_health_mod_2"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3551,7 +3549,6 @@
 			}
 			"modifier_health_mod_4"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3562,7 +3559,6 @@
 			}
 			"modifier_health_mod_8"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3573,7 +3569,6 @@
 			}
 			"modifier_health_mod_16"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3584,7 +3579,6 @@
 			}
 			"modifier_health_mod_32"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3595,7 +3589,6 @@
 			}
 			"modifier_health_mod_64"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3606,7 +3599,6 @@
 			}
 			"modifier_health_mod_128"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3617,7 +3609,6 @@
 			}
 			"modifier_health_mod_256"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3628,7 +3619,6 @@
 			}
 			"modifier_health_mod_512"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3651,7 +3641,6 @@
 		{
 			"modifier_mana_mod_1"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3663,7 +3652,6 @@
 			}
 			"modifier_mana_mod_2"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3675,7 +3663,6 @@
 			}
 			"modifier_mana_mod_4"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3687,7 +3674,6 @@
 			}
 			"modifier_mana_mod_8"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3699,7 +3685,6 @@
 			}
 			"modifier_mana_mod_16"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3711,7 +3696,6 @@
 			}
 			"modifier_mana_mod_32"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3723,7 +3707,6 @@
 			}
 			"modifier_mana_mod_64"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3735,7 +3718,6 @@
 			}
 			"modifier_mana_mod_128"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3747,7 +3729,6 @@
 			}
 			"modifier_mana_mod_256"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3759,7 +3740,6 @@
 			}
 			"modifier_mana_mod_512"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3783,7 +3763,6 @@
 		{
 			"modifier_damage_mod_1"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3794,7 +3773,6 @@
 			}
 			"modifier_damage_mod_2"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3805,7 +3783,6 @@
 			}
 			"modifier_damage_mod_4"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3816,7 +3793,6 @@
 			}
 			"modifier_damage_mod_8"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3827,7 +3803,6 @@
 			}
 			"modifier_damage_mod_16"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3838,7 +3813,6 @@
 			}
 			"modifier_damage_mod_32"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3849,7 +3823,6 @@
 			}
 			"modifier_damage_mod_64"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3860,7 +3833,6 @@
 			}
 			"modifier_damage_mod_128"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3871,7 +3843,6 @@
 			}
 			"modifier_damage_mod_256"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"
@@ -3882,7 +3853,6 @@
 			}
 			"modifier_damage_mod_512"
 			{
-				"Passive"           	"1"
 				"IsHidden"				"1"  
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
 				"Properties"

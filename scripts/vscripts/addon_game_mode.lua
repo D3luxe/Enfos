@@ -19,6 +19,7 @@ require( "base_trigger")
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
+teamXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
 end
@@ -38,6 +39,8 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf", context )
+	PrecacheResource( "particle", "particles/hero_moon_mage/jakiro_liquid_fire_explosion.vpcf", context )
+	PrecacheResource( "particle", "particles/items_fx/aura_assault.vpcf", context )
 
 	--Arhat
 	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
@@ -166,7 +169,6 @@ function CEnfosGameMode:XpThink()
         -- Loop for every Player
         for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
             teamID = PlayerResource:GetTeam(xpPlayerID)
-            teamXP = 0
 
             -- Get the highest XP value in Team of the current player
             for teamPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
@@ -180,7 +182,9 @@ function CEnfosGameMode:XpThink()
             -- Give XP to current Player if needed
             if PlayerResource:GetSelectedHeroEntity(xpPlayerID) ~= nil then
                 if teamXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() then
-                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(teamXP - PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP(), false)
+                	local currentXP = PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP()
+                	local xpBonus = teamXP - currentXP
+                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false)
                 end
             end
         end
@@ -543,13 +547,10 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 				local bitTable = {512,256,128,64,32,16,8,4,2,1}
 
 				-- Gets the list of modifiers on the hero and loops through removing and health modifier
-				local modCount = spawnedUnitIndex:GetModifierCount()
-				for i = 0, modCount do
-					for u = 1, #bitTable do
-						local val = bitTable[u]
-						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_health_mod_" .. val  then
-							spawnedUnitIndex:RemoveModifierByName("modifier_health_mod_" .. val)
-						end
+				for u = 1, #bitTable do
+					local val = bitTable[u]
+					if spawnedUnitIndex:HasModifier("modifier_health_mod_" .. val)  then
+						spawnedUnitIndex:RemoveModifierByName("modifier_health_mod_" .. val)
 					end
 				end
 				
@@ -589,13 +590,10 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 				local bitTable = {512,256,128,64,32,16,8,4,2,1}
 
 				-- Gets the list of modifiers on the hero and loops through removing and health modifier
-				local modCount = spawnedUnitIndex:GetModifierCount()
-				for i = 0, modCount do
-					for u = 1, #bitTable do
-						local val = bitTable[u]
-						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_mana_mod_" .. val  then
-							spawnedUnitIndex:RemoveModifierByName("modifier_mana_mod_" .. val)
-						end
+				for u = 1, #bitTable do
+					local val = bitTable[u]
+					if spawnedUnitIndex:HasModifier("modifier_mana_mod_" .. val)  then
+						spawnedUnitIndex:RemoveModifierByName("modifier_mana_mod_" .. val)
 					end
 				end
 				
@@ -636,13 +634,10 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 				local bitTable = {512,256,128,64,32,16,8,4,2,1}
 
 				-- Gets the list of modifiers on the hero and loops through removing and health modifier
-				local modCount = spawnedUnitIndex:GetModifierCount()
-				for i = 0, modCount do
-					for u = 1, #bitTable do
-						local val = bitTable[u]
-						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_damage_mod_" .. val  then
-							spawnedUnitIndex:RemoveModifierByName("modifier_damage_mod_" .. val)
-						end
+				for u = 1, #bitTable do
+					local val = bitTable[u]
+					if spawnedUnitIndex:HasModifier( "modifier_damage_mod_" .. val)  then
+						spawnedUnitIndex:RemoveModifierByName("modifier_damage_mod_" .. val)
 					end
 				end
 				
@@ -737,23 +732,10 @@ function CEnfosGameMode:OnNPCSpawned( event )
 	end
 
 	 if spawnedUnit:IsCreature() then
+	 	if spawnedUnit:GetUnitName() == "npc_dota_neutral_satyr_reaver" then
+			spawnedUnit:AddNewModifier(caster, nil, "modifier_tower_truesight_aura", {})
+	 	end
 		-- spawnedUnit:SetHPGain( spawnedUnit:GetMaxHealth() * 0.3 ) -- LEVEL SCALING VALUE FOR HP
-		-- spawnedUnit:SetManaGain( 0 )
-		-- spawnedUnit:SetHPRegenGain( 0 )
-		-- spawnedUnit:SetManaRegenGain( 0 )
-		-- if spawnedUnit:IsRangedAttacker() then
-			-- spawnedUnit:SetDamageGain( ( ( spawnedUnit:GetBaseDamageMax() + spawnedUnit:GetBaseDamageMin() ) / 2 ) * 0.1 ) -- LEVEL SCALING VALUE FOR DPS
-		-- else
-			-- spawnedUnit:SetDamageGain( ( ( spawnedUnit:GetBaseDamageMax() + spawnedUnit:GetBaseDamageMin() ) / 2 ) * 0.2 ) -- LEVEL SCALING VALUE FOR DPS
-		-- end
-		-- spawnedUnit:SetArmorGain( 0 )
-		-- spawnedUnit:SetMagicResistanceGain( 0 )
-		-- spawnedUnit:SetDisableResistanceGain( 0 )
-		-- spawnedUnit:SetAttackTimeGain( 0 )
-		 spawnedUnit:SetMoveSpeedGain( 0 )
-		-- spawnedUnit:SetBountyGain( 0 )
-		-- spawnedUnit:SetXPGain( 0 )
-		-- spawnedUnit:CreatureLevelUp( GameRules:GetCustomGameDifficulty() )
 	 end
 
 	 if spawnedUnit:IsHero() then
@@ -783,19 +765,33 @@ function CEnfosGameMode:OnEntityKilled( event )
 	if not killedUnit or killedUnit:GetClassname() == "npc_dota_thinker" or killedUnit:IsPhantom() then
 		return
 	end
+
+	local corpseBlacklist = {
+				"npc_dota_creature_wood_troll",
+				"npc_dota_rock_troll",
+				"npc_dota_mottled_westanuryn",
+				"npc_dota_spirit_hawk",
+				"npc_dota_death_spirit",
+				"npc_dota_rock_guardian",
+				"npc_dota_skeletal_sailor",
+				"npc_dota_armored_warklin",
+				"npc_dota_snaer_hafwa",
+				"npc_dota_slai_screamer"
+							}
+
 	--print(killer)
 	if killedUnit:IsCreature() then
-		--[[local killerTeam = killer:GetTeam()
-		for nPlayerID = 0, 9 do
-			if PlayerResource:IsValidPlayer( nPlayerID ) then
-				--print(PlayerResource:GetPlayer(nPlayerID):GetAssignedHero())
-				if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero() ~= killer then
-					if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam() == killerTeam then
-						PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():AddExperience(exp, false)
-					end
-				end
+		--Set all killed units to have a corpse on default
+		if killedUnit.noCorpse == nil then
+			killedUnit.noCorpse = false
+		end
+
+		for i=1, #corpseBlacklist do
+			if killedUnit:GetUnitName() == corpseBlacklist[i] then
+				killedUnit.noCorpse = true
 			end
-		end]]--
+		end
+
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
 			if killer:IsHero() then
 				local killerTeam = killer:GetTeam()
@@ -842,24 +838,6 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 		return
 	end
 	curRound = nRoundToTest - 1
-	--local nExpectedGold = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].gold or 600
-	--local nExpectedXP = ROUND_EXPECTED_VALUES_TABLE[nRoundToTest].xp or 0
-	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-		if PlayerResource:IsValidPlayer( nPlayerID ) then
-			PlayerResource:ReplaceHeroWith( nPlayerID, PlayerResource:GetSelectedHeroName( nPlayerID ), 600, 0 )
-			PlayerResource:SetBuybackCooldownTime( nPlayerID, 0 )
-			PlayerResource:SetBuybackGoldLimitTime( nPlayerID, 0 )
-			PlayerResource:ResetBuybackCostTime( nPlayerID )
-			
-			if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetClassname() == "npc_dota_hero_queenofpain" then
-				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(5):SetLevel(1)
-				--Moon glaives
-				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(6):SetLevel(1)
-			else
-				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(4):SetLevel(1)
-			end
-		end
-	end
 
 	if self._entPrepTimeQuest then
 		UTIL_RemoveImmediate( self._entPrepTimeQuest )

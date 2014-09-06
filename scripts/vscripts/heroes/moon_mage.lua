@@ -106,13 +106,27 @@ function Burn(keys)
 -- vars
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.moonbeamActive[pid]:GetAbsOrigin(), caster, 175, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	local partDummy = FastDummy(AdjustZ(Enfos.moonbeamActive[pid]:GetAbsOrigin(), 128), caster:GetTeamNumber())
+	--local partDummy = FastDummy(AdjustZ(Enfos.moonbeamActive[pid]:GetAbsOrigin(), 128), caster:GetTeamNumber())
+	local unit = CreateUnitByName("npc_dummy_unit", Enfos.moonbeamActive[pid]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
+	local explosion = ParticleManager:CreateParticle("particles/items_fx/aura_assault.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	unit:SetAbsOrigin(Enfos.moonbeamActive[pid]:GetAbsOrigin()) -- CreateUnitByName uses only the x and y coordinates so we have to move it with SetAbsOrigin()
+	unit:GetAbilityByIndex(0):SetLevel(1)
+	unit:SetDayTimeVisionRange(250)
+	unit:SetNightTimeVisionRange(250)
+	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
+	unit:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
+	unit:EmitSound("Hero_Jakiro.LiquidFire")
+	unit:AddAbility("moon_mage_burn_dummy")
+	unit:FindAbilityByName("moon_mage_burn_dummy"):SetLevel(1)
+	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
+	
+end
+
+function BurnFX(keys)
+	local caster = keys.caster
+	local partDummy = FastDummy(caster:GetAbsOrigin(), caster:GetTeamNumber())
 	local explosion = ParticleManager:CreateParticle("particles/hero_moon_mage/jakiro_liquid_fire_explosion.vpcf", PATTACH_OVERHEAD_FOLLOW, partDummy)
 	partDummy:EmitSound("Hero_Jakiro.LiquidFire")
-	for k,v in pairs(units) do
-		DealDamage(caster, v, 90000, DAMAGE_TYPE_PURE, 0)
-	end
 	partDummy:ForceKill(false)
 end
 	

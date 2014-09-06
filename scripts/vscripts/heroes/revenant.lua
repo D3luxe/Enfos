@@ -26,7 +26,7 @@ function AnimateDead(keys)
 		return
 	end
 	for k,v in pairs(units) do
-		if not v:IsAlive() then
+		if not v:IsAlive() and not v.noCorpse then
 			table.insert(validTargets, v)
 		end
 	end
@@ -70,10 +70,9 @@ end
 function CorpseExplosion(keys)
 -- vars
 	local caster = keys.caster
-	local target = keys.target_points[1]
 	local damage = keys.damage -- this is a percentage of the corpse's max life
 	local radius = keys.radius
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), target, caster, 300, DOTA_UNIT_TARGET_TEAM_ENEMY + DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 400, DOTA_UNIT_TARGET_TEAM_ENEMY + DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
 	local validTargets = {}
 -- fail if no units found.
 	if units[1] == nil then
@@ -81,7 +80,7 @@ function CorpseExplosion(keys)
 	end
 -- place dead units into a table
 	for k,v in pairs(units) do
-		if not v:IsAlive() then
+		if not v:IsAlive() and not v.noCorpse then
 			table.insert(validTargets, v)
 		end
 	end
@@ -95,7 +94,7 @@ function CorpseExplosion(keys)
 		DealDamage(caster, v, validTargets[1]:GetMaxHealth() / (100/damage), DAMAGE_TYPE_MAGICAL, 0)
 	end
 	local particle = ParticleManager:CreateParticle("particles/hero_revenant/revenant_corpse_explosion_bloody.vpcf", PATTACH_ABSORIGIN_FOLLOW, validTargets[1])
-	ParticleManager:SetParticleControl(particle, 62, Vector(radius, 0, 300))
+	ParticleManager:SetParticleControl(particle, 62, Vector(radius, 0, 400))
 	validTargets[1]:EmitSound("Hero_LifeStealer.Consume")
 	DelayDestroy(validTargets[1], 0.2)
 end
