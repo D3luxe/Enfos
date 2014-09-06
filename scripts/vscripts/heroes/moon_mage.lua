@@ -27,8 +27,6 @@ function StarlightSphereDetonate(keys)
 	if not caster:IsHero() then
 		caster = caster:GetOwner() -- since the sphere itself can cast this spell, we need to get the owner of the spell instead
 	end
-	print (caster:GetClassname())
-	PrintTable(keys)
 	local pid = caster:GetPlayerID()
 	local damage = keys.damage
 	local unitsFullRadius = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.starlightSphere[pid]:GetOrigin(), caster, keys.full_damage_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)

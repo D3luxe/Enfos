@@ -97,17 +97,6 @@ function ModelScale(keys)
 	keys.caster:SetModelScale(keys.scale)
 end
 
-function Empower_Armor(keys)
-	--Heal caster
-	local strength = keys.caster:GetStrength()
-	local healed = strength * 20
-
-	keys.caster:Heal(healed, keys.caster)
-
-	--Play fx
-	ParticleManager:CreateParticle("particles/units/heroes/hero_huskar/huskar_inner_vitality_cast.vpcf", PATTACH_ABSORIGIN_FOLLOW, keys.caster)
-end
-
 function Permenant_Invisibility(keys)
 	keys.caster:AddNewModifier(keys.caster, nil, "modifier_invisible", {})
 

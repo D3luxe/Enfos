@@ -97,7 +97,7 @@
 						{
 							"RunScript"
 							{
-								"ScriptFile"		"custom_scripted_abilities.lua"
+								"ScriptFile"		"scripts/vscripts/heroes/magic_infuser.lua"
 								"Function"		"Empower_Armor"
 							}
 						}
@@ -917,6 +917,7 @@
 		"AbilityTextureName" 			"slardar_slithereen_crush"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 		"MaxLevel"						"10"
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
 			
@@ -1029,6 +1030,7 @@
 		"BaseClass"						"juggernaut_blade_fury"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"								"10"
 		"LevelsBetweenUpgrades"		"5"
 		"RequiredLevel"			"10"
@@ -1277,6 +1279,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"troll_warlord_berserkers_rage"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"					"6"
@@ -1742,6 +1745,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"silencer_last_word"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"1"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
@@ -1840,6 +1844,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"omniknight_repel"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"2"
 		"RequiredLevel"			"1"
@@ -3471,7 +3476,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"			
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"		
 				
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -3748,6 +3754,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_bash"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"1"
 		
 		"Modifiers"
@@ -5067,7 +5074,14 @@
 								"EffectName"		 "particles/econ/events/coal/coal_projectile_explosion.vpcf"
 								"EffectAttachType"	 "follow_origin"
 								"Target"			 "TARGET"
-							}	
+							}
+
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/heroes/magic_infuser.lua"
+								"Function"		"MagicInfuserSpendMana"
+								"manacost"		"2"
+							}
 						}
 					}
 				}
@@ -5144,11 +5158,23 @@
 							"ApplyModifier"
 							{
 								"ModifierName" "modifier_empower_axe_armor"
-								"Target"	"TARGET"
+								"Target"
+								{
+									"Center"		"TARGET"
+									"Radius"		"%radius"
+									"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+									"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+								}
 							}
 							"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
-							"EffectAttachType"	"attach_hitloc"
-								
+							"EffectAttachType"	"attach_hitloc"	
+
+							"RunScript"
+							{
+								"ScriptFile"	"scripts/vscripts/heroes/magic_infuser.lua"
+								"Function"		"MagicInfuserSpendMana"
+								"manacost"		"4"
+							}
 						}
 					}
 				}
@@ -5178,12 +5204,17 @@
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"armor"		"-4 -8 -12 -16 -20 -24 -28 -32 -36 -40"
+				"armor"		"-9 -12 -15 -18 -21 -24 -27 -30 -33 -36"
 			}
-			"02"
+			"03"
 			{
 				"var_type"		"FIELD_INTEGER"
 				"duration"		"3"
+			}	
+			"04"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"radius"		"600"
 			}		
 		}
 	}
@@ -6147,6 +6178,7 @@
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCastRange"				"500" // don't know if I actually have the right value
@@ -6554,7 +6586,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bounces"					"1"
+				"bounces"					"2"
 			}
 			"03"
 			{
@@ -6849,6 +6881,7 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
 		"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_vengeful/"
@@ -7083,34 +7116,28 @@
 	//=================================================================================================================
 	// Sniper: Technique
 	//=================================================================================================================
-	"sniper_technique" //guessing on cooldown
+	"sniper_sniper_technique" //guessing on cooldown
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"sniper_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"						"1"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"30"
-		"OnToggleOn"
+		"OnSpellStart"
 		{
-			"ApplyModifier"
+			"RunScript"
 			{
-				"ModifierName"			"modifier_sniper_technique"
-				"Target"				"CASTER"
+				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+				"Function"		"TechniqueAcqRangeDown"
 			}
-		}
-		"OnToggleOff"
-		{
-			"RemoveModifier"
-			{
-				"ModifierName"			"modifier_sniper_technique"
-				"Target"				"CASTER"
-			}
+
 		}
 		"Modifiers"
 		{
 			"modifier_sniper_technique"
 			{
+				"Passive"	"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
@@ -7118,6 +7145,14 @@
 				"States"
 				{
 					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"TechniquePierce"
+					}
 				}
 			}
 		}
@@ -7130,27 +7165,95 @@
 			}
 		}
 	}
+	"sniper_standard_technique" //guessing on cooldown
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sniper_take_aim"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+				"Function"		"TechniqueAcqRangeUp"
+			}
+		}
+
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_range"			"500" //it's supposed to be for creeps on your own side. this is close enough
+			}
+		}
+
+	}
 	//=================================================================================================================
 	// Sniper: Fire Ammo
 	//=================================================================================================================
 	"sniper_fire_ammo"
 	{
-		"BaseClass"						"clinkz_searing_arrows"
+		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"sniper_shrapnel"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
-		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-
 		"Precache"
 		{
-			"particle_folder"			"particles/units/heroes/hero_clinkz/"
+			"particle_folder"			"particles/units/heroes/hero_lina/"
 		}
-
+		"OnToggleOn"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+				"Function"		"FireAmmoRefund" //it's not supposed to cost mana to toggle
+			}	
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_sniper_fire_ammo"
+				"Target"				"CASTER"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"			"modifier_sniper_fire_ammo"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_sniper_fire_ammo"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage_bonus"
+				}
+				"OnAttackStart"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"FireAmmoCost"
+					}
+					"TrackingProjectile" // a bit ghetto
+					{
+						"Target"		"TARGET"
+						"EffectName"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+						"MoveSpeed"		"3000"
+					}
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -7320,6 +7423,8 @@
 			}
 		}
 	}
+
+
 
 	//=================================================================================================================
 	// Dummy unit spell

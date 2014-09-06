@@ -27,8 +27,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.7"									// Speed of attack.
 		"AttackAnimationPoint"		"0.5"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -51,8 +51,8 @@
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"9"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 	}
 
 	//=================================================================================================================
@@ -79,8 +79,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"18"									// Damage range min.
-		"AttackDamageMax"			"23"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"8"									// Damage range max.
 		"AttackRate"				"1.4"									// Speed of attack.
 		"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -90,7 +90,7 @@
 
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
-		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength"		"6"									// Base strength
 		"AttributeStrengthGain"		"2"									// Strength bonus per level.
 		"AttributeBaseIntelligence"	"3"									// Base intelligence
@@ -100,8 +100,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"136"
-		"StatusMana"				"9"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -134,8 +134,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.4"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -160,8 +160,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"9"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 	}
 	
 	
@@ -189,8 +189,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.5"									// Speed of attack.
 		"AttackAnimationPoint"		"0.46"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
@@ -214,8 +214,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"136"
-		"StatusMana"				"27"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 
 		"precache"
 		{
@@ -248,8 +248,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32	"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.5"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -272,8 +272,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"12"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 	}
 
 	//=================================================================================================================
@@ -300,8 +300,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"38"									// Damage range min.
-		"AttackDamageMax"			"52"									// Damage range max.
+		"AttackDamageMin"			"5.5"									// Damage range min.
+		"AttackDamageMax"			"19.5"									// Damage range max.
 		"AttackRate"				"1.6"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
@@ -326,8 +326,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"39"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 	}
 
 	//=================================================================================================================
@@ -357,8 +357,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.8"									// Speed of attack.
 		"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -381,8 +381,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"9"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 
 		// Vision
 		//-------------------------------------------------------------------------------------------------------------
@@ -425,8 +425,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.35"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -449,8 +449,8 @@
 
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
-		"StatusHealth"				"199"
-		"StatusMana"				"9"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 
 
 		"precache"
@@ -484,8 +484,8 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"25"									// Damage range min.
-		"AttackDamageMax"			"32"									// Damage range max.
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 		"AttackRate"				"1.6"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
@@ -501,8 +501,8 @@
 		"AttributeBaseIntelligence"	"3"									// Base intelligence
 		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
 
-		"StatusHealth"				"199"
-		"StatusMana"				"39"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
 
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -531,7 +531,8 @@
 		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
-		
+
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" 	"3"
 		"AttributeStrengthGain" 	"1.5"
 		"AttributeBaseAgility" 		"6" 
@@ -542,10 +543,10 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "1.65"
 		"AttackRange"               "160"
-		"StatusHealth"				"73"
-		"StatusMana"				"28"
-		"AttackDamageMin" 			"25"
-		"AttackDamageMax" 			"32" 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 	}
 	//=================================================================================================================
 	// HERO: Storm Spirit (Evoker)
@@ -574,10 +575,10 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "1.8"
 		"AttackRange"               "550"
-		"StatusHealth"				"136"
-		"StatusMana"				"27"
-		"AttackDamageMin" 			"25"
-		"AttackDamageMax" 			"30" 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"8.5"									// Damage range max.
 	}
 	//=================================================================================================================
 	// HERO: Queen of Pain (Moon Mage)
@@ -610,10 +611,10 @@
 		"AttackRange"               "500"
 		"ProjectileModel"			"particles/base_attacks/generic_projectile.vpcf"					// Particle system model for projectile.
 		"ProjectileSpeed"			"900"									// Speed of projectile.
-		"StatusHealth"				"130"
-		"StatusMana"				"144"
-		"AttackDamageMin" 			"25"
-		"AttackDamageMax" 			"32" 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
 
 		"precache"
 		{
@@ -650,10 +651,10 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "1.25"
 		"AttackRange"               "300"
-		"StatusHealth"				"250"
-		"StatusMana"				"96"
-		"AttackDamageMin" 			"16"
-		"AttackDamageMax" 			"21" 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"1"
+		"AttackDamageMax" 			"6" 
 
 
 		// Vision
@@ -695,10 +696,10 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "4.65"
 		"AttackRange"               "120"
-		"StatusHealth"				"450"
-		"StatusMana"				"16"
-		"AttackDamageMin" 			"38"
-		"AttackDamageMax" 			"57" 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"10.5"
+		"AttackDamageMax" 			"29.5" 
 	}
 
 	//=================================================================================================================
@@ -728,10 +729,10 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "1.8"
 		"AttackRange"               "550"
-		"StatusHealth"				"250"
-		"StatusMana"				"144"
-		"AttackDamageMin" 			"25"
-		"AttackDamageMax" 			"30" //hm, how do you increase the damage per level? I just noticed that 
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"8.5"									// Damage range max.
 	}
 	//=================================================================================================================
 	// HERO: Sniper (Sniper)
@@ -744,26 +745,26 @@
 		"Ability2"					"sniper_lucky_shot"
 		"Ability3"					"sniper_burning_grenade"
 		"Ability4"					"sniper_rapid_reload"
-		"Ability5"					"sniper_technique"
+		"Ability5"					"sniper_standard_technique"
 		"Ability6"					"attribute_bonus"
 		"Ability10"					"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
 		//I had to guess for most of these values. They need to be verified.
-		"AttributeBaseStrength" 	"4"
+		"AttributeBaseStrength" 	"3"
 		"AttributeStrengthGain" 	"1"
-		"AttributeBaseAgility" 		"1" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "8" 
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "9" 
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
 		"AttackRate"                "1.8"
 		"AttackRange"               "500"
-		"AttackAcquisitionRange"	"3600"	
+		"AttackAcquisitionRange"	"700"	
 		"StatusHealth"				"250"
 		"StatusMana"				"144"
-		"AttackDamageMin" 			"28"
-		"AttackDamageMax" 			"38"
+		"AttackDamageMin" 			"1.5"
+		"AttackDamageMax" 			"11.5"
 	}
 }

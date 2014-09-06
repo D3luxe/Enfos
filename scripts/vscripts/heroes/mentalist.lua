@@ -29,21 +29,18 @@ function SealOfDeflection(keys)
 -- vars
 	local damage = keys.DamageDealt
 	local caster = keys.caster
-	local pid = caster:GetPlayerID()
 	local percentBlocked = keys.damage_absorbed / 100
 	local damageAbsorbedPerPoint = keys.damage_per_mana
 	local thisSpell = keys.ability
-
 	local currentHealth = caster:GetHealth()
 	local casterMana = caster:GetMana()
-
 	if casterMana * damageAbsorbedPerPoint > damage * (percentBlocked) then -- we have enough mana left to fully absorb this hit
 		if 0 > currentHealth - (damage * (1 - percentBlocked)) then -- calculate if the damage is fatal even with full block
 			local blastPart = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_shatter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster) -- the mana shield explodes
 			caster:ForceKill(false) -- we force kill the caster because it goes through the MODIFIER_PROPERTY_MIN_HEALTH modifier
 		end
 		--caster:SetHealth(currentHealth - (damage * (1 - percentBlocked))) -- undo the non-fatal damage
-		Timers:CreateTimer("seal_heal1" .. pid, {
+		Timers:CreateTimer(DoUniqueString("sodh"), {
 		endTime = 0.001, 	
 		callback = function()
 			caster:Heal(damage * (percentBlocked), nil)
@@ -62,7 +59,7 @@ function SealOfDeflection(keys)
 		end
 		caster:SetMana(0) -- all our mana is drained by the block
 		--caster:SetHealth((currentHealth - (damage * (percentBlocked))) - ((damage * percentBlocked) - (casterMana * damageAbsorbedPerPoint))) -- undo the non-fatal damage
-		Timers:CreateTimer("seal_heal2" .. pid, {
+		Timers:CreateTimer(DoUniqueString("sodh"), {
 		endTime = 0.001, 	
 		callback = function()
 			caster:Heal((damage * (percentBlocked)) - ((damage * percentBlocked) - (casterMana * damageAbsorbedPerPoint)), nil)
@@ -80,27 +77,3 @@ end
 function AuraSight(keys)
 	keys.caster:SetMana(keys.caster:GetMana() + (keys.mana_regen / 10)) -- divided by ten since we're calling it ten times per second
 end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -72,17 +72,42 @@ function AdjustZ(vec, zAdj) -- return the vector with z added
 	return Vector(vec.x, vec.y, vec.z + zAdj)
 end
 
-function GetMidPoint(vector1, vector2) -- can also pass in units
-  if type(vector1) == "table" then
-    vector1 = vector1:GetAbsOrigin()
-  end
-  if type(vector2) == "table" then
-    vector2 = vector2:GetAbsOrigin()
-  end
-  return (vector1 + vector2)/2
+function GetMidPoint(vec1, vec2) -- can also pass in units
+	if type(vec1) == "table" then
+		vec1 = vec1:GetAbsOrigin()
+	end
+	if type(vec2) == "table" then
+		vec2 = vec2:GetAbsOrigin()
+	end
+	return (vector1 + vector2)/2
+end
+
+-- GetLine and GetDistanceToLine by Perry. GetPointOnEdge also probably by Perry
+
+function GetLine(vec1, vec2)
+	if type(vec1) == "table" then
+		vec1 = vec1:GetAbsOrigin()
+	end
+	if type(vec2) == "table" then
+		vec2 = vec2:GetAbsOrigin()
+	end
+	local a = vec1.y - vec2.y
+	local b = vec2.x - vec1.x
+	local c = vec1.x * vec2.y - vec2.x * vec1.y
+	return a, b, c
+end
+
+function GetDistanceToLine(tVec, a, b, c)
+	if type(tVec) == "table" then
+		tVec = tVec:GetAbsOrigin()
+	end
+	return math.abs(a*tVec.x + b*tVec.y + c)/math.sqrt(a * a + b * b) -- okay
 end
 
 function GetPointOnEdge(vec, angle, radius)
+	if type(vec) == "table" then
+		vec = vec:GetAbsOrigin()
+	end
 	return Vector(vec.x + radius*math.cos(angle), vec.y + radius*math.sin(angle), vec.z)
 end
 	

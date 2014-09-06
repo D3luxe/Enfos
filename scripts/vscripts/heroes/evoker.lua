@@ -50,8 +50,8 @@ function GarZeng(keys)
 	for k,v in pairs (units) do
 		local highVar = cfVec:Dot((v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized())
 		local lowVar = math.cos(45) -- 45 degree cone. a complete guess if this is correct
-		if highVar > lowVar or v:HasModifier("modifier_skill_flag") then -- if the highVar is a higher number than the lowVar, it's in the cone.
-			table.insert(inCone, v) -- remove the unit if it's not in the cone
+		if highVar > lowVar and not v:HasModifier("modifier_skill_flag") then -- if the highVar is a higher number than the lowVar, it's in the cone.
+			table.insert(inCone, v) -- add the unit if it's not in the cone
 		end
 	end
 -- getting the correct behaviour 

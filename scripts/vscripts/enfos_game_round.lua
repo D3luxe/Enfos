@@ -43,7 +43,7 @@ function CEnfosGameRound:Begin()
 		ListenToGameEvent( "npc_spawned", Dynamic_Wrap( CEnfosGameRound, "OnNPCSpawned" ), self ),
 		--ListenToGameEvent( "dota_item_picked_up", Dynamic_Wrap( CEnfosGameRound, 'OnItemPickedUp' ), self ),
 	}
-	ROUND_TIME = 80
+	ROUND_TIME = 40
 	self._vPlayerStats = {}
 	for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 		self._vPlayerStats[ nPlayerID ] = {

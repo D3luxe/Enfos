@@ -16,6 +16,13 @@ require( "enfos")
 require( "timers")
 require( "base_trigger")
 
+MAX_LEVEL = 125
+XP_PER_LEVEL_TABLE = {}
+XP_PER_LEVEL_TABLE[0] = 0
+for i=1,MAX_LEVEL do
+  XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
+end
+
 if CEnfosGameMode == nil then
 	CEnfosGameMode = class({})
 	CEnfosGameMode.__index = CEnfosGameMode
@@ -30,6 +37,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/items2_fx/necronomicon_archer_manaburn.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf", context )
 
 	--Arhat
 	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
@@ -81,10 +89,11 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
 	GameRules:SetUseUniversalShopMode( false )
 	GameRules:SetHeroSelectionTime( 60.0 )
-	GameRules:SetPreGameTime( 30.0 )
+	GameRules:SetPreGameTime( 45.0 )
 	GameRules:SetPostGameTime( 60.0 )
 	GameRules:SetTreeRegrowTime( 60.0 )
 	--GameRules:SetHeroMinimapIconSize( 400 )
+	GameRules:GetGameModeEntity():SetCameraDistanceOverride( 1400 )		--1134 default dota 2
 	GameRules:SetCreepMinimapIconScale( 0.7 )
 	GameRules:SetRuneMinimapIconScale( 0.7 )
 	GameRules:SetGoldTickTime( 60.0 )
@@ -96,7 +105,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, 100)
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, 100)
 	GameRules:GetGameModeEntity():SetFogOfWarDisabled( false )
-	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( 125 )
+	GameRules:GetGameModeEntity():SetCustomHeroMaxLevel( MAX_LEVEL )
 	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 	GameRules:GetGameModeEntity():SetFixedRespawnTime(-1)
 
@@ -442,31 +451,27 @@ function CEnfosGameMode:_SpawnHeroClientEffects( hero, nPlayerID )
 end
 
 function CEnfosGameMode:OnPlayerPicked( event )
-	PrintTable(event)
 	local spawnedUnit = event.hero
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
 	
 	-- we have to handle exceptions here, since not all units will have their passive on index 4. we can add "ors" here later
 	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_luna" then
-		print("Leveling qop innate")
 		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 		--Moon glaives
-		print("leveling qop glaives")
+
 		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
 	else
-		print("Leveling innate")
 		spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
 	end
-	local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
-	if statAbility ~= nil then
-		statAbility:SetLevel(1)
-	end
+	--local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
+	--if statAbility ~= nil then
+	--	statAbility:SetLevel(1)
+	--end
 	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
 
 	local spellbringerName = nil
 	local spellbringerLocation = nil
 	local playerID = spawnedUnitIndex:GetPlayerID()
-	print(playerID)
 	if playerID == 0 then
 		spellbringerName = "spellbringer_1"
 	elseif playerID == 1 then
@@ -492,14 +497,12 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	end
 
 	if spellbringerName ~= nil then
-		print(spellbringerName)
 		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
 	end
 	Timers:CreateTimer(DoUniqueString("spawnSpellbringer"), {
 		endTime = 0.1,
 		callback = function()
 			if spellbringerLocation ~= nil then
-				print(spellbringerLocation)
 				local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
 				unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
 				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
@@ -511,15 +514,161 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		end
 	})
 
-	
-	--GameRules.Enfos:UpdateBaseStats(spawnedUnitIndex)
+	-- Apply timer to update stats
+	CEnfosGameMode:ModifyStatBonuses(spawnedUnitIndex)
 
 
 end
 
+function CEnfosGameMode:ModifyStatBonuses(unit)
+	local spawnedUnitIndex = unit
+		Timers:CreateTimer(DoUniqueString("updateHealth_" .. spawnedUnitIndex:GetPlayerID()), {
+		endTime = 0.25,
+		callback = function()
+			-- ==================================
+			-- Adjust health based on strength
+			-- ==================================
+
+			-- Get player strength
+			local strength = spawnedUnitIndex:GetStrength()
+
+			--Check if strBonus is stored on hero, if not set it to 0
+			if spawnedUnitIndex.strBonus == nil then
+				spawnedUnitIndex.strBonus = 0
+			end
+
+			-- If player strength is different this time around, start the adjustment
+			if strength ~= spawnedUnitIndex.strBonus then
+				-- Modifier values
+				local bitTable = {512,256,128,64,32,16,8,4,2,1}
+
+				-- Gets the list of modifiers on the hero and loops through removing and health modifier
+				local modCount = spawnedUnitIndex:GetModifierCount()
+				for i = 0, modCount do
+					for u = 1, #bitTable do
+						local val = bitTable[u]
+						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_health_mod_" .. val  then
+							spawnedUnitIndex:RemoveModifierByName("modifier_health_mod_" .. val)
+						end
+					end
+				end
+				
+				-- Creates temporary item to steal the modifiers from
+				local healthUpdater = CreateItem("item_health_modifier", nil, nil) 
+				for p=1, #bitTable do
+					local val = bitTable[p]
+					local count = math.floor(strength / val)
+					if count >= 1 then
+						healthUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_health_mod_" .. val, {})
+						strength = strength - val
+					end
+				end
+				-- Cleanup
+				UTIL_RemoveImmediate(healthUpdater)
+				healthUpdater = nil
+			end
+			-- Updates the stored strength bonus value for next timer cycle
+			spawnedUnitIndex.strBonus = spawnedUnitIndex:GetStrength()
+
+
+			-- ==================================
+			-- Adjust mana based on Intellect
+			-- ==================================
+
+			-- Get player intellect
+			local intellect = spawnedUnitIndex:GetIntellect()
+
+			--Check if intBonus is stored on hero, if not set it to 0
+			if spawnedUnitIndex.intBonus == nil then
+				spawnedUnitIndex.intBonus = 0
+			end
+
+			-- If player int is different this time around, start the adjustment
+			if intellect ~= spawnedUnitIndex.intBonus then
+				-- Modifier values
+				local bitTable = {512,256,128,64,32,16,8,4,2,1}
+
+				-- Gets the list of modifiers on the hero and loops through removing and health modifier
+				local modCount = spawnedUnitIndex:GetModifierCount()
+				for i = 0, modCount do
+					for u = 1, #bitTable do
+						local val = bitTable[u]
+						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_mana_mod_" .. val  then
+							spawnedUnitIndex:RemoveModifierByName("modifier_mana_mod_" .. val)
+						end
+					end
+				end
+				
+				-- Creates temporary item to steal the modifiers from
+				local manaUpdater = CreateItem("item_mana_modifier", nil, nil) 
+				for p=1, #bitTable do
+					local val = bitTable[p]
+					local count = math.floor(intellect / val)
+					if count >= 1 then
+						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_mana_mod_" .. val, {})
+						intellect = intellect - val
+					end
+				end
+
+				-- Cleanup
+				UTIL_RemoveImmediate(manaUpdater)
+				manaUpdater = nil
+			end
+			-- Updates the stored Int bonus value for next timer cycle
+			spawnedUnitIndex.intBonus = spawnedUnitIndex:GetIntellect()
+
+
+			-- ==================================
+			-- Adjust damage based on primary stat
+			-- ==================================
+
+			-- Get player primary stat value
+			local primStat = spawnedUnitIndex:GetPrimaryStatValue()
+
+			--Check if primaryStatBonus is stored on hero, if not set it to 0
+			if spawnedUnitIndex.primaryStatBonus == nil then
+				spawnedUnitIndex.primaryStatBonus = 0
+			end
+
+			-- If player int is different this time around, start the adjustment
+			if primStat ~= spawnedUnitIndex.primaryStatBonus then
+				-- Modifier values
+				local bitTable = {512,256,128,64,32,16,8,4,2,1}
+
+				-- Gets the list of modifiers on the hero and loops through removing and health modifier
+				local modCount = spawnedUnitIndex:GetModifierCount()
+				for i = 0, modCount do
+					for u = 1, #bitTable do
+						local val = bitTable[u]
+						if spawnedUnitIndex:GetModifierNameByIndex(i) == "modifier_damage_mod_" .. val  then
+							spawnedUnitIndex:RemoveModifierByName("modifier_damage_mod_" .. val)
+						end
+					end
+				end
+				
+				-- Creates temporary item to steal the modifiers from
+				local manaUpdater = CreateItem("item_damage_modifier", nil, nil) 
+				for p=1, #bitTable do
+					local val = bitTable[p]
+					local count = math.floor(primStat / val)
+					if count >= 1 then
+						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_damage_mod_" .. val, {})
+						primStat = primStat - val
+					end
+				end
+
+				-- Cleanup
+				UTIL_RemoveImmediate(manaUpdater)
+				manaUpdater = nil
+			end
+			-- Updates the stored Int bonus value for next timer cycle
+			spawnedUnitIndex.primaryStatBonus = spawnedUnitIndex:GetPrimaryStatValue()
+			return 0.25
+		end
+	})
+end
+
 function CEnfosGameMode:OnPlayerStatsUpdated( event )
-	print("Stats Updated")
-	PrintTable(event)
 end	
 
 function CEnfosGameMode:OnPlayerLearnedAbility( event )
@@ -535,7 +684,6 @@ end
 
 function CEnfosGameMode:OnInventoryChanged( event )
 	print("Player inventory changed")
-	PrintTable(event)
 	local player = event.PlayerID 
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
@@ -581,50 +729,6 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	end
 end
 
-function CEnfosGameMode:UpdateBaseStats(hero)
-	print("Starting to update base stats")
-	 -- 10 second delayed, run once using gametime (respect pauses)
-	local player = hero
-	local currentHPPercent = player:GetHealthPercent()
-	print (string.format( "Current HP percentage %d", currentHPPercent ) )
-	local currentHP = player:GetHealth()
-	print (string.format( "Current HP %d", currentHP ) )
-	
-	Timers:CreateTimer({
-    endTime = 0.01, -- when this timer should first execute, you can omit this if you want it to run first on the next frame
-    callback = function()
-    	print("Timer fired")
-     	
-		local strength = player:GetStrength()
-		local int = player:GetIntellect()
-		local agi = player:GetAgility()
-
-		--Update players health - Health = 10 + (strength * 40)
-
-		local strengthBase = strength * 40
-		print (string.format( "Str base %d", strengthBase ) )
-		local newBaseHP = 10 + strengthBase
-		print (string.format( "New base HP %d", newBaseHP ) )
-		player:SetMaxHealth(newBaseHP)
-		local newHP = newBaseHP * currentHPPercent / 100
-		print (string.format( "New HP %d", newHP ) )
-		player:SetHealth(newHP)	
-
-
-		--Update players (Armor = agi / 20)
-		print (string.format( "Current base armor %d", player:GetPhysicalArmorValue() ) )
-		local newBaseArmor = agi / 20
-		print (string.format( "New base armor %d", newBaseArmor ) )
-		player:SetPhysicalArmorBaseValue(newBaseArmor)
-
-
-		print(strength)
-		print(int)
-		print(agi)
-    end
-  })
-end
-
 
 function CEnfosGameMode:OnNPCSpawned( event )
 	local spawnedUnit = EntIndexToHScript( event.entindex )
@@ -650,6 +754,12 @@ function CEnfosGameMode:OnNPCSpawned( event )
 		-- spawnedUnit:SetBountyGain( 0 )
 		-- spawnedUnit:SetXPGain( 0 )
 		-- spawnedUnit:CreatureLevelUp( GameRules:GetCustomGameDifficulty() )
+	 end
+
+	 if spawnedUnit:IsHero() then
+	 	spawnedUnit.strBonus = 0
+	 	spawnedUnit.intBonus = 0
+	 	spawnedUnit.primaryStatBonus = 0
 	 end
 
 end
@@ -689,7 +799,6 @@ function CEnfosGameMode:OnEntityKilled( event )
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
 			if killer:IsHero() then
 				local killerTeam = killer:GetTeam()
-				print(killerTeam)
 				if(killerTeam == 2) then
 					Triggers._goodLives = Triggers._goodLives + 1
 					GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
@@ -717,134 +826,7 @@ function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
 	return nRewardPerTower * nTowersStanding
 end
 
--- Leveling/gold data for console command "Enfos_test_round"
-XP_PER_LEVEL_TABLE = {
-	0,-- 1
-	200,-- 2
-	500,-- 3
-	900,-- 4
-	1400,-- 5
-	2000,-- 6
-	2700,-- 7
-	3500,-- 8
-	4400,-- 9
-	5400,-- 10
-	6500,-- 11
-	7700,-- 12
-	9000,-- 13
-	10400,-- 14
-	11900,-- 15
-	13500,-- 16
-	15200,-- 17
-	17000,-- 18
-	18900,-- 19
-	20900,-- 20
-	23000,-- 21
-	25200,-- 22
-	27500,-- 23
-	29900,-- 24
-	32400, -- 25
-	35000, -- 26
-	37700, -- 27
-	40500, -- 28
-	43400, -- 29
-	46400, -- 30
-	49500, -- 31
-	52700, -- 32
-	56000, -- 33
-	59400, -- 34
-	62900, -- 35
-	66500, -- 36
-	70200, -- 37
-	74000, -- 38
-	77900, -- 39
-	81900, -- 40
-	86000, -- 41
-	90200, -- 42
-	94500, -- 43
-	98900, -- 44
-	103400, -- 45
-	108000, -- 46
-	112700, -- 47
-	117500, -- 48
-	122400, -- 49
-	127400, -- 50
-	132500, -- 51
-	137700, -- 51
-	143000, -- 51
-	148400, -- 51
-	153900, -- 51
-	159500, -- 51
-	165200, -- 51
-	171000, -- 51
-	176900, -- 51
-	182900, -- 51
-	189000, -- 51
-	195200, -- 51
-	201500, -- 51
-	207900, -- 51
-	214400, -- 51
-	221000, -- 51
-	227700, -- 51
-	234500, -- 51
-	241400, -- 51
-	248400, -- 51
-	255500, -- 51
-	262700, -- 51
-	270000, -- 51
-	277400, -- 51
-	284900, -- 51
-	292500, -- 51
-	300200, -- 51
-	308000, -- 51
-	315900, -- 51
-	323900, -- 51
-	332000, -- 51
-	340200, -- 51
-	348500, -- 51
-	356900, -- 51
-	365400, -- 51
-	374000, -- 51
-	382700, -- 51
-	391500, -- 51
-	400400, -- 51
-	409400, -- 51
-	418500, -- 51
-	427700, -- 51
-	437000, -- 51
-	446400, -- 51
-	455900, -- 51
-	465500, -- 51
-	475200, -- 51
-	485000, -- 51
-	494900, -- 51
-	504900, -- 51
-	515000, -- 51
-	525200, -- 51
-	535500, -- 51
-	545900, -- 51
-	556400, -- 51
-	567000, -- 51
-	577700, -- 51
-	588500, -- 51
-	599400, -- 51
-	610400, -- 51
-	621500, -- 51
-	632700, -- 51
-	644000, -- 51
-	655400, -- 51
-	666900, -- 51
-	678500, -- 51
-	690200, -- 51
-	702000, -- 51
-	713900, -- 51
-	725900, -- 51
-	738000, -- 51
-	750200, -- 51
-	762500, -- 51
-	774900, -- 51
-	787400 -- 51
-}
+
 
 
 ROUND_EXPECTED_VALUES_TABLE = {
@@ -870,13 +852,10 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 			PlayerResource:ResetBuybackCostTime( nPlayerID )
 			
 			if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetClassname() == "npc_dota_hero_queenofpain" then
-				print("Leveling qop innate")
 				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(5):SetLevel(1)
 				--Moon glaives
-				print("leveling qop glaives")
 				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(6):SetLevel(1)
 			else
-				print("Leveling innate")
 				PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetAbilityByIndex(4):SetLevel(1)
 			end
 		end

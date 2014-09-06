@@ -1,6 +1,6 @@
 "dota_Enfos"
 {
-	"PrepTimeBetweenRounds"			"10"
+	"PrepTimeBetweenRounds"			"5"
 	"ItemExpireTime"				"10"
 	"RestoreHPAfterRound"			"0"
 	"RestoreMPAfterRound"			"0"
