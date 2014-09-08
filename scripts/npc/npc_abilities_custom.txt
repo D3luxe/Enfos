@@ -3867,7 +3867,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
-				"OnAttackStart"
+				"OnAttackLanded"
 				{
 					"Random"
 					{
@@ -7958,7 +7958,7 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_riki/"
-			"particle_folder"			"particles/units/heroes/hero_lion/"
+			"particle_folder"			"particles/hero_thief/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
 		}
 		"OnSpellStart"
@@ -7986,12 +7986,6 @@
 						"ModifierName"	"modifier_thief_khri_silence_fade"
 						"Target"		"CASTER"
 					}
-					"AttachEffect"
-					{
-						"EffectName"		"particles/units/heroes/hero_lion/lion_spell_finger_of_death_core_smoke.vpcf"
-						"EffectAttachType"	"attach_hitloc"
-						"Target"			"CASTER"
-					}
 				}
 			}
 			"modifier_thief_khri_silence_cloak"
@@ -8004,6 +7998,15 @@
 				"States"				
 				{
 					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/hero_thief/thief_stealth_smoke.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"CASTER"
+					}
 				}
 				"OnAttackLanded"
 				{

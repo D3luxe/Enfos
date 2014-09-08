@@ -682,6 +682,70 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 			end
 			-- Updates the stored Int bonus value for next timer cycle
 			spawnedUnitIndex.primaryStatBonus = spawnedUnitIndex:GetPrimaryStatValue()
+
+			-- ==================================
+			-- Adjust armor based on agi
+			-- ==================================
+
+			-- Get player primary stat value
+			local agility = spawnedUnitIndex:GetAgility()
+
+			--Check if primaryStatBonus is stored on hero, if not set it to 0
+			if spawnedUnitIndex.agilityBonus == nil then
+				spawnedUnitIndex.agilityBonus = 0
+			end
+
+			-- If player int is different this time around, start the adjustment
+			if agility ~= spawnedUnitIndex.agilityBonus then
+				-- Modifier values
+				local bitTable = {512,256,128,64,32,16,8,4,2,1}
+
+				-- Gets the list of modifiers on the hero and loops through removing and health modifier
+				for u = 1, #bitTable do
+					local val = bitTable[u]
+					if spawnedUnitIndex:HasModifier( "modifier_armor_mod_" .. val)  then
+						spawnedUnitIndex:RemoveModifierByName("modifier_armor_mod_" .. val)
+					end
+					
+					if spawnedUnitIndex:HasModifier( "modifier_negative_armor_mod_" .. val)  then
+						spawnedUnitIndex:RemoveModifierByName("modifier_negative_armor_mod_" .. val)
+					end
+				end
+				print("========================")
+				agility = agility / 7
+				print("Agi / 7: "..agility)
+				-- Remove Armor
+				-- Creates temporary item to steal the modifiers from
+				local manaUpdater = CreateItem("item_armor_modifier", nil, nil) 
+				for p=1, #bitTable do
+					local val = bitTable[p]
+					local count = math.floor(agility / val)
+					if count >= 1 then
+						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_negative_armor_mod_" .. val, {})
+						print("Adding modifier_negative_armor_mod_" .. val)
+						agility = agility - val
+					end
+				end
+
+				agility = spawnedUnitIndex:GetAgility()
+				agility = agility / 20
+				print("Agi / 20: "..agility)
+				for p=1, #bitTable do
+					local val = bitTable[p]
+					local count = math.floor(agility / val)
+					if count >= 1 then
+						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_armor_mod_" .. val, {})
+						agility = agility - val
+						print("Adding modifier_armor_mod_" .. val)
+					end
+				end
+
+				-- Cleanup
+				UTIL_RemoveImmediate(manaUpdater)
+				manaUpdater = nil
+			end
+			-- Updates the stored Int bonus value for next timer cycle
+			spawnedUnitIndex.agilityBonus = spawnedUnitIndex:GetAgility()
 			return 0.25
 		end
 	})
