@@ -19,7 +19,8 @@ require( "base_trigger")
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
-teamXP = 0
+radiantXP = 0
+direXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
 end
@@ -166,24 +167,47 @@ function CEnfosGameMode:XpThink()
         return nil
     else
 
-        -- Loop for every Player
+        -- Loop for Radiant Players
         for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
             teamID = PlayerResource:GetTeam(xpPlayerID)
 
             -- Get the highest XP value in Team of the current player
             for teamPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-                if PlayerResource:GetTeam(teamPlayerID) == teamID then
-                    if teamXP < PlayerResource:GetTotalEarnedXP(teamPlayerID) then
-                        teamXP = PlayerResource:GetTotalEarnedXP(teamPlayerID)
+                if PlayerResource:GetTeam(teamPlayerID) == DOTA_TEAM_GOODGUYS then
+                    if radiantXP < PlayerResource:GetTotalEarnedXP(teamPlayerID) then
+                        radiantXP = PlayerResource:GetTotalEarnedXP(teamPlayerID)
                     end
                 end
             end         
 
             -- Give XP to current Player if needed
             if PlayerResource:GetSelectedHeroEntity(xpPlayerID) ~= nil then
-                if teamXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() then
+                if radiantXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() and PlayerResource:GetTeam(xpPlayerID) == DOTA_TEAM_GOODGUYS then
                 	local currentXP = PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP()
-                	local xpBonus = teamXP - currentXP
+                	local xpBonus = radiantXP - currentXP
+                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false)
+                end
+            end
+        end
+
+         -- Loop for Dire Players
+        for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+            teamID = PlayerResource:GetTeam(xpPlayerID)
+
+            -- Get the highest XP value in Team of the current player
+            for teamPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+                if PlayerResource:GetTeam(teamPlayerID) == DOTA_TEAM_BADGUYS then
+                    if direXP < PlayerResource:GetTotalEarnedXP(teamPlayerID) then
+                        direXP = PlayerResource:GetTotalEarnedXP(teamPlayerID)
+                    end
+                end
+            end         
+
+            -- Give XP to current Player if needed
+            if PlayerResource:GetSelectedHeroEntity(xpPlayerID) ~= nil then
+                if direXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() and PlayerResource:GetTeam(xpPlayerID) == DOTA_TEAM_BADGUYS then
+                	local currentXP = PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP()
+                	local xpBonus = direXP - currentXP
                     PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false)
                 end
             end

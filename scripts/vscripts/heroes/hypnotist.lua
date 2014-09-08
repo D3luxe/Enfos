@@ -24,7 +24,9 @@ function Prediction(keys)
 	local strIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
 	local agiIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
 	local intIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
-	local characters = string.len(tostring(strIncreaseAmount))
+	local strCharacters = string.len(tostring(strIncreaseAmount))
+	local agiCharacters = string.len(tostring(agiIncreaseAmount))
+	local intCharacters = string.len(tostring(intIncreaseAmount))
 	Enfos.strPrediction[pid] = Enfos.strPrediction[pid] + strIncreaseAmount
 	Enfos.agiPrediction[pid] = Enfos.agiPrediction[pid] + agiIncreaseAmount
 	Enfos.intPrediction[pid] = Enfos.intPrediction[pid] + intIncreaseAmount
@@ -41,13 +43,13 @@ function Prediction(keys)
 			local increaseParticleStr = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if strIncreaseAmount > 0 then
 				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(100,strIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,0,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(strCharacters + 1,0,0)) -- total number of characters in the string
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,0,0)) -- colour
 				target:EmitSound("Hero_WitchDoctor.Maledict_Cast")
 			else
 				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(2,0,0)) -- create a sad face
 				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,255,255))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end
@@ -57,13 +59,13 @@ function Prediction(keys)
 		callback = function()		
 			local increaseParticleAgi = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if agiIncreaseAmount > 0 then
-				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(100,agiIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(0,255,0)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(100,agiIncreaseAmount,0))
+				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(agiCharacters + 1,0,0))
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(0,255,0))
 			else
-				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(2,0,0)) -- create a sad face
+				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(2,0,0))
 				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(255,255,255))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end
@@ -73,13 +75,13 @@ function Prediction(keys)
 		callback = function()		
 			local increaseParticleInt = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if intIncreaseAmount > 0 then
-				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(100,intIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(characters + 1,0,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(0,50,255)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(100,intIncreaseAmount,0))
+				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(intCharacters + 1,0,0))
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(0,50,255))
 			else
-				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(2,0,0)) -- create a sad face
+				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(2,0,0))
 				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(255,255,255)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(255,255,255))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end

@@ -117,6 +117,43 @@
 
 		
 	}
+	
+	//=================================================================================================================
+	// Generic: Evasion Mastery
+	//=================================================================================================================
+	"generic_enfos_evasion_mastery"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"brewmaster_drunken_brawler"
+		"MaxLevel"						"10"	
+		"Modifiers"
+		{
+			"modifier_evasion_master"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
+				}
+			}			
+		}
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"					"FIELD_INTEGER"
+				"evasion"				"7 14 21 28 35 42 49 56 63 70"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Generic: Trothfangs Rally Innate
 	//=================================================================================================================
@@ -867,43 +904,6 @@
 			}
 		}
 	}
-	//=================================================================================================================
-	// Juggernaut: evasion mastery
-	//=================================================================================================================
-	"juggernaut_enfos_evasion_master"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"brewmaster_drunken_brawler"
-		"MaxLevel"						"10"
-				
-				
-		"Modifiers"
-		{
-			"modifier_evasion_master"
-			{
-				"Passive" "1"
-				"IsHidden" "1"
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
-				}
-			}			
-		}
-			
-		// Special
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"					"FIELD_INTEGER"
-				"evasion"				"7 14 21 28 35 42 49 56 63 70"
-			}
-		}
-	}
 	
 	//=================================================================================================================
 	// Juggernaut: Earth Shaking Strike
@@ -1161,6 +1161,7 @@
 		}
 		
 	}
+
 
 	//=================================================================================================================
 	// Beastmaster: Trothfang's Butchery
@@ -7478,7 +7479,654 @@
 			}					
 		}
 	}
-
+	//=================================================================================================================
+	// Treant Protector - Oak
+	//=================================================================================================================
+	//=================================================================================================================
+	// Oak: Barkskin
+	//=================================================================================================================
+	"oak_barkskin"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"treant_living_armor"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"1"
+		"AbilityCastRange"				"500" //no range listed. guessing
+		"AbilityManaCost"				"0" //no mana cost listed. I'm sure that's wrong
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_treant/"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_oak_barkskin"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_oak_barkskin"
+			{
+				"Duration"				"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armour_bonus"
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_increase"		"25"
+			}			
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armour_bonus"			"10"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Oak - Hardened Skin
+	//=================================================================================================================
+	"oak_hardened_skin"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"tiny_craggy_exterior"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"Modifiers"
+		{
+			"modifier_oak_hardened_skin"
+			{
+				"Passive" 				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%strength_bonus"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"strength_bonus"		"7 11 17 25 35 47 61 77 95 115"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Oak - Poison Gas
+	//=================================================================================================================
+	"oak_poison_gas"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"venomancer_venomous_gale"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30" //seriously? not even providing the cooldown on the site? this is going to have to be checked against the official game
+		"AbilityManaCost"				"30 45 60 75 90 105 120 135 150 165"
+		"AbilityCastRange"				"700" //another guess
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_oak/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/oak.lua"
+				"Function"				"PoisonGas"
+				"radius"				"%radius"
+			}
+			"Damage"
+			{
+				"Target"				"TARGET"
+				"Type"					"DAMAGE_TYPE_MAGICAL"
+				"Damage"				"%initial_damage"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_Venomancer.PoisonNova"
+				"Target"				"TARGET"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"			"TARGET"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_oak_poison_gas_debuff"
+						"Target"		"TARGET"
+					}
+				}
+			}	
+		}
+		"Modifiers"
+		{
+			"modifier_oak_poison_gas_debuff"
+			{
+				"Duration"				"%duration"	
+				"IsDebuff"				"1"
+				"ThinkInterval"			"1"
+				"OnCreated"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_over_time"
+					}
+				}					
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_over_time"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armour_debuff"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"initial_damage"		"200 500 1000 1400 2200 3800 6200 9000 13000 19000"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_over_time"		"1 3 6 11 18 27 38 52 69 90"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"150 195 240 280 330 375 420 465 510 555" //yep, that's what the site says
+			}			
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armour_debuff"			"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30" //again, the duration isn't on the website. this will need to be confirmed against the main game
+			}
+		}
+	}
+	//=================================================================================================================
+	// Oak - Backfire Aura
+	//=================================================================================================================
+	"oak_backfire_aura"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"centaur_return"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_centaur/"
+		}
+		"Modifiers"
+		{
+			"modifier_backfire_aura_aura"
+			{
+				"Passive"				"1"
+				"IsHidden"				"1"
+				"Aura"					"modifier_backfire_aura"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP" //should it work on basic?		
+				"Aura_ApplyToCaster"	"1"		
+			}
+			"modifier_backfire_aura"
+			{
+				"OnAttacked"
+				{	
+					"RunScript"			
+					{
+						"ScriptFile"		"scripts/vscripts/heroes/holywarrior.lua" //this function works for this spell.
+						"Function"			"TippingTheScales"
+						"damage_reflected"	"%damage_reflection_pct"
+						"DamageDealt"		"%attack_damage"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_reflection_pct"	"9 18 27 36 45 54 63 72 81 90"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"300 400 500 600 700 800 900 1000 1100 1200"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Oak: Rootage Trap
+	//=================================================================================================================
+	"oak_rootage_trap"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"treant_overgrowth"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"180 165 150 135 120 105 90 75 60 45"
+		"AbilityManaCost"				"70 105 140 175 210 245 280 315 350 385"
+		// "AbilityCastRange"	
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_lone_druid/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_oak_rootage_trap"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_oak_rootage_trap"
+			{
+				"Duration"				"%duration"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"		"LoneDruid_SpiritBear.Entangle"
+						"Target"			"TARGET"
+					}
+				}
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"7"
+			}			
+		}
+	}	
+	//=================================================================================================================
+	// Riki - Thief
+	//=================================================================================================================
+	//=================================================================================================================
+	// Thief: Sleight of Hand
+	//=================================================================================================================
+	"thief_sleight_of_hand"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"alchemist_goblins_greed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"50"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_alchemist/"
+			"particle_folder"			"particles/hero_thief/"
+			"particle_folder"			"particles/hero_hypnotist/"
+			"model"						"models/particle/coin.vmdl"
+			"soundfile"					"soundevents/game_sounds_items.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/thief.lua"
+				"Function"				"SleightOfHand"
+				"percent_stolen"		"%percent_stolen"
+			}
+			"AttachEffect"
+			{
+				"EffectName"			"particles/hero_thief/thief_steal_coins_caster.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Target"				"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"			"particles/hero_thief/thief_steal_coins_target.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Target"				"TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"			"DOTA_Item.Hand_Of_Midas"
+				"Target"				"CASTER"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"percent_stolen"		"10"
+			}			
+		}
+	}
+	//=================================================================================================================
+	// Thief: Khri Strike
+	//=================================================================================================================
+	"thief_khri_strike"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"riki_backstab"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"Modifiers"
+		{
+			"modifier_khri_strike"
+			{
+				"Passive" 				"1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance" 		"%chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"Target" 		"TARGET"
+								"ModifierName" 	"modifier_khri_strike_target"
+							}
+							"Damage"
+							{
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_PHYSICAL"
+								"Damage"		"%damage"
+							}
+						}
+					}
+				}
+			}
+			"modifier_khri_strike_target"
+			{
+				"Duration" 				"%duration"
+				"EffectName" 			"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" 		"follow_overhead"
+				"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}			
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"50"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"40 60 90 130 180 240 370 390 480 580" //did scaling that made sense mean nothing to these people?
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"1 2 3 4 5 6 7 8 9 10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Thief - Khri Silence
+	//=================================================================================================================
+	"thief_khri_silence"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"riki_permanent_invisibility"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"AbilityCooldown"				"30 27 24 21 18 15 12 9 6 3"
+		"AbilityManaCost"				"8 9 11 12 14 15 17 18 20 21"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_riki/"
+			"particle_folder"			"particles/units/heroes/hero_lion/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_riki.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_thief_khri_silence_fade"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_thief_khri_silence_fade"
+			{
+				"ThinkInterval"			"%fade_time"
+				"OnIntervalThink"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_thief_khri_silence_cloak"
+						"Target"		"CASTER"
+					}
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_thief_khri_silence_fade"
+						"Target"		"CASTER"
+					}
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_lion/lion_spell_finger_of_death_core_smoke.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"CASTER"
+					}
+				}
+			}
+			"modifier_thief_khri_silence_cloak"
+			{
+				"Duration"				"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
+				}
+				"States"				
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_thief_khri_silence_cloak"
+						"Target"		"CASTER"
+					}
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PHYSICAL"
+						"Damage"		"%damage"
+					}
+					"FireEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_riki/riki_backstab.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+					}
+					"FireSound"
+					{
+						"EffectName"		"Hero_Riki.Backstab"
+						"Target"			"TARGET"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"600 900 1350 2025 3037 4556 6834 10252 15377 23066"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_speed"			"10 16 22 28 34 40 46 52 58 64"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"5 10 15 20 25 30 35 40 45 50"
+			}			
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"fade_time"				"2 1.8 1.6 1.4 1.2 1 0.8 0.6 0.4 0.2"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Thief: Venom
+	//=================================================================================================================
+	"thief_venom"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"gnoll_assassin_envenomed_weapon"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_venomancer"
+		}
+		"Modifiers"
+		{
+			"modifier_thief_venom_debuff"
+			{
+				"Duration"				"%duration"
+				"ThinkInterval"			"0.1"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_over_time"
+					}
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"		"200 304 462 702 1067 1623 2466 3749 5698 8662"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"5 7 9 11 13 15 17 19 21 23"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"25 30 35 40 46 50 55 60 65 70"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT" //do not localize this one
+				"damage_over_time"		"20 30.4 46.2 70.2 106.7 162.3 246.6 374.9 569.8 866.2"
+			}
+		}
+	}
+	
 	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
