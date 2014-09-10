@@ -18,7 +18,6 @@
 	{
 		"item"	"item_elder_staff"
 		"item"	"item_tribal_staff"
-		"item"	"item_agani_tayeua"
 		"item"	"item_ruby_inset_ring"
 		"item"	"item_emerald_inset_ring"
 		"item"	"item_sapphire_inset_ring"
@@ -27,7 +26,7 @@
 		"item"	"item_zircon_inset_ring"
 		"item"	"item_moonstone_inset_ring"
 		"item"	"item_diamond_etched_ring"
-		"item"	"item_grimstone_inset_ring"
+		//"item"	"item_grimstone_inset_ring"
 	}
 
 	"weapons_armor"
@@ -36,8 +35,6 @@
 		"item"	"item_polished_elven_telo"
 		"item"	"item_spineripper"
 		"item"	"item_nimsha"
-		"item"	"item_tkashi_mirror_blade"
-		"item"	"item_uthmors_skullcleaver"
 		"item"	"item_bloodthirst"
 	}
 	
@@ -71,15 +68,15 @@
 	// Level 3 - Purple Recipes
 	"defense"
 	{
-		"item"	"item_elite_elven_boots"
+		
 	}
 	
 	"weapons"
 	{
-		"item" "item_fragarach"
-		"item" "item_brisker"
-		"item" "item_thirsting_blade"
-		"item" "item_uthmors_mirror_blade"
+		//"item" "item_fragarach"
+		//"item" "item_brisker"
+		
+		
 	}
 	
 	// Level 4 - Orange / Orb / Artifacts
@@ -98,7 +95,10 @@
 
 	"sideshop1"
 	{
-
+		"item"	"item_agani_tayeua"
+		"item"	"item_tkashi_mirror_blade"
+		"item"	"item_uthmors_skullcleaver"
+		"item"	"item_dragonscale_shield"
 	}
 
 	"sideshop2"
@@ -108,6 +108,10 @@
 	
 	"secretshop"
 	{
-
+		"item"	"item_elite_elven_boots"
+		"item" "item_thirsting_blade"
+		"item" "item_uthmors_mirror_blade"
+		"item" "item_ring_of_victory"
+		"item" "item_scepter_of_the_magi"
 	}
 }

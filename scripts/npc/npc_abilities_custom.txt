@@ -1463,7 +1463,7 @@
 	{
 		"BaseClass" 					"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityTextureName" 			"furion_teleoprt"
+		"AbilityTextureName" 			"furion_teleport"
 		"MaxLevel"	"1"
 
 		// Stats
@@ -1606,9 +1606,9 @@
 		"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
 		"AbilityCastRange"				"99999"
 		
-		
 		"OnSpellStart"
 		{
+			
 			"ApplyModifier"
 			{
 				"Target"	   "TARGET"	

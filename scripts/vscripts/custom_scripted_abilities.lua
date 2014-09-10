@@ -2,6 +2,22 @@
 -- fixed an infinite loop on StealMana
 -- fixed FallenOne dealing no damage
 
+function CheckBlock(keys)
+	PrintTable(keys)
+	local caster = keys.caster
+	local casterIndex = keys.caster_entindex
+	local failedCast = {
+		UnitIndex = caster:entindex(),
+		OrderType = DOTA_UNIT_ORDER_STOP,
+	}
+	Timers:CreateTimer(DoUniqueString("failedcast"), {
+	        endTime = 0.01,
+		callback = function()
+	        	ExecuteOrderFromTable(failedCast)
+	        	print("Executed failedCast")
+		end
+	})
+end
 function AddExperience(keys)
 	keys.caster:GetPlayerOwner():GetAssignedHero():AddExperience (keys.expamt,false)
 end

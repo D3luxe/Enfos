@@ -133,6 +133,7 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent( "dota_player_gained_level", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLevelledUp'), self)
 	ListenToGameEvent( "dota_inventory_changed", Dynamic_Wrap(CEnfosGameMode, 'OnInventoryChanged'), self)
 	ListenToGameEvent( "dota_item_purchased", Dynamic_Wrap(CEnfosGameMode, 'OnItemPurchased'), self)
+	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(CEnfosGameMode, 'OnAbilityCast'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
@@ -711,9 +712,7 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 						spawnedUnitIndex:RemoveModifierByName("modifier_negative_armor_mod_" .. val)
 					end
 				end
-				print("========================")
 				agility = agility / 7
-				print("Agi / 7: "..agility)
 				-- Remove Armor
 				-- Creates temporary item to steal the modifiers from
 				local manaUpdater = CreateItem("item_armor_modifier", nil, nil) 
@@ -727,9 +726,10 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 					end
 				end
 
+				-- Calculate armor per 20 agility
 				agility = spawnedUnitIndex:GetAgility()
 				agility = agility / 20
-				print("Agi / 20: "..agility)
+				--Add armor from bitfield
 				for p=1, #bitTable do
 					local val = bitTable[p]
 					local count = math.floor(agility / val)
@@ -904,6 +904,15 @@ function CEnfosGameMode:OnEntityHurt( event )
 	--PrintTable(event)
 end
 
+function CEnfosGameMode:OnAbilityCast( keys )
+	PrintTable(keys)
+	local abilityName = keys.abilityname
+	--local ply = keys.PlayerID
+	--local hero = keys.PlayerID:GetAssignedHero()
+	return
+
+	
+end
 
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
 	local nRewardPerTower = self._nTowerRewardAmount + self._nTowerScalingRewardPerRound * (self._nRoundNumber - 1)
