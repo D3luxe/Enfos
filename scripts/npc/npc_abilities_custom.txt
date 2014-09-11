@@ -545,7 +545,7 @@
 			}
 			"02"
 			{
-				"var_type"				"FIELD_FIELD"
+				"var_type"				"FIELD_FLOAT"
 				"armor_bonus"			"2.5 5 7.5 10 12.5 15 17.5 20 22.5 25"
 			}
 			"03"
@@ -8091,6 +8091,18 @@
 		}
 		"Modifiers"
 		{
+			"modifier_thief_venom_applier"
+			{
+				"Passive"				"1"
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_thief_venom_debuff"
+						"Target"		"TARGET"
+					}
+				}
+			}
 			"modifier_thief_venom_debuff"
 			{
 				"Duration"				"%duration"
@@ -8135,7 +8147,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow"					"25 30 35 40 46 50 55 60 65 70"
+				"slow"					"-25 -30 -35 -40 -45 -50 -55 -60 -65 -70"
 			}
 			"04"
 			{
