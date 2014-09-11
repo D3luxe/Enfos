@@ -636,7 +636,7 @@
 		"Ability3"					"hypnotist_mind_shout"
 		"Ability4"					"hypnotist_telekinetic_storm"
 		"Ability5"					"generic_focus_moonbeam"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -681,7 +681,7 @@
 		"Ability3"					"weaponsmith_concentrate"
 		"Ability4"					"weaponsmith_forge"
 		"Ability5"					"weaponsmith_cambrinth_charge"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -714,7 +714,7 @@
 		"Ability3"					"revenant_corpse_explosion"
 		"Ability4"					"revenant_spiritual_swarm"
 		"Ability5"					"revenant_haunting_spirit"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -746,7 +746,7 @@
 		"Ability3"					"sniper_burning_grenade"
 		"Ability4"					"sniper_rapid_reload"
 		"Ability5"					"sniper_standard_technique"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"					"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -779,7 +779,7 @@
 		"Ability3"					"oak_backfire_aura"
 		"Ability4"					"oak_rootage_trap"
 		"Ability5"					"oak_barkskin"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -812,7 +812,7 @@
 		"Ability3"					"thief_khri_silence"
 		"Ability4"					"thief_venom"
 		"Ability5"					"thief_sleight_of_hand"
-		"Ability6"					"attribute_bonus"
+		"Ability6"					"enfos_attribute_bonus"
 		"Ability10"					"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
@@ -827,6 +827,38 @@
 		"MovementSpeed"				"350"
 		"AttackRate"                "2.6"
 		"AttackRange"               "180"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"	
+	}
+	//=================================================================================================================
+	// HERO: Earth Spirit: Entropist
+	//=================================================================================================================
+	"npc_dota_hero_earth_spirit_enfos"
+	{
+		"override_hero"				"npc_dota_hero_earth_spirit"
+		"AbilityLayout"				"5"
+		"Ability1"					"entropist_fist_of_stone"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"entropist_tremor"
+		"Ability4"					"entropist_ring_of_spears"
+		"Ability5"					"entropist_sure_footing"
+		"Ability6"					"enfos_attribute_bonus"
+		"Ability10"					"spell_dummy_modifier"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.4"
+		"AttackRange"               "140"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
 		"AttackDamageMin" 			"9.5"

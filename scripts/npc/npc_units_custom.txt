@@ -39,12 +39,12 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"4"		// Damage range min.
+		"AttackDamageMin"			"3"		// Damage range min.
 		"AttackDamageMax"			"5"		// Damage range max.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 		"AttackRate"				"1.8"		// Speed of attack.
 		"AttackAnimationPoint"		"0.5"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -76,8 +76,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_LIGHT"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_WEAK"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 		
 		// Vision
@@ -139,11 +139,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"8"		// Damage range min.
+		"AttackDamageMin"			"7"		// Damage range min.
 		"AttackDamageMax"			"10"		// Damage range max.	
 		"AttackRate"				"1.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -180,7 +180,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		
@@ -229,14 +229,11 @@
 		"Level"						"1"
 		"ModelScale" 				".9"
 
-		"precache"
-		{
-			"particle"		"particles/neutral_fx/gnoll_base_attack.vpcf"
-		}
+		
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					"mob_armor_reduce"			// Ability 1
+		"Ability1"					""			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -247,31 +244,31 @@
 
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"8"		// Damage range min.
-		"AttackDamageMax"			"10"		// Damage range max.
-		"AttackRate"				"1.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"		// Range within a target can be acquired.
-		"AttackRange"				"400"		// Range within a target can be attacked.
-		"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
-		"ProjectileSpeed"			"1500"		// Speed of projectile.		     
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"7"		// Damage range min.
+		"AttackDamageMax"			"10"		// Damage range max.	
+		"AttackRate"				"1.7"		// Speed of attack.
+		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.
+		"ProjectileModel"			""			// Particle system model for projectile.
+		"ProjectileSpeed"			"0"			// Speed of projectile.		   
 
 		// Bounds
 		//----------------------------------------------------------------
 		"RingRadius"				"40"
-		"HealthBarOffset"			"170"
+		"HealthBarOffset"			"150"
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"		// Experience earn.
+		"BountyXP"					"20"		// Experience earn.
 		"BountyGoldMin"				"1"		// Gold earned min.
 		"BountyGoldMax"				"3"		// Gold earned max.
 
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"105"		// Speed.			
+		"MovementSpeed"				"105"		// Speed.
 
 		// Status
 		//----------------------------------------------------------------
@@ -288,10 +285,11 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
+		
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
 		"Creature"
@@ -323,18 +321,23 @@
 		}
 	}
 	//=================================================================================	
-	// Level 3 - Crazed Madmen
+	// Level 3 - Crazed Spearman
 	//=================================================================================
-	"npc_dota_creep_crazed_madmen"
+	"npc_dota_creep_crazed_spearman"
 	{
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"	// Model.
+		"Model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".9"
+
+		"precache"
+		{
+			"particle"		"particles/neutral_fx/gnoll_base_attack.vpcf"
+		}
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -345,18 +348,18 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"1"			// Physical protection.
+		"ArmorPhysical"				"0"			// Physical protection.
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"3"		// Damage range min.
+		"AttackDamageMin"			"2"		// Damage range min.
 		"AttackDamageMax"			"8"		// Damage range max.	
-		"AttackRate"				"1"		// Speed of attack.
+		"AttackRate"				"2.2"		// Speed of attack.
 		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"400"		// Range within a target can be attacked.
-		"ProjectileModel"			"particles/base_attacks/ranged_goodguy.vpcf" // Particle system model for projectile.
+		"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
 		"ProjectileSpeed"			"900"		// Speed of projectile.   
 
 		// Bounds
@@ -390,8 +393,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"Creature"
@@ -412,25 +415,94 @@
 
 			"DisableClumpingBehavior"	"1"
 		}
+	}
+	//=================================================================================	
+	// Level 3 - Crazed Madmen
+	//=================================================================================
+	"npc_dota_creep_crazed_madmen"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Ranged"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				".9"
 
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""			// Ability 1
+		"Ability2"					""			// Ability 2
+		"Ability3"					""			// Ability 3
+		"Ability4"					""			// Ability 4
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"1"			// Physical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"9"		// Damage range min.
+		"AttackDamageMax"			"17"		// Damage range max.	
+		"AttackRate"				"1"		// Speed of attack.
+		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"40"
+		"HealthBarOffset"			"150"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"30"		// Experience earn.
+		"BountyGoldMin"				"3"		// Gold earned min.
+		"BountyGoldMax"				"5"		// Gold earned max.
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"110"		// Speed.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"150"		// Base health.
+		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0.0"		// Mana regeneration rate.		 
 		
-		// Creature Data
-		//----------------------------------------------------------------------------------------------------------------------
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"		// Range of vision during day light.
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
 		"Creature"
 		{
-		//	"Aggression"				"50.0"
-		//	"Avoidance"					"0.0"
-		//	"Support"					"30.0"
-			//"CanRespawn"				"0"
-			
-			//Level Up
-			"HPGain"					"45"
-			"DamageGain"				"2"
-			"ArmorGain"					"0.25"
-			"MagicResistGain"			"0.1"
-			"MoveSpeedGain"				"1"
-			"BountyGain"				"2"
-			"XPGain"					"13"
+			"CanRespawn"				"0"
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+					"RoamDistance"		"150.0"
+				}
+			}
+			"DefaultState"				"Invade"
+
+			"DisableClumpingBehavior"	"1"
 		}
 	}
 
@@ -464,11 +536,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"21"		// Damage range min.
+		"AttackDamageMin"			"20"		// Damage range min.
 		"AttackDamageMax"			"26"		// Damage range max.	
 		"AttackRate"				"1.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.633"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"150"		// Range within a target can be attacked.		   
 
 		// Bounds
@@ -500,7 +572,7 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_BADGUYS"			// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
@@ -652,13 +724,13 @@
 
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"20"		// Damage range min.
-		"AttackDamageMax"			"30"		// Damage range max.	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"29"		// Damage range min.
+		"AttackDamageMax"			"40"		// Damage range max.	
 		"AttackRate"				"1.6"		// Speed of attack.
 		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
-		"AttackRange"				"450"		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/econ/events/coal/coal_projectile.vpcf" // Particle system model for projectile.
 		"ProjectileSpeed"			"1200"			// Speed of projectile.		   
 
@@ -718,6 +790,105 @@
 			"DisableClumpingBehavior"	"1"
 		}
 	}
+	//=================================================================================
+	// Level 5 -  Creature: Wood Troll Rock Tosser
+	//=================================================================================
+	"npc_dota_creature_wood_troll"
+	{
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/furion/treant.vmdl"
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"n_creep_Ranged"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"Level"						"1"
+		"ModelScale" 				".8"
+
+		"precache"
+		{
+			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
+		}
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					""			// Ability 1
+		"Ability2"					""			// Ability 2
+		"Ability3"					""			// Ability 3
+		"Ability4"					""			// Ability 4
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"2"			// Physical protection.
+		"MagicalResistance"			"10"		// Magical protection (percentage).
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"19"		// Damage range min.
+		"AttackDamageMax"			"30"		// Damage range max.	
+		"AttackRate"				"3.7"		// Speed of attack.
+		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"450"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/econ/events/coal/coal_projectile.vpcf" // Particle system model for projectile.
+		"ProjectileSpeed"			"900"			// Speed of projectile.		   
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"50"
+		"HealthBarOffset"			"180"
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"50"		// Experience earn.
+		"BountyGoldMin"				"7"			// Gold earned min.
+		"BountyGoldMax"				"9"			// Gold earned max.
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"120"		// Speed.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"160"		// Base health.
+		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+		"StatusMana"				"300"		// Base mana.
+		"StatusManaRegen"			"2.5"		// Mana regeneration rate.		 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"800"		// Range of vision during day light.
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"CanRespawn"				"0"
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+					"RoamDistance"		"150.0"
+				}
+			}
+			"DefaultState"				"Invade"
+
+			"DisableClumpingBehavior"	"1"
+		}
+	}
 
 //=================================================================================
 // Level 6: Satyr Reaver
@@ -746,11 +917,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"45"		// Damage range min.
+		"AttackDamageMin"			"44"		// Damage range min.
 		"AttackDamageMax"			"53"		// Damage range max.	
 		"AttackRate"				"1.2"		// Speed of attack.
 		"AttackAnimationPoint"		"0.3"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -787,7 +958,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"vscripts"			"mobs/satyr_reaver.lua"
@@ -843,11 +1014,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"40"		// Damage range min.
+		"AttackDamageMin"			"39"		// Damage range min.
 		"AttackDamageMax"			"50"		// Damage range max.	
 		"AttackRate"				"0.8"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"90"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -885,7 +1056,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 		// Creature Data
@@ -937,11 +1108,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"50"		// Damage range min.
-		"AttackDamageMax"			"65"		// Damage range max.	
-		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackDamageMin"			"79"		// Damage range min.
+		"AttackDamageMax"			"95"		// Damage range max.	
+		"AttackRate"				"1.8"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1006,6 +1177,102 @@
 		}
 	}		
 	//=================================================================================
+	// Level 8 - Giant Poison Spiders
+	//=================================================================================
+	"npc_dota_giant_poison_spider"
+	{										
+		// General
+		//----------------------------------------------------------------
+		"Model"						"models/heroes/broodmother/broodmother_original.vmdl"	// Model.
+		"BaseClass"					"npc_dota_creature"
+		"SoundSet"					"Lycan_Wolf"
+		"Level"						"1"
+		"ModelScale" 					"0.8"
+		"UnitLabel"			"spiderling"
+
+
+		// Abilities
+		//----------------------------------------------------------------
+		"Ability1"					"mob_poison_attack"			// Ability 1
+		"Ability2"					""			// Ability 2
+		"Ability3"					""			// Ability 3
+		"Ability4"					""			// Ability 4
+
+		// Armor
+		//----------------------------------------------------------------
+		"ArmorPhysical"				"5"			// Physical protection.
+
+		// Attack
+		//----------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"49"		// Damage range min.
+		"AttackDamageMax"			"65"		// Damage range max.
+		"AttackRate"				"3.5"		// Speed of attack.
+		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"900"		// Range within a target can be acquired.
+		"AttackRange"				"450"		// Range within a target can be attacked.
+		"ProjectileModel"			"particles/units/heroes/hero_viper/viper_base_attack.vpcf"			// Particle system model for projectile.
+		"ProjectileSpeed"			"900"			// Speed of projectile.		   
+
+		// Bounds
+		//----------------------------------------------------------------
+		"RingRadius"				"70"
+		"HealthBarOffset"			"160"
+		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+
+		// Bounty
+		//----------------------------------------------------------------
+		"BountyXP"					"80"		// Experience earn.
+		"BountyGoldMin"				"13"		// Gold earned min.
+		"BountyGoldMax"				"15"		// Gold earned max.
+
+		// Movement
+		//----------------------------------------------------------------
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+		"MovementSpeed"				"135"		// Speed.
+
+		// Status
+		//----------------------------------------------------------------
+		"StatusHealth"				"630"		// Base health.
+		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.		 
+		
+		// Vision
+		//----------------------------------------------------------------
+		"VisionDaytimeRange"		"1200"		// Range of vision during day light.
+		"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+		// Team
+		//----------------------------------------------------------------
+		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
+		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	
+		// Creature Data
+		//----------------------------------------------------------------------------------------------------------------------
+		"Creature"
+		{
+			"CanRespawn"				"0"
+			"States"
+			{
+				"Invade"
+				{
+					"Name"				"Invade"
+					"Aggression"		"100.0"
+					"Avoidance"			"0.0"
+					"Support"			"0.0"
+					"RoamDistance"		"150.0"
+				}
+			}
+			"DefaultState"				"Invade"
+
+			"DisableClumpingBehavior"	"1"
+		}
+	}		
+	//=================================================================================
 	// Level 9 - Rock Troll
 	//=================================================================================
 	"npc_dota_rock_troll"
@@ -1038,7 +1305,7 @@
 		"AttackDamageMax"			"125"		// Damage range max.	
 		"AttackRate"				"1.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1076,7 +1343,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"vscripts"	"mobs/rock_troll.lua"
@@ -1134,7 +1401,7 @@
 		"AttackDamageMax"			"150"		// Damage range max.	
 		"AttackRate"				"1.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1172,7 +1439,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 		// Creature Data
@@ -1225,10 +1492,10 @@
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"150"		// Damage range min.
-		"AttackDamageMax"			"155"		// Damage range max.	
+		"AttackDamageMax"			"175"		// Damage range max.	
 		"AttackRate"				"1.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1266,7 +1533,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 		// Creature Data
@@ -1322,7 +1589,7 @@
 		"AttackDamageMax"			"230"		// Damage range max.	
 		"AttackRate"				"1.25"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1360,7 +1627,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 	
 		// Creature Data
@@ -1424,7 +1691,7 @@
 		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
 		"AttackRange"				"600"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
-		"ProjectileSpeed"			"1400"			// Speed of projectile.		   
+		"ProjectileSpeed"			"1200"			// Speed of projectile.		   
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -1459,7 +1726,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -1553,7 +1820,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -1608,8 +1875,8 @@
 		"AttackDamageMax"			"330"		// Damage range max.	
 		"AttackRate"				"1.5"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"200"		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"150"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
 
@@ -1646,7 +1913,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -1701,7 +1968,7 @@
 		"AttackDamageMax"			"470"		// Damage range max.	
 		"AttackRate"				"1.4"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"128"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
@@ -1739,7 +2006,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"vscript"				"swamp_troll.lua"
@@ -1787,14 +2054,14 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"9"			// Physical protection.
+		"ArmorPhysical"				"12"			// Physical protection.
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"360"		// Damage range min.
 		"AttackDamageMax"			"390"		// Damage range max.	
-		"AttackRate"				"0.7"		// Speed of attack.
+		"AttackRate"				"0.8"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.
@@ -1834,7 +2101,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -1932,7 +2199,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -1987,8 +2254,8 @@
 		"AttackDamageMax"			"515"		// Damage range max.	
 		"AttackRate"				"1.6"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"90 "		// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"90"		// Range within a target can be attacked.
 		"ProjectileModel"			""			// Particle system model for projectile.
 		"ProjectileSpeed"			"0"			// Speed of projectile.		   
 
@@ -2025,7 +2292,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2098,14 +2365,14 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"0"		// Experience earn.
-		"BountyGoldMin"				"0"		// Gold earned min.
-		"BountyGoldMax"				"0"		// Gold earned max.
+		"BountyXP"					"700"		// Experience earn.
+		"BountyGoldMin"				"60"		// Gold earned min.
+		"BountyGoldMax"				"120"		// Gold earned max.
 
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"350"		// Speed.
+		"MovementSpeed"				"280"		// Speed.
 
 		// Status
 		//----------------------------------------------------------------
@@ -2123,7 +2390,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2179,14 +2446,14 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"440"		// Damage range min.
-		"AttackDamageMax"			"490"		// Damage range max.	
+		"AttackDamageMin"			"479"		// Damage range min.
+		"AttackDamageMax"			"515"		// Damage range max.	
 		"AttackRate"				"1.6"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"300"		// Range within a target can be attacked.
 		"ProjectileModel"			"particles/units/heroes/hero_jakiro/jakiro_base_attack.vpcf"			// Particle system model for projectile.
-		"ProjectileSpeed"			"1400"			// Speed of projectile.		   
+		"ProjectileSpeed"			"1900"			// Speed of projectile.		   
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2221,7 +2488,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2274,9 +2541,9 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"480"		// Damage range min.
 		"AttackDamageMax"			"515"		// Damage range max.	
-		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackRate"				"1.1"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"100"		// Range within a target can be attacked.	   
 
 		// Bounds
@@ -2312,7 +2579,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"vscripts"	"mobs/yvhh_latami.lua"
@@ -2365,12 +2632,12 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"320"		// Damage range min.
+		"AttackDamageMin"			"329"		// Damage range min.
 		"AttackDamageMax"			"420"		// Damage range max.	
-		"AttackRate"				"0.6"		// Speed of attack.
-		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"100"		// Range within a target can be attacked.	   
+		"AttackRate"				"0.5"		// Speed of attack.
+		"AttackAnimationPoint"		"0.1"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"90"		// Range within a target can be attacked.	   
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2405,7 +2672,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_SOFT"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2460,14 +2727,14 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"767"		// Damage range min.
-		"AttackDamageMax"			"957"		// Damage range max.	
-		"AttackRate"				"2.5"		// Speed of attack.
+		"AttackDamageMin"			"790"		// Damage range min.
+		"AttackDamageMax"			"1100"		// Damage range max.	
+		"AttackRate"				"3"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"450"		// Range within a target can be attacked.	
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"400"		// Range within a target can be attacked.	
 		"ProjectileModel"			"particles/units/heroes/hero_jakiro/jakiro_base_attack.vpcf"			// Particle system model for projectile.
-		"ProjectileSpeed"			"1400"			// Speed of projectile.	   
+		"ProjectileSpeed"			"1200"			// Speed of projectile.	   
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2501,8 +2768,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		"vscripts"			"mobs/fendryad.lua"
@@ -2555,11 +2822,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"800"		// Damage range min.
+		"AttackDamageMin"			"797"		// Damage range min.
 		"AttackDamageMax"			"1049"		// Damage range max.	
-		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackRate"				"1.1"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	 
 
 		// Bounds
@@ -2595,7 +2862,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2648,7 +2915,7 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"AttackDamageMin"			"800"		// Damage range min.
 		"AttackDamageMax"			"1049"		// Damage range max.	
-		"AttackRate"				"1.6"		// Speed of attack.
+		"AttackRate"				"1.5"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	 
@@ -2686,7 +2953,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2732,7 +2999,7 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"15"			// Physical protection.
+		"ArmorPhysical"				"16"			// Physical protection.
 
 		// Attack
 		//----------------------------------------------------------------
@@ -2741,8 +3008,8 @@
 		"AttackDamageMax"			"1497"		// Damage range max.	
 		"AttackRate"				"0.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"125"		// Range within a target can be attacked.	 
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.	 
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2836,11 +3103,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1700"		// Damage range min.
+		"AttackDamageMin"			"1695"		// Damage range min.
 		"AttackDamageMax"			"2145"		// Damage range max.	
 		"AttackRate"				"0.9"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"220"		// Range within a target can be attacked.	 
 
 		// Bounds
@@ -2876,7 +3143,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -2927,12 +3194,12 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1500"		// Damage range min.
+		"AttackDamageMin"			"1495"		// Damage range min.
 		"AttackDamageMax"			"1945"		// Damage range max.	
-		"AttackRate"				"1.4"		// Speed of attack.
+		"AttackRate"				"1.5"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"125"		// Range within a target can be attacked.	 
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"160"		// Range within a target can be attacked.	 
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -2966,8 +3233,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3013,16 +3280,16 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"18"			// Physical protection.
+		"ArmorPhysical"				"19"			// Physical protection.
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1650"		// Damage range min.
-		"AttackDamageMax"			"1750"		// Damage range max.	
-		"AttackRate"				"1.0"		// Speed of attack.
+		"AttackDamageMin"			"1695"		// Damage range min.
+		"AttackDamageMax"			"2145"		// Damage range max.	
+		"AttackRate"				"0.4"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"190"		// Range within a target can be attacked.	 
 
 		// Bounds
@@ -3040,7 +3307,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"240"		// Speed.
+		"MovementSpeed"				"245"		// Speed.
 
 		// Status
 		//----------------------------------------------------------------
@@ -3058,7 +3325,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3109,11 +3376,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1700"		// Damage range min.
+		"AttackDamageMin"			"1695"		// Damage range min.
 		"AttackDamageMax"			"2145"		// Damage range max.	
 		"AttackRate"				"0.7"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"150"		// Range within a target can be attacked.	 
 
 		// Bounds
@@ -3149,7 +3416,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3200,11 +3467,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"1200"		// Damage range min.
+		"AttackDamageMin"			"1197"		// Damage range min.
 		"AttackDamageMax"			"1497"		// Damage range max.	
 		"AttackRate"				"1.1"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"500"		// Range within a target can be attacked.	
 		"ProjectileModel"			"particles/base_attacks/ranged_badguy.vpcf" 
 		"ProjectileSpeed"			"800"			// Speed of projectile.
@@ -3242,7 +3509,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_BASIC"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3293,14 +3560,14 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"1200"		// Damage range min.
+		"AttackDamageMin"			"1197"		// Damage range min.
 		"AttackDamageMax"			"1497"		// Damage range max.	
 		"AttackRate"				"1.3"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"650"		// Range within a target can be attacked.	
 		"ProjectileModel"			"particles/units/heroes/hero_drow/drow_base_attack.vpcf" 
-		"ProjectileSpeed"			"800"			// Speed of projectile.
+		"ProjectileSpeed"			"900"			// Speed of projectile.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -3334,8 +3601,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3397,11 +3664,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2000"		// Damage range min.
+		"AttackDamageMin"			"1992"		// Damage range min.
 		"AttackDamageMax"			"2792"		// Damage range max.	
 		"AttackRate"				"1.0"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -3439,7 +3706,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3493,17 +3760,17 @@
 
 		// Armor
 		//----------------------------------------------------------------
-		"ArmorPhysical"				"23"			// Physical protection.
+		"ArmorPhysical"				"24"			// Physical protection.
 
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1700"		// Damage range min.
+		"AttackDamageMin"			"1695"		// Damage range min.
 		"AttackDamageMax"			"2145"		// Damage range max.	
 		"AttackRate"				"0.5"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
-		"AttackRange"				"125"		// Range within a target can be attacked.	
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackRange"				"100"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
 
@@ -3609,14 +3876,14 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"0"		// Experience earn.
-		"BountyGoldMin"				"0"		// Gold earned min.
-		"BountyGoldMax"				"0"		// Gold earned max.
+		"BountyXP"					"6000"		// Experience earn.
+		"BountyGoldMin"				"400"		// Gold earned min.
+		"BountyGoldMax"				"400"		// Gold earned max.
 
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"265"		// Speed.
+		"MovementSpeed"				"300"		// Speed.
 
 		// Status
 		//----------------------------------------------------------------
@@ -3634,7 +3901,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3685,11 +3952,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1700"		// Damage range min.
+		"AttackDamageMin"			"1695"		// Damage range min.
 		"AttackDamageMax"			"2145"		// Damage range max.	
 		"AttackRate"				"0.5"		// Speed of attack.
-		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAnimationPoint"		"0.4"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -3727,7 +3994,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3788,11 +4055,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"1700"		// Damage range min.
+		"AttackDamageMin"			"1696"		// Damage range min.
 		"AttackDamageMax"			"2096"		// Damage range max.	
 		"AttackRate"				"1.0"		// Speed of attack.
-		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -3830,7 +4097,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3888,7 +4155,7 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"4500"		// Damage range min.
+		"AttackDamageMin"			"4490"		// Damage range min.
 		"AttackDamageMax"			"5490"		// Damage range max.	
 		"AttackRate"				"0.5"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
@@ -3930,7 +4197,7 @@
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -3987,11 +4254,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"3000"		// Damage range min.
+		"AttackDamageMin"			"2980"		// Damage range min.
 		"AttackDamageMax"			"4980"		// Damage range max.	
-		"AttackRate"				"0.5"		// Speed of attack.
+		"AttackRate"				"0.4"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"125"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -4028,8 +4295,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_SIEGE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -4086,14 +4353,14 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"9800"		// Damage range min.
-		"AttackDamageMax"			"10200"		// Damage range max.	
+		"AttackDamageMin"			"9999"		// Damage range min.
+		"AttackDamageMax"			"10000"		// Damage range max.	
 		"AttackRate"				"0.8"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"300"		// Range within a target can be attacked.	
 		"ProjectileModel"			"particles/units/heroes/hero_death_prophet/death_prophet_base_attack.vpcf" 
-		"ProjectileSpeed"			"1000"			// Speed of projectile.
+		"ProjectileSpeed"			"900"			// Speed of projectile.
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -4127,8 +4394,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data
@@ -4187,11 +4454,11 @@
 		// Attack
 		//----------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"24000"		// Damage range min.
-		"AttackDamageMax"			"26000"		// Damage range max.	
-		"AttackRate"				"0.7"		// Speed of attack.
+		"AttackDamageMin"			"24999"		// Damage range min.
+		"AttackDamageMax"			"25000"		// Damage range max.	
+		"AttackRate"				"0.6"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
 		"AttackRange"				"180"		// Range within a target can be attacked.	
 		"ProjectileModel"			"" 
 		"ProjectileSpeed"			""			// Speed of projectile.
@@ -4228,8 +4495,8 @@
 		// Team
 		//----------------------------------------------------------------
 		"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
-		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_BASIC"
-		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_STRONG"
+		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_PIERCE"
+		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
 		// Creature Data

@@ -473,7 +473,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCastRange"				"800" // cast range not provided on website. this one FAQ says "casting range is pretty long"
+		"AbilityCastRange"				"900" // cast range not provided on website. this one FAQ says "casting range is pretty long"
 		"AbilityCooldown"				"40 36 32 28 24 20 16 12 8 4"
 		"AbilityManaCost"				"5 10 15 20 25 30 35 40 45 50"
 		"Precache"
@@ -545,8 +545,8 @@
 			}
 			"02"
 			{
-				"var_type"				"FIELD_INTEGER"
-				"armor_bonus"			"2 5 7 10 12 15 17 20 22 25"
+				"var_type"				"FIELD_FIELD"
+				"armor_bonus"			"2.5 5 7.5 10 12.5 15 17.5 20 22.5 25"
 			}
 			"03"
 			{	
@@ -5062,7 +5062,28 @@
 		"AbilityTextureName" 			"kunkka_tidebringer"
 		"MaxLevel"					"10"
 
+		"OnChannelSucceeded"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_empower_weapon_stun"
+				"Target"
+				{
+					"Center"			"CASTER"
+					"Radius"			"%radius"
+					"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}	
+			}
 
+			"FireEffect"
+			{
+				"EffectName"		 "particles/econ/events/coal/coal_projectile_explosion.vpcf"
+				"EffectAttachType"	 "follow_origin"
+				"Target"			 "CASTER"
+			}
+
+		}
 
 		"Modifiers"
 		{
@@ -5079,34 +5100,17 @@
 						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
 						"OnSuccess"
 						{
-							"ApplyModifier"
-							{
-								"ModifierName" "modifier_empower_weapon_stun"
-								"Target"
-								{
-									"Center"			"CASTER"
-									"Radius"			"%radius"
-									"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
-								}	
-							}
-
-							"FireEffect"
-							{
-								"EffectName"		 "particles/econ/events/coal/coal_projectile_explosion.vpcf"
-								"EffectAttachType"	 "follow_origin"
-								"Target"			 "TARGET"
-							}
-
 							"RunScript"
 							{
 								"ScriptFile"	"scripts/vscripts/heroes/magic_infuser.lua"
 								"Function"		"MagicInfuserSpendMana"
 								"manacost"		"2"
+								"radius"		"%radius"
 							}
 						}
 					}
 				}
+
 			}
 
 			"modifier_empower_weapon_stun"
@@ -5162,6 +5166,30 @@
 			"particle_folder"	"particles/items_fx/"
 		}
 
+		"OnChannelSucceeded"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName" "modifier_empower_axe_armor"
+				"Target"
+				{
+					"Center"		"CASTER"
+					"Radius"		"%radius"
+					"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+			}
+
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
+				"EffectAttachType"	"attach_hitloc"	
+				"Target"			 "CASTER"
+			}
+			
+
+		}
+
 		"Modifiers"
 		{
 			"modifier_empower_axe"
@@ -5177,19 +5205,6 @@
 						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
 						"OnSuccess"
 						{
-							"ApplyModifier"
-							{
-								"ModifierName" "modifier_empower_axe_armor"
-								"Target"
-								{
-									"Center"		"TARGET"
-									"Radius"		"%radius"
-									"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-									"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
-								}
-							}
-							"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
-							"EffectAttachType"	"attach_hitloc"	
 
 							"RunScript"
 							{
@@ -7389,7 +7404,7 @@
 	// Sniper: Burning Grenade
 	//=================================================================================================================
 	"sniper_burning_grenade" 	//ALL of the values in this spell with the exception of damage are a complete guess. will need verification in the official game.
-	{							//The damage value is taken from a post in 2008, so it's also probably wrong.
+	{							//Damage verified
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"alchemist_unstable_concoction_throw"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
@@ -7397,8 +7412,8 @@
 		"LevelsBetweenUpgrades"			"3"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCastRange"				"1800"
-		"AbilityCooldown"				"20"
+		"AbilityCastRange"				"2500"
+		"AbilityCooldown"				"80 78 76 74 72 70 68 66 64 62"
 		"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
 		"AOERadius"						"%radius"
 		"Precache"
@@ -7412,7 +7427,7 @@
 			{
 				"Target"				"POINT"
 				"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
-				"MoveSpeed"				"1100"
+				"MoveSpeed"				"800"
 				"StartRadius"			"0"
 				"EndRadius"				"0"
 				"StartPosition"			"follow_origin"
@@ -7443,7 +7458,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"600"
+				"radius"				"450"
 			}				
 		}
 	}
@@ -7590,9 +7605,9 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCooldown"				"30" //seriously? not even providing the cooldown on the site? this is going to have to be checked against the official game
+		"AbilityCooldown"				"40" //Verified
 		"AbilityManaCost"				"30 45 60 75 90 105 120 135 150 165"
-		"AbilityCastRange"				"700" //another guess
+		"AbilityCastRange"				"450" //Verified
 		"Precache"
 		{
 			"particle_folder"			"particles/hero_oak/"
@@ -7682,7 +7697,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"150 195 240 280 330 375 420 465 510 555" //yep, that's what the site says
+				"radius"				"150 195 240 285 330 375 420 465 510 555" //yep, that's what the site says
 			}			
 			"04"
 			{
@@ -7692,7 +7707,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"				"30" //again, the duration isn't on the website. this will need to be confirmed against the main game
+				"duration"				"20" //again, the duration isn't on the website. this will need to be confirmed against the main game
 			}
 		}
 	}
@@ -8130,6 +8145,349 @@
 		}
 	}
 	
+	//=================================================================================================================
+	// Earth Spirit - Entropist
+	//=================================================================================================================
+	//=================================================================================================================
+	// Entropist: Sure Footing
+	//=================================================================================================================
+	"entropist_sure_footing"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"earth_spirit_stone_caller"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		"AOERadius"						"%radius"
+		"Modifiers"
+		{
+			"modifier_entropist_sure_footing_aura"
+			{
+				"IsHidden"				"0"
+				"Passive"				"1"
+				"Aura"					"modifier_entropist_sure_footing"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster"	"1"
+			}
+			"modifier_entropist_sure_footing"
+			{
+				"IsHidden"				"0"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%move_speed"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_speed"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed"			"10"
+			}	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"			"25"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900" // Verified
+			}			
+		}
+	}	
+	//=================================================================================================================
+	// Entropist: Fist of Stone (note: the website says "First of Stone". Assuming it's a typo)
+	//=================================================================================================================
+	"entropist_fist_of_stone"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"earth_spirit_rolling_boulder"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"40"
+		"AbilityCastRange"				"900" //Verified
+		"AbilityManaCost"				"60 66 75 87 102 141 165 192 222"
+		"AOERadius"						"%radius"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_entropist/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"	
+			{
+				"Target"				"POINT"
+				"EffectName"			"particles/hero_entropist/batrider_flamebreak.vpcf"
+				"MoveSpeed"				"900" //Verified
+				"StartRadius"			"0"
+				"EndRadius"				"0"
+				"StartPosition"			"follow_origin"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"		"0"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
+				"Target"				"CASTER"
+			}
+		}
+		"OnProjectileFinish"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_entropist_fist_of_stone_stun"
+						"Target"		"TARGET"
+					}
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"
+					}
+				}
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
+				"Target"				"POINT"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+				"Function"				"FistOfStone"
+				"particle_radius"		"%particle_radius"
+				"Target"				"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_entropist_fist_of_stone_stun"
+			{
+				"Duration" "%duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}	
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"60 112 194 313 475 691 969 1323 1767 2321"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5 5.5 6 6.7 7.3 8 8.9 9.7 10.7 12"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"200 220 240 260 280 300 320 340 360 380"
+			}
+			"04" //do not localize
+			{
+				"var_type"				"FIELD_FLOAT"
+				"particle_radius"		"0.53 0.58 0.64 0.69 0.75 0.8 0.85 0.91 0.96 1.01"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Entropist: Tremor (this skill sounds incredibly bad)
+	//=================================================================================================================
+	"entropist_tremor" 
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"brewmaster_thunder_clap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"100"
+		"AbilityManaCost"				"30 40 55 75 100 130 165 205 250 300"
+		"AOERadius"						"%radius"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_brewmaster/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Target"				"CASTER"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_Brewmaster.ThunderClap"
+				"Target"				"CASTER"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"			"CASTER"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_entropist_tremor_slow"
+						"Target"		"TARGET"
+					}
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_entropist_tremor_slow"
+			{
+				"Duration"				"%duration"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%slow"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-40 -45 -50 -55 -60 -65 -70 -75 -80 -85"
+			}		
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20 24 28 32 36 40 44 48 52 56"
+			}	
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500"
+			}			
+		}
+	}
+	//=================================================================================================================
+	// Entropist: Ring of Spears
+	//=================================================================================================================
+	"entropist_ring_of_spears"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"elder_titan_earth_splitter"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"700" //Verified
+		"AbilityCooldown"				"80 75 70 65 60 55 50 45 40 35"
+		"AbilityManaCost"				"200 230 260 290 320 350 380 410 440 470"
+		"AOERadius"						"%radius"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_leshrac/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts" 
+		}
+		"OnSpellStart"
+		{
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_entropist_ring_of_spears_stun"
+						"Target"		"TARGET"
+					}
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"
+					}
+				}
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+				"Function"				"RingOfSpears"
+				"radius"				"%radius"
+				"Target"				"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_entropist_ring_of_spears_stun"
+			{
+				"Duration" "%duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"1000 2250 3812 5765 8207 11258 15073 19841 25802 33252"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"15 15.9 16.8 17.8 18.9 20 21.3 22.5 23.9 25"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"800"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================

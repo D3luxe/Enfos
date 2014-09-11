@@ -42,6 +42,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf", context )
 	PrecacheResource( "particle", "particles/hero_moon_mage/jakiro_liquid_fire_explosion.vpcf", context )
 	PrecacheResource( "particle", "particles/items_fx/aura_assault.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf", context )
 
 	--Arhat
 	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )

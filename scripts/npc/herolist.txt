@@ -24,4 +24,5 @@
 	// "npc_dota_hero_sven" "1"
 	"npc_dota_hero_treant" "1"
 	"npc_dota_hero_bounty_hunter" "1"
+	"npc_dota_hero_earth_spirit" "1"
 }
