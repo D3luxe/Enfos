@@ -1091,7 +1091,7 @@
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Lycan_Wolf"
 		"Level"						"1"
-		"ModelScale" 					"1.2"
+		"ModelScale" 					"1"
 		"UnitLabel"			"spiderling"
 
 		// Abilities

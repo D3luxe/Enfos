@@ -112,19 +112,6 @@ function CEnfosGameRound:End()
 		nTowersStandingGoldReward = nTowersStandingGoldReward,
 	}
 
-	local playerSummaryCount = 0
-	for i = 1, DOTA_MAX_TEAM_PLAYERS do
-		local nPlayerID = i-1
-		if PlayerResource:HasSelectedHero( nPlayerID ) then
-			local szPlayerPrefix = string.format( "Player_%d_", playerSummaryCount)
-			playerSummaryCount = playerSummaryCount + 1
-			local playerStats = self._vPlayerStats[ nPlayerID ]
-			roundEndSummary[ szPlayerPrefix .. "HeroName" ] = PlayerResource:GetSelectedHeroName( nPlayerID )
-			roundEndSummary[ szPlayerPrefix .. "CreepKills" ] = playerStats.nCreepsKilled
-			roundEndSummary[ szPlayerPrefix .. "Deaths" ] = PlayerResource:GetDeaths( nPlayerID ) - playerStats.nPriorRoundDeaths
-		end
-	end
-	FireGameEvent( "Enfos_show_round_end_summary", roundEndSummary )
 end
 
 
@@ -159,16 +146,6 @@ function CEnfosGameRound:IsFinished()
 end
 
 
--- Rather than use the xp granting from the units keyvalues file,
--- we let the round determine the xp per unit to grant as a flat value.
--- This is done to make tuning of rounds easier.
-function CEnfosGameRound:GetXPPerCoreUnit()
-	if self._nCoreUnitsTotal == 0 then
-		return 0
-	else
-		return math.floor( self._nFixedXP / self._nCoreUnitsTotal )
-	end
-end
 
 
 function CEnfosGameRound:OnNPCSpawned( event )

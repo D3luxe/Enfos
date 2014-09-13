@@ -97,6 +97,9 @@
 		}
 		"UnitFodder_2a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
+
+			"GroupWithUnit"			"UnitFodder_1a"
+
 			"NPCName"				"npc_dota_creep_crazed_spearman"
 			"TotalUnitsToSpawn"		"32"
 			"UnitsPerSpawn"			"1"
@@ -180,15 +183,17 @@
 		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"NPCName"				"npc_dota_giant_spider"
-			"TotalUnitsToSpawn"		"48"
-			"UnitsPerSpawn"			"3"
+			"TotalUnitsToSpawn"		"64"
+			"UnitsPerSpawn"			"2"
 			"SpawnInterval"			"2.5"
 		}
 		"UnitFodder_2a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
+			"GroupWithUnit"			"UnitFodder_1a"
+
 			"NPCName"				"npc_dota_giant_poison_spider"
-			"TotalUnitsToSpawn"		"48"
-			"UnitsPerSpawn"			"3"
+			"TotalUnitsToSpawn"		"32"
+			"UnitsPerSpawn"			"1"
 			"SpawnInterval"			"2.5"
 		}
 	}
