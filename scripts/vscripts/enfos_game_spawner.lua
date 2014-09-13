@@ -21,6 +21,9 @@ function CEnfosGameSpawner:ReadConfiguration( name, kv, gameRound )
 	self._waypointEntity = nil
 	self._skipSpawn = false
 
+	self._armorType = kv.ArmorType or "modifier_armor_unarmored"
+	self._attackType = kv.AttackType or "modifier_attack_normal"
+
 	self._nTotalUnitsToSpawn = tonumber( kv.TotalUnitsToSpawn or 0 )
 	self._nUnitsPerSpawn = tonumber( kv.UnitsPerSpawn or 0 )
 	self._nUnitsPerSpawn = tonumber( kv.UnitsPerSpawn or 1 )
@@ -260,12 +263,14 @@ function CEnfosGameSpawner:_CheckSinglePlayer()
 	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
 		if PlayerResource:IsValidPlayer( nPlayerID ) then
 			if PlayerResource:GetPlayer(nPlayerID) ~= nil then
-				if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam() ~= nil then
-					local team = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam()
-					if(team == 2) then
-						_goodGuyPlayer = true
-					elseif(team == 3) then
-						_badGuyPlayer = true
+				if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero() ~= nil then
+					if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam() ~= nil then
+						local team = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam()
+						if(team == 2) then
+							_goodGuyPlayer = true
+						elseif(team == 3) then
+							_badGuyPlayer = true
+						end
 					end
 				end
 			end
@@ -273,6 +278,22 @@ function CEnfosGameSpawner:_CheckSinglePlayer()
 	end
 end
 
+--Adds the respective attack and armor modifiers to the spawned creep
+function CEnfosGameSpawner:AddTypes(mob, armor, attack)
+	local spawnedUnitIndex = mob
+	local armorType = armor
+	local attackType = attack
+
+	local armorItem = CreateItem("item_armor_type_modifier", nil, nil) 
+	armorItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, armorType, {})
+	UTIL_RemoveImmediate(armorItem)
+	armorItem = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	attackItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, attackType, {})
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+end
 
 function CEnfosGameSpawner:_DoSpawn()
 	CEnfosGameSpawner:_CheckSinglePlayer()
@@ -317,6 +338,7 @@ function CEnfosGameSpawner:_DoSpawn()
 				self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 				entUnit.Enfos_IsCore = true
+				self:AddTypes(entUnit, self._armorType, self._attackType)
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
@@ -342,6 +364,7 @@ function CEnfosGameSpawner:_DoSpawn()
 				self._nUnitsSpawnedThisRound = self._nUnitsSpawnedThisRound + 1
 				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 				entUnit2.Enfos_IsCore = true
+				self:AddTypes(entUnit2, self._armorType, self._attackType)
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1

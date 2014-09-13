@@ -4294,6 +4294,171 @@
 			}
 		}
 	}
+	"item_armor_type_modifier"
+	{
+		"ID"							"2106"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+
+		"Modifiers"
+		{
+			//Unarmored = DOTA_COMBAT_CLASS_DEFEND_SOFT
+			//Light = DOTA_COMBAT_CLASS_DEFEND_WEAK
+			//Medium = DOTA_COMBAT_CLASS_DEFEND_BASIC
+			//Heavy = DOTA_COMBAT_CLASS_DEFEND_STRONG
+			//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
+			"modifier_armor_unarmored"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"unarmored"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_light"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"light"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_medium"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"medium"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_heavy"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"heavy"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_fortified"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"fortified"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_hero"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"hero"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+			"modifier_armor_divine"
+			{
+				"IsHidden"				"0"  
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"		"CalculateArmor"
+						"ArmorType"		"divine"
+						"DamageTaken"		"%attack_damage"
+					}
+
+				}
+			}
+		}
+	}
+	"item_attack_type_modifier"
+	{
+		"ID"							"2107"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+
+		"Modifiers"
+		{
+			//Attack Types: - "CombatClassAttack"
+			//--------------
+			//Normal = DOTA_COMBAT_CLASS_ATTACK_BASIC
+			//Pierce = DOTA_COMBAT_CLASS_ATTACK_PIERCE
+			//Siege = DOTA_COMBAT_CLASS_ATTACK_SIEGE
+			//Chaos = DOTA_COMBAT_CLASS_ATTACK_LIGHT
+			//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
+			"modifier_attack_normal"
+			{
+				"IsHidden"				"0"  
+			}
+			"modifier_attack_pierce"
+			{
+				"IsHidden"				"0"  
+			}
+			"modifier_attack_siege"
+			{
+				"IsHidden"				"0"  
+			}
+			"modifier_attack_chaos"
+			{
+				"IsHidden"				"0"  
+			}
+			"modifier_attack_magical"
+			{
+				"IsHidden"				"0"  
+			}
+			"modifier_attack_hero"
+			{
+				"IsHidden"				"0"  
+			}
+		}
+	}
 
 	"item_stats_modifier"
 	{

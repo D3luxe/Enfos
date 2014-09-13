@@ -60,6 +60,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	
@@ -77,6 +79,9 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
+
 		}
 	}
 
@@ -94,6 +99,8 @@
 			"TotalUnitsToSpawn"		"64"
 			"UnitsPerSpawn"			"2"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 		"UnitFodder_2a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
@@ -104,6 +111,8 @@
 			"TotalUnitsToSpawn"		"32"
 			"UnitsPerSpawn"			"1"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_pierce"
+			"ArmorType"				"modifier_armor_light"
 		}
 	}
 
@@ -121,6 +130,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}	
 
@@ -135,9 +146,22 @@
 		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"NPCName"				"npc_dota_creature_wood_troll"
-			"TotalUnitsToSpawn"		"96"
-			"UnitsPerSpawn"			"3"
+			"TotalUnitsToSpawn"		"64"
+			"UnitsPerSpawn"			"2"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_medium"
+		}
+		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		{
+			"GroupWithUnit"			"UnitFodder_1a"
+			
+			"NPCName"				"npc_dota_creature_wood_troll_rock_tosser"
+			"TotalUnitsToSpawn"		"32"
+			"UnitsPerSpawn"			"1"
+			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_siege"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round6" // Satyr Reavers
@@ -154,6 +178,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round7" // Blood Wolves
@@ -170,6 +196,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_light"
 		}
 	}
 	"Round8" // Giant Spiders
@@ -186,6 +214,8 @@
 			"TotalUnitsToSpawn"		"64"
 			"UnitsPerSpawn"			"2"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_medium"
 		}
 		"UnitFodder_2a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
@@ -195,6 +225,8 @@
 			"TotalUnitsToSpawn"		"32"
 			"UnitsPerSpawn"			"1"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_chaos"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round9" // Rock Troll
@@ -211,6 +243,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round10" // Brown Bear
@@ -227,6 +261,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 
 	}
@@ -244,6 +280,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_magical"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round12" // Snowbeast
@@ -260,6 +298,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round13" // Lesser Sluagh
@@ -276,6 +316,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_pierce"
+			"ArmorType"				"modifier_armor_light"
 		}
 	}
 	"Round14" // Arbelog
@@ -292,6 +334,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round15" // Moss Mey
@@ -308,6 +352,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round16" // Swamp Troll
@@ -324,6 +370,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round17" // Young Ogre
@@ -340,6 +388,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round18" // Mottled Westanuryn
@@ -356,6 +406,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round19" // Small Peccary
@@ -372,6 +424,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round20" // Spirit Hawk bonus wave
@@ -388,6 +442,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round21" // Giant Thicket Viper
@@ -404,6 +460,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_light"
 		}
 	}
 	"Round22" // Yvhh La`tami
@@ -420,6 +478,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_medium"
 		}
 	}
 	"Round23" // giant Black Leucro
@@ -436,6 +496,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_unarmored"
 		}
 	}
 	"Round24" // Fendryad
@@ -452,6 +514,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round25" // Death Spirit
@@ -468,6 +532,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_medium"
 		}
 	}
 	"Round26" // Rock Guardian
@@ -484,6 +550,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round27" // Pirate
@@ -500,6 +568,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round28" // Skeletal Sailor
@@ -516,6 +586,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_medium"
 		}
 	}
 	"Round29" // Giant Sea Turtle
@@ -532,6 +604,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_chaos"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round30"	// Blood Warrior
@@ -548,6 +622,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round31" // Zombie Nomad
@@ -564,6 +640,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round32" // Shadow Mage
@@ -580,6 +658,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_magical"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round33" // Lun`Shele Hunter
@@ -596,6 +676,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_pierce"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round34" // Kra`hei
@@ -612,6 +694,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round35" // Poloh`izh
@@ -628,6 +712,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round36" // Spirit Owl
@@ -644,6 +730,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round37" // Misshapen
@@ -660,6 +748,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round38" // Armored Warklin
@@ -676,6 +766,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round39" // Warklin Mauler
@@ -692,6 +784,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_normal"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round40" // S`sugi Malchata
@@ -708,6 +802,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_siege"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round41" // Snaer Hafwa
@@ -724,6 +820,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_chaos"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	"Round42" // S`lai Screamer
@@ -740,6 +838,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
+			"AttackType"			"modifier_attack_chaos"
+			"ArmorType"				"modifier_armor_hero"
 		}
 	}
 	

@@ -39,3 +39,12 @@ function FocusMoonbeam(keys)
 	ParticleManager:SetParticleControl(cPart,16,Vector(1,0,0))	
 end
 
+function mob_bash(keys)
+	local caster = keys.caster
+	local target = keys.target
+	if not target:HasModifier("modifier_anti_magic_potion") and not target:HasModifier("modifier_heroic_strength") and not target:HasModifier("modifier_chadatrus_blessing") and not target:HasModifier("modifier_dragon_dance") then
+		target:AddNewModifier(caster, nil, "modifier_stunned", {duration = keys.duration})
+		DealDamage(caster, target, keys.damage, DAMAGE_TYPE_MAGICAL, nil)
+	end
+end
+

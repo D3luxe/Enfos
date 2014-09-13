@@ -25,6 +25,107 @@ for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
 end
 
+--[[heroTable = {"npc_dota_hero_naga_siren",				-- 1 	Ahlen
+			"npc_dota_hero_juggernaut",					-- 2 	Blood Dancer
+			"npc_dota_hero_beastmaster",				-- 3 	Barbarian
+			"npc_dota_hero_skywrath_mage",				-- 4 	Time Mage
+			"npc_dota_hero_ursa",						-- 5 	Battle Chanter
+			"npc_dota_hero_shadow_shaman",				-- 6 	Warlock
+			"npc_dota_hero_dragon_knight",				-- 7 	Holy Warrior
+			"npc_dota_hero_bounty_hunter",				-- 8 	Magic Infuser
+			"npc_dota_hero_phantom_assassin",			-- 9 	Paladin
+			"npc_dota_hero_silencer",					-- 10 	Mentalist
+			"npc_dota_hero_storm_spirit",				-- 11 	Evoker
+			"npc_dota_hero_luna",						-- 12 	Moon Mage
+			"npc_dota_hero_dazzle",						-- 13 	Hypnotist
+			"npc_dota_hero_omniknight",					-- 14 	Weaponsmith
+			"npc_dota_hero_lich",						-- 15 	Revenant
+			"npc_dota_hero_sniper",						-- 16 	Sniper
+			"npc_dota_hero_treant",						-- 17 	Oak
+			"npc_dota_hero_antimage",					-- 18 	Thief
+			"npc_dota_hero_earth_spirit"				-- 19 	Entropist
+		}]]--
+
+heroTable = {
+				{	["name"]="npc_dota_hero_naga_siren",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_medium",
+				},
+				{	["name"]="npc_dota_hero_juggernaut",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_unarmored",
+				},
+				{	["name"]="npc_dota_hero_beastmaster",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_medium",
+				},
+				{	["name"]="npc_dota_hero_skywrath_mage",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_ursa",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_shadow_shaman",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_dragon_knight",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_divine",
+				},
+				{	["name"]="npc_dota_hero_bounty_hunter",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_medium",
+				},
+				{	["name"]="npc_dota_hero_phantom_assassin",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_divine",
+				},
+				{	["name"]="npc_dota_hero_silencer",
+					["attackType"]="modifier_attack_normal",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_storm_spirit",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_luna",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_dazzle",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_unarmored",
+				},
+				{	["name"]="npc_dota_hero_omniknight",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_normal",
+				},
+				{	["name"]="npc_dota_hero_lich",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_sniper",
+					["attackType"]="modifier_attack_pierce",
+					["armorType"]="modifier_armor_medium",
+				},
+				{	["name"]="npc_dota_hero_treant",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_antimage",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_light",
+				},
+				{	["name"]="npc_dota_hero_earth_spirit",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_heavy",
+				},
+		}	
+
+
 if CEnfosGameMode == nil then
 	CEnfosGameMode = class({})
 	CEnfosGameMode.__index = CEnfosGameMode
@@ -72,6 +173,7 @@ end
 function Activate()
 	GameRules.Enfos = CEnfosGameMode()
 	GameRules.Enfos:InitGameMode()
+
 end
 
 
@@ -502,29 +604,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local spellbringerName = nil
 	local spellbringerLocation = nil
 	local playerID = spawnedUnitIndex:GetPlayerID()
-	if playerID == 0 then
-		spellbringerName = "spellbringer_1"
-	elseif playerID == 1 then
-		spellbringerName = "spellbringer_2"
-	elseif playerID == 2 then
-		spellbringerName = "spellbringer_3"
-	elseif playerID == 3 then
-		spellbringerName = "spellbringer_4"
-	elseif playerID == 4 then
-		spellbringerName = "spellbringer_5"
-	elseif playerID == 5 then
-		spellbringerName = "spellbringer_6"
-	elseif playerID == 6 then
-		spellbringerName = "spellbringer_7"
-	elseif playerID == 7 then
-		spellbringerName = "spellbringer_8"
-	elseif playerID == 8 then
-		spellbringerName = "spellbringer_9"
-	elseif playerID == 9 then
-		spellbringerName = "spellbringer_10"
-	else
-		print("Incorrect player ID")
-	end
+	playerID = playerID + 1
+	spellbringerName = "spellbringer_"..playerID
 
 	if spellbringerName ~= nil then
 		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
@@ -543,6 +624,31 @@ function CEnfosGameMode:OnPlayerPicked( event )
 			end
 		end
 	})
+
+	local heroPicked = spawnedUnitIndex:GetUnitName()
+	local heroArmorType = nil
+	local heroAttackType = nil
+	for i = 1, #heroTable do
+		if heroArmorType == nil or heroAttackType == nil then
+			if heroTable[i].name == heroPicked then
+				heroArmorType = heroTable[i].armorType
+				heroAttackType = heroTable[i].attackType
+			end
+		end
+	end
+	if heroArmorType ~= nil then
+		local armorType = CreateItem("item_armor_type_modifier", nil, nil) 
+		armorType:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, heroArmorType, {})
+		UTIL_RemoveImmediate(armorType)
+		armorType = nil
+	end
+
+	if heroAttackType ~= nil then
+		local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+		attackItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, heroAttackType, {})
+		UTIL_RemoveImmediate(attackItem)
+		attackItem = nil
+	end
 
 	-- Apply timer to update stats
 	CEnfosGameMode:ModifyStatBonuses(spawnedUnitIndex)
@@ -722,7 +828,6 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 					local count = math.floor(agility / val)
 					if count >= 1 then
 						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_negative_armor_mod_" .. val, {})
-						print("Adding modifier_negative_armor_mod_" .. val)
 						agility = agility - val
 					end
 				end
@@ -737,7 +842,6 @@ function CEnfosGameMode:ModifyStatBonuses(unit)
 					if count >= 1 then
 						manaUpdater:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, "modifier_armor_mod_" .. val, {})
 						agility = agility - val
-						print("Adding modifier_armor_mod_" .. val)
 					end
 				end
 

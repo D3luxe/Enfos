@@ -3858,6 +3858,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"slardar_bash"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"1"
 		
 		"Modifiers"
@@ -3875,17 +3876,12 @@
 						//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
 						"OnSuccess"
 						{
-							"ApplyModifier"
+							"RunScript"
 							{
-								"ModifierName" "modifier_mob_bash_1_stun"
-								"Target"	   "TARGET"	
-							}
-
-							"Damage"
-							{
-								"Type" 			"DAMAGE_TYPE_PHYSICAL"
-								"Damage" 		"%damage"
-								"Target"		"TARGET"
+								"ScriptFile"	"scripts/vscripts/heroes/shared.lua"
+								"Function"		"mob_bash"
+								"damage"		"%damage"
+								"duration"		"%duration"
 							}
 
 						}
@@ -3926,7 +3922,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_INTEGER"
-				"bash_chance"				"15"
+				"bash_chance"				"100"
 			}
 			"03"
 			{
@@ -7904,6 +7900,7 @@
 			"modifier_khri_strike"
 			{
 				"Passive" 				"1"
+				"IsHidden"				"1"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -8094,6 +8091,7 @@
 			"modifier_thief_venom_applier"
 			{
 				"Passive"				"1"
+				"IsHidden"				"1"
 				"OnAttackLanded"
 				{
 					"ApplyModifier"
