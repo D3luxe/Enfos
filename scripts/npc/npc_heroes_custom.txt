@@ -694,7 +694,7 @@
 		"AttributeIntelligenceGain" "0.33" 
 		
 		"MovementSpeed"				"350"
-		"AttackRate"                "4.65"
+		"AttackRate"                "3.72"
 		"AttackRange"               "120"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"

@@ -14,11 +14,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_broadsword"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "6500" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -70,11 +73,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_gleaming_longsword"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "400" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -113,11 +119,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_claymore"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "2500" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -162,15 +171,18 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_demon_edge"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "8000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
-			"modifier_gleaming_longsword"
+			"modifier_spineripper"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -205,11 +217,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_desolator"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"	
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "10000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -278,7 +293,8 @@
 		"ItemQuality"					"rare"
 		"ItemCost"                      "30000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		"SideShop"					"1"
 
 		"Modifiers"
 		{
@@ -330,7 +346,8 @@
 		"ItemQuality"					"rare"
 		"ItemCost"                      "30000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		"SideShop"					"1"
 
 		"Modifiers"
 		{
@@ -456,7 +473,7 @@
 		"ItemQuality"					"artifact"
 		"ItemCost"                      "2600" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -523,6 +540,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"5000"	
 		"ItemShopTags"					""
+		"SecretShop"					"1"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -541,7 +559,7 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ethereal_blade"
 
-		"ItemDroppable"					"0"
+		"ItemDroppable"					"1"
 		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
@@ -549,7 +567,7 @@
 
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -607,6 +625,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"10000"	
 		"ItemShopTags"					""
+		"SecretShop"					"1"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -625,7 +644,7 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_uthmors_mirror_blade"
 
-		"ItemDroppable"					"0"
+		"ItemDroppable"					"1"
 		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
@@ -633,7 +652,7 @@
 
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 		"Modifiers"
 		{
 			"modifier_uthmors_mirror_blade"
@@ -758,7 +777,7 @@
 		"ItemQuality"					"artifact"
 		"ItemCost"                      "2600" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -813,7 +832,10 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "400" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
 
 		"Modifiers"
 		{
@@ -852,11 +874,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_oblivion_staff"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "1200" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -911,7 +936,8 @@
 		"ItemQuality"					"rare"
 		"ItemCost"                      "10000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		"SideShop"					"1"
 
 		"Modifiers"
 		{
@@ -968,6 +994,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"5000"	
 		"ItemShopTags"					""
+		"SecretShop"					"1"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -986,7 +1013,7 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_scepter_of_the_magi"
 
-		"ItemDroppable"					"0"
+		"ItemDroppable"					"1"
 		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
@@ -994,7 +1021,7 @@
 
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1055,6 +1082,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"1500"	
 		"ItemShopTags"					""
+		"SecretShop"					"1"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -1075,7 +1103,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"30.0"
 
-		"ItemDroppable"					"0"
+		"ItemDroppable"					"1"
 		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
@@ -1083,7 +1111,7 @@
 
 		"ItemCost"                      "1500" 		
 		"ItemShopTags"					"boot"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1123,11 +1151,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ruby_inset_ring"
+		//"ItemStockMax"					"4"
+		//"ItemStockInitial"				"4"
+		//"ItemStockTime"					"10.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "1000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1170,7 +1201,7 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "750" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1213,7 +1244,7 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "500" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1252,11 +1283,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_crystal_edged_ring"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"24.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "2250" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1297,11 +1331,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_bloodstone_inset_ring"
+		//"ItemStockMax"					"6"
+		//"ItemStockInitial"				"6"
+		//"ItemStockTime"					"4.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "4000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1340,11 +1377,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_zircon_inset_ring"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"20.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "3000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1387,7 +1427,10 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "2000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"20.0"
 
 		"Modifiers"
 		{
@@ -1426,11 +1469,14 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_diamond_etched_ring"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"48.0"
 
 		"ItemQuality"					"component"
 		"ItemCost"                      "9000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1475,7 +1521,7 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "10000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
 		"Modifiers"
 		{
@@ -1517,6 +1563,9 @@
 		"ID"							"1040"
 		"ItemCost"						"400"
 		"ItemQuality"					"component"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
 
 		// Item Info
 		//--------------------------------------------------------------------
@@ -1584,7 +1633,10 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "500" 		
 		"ItemShopTags"					"boot"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"60.0"
 
 		"Modifiers"
 		{
@@ -1626,7 +1678,10 @@
 		"ItemQuality"					"component"
 		"ItemCost"                      "300" 		
 		"ItemShopTags"					"boot"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"60.0"
 
 		"Modifiers"
 		{
@@ -1668,8 +1723,9 @@
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"0"	
+		"ItemCost"						"1"	
 		"ItemShopTags"					""
+		"SecretShop"					"1"
 		
 		// Recipe
 		//-------------------------------------------------------------------------------------------------------------
@@ -1689,11 +1745,11 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"30.0"
 
-		"ItemCost"                      "0" 		
+		"ItemCost"                      "1" 		
 		"ItemShopTags"					"boot"
-		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
-		"ItemDroppable"					"0"
+		"ItemDroppable"					"1"
 		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
@@ -1772,6 +1828,9 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_poor_mans_shield"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -1828,6 +1887,7 @@
 		"ItemCost"						"22500"
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"SideShop"					"1"
 
 		"Modifiers"
 		{
@@ -1880,6 +1940,9 @@
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemAliases"					"mana;mb"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
 
 		"Modifiers"
 		{
@@ -1918,6 +1981,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_platemail"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
+
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -1972,6 +2039,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"24.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2037,6 +2107,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2101,6 +2174,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2119,7 +2195,7 @@
 		"ItemInitialCharges"			"10"
 		"SideShop"						"1"
 
-		"OnEquip"
+		"OnSpellStart"
 		{
 			"RunScript"
 			{
@@ -2165,6 +2241,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2229,6 +2308,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"10"
+		//"ItemStockInitial"				"10"
+		//"ItemStockTime"					"30.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2401,6 +2483,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2465,6 +2550,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2529,6 +2617,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2593,6 +2684,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
 		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"20.0"
 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2684,6 +2778,9 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"BaseClass"						"item_ward_sentry"
+		//"ItemStockMax"					"4"
+		//"ItemStockInitial"				"4"
+		//"ItemStockTime"					"24.0"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2742,6 +2839,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2788,6 +2888,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2834,6 +2937,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2880,6 +2986,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2926,6 +3035,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2972,6 +3084,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3018,6 +3133,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3064,6 +3182,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"600.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3110,6 +3231,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
 
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------

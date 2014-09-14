@@ -170,7 +170,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastPoint"				"0.0"
-		"AbilityCastAnimation"			"ACT_DOTA_OVERRIDE_ABILITY_1"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
 
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -2071,41 +2071,119 @@
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"omniknight_repel"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"MaxLevel"						"1"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"10"
 		"AbilityManaCost"				"7"
+		"AbilityChannelTime"			"6.0"
+		"AbilityCastAnimation"			"cast_guardianangel"
+
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_clinkz/"
+			"particle"					"particles/units/heroes/hero_zuus/zuus_lightning_bolt_start.vpcf"
+			"particle"					"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
 		}
+
 		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_channel_start"
+			}
+			
+		}
+		"OnChannelSucceeded"
 		{
 			"ApplyModifier"
 			{
 				"ModifierName"			"modifier_weaponsmith_cambrinth_charge"
 				"Target"				"CASTER"
 			}
+			
+			"RemoveModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_channel_start"
+			}
 		}
+		
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_channel_start"
+			}
+		}
+
 		"Modifiers"
 		{
+			"modifier_channel_start"
+			{
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/test_particle/channel_field_1.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"CASTER"
+					
+						"ControlPoints"
+						{
+							"00"		"0 0 5"
+						}
+					}
+				}
+			}
 			"modifier_weaponsmith_cambrinth_charge"
 			{
-				"Duration"				"4.5"
+				"Duration"				"-1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
 				}
 				"OnCreated"
 				{
 					"AttachEffect"
 					{
-						"EffectName"		"particles/units/heroes/hero_clinkz/clinkz_death_pact_buff.vpcf"
-						"EffectAttachType"	"follow_overhead"
+						"EffectName"		"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+						"EffectAttachType"	"attach_attack1"
 						"Target"			"CASTER"
 					}
 				}
+				"OnAttackLanded"
+				{
+					"ApplyModifier"
+					{
+						"Target" 			"TARGET"
+						"ModifierName"		"modifier_weaponsmith_charge_fx"
+					}
+					"RemoveModifier"
+					{
+						"Target"		"CASTER"
+						"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
+					}
+
+				}
+			}
+			"modifier_weaponsmith_charge_fx"
+			{
+				"IsHidden"	"1"
+				"Duration"	"1"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/units/heroes/hero_zuus/zuus_lightning_bolt_start.vpcf"
+						"EffectAttachType"	"attach_hitloc"
+						"Target"			"TARGET"
+
+					}
+				}
+
 			}
 			"modifier_weaponsmith_cleave"
 			{
@@ -2136,7 +2214,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_increase"		"25"
+				"damage_increase"		"300"
 			}
 			"02"
 			{
@@ -2175,6 +2253,11 @@
 				"stun_duration"			"%stun_duration"
 				"slow_area_of_effect"	"%slow_area_of_effect"
 				"slow_duration"			"%slow_duration"
+			}
+			"RemoveModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 			}
 		}
 		"AbilitySpecial"
@@ -2290,6 +2373,11 @@
 				"ScriptFile"			"scripts/vscripts/heroes/weaponsmith.lua"
 				"Function"				"Forge"
 				"damage_bonus"			"%damage_bonus"
+			}
+			"RemoveModifier"
+			{
+				"Target"		"CASTER"
+				"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 			}
 		}
 		"AbilitySpecial"
@@ -3774,7 +3862,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"slardar_bash"
+		"AbilityTextureName" 			"viper_poison_attack"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"MaxLevel"						"1"
@@ -7506,8 +7594,8 @@
 		"MaxLevel"						"1"
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"1"
-		"AbilityCastRange"				"500" //no range listed. guessing
-		"AbilityManaCost"				"0" //no mana cost listed. I'm sure that's wrong
+		"AbilityCastRange"				"900" //Verified
+		"AbilityManaCost"				"20" //Verified
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_treant/"
@@ -7527,7 +7615,7 @@
 				"Duration"				"%duration"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //Verified
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armour_bonus"
 				}
 				"OnCreated"
@@ -7653,7 +7741,7 @@
 			{
 				"Duration"				"%duration"	
 				"IsDebuff"				"1"
-				"ThinkInterval"			"1"
+				"ThinkInterval"			"0.1"	//Verified
 				"OnCreated"
 				{
 					"Damage"
@@ -7693,7 +7781,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"				"150 195 240 285 330 375 420 465 510 555" //yep, that's what the site says
+				"radius"				"150 195 240 285 330 375 420 465 510 555" //Verified
 			}			
 			"04"
 			{
@@ -7703,7 +7791,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"				"20" //again, the duration isn't on the website. this will need to be confirmed against the main game
+				"duration"				"20" //Verified
 			}
 		}
 	}

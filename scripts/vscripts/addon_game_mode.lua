@@ -101,7 +101,7 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_omniknight",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_normal",
+					["armorType"]="modifier_armor_medium",
 				},
 				{	["name"]="npc_dota_hero_lich",
 					["attackType"]="modifier_attack_magical",
@@ -124,6 +124,18 @@ heroTable = {
 					["armorType"]="modifier_armor_heavy",
 				},
 		}	
+
+uniqueItems = { "item_nimsha",
+				"item_bloodthirst",
+				"item_small_round_shield",
+				"item_iron_helmet",
+				"item_elven_plate_mail",
+				"item_elite_elven_boots",
+				"item_thirsting_blade",
+				"item_uthmors_mirror_blade",
+				"item_ring_of_victory",
+				"item_scepter_of_the_magi",
+			}
 
 
 if CEnfosGameMode == nil then
@@ -236,7 +248,8 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent( "dota_player_gained_level", Dynamic_Wrap(CEnfosGameMode, 'OnPlayerLevelledUp'), self)
 	ListenToGameEvent( "dota_inventory_changed", Dynamic_Wrap(CEnfosGameMode, 'OnInventoryChanged'), self)
 	ListenToGameEvent( "dota_item_purchased", Dynamic_Wrap(CEnfosGameMode, 'OnItemPurchased'), self)
-	ListenToGameEvent('dota_player_used_ability', Dynamic_Wrap(CEnfosGameMode, 'OnAbilityCast'), self)
+	ListenToGameEvent( "dota_player_used_ability", Dynamic_Wrap(CEnfosGameMode, 'OnAbilityCast'), self)
+	ListenToGameEvent( "dota_item_picked_up", Dynamic_Wrap(CEnfosGameMode, 'OnItemPickedUp'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
@@ -881,7 +894,8 @@ function CEnfosGameMode:OnInventoryChanged( event )
 	end
 end
 
-function CEnfosGameMode:OnItemPurchased(event)
+function CEnfosGameMode:OnItemPickedUp(event)
+	--PrintTable(event)
 	local itemname = event.itemname
 	local player = event.PlayerID 
 	local hero = nil
@@ -891,10 +905,59 @@ function CEnfosGameMode:OnItemPurchased(event)
 	else
 		print("Invalid player!")
 	end
+
+	-- Automatically drops the new unique item if a previous unique is found.
+	local uniqueItemCount = 0
+	for i=1, #uniqueItems do
+		for item = 0, 18 do
+			if hero:GetItemInSlot(item) ~= nil then
+				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+					uniqueItemCount = uniqueItemCount + 1
+					--print(uniqueItemCount)
+				end
+			end
+		end
+	end
+	Timers:CreateTimer(DoUniqueString("itemPickup"), {
+		endTime = 0.01,
+		callback = function()
+			while uniqueItemCount > 1 do
+				for p=1, #uniqueItems do
+					if hero:HasItemInInventory(uniqueItems[p]) then
+						for item = 0, 18 do
+							if hero:GetItemInSlot(item) ~= nil then
+								if hero:GetItemInSlot(item):GetName() == itemname then
+									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+								end
+							end
+						end
+						uniqueItemCount = uniqueItemCount - 1
+					end
+				end
+			end
+		end
+	})
+
+
+	
+
+end
+function CEnfosGameMode:OnItemPurchased(event)
+	--PrintTable(event)
+	local itemname = event.itemname
+	local player = event.PlayerID 
+	local hero = nil
+	if PlayerResource:IsValidPlayer( player ) then
+		hero = PlayerResource:GetSelectedHeroEntity(player)
+		
+	else
+		print("Invalid player!")
+	end
+
+	-- Autocasts tomes if found in inventory
 	if string.find(itemname, "item_tome") then
 		local itemSlot = -1
 		for item = 0, 18 do
-			local i = 0
 			if hero:GetItemInSlot(item) ~= nil then
 				if hero:GetItemInSlot(item):GetName() == itemname then
 					itemSlot = item
@@ -902,6 +965,35 @@ function CEnfosGameMode:OnItemPurchased(event)
 			end
 		end
 		hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
+	end
+
+
+	-- Automatically drops the new unique item if a previous unique is found.
+	local uniqueItemCount = 0
+	for i=1, #uniqueItems do
+		for item = 0, 18 do
+			if hero:GetItemInSlot(item) ~= nil then
+				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+					uniqueItemCount = uniqueItemCount + 1
+					--print(uniqueItemCount)
+				end
+			end
+		end
+	end
+
+	while uniqueItemCount > 1 do
+		for p=1, #uniqueItems do
+			if hero:HasItemInInventory(uniqueItems[p]) then
+				for item = 0, 18 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == itemname then
+							hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+						end
+					end
+				end
+				uniqueItemCount = uniqueItemCount - 1
+			end
+		end
 	end
 end
 
@@ -1010,7 +1102,7 @@ function CEnfosGameMode:OnEntityHurt( event )
 end
 
 function CEnfosGameMode:OnAbilityCast( keys )
-	PrintTable(keys)
+	--PrintTable(keys)
 	local abilityName = keys.abilityname
 	--local ply = keys.PlayerID
 	--local hero = keys.PlayerID:GetAssignedHero()

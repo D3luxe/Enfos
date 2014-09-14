@@ -35,15 +35,28 @@ function Forge(keys)
 -- vars
 	local caster = keys.caster
 	local damageBonus = keys.damage_bonus
+	print("Damage Bonus pre charge: "..damageBonus)
 	if caster:HasModifier("modifier_weaponsmith_cambrinth_charge") then
 		damageBonus = damageBonus * 2
 	end
+	print("Damage Bonus post charge: "..damageBonus)
 	if caster.forge == nil then
 		caster.forge = 0
 	end
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() - caster.forge - caster:GetStrength())
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() - caster.forge - caster:GetStrength())
+
+	local strength = caster:GetStrength() * 2.5
+	print("Caster's forge: "..caster.forge)
+	print("Caster's Strength: "..strength)
+	print("Min dmg prior: "..caster:GetBaseDamageMin())
+	print("Max dmg prior: "..caster:GetBaseDamageMax())
+	caster:SetBaseDamageMin(caster:GetBaseDamageMin() - caster.forge - strength)
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() - caster.forge - strength)
+	print("Min dmg mid: "..caster:GetBaseDamageMin())
+	print("Max dmg mid: "..caster:GetBaseDamageMax())
 	caster.forge = caster.forge + damageBonus
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - caster:GetStrength())
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - caster:GetStrength())
+	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - strength)
+	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - strength)
+	print("Caster's forge: "..caster.forge)
+	print("Min dmg post: "..caster:GetBaseDamageMin())
+	print("Max dmg post: "..caster:GetBaseDamageMax())
 end	
