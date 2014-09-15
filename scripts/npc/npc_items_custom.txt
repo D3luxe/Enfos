@@ -6,6 +6,72 @@
 	//===============================================
 
 	//===============================================
+	// Stone Axe
+	//===============================================
+	"item_stone_axe"
+	{
+		"ID"                            "1050"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"stone_axe"
+
+		"ItemQuality"					"component"
+		"ItemCost"                      "40" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"30"
+
+		"OnEquip"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_stone_axe"
+			}
+
+		}
+		"OnUnequip"
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_stone_axe"
+			}
+
+		}
+		"Modifiers"
+		{
+			"modifier_stone_axe"
+			{
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+				"OnAttackLanded"
+				{
+					"SpendCharge"
+					{}
+				}	
+			}
+		}
+
+
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"60"
+			}
+		}
+	}	
+
+	//===============================================
 	// Bloodthirst
 	//===============================================
 	"item_bloodthirst"
@@ -2054,7 +2120,7 @@
 		"ItemCost"						"20"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
@@ -2122,7 +2188,7 @@
 		"ItemCost"						"100"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"5"
@@ -2189,7 +2255,7 @@
 		"ItemCost"						"500"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"10"
@@ -2256,7 +2322,7 @@
 		"ItemCost"						"1500"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"10"
@@ -2323,7 +2389,7 @@
 		"ItemCost"						"1500"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
@@ -2399,7 +2465,7 @@
 		"ItemCost"						"750"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
@@ -2497,7 +2563,7 @@
 		"ItemCost"						"160"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
@@ -2564,7 +2630,7 @@
 		"ItemCost"						"1200"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"4"
@@ -2631,7 +2697,7 @@
 		"ItemCost"						"6000"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"4"
@@ -2698,7 +2764,7 @@
 		"ItemCost"						"20"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"4"
@@ -2794,7 +2860,7 @@
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemAliases"					"sentry ward"
-		"ItemStackable"					"1"
+		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"3"

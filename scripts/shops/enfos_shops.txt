@@ -12,6 +12,7 @@
 		"item" "item_hisan_salve"
 		"item" "item_anti_magic_potion"
 		"item" "item_vampiric_potion"
+		"item"	"item_stone_axe"
 	}
 
 	"attributes"

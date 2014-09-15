@@ -663,7 +663,10 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		attackItem = nil
 	end
 
-	-- Apply timer to update stats
+	local potionItem = CreateItem("item_potion_of_healing", spawnedUnitIndex, nil)
+	potionItem:SetCurrentCharges(1)
+	local potion = spawnedUnitIndex:AddItem(potionItem)
+	
 	CEnfosGameMode:ModifyStatBonuses(spawnedUnitIndex)
 
 
