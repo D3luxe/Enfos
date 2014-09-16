@@ -15,6 +15,7 @@ require( "util")
 require( "enfos")
 require( "timers")
 require( "base_trigger")
+require( 'spell_shop_UI' )
 
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
@@ -190,6 +191,7 @@ end
 
 
 function CEnfosGameMode:InitGameMode()
+	SpellShopUI:InitGameMode();
 	STARTING_GOLD = 25
 	curRound = 0
 	self._nRoundNumber = 1
@@ -548,6 +550,8 @@ function CEnfosGameMode:_ThinkPrepTime()
 		self._currentRound = self._vRounds[ self._nRoundNumber ]
 		self._currentRound:Begin()
 			curRound = curRound + 1
+			Enfos.curRound = curRound
+			print("Enfos.curRound: "..Enfos.curRound)
 			local goldAmount = curRound * 25
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
@@ -1135,7 +1139,8 @@ function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )
 		return
 	end
 	curRound = nRoundToTest - 1
-
+	Enfos.curRound = curRound
+	print("Enfos.curRound: "..Enfos.curRound)
 	if self._entPrepTimeQuest then
 		UTIL_RemoveImmediate( self._entPrepTimeQuest )
 		self._entPrepTimeQuest = nil

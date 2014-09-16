@@ -108,7 +108,7 @@ function FallenOneHurtEnemies(keys)
 	keys.target:SetHealth(1)
 end
 
-function ModelScale(keys)
+function modelScale(keys)
 	--PrintTable(keys)
 	keys.caster:SetModelScale(keys.scale)
 end

@@ -20,45 +20,91 @@
 
 "CustomEvents"
 {
-	"enfos_show_round_end_summary"
+	"spell_shop_ui_spell_add"
 	{
-		"goodLives"					"short"
-		"badLives"					"short"
-		"nRoundNumber"					"short"
-		"nRoundDifficulty"				"long"
-		"roundName"						"string"
-		"nTowers"						"short"
-		"nTowersStanding"				"short"
-		"nTowersStandingGoldReward"		"long"
-		"nGoldBagsExpired"				"short"
+		"player_ID"		"short"
+		"_ID"			"string"
+		"_name"			"string"
+		"_texture"		"string"
+		"_isSellable"	"bool"
+		"_isOwned"		"bool"
+		"_cost"			"short"
+		"_sellFactor"	"short"
+		"_upgFactor"	"short"
+		"_curLvl"		"short"
+		"_maxLvl"		"short"
+		"_isUpg"		"bool"
+		"_pntCost"		"short"
+		"_pntSellFac"	"short"
+		"_pntIncrement"	"short"
+		"_pntIncLvl"	"short"
 	}
-
-	"enfos_victory_message"
+	
+	"spell_shop_ui_spell_change"
 	{
+		"player_ID"		"short"
+		"_ID"			"string"
+		"_name"			"string"
+		"_isSellable"	"bool"
+		"_isOwned"		"bool"
+		"_cost"			"short"
+		"_sellFactor"	"short"
+		"_upgFactor"	"short"
+		"_curLvl"		"short"
+		"_maxLvl"		"short"
+		"_isUpg"		"bool"
+		"_pntCost"		"short"
+		"_pntSellFac"	"short"
+		"_pntIncrement"	"short"
+		"_pntIncLvl"	"short"
 	}
-
-	"enfos_end"
+	
+	"spell_shop_ui_spell_buy"
 	{
-		"victory"						"bool"
-		"flVoteDuration"				"float"
-		"nRoundNumber"					"short"
-		"nRoundDifficulty"				"long"
-		"roundName"						"string"
+		"player_ID"		"short"
+		"_ID"			"string"
+		"_success"		"bool"
 	}
-
-	"enfos_restart_vote"
+	
+	"spell_shop_ui_spell_sell"
 	{
-		"bWantRestart"					"bool"
+		"player_ID"		"short"
+		"_ID"			"string"
+		"_success"		"bool"
 	}
-
-	"enfos_restart_vote_end"
+	
+	"spell_shop_ui_spell_upgrade"
 	{
-
+		"player_ID"		"short"
+		"_ID"			"string"
+		"_success"		"bool"
 	}
-
-	"enfos_starting_next_difficulty"
+	
+	"spell_shop_ui_shop_open"
 	{
-		"nRoundDifficulty" 				"long"
+		"player_ID"		"short"
+	}
+	
+	"spell_shop_ui_shop_close"
+	{
+		"player_ID"		"short"
+	}
+	
+	"spell_shop_ui_shop_toggle"
+	{
+		"player_ID"		"short"
+	}
+	
+	"spell_shop_ui_change_limit"
+	{
+		"player_ID"		"short"
+		"_limit"		"short"
+	}
+	
+	"spell_shop_ui_update_res"
+	{
+		"player_ID"		"short"
+		"_res"			"short"
 	}
 }
 

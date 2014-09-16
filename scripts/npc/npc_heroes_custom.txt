@@ -864,4 +864,37 @@
 		"AttackDamageMin" 			"9.5"
 		"AttackDamageMax" 			"16.5"	
 	}
+
+	//=================================================================================================================
+	// HERO: Spirit Breaker: Summoner
+	//=================================================================================================================
+	"npc_dota_hero_spirit_breaker_enfos"
+	{
+		"override_hero"				"npc_dota_hero_spirit_breaker"
+		"AbilityLayout"				"5"
+		"Ability1"					"summoner_summon_hellbear_warriors"
+		"Ability2"					"summoner_summon_satyr_rangers"
+		"Ability3"					"summoner_summon_darkrift"
+		"Ability4"					"summoner_flag_of_summoning"
+		"Ability5"					"summoner_anti_magic_shell"
+		"Ability6"					"enfos_attribute_bonus"
+		"Ability10"					"spell_dummy_modifier"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "2"
+		"AttackRange"               "550"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"	
+	}
 }

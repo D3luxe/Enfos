@@ -10,6 +10,11 @@
 	"File"		"PipNumbers"
 	"Depth"		"18"
 	}
+	"2"
+	{
+	"File"		"SpellShopUI"
+	"Depth"		"12"
+	}
 
 }
 

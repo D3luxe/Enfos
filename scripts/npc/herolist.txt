@@ -25,4 +25,5 @@
 	"npc_dota_hero_treant" "1"
 	"npc_dota_hero_bounty_hunter" "1"
 	"npc_dota_hero_earth_spirit" "1"
+	"npc_dota_hero_spirit_breaker" "1"
 }

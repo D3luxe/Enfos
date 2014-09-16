@@ -5707,7 +5707,7 @@
 					"RunScript"
 					{
 						"ScriptFile"		"custom_scripted_abilities.lua"
-						"Function"		"ModelScale"
+						"Function"		"modelScale"
 						"scale"			"1.2"
 					}
 				}
@@ -5717,7 +5717,7 @@
 					"RunScript"
 					{
 						"ScriptFile"		"custom_scripted_abilities.lua"
-						"Function"		"ModelScale"
+						"Function"		"modelScale"
 						"scale"			"1"
 					}
 				}
@@ -8587,6 +8587,715 @@
 	}
 
 	//=================================================================================================================
+	// Spirit Breaker - Summoner
+	//=================================================================================================================	
+	//=================================================================================================================
+	// Summoner: Anti-Magic Shell
+	//=================================================================================================================
+	"summoner_anti_magic_shell"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ember_spirit_flame_guard"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30.0"
+		"AbilityManaCost"				"100" //Verified
+		"AbilityCastRange"				"300" //Verified
+		"Precache"
+		{
+			"particle_folder"			"particles/econ/courier/courier_trail_orbit/"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+				"Function"				"AntiMagicShell"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"			"summoner_anti_magic_spell_particle"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"summoner_anti_magic_spell_particle"
+			{
+				"IsHidden"				"1"
+				"ThinkInterval"			"0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{					
+						"ScriptFile"		"scripts/vscripts/heroes/summoner.lua"
+						"Function"			"AntiMagicShellParticle"
+					}
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"EffectName"		"particles/econ/courier/courier_trail_orbit/courier_trail_orbit.vpcf"
+						"EffectAttachType"	"follow_origin"
+						"Target"			"TARGET"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"40"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"strength"				"75000"
+			}
+		}
+	}
+	"summoner_anti_magic_shell_proxy"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ember_spirit_flame_guard"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"600"
+		"AbilityCastPoint"				"0"
+		"MaxLevel"						"1"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"40"
+			}
+			
+			"02"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"radius"						"1"
+			}	
+			
+			"03"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"absorb_amount"					"30000"
+			}				
+			"04"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"tick_interval"					"50"
+			}
+			"05"
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_per_second"				"0"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Summoner: Summon Hellbear Warriors
+	//=================================================================================================================
+	"summoner_summon_hellbear_warriors"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"polar_furbolg_ursa_warrior_thunder_clap"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"80 96 120 152 192 240 296 360 432 512"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_wisp/" 
+			"model"						"models/heroes/wisp/wisp.vmdl"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"SpawnUnit"	
+			{
+				"Target"				"CASTER"
+				"UnitName"				"npc_summoner_hellbear_warrior"
+				"UnitCount"				"2"
+				"UnitLimit"				"100"
+				"SpawnRadius"			"200"
+				"Duration"				"%duration"
+				"GrantsGold"			"false"
+				"GrantsXP"				"false"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+				"Function"				"SummonHellbearWarriors"
+				"armour"				"%armour"
+				"base_attack_time"		"%base_attack_time"
+				"damage"				"%damage"
+				"health"				"%health"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armour"				"5 8 11 14 17 20 23 26 29 32"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"base_attack_time"		"3 2.8 2.6 2.4 2.2 2 1.8 1.6 1.4 1.2"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"20 29 47 74 119 191 308 497 803 1298" //this has a damage range of 3 on the site. it's a little extra work for basically no gain to implement that, so I'm just doing the average 
+			}			
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health"				"450 900 1350 2250 3600 5850 9450 15300 24750 35000"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"25 27 29 31 33 35 37 39 41 43"
+			}	
+		}	
+	}	
+	//=================================================================================================================
+	// Summoner: Summon Satyr Rangers
+	//=================================================================================================================
+	"summoner_summon_satyr_rangers"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"satyr_hellcaller_unholy_aura"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"100 118 145 181 226 280 343 415 496 586"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_wisp/" 
+			"model"						"models/heroes/wisp/wisp.vmdl"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"SpawnUnit"
+			{
+				"Target"				"CASTER"
+				"UnitName"				"npc_summoner_satyr_ranger"
+				"UnitCount"				"2"
+				"UnitLimit"				"100"
+				"SpawnRadius"			"200"
+				"Duration"				"%duration"
+				"GrantsGold"			"false"
+				"GrantsXP"				"false"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+				"Function"				"SummonSatyrRangers"
+				"base_attack_time"		"%base_attack_time"
+				"damage"				"%damage"
+				"health"				"%health"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"base_attack_time"		"2 1.95 1.87 1.77 1.65 1.5 1.32 1.12 0.9 0.8"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"22 37 52 92 152 192 322 502 702 802" //same as above
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health"				"300 550 1000 1400 2300 5500 8500 10000 12000 16000"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"25 27 29 31 33 35 37 39 41 43"
+			}			
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_far"			"190"
+			}			
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_medium"			"140"
+			}			
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_near"			"90"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Summoner: Summon Darkrift
+	//=================================================================================================================
+	"summoner_summon_darkrift" //This unit isn't going to have the lifetime indicator. There is no way around this
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"doom_bringer_doom"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"			"3"
+		"RequiredLevel"					"6"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"160 152 144 136 128 120 112 104 96 88"
+		"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
+		"AbilityCastRange"				"800"
+		"Precache" //THIS IS REALLY AWFUL. PLEASE FIGURE OUT WHY PRECACHING IN-ABILITY ISN'T WORKING
+		{
+			"model"						"models/courier/smeevil_crab/smeevil_crab.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"										
+			"model"						"models/heroes/beastmaster/beastmaster_beast.vmdl"										
+			"model"						"models/heroes/furion/treant.vmdl"									
+			"model"						"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"											
+			"model"						"models/heroes/lycan/summon_wolves.vmdl"										
+			"model"						"models/heroes/broodmother/spiderling.vmdl"												
+			"model"						"models/heroes/broodmother/broodmother_original.vmdl"												
+			"model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"													
+			"model"						"models/heroes/lone_druid/spirit_bear.vmdl"													
+			"model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"														
+			"model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"															
+			"model"						"models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"														
+			"model"						"models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"														
+			"model"						"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"													
+			"model"						"models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"												
+			"model"						"models/heroes/visage/visage_familiar.vmdl"														
+			"model"						"models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl"												
+			"model"						"models/heroes/beastmaster/beastmaster_bird.vmdl"													
+			"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"													
+			"model"						"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"											
+			"model"						"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"										
+			"model"						"models/heroes/enigma/eidelon.vmdl"										
+			"model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"										
+			"model"						"models/heroes/tidehunter/tidehunter.vmdl"										
+			"model"						"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"										
+			"model"						"models/items/courier/raidcall_ems_one_turtle/raidcall_ems_one_turtle.vmdl"										
+			"model"						"models/heroes/dark_seer/dark_seer.vmdl"										
+			"model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"										
+			"model"						"models/creeps/lane_creeps/creep_good_ranged/creep_good_ranged.vmdl"											
+			"model"						"models/heroes/drow/drow.vmdl"											
+			"model"						"models/heroes/slardar/slardar.vmdl"										
+			"model"						"models/creeps/mega_greevil/mega_greevil.vmdl"											
+			"model"						"models/items/courier/snowl/snowl_flying.vmdl"										
+			"model"						"models/heroes/pudge/pudge.vmdl"											
+			"model"						"models/heroes/weaver/weaver.vmdl"												
+			"model"						"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"											
+			"model"						"models/heroes/life_stealer/life_stealer.vmdl"												
+			"model"						"models/heroes/death_prophet/death_prophet.vmdl"										
+			"model"						"models/heroes/doom/doom.vmdl"												
+			"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"		
+			"model"						"models/development/invisiblebox.vmdl"	
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+				"Function"				"SummonDarkrift"
+				"Target"				"POINT"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Summoner: Flag of Summoning
+	//=================================================================================================================
+	"summoner_flag_of_summoning"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"				"legion_commander_duel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCastRange"				"900"
+		"AbilityCooldown"				"120"
+		"AbilityManaCost"				"250 280 325 385 460 550 655 775 910 1000"
+		"AOERadius"						"%radius"
+		"OnSpellStart"
+		{
+			"SpawnUnit"
+			{
+				"Target"				"POINT"
+				"UnitName"				"npc_summoner_flag_of_summoning"
+				"UnitCount"				"1"
+				"UnitLimit"				"100"
+				"SpawnRadius"			"25"
+				"Duration"				"%duration"
+				"GrantsGold"			"false"
+				"GrantsXP"				"false"
+			}
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/summoner.lua"
+				"Function"		"FlagOfSummoning"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armour"				"8 16 24 32 40 48 56 64 72 80"
+			}	
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"			"10 15 20 25 30 35 40 45 50 55"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30 38 46 54 62 70 78 86 94 102"
+			}				
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1200 1400 1600 1800 2000 2200 2400 2600 2800 300"
+			}			
+		}
+	}	
+	//=================================================================================================================
+	// Summoner: Summon Spells
+	//=================================================================================================================
+	"summoner_generic_greater_bash"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"slardar_bash"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"MaxLevel"						"1"
+		"Modifiers"
+		{	
+			"modifier_summoner_generic_greater_bash"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance" "%chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_summoner_generic_greater_bash_stun"
+								"Target"		"TARGET"
+							}
+							"Damage"
+							{
+								"Target"		"TARGET"
+								"Type"			"DAMAGE_TYPE_PHYSICAL"
+								"Damage"		"%damage"
+							}
+						}
+					}
+				}
+			}	
+			"modifier_summoner_generic_greater_bash_stun"
+			{
+				"IsDebuff"					"true"
+				"IsStunDebuff"				"true"
+				"EffectName" 				"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" 			"follow_overhead"
+				"OverrideAnimation" 		"ACT_DOTA_DISABLED"
+				"Duration"					"%duration"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}		
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"chance"				"35"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"100"
+			}			
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"2"
+			}
+		}
+	}
+	"summoner_generic_critical_strike"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"lycan_summon_wolves_critical_strike"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+		"MaxLevel"						"1"
+		"Modifiers"
+		{	
+			"modifier_summoner_generic_critical_strike"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"OnAttackLanded"
+				{
+					"Random"
+					{
+						"Chance" "%chance"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName"	"modifier_summoner_generic_critical_strike_damage"
+								"Target"		"CASTER"
+							}
+						}
+					}
+				}
+			}	
+			"modifier_summoner_generic_critical_strike_damage"
+			{
+				"Duration"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+				}	
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"modifier_summoner_generic_critical_strike_damage"
+						"Target"			"CASTER"	
+					}
+				}	
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"chance"				"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_bonus"			"200"
+			}			
+		}
+	}
+	"summoner_hellbear_evasion"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"phantom_assassin_blur"
+		"MaxLevel"						"1"
+		"Modifiers"
+		{	
+			"modifier_summoner_hellbear_evasion"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"   "%evasion"
+				}	
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"evasion"				"30"
+			}		
+		}
+	}
+	"summoner_hellbear_lifesteal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"skeleton_king_mortal_strike"
+		"MaxLevel"						"1"
+		"Modifiers"
+		{	
+			"modifier_summoner_hellbear_lifesteal"
+			{
+				"Passive"	"1"
+				"IsHidden"	"1"
+				"OnAttackLanded"
+				{
+					"Lifesteal"
+					{
+						"Target"			"TARGET"
+						"LifestealPercent"	"%lifesteal"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"lifesteal"				"40"
+			}		
+		}
+	}
+	"summoner_satyr_splash"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ogre_magi_bloodlust"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		"Modifiers"
+		{
+			"modifier_summoner_satyr_splash"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				"OnAttackLanded"
+				{
+					"CleaveAttack" //far
+					{
+						"CleavePercent"	"25"
+						"CleaveRadius"	"190"
+					}
+					"CleaveAttack" //medium
+					{
+						"CleavePercent"	"25"
+						"CleaveRadius"	"140"
+					}
+					"CleaveAttack" //full
+					{
+						"CleavePercent"	"50"
+						"CleaveRadius"	"90"
+					}
+				}
+			}
+		}
+	}
+	"summoner_satyr_spell_shield" //does nothing right now
+	{
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"omniknight_repel" //we use this icon too much probably
+		"MaxLevel"						"1"
+	}
+	"summoner_satyr_frenzy" //something is up with this. doesn't seem to respond to keyboard input (you have to click the skill itself). doesn't autocast. not sure what's wrong.
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ogre_magi_bloodlust"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"30"
+		"AbilityManaCost"				"0" //this is supposed to cost 200 mana, but I have no idea how much mana the satyrs actually have. they didn't list it.
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_summoner_satyr_frenzy"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_summoner_satyr_frenzy"
+			{
+				"Duration" 				"%duration"
+				"Properties" 
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"attack_speed"			"40"
+			}				
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"move_speed"			"25"
+			}				
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"20"
+			}		
+		}
+	}
+	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
 	"spell_dummy_unit"
@@ -8618,7 +9327,7 @@
 	//=================================================================================================================
 	"spell_dummy_modifier"
 	{
-		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName"            "rubick_empty1"
 		"MaxLevel"                      "1"
@@ -8734,13 +9443,13 @@
 	          "MODIFIER_STATE_UNSELECTABLE"         "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_NO_UNIT_COLLISION"    "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_NOT_ON_MINIMAP"       "MODIFIER_STATE_VALUE_ENABLED"
-	          "MODIFIER_STATE_PROVIDES_VISION"      "MODIFIER_STATE_VALUE_DISABLED"
 	          "MODIFIER_STATE_ROOTED"               "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_SOFT_DISARMED"        "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_INVULNERABLE"         "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_FLYING"               "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_BLOCK_DISABLED"       "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_NO_HEALTH_BAR"       "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 	      }
 	    }
@@ -8886,6 +9595,82 @@
 				}
 			}
 		}
+	}
+
+	"give_gold_10"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"give_gold_10"
+	}
+
+	"give_gold_100"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"give_gold_100"
+	}
+
+	"give_gold_1000"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"give_gold_1000"
+	}
+
+	"give_gold_all"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"give_gold_all"
+	}
+	"player_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"player_1"
+	}
+	"player_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"player_2"
+	}
+	"player_3"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"player_3"
+	}
+	"player_4"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"player_5"
+	}
+	"player_6"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"player_6"
 	}
 
 }
