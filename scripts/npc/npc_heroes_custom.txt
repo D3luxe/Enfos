@@ -16,9 +16,8 @@
 		"Ability2"				"generic_enfos_combat_mastery"
 		"Ability3"				"naga_enfos_cataclysmic_strike"
 		"Ability4"				"naga_enfos_dragon_dance"
-		"Ability5"				"naga_enfos_innate"
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"				"naga_enfos_innate"
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -68,9 +67,8 @@
 		"Ability2"				"generic_enfos_evasion_mastery"	
 		"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
 		"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
-		"Ability5"				"generic_enfos_bloodlust"
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"				"generic_enfos_bloodlust"
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -123,9 +121,8 @@
 		"Ability2"					"generic_enfos_combat_mastery"			// Ability 2
 		"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
 		"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
-		"Ability5"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -178,9 +175,8 @@
 		"Ability2"					"obsidian_destroyer_enfos_slow"
 		"Ability3"					"obsidian_destroyer_enfos_slow_aura"
 		"Ability4"					"obsidian_destroyer_enfos_time_lapse"
-		"Ability5"					"obsidian_destroyer_enfos_teleport"
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"obsidian_destroyer_enfos_teleport"
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -237,9 +233,8 @@
 		"Ability2"					"generic_enfos_combat_mastery"				// Ability 2
 		"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
 		"Ability4"					"ursa_enfos_muses_inspiration"
-		"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -289,9 +284,8 @@
 		"Ability2"					"warlock_enfos_disrupt"					// Ability 2
 		"Ability3"					"warlock_enfos_spellcurse"						// Ability 3
 		"Ability4"					"warlock_enfos_energy_flare"					// Ability 4
-		"Ability5"					"warlock_enfos_deflection"					// Ability 5
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"warlock_enfos_deflection"					// Ability 5
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -346,9 +340,8 @@
 		"Ability2"				"omniknight_enfos_sentinels_resolve"
 		"Ability3"				"omniknight_enfos_tipping_the_scales"
 		"Ability4"				"omniknight_enfos_heroic_strength"
-		"Ability5"				"generic_enfos_trothgangs_rally"
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"				"generic_enfos_trothgangs_rally"
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -414,9 +407,8 @@
 		"Ability2"					"generic_enfos_combat_mastery"
 		"Ability3"					"ogre_magi_enfos_empower_axe"
 		"Ability4"					"ogre_magi_enfos_empower_bracers"
-		"Ability5"					"generic_enfos_empower_armor"
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"generic_enfos_empower_armor"
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -473,9 +465,8 @@
 		"Ability2"				"generic_enfos_combat_mastery"						// Ability 2
 		"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
 		"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
-		"Ability5"				"generic_enfos_trothgangs_rally"					// Ability 4
-		"Ability6"				"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"				"generic_enfos_trothgangs_rally"					// Ability 4
+		"Ability5"				"enfos_attribute_bonus"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -526,9 +517,8 @@
 		"Ability2"					"mentalist_seal_of_deflection"
 		"Ability3"					"mentalist_moonblade"
 		"Ability4"					"mentalist_aura_sight"
-		"Ability5"					"generic_focus_moonbeam"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 
@@ -559,9 +549,8 @@
 		"Ability2"					"generic_ethereal_shield"
 		"Ability3"					"evoker_chain_lightning"
 		"Ability4"					"evoker_ball_lightning"
-		"Ability5"					"evoker_static_discharge"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"evoker_static_discharge"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -595,7 +584,6 @@
 		"Ability6"					"generic_focus_moonbeam"
 		"Ability7"					"moon_mage_glaive"
 		"Ability8"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
 		
 		"ArmorPhysical"				"1"
 		
@@ -635,9 +623,8 @@
 		"Ability2"					"hypnotist_hallucination"
 		"Ability3"					"hypnotist_mind_shout"
 		"Ability4"					"hypnotist_telekinetic_storm"
-		"Ability5"					"generic_focus_moonbeam"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -680,9 +667,8 @@
 		"Ability2"					"generic_enfos_combat_mastery"
 		"Ability3"					"weaponsmith_concentrate"
 		"Ability4"					"weaponsmith_forge"
-		"Ability5"					"weaponsmith_cambrinth_charge"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"weaponsmith_cambrinth_charge"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -713,9 +699,8 @@
 		"Ability2"					"revenant_deathwave"
 		"Ability3"					"revenant_corpse_explosion"
 		"Ability4"					"revenant_spiritual_swarm"
-		"Ability5"					"revenant_haunting_spirit"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"revenant_haunting_spirit"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -745,9 +730,8 @@
 		"Ability2"					"sniper_lucky_shot"
 		"Ability3"					"sniper_burning_grenade"
 		"Ability4"					"sniper_rapid_reload"
-		"Ability5"					"sniper_standard_technique"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"					"spell_dummy_modifier"
+		"Ability6"					"sniper_standard_technique"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		//I had to guess for most of these values. They need to be verified.
@@ -778,9 +762,8 @@
 		"Ability2"					"oak_poison_gas"
 		"Ability3"					"oak_backfire_aura"
 		"Ability4"					"oak_rootage_trap"
-		"Ability5"					"oak_barkskin"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"				"spell_dummy_modifier"
+		"Ability6"					"oak_barkskin"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -811,9 +794,8 @@
 		"Ability2"					"generic_enfos_evasion_mastery"
 		"Ability3"					"thief_khri_silence"
 		"Ability4"					"thief_venom"
-		"Ability5"					"thief_sleight_of_hand"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"					"spell_dummy_modifier"
+		"Ability6"					"thief_sleight_of_hand"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -843,9 +825,8 @@
 		"Ability2"					"generic_ethereal_shield"
 		"Ability3"					"entropist_tremor"
 		"Ability4"					"entropist_ring_of_spears"
-		"Ability5"					"entropist_sure_footing"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"					"spell_dummy_modifier"
+		"Ability6"					"entropist_sure_footing"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		
@@ -876,9 +857,8 @@
 		"Ability2"					"summoner_summon_satyr_rangers"
 		"Ability3"					"summoner_summon_darkrift"
 		"Ability4"					"summoner_flag_of_summoning"
-		"Ability5"					"summoner_anti_magic_shell"
-		"Ability6"					"enfos_attribute_bonus"
-		"Ability10"					"spell_dummy_modifier"
+		"Ability6"					"summoner_anti_magic_shell"
+		"Ability5"					"enfos_attribute_bonus"
 		
 		"ArmorPhysical"				"1"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
@@ -890,11 +870,18 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
-		"AttackRate"                "2"
-		"AttackRange"               "550"
+		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
+			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
 		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"	
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "2"
+		"AttackRange"               "550"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
 	}
 }

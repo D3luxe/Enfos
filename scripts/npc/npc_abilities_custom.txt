@@ -2076,7 +2076,7 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"10"
 		"AbilityManaCost"				"7"
-		"AbilityChannelTime"			"6.0"
+		"AbilityChannelTime"			"3.0"
 		"AbilityCastAnimation"			"cast_guardianangel"
 
 		"Precache"

@@ -124,6 +124,10 @@ heroTable = {
 					["attackType"]="modifier_attack_hero",
 					["armorType"]="modifier_armor_heavy",
 				},
+				{	["name"]="npc_dota_hero_spirit_breaker",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
 		}	
 
 uniqueItems = { "item_nimsha",
@@ -610,7 +614,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
 	else
-		spawnedUnitIndex:GetAbilityByIndex(4):SetLevel(1)
+		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 	end
 	--local statAbility = spawnedUnitIndex:FindAbilityByName("spell_dummy_modifier")
 	--if statAbility ~= nil then

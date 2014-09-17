@@ -69,7 +69,7 @@ function CalculateArmor(keys)
 						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 						damage = damage * damageMultiplication
 						print(damage)
-						DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
 				
@@ -102,7 +102,7 @@ function CalculateArmor(keys)
 				local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 				damage = damage * damageMultiplication
 				print(damage)
-				DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+				DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 			end
 		-- Heavy armor
 		elseif armorType == "heavy" then
@@ -125,8 +125,8 @@ function CalculateArmor(keys)
 						local armor = caster:GetPhysicalArmorValue()
 						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 						damage = damage * damageMultiplication
-						--print("Damage dealt as magical: "..damage)
-						DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						print("Damage dealt as magical: "..damage)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
 				
@@ -157,7 +157,7 @@ function CalculateArmor(keys)
 						local armor = caster:GetPhysicalArmorValue()
 						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 						damage = damage * damageMultiplication
-						DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
 				
@@ -177,7 +177,7 @@ function CalculateArmor(keys)
 						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 						damage = damage * 0.75 * damageMultiplication
 						--print(damage)
-						DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
 				
@@ -206,7 +206,7 @@ function CalculateArmor(keys)
 						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 						damage = damage * damageMultiplication
 						--print(damage)
-						DealDamage(caster, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
 				
@@ -219,7 +219,7 @@ function CalculateArmor(keys)
 	if dealOrHeal == 1 then
 		-- Deal extra damage based on armor
 		print("Extra damage due to armor: "..damage)
-		DealDamage(caster, caster, damage, DAMAGE_TYPE_PURE, 0)
+		DealDamage(attacker, caster, damage, DAMAGE_TYPE_PURE, 0)
 
 	elseif dealOrHeal == 2 then
 		--Deal less damage based on armor
