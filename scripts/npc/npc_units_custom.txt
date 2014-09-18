@@ -1712,7 +1712,6 @@
 		//----------------------------------------------------------------
 		"Model"						"models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_Tusk"
 		"Level"						"1"
 		"ModelScale" 					"0.7"
 		"UnitLabel"			"spirit_bear"
@@ -1811,7 +1810,6 @@
 		//----------------------------------------------------------------
 		"Model"						"models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"Hero_Tusk"
 		"Level"						"1"
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"spirit_bear"
@@ -2669,6 +2667,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3041,6 +3040,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3704,6 +3704,8 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3992,6 +3994,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -4095,6 +4098,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -4195,6 +4199,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -4294,6 +4299,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -4393,6 +4399,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -4494,6 +4501,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
