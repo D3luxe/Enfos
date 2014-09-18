@@ -17,6 +17,13 @@ require( "timers")
 require( "base_trigger")
 require( 'spell_shop_UI' )
 
+-- Stat collection
+require('lib.statcollection')
+statcollection.addStats{{
+	modID = '70a4cb33084fbba671a53c58706f4017' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
+}}
+
+
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
@@ -487,6 +494,7 @@ function CEnfosGameMode:OnThink()
 
 	end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then		-- Safe guard catching any state that may exist beyond DOTA_GAMERULES_STATE_POST_GAME
+		statcollection.sendStats()
 		return nil
 	end
 	return 1
@@ -560,7 +568,9 @@ function CEnfosGameMode:_ThinkPrepTime()
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
 					local player = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero()
-					player:SetGold(player:GetGold()+goldAmount, false)
+					if player ~= nil then
+						player:SetGold(player:GetGold()+goldAmount, false)
+					end
 				end
 			end
 			if curRound == 6 or curRound == 27 then
@@ -1038,6 +1048,30 @@ function CEnfosGameMode:OnNPCSpawned( event )
 	 	spawnedUnit.strBonus = 0
 	 	spawnedUnit.intBonus = 0
 	 	spawnedUnit.primaryStatBonus = 0
+	 	local heroPicked = spawnedUnit:GetUnitName()
+		local heroArmorType = nil
+		local heroAttackType = nil
+		for i = 1, #heroTable do
+			if heroArmorType == nil or heroAttackType == nil then
+				if heroTable[i].name == heroPicked then
+					heroArmorType = heroTable[i].armorType
+					heroAttackType = heroTable[i].attackType
+				end
+			end
+		end
+		if heroArmorType ~= nil then
+			local armorType = CreateItem("item_armor_type_modifier", nil, nil) 
+			armorType:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, heroArmorType, {})
+			UTIL_RemoveImmediate(armorType)
+			armorType = nil
+		end
+
+		if heroAttackType ~= nil then
+			local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+			attackItem:ApplyDataDrivenModifier(spawnedUnit, spawnedUnit, heroAttackType, {})
+			UTIL_RemoveImmediate(attackItem)
+			attackItem = nil
+		end
 	 end
 
 end
@@ -1102,10 +1136,10 @@ function CEnfosGameMode:OnEntityKilled( event )
 		end
 	end
 
-	--if killedUnit:IsHero() then
-	--	killedUnit:SetBuybackGoldLimitTime(0)
-	--	killedUnit:SetBuybackCooldownTime(0)
-	--end
+	if killedUnit:IsHero() then
+		killedUnit:SetBuybackGoldLimitTime(0)
+		--killedUnit:SetBuybackCooldownTime(0)
+	end
 end
 
 function CEnfosGameMode:OnEntityHurt( event )
@@ -1189,6 +1223,7 @@ function CEnfosGameMode:_ResetLivesConsoleCommand( cmdName )
 	print(Triggers._goodLives)
 	Triggers._badLives = 100
 	Triggers._goodLives = 100
+	GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
 
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
 

@@ -20,6 +20,12 @@
 
 "CustomEvents"
 {
+	 // Stat collection
+    "stat_collection"
+    {
+        "json"          "string"
+    }
+    
 	"spell_shop_ui_spell_add"
 	{
 		"player_ID"		"short"

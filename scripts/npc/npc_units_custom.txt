@@ -751,13 +751,14 @@
 		"Model"						"models/heroes/furion/treant.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
-		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".8"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 
 		"precache"
 		{
 			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 		}
 
 		// Abilities
@@ -780,9 +781,7 @@
 		"AttackRate"				"1.6"		// Speed of attack.
 		"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
-		"AttackRange"				"100"		// Range within a target can be attacked.
-		"ProjectileModel"			"particles/econ/events/coal/coal_projectile.vpcf" // Particle system model for projectile.
-		"ProjectileSpeed"			"1200"			// Speed of projectile.		   
+		"AttackRange"				"100"		// Range within a target can be attacked.   
 
 		// Bounds
 		//----------------------------------------------------------------
@@ -850,13 +849,15 @@
 		"Model"						"models/heroes/furion/treant.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
-		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".8"
 
 		"precache"
 		{
 			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+
 		}
 
 		// Abilities
@@ -1049,6 +1050,7 @@
 		"IsSummoned"				"1"
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"lycan_wolf"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1431,6 +1433,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1.0"
 		"UnitLabel"			"spirit_bear"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3319,6 +3322,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1.1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3501,6 +3505,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3594,6 +3599,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
 
 		// Abilities
 		//----------------------------------------------------------------

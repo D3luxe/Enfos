@@ -7,7 +7,7 @@ function SpellShopUI:InitGameMode()
 	_res = 4;
 	
 	Convars:RegisterCommand( "buySpell", function(name, _ID, abilityName, _cost, _pnt)
-		print("buySpell: "..name)
+		--print("buySpell: "..name)
 		local cmdPlayer = Convars:GetCommandClient()
 		if cmdPlayer then 
 			return self:PlayerBuySpell( cmdPlayer, _ID, abilityName, _cost, _pnt)
@@ -15,7 +15,7 @@ function SpellShopUI:InitGameMode()
 	end, "Add the spell to the player", 0 )
 	
 	Convars:RegisterCommand( "sellSpell", function(name, _ID, abilityName, _cost, _pnt)
-		print("sellSpell: "..name)
+		--print("sellSpell: "..name)
 		local cmdPlayer = Convars:GetCommandClient()
 		if cmdPlayer then 
 			return self:PlayerSellSpell( cmdPlayer, _ID, abilityName, _cost, _pnt)
@@ -23,7 +23,7 @@ function SpellShopUI:InitGameMode()
 	end, "Remove the spell from the player", 0 )
 	
 	Convars:RegisterCommand( "upgradeSpell", function(name, _ID, abilityName, _cost, _pnt)
-		print("upgradeSpell: "..name)
+		--print("upgradeSpell: "..name)
 		local cmdPlayer = Convars:GetCommandClient()
 		if cmdPlayer then 
 			return self:PlayerUpgradeSpell( cmdPlayer, _ID, abilityName, _cost, _pnt)
@@ -31,7 +31,7 @@ function SpellShopUI:InitGameMode()
 	end, "Upgrade the spell of the player", 0 )
 	
 	Convars:RegisterCommand( "buySkillpoint", function(name, _cost)
-		print("buySkillpoint: "..name)
+		--print("buySkillpoint: "..name)
 		local cmdPlayer = Convars:GetCommandClient()
 		if cmdPlayer then 
 			return self:PlayerBuySkillpoint( cmdPlayer, _cost)
@@ -39,7 +39,7 @@ function SpellShopUI:InitGameMode()
 	end, "Upgrade the spell of the player", 0 )
 	
 	Convars:RegisterCommand( "sellSkillpoint", function(name, _cost)
-		print("sellSkillpoint: "..name)
+		--print("sellSkillpoint: "..name)
 		local cmdPlayer = Convars:GetCommandClient()
 		if cmdPlayer then 
 			return self:PlayerSellSkillpoint( cmdPlayer, _cost)
@@ -58,23 +58,23 @@ end
 
 -- function that takes care of buying the spell
 function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
-	print("Buy Spell.")
+	--print("Buy Spell.")
 	local pID = player:GetPlayerID()
 	local hero = player:GetAssignedHero()
 	local team = hero:GetTeam()
 	local targetID = 0
 	local success = false
 	local gold = hero:GetGold()
-	print(_cost)
-	print(abilityName)
-	print(_pnt)
+	--print(_cost)
+	--print(abilityName)
+	--print(_pnt)
 
 	if team == DOTA_TEAM_GOODGUYS then
 		targetID = _pnt - 1
-		print("Target ID: "..targetID)
+		--print("Target ID: "..targetID)
 	else
 		targetID = _pnt + 4
-		print("Target ID: "..targetID)
+		--print("Target ID: "..targetID)
 	end
 
 	if ( PlayerResource:IsValidPlayer( targetID ) ) then
@@ -88,40 +88,40 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 				hero:SpendGold(tonumber(_cost), DOTA_ModifyGold_Unspecified)
 
 				local targetGold = targetPlayer:GetGold()
-				print("target gold: "..targetGold)
+				--print("target gold: "..targetGold)
 				targetPlayer:ModifyGold(10, false, 1)
 				targetGold = targetPlayer:GetGold()
-				print("target gold 2: "..targetGold)
+				--print("target gold 2: "..targetGold)
 			elseif abilityName == "give_gold_100" then
 				
 				
 				hero:SpendGold(tonumber(_cost), DOTA_ModifyGold_Unspecified)
 
 				local targetGold = targetPlayer:GetGold()
-				print("target gold: "..targetGold)
+				--print("target gold: "..targetGold)
 				targetPlayer:ModifyGold(100, false, 1)
 				targetGold = targetPlayer:GetGold()
-				print("target gold 2: "..targetGold)
+				--print("target gold 2: "..targetGold)
 			elseif abilityName == "give_gold_1000" then
 				
 				
 				hero:SpendGold(tonumber(_cost), DOTA_ModifyGold_Unspecified)
 
 				local targetGold = targetPlayer:GetGold()
-				print("target gold: "..targetGold)
+				--print("target gold: "..targetGold)
 				targetPlayer:ModifyGold(1000, false, 1)
 				targetGold = targetPlayer:GetGold()
-				print("target gold 2: "..targetGold)
+				--print("target gold 2: "..targetGold)
 			elseif abilityName == "give_gold_all" then
 				
 				local gold = hero:GetGold()
 				hero:SpendGold(gold, DOTA_ModifyGold_Unspecified)
 
 				local targetGold = targetPlayer:GetGold()
-				print("target gold: "..targetGold)
+				--print("target gold: "..targetGold)
 				targetPlayer:ModifyGold(gold, false, 1)
 				targetGold = targetPlayer:GetGold()
-				print("target gold 2: "..targetGold)
+				--print("target gold 2: "..targetGold)
 			end
 			
 		end

@@ -152,7 +152,7 @@
 			"AttackType"			"modifier_attack_normal"
 			"ArmorType"				"modifier_armor_medium"
 		}
-		"UnitFodder_1a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
+		"UnitFodder_2a" // Duration 80s - Continues with UnitFodderGrouped_2a & 3a to 120s total
 		{
 			"GroupWithUnit"			"UnitFodder_1a"
 			

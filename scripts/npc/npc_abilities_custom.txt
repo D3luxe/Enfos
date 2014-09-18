@@ -1216,7 +1216,7 @@
 			
 			"ApplyModifier"
 			{
-				"ModifierName"			"earth_shaking_strike_modifier"
+				"ModifierName"			"modifier_trothfangs_butchery"
 				"Target"
 				{
 					"Center"			"CASTER"
@@ -1229,7 +1229,7 @@
 		
 		"Modifiers"
 		{
-			"earth_shaking_strike_modifier"
+			"modifier_trothfangs_butchery"
 			{
 				 "Duration" "%duration"
 				 "OverrideAnimation" "ACT_DOTA_DISABLED"
@@ -1302,14 +1302,14 @@
 		{
 			"ApplyModifier"
 			{
-				"ModifierName"			"berserk_modifier"
+				"ModifierName"			"modifier_berserk"
 				"Target" "CASTER"
 			}
 		}
 		
 		"Modifiers"
 		{
-			"berserk_modifier"
+			"modifier_berserk"
 			{
 				 "Duration" "%duration"
 				 "OnCreated"
@@ -1394,14 +1394,14 @@
 		{
 			"ApplyModifier"
 			{
-				"ModifierName"			"everilds_rage_modifier"
+				"ModifierName"			"modifier_everilds_rage"
 				"Target" "CASTER"
 			}
 		}
 		
 		"Modifiers"
 		{
-			"everilds_rage_modifier"
+			"modifier_everilds_rage"
 			{
 			
 				"OnCreated"
@@ -2194,17 +2194,17 @@
 					"CleaveAttack" //far
 					{
 						"CleavePercent"	"25"
-						"CleaveRadius"	"260"
+						"CleaveRadius"	"286"
 					}
 					"CleaveAttack" //medium
 					{
 						"CleavePercent"	"25"
-						"CleaveRadius"	"180"
+						"CleaveRadius"	"198"
 					}
 					"CleaveAttack" //full
 					{
 						"CleavePercent"	"50"
-						"CleaveRadius"	"125"
+						"CleaveRadius"	"137"
 					}
 				}
 			}
@@ -9662,15 +9662,15 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"player_5"
+		"AbilityTextureName" 			"player_4"
 	}
-	"player_6"
+	"player_5"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"player_6"
+		"AbilityTextureName" 			"player_5"
 	}
 
 }

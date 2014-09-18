@@ -15,6 +15,11 @@
 	"File"		"SpellShopUI"
 	"Depth"		"12"
 	}
+	"3"
+    {
+        "File" "StatsCollection_live"
+        "Depth" "1"
+    }
 
 }
 

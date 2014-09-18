@@ -477,7 +477,7 @@
 		"_texture"		"player_5"
 		"_isSellable"	"false"
 		"_isOwned"		"false"
-		"_cost"			"10"
+		"_cost"			"0"
 		"_sellFactor"	"1"
 		"_upgFactor"	"1"
 		"_curLvl"		"1"

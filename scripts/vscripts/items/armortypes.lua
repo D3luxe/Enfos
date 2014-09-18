@@ -96,13 +96,14 @@ function CalculateArmor(keys)
 					endTime = 0.002, 	
 					callback = function()
 						caster:SetHealth(health)
+						local armor = caster:GetPhysicalArmorValue()
+						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+						damage = damage * damageMultiplication
+						print(damage)
+						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 					end
 				})
-				local armor = caster:GetPhysicalArmorValue()
-				local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-				damage = damage * damageMultiplication
-				print(damage)
-				DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+				
 			end
 		-- Heavy armor
 		elseif armorType == "heavy" then
