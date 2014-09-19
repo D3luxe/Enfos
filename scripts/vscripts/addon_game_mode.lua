@@ -33,6 +33,13 @@ for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
 end
 
+-- Stage constants
+local STAGE_WAITING = 0
+local STAGE_VOTING = 1
+local STAGE_BANNING = 2
+local STAGE_PICKING = 3
+local STAGE_PLAYING = 4
+
 --[[heroTable = {"npc_dota_hero_naga_siren",				-- 1 	Ahlen
 			"npc_dota_hero_juggernaut",					-- 2 	Blood Dancer
 			"npc_dota_hero_beastmaster",				-- 3 	Barbarian
@@ -497,6 +504,7 @@ function CEnfosGameMode:OnThink()
 		statcollection.sendStats()
 		return nil
 	end
+
 	return 1
 end
 
@@ -1134,6 +1142,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 				end
 			end
 		end
+
 	end
 
 	if killedUnit:IsHero() then

@@ -64,12 +64,14 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * damageMultiplication
-						print(damage)
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * damageMultiplication
+							print(damage)
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -95,12 +97,14 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * damageMultiplication
-						print(damage)
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * damageMultiplication
+							print(damage)
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -122,12 +126,14 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * damageMultiplication
-						print("Damage dealt as magical: "..damage)
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * damageMultiplication
+							print("Damage dealt as magical: "..damage)
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -154,11 +160,13 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * damageMultiplication
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * damageMultiplication
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -173,12 +181,14 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * 0.75 * damageMultiplication
-						--print(damage)
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * 0.75 * damageMultiplication
+							--print(damage)
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -202,12 +212,14 @@ function CalculateArmor(keys)
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 					endTime = 0.002, 	
 					callback = function()
-						caster:SetHealth(health)
-						local armor = caster:GetPhysicalArmorValue()
-						local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-						damage = damage * damageMultiplication
-						--print(damage)
-						DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						if caster:IsAlive() then 
+							caster:SetHealth(health)
+							local armor = caster:GetPhysicalArmorValue()
+							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+							damage = damage * damageMultiplication
+							--print(damage)
+							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
+						end
 					end
 				})
 				
@@ -227,8 +239,10 @@ function CalculateArmor(keys)
 		Timers:CreateTimer(DoUniqueString("armorHeal"), {
 			endTime = 0.001, 	
 			callback = function()
-				print("Damage healed due to armor: "..damage)
-				caster:Heal(damage, caster)
+				if caster:IsAlive() then 
+					print("Damage healed due to armor: "..damage)
+					caster:Heal(damage, caster)
+				end
 			end
 		})
 	else
