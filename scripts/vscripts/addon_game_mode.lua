@@ -17,11 +17,6 @@ require( "timers")
 require( "base_trigger")
 require( 'spell_shop_UI' )
 
--- Stat collection
-require('lib.statcollection')
-statcollection.addStats{{
-	modID = '70a4cb33084fbba671a53c58706f4017' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
-}}
 
 
 MAX_LEVEL = 125
@@ -161,6 +156,12 @@ if CEnfosGameMode == nil then
 	CEnfosGameMode = class({})
 	CEnfosGameMode.__index = CEnfosGameMode
 end
+
+-- Stat collection
+require('lib.statcollection')
+statcollection.addStats({
+	modID = '70a4cb33084fbba671a53c58706f4017' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
+})
 
 -- Precache resources
 function Precache( context )
@@ -498,11 +499,12 @@ function CEnfosGameMode:OnThink()
 					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
 				end
 			end
+	
 
-	end
+		end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then		-- Safe guard catching any state that may exist beyond DOTA_GAMERULES_STATE_POST_GAME
 		statcollection.sendStats()
-		return nil
+		return
 	end
 
 	return 1
@@ -700,6 +702,43 @@ end
 
 function CEnfosGameMode:ModifyStatBonuses(unit)
 	local spawnedUnitIndex = unit
+		Timers:CreateTimer(DoUniqueString("uniqueCheck"), {
+		endTime = 1,
+		callback = function()
+			local hero = unit
+
+			local uniqueItemCount = 0
+			for i=1, #uniqueItems do
+				for item = 0, 18 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+							uniqueItemCount = uniqueItemCount + 1
+							--print(uniqueItemCount)
+						end
+					end
+				end
+			end
+
+			while uniqueItemCount > 1 do
+				for p=1, #uniqueItems do
+					if hero:HasItemInInventory(uniqueItems[p]) then
+						--print("Has "..uniqueItems[p])
+						for item = 0, 18 do
+							if hero:GetItemInSlot(item) ~= nil then
+								--print("Has "..hero:GetItemInSlot(item):GetName().." in slot "..item)
+								if hero:GetItemInSlot(item):GetName() == uniqueItems[p] then
+									--print("Found slot dropping item")
+									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+								end
+							end
+						end
+						uniqueItemCount = uniqueItemCount - 1
+					end
+				end
+			end
+			return 1
+		end
+		})
 		Timers:CreateTimer(DoUniqueString("updateHealth_" .. spawnedUnitIndex:GetPlayerID()), {
 		endTime = 0.25,
 		callback = function()

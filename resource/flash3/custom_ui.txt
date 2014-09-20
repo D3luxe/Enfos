@@ -17,7 +17,7 @@
 	}
 	"3"
     {
-        "File" "StatsCollection_live"
+        "File" "StatsCollection"
         "Depth" "1"
     }
 
