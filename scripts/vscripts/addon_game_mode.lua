@@ -137,18 +137,24 @@ heroTable = {
 					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_heavy",
 				},
+				{	["name"]="npc_dota_hero_crystal_maiden",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
 		}	
 
 uniqueItems = { "item_nimsha",
 				"item_bloodthirst",
 				"item_small_round_shield",
-				"item_iron_helmet",
-				"item_elven_plate_mail",
 				"item_elite_elven_boots",
 				"item_thirsting_blade",
 				"item_uthmors_mirror_blade",
 				"item_ring_of_victory",
 				"item_scepter_of_the_magi",
+			}
+artifactItems = { "item_stone_axe",
+				"item_iron_helmet",
+				"item_elven_plate_mail",
 			}
 
 
@@ -633,6 +639,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		--Moon glaives
 
 		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
+	elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_crystal_maiden" then
+		-- do nothing in this case
 	else
 		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 	end
@@ -703,40 +711,61 @@ end
 function CEnfosGameMode:ModifyStatBonuses(unit)
 	local spawnedUnitIndex = unit
 		Timers:CreateTimer(DoUniqueString("uniqueCheck"), {
-		endTime = 1,
+		endTime = 0.5,
 		callback = function()
 			local hero = unit
 
-			local uniqueItemCount = 0
-			for i=1, #uniqueItems do
+			local artifactItemCount = 0
+			for i=1, #artifactItems do
 				for item = 0, 18 do
 					if hero:GetItemInSlot(item) ~= nil then
-						if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
-							uniqueItemCount = uniqueItemCount + 1
+						if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
+							artifactItemCount = artifactItemCount + 1
 							--print(uniqueItemCount)
 						end
 					end
 				end
 			end
 
-			while uniqueItemCount > 1 do
-				for p=1, #uniqueItems do
+			while artifactItemCount > 1 do
+				for p=1, #artifactItems do
 					if hero:HasItemInInventory(uniqueItems[p]) then
 						--print("Has "..uniqueItems[p])
 						for item = 0, 18 do
 							if hero:GetItemInSlot(item) ~= nil then
 								--print("Has "..hero:GetItemInSlot(item):GetName().." in slot "..item)
-								if hero:GetItemInSlot(item):GetName() == uniqueItems[p] then
+								if hero:GetItemInSlot(item):GetName() == artifactItems[p] then
 									--print("Found slot dropping item")
 									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
 								end
 							end
 						end
-						uniqueItemCount = uniqueItemCount - 1
+						artifactItemCount = artifactItemCount - 1
 					end
 				end
 			end
-			return 1
+
+			for i=1, #uniqueItems do
+				for item = 6, 12 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+							if hero:HasRoomForItem(uniqueItems[i], false, false) then
+								local oldItem = hero:GetItemInSlot(item)
+								local oldItemName = hero:GetItemInSlot(item):GetName()
+								hero:RemoveItem(oldItem)
+								local newItem = CreateItem(oldItemName, hero, hero)
+								hero:AddItem(newItem)
+							end
+							--hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+							--print(uniqueItemCount)
+						end
+					end
+				end
+			end
+
+
+
+			return 0.5
 		end
 		})
 		Timers:CreateTimer(DoUniqueString("updateHealth_" .. spawnedUnitIndex:GetPlayerID()), {
@@ -975,20 +1004,50 @@ function CEnfosGameMode:OnItemPickedUp(event)
 	end
 
 	-- Automatically drops the new unique item if a previous unique is found.
+	local artifactItemCount = 0
+	for i=1, #artifactItems do
+		for item = 0, 18 do
+			if hero:GetItemInSlot(item) ~= nil then
+				if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
+					artifactItemCount = artifactItemCount + 1
+					--print(uniqueItemCount)
+				end
+			end
+		end
+	end
+
+	-- Automatically drops the new unique item if a previous unique item is found.
 	local uniqueItemCount = 0
 	for i=1, #uniqueItems do
 		for item = 0, 18 do
 			if hero:GetItemInSlot(item) ~= nil then
-				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] and hero:GetItemInSlot(item):GetName() == itemname then
 					uniqueItemCount = uniqueItemCount + 1
 					--print(uniqueItemCount)
 				end
 			end
 		end
 	end
+
+
 	Timers:CreateTimer(DoUniqueString("itemPickup"), {
 		endTime = 0.01,
 		callback = function()
+			while artifactItemCount > 1 do
+				for p=1, #artifactItems do
+					if hero:HasItemInInventory(artifactItems[p]) then
+						for item = 0, 18 do
+							if hero:GetItemInSlot(item) ~= nil then
+								if hero:GetItemInSlot(item):GetName() == itemname then
+									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+								end
+							end
+						end
+						artifactItemCount = artifactItemCount - 1
+					end
+				end
+			end
+
 			while uniqueItemCount > 1 do
 				for p=1, #uniqueItems do
 					if hero:HasItemInInventory(uniqueItems[p]) then
@@ -1005,6 +1064,10 @@ function CEnfosGameMode:OnItemPickedUp(event)
 			end
 		end
 	})
+
+
+
+	
 
 
 	
@@ -1036,12 +1099,41 @@ function CEnfosGameMode:OnItemPurchased(event)
 	end
 
 
-	-- Automatically drops the new unique item if a previous unique is found.
+	-- Automatically drops the new artifact item if a previous unique is found.
+	local artifactItemCount = 0
+	for i=1, #artifactItems do
+		for item = 0, 18 do
+			if hero:GetItemInSlot(item) ~= nil then
+				if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
+					artifactItemCount = artifactItemCount + 1
+					--print(uniqueItemCount)
+				end
+			end
+		end
+	end
+
+	while artifactItemCount > 1 do
+		for p=1, #artifactItems do
+			if hero:HasItemInInventory(artifactItems[p]) then
+				for item = 0, 18 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == itemname then
+							hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+						end
+					end
+				end
+				artifactItemCount = artifactItemCount - 1
+			end
+		end
+	end
+
+
+	-- Automatically drops the new unique item if a previous unique item is found.
 	local uniqueItemCount = 0
 	for i=1, #uniqueItems do
 		for item = 0, 18 do
 			if hero:GetItemInSlot(item) ~= nil then
-				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
+				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] and hero:GetItemInSlot(item):GetName() == itemname then
 					uniqueItemCount = uniqueItemCount + 1
 					--print(uniqueItemCount)
 				end
@@ -1095,6 +1187,7 @@ function CEnfosGameMode:OnNPCSpawned( event )
 	 	spawnedUnit.strBonus = 0
 	 	spawnedUnit.intBonus = 0
 	 	spawnedUnit.primaryStatBonus = 0
+	 	spawnedUnit.agilityBonus = 0
 	 	local heroPicked = spawnedUnit:GetUnitName()
 		local heroArmorType = nil
 		local heroAttackType = nil

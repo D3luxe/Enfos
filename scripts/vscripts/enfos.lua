@@ -19,6 +19,7 @@ Enfos.appliers = {}
 Enfos.spiritualSwarmJumps = 0
 Enfos.curRound = 0
 Enfos.flagPos = 0
+Enfos.hailstormDummy = 0
 -- we have to populate these tables with the player ID values. if we don't, we'll get an indexing error when we try to use them for the first time.
 for i=0,9 do
 	Enfos.appliers[i] = ""

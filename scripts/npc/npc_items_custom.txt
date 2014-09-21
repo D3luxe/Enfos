@@ -88,6 +88,7 @@
 		"ItemCost"                      "6500" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		"ItemDroppable"					"0"
 
 		"Modifiers"
 		{
@@ -291,6 +292,7 @@
 		"ItemCost"                      "10000" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
+		"ItemDroppable"					"0"
 
 		"Modifiers"
 		{
@@ -625,8 +627,8 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ethereal_blade"
 
-		"ItemDroppable"					"1"
-		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -710,8 +712,8 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_uthmors_mirror_blade"
 
-		"ItemDroppable"					"1"
-		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -1079,8 +1081,8 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_scepter_of_the_magi"
 
-		"ItemDroppable"					"1"
-		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -1169,8 +1171,8 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"30.0"
 
-		"ItemDroppable"					"1"
-		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -1815,8 +1817,8 @@
 		"ItemShopTags"					"boot"
 		"ItemShareability"				"ITEM_PARTIALLY_SHAREABLE"
 
-		"ItemDroppable"					"1"
-		"ItemSellable"					"0"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -1903,6 +1905,7 @@
 		"ItemCost"						"1200"
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"0"
 
 		"Modifiers"
 		{

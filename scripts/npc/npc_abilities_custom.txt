@@ -9296,6 +9296,456 @@
 			}		
 		}
 	}
+
+	//=================================================================================================================
+	// Furion: Tempest
+	//=================================================================================================================
+	//=================================================================================================================
+	// Tempest: Zephyr
+	//=================================================================================================================
+	"tempest_zephyr"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"lone_druid_spirit_bear_return"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"1"
+		"AOERadius"						"%radius"
+		"AbilityManaCost"				"144"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"20"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+				"Function"				"zephyr"
+				"radius"				"%radius"
+				"Target"				"POINT"
+			}
+		}
+
+		"AbilitySpecial"
+		{	
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"500"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+
+
+		}
+	}	
+
+	"tempest_zephyr_proxy"
+	{
+		//All this does is give the buff icon to heroes in the radius
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"lone_druid_spirit_bear_return"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"1"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"Modifiers"
+		{
+			"modifier_tempest_zephyr_proxy"
+			{
+				"IsHidden"				"0"
+				"Passive"				"1"
+				"Aura"					"modifier_tempest_zephyr_proxy_aura"
+				"Aura_Radius"			"500"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster"	"1"
+			}
+			"modifier_tempest_zephyr_proxy_aura"
+			{
+
+			}
+		}
+	}
+
+	"tempest_paeldryths_wrath"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"vengefulspirit_wave_of_terror"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
+		"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_vengeful/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"			//I'm guessing on so many of these values
+			{
+				"Target"				"POINT"
+				"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
+				"MoveSpeed"				"1100"
+				"StartRadius"			"300"
+				"EndRadius"				"300"
+				"FixedDistance"			"810"
+				"StartPosition"			"follow_origin"
+				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+				"HasFrontalCone"		"0"
+			}
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"Hero_DeathProphet.Silence"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"				"0"
+			"Knockback"
+			{
+				"Target" "TARGET"
+				"Center" "PROJECTILE"
+				"Distance"	"%distance"
+				"Height"	"100"
+				"Duration"	"0.5"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+				"Function"				"paeldryths_wrath"
+				"damage"				"%damage"
+				"projectile"				"PROJECTILE"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"39 44 48 52 56 60 63 66 68 71"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"distance"					"300 350 400 450 500 550 600 650 700 750"
+			}			
+		}
+	}
+
+
+	//=================================================================================================================
+	// Crystal Maiden: Arcane Mistress
+	//=================================================================================================================
+	//=================================================================================================================
+	// Arcane Mistress: Targeted Magic
+	//=================================================================================================================
+	"arcane_mistress_targeted_magic"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ancient_apparition_ice_blast"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"MaxLevel"						"1"
+		"AOERadius"						"%radius"
+		"AbilityManaCost"				"1" //unverified value
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"18"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_drow/"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+				"Function"				"TargetedMagic"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Arcane Mistress: Frost Scythe
+	//=================================================================================================================
+	"arcane_mistress_frost_scythe"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"drow_ranger_frost_arrows"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.3" //I've been using 0.5 almost universally but 0.5 just felt weird on this spell
+		"AbilityCooldown"				"0.5"
+		"AbilityCastRange"				"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
+		"AbilityManaCost"				"3 4 5 6 7 8 9 10 11 12"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_drow/"
+			"particle_folder"			"particles/units/heroes/hero_crystalmaiden/"
+		}
+		"OnUpgrade"
+		{
+			"LevelUpAbility"
+			{
+				"Target"				"CASTER"
+				"AbilityName"			"arcane_mistress_targeted_magic"
+			}
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"	
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+				"MoveSpeed"				"2000" // Verified
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"Damage"
+			{
+				"Target"				"TARGET"
+				"Type"					"DAMAGE_TYPE_MAGICAL"
+				"Damage"				"%damage"
+			}
+			"ApplyModifier"
+			{
+				"Target"				"TARGET"
+				"ModifierName"			"modifier_arcane_mistress_frost_scythe"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_arcane_mistress_frost_scythe"
+			{
+				"Duration" "%duration"
+				"EffectName" "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+				"EffectAttachType" "follow_origin"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}	
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"35 52 79 118 177 266 399 598 897 1346" //values rounded.
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range"			"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"4 5 6 7 8 9 10 11 12 13"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Arcane Mistress: Frostbite
+	//=================================================================================================================
+	"arcane_mistress_frostbite" 
+	{
+		"BaseClass"						"lich_frost_nova"
+		"AbilityTextureName"			"crystal_maiden_crystal_nova"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.3"
+		"AbilityCooldown"				"30 28 26 24 22 20 18 16 14 12"
+		"AbilityManaCost"				"100 110 120 130 140 150 160 170 180 190"
+		"AbilityDuration"				"50"
+		"AbilityDamage"					"0" //Verified
+		"AbilityModifierSupportValue"	"0.3" //this is in the original file so I'm adding it. I don't know what it does
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_lich/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"aoe_damage"			"200 320 512 819 1311 2097 3355 5369 8590 13744"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"400 420 440 460 480 500 520 540 560 580"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_movement_speed"	"-30" //unverified value
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_attack_speed"		"-20" //unverified value
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"		"50" //Verified
+			}
+		}
+	}
+	//=================================================================================================================
+	// Arcane Mistress - Hailstorm (I don't exactly get this spell. is it supposed be like freezing field? it's not described well)
+	//=================================================================================================================
+	"arcane_mistress_hailstorm"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"crystal_maiden_freezing_field"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityCooldown"				"120 112 104 96 88 80 72 64 56 48"
+		"AbilityManaCost"				"300 330 360 390 420 450 480 510 540 570"
+		"AbilityCastRange"				"1000"
+		"AbilityCastPoint"				"0.5"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityChannelTime"			"10" //Verified
+		"AbilityDuration"				"10"
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+				"Function"				"Hailstorm"
+				"Target"				"POINT"
+				"radius"				"%radius"
+				"damage"				"%damage"
+			}
+		}
+		"OnChannelFinish"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+				"Function"				"HailstormEnd"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"340 360 380 400 420 440 460 480 500 520"
+			}	
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"500 850 1375 2075 2950 4000 5225 6625 8200 9950"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Arcane Mistress - Hailstorm Proxy
+	//=================================================================================================================
+	"arcane_mistress_hailstorm_proxy"
+	{
+		"BaseClass"						"crystal_maiden_freezing_field"
+		"AbilityTextureName"			"crystal_maiden_freezing_field"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"LevelsBetweenUpgrades"			"0"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.0"
+		"AbilityChannelTime"			"10" //Verified
+		"AbilityDuration"				"10"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityModifierSupportValue"	"0.35"	// dunno
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_crystalmaiden/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts" 
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"340 360 380 400 420 440 460 480 500 520"
+			}	
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"explosion_radius"	"230 230 230"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"explosion_interval"	"0.1"
+			}
+			"05"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movespeed_slow"	"0"
+			}
+			"06"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"attack_slow"	"0"
+			}
+			"07"
+			{
+				"var_type"			"FIELD_FLOAT"
+				"slow_duration"		"0"
+			}
+			"08"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"explosion_min_dist"	"0"
+			}
+			"09"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"explosion_max_dist"	"340 360 380 400 420 440 460 480 500 520"
+			}
+			"10"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"0"
+			}
+			"11" // these three should never be used
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage_scepter"	"170 250 310"
+			}
+			"12"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"movespeed_slow_scepter" "-50"
+			}
+			"13"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"attack_slow_scepter"	"-50"
+			}
+		}
+	}
 	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================

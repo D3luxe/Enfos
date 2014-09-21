@@ -26,4 +26,6 @@
 	"npc_dota_hero_bounty_hunter" "1"
 	"npc_dota_hero_earth_spirit" "1"
 	"npc_dota_hero_spirit_breaker" "1"
+	"npc_dota_hero_crystal_maiden" "1"
+	"npc_dota_hero_furion" "0"
 }

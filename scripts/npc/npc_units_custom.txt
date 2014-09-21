@@ -572,6 +572,7 @@
 		"UnitLabel"					"boar"
 
 
+
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					""			// Ability 1
@@ -664,6 +665,7 @@
 		"ModelScale"				"0.65"
 		"IsSummoned"				"1"
 		"UnitLabel"					"boar"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
 
 
 		// Abilities
@@ -3502,7 +3504,7 @@
 		//----------------------------------------------------------------
 		"Model"						"models/creeps/lane_creeps/creep_good_ranged/creep_good_ranged.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"n_creep_Ranged"
+		"SoundSet"					"Creep_Good_Range"
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
