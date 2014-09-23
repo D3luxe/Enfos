@@ -9370,6 +9370,9 @@
 		}
 	}
 
+	//=================================================================================================================
+	// Tempest: Paeldryth's Wrath
+	//=================================================================================================================
 	"tempest_paeldryths_wrath"
 	{
 		"BaseClass"						"ability_datadriven"
@@ -9383,6 +9386,7 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_vengeful/"
+			"particle_folder"			"particles/hero_tempest"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
 		}
 		"OnSpellStart"
@@ -9390,14 +9394,14 @@
 			"LinearProjectile"			//I'm guessing on so many of these values
 			{
 				"Target"				"POINT"
-				"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
-				"MoveSpeed"				"1100"
-				"StartRadius"			"300"
-				"EndRadius"				"300"
-				"FixedDistance"			"810"
+				"EffectName"			"particles/hero_tempest/tempest_wave_of_terror.vpcf"
+				"MoveSpeed"				"3000"
+				"StartRadius"			"400"
+				"EndRadius"				"400"
+				"FixedDistance"			"600"
 				"StartPosition"			"follow_origin"
 				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+				"TargetTypes"			"DOTA_UNIT_TARGET_HERO"
 				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
 				"HasFrontalCone"		"0"
 			}
@@ -9410,21 +9414,22 @@
 		"OnProjectileHitUnit"
 		{
 			"DeleteOnHit"				"0"
-			"Knockback"
-			{
-				"Target" "TARGET"
-				"Center" "PROJECTILE"
-				"Distance"	"%distance"
-				"Height"	"100"
-				"Duration"	"0.5"
-			}
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
 				"Function"				"paeldryths_wrath"
 				"damage"				"%damage"
-				"projectile"				"PROJECTILE"
+				"distance"				"%distance"
 			}
+			"Knockback"
+			{
+				"Target" "TARGET"
+				"Center" "PROJECTILE"
+				"Distance"	"%distance"
+				"Height"	"10"
+				"Duration"	"0.3"
+			}
+			
 		}
 		"AbilitySpecial"
 		{
@@ -9438,6 +9443,148 @@
 				"var_type"				"FIELD_INTEGER"
 				"distance"					"300 350 400 450 500 550 600 650 700 750"
 			}			
+		}
+	}
+
+	//=================================================================================================================
+	// Tempest: Burst
+	//=================================================================================================================
+	"tempest_burst"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"puck_dream_coil"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"45 42 39 36 33 30 27 24 21 18"
+		"AbilityManaCost"				"80 88 96 106 117 128 141 155 171 188"
+		"AOERadius"						"%radius"
+		"Precache"
+		{
+			"particle"			"particles/neutral_fx/tornado_ambient.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"ModifierName"			"modifier_tempest_burst"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_tempest_burst"
+			{
+				"Duration"				"%duration"
+				"ThinkInterval"			"1.0"
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"		"particles/neutral_fx/tornado_ambient.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/heroes/tempest.lua"
+						"Function"			"burst"
+						"damage"		"%damage_per_second"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"			"240 250 260 270 280 290 300 310 320 330"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_per_second"				"80 150 300 500 780 1150 1600 2200 3000 3900"
+			}
+		}	
+	}
+
+	//=================================================================================================================
+	// Tempest - Vertigo
+	//=================================================================================================================
+	"tempest_vertigo"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"crystal_maiden_freezing_field"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_HERO"
+		"AbilityCooldown"				"135"
+		"AbilityManaCost"				"250 275 302 332 366 402 442 487 535 589"
+		"AbilityCastRange"				"400"
+		"AbilityCastPoint"				"0.5"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityChannelTime"			"8" //Verified
+		"AbilityDuration"				"8"
+		"Precache"
+		{
+			"particle"		"particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
+
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+				"Function"				"vertigo"
+				"radius"				"%radius"
+				"damage"				"%damage"
+				"aoe"					"%aoe"
+			}
+		}
+		"OnChannelFinish"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+				"Function"				""
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"150"
+			}	
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"2000 3000 4500 6750 10125 15187 22781 34171 51257 76886"
+			}	
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"aoe"			"400"
+			}
 		}
 	}
 
