@@ -45,6 +45,7 @@ function AnimateDead(keys)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
 		applier:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff_" .. caster:GetAbilityByIndex(1):GetLevel(), {duration = spellDuration})
 		validTargets[i]:Destroy()
+		raisedUnit:SetRenderColor(0, 84, 255)
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end

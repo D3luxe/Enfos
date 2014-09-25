@@ -83,6 +83,7 @@ function summon_sidhlot(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+	unit:SetRenderColor(82, 235, 41)
 
 	ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 end
@@ -95,6 +96,7 @@ function summon_uthmor(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+	unit:SetRenderColor(82, 235, 41)
 
 	ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 end
@@ -107,6 +109,7 @@ function summon_arhat(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+	unit:SetRenderColor(82, 235, 41)
 
 	ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 end
@@ -119,6 +122,7 @@ function summon_havroth(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+	unit:SetRenderColor(82, 235, 41)
 
 	ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 end
@@ -151,6 +155,7 @@ function sidhlot_resurrect(keys)
 		raisedUnit:SetInitialGoalEntity(waypoint)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
 		validTargets[i]:Destroy()
+		raisedUnit:SetRenderColor(0, 84, 255)
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end
@@ -348,6 +353,8 @@ function SummonDarkrift(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerOwnerID()
 	local target = keys.target_points[1]
+	local maxUnits = 6
+	local curUnits = 0
 	if Enfos.appliers[pid].SummonDarkriftApplier == nil then
 		Enfos.appliers[pid] = {SummonDarkriftApplier = CreateItem('item_applier_summon_darkrift', nil, nil)}
 	end
@@ -368,21 +375,37 @@ function SummonDarkrift(keys)
 	local unitToSpawn = roundData.UnitFodder_1a.NPCName
 -- spawn the unit
 	for i=1,6 do
-		local unit = CreateUnitByName(unitToSpawn, Vector(target.x+i*50, target.y+i*50, target.z), true, caster, caster, caster:GetTeamNumber())
-		unit:SetInitialGoalEntity(nil) -- (should) stop the spawned units from trying to run to the goal.
-		unit.summonerUnit = true
-		AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
-		for i=1,3 do -- I dunno why I need to FindClearSpaceForUnit a bunch, but I do
-			FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
-		end
-		unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
-		unit:SetOwner(caster:GetOwner())
-		applier:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
-		unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
-		for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
-			if unit:GetAbilityByIndex(i) ~= nil then
-				unit:GetAbilityByIndex(i):SetLevel(1)
+		
+	end
+
+	Timers:CreateTimer(DoUniqueString("SummonDarkrift"), {
+		endTime = 0.2,
+		callback = function()
+			curUnits = curUnits + 1
+
+			if curUnits <= maxUnits then
+				spawnLocation = Vector(target.x, target.y, target.z)
+				spawnLocation = spawnLocation + RandomVector( RandomFloat( 0, 200 ) )
+				local unit = CreateUnitByName(unitToSpawn, spawnLocation, true, caster, caster, caster:GetTeamNumber())
+				unit:SetInitialGoalEntity(nil) -- (should) stop the spawned units from trying to run to the goal.
+				unit.summonerUnit = true
+				AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
+				for i=1,3 do -- I dunno why I need to FindClearSpaceForUnit a bunch, but I do
+					FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+				end
+				unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+				unit:SetOwner(caster:GetOwner())
+				applier:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
+				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
+					if unit:GetAbilityByIndex(i) ~= nil then
+						unit:GetAbilityByIndex(i):SetLevel(1)
+					end
+				end
+				ParticleManager:CreateParticle("particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+				unit:SetRenderColor(0, 84, 255)
+				return 0.3
 			end
 		end
-	end
+	})
 end

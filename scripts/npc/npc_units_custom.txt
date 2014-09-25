@@ -570,6 +570,7 @@
 		"ModelScale"				"0.65"
 		"IsSummoned"				"1"
 		"UnitLabel"					"boar"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
 
 
 
@@ -752,7 +753,7 @@
 		//----------------------------------------------------------------
 		"Model"						"models/heroes/furion/treant.vmdl"
 		"BaseClass"					"npc_dota_creature"
-		"SoundSet"					"n_creep_Ranged"
+		"SoundSet"					"Furion_Treant"
 		"Level"						"1"
 		"ModelScale" 				".8"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
@@ -3596,7 +3597,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/heroes/drow/drow.vmdl"	// Model.
+		"Model"						"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
@@ -3682,16 +3683,6 @@
 
 			"DisableClumpingBehavior"	"1"
 
-			"AttachWearables"
-			{
-				"Wearable1" { "ItemDef" "75" }
-				"Wearable2" { "ItemDef" "76" }
-				"Wearable3" { "ItemDef" "77" }
-				"Wearable4" { "ItemDef" "78" }
-				"Wearable5" { "ItemDef" "79" }
-				"Wearable6" { "ItemDef" "80" }
-				"Wearable7" { "ItemDef" "267" }
-			}
 		}
 	}	
 	//=================================================================================
@@ -3701,7 +3692,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/heroes/slardar/slardar.vmdl"	// Model.
+		"Model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
@@ -3788,13 +3779,6 @@
 
 			"DisableClumpingBehavior"	"1"
 
-			"AttachWearables"
-			{
-				"Wearable1" { "ItemDef" "273" }
-				"Wearable2" { "ItemDef" "274" }
-				"Wearable3" { "ItemDef" "275" }
-				"Wearable4" { "ItemDef" "276" }
-			}
 		}
 	}	
 	//=================================================================================

@@ -67,6 +67,7 @@ function SummonHellbearWarriors(keys)
 				v:GetAbilityByIndex(3):SetLevel(0)
 			end		
 			AddTypes(v, "modifier_armor_heavy", "modifier_attack_normal")
+
 		end
 	end
 end
@@ -145,6 +146,7 @@ function SummonDarkrift(keys)
 				unit:GetAbilityByIndex(i):SetLevel(1)
 			end
 		end
+		unit:SetRenderColor(0, 84, 255)
 	end
 end
 

@@ -21,7 +21,7 @@
 	"npc_dota_hero_dragon_knight" "1"
 	"npc_dota_hero_lich" "1"	
 	"npc_dota_hero_sniper" "1"
-	// "npc_dota_hero_sven" "1"
+	//"npc_dota_hero_sven" "1"
 	"npc_dota_hero_treant" "1"
 	"npc_dota_hero_bounty_hunter" "1"
 	"npc_dota_hero_earth_spirit" "1"

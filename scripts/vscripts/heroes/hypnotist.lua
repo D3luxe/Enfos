@@ -91,6 +91,7 @@ function Prediction(keys)
 	
 -- recalculate the stats
 	target:CalculateStatBonus()
+	
 end
 	
 function Hallucination(keys)

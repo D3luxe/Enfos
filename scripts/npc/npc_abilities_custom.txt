@@ -9597,7 +9597,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"35 52 79 118 177 266 399 598 897 134600" //values rounded.
+				"damage"				"35 52 79 118 177 266 399 598 897 1346" //values rounded.
 			}			
 			"02"
 			{
@@ -9956,7 +9956,7 @@
 	          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_FLYING"               "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_BLOCK_DISABLED"       "MODIFIER_STATE_VALUE_ENABLED"
-	          "MODIFIER_STATE_NO_HEALTH_BAR"       "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_NO_HEALTH_BAR"        "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 	      }
 	    }
