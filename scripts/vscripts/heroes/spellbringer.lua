@@ -1,3 +1,19 @@
+function AddTypes(mob, armor, attack)
+	local spawnedUnitIndex = mob
+	local armorType = armor
+	local attackType = attack
+
+	local armorItem = CreateItem("item_armor_type_modifier", nil, nil) 
+	armorItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, armorType, {})
+	UTIL_RemoveImmediate(armorItem)
+	armorItem = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	attackItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, attackType, {})
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+end
+
 function jomays_legacy(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
@@ -48,10 +64,10 @@ function spell_disruption(keys)
 	local damage = 0
 	local targetMana = target:GetMana()
 
-	if targetMana < 500 then
+	if targetMana < 90000 then
 		damage = targetMana
 	else
-		damage = 500
+		damage = 90000
 	end
 	target:SetMana(targetMana - manaBurn)
 	ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
@@ -320,9 +336,53 @@ function ability_set_up(keys)
 
 	caster.abilitySet = caster.abilitySet + 1
 
-	if caster.abilitySet >= 2 then
-		caster.abilitySet = 2
+	if caster.abilitySet >= 1 then
+		caster.abilitySet = 1
 	end
 
 	changeAbilitySet(caster, oldSet)
+end
+
+function SummonDarkrift(keys)
+-- vars
+	local caster = keys.caster
+	local pid = caster:GetPlayerOwnerID()
+	local target = keys.target_points[1]
+	if Enfos.appliers[pid].SummonDarkriftApplier == nil then
+		Enfos.appliers[pid] = {SummonDarkriftApplier = CreateItem('item_applier_summon_darkrift', nil, nil)}
+	end
+	local applier = Enfos.appliers[pid].SummonDarkriftApplier
+	local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
+	local round = Enfos.curRound + math.random(3, 5)
+-- filter out invalid rounds
+	if round == 20 then
+		round = 19
+	elseif round == 36 then
+		round = 35
+	elseif round > 42 then
+		round = 42
+	end
+-- get the correct data
+	local roundString = string.format("Round" .. round)
+	local roundData = kvRound[roundString]
+	local unitToSpawn = roundData.UnitFodder_1a.NPCName
+-- spawn the unit
+	for i=1,6 do
+		local unit = CreateUnitByName(unitToSpawn, Vector(target.x+i*50, target.y+i*50, target.z), true, caster, caster, caster:GetTeamNumber())
+		unit:SetInitialGoalEntity(nil) -- (should) stop the spawned units from trying to run to the goal.
+		unit.summonerUnit = true
+		AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
+		for i=1,3 do -- I dunno why I need to FindClearSpaceForUnit a bunch, but I do
+			FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+		end
+		unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+		unit:SetOwner(caster:GetOwner())
+		applier:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+		unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
+		for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
+			if unit:GetAbilityByIndex(i) ~= nil then
+				unit:GetAbilityByIndex(i):SetLevel(1)
+			end
+		end
+	end
 end

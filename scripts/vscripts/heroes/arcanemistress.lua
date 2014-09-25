@@ -9,7 +9,7 @@ function TargetedMagic(keys)
 -- logic
 	for k,v in pairs(targets) do
 		fsCount = fsCount + 1
-		if fsCount > 10 then
+		if fsCount > 50 then
 			break
 		end
 		caster:SetCursorCastTarget(v)

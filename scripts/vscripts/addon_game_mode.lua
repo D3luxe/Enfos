@@ -192,6 +192,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/invoker/invoker_bracer.vmdl", context )
 	PrecacheResource( "model", "models/heroes/invoker/invoker_dress.vmdl", context )
 
+
 	--Uthmor
 	PrecacheResource( "model", "models/heroes/elder_titan/ancestral_spirit.vmdl", context )
 
@@ -201,6 +202,9 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/necrolyte/hat.vmdl", context )
 	PrecacheResource( "model", "models/heroes/necrolyte/shoulders.vmdl", context )
 	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte.vmdl", context )
+	PrecacheItemByNameSync("item_spellbringer_greater_darkrift", context) --[[Returns:void
+	Precaches a DOTA item by its dota_npc_items.txt name
+	]]
 
 	--Havroth
 	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl", context )
@@ -665,6 +669,16 @@ function CEnfosGameMode:OnPlayerPicked( event )
 			if spellbringerLocation ~= nil then
 				local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
 				unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+				local newItem = CreateItem("item_spellbringer_greater_darkrift", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+				unit2:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_uthmor", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+				unit2:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_arhat", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+				unit2:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_sidhlot", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+				unit2:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_havroth", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+				unit2:AddItem(newItem)
 				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
 				unit2:RemoveModifierByName("modifier_tower_truesight_aura")
 				unit2:RemoveModifierByName("modifier_invulnerable")
