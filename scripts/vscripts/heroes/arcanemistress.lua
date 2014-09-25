@@ -9,7 +9,7 @@ function TargetedMagic(keys)
 -- logic
 	for k,v in pairs(targets) do
 		fsCount = fsCount + 1
-		if fsCount > 50 then
+		if fsCount > 10 then
 			break
 		end
 		caster:SetCursorCastTarget(v)
@@ -53,6 +53,7 @@ function Hailstorm(keys)
 					if damageLimit < damage then
 						damage = damageLimit
 					end
+
 					DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
 				end
 				return 1
