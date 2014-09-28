@@ -134,6 +134,7 @@ function sidhlot_resurrect(keys)
 	local radius = keys.radius
 	local spellDuration = keys.duration
 	local unitsRaised = 1
+	local thisSpell = caster:GetAbilityByIndex(0)
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
 	local validTargets = {}
 	if units[1] == nil then
@@ -156,6 +157,7 @@ function sidhlot_resurrect(keys)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
+		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_sidhlot_resurrect", {})
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end

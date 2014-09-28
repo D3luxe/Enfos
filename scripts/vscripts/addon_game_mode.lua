@@ -59,7 +59,7 @@ local STAGE_PLAYING = 4
 heroTable = {
 				{	["name"]="npc_dota_hero_naga_siren",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_medium",
+					["armorType"]="modifier_armor_heavy",
 				},
 				{	["name"]="npc_dota_hero_juggernaut",
 					["attackType"]="modifier_attack_hero",
