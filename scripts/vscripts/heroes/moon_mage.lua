@@ -60,10 +60,7 @@ function Moongate(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
 	local target = keys.target_points[1]
-	if Enfos.appliers[pid].MoongateApplier == nil then
-		Enfos.appliers[pid] = {MoongateApplier = CreateItem('item_applier_moongate', nil, nil)} -- add it to the table
-	end
-	local applier = Enfos.appliers[pid].MoongateApplier
+	local thisSpell = caster:GetAbilityByIndex(3)
 	local gate = FastDummy(AdjustZ(target, 32), caster:GetTeamNumber())
 	local duration = keys.gate_duration
 	local gateParticle = ParticleManager:CreateParticle("particles/hero_moon_mage/enigma_blackhole.vpcf", PATTACH_ABSORIGIN_FOLLOW, gate)
@@ -76,7 +73,7 @@ function Moongate(keys)
 				local unitsDebuff = FindUnitsInRadius(caster:GetTeamNumber(), gate:GetOrigin(), caster, 250, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 				local unitsTeleport = FindUnitsInRadius(caster:GetTeamNumber(), gate:GetOrigin(), caster, 175, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 				for k,v in pairs(unitsDebuff) do
-					applier:ApplyDataDrivenModifier(caster, v, "modifier_moon_mage_moongate_debuff", {duration = 10})
+					thisSpell:ApplyDataDrivenModifier(caster, v, "modifier_moon_mage_moongate_debuff", {duration = 10})
 				end
 				for k,v in pairs(unitsTeleport) do
 					if Enfos.moonbeamActive[pid] ~= nil then
@@ -129,5 +126,3 @@ function BurnFX(keys)
 	partDummy:EmitSound("Hero_Jakiro.LiquidFire")
 	partDummy:ForceKill(false)
 end
-	
---

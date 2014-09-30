@@ -16,7 +16,7 @@ function CalculateArmor(keys)
 	local armorType = keys.ArmorType
 	local target = keys.target
 	local damage = keys.DamageTaken
-	print("Damage Taken: "..damage)
+	--print("Damage Taken: "..damage)
 	local dealOrHeal = 0
 
 	--Gets the attacker's attack type
@@ -34,7 +34,7 @@ function CalculateArmor(keys)
 	elseif attacker:HasModifier("modifier_attack_hero") then
 		attackType = "modifier_attack_hero"
 	else
-		print("Invalid Attack Type")
+	--print("Invalid Attack Type")
 	end
 
 
@@ -44,7 +44,7 @@ function CalculateArmor(keys)
 		local isMagicImmune = caster:IsMagicImmune()
 		if isMagicImmune and attackType == "modifier_attack_magical" then
 			local health = caster:GetHealth()
-			print("Magic immune - healing damage")
+		--print("Magic immune - healing damage")
 			Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
 				endTime = 0.002, 	
 				callback = function()
@@ -69,7 +69,7 @@ function CalculateArmor(keys)
 							local armor = caster:GetPhysicalArmorValue()
 							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 							damage = damage * damageMultiplication
-							print(damage)
+						--print(damage)
 							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 						end
 					end
@@ -102,7 +102,7 @@ function CalculateArmor(keys)
 							local armor = caster:GetPhysicalArmorValue()
 							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 							damage = damage * damageMultiplication
-							print(damage)
+						--print(damage)
 							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 						end
 					end
@@ -131,7 +131,7 @@ function CalculateArmor(keys)
 							local armor = caster:GetPhysicalArmorValue()
 							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
 							damage = damage * damageMultiplication
-							print("Damage dealt as magical: "..damage)
+						--print("Damage dealt as magical: "..damage)
 							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 						end
 					end
@@ -225,13 +225,13 @@ function CalculateArmor(keys)
 				
 			end
 		else
-			print("Invalid armor type")
+		--print("Invalid armor type")
 		end
 	end
 
 	if dealOrHeal == 1 then
 		-- Deal extra damage based on armor
-		print("Extra damage due to armor: "..damage)
+	--print("Extra damage due to armor: "..damage)
 		DealDamage(attacker, caster, damage, DAMAGE_TYPE_PURE, 0)
 
 	elseif dealOrHeal == 2 then
@@ -240,12 +240,12 @@ function CalculateArmor(keys)
 			endTime = 0.001, 	
 			callback = function()
 				if caster:IsAlive() then 
-					print("Damage healed due to armor: "..damage)
+				--print("Damage healed due to armor: "..damage)
 					caster:Heal(damage, caster)
 				end
 			end
 		})
 	else
-		print("No damage change "..dealOrHeal)
+	--print("No damage change "..dealOrHeal)
 	end
 end

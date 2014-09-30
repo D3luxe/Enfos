@@ -557,9 +557,9 @@
 	}		
 
 	//=================================================================================================================
-	// Naga: Kaith`Audru Innate
+	// Ahlen: Kaith`Audru Innate
 	//=================================================================================================================
-	"naga_enfos_innate"
+	"ahlen_innate"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -581,9 +581,9 @@
 		
 		
 	//=================================================================================================================
-	// Naga: Apocalyptic Strike
+	// Ahlen: Apocalyptic Strike
 	//=================================================================================================================
-	"naga_enfos_apocalyptic_strike"
+	"ahlen_apocalyptic_strike"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -699,11 +699,6 @@
 			{
 				"var_type"					"FIELD_INTEGER"
 				"crit_bonus"				"60 90 135 202 303 455 683 1025 1537 2306"
-
-
-
-
-
 			}
 			"03"
 			{
@@ -730,9 +725,9 @@
 	}
 	
 	//=================================================================================================================
-	// Naga: Cataclysmic Strike
+	// Ahlen: Cataclysmic Strike
 	//=================================================================================================================
-	"naga_enfos_cataclysmic_strike"
+	"ahlen_cataclysmic_strike_proxy"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -743,6 +738,10 @@
 		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
+		"precache"
+		{
+			"particle_folder"	"particles/units/heroes/hero_spirit_breaker"
+		}
 		
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
@@ -793,11 +792,123 @@
 			}
 		}
 	}
+
+	"ahlen_cataclysmic_strike"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName"			"spirit_breaker_charge_of_darkness"
+		"MaxLevel"						"10"
+		"LevelsBetweenUpgrades"		"3"
+		"RequiredLevel"			"6"
+		
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
+		"AbilityCastRange"				"2000"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"120 115 110 105 100 95 90 85 80 75"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_cataclysmic_strike"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/ahlen.lua"
+				"Function"				"cataclysmic_strike"
+			}
+		}
+		"Modifiers"    				// Can be used to create custom modifier. 
+		{  							// There are many snippets that can be expanded in to the modifiers. 
+			"modifier_cataclysmic_strike"   	// This should be the name of your modifier
+			{
+				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+				"IsPurgable"				"false"
+				"IsHidden"					"1"
+				"Duration"					"20"
+				"OnAttackLanded"
+				{
+					"Damage"
+					{
+						"Type" "DAMAGE_TYPE_PHYSICAL"
+						"Damage" "999999"
+						"Target"	"TARGET"
+					}
+					"ApplyModifier"
+					{
+						"Target"
+						{
+							"Center" "TARGET"
+							"Radius" "%bash_radius"
+							"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+						}
+						"ModifierName"		"modifier_cataclysmic_strike_stun"
+					}
+					"RemoveModifier"
+					{
+						"Target"		"CASTER"
+						"ModifierName"	"modifier_cataclysmic_strike"
+					}
+
+				}
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1000" //Helps Ahlen immediately attack the target it charges with less time to cancel it.
+				}
+			}
+			"modifier_cataclysmic_strike_stun"
+			{
+				"Duration" "%stun_duration"
+				"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" "follow_overhead"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movement_speed"		"2000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"stun_duration"			"16.5 18 19.5 21 22.5 24 25.5 27 28.5 30"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bash_radius"			"275 300 325 350 375 400 425 450 475 500"
+			}
+		}
+	}
 	
 	//=================================================================================================================
-	// Naga: Dragon Dance
+	// ahlen: Dragon Dance
 	//=================================================================================================================
-	"naga_enfos_dragon_dance"
+	"ahlen_dragon_dance"
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
@@ -1463,7 +1574,7 @@
 	{
 		"BaseClass" 					"ability_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
-		"AbilityTextureName" 			"furion_teleport"
+		"AbilityTextureName" 			"furion_teleportation"
 		"MaxLevel"	"1"
 
 		// Stats
@@ -2260,6 +2371,22 @@
 				"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 			}
 		}
+
+		"Modifiers"
+		{
+			"modifier_weaponsmith_cambrinth_charge_thunder_maul_debuff"
+			{
+				"Duration"				"%slow_duration"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%slow_amount"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_slow_amount"
+				}
+			}
+		}
+
+
 		"AbilitySpecial"
 		{
 			"01"
@@ -2286,6 +2413,16 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"slow_duration"			"30"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_amount"			"-80"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_slow_amount"	"-75"
 			}
 		}
 	}
@@ -2613,6 +2750,25 @@
 					}
 				}
 
+			}
+			"modifier_sidhlot_resurrect"
+			{
+				"Duration"				"20"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Damage"		"9999999"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+					"AttachEffect"
+					{
+						"Target"		"TARGET"
+						"EffectName"	"particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy_explosion.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
 			}
 
 		}
@@ -6205,13 +6361,22 @@
 					}
 				}
 			}
+			"modifier_evoker_static_discharge_debuff"
+			{
+				"Duration"				"30"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+				}
+			}
 		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_reduction"		"50"
+				"damage_reduction"		"-50"
 			}
 			"02"
 			{
@@ -6567,17 +6732,30 @@
 				"Target"				"POINT"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_moon_mage_moongate_debuff"
+			{
+				"Duration"				"%slow_duration"
+				"IsDebuff"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%movement_slow"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_slow"
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"movement_slow"			"75"
+				"movement_slow"			"-75"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"attack_slow"			"25"
+				"attack_slow"			"-25"
 			}
 			"03"
 			{
@@ -6589,7 +6767,7 @@
 				"var_type"				"FIELD_INTEGER"
 				"gate_duration"			"30"
 			}
-		}	
+		}
 	}
 	//=================================================================================================================
 	// Moon Mage: Burn
@@ -6782,7 +6960,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCastRange"				"0" //range not provided on the site
+		"AbilityCastRange"				"0" //Global - verified
 		"AbilityCooldown"				"25 23 21 19 17 15 13 11 9 7"
 		"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
 		"OnSpellStart"
@@ -6792,6 +6970,27 @@
 				"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
 				"Function"				"Hallucination"
 			}
+		}
+		"Modifiers"
+		{
+			"modifier_hypnotist_hallucination"
+			{
+				"Duration"				"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"      "%damage_dealt_percent_value" //percentage increase
+					"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"     "%damage_taken_percent_value" //total percentage taken
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"999999"
+					}
+				}
+			}			
 		}
 		"AbilitySpecial"
 		{
@@ -6809,6 +7008,16 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"duration"				"20 24 28 32 36 40 44 48 52 56"
+			}
+			"04" //do not localize
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_dealt_percent_value"	"0 15 30 45 60 75 90 105 120 135" //it says 234 for the last value, but I'm going to assume that's a typo
+			}
+			"05" //do not localize
+			{
+				"var_type"						"FIELD_INTEGER"
+				"damage_taken_percent_value"	"0 -3 -7 -12 -17 -22 -26 -32 -38 -45"
 			}
 		}
 	}	
@@ -6958,7 +7167,7 @@
 	"revenant_animate_dead"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"morphling_replicate"
+		"AbilityTextureName"			"dark_troll_warlord_raise_dead"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0.5"
@@ -6981,6 +7190,26 @@
 				"units_raised"			"%units_raised"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_revenant_animate_dead_buff"
+			{
+				"Duration"				"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"      "%damage_block"
+				}
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Damage"		"9999999"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -6997,6 +7226,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"units_raised"			"3 4 5 6 7 8 9 10 11 12"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"			"5 7 11 16 25 37 56 85 128 192"
 			}
 		}
 	}	
@@ -8848,6 +9082,22 @@
 				"Target"				"POINT"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_summoner_summon_darkrift"
+			{
+				"Duration"				"%duration"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -8891,6 +9141,37 @@
 				"ScriptFile"	"scripts/vscripts/heroes/summoner.lua"
 				"Function"		"FlagOfSummoning"
 			}
+		}
+		"Modifiers"
+		{
+			"modifier_summoner_flag_of_summoning_aura"
+			{
+				"Duration"				"%duration"
+				"ThinkInterval"			"0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/summoner.lua"
+						"Function"		"CheckFlagValidity"
+						"radius"		"%radius"
+					}
+				}
+			}
+			"modifier_summoner_flag_of_summoning"
+			{
+				"Duration"				"1"
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_speed"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"     		"%armour"
+				}
+			}	
 		}
 		"AbilitySpecial"
 		{
@@ -9597,7 +9878,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage"				"35 52 79 118 177 266 399 598 897 134600" //values rounded.
+				"damage"				"35 52 79 118 177 266 399 598 897 1346" //values rounded.
 			}			
 			"02"
 			{
@@ -9802,6 +10083,385 @@
 			}
 		}
 	}
+
+	//=================================================================================================================
+	// Enchantress: Cleric
+	//=================================================================================================================
+	//=================================================================================================================
+	// Cleric: Bless Soul
+	//=================================================================================================================
+	"cleric_bless_soul"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"chen_penitence"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+		"AOERadius"						"900"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_drow/"
+		}
+		"Modifiers"
+		{
+			"modifier_cleric_bless_soul_aura"
+			{
+				"Passive"				"1"
+				"Aura"					"modifier_cleric_bless_soul"
+				"Aura_Radius"			"900"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"1"
+			}
+			"modifier_cleric_bless_soul"
+			{
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/cleric.lua"
+						"Function"		"BlessSoul"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"900"
+			}			
+		}
+	}	
+	//=================================================================================================================
+	// Cleric: Holy Binding
+	//=================================================================================================================
+	"cleric_holy_binding"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"shadow_shaman_shackles"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AOERadius"						"%radius"
+		"AbilityCooldown"				"50 48 46 44 42 40 38 36 34 32"
+		"AbilityCastRange"				"1200"
+		"AbilityManaCost"				"40 45 50 55 60 65 70 75 80 85"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_lone_druid/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+
+		}
+		"OnSpellStart"
+		{
+			"ActOnTargets"	
+			{
+				"Target"
+				{
+					"Center"			"POINT"
+					"Radius"			"%radius"
+					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+				}
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_cleric_holy_binding"
+						"Target"		"TARGET"
+					}
+				}
+				"FireSound"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"Hero_NagaSiren.Ensnare.Target"
+				}
+			}
+			"FireSound"
+			{
+				"Target"				"CASTER"
+				"EffectName"			"Hero_NagaSiren.Ensnare.Cast"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_cleric_holy_binding"
+			{
+				"Duration"			"%duration"
+				"EffectName" 		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
+				"EffectAttachType" 	"follow_origin"
+				"OverrideAnimation" "ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_ROOTED" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_DISARMED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}	
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"185 230 275 320 365 410 455 500 545 590"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Cleric: Murrula's Flame
+	//=================================================================================================================
+	"cleric_murrulas_flame" 
+	{
+		"BaseClass"						"skeleton_king_reincarnation"
+		"AbilityTextureName"			"phoenix_supernova"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"AbilityCooldown"				"300 280 260 240 220 200 180 160 140 120"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_skeletonking/"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"reincarnate_time"		"12 11 10 9 8 7 6 5 4 3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_radius"			"0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"movespeed"				"0"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attackslow_tooltip"	"0"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"slow_duration"			"0"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Cleric: Shield of Light (site spells it "Sheild of Light")
+	//=================================================================================================================
+	"cleric_shield_of_light"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"dazzle_weave"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"10"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_cleric"
+
+		}
+		"Modifiers"
+		{
+			"modifier_cleric_shield_of_light"
+			{
+				"Passive"					"1"
+				"IsHidden"					"1"
+				"EffectName"   "particles/hero_cleric/cleric_shield.vpcf"
+				"EffectAttachType"	 "attach_hitloc"
+				"OnAttacked"
+				{
+					"Random"
+					{
+						"Chance" "%chance"
+						
+						
+						"OnSuccess"
+						{
+							"RunScript"
+							{
+								"ScriptFile"		"scripts/vscripts/heroes/cleric.lua"
+								"Function"			"ShieldOfLight"
+								"damage_dealt"		"%attack_damage"
+								"damage_blocked"	"%damage_blocked"
+							}
+						}
+						"OnFailure"
+						{
+							"RunScript"
+							{
+								"ScriptFile"		"scripts/vscripts/heroes/cleric.lua"
+								"Function"			"ShieldOfLightFailure"
+								"damage_dealt"		"%attack_damage"
+							}
+						}
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MIN_HEALTH"	"1"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_blocked"		"30 46 69 105 160 243 370 562 855 1000" //rounded
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"chance"				"50 54 58 62 66 70 74 78 82 86"
+			}
+		}	
+	}
+	//=================================================================================================================
+	// Cleric: Aesrela Everild
+	//=================================================================================================================
+	"cleric_aesrela_everild"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"mirana_starfall"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED"
+		"AbilityCooldown"				"150"
+		"AbilityManaCost"				"120 126 135 147 162 180 201 225 252 282"
+		"AOERadius"						"400"
+		"AbilityCastPoint"				"0.5"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityChannelTime"			"7.5"
+		"AbilityDuration"				"7.5"
+		"AbilityCastAnimation"			"ACT_DOTA_TELEPORT" //lol
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_mirana"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts" 
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+				"Function"				"AesrelaEverildStart"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+				"Function"				"AesrelaEverild"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_aesrela_everild"
+				"Target"				"CASTER"
+			}
+		}
+		"OnChannelInterrupted"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+				"Function"				"AesrelaEverildEnd"
+			}
+			
+		}
+		"OnChannelFinish"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"			"modifier_aesrela_everild"
+				"Target"				"CASTER"
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+				"Function"				"AesrelaEverildEnd"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_aesrela_everild"
+			{
+				"IsHidden"	"1"
+				"ThinkInterval"			"0.4"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+						"Function"				"AesrelaEverild"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"damage"			"400 600 800 1300 1800 2500 3800 5800 8000 10000"
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"radius"			"400"
+			}	
+			"03"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"duration"			"7.5"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Cleric: Aesrela Everild Proxy
+	//=================================================================================================================
+	"cleric_aesrela_everild_proxy"
+	{
+		"BaseClass"						"mirana_starfall"
+		"AbilityTextureName"			"mirana_starfall"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+		"LevelsBetweenUpgrades"			"0"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"0"
+		"AbilityDamage"					"400 600 800 1300 1800 2500 3800 5800 8000 10000"
+		"Precache"
+		{
+			"particle_folder"			"particles/units/heroes/hero_mirana"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts" 
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"starfall_radius"	"400"		
+			}
+			"02"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"starfall_secondary_radius"	"0"
+			}
+		}
+	}
+
 	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
@@ -9956,7 +10616,7 @@
 	          "MODIFIER_STATE_LOW_ATTACK_PRIORITY"  "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_FLYING"               "MODIFIER_STATE_VALUE_ENABLED"
 	          "MODIFIER_STATE_BLOCK_DISABLED"       "MODIFIER_STATE_VALUE_ENABLED"
-	          "MODIFIER_STATE_NO_HEALTH_BAR"       "MODIFIER_STATE_VALUE_ENABLED"
+	          "MODIFIER_STATE_NO_HEALTH_BAR"        "MODIFIER_STATE_VALUE_ENABLED"
 	        }
 	      }
 	    }

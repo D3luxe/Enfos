@@ -3,11 +3,7 @@ function StaticDischarge(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 450, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false) -- only creeps targetted. change if you want others
--- create our applier if it's not already made.
-	if Enfos.appliers[pid].StaticDischargeApplier == nil then
-		Enfos.appliers[pid] = {StaticDischargeApplier = CreateItem('item_applier_static_discharge', nil, nil)} -- add it to the table
-	end
-	local applier = Enfos.appliers[pid].StaticDischargeApplier
+	local thisSpell = caster:GetAbilityByIndex(5)
 	local target = nil
 	local lightningBolt = nil
 -- checks for valid units and execute the spell
@@ -16,7 +12,7 @@ function StaticDischarge(keys)
 		lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster) -- a bit bad right now
 		ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2))) -- to make it look decent
 		target:EmitSound("Hero_Zuus.ArcLightning.Target")	
-		applier:ApplyDataDrivenModifier(caster, target, "modifier_evoker_static_discharge_debuff", {duration = 30})		
+		thisSpell:ApplyDataDrivenModifier(caster, target, "modifier_evoker_static_discharge_debuff", {duration = 30})		
 	end
 end
 
@@ -33,16 +29,12 @@ function GarZeng(keys)
 	local unitsHit = keys.units_hit
 	unitsHit = unitsHit - 1
 	local cfVec = caster:GetForwardVector()
-	if Enfos.appliers[pid].GenericApplier == nil then
-		Enfos.appliers[pid] = {GenericApplier = CreateItem('item_generic_applier', nil, nil)}
-	end
-	local applier = Enfos.appliers[pid].GenericApplier
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster) -- attach type 7 isn't good. fix later.
 -- logic
 	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0) -- this is quick function to more quickly apply damage. see enfos.lua
 	caster:EmitSound("Hero_ShadowShaman.EtherShock")
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
-	applier:ApplyDataDrivenModifier(caster, target, "modifier_skill_flag", {}) -- apply a flag to the main unit so that we don't double shock it
+	target.garZengFlag = true
 	ParticleManager:SetParticleControl(particle,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))
 -- we need to reduce the units table to only valid targets before we do skill processing so that. the unit is found here in case the main target was killed by the direct damage.
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
@@ -50,7 +42,7 @@ function GarZeng(keys)
 	for k,v in pairs (units) do
 		local highVar = cfVec:Dot((v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized())
 		local lowVar = math.cos(45) -- 45 degree cone. a complete guess if this is correct
-		if highVar > lowVar and not v:HasModifier("modifier_skill_flag") then -- if the highVar is a higher number than the lowVar, it's in the cone.
+		if highVar > lowVar and not v.garZengFlag then -- if the highVar is a higher number than the lowVar, it's in the cone.
 			table.insert(inCone, v) -- add the unit if it's not in the cone
 		end
 	end
@@ -69,7 +61,7 @@ function GarZeng(keys)
 			unitsHit = unitsHit - 1
 		end
 	end
-	target:RemoveModifierByName("modifier_skill_flag")
+	target.garZengFlag = false
 end
 
 function ChainLightning(keys)
@@ -157,33 +149,3 @@ function BallLightning(keys)
 		end
 	})
 end
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
--- -- cc
-	

@@ -59,7 +59,7 @@ local STAGE_PLAYING = 4
 heroTable = {
 				{	["name"]="npc_dota_hero_naga_siren",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_medium",
+					["armorType"]="modifier_armor_heavy",
 				},
 				{	["name"]="npc_dota_hero_juggernaut",
 					["attackType"]="modifier_attack_hero",
@@ -182,6 +182,7 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/hero_moon_mage/jakiro_liquid_fire_explosion.vpcf", context )
 	PrecacheResource( "particle", "particles/items_fx/aura_assault.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf", context )
+	PrecacheResource( "particle", "particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", context )
 
 	--Arhat
 	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
@@ -202,9 +203,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/heroes/necrolyte/hat.vmdl", context )
 	PrecacheResource( "model", "models/heroes/necrolyte/shoulders.vmdl", context )
 	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte.vmdl", context )
-	PrecacheItemByNameSync("item_spellbringer_greater_darkrift", context) --[[Returns:void
-	Precaches a DOTA item by its dota_npc_items.txt name
-	]]
+	PrecacheItemByNameSync("item_spellbringer_greater_darkrift", context)
 
 	--Havroth
 	PrecacheResource( "model", "models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl", context )

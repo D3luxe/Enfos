@@ -19,7 +19,6 @@ function AnimateDead(keys)
 	local pid = caster:GetPlayerID()
 	local radius = keys.radius
 	local unitsRaised = keys.units_raised
-	local spellDuration = keys.duration
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
 	local validTargets = {}
 	if units[1] == nil then
@@ -30,10 +29,7 @@ function AnimateDead(keys)
 			table.insert(validTargets, v)
 		end
 	end
-	if Enfos.appliers[pid].AnimateDeadApplier == nil then
-		Enfos.appliers[pid] = {AnimateDeadApplier = CreateItem('item_applier_animate_dead', nil, nil)} -- add it to the table
-	end
-	local applier = Enfos.appliers[pid].AnimateDeadApplier
+	local thisSpell = caster:GetAbilityByIndex(0)
 -- find all the nearby dead units and reraise them
 	for i=1,unitsRaised	do
 		if validTargets[i] == nil then
@@ -43,30 +39,12 @@ function AnimateDead(keys)
 		raisedUnit:SetControllableByPlayer(caster:GetPlayerID(), true)
 		FindClearSpaceForUnit(raisedUnit, raisedUnit:GetAbsOrigin(), true)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
-		applier:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff_" .. caster:GetAbilityByIndex(1):GetLevel(), {duration = spellDuration})
+		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff", {})
 		validTargets[i]:Destroy()
+		raisedUnit:SetRenderColor(0, 84, 255)
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end
-
--- function Deathwave(keys)
--- -- vars
-	-- local caster = keys.caster
-	-- local damage = keys.damage
-	-- local radius = keys.radius
-	-- local spellDuration = keys.duration
-	-- local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	-- if Enfos.appliers[pid].DeathwaveApplier == nil then
-		-- Enfos.appliers[pid] = {DeathwaveApplier = CreateItem('item_applier_animate_dead', nil, nil)} -- add it to the table
-	-- end
-	-- local applier = Enfos.appliers[pid].DeathwaveApplier
--- -- apply the spell. it's a simple one
-	-- for k,v in pairs(units) do
-		-- DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
-		-- applier:ApplyDataDrivenModifier(caster, v, "modifier_revenant_deathwave_debuff_" .. caster:GetAbilityByIndex(2):GetLevel(), {duration = spellDuration})
-		-- -- ParticleManager:CreateParticle("particle", PATTACH_ABSORIGIN_FOLLOW, v)
-	-- end
--- end
 
 function CorpseExplosion(keys)
 -- vars

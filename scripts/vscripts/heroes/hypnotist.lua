@@ -91,13 +91,14 @@ function Prediction(keys)
 	
 -- recalculate the stats
 	target:CalculateStatBonus()
+	
 end
 	
 function Hallucination(keys)
 -- vars
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
-	local spellLevel = caster:GetAbilityByIndex(1):GetLevel()
+	local thisSpell = caster:GetAbilityByIndex(1)
 	local target = keys.target
 	local targetName = target:GetUnitName()
 	local targetHealth = target:GetHealth()
@@ -105,12 +106,10 @@ function Hallucination(keys)
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 	unit:SetHealth(targetHealth)
+	unit:SetRenderColor(0,84,255)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
-	if Enfos.appliers[pid].HallucinationApplier == nil then
-		Enfos.appliers[pid] = {HallucinationApplier = CreateItem('item_applier_hallucination', nil, nil)} -- add it to the table
-	end
-	Enfos.appliers[pid].HallucinationApplier:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination_" .. spellLevel, {})
+	thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
 end
 
 function MindShout(keys) -- warning: the sound effect for this can get a bit loud.

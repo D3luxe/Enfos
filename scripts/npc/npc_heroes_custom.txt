@@ -4,23 +4,24 @@
 "DOTAHeroes"
 {
 	//=================================================================================================================
-	// HERO: Naga Siren - Marcus, the Ahlen
+	// HERO: Omniknight - Marcus, the Ahlen
 	//=================================================================================================================
-	"npc_dota_hero_naga_siren_enfos"
+	"npc_dota_hero_omniknight_enfos"
 	{
-		"override_hero"				"npc_dota_hero_naga_siren"
+		"override_hero"				"npc_dota_hero_omniknight"
 		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
 		"Rolelevels"				"1"
-		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
 		// Abilities
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityLayout"				"5"
-		"Ability1"				"naga_enfos_apocalyptic_strike"
+		"Ability1"				"ahlen_apocalyptic_strike"
 		"Ability2"				"generic_enfos_combat_mastery"
-		"Ability3"				"naga_enfos_cataclysmic_strike"
-		"Ability4"				"naga_enfos_dragon_dance"
-		"Ability6"				"naga_enfos_innate"
+		"Ability3"				"ahlen_cataclysmic_strike"
+		"Ability4"				"ahlen_dragon_dance"
+		"Ability6"				"ahlen_innate"
 		"Ability5"				"enfos_attribute_bonus"
+		"Ability7"				"ahlen_cataclysmic_strike_proxy"
 
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
@@ -691,11 +692,11 @@
 	}
 
 	//=================================================================================================================
-	// HERO: Omniknight (Weaponsmith)
+	// HERO: Sven (Weaponsmith)
 	//=================================================================================================================
-	"npc_dota_hero_omniknight_enfos"
+	"npc_dota_hero_sven_enfos"
 	{
-		"override_hero"				"npc_dota_hero_omniknight"
+		"override_hero"				"npc_dota_hero_sven"
 		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
 		"Rolelevels"				"1"
 		"AbilityLayout"				"5"
@@ -1014,6 +1015,48 @@
 		"AttackDamageMax" 			"16.5"
 		"AttackRate"                "1.65"
 		"AttackRange"               "750"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+
+	//=================================================================================================================
+	// HERO: Naga Siren: Cleric
+	//=================================================================================================================
+	"npc_dota_hero_naga_siren_enfos"
+	{
+		"override_hero"				"npc_dota_hero_naga_siren"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"cleric_holy_binding"
+		"Ability2"					"cleric_murrulas_flame"
+		"Ability3"					"cleric_shield_of_light"
+		"Ability4"					"cleric_aesrela_everild"
+		"Ability6"					"cleric_bless_soul"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "1.6"
+		"AttackRange"               "160"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
 	}
