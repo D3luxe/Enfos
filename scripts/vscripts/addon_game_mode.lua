@@ -141,6 +141,10 @@ heroTable = {
 					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_heavy",
 				},
+				{	["name"]="npc_dota_hero_sven",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_light",
+				},
 		}	
 
 uniqueItems = { "item_nimsha",
