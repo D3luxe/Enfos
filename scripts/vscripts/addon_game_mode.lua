@@ -506,8 +506,8 @@ function CEnfosGameMode:OnThink()
 
 				self._nRoundNumber = self._nRoundNumber + 1
 				if self._nRoundNumber > #self._vRounds then
-					self._nRoundNumber = 1
-					GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
+					self._nRoundNumber = #self._vRounds
+					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
 				else
 					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
 				end
@@ -579,8 +579,8 @@ function CEnfosGameMode:_ThinkPrepTime()
 		end
 
 		if self._nRoundNumber > #self._vRounds then
-			GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
-			return false
+			self.nRoundNumber = #self._vRounds
+			-- return false
 		end
 		self._currentRound = self._vRounds[ self._nRoundNumber ]
 		self._currentRound:Begin()

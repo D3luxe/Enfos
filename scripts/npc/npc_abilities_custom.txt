@@ -9545,7 +9545,7 @@
 		{
 			"modifier_tempest_zephyr_proxy"
 			{
-				"IsHidden"				"0"
+				"IsHidden"				"1"
 				"Passive"				"1"
 				"Aura"					"modifier_tempest_zephyr_proxy_aura"
 				"Aura_Radius"			"500"
@@ -9572,7 +9572,6 @@
 		"AbilityCastPoint"				"0.5"
 		"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
 		"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
-		"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_vengeful/"
@@ -9591,7 +9590,7 @@
 				"FixedDistance"			"600"
 				"StartPosition"			"follow_origin"
 				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"TargetTypes"			"DOTA_UNIT_TARGET_HERO"
+				"TargetTypes"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
 				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
 				"HasFrontalCone"		"0"
 			}
@@ -9736,8 +9735,7 @@
 		"AbilityDuration"				"8"
 		"Precache"
 		{
-			"particle"		"particles/units/heroes/hero_invoker/invoker_tornado.vpcf"
-
+			"particle"		"particles/hero_tempest/tornado_ambient.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -9750,17 +9748,54 @@
 				"aoe"					"%aoe"
 			}
 		}
-		"OnChannelFinish"
+		"Modifiers"
 		{
-			"RunScript"
+			"modifier_tempest_vertigo_applier"
 			{
-				"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
-				"Function"				""
+				// "IsHidden"				"1"
+				"ThinkInterval"			"1"
+				"OnIntervalThink"
+				{
+					"ActOnTargets"
+					{
+						"Target"
+						{
+							"Center"			"TARGET"
+							"Radius"			"%radius"
+							"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+							"Types"				"DOTA_UNIT_TARGET_CREEP"
+						}
+						"Action"
+						{
+							"RunScript"
+							{
+								"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+								"Function"				"vertigo_damage"
+								"Target"		"TARGET"
+							}
+						}
+					}
+				}
+			}
+			"modifier_tempest_vertigo_damage"
+			{
+				"Duration"				"0.1"
+				"IsDebuff"				"1"
+				"IsHidden"				"1"
+				"OnCreated"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage"
+					}
+				}
 			}
 		}
 		"AbilitySpecial"
 		{
-			"01"
+			"01"// Don't localize
 			{
 				"var_type"			"FIELD_INTEGER"
 				"radius"			"150"
@@ -9770,7 +9805,7 @@
 				"var_type"			"FIELD_INTEGER"
 				"damage"			"2000 3000 4500 6750 10125 15187 22781 34171 51257 76886"
 			}	
-			"02"
+			"02" 
 			{
 				"var_type"			"FIELD_INTEGER"
 				"aoe"			"400"

@@ -56,19 +56,15 @@ function paeldryths_wrath (keys)
 end
 
 function burst (keys)
-	print("Bursting")
 	--PrintTable(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local damage = keys.damage
 	local health = target:GetHealth()
-	print(damage)
-	print("Health: "..health)
 
 	if damage > health then
 		damage = health - 1
 	end
-	print(damage)
 
 	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
 end
@@ -79,43 +75,96 @@ function vertigo (keys)
 	local target = keys.target
 	local damage = keys.damage
 	local radius = keys.radius
+	local casterPos = caster:GetAbsOrigin()
+	local fVec = caster:GetForwardVector()
+	local spawnPosL = RotatePosition(Vector(0, 0, 0), QAngle(0, -15, 0), fVec)
+	local spawnPosR = RotatePosition(Vector(0, 0, 0), QAngle(0, 15, 0), fVec)
 	local slivers = 10
 	local count = 0
+	local thisSpell = caster:GetAbilityByIndex(3)
 -- initial release timer
-	Timers:CreateTimer(DoUniqueString("vertigo"), {
+	Timers:CreateTimer(DoUniqueString("tempest"), {
 		endTime = 0.03,
 		callback = function()
-			count = count + 1
-			local thisUnit = FastDummy(caster:GetAbsOrigin(), caster:GetTeamNumber())
-			local movement = {}
-			thisUnit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
-			thisUnit:SetBaseMoveSpeed(200)
-			ParticleManager:CreateParticle("particles/neutral_fx/tornado_ambient.vpcf", PATTACH_OVERHEAD_FOLLOW, thisUnit)
-			local a, b, c = GetLine(caster, target)
-			local vec = target:GetAbsOrigin()
-			print(vec)
-			print("Giving movement command")
-			local order = {
-				UnitIndex = thisUnit:entindex(),
+-- create the units. give it some randomness
+			local unit = FastDummy(casterPos - Vector((fVec.x * 400) * math.random(0.85,1.15), (fVec.y * 400) * math.random(0.85,1.15), fVec.z), caster:GetTeamNumber())
+			thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_tempest_vertigo_applier", {})
+			unit:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+-- set their movement
+			unit:SetForwardVector(fVec)
+			local movement = {
+				UnitIndex = unit:entindex(),
 				OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
-				Position = vec,
+				Position = casterPos + Vector(fVec.x * 400, fVec.y * 400, fVec.z),
 				Queue = true
 			}
-			ExecuteOrderFromTable(order)
-			--if count < slivers then
-			--	return 0.03
-			--else
-			--	count = 0
-			--	return
-			--end
-			Timers:CreateTimer(DoUniqueString("vertDestroy"), {
-				endTime = 10,
+			ExecuteOrderFromTable(movement)
+-- apply particles
+			local tPart = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+			-- ParticleManager:SetParticleControl(tPart, 1, Vector(450,0,0)) -- needed?
+-- kill the guy when the time runs out
+			Timers:CreateTimer(DoUniqueString("kltmp"), {
+				endTime = 2.25,
 				callback = function()
-					if thisUnit ~= nil then
-						thisUnit:Destroy()
-					end
+					unit:Destroy()
 				end
 			})
+-- create the side tornadoes
+			for i=0,3 do
+-- this is math that makes them show up somewhat in a line. I'm repeating myself really badly here :/
+				count = (count + 30) * 1.25
+				spawnPosL = RotatePosition(Vector(0, 0, 0), QAngle(0, -10, 0), spawnPosL)
+				spawnPosR = RotatePosition(Vector(0, 0, 0), QAngle(0, 10, 0), spawnPosR)
+-- spawn the units. 
+				local unitL = FastDummy(casterPos - Vector((spawnPosL.x * (400 + count)) * math.random(0.85,1.15), (spawnPosL.y * (400 + count)) * math.random(0.85,1.15), spawnPosL.z), caster:GetTeamNumber())
+				thisSpell:ApplyDataDrivenModifier(caster, unitL, "modifier_tempest_vertigo_applier", {})
+				unitL:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+				local unitR = FastDummy(casterPos - Vector((spawnPosR.x * (400 + count)) * math.random(0.85,1.15), (spawnPosR.y * (400 + count)) * math.random(0.85,1.15), spawnPosR.z), caster:GetTeamNumber())
+				thisSpell:ApplyDataDrivenModifier(caster, unitR, "modifier_tempest_vertigo_applier", {})
+				unitR:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
+				local tPartL = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitL)
+				local tPartR = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitR)
+				local movementL = {
+					UnitIndex = unitL:entindex(),
+					OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+					Position = casterPos + Vector(spawnPosR.x * (400 + count), spawnPosR.y * (400 + count), spawnPosL.z), --if I use spawnPosL, it crosses over. kinda weird
+					Queue = true
+				}
+				ExecuteOrderFromTable(movementL)
+				local movementR = {
+					UnitIndex = unitR:entindex(),
+					OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,
+					Position = casterPos + Vector(spawnPosL.x * (400 + count), spawnPosL.y * (400 + count), spawnPosR.z),
+					Queue = true
+				}
+				ExecuteOrderFromTable(movementR)
+-- kill them
+				Timers:CreateTimer(DoUniqueString("kltmp2"), {
+					endTime = 2.25,
+					callback = function()
+						unitL:Destroy()
+						unitR:Destroy()
+					end
+				})
+			end
+-- reset these vars
+			count = 0
+			spawnPosL = RotatePosition(Vector(0, 0, 0), QAngle(0, -15, 0), fVec)
+			spawnPosR = RotatePosition(Vector(0, 0, 0), QAngle(0, 15, 0), fVec)
+-- keep it going if you're still channeling
+			if thisSpell:IsChanneling() then
+				return 0.5
+			end
 		end
 	})
+end
+
+function vertigo_damage(keys)
+	local target = keys.target
+	local caster = keys.caster
+	local thisSpell = caster:GetAbilityByIndex(3)
+	if not target:HasModifier("modifier_tempest_vertigo_damage") then
+		--print("Target hasn't recently been damaged, damaging")
+		thisSpell:ApplyDataDrivenModifier(caster, target, "modifier_tempest_vertigo_damage", {})
+	end
 end
