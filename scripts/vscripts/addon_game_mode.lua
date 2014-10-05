@@ -35,26 +35,6 @@ local STAGE_BANNING = 2
 local STAGE_PICKING = 3
 local STAGE_PLAYING = 4
 
---[[heroTable = {"npc_dota_hero_naga_siren",				-- 1 	Ahlen
-			"npc_dota_hero_juggernaut",					-- 2 	Blood Dancer
-			"npc_dota_hero_beastmaster",				-- 3 	Barbarian
-			"npc_dota_hero_skywrath_mage",				-- 4 	Time Mage
-			"npc_dota_hero_ursa",						-- 5 	Battle Chanter
-			"npc_dota_hero_shadow_shaman",				-- 6 	Warlock
-			"npc_dota_hero_dragon_knight",				-- 7 	Holy Warrior
-			"npc_dota_hero_bounty_hunter",				-- 8 	Magic Infuser
-			"npc_dota_hero_phantom_assassin",			-- 9 	Paladin
-			"npc_dota_hero_silencer",					-- 10 	Mentalist
-			"npc_dota_hero_storm_spirit",				-- 11 	Evoker
-			"npc_dota_hero_luna",						-- 12 	Moon Mage
-			"npc_dota_hero_dazzle",						-- 13 	Hypnotist
-			"npc_dota_hero_omniknight",					-- 14 	Weaponsmith
-			"npc_dota_hero_lich",						-- 15 	Revenant
-			"npc_dota_hero_sniper",						-- 16 	Sniper
-			"npc_dota_hero_treant",						-- 17 	Oak
-			"npc_dota_hero_antimage",					-- 18 	Thief
-			"npc_dota_hero_earth_spirit"				-- 19 	Entropist
-		}]]--
 
 heroTable = {
 				{	["name"]="npc_dota_hero_naga_siren",
@@ -83,7 +63,7 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_dragon_knight",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_divine",
+					["armorType"]="modifier_armor_fortified",
 				},
 				{	["name"]="npc_dota_hero_bounty_hunter",
 					["attackType"]="modifier_attack_hero",

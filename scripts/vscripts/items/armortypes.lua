@@ -142,12 +142,15 @@ function CalculateArmor(keys)
 		elseif armorType == "fortified" then
 			if attackType == "modifier_attack_normal" then
 				dealOrHeal = 2
-				damage = damage * 0.3
+				damage = damage * 0.2
 			elseif attackType == "modifier_attack_pierce" then
 				dealOrHeal = 2
-				damage = damage * 0.75
+				damage = damage * 0.5
 			elseif attackType == "modifier_attack_siege" then
 				dealOrHeal = 1
+				damage = damage * 0.5
+			elseif attackType == "modifier_attack_hero" then
+				dealOrHeal = 2
 				damage = damage * 0.5
 			elseif attackType == "modifier_attack_chaos" then
 				local armor = caster:GetPhysicalArmorValue()
@@ -197,16 +200,16 @@ function CalculateArmor(keys)
 		elseif armorType == "divine" then
 			if attackType == "modifier_attack_normal" then
 				dealOrHeal = 2
-				damage = damage * 0.1
+				damage = damage * 0.95
 			elseif attackType == "modifier_attack_pierce" then
 				dealOrHeal = 2
-				damage = damage * 0.1
+				damage = damage * 0.95
 			elseif attackType == "modifier_attack_siege" then
 				dealOrHeal = 2
-				damage = damage * 0.1
+				damage = damage * 0.95
 			elseif attackType == "modifier_attack_hero" then
 				dealOrHeal = 2
-				damage = damage * 0.1
+				damage = damage * 0.95
 			elseif attackType == "modifier_attack_magical" then
 				local health = caster:GetHealth()
 				Timers:CreateTimer(DoUniqueString("magicImmuneHeal"), {
@@ -216,7 +219,7 @@ function CalculateArmor(keys)
 							caster:SetHealth(health)
 							local armor = caster:GetPhysicalArmorValue()
 							local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
-							damage = damage * damageMultiplication
+							damage = damage * damageMultiplication * 0.05
 							--print(damage)
 							DealDamage(attacker, caster, damage, DAMAGE_TYPE_MAGICAL, 0)
 						end
