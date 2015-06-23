@@ -23,12 +23,14 @@ function RadiantLoseLife(trigger)
 		if trigger.activator:GetUnitName() == "npc_dota_spirit_hawk" or trigger.activator:GetUnitName() == "npc_dota_spirit_owl" then
 			trigger.activator:ForceKill(true)
 		elseif trigger.activator:GetTeam() == DOTA_TEAM_BADGUYS then
-			Triggers._goodLives = Triggers._goodLives - 1
-			trigger.activator:ForceKill(true)
-			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
-			if Triggers._goodLives == 0 then
-				GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
-				return
+			if trigger.activator:GetOwner() == nil then
+				Triggers._goodLives = Triggers._goodLives - 1
+				trigger.activator:ForceKill(true)
+				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
+				if Triggers._goodLives == 0 then
+					GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
+					return
+				end
 			end
 		end
 	end
@@ -39,12 +41,14 @@ function DireLoseLife(trigger)
 		if trigger.activator:GetUnitName() == "npc_dota_spirit_hawk" or trigger.activator:GetUnitName() == "npc_dota_spirit_owl" then
 			trigger.activator:ForceKill(true)
 		elseif trigger.activator:GetTeam() == DOTA_TEAM_GOODGUYS then
-			Triggers._badLives = Triggers._badLives - 1
-			trigger.activator:ForceKill(true)
-			GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
-			if Triggers._badLives == 0 then
-				GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
-				return
+			if trigger.activator:GetOwner() == nil then
+				Triggers._badLives = Triggers._badLives - 1
+				trigger.activator:ForceKill(true)
+				GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_BADGUYS, Triggers._badLives)
+				if Triggers._badLives == 0 then
+					GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
+					return
+				end
 			end
 		end
 	end

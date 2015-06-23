@@ -16,7 +16,7 @@ function TargetedMagic(keys)
 		frostScythe:OnSpellStart()
 	end
 end
-	
+
 function Hailstorm(keys)
 -- vars
 	local caster = keys.caster

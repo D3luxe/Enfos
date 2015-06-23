@@ -23,34 +23,6 @@ function BlessSoul(keys)
 	})
 end
 
-function ShieldOfLight(keys)
--- vars
-	local caster = keys.caster
-	local damageDealt = keys.damage_dealt
-	local damageBlocked = keys.damage_blocked
-	local casterHealth = caster:GetHealth()
--- logic
-	if damageBlocked > damageDealt then
-		caster:Heal(damageDealt, caster)
-	elseif damageDealt > (damageBlocked + casterHealth) then
-		caster:ForceKill(false)
-	elseif damageDealt > damageBlocked then
-		caster:Heal(damageBlocked, caster)
-	end
-end
-
-function ShieldOfLightFailure(keys)
--- vars
-	local caster = keys.caster
-	local damageDealt = keys.damage_dealt
-	local casterHealth = caster:GetHealth()
--- logic
-	if damageDealt > casterHealth then
-		caster:ForceKill(false)
-	end
-end
-
-
 function AesrelaEverild(keys)
 -- vars
 	local caster = keys.caster

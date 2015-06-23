@@ -33,7 +33,9 @@ function jomays_legacy_tick(keys)
 
 	local targetHealth = target:GetHealth()
 	local damage = targetHealth * 0.03
-	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+	if target:IsHero() then
+		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+	end
 end
 
 function mana_disruption(keys)
@@ -41,19 +43,23 @@ function mana_disruption(keys)
 	local target = keys.target
 	local duration = keys.duration
 	local manaPerSecond = keys.mana_per_second
-
-	Timers:CreateTimer(DoUniqueString("manaDisruption"), {
-		endTime = 1,
-		callback = function()
-			target:SetMana(target:GetMana() - manaPerSecond)
-			duration = duration - 1
-			
-			ParticleManager:CreateParticle("particles/items2_fx/necronomicon_archer_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-			if duration > 0 then
-				return 1.0
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else
+		Timers:CreateTimer(DoUniqueString("manaDisruption"), {
+			endTime = 1,
+			callback = function()
+				target:SetMana(target:GetMana() - manaPerSecond)
+				duration = duration - 1
+				
+				ParticleManager:CreateParticle("particles/items2_fx/necronomicon_archer_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+				if duration > 0 then
+					return 1.0
+				end
 			end
-		end
-	})
+		})
+	end
 end
 
 function spell_disruption(keys)
@@ -69,10 +75,15 @@ function spell_disruption(keys)
 	else
 		damage = 90000
 	end
-	target:SetMana(targetMana - manaBurn)
-	ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else	
+		target:SetMana(targetMana - manaBurn)
+		ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 
-	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+	end
 end
 
 function summon_sidhlot(keys)
@@ -250,6 +261,44 @@ function whole_displacement(keys)
 	target:SetInitialGoalEntity(waypoint)
 end
 
+function battle_sphere(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local damage = keys.ability:GetSpecialValueFor("damage")
+	local sDuration = keys.ability:GetSpecialValueFor("duration")
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else
+		target:AddNewModifier(caster, nil, "modifier_stunned", {duration = sDuration})
+		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL)
+	end
+end
+
+function limb_disruption(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local sDuration = keys.ability:GetSpecialValueFor("duration")
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else
+		keys.ability:ApplyDataDrivenModifier(caster,target,"modifier_spellbringer_limb_disruption", {duration = sDuration})
+	end
+end
+
+function glythtides_gift(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local sDuration = keys.ability:GetSpecialValueFor("duration")
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else
+		keys.ability:ApplyDataDrivenModifier(caster,target,"modifier_spellbringer_glythtides_gift", {duration = sDuration})
+	end	
+end
+
 function changeAbilitySet(caster, oldAbilitySet)
 	local set = caster.abilitySet
 	local oldSet = oldAbilitySet
@@ -357,10 +406,7 @@ function SummonDarkrift(keys)
 	local target = keys.target_points[1]
 	local maxUnits = 6
 	local curUnits = 0
-	if Enfos.appliers[pid].SummonDarkriftApplier == nil then
-		Enfos.appliers[pid] = {SummonDarkriftApplier = CreateItem('item_applier_summon_darkrift', nil, nil)}
-	end
-	local applier = Enfos.appliers[pid].SummonDarkriftApplier
+	local thisSpell = caster:GetItemInSlot(0)
 	local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
 	local round = Enfos.curRound + math.random(3, 5)
 -- filter out invalid rounds
@@ -397,7 +443,7 @@ function SummonDarkrift(keys)
 				end
 				unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
 				unit:SetOwner(caster:GetOwner())
-				applier:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
 				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
 				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 					if unit:GetAbilityByIndex(i) ~= nil then

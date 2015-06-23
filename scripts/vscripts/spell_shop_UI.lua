@@ -61,6 +61,9 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 	--print("Buy Spell.")
 	local pID = player:GetPlayerID()
 	local hero = player:GetAssignedHero()
+	if hero == nil then
+		return 0
+	end
 	local team = hero:GetTeam()
 	local targetID = 0
 	local success = false

@@ -68,6 +68,7 @@
 		"IsSummoned"				"1"
 		"CanBeDominated"			"0"
 		"SelectionGroup"			"Spiders"
+		"PathfindingSearchDepthScale" "0.1"
 		
 		// Abilities
 		//----------------------------------------------------------------
@@ -158,6 +159,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 
@@ -174,6 +177,7 @@
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".9"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -262,6 +266,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 	
@@ -278,6 +284,7 @@
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".9"
+		"PathfindingSearchDepthScale" "0.1"
 
 		
 
@@ -368,6 +375,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 	//=================================================================================	
@@ -383,7 +392,7 @@
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".9"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle"		"particles/neutral_fx/gnoll_base_attack.vpcf"
@@ -464,6 +473,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 	//=================================================================================	
@@ -479,7 +490,7 @@
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".9"
-
+		"PathfindingSearchDepthScale" "0.1"
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					""			// Ability 1
@@ -553,6 +564,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 
@@ -571,7 +584,7 @@
 		"IsSummoned"				"1"
 		"UnitLabel"					"boar"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 
 
 		// Abilities
@@ -647,6 +660,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 
 			
 		}
@@ -667,7 +682,7 @@
 		"IsSummoned"				"1"
 		"UnitLabel"					"boar"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_beastmaster.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -742,6 +757,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 	//=================================================================================
@@ -757,7 +774,7 @@
 		"Level"						"1"
 		"ModelScale" 				".8"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
@@ -840,6 +857,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 	//=================================================================================
@@ -855,7 +874,7 @@
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 		"Level"						"1"
 		"ModelScale" 				".8"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
@@ -941,6 +960,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 
@@ -956,6 +977,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					".8"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1036,6 +1058,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}
 
@@ -1054,6 +1078,7 @@
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"lycan_wolf"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1133,6 +1158,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}	
 	//=================================================================================
@@ -1148,6 +1175,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"UnitLabel"			"spiderling"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1229,6 +1257,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}		
 	//=================================================================================
@@ -1244,6 +1274,7 @@
 		"Level"						"1"
 		"ModelScale" 					"0.8"
 		"UnitLabel"			"spiderling"
+		"PathfindingSearchDepthScale" "0.1"
 
 
 		// Abilities
@@ -1325,6 +1356,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}		
 	//=================================================================================
@@ -1340,6 +1373,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1.0"
 		"UnitLabel"			"spiderling"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1421,6 +1455,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}			
 	//=================================================================================
@@ -1437,6 +1473,7 @@
 		"ModelScale" 					"1.0"
 		"UnitLabel"			"spirit_bear"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1516,6 +1553,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}			
 	//=================================================================================
@@ -1531,7 +1570,8 @@
 		"Level"						"1"
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"spirit_bear"
-
+		"PathfindingSearchDepthScale" "0.1"
+		
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"dark_fiend_cleave"			// Ability 1
@@ -1610,6 +1650,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}				
 	//=================================================================================
@@ -1625,7 +1667,8 @@
 		"Level"						"1"
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"spirit_bear"
-
+		"PathfindingSearchDepthScale" "0.1"
+		
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					""			// Ability 1
@@ -1704,6 +1747,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}					
 	//=================================================================================
@@ -1718,7 +1763,8 @@
 		"Level"						"1"
 		"ModelScale" 					"0.7"
 		"UnitLabel"			"spirit_bear"
-
+		"PathfindingSearchDepthScale" "0.1"
+		
 		"precache"
 		{
 			"particle_folder"		"particles/units/heroes/hero_crystalmaiden"
@@ -1802,6 +1848,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}					
 	//=================================================================================
@@ -1816,6 +1864,7 @@
 		"Level"						"1"
 		"ModelScale" 					"0.9"
 		"UnitLabel"			"spirit_bear"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1895,6 +1944,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}				
 	//=================================================================================
@@ -1909,6 +1960,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"0.9"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -1988,6 +2040,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}				
 	//=================================================================================
@@ -2002,6 +2056,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"0.8"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -2083,6 +2138,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}		
 	//=================================================================================
@@ -2097,6 +2154,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"0.8"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -2176,6 +2234,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}			
 	//=================================================================================
@@ -2190,7 +2250,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1.1"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle_folder"		"particles/units/heroes/hero_queenofpain/"
@@ -2274,6 +2334,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}				
 	//=================================================================================
@@ -2288,6 +2350,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"0.9"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -2367,6 +2430,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}			
 	//=================================================================================
@@ -2381,7 +2446,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"2"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle_folder"		"particles/units/heroes/hero_jakiro"
@@ -2465,6 +2530,8 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
+			
 		}
 	}			
 	//=================================================================================
@@ -2474,12 +2541,12 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"	// Model.
+		"Model"                                         "models/heroes/viper/viper.vmdl" // Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"0.9"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle_folder"		"particles/units/heroes/hero_jakiro"
@@ -2563,6 +2630,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}			
 	//=================================================================================
@@ -2577,7 +2645,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"0.9"
-
+		"PathfindingSearchDepthScale" "0.1"
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"mob_frost_bolt"			// Ability 1
@@ -2656,6 +2724,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}
 	//=================================================================================
@@ -2671,7 +2740,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"mob_critical_strike"			// Ability 1
@@ -2748,6 +2817,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}
 	//=================================================================================
@@ -2762,7 +2832,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
-
+		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
 			"particle_folder"		"particles/units/heroes/hero_jakiro"
@@ -2847,6 +2917,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -2861,7 +2932,7 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
-
+		"PathfindingSearchDepthScale" "0.1"
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"mob_cold_arrow"			// Ability 1
@@ -2938,6 +3009,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -2952,11 +3024,12 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1.2"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_hurl_boulder"			// Ability 1
+		"Ability2"					"mob_hardened_skin"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -3009,6 +3082,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"vscripts"	"mobs/rock_guardian.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -3029,6 +3104,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3044,13 +3120,14 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					"mob_permenant_invisibility"			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
-		"Ability4"					""			// Ability 4
+		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
+		"Ability3"					"mob_frenzy"			// Ability 3
+		"Ability4"					"mob_pulverize"			// Ability 4
 
 		// Armor
 		//----------------------------------------------------------------
@@ -3101,6 +3178,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"vscripts"	"mobs/pirate.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -3121,6 +3200,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 
 			"AttachWearables"
 			{
@@ -3143,11 +3223,12 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1.6"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"brown_bear_evasion"			// Ability 1
+		"Ability2"					"mob_feedback"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -3220,6 +3301,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3234,6 +3316,7 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1.3"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3311,6 +3394,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3326,7 +3410,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1.1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_dark_seer.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 		// Abilities
 		//----------------------------------------------------------------
 		"Ability1"					""			// Ability 1
@@ -3403,6 +3487,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3417,10 +3502,11 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -3494,6 +3580,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3509,6 +3596,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_creeps.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3588,6 +3676,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}
 	//=================================================================================
@@ -3603,10 +3692,11 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_drowranger.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_spell_damage_reduction"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -3682,6 +3772,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 
 		}
 	}	
@@ -3698,7 +3789,7 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
-
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
@@ -3778,6 +3869,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 
 		}
 	}	
@@ -3793,11 +3885,12 @@
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
 		"ModelScale" 					"1.5"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_permenant_invisibility"			// Ability 1
+		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -3872,6 +3965,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 
@@ -3887,11 +3981,12 @@
 		"SoundSet"					"n_creep_Ranged"
 		"Level"						"1"
 		"ModelScale" 					"1"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_spell_damage_reduction"			// Ability 1
+		"Ability2"					"brown_bear_evasion"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -3966,6 +4061,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 		}
 	}	
 	//=================================================================================
@@ -3981,11 +4077,12 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_pudge.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
+		"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
+		"Ability2"					"mob_lifesteal"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
 
@@ -4060,6 +4157,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				"Wearable1" { "ItemDef" "47" }
@@ -4085,10 +4183,11 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_spell_damage_reduction"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -4164,6 +4263,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				"Wearable1" { "ItemDef" "277" }
@@ -4186,10 +4286,11 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
+		"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
@@ -4265,6 +4366,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				"Wearable1" { "ItemDef" "195" }
@@ -4274,7 +4376,7 @@
 		}
 	}		
 	//=================================================================================
-	// Level 40 - S`sugi Malchata
+	// Level 40 - S'sugi Malchata
 	//=================================================================================
 	"npc_dota_ssugi_malchata"
 	{										
@@ -4286,13 +4388,14 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
-		"Ability4"					""			// Ability 4
+		"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
+		"Ability2"					"ssugi_malchata_evasion"			// Ability 2
+		"Ability3"					"mob_poison_attack"			// Ability 3
+		"Ability4"					"mob_slow"			// Ability 4
 
 		// Armor
 		//----------------------------------------------------------------
@@ -4365,6 +4468,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				"Wearable1" { "ItemDef" "443" }
@@ -4386,13 +4490,14 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
-		"Ability4"					""			// Ability 4
+		"Ability1"					"brown_bear_evasion"			// Ability 1
+		"Ability2"					"mob_cold_arrow"			// Ability 2
+		"Ability3"					"mob_greater_spell_damage_reduction"			// Ability 3
+		"Ability4"					"mob_critical_strike"			// Ability 4
 
 		// Armor
 		//----------------------------------------------------------------
@@ -4465,6 +4570,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				"Wearable1" { "ItemDef" "168" }
@@ -4476,7 +4582,7 @@
 		}
 	}	
 	//=================================================================================
-	// Level 42 - S`lai Screamer
+	// Level 42 - S'lai Screamer
 	//=================================================================================
 	"npc_dota_slai_screamer"
 	{										
@@ -4488,12 +4594,13 @@
 		"Level"						"1"
 		"ModelScale" 					"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_doombringer.vsndevts"
+		"PathfindingSearchDepthScale" "0.1"
 
 		// Abilities
 		//----------------------------------------------------------------
-		"Ability1"					""			// Ability 1
-		"Ability2"					""			// Ability 2
-		"Ability3"					""			// Ability 3
+		"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
+		"Ability2"					"mob_war_stomp"			// Ability 2
+		"Ability3"					"slai_screamer_evasion"			// Ability 3
 		"Ability4"					""			// Ability 4
 
 		// Armor
@@ -4567,6 +4674,7 @@
 			"DefaultState"				"Invade"
 
 			"DisableClumpingBehavior"	"1"
+			
 			"AttachWearables"
 			{
 				
@@ -4689,7 +4797,7 @@
 		"AttackDamageMax"			"0"		// Damage range max.	
 		"AttackRate"				"1"		// Speed of attack.
 		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"1200"		// Range within a target can be acquired.
 		"AttackRange"				"500"		//unverified value
 		"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
 		"ProjectileSpeed"			"1000"			// Speed of projectile.
@@ -4709,7 +4817,7 @@
 		// Movement
 		//----------------------------------------------------------------
 		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
-		"MovementSpeed"				"300"		// Speed.
+		"MovementSpeed"				"250"		// Speed.
 
 		// Status
 		//----------------------------------------------------------------
@@ -5069,7 +5177,7 @@
 		// General
 		//
 		"BaseClass"					"npc_dota_creature"	// Class of entity of link to.
-		"Model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"// Model.
+		"Model"						"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"// Model.
 		"SoundSet"					"Creep_Good_Melee"
 		"Level"						"1"
 		"ModelScale"				"0.8"
@@ -5168,7 +5276,7 @@
 		// Armor
 		//----------------------------------------------------------------
 		"ArmorPhysical"				"9999"		// Physical protection.
-		"MagicalResistance"			"0"			// Magical protection.
+		"MagicalResistance"			"9999"			// Magical protection.
 
 		// Attack
 		//----------------------------------------------------------------
@@ -5202,13 +5310,13 @@
 
 		// Movement
 		//----------------------------------------------------------------
-		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"			// Type of locomotion - ground, air
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
 		"MovementSpeed"				"0"				// Speed
 		"MovementTurnRate"			"1.0"			// Turning rate.
 
 		// Status
 		//----------------------------------------------------------------
-		"StatusHealth"				"99999"		// Base health.
+		"StatusHealth"				"999999"		// Base health.
 		"StatusHealthRegen"			"999"			// Health regeneration rate.
 		"StatusMana"				"2000"			// Base mana.
 		"StatusStartingMana"		"50"			// Base mana.
@@ -5223,8 +5331,8 @@
 		
 		// Vision
 		//----------------------------------------------------------------
-		"VisionDaytimeRange"		"1900"		// Range of vision during day light.
-		"VisionNighttimeRange"		"1600"		// Range of vision at night time.
+		"VisionDaytimeRange"		"50"		// Range of vision during day light.
+		"VisionNighttimeRange"		"50"		// Range of vision at night time.
 	}
 
 	//=================================================================================================================

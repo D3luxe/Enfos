@@ -1,11 +1,10 @@
 --[[
-Giant Spider Spawn Logic
+Rock Guardian Spawn Logic
 ]]
 
 function Spawn( entityKeyValues )
-	ABILITY_ensnare = thisEntity:FindAbilityByName( "mob_ensnare" )
-	thisEntity:SetContextThink( "GiantSpiderThink", GiantSpiderThink, 0.25 )
-
+	ABILITY_hurl_boulder = thisEntity:FindAbilityByName( "mob_hurl_boulder" )
+	thisEntity:SetContextThink( "YvhhLatamiThink", YvhhLatamiThink, 0.25 )
 	--Find the closest waypoint, use it as a goal entity if we can
 	local waypoint = Entities:FindByNameNearest( "*_wp_*", thisEntity:GetOrigin(), 0 )
 	if waypoint then
@@ -18,23 +17,22 @@ function Spawn( entityKeyValues )
 	end
 end
 
-function GiantSpiderThink()
+function YvhhLatamiThink()
 	if not thisEntity:IsAlive() then
 		return nil
 	end
-
 	-- Spawn a broodmother whenever we're able to do so.
-	if ABILITY_ensnare:IsFullyCastable() then
-		local units = FindUnitsInRadius(thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), thisEntity, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 1, false)
+	if ABILITY_hurl_boulder:IsFullyCastable() then
+		local units = FindUnitsInRadius(thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), thisEntity, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO, 0, 1, false)
 		if units ~= nil then
 			if #units > 0 then
 				local unitPicked = math.random(1,#units)
-				if units[unitPicked]:HasModifier("modifier_mob_ensnare_target")  and not units[unitPicked]:HasModifier("modifier_mob_ensnare") and thisEntity:FindAbilityByName("mob_ensnare"):IsCooldownReady() then
-					thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_ensnare, -1)
+				if units[unitPicked]:HasModifier("modifier_mob_hurl_boulder_target") and not units[unitPicked]:HasModifier("modifier_mob_hurl_boulder") and thisEntity:FindAbilityByName("mob_hurl_boulder"):IsCooldownReady() then
+					thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_hurl_boulder, -1)
 					Timers:CreateTimer(DoUniqueString("delay"), {
-						endTime = 1,
+						endTime = 1, -- hardcoding these values because I'm really tired
 						callback = function()
-							ABILITY_ensnare:StartCooldown(ABILITY_ensnare:GetCooldown(1) - 1) 
+							ABILITY_hurl_boulder:StartCooldown(ABILITY_hurl_boulder:GetCooldown(1) - 1) 
 						end
 					})
 				end
@@ -45,7 +43,7 @@ function GiantSpiderThink()
 	return 0.25 + RandomFloat( 0.25, 0.5 )
 end
 
-function ensnare(keys)
+function hurl_boulder(keys)
 	local caster = keys.caster
 	local target = keys.target
 	local damage = keys.ability:GetSpecialValueFor("damage")
@@ -54,7 +52,7 @@ function ensnare(keys)
 	if sphereCheck then
 		return
 	else
-		keys.ability:ApplyDataDrivenModifier(caster,target,"modifier_mob_ensnare", {duration = sDuration})
+		keys.ability:ApplyDataDrivenModifier(caster,target,"modifier_mob_hurl_boulder", {duration = sDuration})
 		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL)
 	end	
 end

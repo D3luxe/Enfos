@@ -38,3 +38,5 @@ function SwampTrollThink()
 	end
 	return 0.25 + RandomFloat( 0.25, 0.5 )
 end
+
+-- it seems like this spell is not being cast at all. why not?

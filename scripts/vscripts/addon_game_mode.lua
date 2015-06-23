@@ -16,8 +16,7 @@ require( "enfos")
 require( "timers")
 require( "base_trigger")
 require( 'spell_shop_UI' )
-
-
+require("physics")
 
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
@@ -34,7 +33,6 @@ local STAGE_VOTING = 1
 local STAGE_BANNING = 2
 local STAGE_PICKING = 3
 local STAGE_PLAYING = 4
-
 
 heroTable = {
 				{	["name"]="npc_dota_hero_naga_siren",
@@ -71,7 +69,7 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_phantom_assassin",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_divine",
+					["armorType"]="modifier_armor_fortified",
 				},
 				{	["name"]="npc_dota_hero_silencer",
 					["attackType"]="modifier_attack_normal",
@@ -125,6 +123,14 @@ heroTable = {
 					["attackType"]="modifier_attack_hero",
 					["armorType"]="modifier_armor_light",
 				},
+				{	["name"]="npc_dota_hero_sven",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_lina",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_unarmored",
+				},
 		}	
 
 uniqueItems = { "item_nimsha",
@@ -155,6 +161,7 @@ statcollection.addStats({
 
 -- Precache resources
 function Precache( context )
+	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts", context )
 	PrecacheResource( "model", "models/heroes/lone_druid/spirit_bear.vmdl", context )
 	PrecacheResource( "model", "models/props_gameplay/recipe.mdl", context )
 	PrecacheResource( "model", "models/props_structures/tower_good4.vmdl", context )
@@ -167,6 +174,11 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/items_fx/aura_assault.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", context )
+	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_ti_5.vpcf", context )
+	PrecacheResource( "particle", "particles/items2_fx/tranquil_boots_healing.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf", context )
+	PrecacheResource( "particle", "particles/generic_gameplay/generic_stunned.vpcf", context )
 
 	--Arhat
 	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
@@ -242,10 +254,11 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetCustomXPRequiredToReachNextLevel( XP_PER_LEVEL_TABLE )
 	GameRules:GetGameModeEntity():SetFixedRespawnTime(-1)
 
+
 	-- Custom console commands
 	Convars:RegisterCommand( "Enfos_test_round", function(...) return self:_TestRoundConsoleCommand( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
-	Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
-	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
+	--Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
+	--Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -316,7 +329,7 @@ function CEnfosGameMode:XpThink()
                 if radiantXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() and PlayerResource:GetTeam(xpPlayerID) == DOTA_TEAM_GOODGUYS then
                 	local currentXP = PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP()
                 	local xpBonus = radiantXP - currentXP
-                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false)
+                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false, false)
                 end
             end
         end
@@ -339,7 +352,7 @@ function CEnfosGameMode:XpThink()
                 if direXP > PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP() and PlayerResource:GetTeam(xpPlayerID) == DOTA_TEAM_BADGUYS then
                 	local currentXP = PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetCurrentXP()
                 	local xpBonus = direXP - currentXP
-                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false)
+                    PlayerResource:GetSelectedHeroEntity(xpPlayerID):AddExperience(xpBonus, false, false)
                 end
             end
         end
@@ -566,13 +579,15 @@ function CEnfosGameMode:_ThinkPrepTime()
 		self._currentRound:Begin()
 			curRound = curRound + 1
 			Enfos.curRound = curRound
-			print("Enfos.curRound: "..Enfos.curRound)
 			local goldAmount = curRound * 25
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
-					local player = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero()
+					local player = PlayerResource:GetPlayer(nPlayerID)
 					if player ~= nil then
-						player:SetGold(player:GetGold()+goldAmount, false)
+						playerGold = PlayerResource:GetGold(nPlayerID)
+						if playerGold ~= nil then
+							PlayerResource:SetGold(nPlayerID,playerGold+goldAmount, false)
+						end
 					end
 				end
 			end
@@ -628,6 +643,9 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
 	elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_crystal_maiden" then
 		-- do nothing in this case
+	elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_lina" then
+		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
 	else
 		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 	end
@@ -635,7 +653,13 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	--if statAbility ~= nil then
 	--	statAbility:SetLevel(1)
 	--end
-	spawnedUnitIndex:SetGold(STARTING_GOLD, false)
+	local curRound = self._vRounds[ self._nRoundNumber ]
+	local bonusGold = 0
+	for i=0, curRound._nRoundNumber do
+		bonusGold = (i * 25) + bonusGold
+	end
+		
+	spawnedUnitIndex:SetGold(STARTING_GOLD + bonusGold, false)
 
 	local spellbringerName = nil
 	local spellbringerLocation = nil
@@ -665,6 +689,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
 				unit2:RemoveModifierByName("modifier_tower_truesight_aura")
 				unit2:RemoveModifierByName("modifier_invulnerable")
+				spawnedUnitIndex.spellbringer = unit2
+				print(spawnedUnitIndex.spellbringer)
 			else
 				print("Incorrect spellbringer location!!")
 			end
@@ -707,64 +733,7 @@ end
 
 function CEnfosGameMode:ModifyStatBonuses(unit)
 	local spawnedUnitIndex = unit
-		Timers:CreateTimer(DoUniqueString("uniqueCheck"), {
-		endTime = 0.5,
-		callback = function()
-			local hero = unit
 
-			local artifactItemCount = 0
-			for i=1, #artifactItems do
-				for item = 0, 18 do
-					if hero:GetItemInSlot(item) ~= nil then
-						if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
-							artifactItemCount = artifactItemCount + 1
-							--print(uniqueItemCount)
-						end
-					end
-				end
-			end
-
-			while artifactItemCount > 1 do
-				for p=1, #artifactItems do
-					if hero:HasItemInInventory(uniqueItems[p]) then
-						--print("Has "..uniqueItems[p])
-						for item = 0, 18 do
-							if hero:GetItemInSlot(item) ~= nil then
-								--print("Has "..hero:GetItemInSlot(item):GetName().." in slot "..item)
-								if hero:GetItemInSlot(item):GetName() == artifactItems[p] then
-									--print("Found slot dropping item")
-									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
-								end
-							end
-						end
-						artifactItemCount = artifactItemCount - 1
-					end
-				end
-			end
-
-			for i=1, #uniqueItems do
-				for item = 6, 12 do
-					if hero:GetItemInSlot(item) ~= nil then
-						if hero:GetItemInSlot(item):GetName() == uniqueItems[i] then
-							if hero:HasRoomForItem(uniqueItems[i], false, false) then
-								local oldItem = hero:GetItemInSlot(item)
-								local oldItemName = hero:GetItemInSlot(item):GetName()
-								hero:RemoveItem(oldItem)
-								local newItem = CreateItem(oldItemName, hero, hero)
-								hero:AddItem(newItem)
-							end
-							--hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
-							--print(uniqueItemCount)
-						end
-					end
-				end
-			end
-
-
-
-			return 0.5
-		end
-		})
 		Timers:CreateTimer(DoUniqueString("updateHealth_" .. spawnedUnitIndex:GetPlayerID()), {
 		endTime = 0.25,
 		callback = function()
@@ -1000,47 +969,88 @@ function CEnfosGameMode:OnItemPickedUp(event)
 		print("Invalid player!")
 	end
 
-	-- Automatically drops the new unique item if a previous unique is found.
-	local artifactItemCount = 0
-	for i=1, #artifactItems do
-		for item = 0, 18 do
-			if hero:GetItemInSlot(item) ~= nil then
-				if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
-					artifactItemCount = artifactItemCount + 1
-					--print(uniqueItemCount)
-				end
-			end
-		end
-	end
-
-	-- Automatically drops the new unique item if a previous unique item is found.
-	local uniqueItemCount = 0
-	for i=1, #uniqueItems do
-		for item = 0, 18 do
-			if hero:GetItemInSlot(item) ~= nil then
-				if hero:GetItemInSlot(item):GetName() == uniqueItems[i] and hero:GetItemInSlot(item):GetName() == itemname then
-					uniqueItemCount = uniqueItemCount + 1
-					--print(uniqueItemCount)
-				end
-			end
-		end
-	end
-
-
 	Timers:CreateTimer(DoUniqueString("itemPickup"), {
-		endTime = 0.01,
+		endTime = 0.001,
 		callback = function()
+				if string.find(itemname, "item_empath") then
+					local itemSlot = -1
+					for item = 0, 18 do
+						if hero:GetItemInSlot(item) ~= nil then
+							if hero:GetItemInSlot(item):GetName() == itemname then
+								itemSlot = item
+							end
+						end
+					end
+					hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
+					hero:RemoveItem(hero:GetItemInSlot(itemSlot))
+				end
+				if string.find(itemname, "item_2000") then
+					local itemSlot = -1
+					for item = 0, 18 do
+						if hero:GetItemInSlot(item) ~= nil then
+							if hero:GetItemInSlot(item):GetName() == itemname then
+								itemSlot = item
+							end
+						end
+					end
+					hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
+					hero:RemoveItem(hero:GetItemInSlot(itemSlot))
+				end
+				if string.find(itemname, "item_10000") then
+					local itemSlot = -1
+					for item = 0, 18 do
+						if hero:GetItemInSlot(item) ~= nil then
+							if hero:GetItemInSlot(item):GetName() == itemname then
+								itemSlot = item
+							end
+						end
+					end
+					hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
+					hero:RemoveItem(hero:GetItemInSlot(itemSlot))
+				end
+	
+			-- Automatically drops the new unique item if a previous unique is found.
+			local artifactItemCount = 0
+			for i=1, #artifactItems do
+				for item = 0, 18 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == artifactItems[i] then
+							artifactItemCount = artifactItemCount + 1
+							--print(uniqueItemCount)
+						end
+					end
+				end
+			end
+
+			-- Automatically drops the new unique item if a previous unique item is found.
+			local uniqueItemCount = 0
+			for i=1, #uniqueItems do
+				for item = 0, 18 do
+					if hero:GetItemInSlot(item) ~= nil then
+						if hero:GetItemInSlot(item):GetName() == uniqueItems[i] and hero:GetItemInSlot(item):GetName() == itemname then
+							uniqueItemCount = uniqueItemCount + 1
+							--print(uniqueItemCount)
+						end
+					end
+				end
+			end
+			
 			while artifactItemCount > 1 do
 				for p=1, #artifactItems do
 					if hero:HasItemInInventory(artifactItems[p]) then
 						for item = 0, 18 do
 							if hero:GetItemInSlot(item) ~= nil then
 								if hero:GetItemInSlot(item):GetName() == itemname then
-									hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+									--hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+									if artifactItemCount > 1 then
+									--	print("Dropping item number "..item)
+										hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+										artifactItemCount = artifactItemCount - 1
+									--	print("artifact count after drop "..artifactItemCount)
+									end
 								end
 							end
 						end
-						artifactItemCount = artifactItemCount - 1
 					end
 				end
 			end
@@ -1093,6 +1103,7 @@ function CEnfosGameMode:OnItemPurchased(event)
 			end
 		end
 		hero:CastAbilityImmediately(hero:GetItemInSlot(itemSlot), player)
+		hero:RemoveItem(hero:GetItemInSlot(itemSlot))
 	end
 
 
@@ -1115,11 +1126,14 @@ function CEnfosGameMode:OnItemPurchased(event)
 				for item = 0, 18 do
 					if hero:GetItemInSlot(item) ~= nil then
 						if hero:GetItemInSlot(item):GetName() == itemname then
-							hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+							--hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+							if artifactItemCount > 1 then
+								hero:SellItem(hero:GetItemInSlot(item))
+								artifactItemCount = artifactItemCount - 1
+							end
 						end
 					end
 				end
-				artifactItemCount = artifactItemCount - 1
 			end
 		end
 	end
@@ -1144,11 +1158,15 @@ function CEnfosGameMode:OnItemPurchased(event)
 				for item = 0, 18 do
 					if hero:GetItemInSlot(item) ~= nil then
 						if hero:GetItemInSlot(item):GetName() == itemname then
-							hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+							--hero:DropItemAtPosition(hero:GetAbsOrigin(), hero:GetItemInSlot(item))
+							if uniqueItemCount > 1 then
+								hero:SellItem(hero:GetItemInSlot(item))
+								uniqueItemCount = uniqueItemCount - 1
+							end
 						end
 					end
 				end
-				uniqueItemCount = uniqueItemCount - 1
+				
 			end
 		end
 	end

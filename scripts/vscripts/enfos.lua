@@ -21,6 +21,8 @@ Enfos.flagPos = 0
 Enfos.hailstormDummy = 0
 Enfos.vertigoDummy = {}
 Enfos.aesrelaEverildDummy = 0
+Enfos.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
+
 
 function spellAbsorb(keys)
 	PrintTable(keys)
@@ -111,6 +113,33 @@ function GetPointOnEdge(vec, angle, radius)
 	return Vector(vec.x + radius*math.cos(angle), vec.y + radius*math.sin(angle), vec.z)
 end
 	
+function magic_block_check(target)
+-- checking for spell shields
+	local ability_jug = target:FindAbilityByName("juggernaut_enfos_magic_resistance")
+	local ability_war = target:FindAbilityByName("warlock_enfos_deflection")
+	if ability_jug ~= nil then
+		if target:HasModifier("modifier_item_sphere_target") then
+			if ability_jug:GetLevel() == 10 then -- if it's level 10, then he is permanently magic immune. just skipping the whole remove/reapply thing helps avoid crashes.
+				target:EmitSound("DOTA_Item.LinkensSphere.Activate")
+				return true
+			else
+				target:RemoveModifierByName("modifier_item_sphere_target")
+				target:EmitSound("DOTA_Item.LinkensSphere.Activate")
+				ability:StartCooldown(ability:GetCooldown(ability_jug:GetLevel() - 1))
+				return true
+			end
+		end
+	elseif ability_war ~= nil then
+		if target:HasModifier("modifier_item_sphere_target") then
+			target:RemoveModifierByName("modifier_item_sphere_target")
+			target:EmitSound("DOTA_Item.LinkensSphere.Activate")
+			ability:StartCooldown(40)
+			return true
+		end
+	else 
+		return false
+	end
+end
 	
 
   

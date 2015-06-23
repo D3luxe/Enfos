@@ -28,12 +28,32 @@ function YvhhLatamiThink()
 		if units ~= nil then
 			if #units > 0 then
 				local unitPicked = math.random(1,#units)
-				if units[unitPicked]:HasModifier("modifier_mob_frost_bolt_target") and not units[unitPicked]:HasModifier("modifier_mob_frost_bolt") then
+				if units[unitPicked]:HasModifier("modifier_mob_frost_bolt_target") and not units[unitPicked]:HasModifier("modifier_mob_frost_bolt") and thisEntity:FindAbilityByName("mob_frost_bolt"):IsCooldownReady() then
 					thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_frost_bolt, -1)
+					Timers:CreateTimer(DoUniqueString("delay"), {
+						endTime = 1,
+						callback = function()
+							ABILITY_frost_bolt:StartCooldown(ABILITY_frost_bolt:GetCooldown(1) - 1) 
+						end
+					})
 				end
 			end
 		end
 		return 1.0
 	end
 	return 0.25 + RandomFloat( 0.25, 0.5 )
+end
+
+function frost_bolt(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local damage = keys.ability:GetSpecialValueFor("damage")
+	local sDuration = keys.ability:GetSpecialValueFor("duration")
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	else
+		keys.ability:ApplyDataDrivenModifier(caster,target,"modifier_mob_frost_bolt", {duration = sDuration})
+		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL)
+	end	
 end

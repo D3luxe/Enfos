@@ -30,8 +30,14 @@ function FendryadThink()
 		if units ~= nil then
 			if #units > 0 then
 				local unitPicked = math.random(1,#units)
-				if not units[unitPicked]:HasModifier("modifier_mob_curse") then
+				if not units[unitPicked]:HasModifier("modifier_mob_curse") and thisEntity:FindAbilityByName("mob_curse"):IsCooldownReady() then
 					thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_curse, -1)
+					Timers:CreateTimer(DoUniqueString("delay"), {
+						endTime = 1, -- hardcoding these values because I'm really tired
+						callback = function()
+								thisEntity:FindAbilityByName("mob_curse"):StartCooldown(7) 
+						end
+					})
 				end
 			end
 		end
@@ -46,7 +52,15 @@ function FendryadThink()
 			if units ~= nil then
 				if #units > 0 then
 					local unitPicked = math.random(1,#units)
-					thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_mana_burn, -1)
+					if thisEntity:FindAbilityByName("mob_mana_burn"):IsCooldownReady() then
+						thisEntity:CastAbilityOnTarget(units[unitPicked], ABILITY_mana_burn, -1)
+						Timers:CreateTimer(DoUniqueString("delay"), {
+							endTime = 1, -- hardcoding these values because I'm really tired
+							callback = function()
+									thisEntity:FindAbilityByName("mob_mana_burn"):StartCooldown(8) 
+							end
+						})
+					end
 				end
 			end
 		end

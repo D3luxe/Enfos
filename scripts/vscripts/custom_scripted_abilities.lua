@@ -48,59 +48,6 @@ function DrainMana(keys)
 	keys.caster:ReduceMana(manaStolen)
 end
 
-function StealManaDisrupt(keys)
-	local caster = keys.caster
-	--print("Draining mana")
-	--PrintTable(keys)
-	enmPlayer = 0
-	enmPlayer = RandomInt(0, HeroList:GetHeroCount()) 
-	local safetyValue = 0
-	maxMana = 0
-
-	local spellbringers = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_BUILDING, 0, 0, false)
-	if spellbringers ~= nil then
-		local sb = math.random(1, #spellbringers)
-
-		local sbTarget = spellbringers[sb]
-
-		if sbTarget:GetMana() ~= nil then 
-			maxMana = tonumber(sbTarget:GetMana())
-			manaDrain = tonumber(keys.manaReplenish)
-			manaStolen = tonumber(keys.manaStolen)
-			manaReplenished = 0
-			if maxMana >= manaStolen then
-				manaReplenished = manaStolen * manaDrain / 100
-			elseif maxMana < manaStolen then
-				manaStolen = maxMana
-				manaReplenished = manaStolen * manaDrain / 100
-			end
-		end
-
-		ParticleManager:CreateParticle("particles/generic_gameplay/generic_manaburn.vpcf", PATTACH_ABSORIGIN_FOLLOW, sbTarget)
-
-		sbTarget:ReduceMana(maxMana)
-		caster:GiveMana(manaReplenished)
-	else
-		keys.ability:EndCooldown()
-	end
-end
-
-function EnergyFlare(keys)
-	local caster = keys.caster
-	local dmg = caster:GetMaxHealth() * keys.damage / 100
-	local damageTable = {
-		victim = keys.target,
-		attacker = caster,
-		damage = dmg,
-		damage_type = DAMAGE_TYPE_PURE,
-	}
-	--damageTable.victim = damageTable.victim.__self
-	--PrintTable(damageTable)
-
-	--ApplyDamage(damageTable)
-	DealDamage(caster, caster, dmg, DAMAGE_TYPE_MAGICAL, 0)
-end
-
 function FallenOneHurtCaster(keys)
 	keys.caster:SetHealth(1) -- you don't need to get the hero if you know the hero's gonna be the one casting it
 end

@@ -21,6 +21,39 @@ function blink(keys)
 	})
 end
 
+function item_2000_gold(keys)
+	print("Giving 2k gold")
+	local caster = keys.caster
+	local oldGold = caster:GetGold()
+	local newGold = oldGold + 2000
+	print("Old gold: "..oldGold.." - New gold: "..newGold)
+	caster:SetGold(newGold, false)
+end
+
+function item_tome_str(keys)
+	local caster = keys.caster
+	local statBonus = keys.bonus_stat
+	--if caster.tome_str == nil then
+	--	caster.tome_str = 0
+	--end
+
+	--caster:SetBaseStrength(caster:GetBaseStrength() - caster.tome_str)
+	--caster.tome_str = caster.tome_str + statBonus
+	--caster:SetBaseStrength(caster:GetBaseStrength() + caster.tome_str)
+
+	caster:ModifyStrength(statBonus)
+
+end
+
+function item_10000_gold(keys)
+	print("Giving 10k gold")
+	local caster = keys.caster
+	local oldGold = caster:GetGold()
+	local newGold = oldGold + 10000
+	print("Old gold: "..oldGold.." - New gold: "..newGold)
+	caster:SetGold(newGold, false)
+end
+
 function item_tome_str(keys)
 	local caster = keys.caster
 	local statBonus = keys.bonus_stat

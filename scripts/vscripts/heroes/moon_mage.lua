@@ -1,3 +1,8 @@
+function CancelAnimation(keys)
+	local caster = keys.caster
+	caster:RemoveGesture(0)
+end
+
 -- this doesn't have the little duration ball 
 function StarlightSphereSummon(keys)
 -- vars

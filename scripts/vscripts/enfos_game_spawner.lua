@@ -260,21 +260,13 @@ function CEnfosGameSpawner:_UpdateDireSpawn()
 end
 
 function CEnfosGameSpawner:_CheckSinglePlayer()
-	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-		if PlayerResource:IsValidPlayer( nPlayerID ) then
-			if PlayerResource:GetPlayer(nPlayerID) ~= nil then
-				if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero() ~= nil then
-					if PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam() ~= nil then
-						local team = PlayerResource:GetPlayer(nPlayerID):GetAssignedHero():GetTeam()
-						if(team == 2) then
-							_goodGuyPlayer = true
-						elseif(team == 3) then
-							_badGuyPlayer = true
-						end
-					end
-				end
-			end
-		end
+	local goodGuys = PlayerResource:GetPlayerCountForTeam(2)
+	local badGuys = PlayerResource:GetPlayerCountForTeam(3)
+	if(goodGuys > 0) then
+		_goodGuyPlayer = true
+	end
+	if(badGuys > 0) then
+		_badGuyPlayer = true
 	end
 end
 

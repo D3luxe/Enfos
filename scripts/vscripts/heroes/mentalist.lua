@@ -27,51 +27,48 @@ end
 
 function SealOfDeflection(keys)
 -- vars
-	local damage = keys.DamageDealt
 	local caster = keys.caster
-	local percentBlocked = keys.damage_absorbed / 100
-	local damageAbsorbedPerPoint = keys.damage_per_mana
-	local thisSpell = keys.ability
-	local currentHealth = caster:GetHealth()
-	local casterMana = caster:GetMana()
-	if casterMana * damageAbsorbedPerPoint > damage * (percentBlocked) then -- we have enough mana left to fully absorb this hit
-		if 0 > currentHealth - (damage * (1 - percentBlocked)) then -- calculate if the damage is fatal even with full block
-			local blastPart = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_shatter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster) -- the mana shield explodes
-			caster:ForceKill(false) -- we force kill the caster because it goes through the MODIFIER_PROPERTY_MIN_HEALTH modifier
-		end
-		--caster:SetHealth(currentHealth - (damage * (1 - percentBlocked))) -- undo the non-fatal damage
-		Timers:CreateTimer(DoUniqueString("sodh"), {
-		endTime = 0.001, 	
-		callback = function()
-			caster:Heal(damage * (percentBlocked), nil)
-		end
-		})
-		currentHealth = caster:GetHealth()
-		caster:SetMana(casterMana - ((damage * percentBlocked) / damageAbsorbedPerPoint)) -- drain the mana from the shield
-		local blastPart = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster) -- the mana shield particle fires
-		ParticleManager:SetParticleControl(blastPart,1,Vector(damage * percentBlocked,0,0)) -- this controls how many shards fly off of the shield
-	elseif casterMana * damageAbsorbedPerPoint < damage then -- we don't have enough mana to fully absorb this hit
-		print("Not enough mana to fully absorb")
-		if 0 > (currentHealth - (damage * (1 - percentBlocked))) - ((damage * percentBlocked) - (casterMana * damageAbsorbedPerPoint)) then -- calculate if the damage is fatal even with partial block
-			local blastPart = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_shatter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-			caster:EmitSound("Hero_Medusa.ManaShield.Proc")
-			caster:ForceKill(false)
-		end
-		caster:SetMana(0) -- all our mana is drained by the block
-		--caster:SetHealth((currentHealth - (damage * (percentBlocked))) - ((damage * percentBlocked) - (casterMana * damageAbsorbedPerPoint))) -- undo the non-fatal damage
-		Timers:CreateTimer(DoUniqueString("sodh"), {
-		endTime = 0.001, 	
-		callback = function()
-			caster:Heal((damage * (percentBlocked)) - ((damage * percentBlocked) - (casterMana * damageAbsorbedPerPoint)), nil)
-		end
-		})
-		local blastPart = ParticleManager:CreateParticle("particles/units/heroes/hero_medusa/medusa_mana_shield_shatter.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
-		caster:EmitSound("Hero_Medusa.ManaShield.Proc")
-		thisSpell:ToggleAbility() -- the spell turns off
-	end
+	local ability = keys.ability
+	local damage_per_mana = ability:GetLevelSpecialValueFor("damage_per_mana", ability:GetLevel() - 1 )
+	local absorption_percent = ability:GetLevelSpecialValueFor("absorption_tooltip", ability:GetLevel() - 1 ) * 0.01
+	local damage = keys.Damage * absorption_percent
+	local not_reduced_damage = keys.Damage - damage
 
+	local caster_mana = caster:GetMana()
+	local mana_needed = damage / damage_per_mana
 
+	-- Check if the not reduced damage kills the caster
+	local oldHealth = caster.OldHealth - not_reduced_damage
+
+	-- If it doesnt then do the HP calculation
+	if oldHealth >= 1 then
+
+		-- If the caster has enough mana, fully heal for the damage done
+		if mana_needed <= caster_mana then
+			caster:SpendMana(mana_needed, ability)
+			caster:SetHealth(oldHealth)
+			
+			-- Impact particle based on damage absorbed
+			local particleName = "particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+			local particle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
+			ParticleManager:SetParticleControl(particle, 0, caster:GetAbsOrigin())
+			ParticleManager:SetParticleControl(particle, 1, Vector(mana_needed,0,0))
+		else
+			local newHealth = oldHealth - damage
+			mana_needed =
+			caster:SpendMana(mana_needed, ability)
+			caster:SetHealth(newHealth)
+		end
+	end	
 end
+
+function SealOfDeflectionHealth(keys)
+	local caster = keys.caster
+	caster.OldHealth = caster:GetHealth()
+end
+
+-- Seal of Deflection code by Noya
+-- https://github.com/Pizzalol/SpellLibrary/blob/SpellLibrary/game/dota_addons/spelllibrary/scripts/vscripts/heroes/hero_medusa/mana_shield.lua
 
 
 function AuraSight(keys)

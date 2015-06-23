@@ -44,16 +44,12 @@ function SummonHellbearWarriors(keys)
 	local thisSpellLevel = caster:GetAbilityByIndex(0):GetLevel()
 	local findUnits = Entities:FindAllByClassnameWithin("npc_dota_creature", caster:GetAbsOrigin(), 1000)
 -- logic
+	print("Spawning unit")
 	for k,v in pairs(findUnits) do
 		if v:GetUnitName() == "npc_summoner_hellbear_warrior" and not v.summonerUnit then -- in case the cooldowns get refreshed, we don't want to upgrade existing units
 			v:AddNewModifier(unit, nil, "modifier_phased", {duration = 3}) -- to prevent them from getting stuck
 			v.summonerUnit = true 
-			v:SetPhysicalArmorBaseValue(keys.armour)
-			v:SetBaseAttackTime(keys.base_attack_time)
-			v:SetBaseDamageMin(keys.damage)
-			v:SetBaseDamageMax(keys.damage)
-			v:SetMaxHealth(keys.health)
-			v:SetHealth(keys.health)
+			print(keys.health)
 			if thisSpellLevel < 3 then -- spells on units made with SpawnUnit start learned. we need to unlearn them here if necessary
 				v:GetAbilityByIndex(0):SetLevel(0)
 			end
@@ -67,7 +63,13 @@ function SummonHellbearWarriors(keys)
 				v:GetAbilityByIndex(3):SetLevel(0)
 			end		
 			AddTypes(v, "modifier_armor_heavy", "modifier_attack_normal")
-
+			v:SetBaseAttackTime(keys.base_attack_time)
+			v:SetBaseDamageMin(keys.damage)
+			v:SetBaseDamageMax(keys.damage)
+			v:SetPhysicalArmorBaseValue(keys.armour)
+			v:SetMaxHealth(keys.health)
+			v:SetBaseMaxHealth(keys.health)
+			v:SetHealth(keys.health)
 		end
 	end
 end
@@ -82,26 +84,28 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 		if v:GetUnitName() == "npc_summoner_satyr_ranger" and not v.summonerUnit then
 			v:AddNewModifier(unit, nil, "modifier_phased", {duration = 3})
 			v.summonerUnit = true
-			v:SetBaseAttackTime(keys.base_attack_time)
-			v:SetBaseDamageMin(keys.damage)
-			v:SetBaseDamageMax(keys.damage)
-			v:SetMaxHealth(keys.health)
-			v:SetHealth(keys.health)
+
 			if thisSpellLevel < 3 then
-				v:GetAbilityByIndex(0):SetLevel(0)
-			end
-			if thisSpellLevel < 5 then
 				v:GetAbilityByIndex(1):SetLevel(0)
 			end
-			if thisSpellLevel < 7 then
+			if thisSpellLevel < 5 then
 				v:GetAbilityByIndex(2):SetLevel(0)
 			end
-			if thisSpellLevel < 10 then
+			if thisSpellLevel < 7 then
 				v:GetAbilityByIndex(3):SetLevel(0)
+			end
+			if thisSpellLevel < 10 then
+				v:GetAbilityByIndex(4):SetLevel(0)
 			-- elseif thisSpellLevel == 10 then
 				-- v:GetAbilityByIndex(3):ToggleAutoCast()
 			end	
 			AddTypes(v, "modifier_armor_medium", "modifier_attack_chaos")
+			v:SetBaseAttackTime(keys.base_attack_time)
+			v:SetBaseDamageMin(keys.damage)
+			v:SetBaseDamageMax(keys.damage)
+			v:SetMaxHealth(keys.health)
+			v:SetBaseMaxHealth(keys.health)
+			v:SetHealth(keys.health)
 		end
 	end
 end

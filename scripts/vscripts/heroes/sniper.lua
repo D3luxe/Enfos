@@ -24,10 +24,9 @@ function TechniquePierce(keys)
 	local target = keys.target
 	local damage = caster:GetAverageTrueAttackDamage() -- this isn't perfect but it's good enough. damage ranges really aren't a meaningful factor
 	local pid = caster:GetPlayerID()
-	if Enfos.appliers[pid].GenericApplier == nil then
-		Enfos.appliers[pid] = {GenericApplier = CreateItem('item_generic_applier', nil, nil)}
-	end
-	local applier = Enfos.appliers[pid].GenericApplier
+	local splashCount = 0
+	
+	local applier = caster:GetAbilityByIndex(3)
 -- apply the flag so it doesn't hit twice
 	applier:ApplyDataDrivenModifier(caster, target, "modifier_skill_flag", {}) -- apply a flag to the main unit so that we don't double hit it
 -- find valid units
@@ -42,7 +41,10 @@ function TechniquePierce(keys)
 	end
 -- getting the correct behaviour 
 	for k,v in pairs(inCone) do
-		DealDamage(caster, v, damage, DAMAGE_TYPE_PHYSICAL, 0)
+		if splashCount < 1 then
+			DealDamage(caster, v, damage, DAMAGE_TYPE_PHYSICAL, 0)
+			splashCount = splashCount + 1
+		end
 	end
 	target:RemoveModifierByName("modifier_skill_flag")
 end

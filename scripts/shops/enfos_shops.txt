@@ -74,9 +74,6 @@
 	
 	"weapons"
 	{
-		//"item" "item_fragarach"
-		//"item" "item_brisker"
-		
 		
 	}
 	
