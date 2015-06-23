@@ -131,6 +131,14 @@ heroTable = {
 					["attackType"]="modifier_attack_hero",
 					["armorType"]="modifier_armor_unarmored",
 				},
+				{	["name"]="npc_dota_hero_terrorblade",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_medium",
+				},
+				{	["name"]="npc_dota_hero_ember_spirit",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_heavy",
+				},
 		}	
 
 uniqueItems = { "item_nimsha",

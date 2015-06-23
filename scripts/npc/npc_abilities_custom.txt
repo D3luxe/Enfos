@@ -12100,6 +12100,400 @@
 	}
 	
 	//=================================================================================================================
+	// Ember Spirit: Cabalist
+	//=================================================================================================================
+	//=================================================================================================================
+	// Cabalist: Throw Naptha
+	//=================================================================================================================
+	"cabalist_throw_naptha"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"batrider_flamebreak"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"AbilityCooldown"				"10"
+		"AbilityManaCost"				"50"
+		"AbilityCastRange"				"600" //value not provided on website, so I guessed. replace with correct value
+		"MaxLevel"						"1"
+		"AOERadius"						"%radius"
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite.vpcf"
+			"particle"				"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite.vpcf"
+				"MoveSpeed"				"1500"
+				"SourceAttachment" 		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			}
+			"FireSound"
+			{
+				"Target"				"CASTER"
+				"EffectName"			"Hero_Alchemist.UnstableConcoction.Throw"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/cabalist.lua"
+				"Function"				"throw_naptha"
+			}
+			"FireSound"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"Hero_OgreMagi.Ignite.Target"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_throw_naptha_debuff"
+			{
+				"Duration"				"%duration"
+				"IsDebuff"				"1"
+				"EffectName"			"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+					"MODIFIER_PROPERTY_MISS_PERCENTAGE "			"%miss_chance"
+				}			
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"700"
+			}			
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"15"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow"					"-15"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"miss_chance"			"35"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Cabalist: Fireball
+	//=================================================================================================================
+	"cabalist_fireball"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ogre_magi_fireblast"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"3"
+		"AbilityCastRange"				"825"
+		"AbilityManaCost"				"20 28 39 54 76 107 150 210 295 413"
+		"precache"
+		{
+			"particle"				"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
+			"particle"				"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"TrackingProjectile"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
+				"MoveSpeed"				"1500"
+				// "SourceAttachment" 		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+				"EffectAttachType"		"follow_origin"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_OgreMagi.Fireblast.Cast"
+				"Target"				"CASTER"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"Damage"
+			{
+				"Type" 					"DAMAGE_TYPE_MAGICAL"
+				"Damage" 				"%damage"
+				"Target" 				"TARGET"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_cabalist_fireball"
+				"Target"				"TARGET"
+			}
+			"FireEffect"
+			{
+				"EffectName"			"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
+				"EffectAttachType"		"attach_hitloc"
+				"Target"				"TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"			"Hero_Jakiro.LiquidFire"
+				"Target"				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_cabalist_fireball"
+			{
+				"IsDebuff"				"1"
+				"Duration" 				"%stun_duration"
+				"EffectName" 			"particles/generic_gameplay/generic_stunned.vpcf"
+				"EffectAttachType" 		"follow_overhead"
+				"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+				"States"
+				{
+					"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{	
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"100 200 400 800 1600 3200 6400 12800 25600 51200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cast_range"			"600 650 700 750 800 850 900 950 1000 1050"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"stun_duration"			"4"
+			}	
+		}
+	}	
+	//=================================================================================================================
+	// Cabalist: Mantle of Flames
+	//=================================================================================================================
+	"cabalist_mantle_of_flames"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ember_spirit_fire_remnant"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AOERadius"						"%radius"
+		"AbilityCooldown"				"1"
+		"AbilityManaCost"				"8 9.5 11 12.5 14 15.5 17 18.5 20 21.5"
+		"LevelsBetweenUpgrades"		"3"
+		"RequiredLevel"			"6"
+		"precache"
+		{
+			"particle"					"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+			"particle"					"particles/items2_fx/radiance.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		}
+		"OnToggleOn"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_mantle_of_flames_buff"
+				"Target"				"CASTER"
+			}
+		}
+		"OnToggleOff"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"			"modifier_mantle_of_flames_buff"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_mantle_of_flames_buff"
+			{
+				"ThinkInterval"			"0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/cabalist.lua"
+						"Function"		"mantle_of_flames"
+					}
+				}
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"				"TARGET"
+						"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+						"EffectAttachType"		"start_at_customorigin"
+						"ControlPointEntities"
+						{
+							"TARGET"			"attach_origin"
+							"TARGET"			"attach_origin"
+						}
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"50 110 200 320 470 650 860 1100 1370 1670"
+			}	
+			"02"
+			{	
+				"var_type"				"FIELD_FLOAT"
+				"mana_cost"			".8 .95 1.1 1.25 1.4 1.55 1.7 1.85 2.0 2.15" //do not put in tooltip
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"225"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Cabalist: Dragon's Breath (some code from Spell Library used)
+	//=================================================================================================================
+	"cabalist_dragons_breath"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"dragon_knight_breathe_fire"
+		"LevelsBetweenUpgrades"		"5"
+		"RequiredLevel"			"10"
+		"MaxLevel"						"10"
+
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastPoint"				"0.5"
+
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"45"
+
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
+
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+			"particle"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+			"particle"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+		}
+		"OnSpellStart"
+		{
+			"LinearProjectile"
+			{
+				"Target" 			"POINT"
+				"EffectName" 		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+				"MoveSpeed" 		"1500"
+				"StartRadius" 		"150"
+				"StartPosition" 	"attach_origin"
+				"EndRadius" 		"500" //don't care about fixed values that are only going to be used in one place and probably won't change...
+				"FixedDistance" 	"%range"
+				"TargetTeams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"TargetTypes" 		"DOTA_UNIT_TARGET_BASIC"
+				"HasFrontalCone" 	"1"
+				"ProvidesVision" 	"0"
+			}
+			"FireSound"
+			{
+				"EffectName" "Hero_DragonKnight.BreathFire"
+				"Target" "CASTER"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "0"
+			"RunScript"
+			{
+				"ScriptFile"				"scripts/vscripts/heroes/cabalist.lua" //is this spell supposed to consume the naptha debuff?
+				"Function"					"dragons_breath"
+			}
+			"Damage"
+			{
+				"Type" 					"DAMAGE_TYPE_MAGICAL"
+				"Damage" 				"%impact_damage"
+				"Target" 				"TARGET"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_dragons_breath_ignite"
+			{
+				"ThinkInterval"			"0.1"
+				"IsHidden"				"1"
+				"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"OnIntervalThink"
+				{
+					"Damage"
+					{
+						"Type" 					"DAMAGE_TYPE_MAGICAL"
+						"Damage" 				"%burn_damage"
+						"Target" 				"TARGET"
+					}
+				}
+			}					
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"duration"				"5 5.5 6.05 6.66 7.32 8.05 8.86 9.74 10.72 12"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"range"					"375"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"impact_damage"			"170 970 2170 3770 5770 8170 10970 14170 17770 21770"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"burn_damage"			"7.0 22.0 44.5 74.5 112.0 157.0 209.5 269.5 337.0 412.0"
+			}		
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"burn_damage_tooltip"	"70 220 445 745 1120 1570 2095 2695 3370 4120"
+			}
+		}
+	}
+	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
 	"spell_dummy_unit"

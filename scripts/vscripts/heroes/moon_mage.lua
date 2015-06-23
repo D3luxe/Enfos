@@ -1,6 +1,6 @@
 function CancelAnimation(keys)
 	local caster = keys.caster
-	caster:RemoveGesture(0)
+	caster:RemoveGesture(ACT_DOTA_CAST_ABILITY_1)
 end
 
 -- this doesn't have the little duration ball 
