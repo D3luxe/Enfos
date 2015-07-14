@@ -32,7 +32,7 @@ function LifeDrainParticle( event)
 	local target = event.target
 	local ability = event.ability
 
-	local particleName = "particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+	local particleName = "particles/units/heroes/hero_pugna/pugna_life_give.vpcf"
 	caster.LifeDrainParticle = ParticleManager:CreateParticle(particleName, PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:SetParticleControlEnt(caster.LifeDrainParticle, 1, target, PATTACH_POINT_FOLLOW, "attach_hitloc", target:GetAbsOrigin(), true)
 
@@ -42,6 +42,22 @@ end
 	Author: Noya
 	Date: April 5, 2015
 ]]
+function TransferencePreCast( event )
+	local caster = event.caster
+	local target = event.target
+	local player = caster:GetPlayerOwner()
+	local pID = caster:GetPlayerOwnerID()
+
+	-- This prevents the spell from going off
+	if target == caster then
+		caster:Stop()
+
+		-- Play Error Sound
+		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", player)
+
+	end
+end
+
 function LifeDrainHealthTransfer( event )
 	local caster = event.caster
 	local target = event.target
@@ -59,11 +75,12 @@ function LifeDrainHealthTransfer( event )
 
 	-- Distance variables
 	local distance = (target_location - caster_location):Length2D()
-	local break_distance = ability:GetCastRange() + 25
+	local break_distance = ability:GetCastRange() + 50
 	local direction = (target_location - caster_location):Normalized()
 
 	-- If the leash is broken then stop the channel
 	if distance >= break_distance then
+		--print("BREAKING! "..break_distance)
 		ability:OnChannelFinish(false)
 		caster:Stop()
 		return
@@ -131,4 +148,17 @@ function Alchemy(keys)
             end
         end
     end
+end
+
+function Nissas_Binding(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	
+	local sphereCheck = magic_block_check(target)
+	if sphereCheck then
+		return
+	end
+	
+	ability:ApplyDataDrivenModifier(caster, target, "modifier_nightmare_datadriven", {})
 end

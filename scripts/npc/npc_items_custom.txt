@@ -21,6 +21,7 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"30"
+		"IsArtifact"							"1"
 
 		"OnEquip"
 		{
@@ -89,6 +90,7 @@
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemDroppable"					"1"
+		"IsUnique"							"1"
 
 		"Modifiers"
 		{
@@ -293,6 +295,7 @@
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemDroppable"					"1"
+		"IsUnique"							"1"
 
 		"Modifiers"
 		{
@@ -548,6 +551,7 @@
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
 
 		"Modifiers"
 		{
@@ -633,6 +637,8 @@
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+		
 		"Modifiers"
 		{
 			"modifier_uthmors_mirror_blade"
@@ -980,6 +986,8 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemRecipe"					"1"
 		"ItemResult"					"item_scepter_of_the_magi"
+		"IsUnique"							"1"
+		
 		"ItemRequirements"
 		{
 			"01"						"item_elder_staff;item_tribal_staff;item_agani_tayeua"
@@ -1089,6 +1097,7 @@
 		"ItemCost"                      "1500" 		
 		"ItemShopTags"					"ring"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
 
 		"Modifiers"
 		{
@@ -1734,6 +1743,7 @@
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
+		"IsUnique"							"1"
 
 		"AbilityCastRange"	"0"
 
@@ -1790,12 +1800,151 @@
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"evasion"				"50"
+				"evasion"				"15"
 			}
 		}
 	}
+	//=================================================================================================================
+	// Ironbark Leathers
+	//=================================================================================================================
+	"item_ironbark_leathers"
+	{
+		"ID"                            "2109"
 
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_ironbark_leathers"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
 
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"18750"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"SideShop"					"1"
+
+		"AbilityCooldown"				"30.0"
+		
+		
+		"Modifiers"
+		{
+			"modifier_ironbark_spell_block"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/items/items_shared.lua"
+						"Function"		"ironbark_leathers"
+					}
+				}
+				"ThinkInterval"			".03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+						"Function"			"ironbark_leathers_thinker"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+						"Function"			"ironbark_leathers_drop"
+					}
+				}
+			}	
+			
+			"modifier_ironbark_leathers"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%bonus_attack_speed"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"			"20"
+			}
+		}
+	}
+	
+	//=================================================================================================================
+	// Tower Shield
+	//=================================================================================================================
+	"item_tower_shield"
+	{
+		"ID"                            "2108"
+
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_tower_shield"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
+
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+
+		"Modifiers"
+		{
+			"modifier_tower_shield"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+		}
+	}
+	
+	
 	//=================================================================================================================
 	// Small Round Shield
 	//=================================================================================================================
@@ -1819,6 +1968,7 @@
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemDroppable"					"1"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
 
 		"Modifiers"
 		{
@@ -1927,6 +2077,7 @@
 		//"ItemStockInitial"				"3"
 		//"ItemStockTime"					"120.0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsArtifact"							"1"
 
 		"Modifiers"
 		{
@@ -1978,6 +2129,7 @@
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemAliases"					"mana;mb"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsArtifact"							"1"
 
 		"Modifiers"
 		{
@@ -2024,6 +2176,7 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
 		"ItemKillable"					"0"
+		"AbilitySharedCooldown" "HealPot"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
 		//"ItemStockTime"					"24.0"
@@ -2092,6 +2245,7 @@
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
+		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2159,6 +2313,7 @@
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
+		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2226,6 +2381,7 @@
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_salve"
+		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2468,6 +2624,7 @@
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
+		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2535,6 +2692,7 @@
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
+		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2602,6 +2760,7 @@
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
+		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2669,6 +2828,7 @@
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_greater_clarity"
+		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
@@ -2823,44 +2983,65 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"3014"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 		"AbilityTextureName"			"item_ward_sentry"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
 		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_2000_gold"
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
-			
+		}
+
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_stat"	"2000"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"4"
+			}
 		}
 	}	
 	"item_10000_gold"
@@ -2872,42 +3053,60 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_ward_sentry"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
 		
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_10000_gold"
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
-			
+			"SpendCharge"
+			{}
+		}
+
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_stat"	"10000"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"4"
+			}
 		}
 	}	
 	"item_empath_lesser_tome_of_strength"
@@ -2918,45 +3117,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"AbilityCastPoint"				"0.1"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_str"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -2964,6 +3167,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"10"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"1"
 			}
 		}
 	}	
@@ -2976,45 +3185,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_str"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -3022,6 +3235,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"50"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"1"
 			}
 		}
 	}
@@ -3034,45 +3253,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_agi"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -3080,6 +3303,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"10"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"3"
 			}
 		}
 	}
@@ -3091,45 +3320,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_agi"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -3137,6 +3370,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"50"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"3"
 			}
 		}
 	}
@@ -3149,45 +3388,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_int"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
 			"SpendCharge"
 			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -3195,6 +3438,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"10"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"2"
 			}
 		}
 	}
@@ -3206,45 +3455,49 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
 
-		"ItemKillable"					"0"
-		
-		// Stats
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilityCastRange"				"100"
-		"AbilityCastPoint"				"0.0"
-		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"99999"
-		"ItemPurchasable"				"0"
+		//"ItemCost"						"0"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"1"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"0"
-		"ItemKillable"					"0"
-		"ItemCastOnPickup"				"0"
-
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
 		"OnSpellStart"
 		{
-			"SpendCharge"
-			{}
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_int"
-				"bonus_stat"	"%bonus_stat"
-
+				"Function"		"empath_pickup"
 			}
-			"FireSound"
+			"FireEffect"
 			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
 			}
+			"SpendCharge"
+			{}
 		}
 
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
 
 		"AbilitySpecial"
 		{
@@ -3252,6 +3505,12 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"50"
+			}
+
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"2"
 			}
 		}
 	}
@@ -3278,25 +3537,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_str"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"strength"
+		"Bonus_Stat"						"1"
 
 		"AbilitySpecial"
 		{
@@ -3327,25 +3569,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_str"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"strength"
+		"Bonus_Stat"						"10"
 
 		"AbilitySpecial"
 		{
@@ -3376,25 +3601,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_agi"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"agility"
+		"Bonus_Stat"						"1"
 
 		"AbilitySpecial"
 		{
@@ -3425,25 +3633,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_agi"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"agility"
+		"Bonus_Stat"						"10"
 
 		"AbilitySpecial"
 		{
@@ -3474,25 +3665,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_int"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"intellect"
+		"Bonus_Stat"						"1"
 
 		"AbilitySpecial"
 		{
@@ -3523,25 +3697,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_int"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"intellect"
+		"Bonus_Stat"						"10"
 
 		"AbilitySpecial"
 		{
@@ -3572,25 +3729,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_combat"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"damage"
+		"Bonus_Stat"						"30"
 
 		"AbilitySpecial"
 		{
@@ -3621,25 +3761,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_retraining"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"respec"
+		"Bonus_Stat"						"0"
 
 		"AbilitySpecial"
 		{
@@ -3670,25 +3793,8 @@
 		"ItemInitialCharges"			"1"
 		"ItemStackable"					"1"
 		"ItemPermanent"					"0"
-
-		"OnSpellStart"
-		{
-			"RunScript"
-			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"item_tome_knowledge"
-				"bonus_stat"	"%bonus_stat"
-
-			}
-			"FireSound"
-			{
-				"Target"	 "CASTER"
-				"EffectName" "DOTA_Item.ClarityPotion.Activate"
-			}
-			"SpendCharge"
-			{}
-		}
-
+		"IsTome"							"all"
+		"Bonus_Stat"						"4"
 
 		"AbilitySpecial"
 		{
@@ -3845,7 +3951,7 @@
 			"model"						"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"											
 			"model"						"models/heroes/lycan/summon_wolves.vmdl"										
 			"model"						"models/heroes/broodmother/spiderling.vmdl"												
-			"model"						"models/heroes/broodmother/broodmother_original.vmdl"												
+			"model"						"models/items/broodmother/spiderling/thistle_crawler/thistle_crawler.vmdl"												
 			"model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"													
 			"model"						"models/heroes/lone_druid/spirit_bear.vmdl"													
 			"model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"														
@@ -3858,7 +3964,7 @@
 			"model"						"models/heroes/visage/visage_familiar.vmdl"														
 			"model"						"models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl"												
 			"model"						"models/heroes/beastmaster/beastmaster_bird.vmdl"													
-			"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"													
+			"model"						"models/heroes/viper/viper.vmdl"													
 			"model"						"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"											
 			"model"						"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"											
 			"model"						"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"										
@@ -3869,9 +3975,9 @@
 			"model"						"models/items/courier/raidcall_ems_one_turtle/raidcall_ems_one_turtle.vmdl"										
 			"model"						"models/heroes/dark_seer/dark_seer.vmdl"										
 			"model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"										
-			"model"						"models/creeps/lane_creeps/creep_good_ranged/creep_good_ranged.vmdl"											
-			"model"						"models/heroes/drow/drow.vmdl"											
-			"model"						"models/heroes/slardar/slardar.vmdl"										
+			"model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"											
+			"model"						"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"										
 			"model"						"models/creeps/mega_greevil/mega_greevil.vmdl"											
 			"model"						"models/items/courier/snowl/snowl_flying.vmdl"										
 			"model"						"models/heroes/pudge/pudge.vmdl"											
@@ -4534,108 +4640,38 @@
 			//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
 			"modifier_armor_unarmored"
 			{
+				"TextureName" "item_unarmored"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"unarmored"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_light"
 			{
+				"TextureName" "item_light_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"light"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_medium"
 			{
+				"TextureName" "item_medium_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"medium"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_heavy"
 			{
+				"TextureName" "item_heavy_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"heavy"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_fortified"
 			{
+				"TextureName" "item_fortified_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"fortified"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_hero"
 			{
+				"TextureName" "item_hero_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"hero"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 			"modifier_armor_divine"
 			{
+				"TextureName" "item_divine_armor"
 				"IsHidden"				"0"  
-				"OnAttacked"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"items/armortypes.lua"
-						"Function"		"CalculateArmor"
-						"ArmorType"		"divine"
-						"DamageTaken"		"%attack_damage"
-					}
-
-				}
 			}
 		}
 	}
@@ -4658,26 +4694,32 @@
 			//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
 			"modifier_attack_normal"
 			{
+				"TextureName" "item_normal_attack"
 				"IsHidden"				"0"  
 			}
 			"modifier_attack_pierce"
 			{
+				"TextureName" "item_pierce_attack"
 				"IsHidden"				"0"  
 			}
 			"modifier_attack_siege"
 			{
+				"TextureName" "item_seige_attack"
 				"IsHidden"				"0"  
 			}
 			"modifier_attack_chaos"
 			{
+				"TextureName" "item_chaos_attack"
 				"IsHidden"				"0"  
 			}
 			"modifier_attack_magical"
 			{
+				"TextureName" "item_magic_attack"
 				"IsHidden"				"0"  
 			}
 			"modifier_attack_hero"
 			{
+				"TextureName" "item_hero_attack"
 				"IsHidden"				"0"  
 			}
 		}

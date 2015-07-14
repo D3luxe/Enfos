@@ -1,3 +1,5 @@
+
+
 // Dota Heroes File
 // NOTE: This is not for creating new heroes, this is for taking a currently existing hero as a template and overriding
 // the specified key-value combinations.  Use override_hero <hero_to_override> for this.
@@ -84,11 +86,11 @@
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMin"			"2"									// Damage range min.
 		"AttackDamageMax"			"8"									// Damage range max.
-		"AttackRate"				"1.4"									// Speed of attack.
+		"AttackRate"				"0.75"									// Speed of attack.
 		"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"130"									// Range within a target can be attacked.
 		"ProjectileModel"			""										// Particle system model for projectile.
 		"ProjectileSpeed"			"0"										// Speed of projectile.
@@ -585,6 +587,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
 		"AttributeBaseAgility" 		"3" 
@@ -620,6 +623,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"3"
 		"AttributeStrengthGain" 	"2"
 		"AttributeBaseAgility" 		"5" 
@@ -663,6 +667,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
 		"AttributeBaseAgility" 		"6" 
@@ -743,6 +748,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
 		"AttributeBaseAgility" 		"3" 
@@ -811,6 +817,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"3.25"
 		"AttributeBaseAgility" 		"6" 
@@ -847,6 +854,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
 		"AttributeBaseAgility" 		"9" 
@@ -880,6 +888,7 @@
 		
 		"ArmorPhysical"				"1"
 		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"3"
 		"AttributeBaseAgility" 		"3" 
@@ -1068,7 +1077,7 @@
 	"npc_dota_hero_lina_enfos"
 	{
 		"override_hero"				"npc_dota_hero_lina"
-		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
 		"Rolelevels"				"1"
 		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
 		"AbilityLayout"				"6"
@@ -1186,4 +1195,124 @@
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
 	}
+	
+	//=================================================================================================================
+	// HERO: Troll Warlord: Troll Cannibal
+	//=================================================================================================================
+	"npc_dota_hero_troll_cannibal_enfos"
+	{
+		"override_hero"				"npc_dota_hero_troll_warlord"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"troll_cannibal_scalping_cry"
+		"Ability2"					"troll_cannibal_behead"
+		"Ability3"					"troll_cannibal_bloodboil"
+		"Ability4"					"troll_cannibal_soul_feast"
+		"Ability6"					"troll_cannibal_soul_drain"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"1.7"
+		"AttributeBaseAgility" 		"9" 
+		"AttributeAgilityGain" 		"2.5"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"2.5"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "0.8"
+		"AttackRange"               "650"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+
+
+	//=================================================================================================================
+	// HERO: Dazzle: Shadow Priest
+	//=================================================================================================================
+	"npc_dota_hero_shadow_priest_enfos"
+	{
+		"override_hero"				"npc_dota_hero_witch_doctor"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"shadow_priest_enfeeble"
+		"Ability2"					"shadow_priest_shadow_art_mastery"
+		"Ability3"					"shadow_priest_greater_hallucination"
+		"Ability4"					"shadow_priest_armageddon"
+		"Ability6"					"shadow_priest_preservation"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"2.5"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "1.8"
+		"AttackRange"               "550"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}		
+	//=================================================================================================================
+	// HERO: Medusa: Bard
+	//=================================================================================================================
+	"npc_dota_hero_bard_enfos"
+	{
+		"override_hero"				"npc_dota_hero_medusa"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"bard_faenellas_grace"
+		"Ability2"					"bard_merauds_blessing"
+		"Ability3"					"bard_unnerving_symphony"
+		"Ability4"					"bard_call_of_the_siren"
+		"Ability6"					"bard_nexus"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" 	"7"
+		"AttributeStrengthGain" 	"2.33"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "8" 
+		"AttributeIntelligenceGain" "2.66" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"0"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "1.5"
+		"AttackRange"               "1000"									// yes, really
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1200"									// Range within a target can be acquired.
+	}		
 }

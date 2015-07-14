@@ -4,15 +4,36 @@ function StaticDischarge(keys)
 	local pid = caster:GetPlayerID()
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 450, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false) -- only creeps targetted. change if you want others
 	local thisSpell = caster:GetAbilityByIndex(5)
+	local cost = thisSpell:GetLevelSpecialValueFor("mana_cost", thisSpell:GetLevel() - 1)
 	local target = nil
 	local lightningBolt = nil
+
+	--Ensures Evoker has enough mana to zap, removes the modifier if he doesnt
+	if cost > caster:GetMana() then
+		caster:RemoveModifierByName("modifier_evoker_static_discharge")
+	end
+
 -- checks for valid units and execute the spell
 	if #units > 0 then
-		target = units[math.random(1,#units)]
-		lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster) -- a bit bad right now
-		ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2))) -- to make it look decent
-		target:EmitSound("Hero_Zuus.ArcLightning.Target")	
-		thisSpell:ApplyDataDrivenModifier(caster, target, "modifier_evoker_static_discharge_debuff", {duration = 30})		
+		--Sees if any units in the area do not yet have the debuff and adds them to a new table
+		local viableUnits = {}
+		for i=1,#units do
+			if units[i] ~= nil then
+				if not units[i]:HasModifier("modifier_evoker_static_discharge_debuff") then
+					table.insert(viableUnits, units[i])
+				end
+			end
+		end
+
+		--If a unit doesnt have the buff, then cast it on them
+		if #viableUnits > 0 then
+			target = viableUnits[math.random(1,#viableUnits)]
+			lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster) -- a bit bad right now
+			ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2))) -- to make it look decent
+			target:EmitSound("Hero_Zuus.ArcLightning.Target")	
+			thisSpell:ApplyDataDrivenModifier(caster, target, "modifier_evoker_static_discharge_debuff", {duration = 30})	
+			caster:SpendMana(cost, thisSpell)
+		end
 	end
 end
 
@@ -26,42 +47,44 @@ function GarZeng(keys)
 	local pid = caster:GetPlayerID()
 	local target = keys.target
 	local damage = keys.damage
-	local unitsHit = keys.units_hit
-	unitsHit = unitsHit - 1
-	local cfVec = caster:GetForwardVector()
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster) -- attach type 7 isn't good. fix later.
--- logic
-	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0) -- this is quick function to more quickly apply damage. see enfos.lua
-	caster:EmitSound("Hero_ShadowShaman.EtherShock")
+	local ability = keys.ability
+	local level = ability:GetLevel() - 1
+	local start_radius = ability:GetLevelSpecialValueFor("start_radius", level )
+	local end_radius = ability:GetLevelSpecialValueFor("end_radius", level )
+	local end_distance = ability:GetLevelSpecialValueFor("end_distance", level )
+	local targets = ability:GetLevelSpecialValueFor("units_hit", level )
+	local AbilityDamageType = ability:GetAbilityDamageType()
+	local particleName = "particles/units/heroes/hero_shadowshaman/shadowshaman_ether_shock.vpcf"
+
+	-- Make sure the main target is damaged
+	local lightningBolt = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
+	ParticleManager:SetParticleControl(lightningBolt,0,Vector(caster:GetAbsOrigin().x,caster:GetAbsOrigin().y,caster:GetAbsOrigin().z + caster:GetBoundingMaxs().z ))	
+	ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z + target:GetBoundingMaxs().z ))
+	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = AbilityDamageType, ability = keys.ability})
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
-	target.garZengFlag = true
-	ParticleManager:SetParticleControl(particle,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))
--- we need to reduce the units table to only valid targets before we do skill processing so that. the unit is found here in case the main target was killed by the direct damage.
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 600, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
-	local inCone = {}
-	for k,v in pairs (units) do
-		local highVar = cfVec:Dot((v:GetAbsOrigin() - caster:GetAbsOrigin()):Normalized())
-		local lowVar = math.cos(45) -- 45 degree cone. a complete guess if this is correct
-		if highVar > lowVar and not v.garZengFlag then -- if the highVar is a higher number than the lowVar, it's in the cone.
-			table.insert(inCone, v) -- add the unit if it's not in the cone
-		end
-	end
--- getting the correct behaviour 
-	if #inCone < unitsHit then
-		unitsHit = #inCone
-	end
-	for k,v in pairs(inCone) do
-		if unitsHit <= 0 then
-			return
+
+	local cone_units = GetEnemiesInCone( target, start_radius, end_radius, end_distance )
+	--DeepPrintTable(cone_units)
+	local targets_shocked = 1 --Is targets=extra targets or total?
+	for _,unit in pairs(cone_units) do
+		if targets_shocked < targets then
+			if unit ~= caster and unit ~= target then
+				-- Particle
+				local origin = unit:GetAbsOrigin()
+				local lightningBolt = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
+				ParticleManager:SetParticleControl(lightningBolt,0,Vector(caster:GetAbsOrigin().x,caster:GetAbsOrigin().y,caster:GetAbsOrigin().z + caster:GetBoundingMaxs().z ))	
+				ParticleManager:SetParticleControl(lightningBolt,1,Vector(origin.x,origin.y,origin.z + unit:GetBoundingMaxs().z ))
+			
+				-- Damage
+				ApplyDamage({ victim = unit, attacker = caster, damage = damage, damage_type = AbilityDamageType, ability = keys.ability})
+
+				-- Increment counter
+				targets_shocked = targets_shocked + 1
+			end
 		else
-			local coneParticle = ParticleManager:CreateParticle("particles/inCone/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_OVERHEAD_FOLLOW, caster)
-			ParticleManager:SetParticleControl(coneParticle,1,Vector(v:GetAbsOrigin().x,v:GetAbsOrigin().y,v:GetAbsOrigin().z+((v:GetBoundingMaxs().z - v:GetBoundingMins().z)/2)))	
-			v:EmitSound("Hero_ShadowShaman.EtherShock.Target")
-			DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
-			unitsHit = unitsHit - 1
+			break
 		end
 	end
-	target.garZengFlag = false
 end
 
 function ChainLightning(keys)
@@ -116,6 +139,76 @@ function ChainLightning(keys)
 			end
 		end
 	})
+end
+
+function GetEnemiesInCone( unit, start_radius, end_radius, end_distance)
+	local DEBUG = false
+	
+	-- Positions
+	local fv = unit:GetForwardVector() * -1
+	local origin = unit:GetAbsOrigin()
+
+	local start_point = origin + fv * start_radius -- Position to find units with start_radius
+	local end_point = origin + fv * (start_radius + end_distance) -- Position to find units with end_radius
+
+	if DEBUG then
+		DebugDrawCircle(start_point, Vector(255,0,0), 100, start_radius, true, 3)
+		DebugDrawCircle(end_point, Vector(255,0,0), 100, end_radius, true, 3)
+	end
+
+	-- 1 medium circle should be enough as long as the mid_interval isn't too large
+	local mid_interval = end_distance - start_radius - end_radius
+	local mid_radius = (start_radius + end_radius) / 2
+	local mid_point = origin + fv * mid_radius * 2
+	
+	if DEBUG then
+		--print("There's a space of "..mid_interval.." between the circles at the cone edges")
+		DebugDrawCircle(mid_point, Vector(0,255,0), 100, mid_radius, true, 3)
+	end
+
+	-- Find the units
+	local team = unit:GetTeamNumber()
+	local iTeam = DOTA_UNIT_TARGET_TEAM_FRIENDLY
+	local iType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
+	local iFlag = DOTA_UNIT_TARGET_FLAG_NONE
+	local iOrder = FIND_ANY_ORDER
+
+	local start_units = FindUnitsInRadius(team, start_point, nil, start_radius, iTeam, iType, iFlag, iOrder, false)
+	local end_units = FindUnitsInRadius(team, end_point, nil, end_radius, iTeam, iType, iFlag, iOrder, false)
+	local mid_units = FindUnitsInRadius(team, mid_point, nil, mid_radius, iTeam, iType, iFlag, iOrder, false)
+
+	-- Join the tables
+	local cone_units = {}
+	for k,v in pairs(end_units) do
+		table.insert(cone_units, v)
+	end
+
+	for k,v in pairs(start_units) do
+		if not tableContains(cone_units, k) then
+			table.insert(cone_units, v)
+		end
+	end	
+
+	for k,v in pairs(mid_units) do
+		if not tableContains(cone_units, k) then
+			table.insert(cone_units, v)
+		end
+	end
+
+	--DeepPrintTable(cone_units)
+	return cone_units
+
+end
+
+-- Returns true if the element can be found on the list, false otherwise
+function tableContains(list, element)
+    if list == nil then return false end
+    for i=1,#list do
+        if list[i] == element then
+            return true
+        end
+    end
+    return false
 end
 
 function BallLightning(keys)

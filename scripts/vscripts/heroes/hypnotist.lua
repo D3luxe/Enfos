@@ -133,21 +133,22 @@ function TelekineticStormStart(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local playerID = caster:GetPlayerID()
-	local radius = ability:GetLevelSpecialValueFor( "radius", ability:GetLevel() - 1 )
-	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 )
-	local spirits = ability:GetLevelSpecialValueFor( "spirits", ability:GetLevel() - 1 )
-	local delay_between_spirits = ability:GetLevelSpecialValueFor( "delay_between_spirits", ability:GetLevel() - 1 )
+	local radius = ability:GetLevelSpecialValueFor( "radius", ability:GetLevel() - 1 ) or 1000
+	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 ) or 30
+	local spirits = ability:GetLevelSpecialValueFor( "spirits", ability:GetLevel() - 1 ) or 20
+	local delay_between_spirits = ability:GetLevelSpecialValueFor( "delay_between_spirits", ability:GetLevel() - 1 ) or 0.01
 	local unit_name = "npc_dummy_unit"
 
 	-- Initialize the table to keep track of all spirits
 	caster.spirits = {}
-	print("Spawning "..spirits.." spirits")
 	for i=1,spirits do
 		Timers:CreateTimer(i * delay_between_spirits, function()
 			local unit = CreateUnitByName(unit_name, caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 			-- ParticleManager:CreateParticle("particles/hero_hypnotist/bounty_hunter_suriken_toss_hidden_hunter.vpcf", PATTACH_OVERHEAD_FOLLOW, unit)
 			-- The modifier takes care of the physics and logic
-			ability:ApplyDataDrivenModifier(caster, unit, "modifier_telekinetic_storm_spirit", {})
+			if ability:IsNull() == false then
+				ability:ApplyDataDrivenModifier(caster, unit, "modifier_telekinetic_storm_spirit", {})
+			end
 			
 			-- Add the spawned unit to the table
 			table.insert(caster.spirits, unit)
@@ -171,15 +172,15 @@ function TelekineticStormPhysics( keys )
 	local caster = keys.caster
 	local unit = keys.target
 	local ability = keys.ability
-	local radius = ability:GetLevelSpecialValueFor( "radius", ability:GetLevel() - 1 )
-	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 )
-	local spirit_speed = ability:GetLevelSpecialValueFor( "spirit_speed", ability:GetLevel() - 1 )
-	local min_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 )
-	local max_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 )
-	local average_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 )
-	local give_up_distance = ability:GetLevelSpecialValueFor( "give_up_distance", ability:GetLevel() - 1 )
-	local max_distance = ability:GetLevelSpecialValueFor( "max_distance", ability:GetLevel() - 1 )
-	local min_time_between_attacks = ability:GetLevelSpecialValueFor( "min_time_between_attacks", ability:GetLevel() - 1 )
+	local radius = ability:GetLevelSpecialValueFor( "radius", ability:GetLevel() - 1 ) or 1000
+	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 ) or 30
+	local spirit_speed = ability:GetLevelSpecialValueFor( "spirit_speed", ability:GetLevel() - 1 ) or 500
+	local min_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 ) or 300
+	local max_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 ) or 300
+	local average_damage = ability:GetLevelSpecialValueFor( "damage", ability:GetLevel() - 1 ) or 300
+	local give_up_distance = ability:GetLevelSpecialValueFor( "give_up_distance", ability:GetLevel() - 1 ) or 1200
+	local max_distance = ability:GetLevelSpecialValueFor( "max_distance", ability:GetLevel() - 1 ) or 2000
+	local min_time_between_attacks = ability:GetLevelSpecialValueFor( "min_time_between_attacks", ability:GetLevel() - 1 ) or 0.5
 	local abilityDamageType = ability:GetAbilityDamageType()
 	local abilityTargetType = ability:GetAbilityTargetType()
 	--local particleNameHeal = "particles/units/heroes/hero_nyx_assassin/nyx_assassin_vendetta_start_sparks_b.vpcf"
@@ -319,7 +320,7 @@ function TelekineticStormPhysics( keys )
 					unit.state = "target_acquired"
 					unit.current_target = target_enemy
 					point = unit.current_target:GetAbsOrigin()
-					print("Acquiring -> Enemy Target acquired: "..unit.current_target:GetUnitName())
+					--print("Acquiring -> Enemy Target acquired: "..unit.current_target:GetUnitName())
 
 				-- If no enemies, set the unit to collide with a random idle point.
 				else

@@ -24,29 +24,89 @@ function TechniquePierce(keys)
 	local target = keys.target
 	local damage = caster:GetAverageTrueAttackDamage() -- this isn't perfect but it's good enough. damage ranges really aren't a meaningful factor
 	local pid = caster:GetPlayerID()
-	local splashCount = 0
+	local start_radius = 50
+	local end_radius = 100
+	local end_distance = 150
+
+	local cone_units = GetEnemiesInCone( caster, target, start_radius, end_radius, end_distance )
+
+	for _,unit in pairs(cone_units) do
+		if unit ~= target and unit ~= caster then
+			-- Damage
+			DealDamage(caster, unit, damage, DAMAGE_TYPE_PHYSICAL, 0)
+		end
+	end
+
+end
+
+function GetEnemiesInCone( caster, unit, start_radius, end_radius, end_distance)
+	local DEBUG = false
 	
-	local applier = caster:GetAbilityByIndex(3)
--- apply the flag so it doesn't hit twice
-	applier:ApplyDataDrivenModifier(caster, target, "modifier_skill_flag", {}) -- apply a flag to the main unit so that we don't double hit it
--- find valid units
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 3500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	local inCone = {}
-	local a, b, c = GetLine(caster, target)
-	for k,v in pairs (units) do
-		local tDistToLine = GetDistanceToLine(v, a, b, c)
-		if ((v:BoundingRadius2D() * 2) + 5 > tDistToLine) and not v:HasModifier("modifier_skill_flag") then -- giving the diamater an extra 5 to make it feel just a little better
-			table.insert(inCone, v) -- add the unit if it's not in the cone
+	-- Positions
+	local fv = caster:GetForwardVector()
+	local origin = unit:GetAbsOrigin()
+
+	local start_point = origin + fv * start_radius -- Position to find units with start_radius
+	local end_point = origin + fv * (start_radius + end_distance) -- Position to find units with end_radius
+
+	if DEBUG then
+		DebugDrawCircle(start_point, Vector(255,0,0), 100, start_radius, true, 3)
+		DebugDrawCircle(end_point, Vector(255,0,0), 100, end_radius, true, 3)
+	end
+
+	-- 1 medium circle should be enough as long as the mid_interval isn't too large
+	local mid_interval = end_distance - start_radius - end_radius
+	local mid_radius = (start_radius + end_radius) / 2
+	local mid_point = origin + fv * mid_radius * 2
+	
+	if DEBUG then
+		--print("There's a space of "..mid_interval.." between the circles at the cone edges")
+		DebugDrawCircle(mid_point, Vector(0,255,0), 100, mid_radius, true, 3)
+	end
+
+	-- Find the units
+	local team = unit:GetTeamNumber()
+	local iTeam = DOTA_UNIT_TARGET_TEAM_FRIENDLY
+	local iType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
+	local iFlag = DOTA_UNIT_TARGET_FLAG_NONE
+	local iOrder = FIND_ANY_ORDER
+
+	local start_units = FindUnitsInRadius(team, start_point, nil, start_radius, iTeam, iType, iFlag, iOrder, false)
+	local end_units = FindUnitsInRadius(team, end_point, nil, end_radius, iTeam, iType, iFlag, iOrder, false)
+	local mid_units = FindUnitsInRadius(team, mid_point, nil, mid_radius, iTeam, iType, iFlag, iOrder, false)
+
+	-- Join the tables
+	local cone_units = {}
+	for k,v in pairs(end_units) do
+		table.insert(cone_units, v)
+	end
+
+	for k,v in pairs(start_units) do
+		if not tableContains(cone_units, k) then
+			table.insert(cone_units, v)
+		end
+	end	
+
+	for k,v in pairs(mid_units) do
+		if not tableContains(cone_units, k) then
+			table.insert(cone_units, v)
 		end
 	end
--- getting the correct behaviour 
-	for k,v in pairs(inCone) do
-		if splashCount < 1 then
-			DealDamage(caster, v, damage, DAMAGE_TYPE_PHYSICAL, 0)
-			splashCount = splashCount + 1
-		end
-	end
-	target:RemoveModifierByName("modifier_skill_flag")
+
+	--DeepPrintTable(cone_units)
+	return cone_units
+
+end
+
+-- Returns true if the element can be found on the list, false otherwise
+function tableContains(list, element)
+    if list == nil then return false end
+    for i=1,#list do
+        if list[i] == element then
+            return true
+        end
+    end
+    return false
 end
 
 function FireAmmoRefund(keys)

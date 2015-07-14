@@ -5,7 +5,7 @@ function TargetedMagic(keys)
 	local frostScytheLevel = frostScythe:GetLevel()
 	local radius = (frostScytheLevel * 200) + 500
 	local fsCount = 0
-	local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE, 1, false)
+	local targets = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_NO_INVIS, 1, false)
 -- logic
 	for k,v in pairs(targets) do
 		fsCount = fsCount + 1

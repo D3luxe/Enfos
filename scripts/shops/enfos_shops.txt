@@ -47,6 +47,7 @@
 		"item"	"item_iron_helmet"
 		"item"	"item_elven_plate_mail"
 		"item"	"item_small_round_shield"
+		"item"	"item_tower_shield"
 	}	
 	
 	// Level 1 - Green Recipes
@@ -97,6 +98,7 @@
 		"item"	"item_tkashi_mirror_blade"
 		"item"	"item_uthmors_skullcleaver"
 		"item"	"item_dragonscale_shield"
+		"item"	"item_ironbark_leathers"
 	}
 
 	"sideshop2"

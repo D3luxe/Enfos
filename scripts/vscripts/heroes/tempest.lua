@@ -65,14 +65,35 @@ function burst (keys)
 	if damage > health then
 		damage = health - 1
 	end
-
+	if caster:IsRealHero() == false then
+		caster = caster:GetPlayerOwner():GetAssignedHero()
+	end
 	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+end
+
+function burst_dummy(keys)
+	local caster = keys.caster
+	local radius = keys.radius
+	local target = keys.target_points[1]
+	local ability = keys.ability
+	local abilityLevel = ability:GetLevel()
+
+	local dummy = FastDummy(target, caster:GetTeamNumber(), caster)
+	dummy:AddAbility("tempest_burst_proxy")
+	local dummySpell = dummy:FindAbilityByName("tempest_burst_proxy")
+-- logic
+	dummySpell:SetLevel(abilityLevel)
+
+	--FX
+	local particle = ParticleManager:CreateParticle("particles/neutral_fx/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, dummy)
+
+	DelayDestroy(dummy, 30)
 end
 
 function vertigo (keys)
 -- vars
 	local caster = keys.caster
-	local target = keys.target
+	local target = keys.target_points[1]
 	local damage = keys.damage
 	local radius = keys.radius
 	local casterPos = caster:GetAbsOrigin()

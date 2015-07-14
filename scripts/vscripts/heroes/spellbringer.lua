@@ -168,6 +168,7 @@ function sidhlot_resurrect(keys)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
+		raisedUnit.noCorpse = true
 		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_sidhlot_resurrect", {})
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
@@ -182,9 +183,13 @@ function havroth_reflect(keys)
 
 	local armor = caster:GetPhysicalArmorValue()
 	local damageMultiplication = ((0.06 * armor) / (1 + 0.06 * armor)) + 1
+	print("-----")
+	print(damage)
+	print(percentReflected)
+	print(armor)
+	print(damageMultiplication)
 
-
-	local reflectedDamage = damage * percentReflected * damageMultiplication
+	local reflectedDamage = damage * percentReflected
 
 	DealDamage(caster, attacker, reflectedDamage, DAMAGE_TYPE_PURE, 0)
 end
@@ -198,7 +203,12 @@ function purification(keys)
 	Timers:CreateTimer(DoUniqueString("purificationDelay"), {
 		endTime = 2,
 		callback = function()
-			local units = FindUnitsInRadius(caster:GetTeamNumber(), target, caster, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_HERO, 0, 0, false)
+			local dummy = FastDummy(target, DOTA_TEAM_NOTEAM)
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_demonic_purge_impact.vpcf", PATTACH_ABSORIGIN, dummy)
+			ParticleManager:SetParticleControl(particle, 1, Vector(radius, 1, radius)) -- smoke cloud radius
+			DelayDestroy(dummy, 1.0)
+			local units = FindUnitsInRadius(caster:GetTeamNumber(), target, caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
+			
 			for k,v in pairs(units) do
 				local numMod = v:GetModifierCount()
 				if numMod > 0 then
@@ -213,7 +223,12 @@ function purification(keys)
 						end
 					end
 				end
+				if v:IsIllusion() then
+					v:ForceKill(true)
+				end
 			end
+			
+		
 		end
 	})
 
@@ -242,12 +257,23 @@ function whole_displacement(keys)
 	local caster = keys.caster
 	local target = keys.target
 
-	if PlayerResource:GetTeam( keys.caster_entindex ) == DOTA_TEAM_GOODGUYS then
-		entSpawner = Entities:FindByName( nil, "dire_spawner1" )
-		waypoint = Entities:FindByName(nil, "d_wp_5")
+	local randWP = math.random(1,2)
+	if target:GetTeamNumber() == DOTA_TEAM_GOODGUYS then
+		if randWP == 1 then
+			entSpawner = Entities:FindByName( nil, "dire_spawner1" )
+			waypoint = Entities:FindByName(nil, "d_wp_5")
+		else
+			entSpawner = Entities:FindByName( nil, "dire_spawner3" )
+			waypoint = Entities:FindByName(nil, "d_wp_13")
+		end
 	else
-		entSpawner = Entities:FindByName( nil, "radiant_spawner1" )
-		waypoint = Entities:FindByName( nil, "r_wp_5" )
+		if randWP == 1 then
+			entSpawner = Entities:FindByName( nil, "radiant_spawner1" )
+			waypoint = Entities:FindByName( nil, "r_wp_5" )
+		else
+			entSpawner = Entities:FindByName( nil, "radiant_spawner3" )
+			waypoint = Entities:FindByName( nil, "r_wp_13" )
+		end
 	end
 
 	if not entSpawner then
@@ -307,7 +333,7 @@ function changeAbilitySet(caster, oldAbilitySet)
 	if oldSet == 0 then
 		caster:RemoveAbility("spellbringer_battle_sphere")
 		caster:RemoveAbility("spellbringer_limb_disruption")
-		caster:RemoveAbility("spellbringer_whole_displacement")
+		caster:RemoveAbility("spellbringer_purification")
 		caster:RemoveAbility("spellbringer_locate")
 	elseif oldSet == 1 then
 		caster:RemoveAbility("spellbringer_mana_disruption")
@@ -315,15 +341,15 @@ function changeAbilitySet(caster, oldAbilitySet)
 		caster:RemoveAbility("spellbringer_jomays_legacy")
 		caster:RemoveAbility("spellbringer_glythtides_gift")
 	elseif oldSet == 2 then
-		caster:RemoveAbility("spellbringer_summon_arhat")
-		caster:RemoveAbility("spellbringer_summon_uthmor")
-		caster:RemoveAbility("spellbringer_summon_sidhlot")
-		caster:RemoveAbility("spellbringer_summon_havroth")
+		caster:RemoveAbility("spellbringer_purification")
+		caster:RemoveAbility("spellbringer_limb_disruption")
+		caster:RemoveAbility("spellbringer_whole_displacement")
+		caster:RemoveAbility("spellbringer_locate")
 	elseif oldSet == 3 then
-		caster:RemoveAbility("phantom_assassin_enfos_courage")
-		caster:RemoveAbility("generic_enfos_combat_mastery")
-		caster:RemoveAbility("phantom_assassin_enfos_chadatrus_blessing")
-		caster:RemoveAbility("phantom_assassin_enfos_righteous_wrath")
+		caster:RemoveAbility("spellbringer_battle_sphere")
+		caster:RemoveAbility("spellbringer_limb_disruption")
+		caster:RemoveAbility("spellbringer_whole_displacement")
+		caster:RemoveAbility("evoker_gar_zeng")
 	elseif oldSet == 4 then
 		caster:RemoveAbility("spellbringer_battle_sphere")
 		caster:RemoveAbility("spellbringer_limb_disruption")
@@ -335,7 +361,7 @@ function changeAbilitySet(caster, oldAbilitySet)
 	if set == 0 then
 		caster:AddAbility("spellbringer_battle_sphere")
 		caster:AddAbility("spellbringer_limb_disruption")
-		caster:AddAbility("spellbringer_whole_displacement")
+		caster:AddAbility("spellbringer_purification")
 		caster:AddAbility("spellbringer_locate")
 	elseif set == 1 then
 		caster:AddAbility("spellbringer_mana_disruption")
@@ -343,10 +369,10 @@ function changeAbilitySet(caster, oldAbilitySet)
 		caster:AddAbility("spellbringer_jomays_legacy")
 		caster:AddAbility("spellbringer_glythtides_gift")
 	elseif set == 2 then
-		caster:AddAbility("spellbringer_summon_arhat")
-		caster:AddAbility("spellbringer_summon_uthmor")
-		caster:AddAbility("spellbringer_summon_sidhlot")
-		caster:AddAbility("spellbringer_summon_havroth")
+		caster:AddAbility("spellbringer_purification")
+		caster:AddAbility("spellbringer_limb_disruption")
+		caster:AddAbility("spellbringer_whole_displacement")
+		caster:AddAbility("spellbringer_locate")
 	elseif set == 3 then
 		caster:AddAbility("phantom_assassin_enfos_courage")
 		caster:AddAbility("generic_enfos_combat_mastery")
@@ -375,8 +401,8 @@ function ability_set_down(keys)
 
 	caster.abilitySet = caster.abilitySet - 1
 
-	if caster.abilitySet <= 0 then
-		caster.abilitySet = 0
+	if caster.abilitySet <= -1 then
+		caster.abilitySet = 2
 	end
 
 	changeAbilitySet(caster, oldSet)
@@ -392,8 +418,8 @@ function ability_set_up(keys)
 
 	caster.abilitySet = caster.abilitySet + 1
 
-	if caster.abilitySet >= 1 then
-		caster.abilitySet = 1
+	if caster.abilitySet >= 3 then
+		caster.abilitySet = 0
 	end
 
 	changeAbilitySet(caster, oldSet)

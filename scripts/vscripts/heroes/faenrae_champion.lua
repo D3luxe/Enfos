@@ -5,11 +5,6 @@ function faenrae_blood_true_sight(keys)
 	local radius = ability:GetLevelSpecialValueFor("radius", abilityLevel - 1)
 	caster:AddNewModifier(caster, nil, 'modifier_greevil_truesight', {true_sight_range = radius})
 end
-
-function faenrae_blood_true_sight_remove(keys)
-	local caster = keys.caster
-	caster:RemoveModifierByName("modifier_greevil_truesight")
-end
 	
 
 function dark_hand_curse_counter(keys)
@@ -94,6 +89,7 @@ function word_of_chaos(keys)
 	end
 	caster:EmitSound("Hero_Nightstalker.Darkness")
 end
+
 -- All functions beyond this by Pizzalol/Noya. https://github.com/Pizzalol/SpellLibrary
 function ModelSwapStart( keys )
 	local caster = keys.caster
@@ -120,6 +116,9 @@ function ModelSwapEnd( keys )
 	caster:SetModel(caster.caster_model)
 	caster:SetOriginalModel(caster.caster_model)
 	caster:SetAttackCapability(caster.caster_attack)
+	if caster:GetUnitName() == "npc_dota_hero_troll_warlord" then
+		caster:SetRangedProjectileName("particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf")
+	end
 end
 
 function HideWearables( event )

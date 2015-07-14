@@ -22,6 +22,9 @@ function mantle_of_flames(keys)
 	for k,v in pairs(units) do
 		DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
 	end
+	if cost > caster:GetMana() then
+		caster:RemoveModifierByName("modifier_mantle_of_flames_buff")
+	end
 end
 
 function dragons_breath(keys)

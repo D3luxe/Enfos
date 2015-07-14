@@ -102,7 +102,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"25"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"1"		// Gold earned min.
 		"BountyGoldMax"				"3"		// Gold earned max.
 
@@ -209,7 +209,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"20"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"1"		// Gold earned min.
 		"BountyGoldMax"				"3"		// Gold earned max.
 
@@ -318,7 +318,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"20"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"1"		// Gold earned min.
 		"BountyGoldMax"				"3"		// Gold earned max.
 
@@ -428,7 +428,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"3"		// Gold earned min.
 		"BountyGoldMax"				"5"		// Gold earned max.
 
@@ -519,7 +519,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"30"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"3"		// Gold earned min.
 		"BountyGoldMax"				"5"		// Gold earned max.
 
@@ -614,7 +614,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"40"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"5.5"		// Gold earned min.
 		"BountyGoldMax"				"8"		// Gold earned max.
 
@@ -711,7 +711,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"40"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"55"		// Gold earned min.
 		"BountyGoldMax"				"80"		// Gold earned max.
 
@@ -810,7 +810,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"7"			// Gold earned min.
 		"BountyGoldMax"				"9"			// Gold earned max.
 
@@ -913,7 +913,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"50"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"7"			// Gold earned min.
 		"BountyGoldMax"				"9"			// Gold earned max.
 
@@ -1009,7 +1009,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"60"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"10"		// Gold earned min.
 		"BountyGoldMax"				"11"		// Gold earned max.
 
@@ -1111,7 +1111,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"70"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"12"		// Gold earned min.
 		"BountyGoldMax"				"14"		// Gold earned max.
 
@@ -1208,7 +1208,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"80"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"13"		// Gold earned min.
 		"BountyGoldMax"				"15"		// Gold earned max.
 
@@ -1268,7 +1268,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/heroes/broodmother/broodmother_original.vmdl"	// Model.
+		"Model"						"models/items/broodmother/spiderling/thistle_crawler/thistle_crawler.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Lycan_Wolf"
 		"Level"						"1"
@@ -1308,7 +1308,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"80"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"13"		// Gold earned min.
 		"BountyGoldMax"				"15"		// Gold earned max.
 
@@ -1406,7 +1406,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"90"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"15"		// Gold earned min.
 		"BountyGoldMax"				"17"		// Gold earned max.
 
@@ -1506,7 +1506,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"100"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"17"		// Gold earned min.
 		"BountyGoldMax"				"23"		// Gold earned max.
 
@@ -1603,7 +1603,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"110"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"20"		// Gold earned min.
 		"BountyGoldMax"				"24"		// Gold earned max.
 
@@ -1700,7 +1700,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"120"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"23"		// Gold earned min.
 		"BountyGoldMax"				"30"		// Gold earned max.
 
@@ -1801,7 +1801,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"130"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"25"		// Gold earned min.
 		"BountyGoldMax"				"28"		// Gold earned max.
 
@@ -1897,7 +1897,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"140"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"28"		// Gold earned min.
 		"BountyGoldMax"				"33"		// Gold earned max.
 
@@ -1993,7 +1993,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"150"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"32"		// Gold earned min.
 		"BountyGoldMax"				"40"		// Gold earned max.
 
@@ -2089,7 +2089,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"160"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"36"		// Gold earned min.
 		"BountyGoldMax"				"42"		// Gold earned max.
 
@@ -2187,7 +2187,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"170"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"40"		// Gold earned min.
 		"BountyGoldMax"				"42"		// Gold earned max.
 
@@ -2287,7 +2287,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"180"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"45"		// Gold earned min.
 		"BountyGoldMax"				"46"		// Gold earned max.
 
@@ -2383,7 +2383,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"190"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"50"		// Gold earned min.
 		"BountyGoldMax"				"52"		// Gold earned max.
 
@@ -2483,7 +2483,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"700"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"60"		// Gold earned min.
 		"BountyGoldMax"				"120"		// Gold earned max.
 
@@ -2583,7 +2583,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"200"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"58"		// Gold earned min.
 		"BountyGoldMax"				"60"		// Gold earned max.
 
@@ -2675,7 +2675,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"210"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"58"		// Gold earned min.
 		"BountyGoldMax"				"60"		// Gold earned max.
 
@@ -2770,7 +2770,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"220"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"77"		// Gold earned min.
 		"BountyGoldMax"				"78"		// Gold earned max.
 
@@ -2868,7 +2868,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"230"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"88"		// Gold earned min.
 		"BountyGoldMax"				"89"		// Gold earned max.
 
@@ -2962,7 +2962,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"240"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"88"		// Gold earned min.
 		"BountyGoldMax"				"89"		// Gold earned max.
 
@@ -3055,7 +3055,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"250"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"112"		// Gold earned min.
 		"BountyGoldMax"				"114"		// Gold earned max.
 
@@ -3151,7 +3151,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"260"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"130"		// Gold earned min.
 		"BountyGoldMax"				"131"		// Gold earned max.
 
@@ -3254,7 +3254,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"270"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"150"		// Gold earned min.
 		"BountyGoldMax"				"151"		// Gold earned max.
 
@@ -3347,7 +3347,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"280"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"155"		// Gold earned min.
 		"BountyGoldMax"				"157"		// Gold earned max.
 
@@ -3440,7 +3440,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"290"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"215"		// Gold earned min.
 		"BountyGoldMax"				"217"		// Gold earned max.
 
@@ -3533,7 +3533,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"300"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"255"		// Gold earned min.
 		"BountyGoldMax"				"257"		// Gold earned max.
 
@@ -3590,7 +3590,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/creeps/lane_creeps/creep_good_ranged/creep_good_ranged.vmdl"	// Model.
+		"Model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Creep_Good_Range"
 		"Level"						"1"
@@ -3629,7 +3629,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"310"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"290"		// Gold earned min.
 		"BountyGoldMax"				"292"		// Gold earned max.
 
@@ -3725,7 +3725,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"320"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"330"		// Gold earned min.
 		"BountyGoldMax"				"332"		// Gold earned max.
 
@@ -3783,7 +3783,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_b/n_creep_dragonspawn_b.vmdl"	// Model.
+		"Model"						"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"n_creep_Melee"
 		"Level"						"1"
@@ -3822,7 +3822,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"330"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"370"		// Gold earned min.
 		"BountyGoldMax"				"373"		// Gold earned max.
 
@@ -3918,7 +3918,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"340"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"410"		// Gold earned min.
 		"BountyGoldMax"				"413"		// Gold earned max.
 
@@ -3945,6 +3945,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+		
+		"vscripts"			"mobs/poloh.lua"
 
 		// Creature Data
 		//----------------------------------------------------------------------------------------------------------------------
@@ -4014,7 +4016,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"6000"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"400"		// Gold earned min.
 		"BountyGoldMax"				"400"		// Gold earned max.
 
@@ -4110,7 +4112,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"360"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"480"		// Gold earned min.
 		"BountyGoldMax"				"482"		// Gold earned max.
 
@@ -4216,7 +4218,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"370"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"520"		// Gold earned min.
 		"BountyGoldMax"				"522"		// Gold earned max.
 
@@ -4319,7 +4321,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"380"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"650"		// Gold earned min.
 		"BountyGoldMax"				"655"		// Gold earned max.
 
@@ -4421,7 +4423,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"390"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"700"		// Gold earned min.
 		"BountyGoldMax"				"705"		// Gold earned max.
 
@@ -4523,7 +4525,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"400"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"900"		// Gold earned min.
 		"BountyGoldMax"				"910"		// Gold earned max.
 
@@ -4627,7 +4629,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"100"		// Experience earn.
+		"BountyXP"					"0"		// Experience earn.
 		"BountyGoldMin"				"0"		// Gold earned min.
 		"BountyGoldMax"				"0"		// Gold earned max.
 
@@ -4958,7 +4960,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"25"	// Experience earn.
+		"BountyXP"					"0"	// Experience earn.
 		"BountyGoldMin"				"0"		// Gold earned min.
 		"BountyGoldMax"				"0"		// Gold earned max.
 
@@ -5036,7 +5038,7 @@
 
 		// Bounty
 		//----------------------------------------------------------------
-		"BountyXP"					"25"	// Experience earn.
+		"BountyXP"					"0"	// Experience earn.
 		"BountyGoldMin"				"0"		// Gold earned min.
 		"BountyGoldMax"				"0"		// Gold earned max.
 
@@ -5268,10 +5270,13 @@
 		"AbilityLayout"				"6"
 		"Ability1"					"spellbringer_battle_sphere"			// Ability 1.
 		"Ability2"					"spellbringer_limb_disruption"			// Ability 2.
-		"Ability3"					"spellbringer_whole_displacement"			// Ability 3.
+		"Ability3"					"spellbringer_purification"			// Ability 3.
 		"Ability4"					"spellbringer_locate"			// Ability 4.
-		"Ability5"					"spellbringer_ability_set_down"			// Ability 5.
-		"Ability6"					"spellbringer_ability_set_up"			// Ability 6 - Extra.
+		"Ability5"					"spellbringer_mana_disruption"			// Ability 5.
+		"Ability6"					"spellbringer_spell_disruption"			// Ability 6 - Extra.
+		"Ability7"					"spellbringer_jomays_legacy"			// Ability 6 - Extra.
+		"Ability8"					"spellbringer_glythtides_gift"			// Ability 6 - Extra.
+		"Ability9"					"spellbringer_whole_displacement"			// Ability 6 - Extra.
 
 		// Armor
 		//----------------------------------------------------------------

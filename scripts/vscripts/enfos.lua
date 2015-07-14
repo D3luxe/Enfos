@@ -22,6 +22,7 @@ Enfos.hailstormDummy = 0
 Enfos.vertigoDummy = {}
 Enfos.aesrelaEverildDummy = 0
 Enfos.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
+Enfos.tremorDummy = 0
 
 
 function spellAbsorb(keys)
@@ -42,14 +43,15 @@ function DealDamage(source, target, damage, dType, flags)
 	ApplyDamage(dTable)
 end
 -- a function to quickly create an appropriate dummy
-function FastDummy(target, team)
-	local dummy = CreateUnitByName("npc_dummy_unit", target, false, nil, nil, team)
+function FastDummy(target, team, hero)
+	local owner = hero or nil
+	local dummy = CreateUnitByName("npc_dummy_unit", target, false, nil, owner, team)
 	dummy:SetAbsOrigin(target) -- CreateUnitByName uses only the x and y coordinates so we have to move it with SetAbsOrigin()
 	dummy:GetAbilityByIndex(0):SetLevel(1)
 	dummy:SetDayTimeVisionRange(250)
 	dummy:SetNightTimeVisionRange(250)
-	dummy:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
-	dummy:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
+	dummy:AddNewModifier(dummy, nil, "modifier_phased", { duration = -1})
+	dummy:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = -1})
 	return dummy
 end
 -- quickly destroy a unit
@@ -117,7 +119,21 @@ function magic_block_check(target)
 -- checking for spell shields
 	local ability_jug = target:FindAbilityByName("juggernaut_enfos_magic_resistance")
 	local ability_war = target:FindAbilityByName("warlock_enfos_deflection")
-	if ability_jug ~= nil then
+	local ironbark_leathers = target:HasItemInInventory("item_ironbark_leathers")
+	local leatherSlot
+	
+	if ironbark_leathers ~= nil then
+		local itemSlot = -1
+		for item = 0, 18 do
+			if target:GetItemInSlot(item) ~= nil then
+				if target:GetItemInSlot(item):GetName() == "item_ironbark_leathers" then
+					leatherSlot = target:GetItemInSlot(item)
+				end
+			end
+		end
+	end
+	
+	if ability_jug ~= nil and ability_jug:IsCooldownReady() then
 		if target:HasModifier("modifier_item_sphere_target") then
 			if ability_jug:GetLevel() == 10 then -- if it's level 10, then he is permanently magic immune. just skipping the whole remove/reapply thing helps avoid crashes.
 				target:EmitSound("DOTA_Item.LinkensSphere.Activate")
@@ -125,15 +141,23 @@ function magic_block_check(target)
 			else
 				target:RemoveModifierByName("modifier_item_sphere_target")
 				target:EmitSound("DOTA_Item.LinkensSphere.Activate")
-				ability:StartCooldown(ability:GetCooldown(ability_jug:GetLevel() - 1))
+				ability_jug:StartCooldown(ability_jug:GetCooldown(ability_jug:GetLevel() - 1))
 				return true
 			end
 		end
-	elseif ability_war ~= nil then
+	elseif ability_war ~= nil and ability_war:IsCooldownReady() then
 		if target:HasModifier("modifier_item_sphere_target") then
 			target:RemoveModifierByName("modifier_item_sphere_target")
 			target:EmitSound("DOTA_Item.LinkensSphere.Activate")
-			ability:StartCooldown(40)
+			ability_war:StartCooldown(40)
+			return true
+		end
+	elseif ironbark_leathers ~= nil then
+		if target:HasModifier("modifier_item_sphere_target") then
+			target:RemoveModifierByName("modifier_item_sphere_target")
+			target:EmitSound("DOTA_Item.LinkensSphere.Activate")
+			leatherSlot:StartCooldown(4)
+			
 			return true
 		end
 	else 
