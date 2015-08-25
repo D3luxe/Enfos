@@ -1,0 +1,54 @@
+//=================================================================================================================
+// HERO: Ursa - GoGo, the Battle Chanter
+//=================================================================================================================
+"npc_dota_hero_ursa_enfos"	
+{
+	"override_hero" "npc_dota_hero_ursa"
+	"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"			"5"
+	"Ability1"					"ursa_enfos_abandoned_heart"				// Ability 1
+	"Ability2"					"generic_enfos_combat_mastery"				// Ability 2
+	"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
+	"Ability4"					"ursa_enfos_muses_inspiration"
+	"Ability6"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+	"Ability5"				"enfos_attribute_bonus"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"				"1"								// Physical protection.
+	
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackRate"				"1.5"									// Speed of attack.
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackRange"				"140"									// Range within a target can be attacked.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"			"9"									// Base strength
+	"AttributeStrengthGain"			"3"									// Strength bonus per level.
+	"AttributeBaseAgility"			"5"									// Base agility
+	"AttributeAgilityGain"			"1.66"									// Agility bonus per level.
+	"AttributeBaseIntelligence"		"4"									// Base intelligence
+	"AttributeIntelligenceGain"		"1.33"									// Intelligence bonus per level.
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.5"									// Turning rate.
+
+	// Status
+	//-------------------------------------------------------------------------------------------------------------
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+
+	"Team"						"Bad"
+}

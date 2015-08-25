@@ -1,0 +1,81 @@
+"tempest_burst_proxy"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"puck_dream_coil"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastRange"				"0"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle"			"particles/neutral_fx/tornado_ambient.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_tempest_burst_dummy"
+		{
+			"Passive"		"1"
+			"ThinkInterval"			"0.5"
+			"OnIntervalThink"
+			{
+				"ApplyModifier"
+				{
+					"Target"
+					{
+						"Center"			"CASTER"
+						"Radius"			"%radius"
+						"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"ModifierName"			"modifier_tempest_burst"
+				}
+			}
+		}
+		"modifier_tempest_burst"
+		{
+			"Duration"				"%duration"
+			"ThinkInterval"			"1.0"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/neutral_fx/tornado_ambient.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+			}
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/tempest.lua"
+					"Function"			"burst"
+					"damage"		"%damage_per_second"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"			"240 250 260 270 280 290 300 310 320 330"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_second"				"80 150 300 500 780 1150 1600 2200 3000 3900"
+		}
+	}	
+}

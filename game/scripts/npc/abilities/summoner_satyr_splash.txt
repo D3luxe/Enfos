@@ -1,0 +1,33 @@
+"summoner_satyr_splash"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ogre_magi_bloodlust"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{
+		"modifier_summoner_satyr_splash"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"OnAttackLanded"
+			{
+				"CleaveAttack" //far
+				{
+					"CleavePercent"	"25"
+					"CleaveRadius"	"190"
+				}
+				"CleaveAttack" //medium
+				{
+					"CleavePercent"	"25"
+					"CleaveRadius"	"140"
+				}
+				"CleaveAttack" //full
+				{
+					"CleavePercent"	"50"
+					"CleaveRadius"	"90"
+				}
+			}
+		}
+	}
+}

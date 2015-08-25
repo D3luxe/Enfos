@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Arcane Mistress - Hailstorm (I don't exactly get this spell. is it supposed be like freezing field? it's not described well)
+//=================================================================================================================
+"arcane_mistress_hailstorm"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"crystal_maiden_freezing_field"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityCooldown"				"120 112 104 96 88 80 72 64 56 48"
+	"AbilityManaCost"				"300 330 360 390 420 450 480 510 540 570"
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0.5"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityChannelTime"			"10" //Verified
+	"AbilityDuration"				"10"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+			"Function"				"Hailstorm"
+			"Target"				"POINT"
+			"radius"				"%radius"
+			"damage"				"%damage"
+		}
+	}
+	"OnChannelFinish"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+			"Function"				"HailstormEnd"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"340 360 380 400 420 440 460 480 500 520"
+		}	
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"			"500 850 1375 2075 2950 4000 5225 6625 8200 9950"
+		}
+	}
+}

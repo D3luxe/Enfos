@@ -1,0 +1,53 @@
+//=================================================================================================================
+// Shadow Priest: Greater Hallucination
+//=================================================================================================================
+"shadow_priest_greater_hallucination"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"dark_seer_wall_of_replica"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"80 75 70 65 60 55 50 45 40 35"
+	"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+	"AbilityCastRange"				"1000"
+	"LevelsBetweenUpgrades"			"3"
+	"RequiredLevel"					"6"
+	"precache"
+	{
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_morphling.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/shadow_priest.lua"
+			"Function"				"greater_hallucination"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Morphling.Replicate"
+			"Target"				"TARGET"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_FLOAT"
+			"outgoing_damage"		"7 14 21 28 35 42 49 56 63 70" //this has another weird scaling on the site that I'm assuming is a typo
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"incoming_damage"		"145 140 135 130 125 120 115 110 105 100"
+		}
+	}
+}	

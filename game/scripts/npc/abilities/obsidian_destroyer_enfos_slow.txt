@@ -1,0 +1,74 @@
+//=================================================================================================================
+// Obsidian Destroyer - Slow
+//=================================================================================================================
+"obsidian_destroyer_enfos_slow"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"chen_penitence"
+	"MaxLevel"						"10"
+	
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"100 92 84 76 68 60 52 44 36 28"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"10 20 30 40 50 60 70 80 90 100"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
+	"AbilityCastRange"				"99999"
+	
+	"OnSpellStart"
+	{
+		
+		"ApplyModifier"
+		{
+			"Target"	   "TARGET"	
+			"ModifierName" "modifier_slow"
+
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_slow"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties" 
+			 {
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+			 }
+		}		
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_speed"			"-30 -36 -42 -48 -54 -60 -66 -72 -78 -84"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_speed"			"-30 -36 -42 -48 -54 -60 -66 -72 -78 -84"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"					"20"
+		}
+	}
+}

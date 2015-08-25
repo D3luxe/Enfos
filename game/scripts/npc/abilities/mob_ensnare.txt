@@ -1,0 +1,98 @@
+"mob_ensnare"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"BaseClass"						"ability_datadriven"
+	"MaxLevel"						"1"
+
+	// Unit Targeting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"500"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"10.0"
+	"AbilityManaCost"				"0"
+	"precache"
+	{
+		"particle"	"particles/neutral_fx/dark_troll_ensnare.vpcf"
+		"particle"	"particles/basic_projectile/basic_projectile.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"RemoveModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_mob_ensnare"
+		}
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/basic_projectile/basic_projectile.vpcf"
+			"MoveSpeed"				"1000"
+			"EffectAttachType"		"follow_origin" //attach_hitloc?
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/mobs/giant_spider.lua"
+			"Function"				"ensnare"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mob_ensnare"
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+
+			"EffectName" "particles/neutral_fx/dark_troll_ensnare.vpcf"
+			"EffectAttachType" "attach_hitloc"
+			"Duration"					"%duration"
+
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+		"modifier_mob_ensnare_checker"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"Target" 			"ATTACKER"
+					"ModifierName"		"modifier_mob_ensnare_target"
+				}
+			}
+		}
+		"modifier_mob_ensnare_target"
+		{
+			"Duration"	"2"
+			"IsHidden"	"1"
+		}
+	}	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"2"
+		}
+	}
+}

@@ -1,0 +1,59 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/enfos_diff.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/enfos_diff.js" />
+	</scripts>
+	
+
+	<Panel class='TestPanelPro'>
+		<Panel id="Loading" visible="false">
+			<Image   src="file://{images}/custom_game/backg.png" />
+
+			<Image   src="file://{images}/custom_game/ButtonLevel0.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel1.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel2.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel3.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel4.png" />
+
+			<Image   src="file://{images}/custom_game/ButtonLevel0_glow.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel1_glow.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel2_glow.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel3_glow.png" />
+			<Image   src="file://{images}/custom_game/ButtonLevel4_glow.png" />
+		</Panel>
+		<Panel id="DiffIcon">
+			<Label id="Diff_Title" text="#difficulty0" html="true" class="DiffTitle" />
+			<Label id="Diff_Title0" text="#difficulty0" class="DiffTitle Hidden" />
+			<Label id="Diff_Title1" text="#difficulty1" class="DiffTitle Hidden" />
+			<Label id="Diff_Title2" text="#difficulty2" class="DiffTitle Hidden" />
+			<Label id="Diff_Title3" text="#difficulty3" class="DiffTitle Hidden" />
+			<Label id="Diff_Title4" text="#difficulty4" class="DiffTitle Hidden" />
+		</Panel>
+		<Panel class='TestParent'>
+			<Panel class="TitleHolder">
+				<Label class="DifficultyTitle" text="#select_difficulty"/>
+			</Panel>
+			<Panel class="DifficultyTextHolder">
+				<Label id="Diff_Text" class="DifficultyText" text="#difficulty_text" />
+				<Label id="Diff_Text0" class="DifficultyText Hidden" text="#difficulty0_text"/>
+				<Label id="Diff_Text1" class="DifficultyText Hidden" text="#difficulty1_text" html="true" />
+				<Label id="Diff_Text2" class="DifficultyText Hidden" text="#difficulty2_text" html="true" />
+				<Label id="Diff_Text3" class="DifficultyText Hidden" text="#difficulty3_text" html="true" />
+				<Label id="Diff_Text4" class="DifficultyText Hidden" text="#difficulty4_text" html="true" />
+			</Panel>
+			<Panel class="DifficultyHolder">
+				<RadioButton group="Diff" id="Diff0" class='Difficulty' onactivate="OnDifficultyPick(0)" />
+				<RadioButton group="Diff" id="Diff1" class='Difficulty' onactivate="OnDifficultyPick(1)" />
+				<RadioButton group="Diff" id="Diff2" class='Difficulty' onactivate="OnDifficultyPick(2)" />
+				<RadioButton group="Diff" id="Diff3" class='Difficulty' onactivate="OnDifficultyPick(3)" />
+				<RadioButton group="Diff" id="Diff4" class='Difficulty' onactivate="OnDifficultyPick(4)" />
+			</Panel>
+
+			<Button id="VoteButton" onactivate="OnDifficultyChosen()" >
+				<Label text="#vote_difficulty" />
+			</Button>
+		</Panel>
+	</Panel>
+</root>

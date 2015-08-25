@@ -1,0 +1,68 @@
+//=================================================================================================================
+// Ahlen: Cataclysmic Strike
+//=================================================================================================================
+"ahlen_cataclysmic_strike_proxy"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+	"BaseClass" 					"spirit_breaker_charge_of_darkness"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_spirit_breaker"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
+	"AbilityCastRange"				"0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"120 115 110 105 100 95 90 85 80 75"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportValue"	".30" // applies multiple modifiers
+	
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movement_speed"		"2000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_duration"			"16.5 18 19.5 21 22.5 24 25.5 27 28.5 30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_radius"			"275 300 325 350 375 400 425 450 475 500"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"vision_radius"			"400 400 400 400"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"vision_duration"		"0.94 0.94 0.94 0.94"
+		}
+	}
+}

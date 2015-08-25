@@ -1,0 +1,111 @@
+"ahlen_cataclysmic_strike"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName"			"spirit_breaker_charge_of_darkness"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
+	"AbilityCastRange"				"2000"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"120 115 110 105 100 95 90 85 80 75"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"CASTER"
+			"ModifierName"		"modifier_cataclysmic_strike"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/ahlen.lua"
+			"Function"				"cataclysmic_strike"
+		}
+	}
+	"Modifiers"    				// Can be used to create custom modifier. 
+	{  							// There are many snippets that can be expanded in to the modifiers. 
+		"modifier_cataclysmic_strike"   	// This should be the name of your modifier
+		{
+			// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+			"IsPurgable"				"false"
+			"IsHidden"					"1"
+			"Duration"					"20"
+			"OnAttackLanded"
+			{
+				"Damage"
+				{
+					"Type" "DAMAGE_TYPE_PHYSICAL"
+					"Damage" "999999"
+					"Target"	"TARGET"
+				}
+				"ApplyModifier"
+				{
+					"Target"
+					{
+						"Center" "TARGET"
+						"Radius" "%bash_radius"
+						"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"ModifierName"		"modifier_cataclysmic_strike_stun"
+				}
+				"RemoveModifier"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"modifier_cataclysmic_strike"
+				}
+
+			}
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"1000" //Helps Ahlen immediately attack the target it charges with less time to cancel it.
+			}
+		}
+		"modifier_cataclysmic_strike_stun"
+		{
+			"Duration" "%stun_duration"
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movement_speed"		"2000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"stun_duration"			"16.5 18 19.5 21 22.5 24 25.5 27 28.5 30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bash_radius"			"275 300 325 350 375 400 425 450 475 500"
+		}
+	}
+}

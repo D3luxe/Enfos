@@ -1,0 +1,103 @@
+"spellbringer_jomays_legacy_dummy"
+{
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName"            "rubick_empty1"
+	"MaxLevel"                      "1"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_alchemist"
+	}
+	"Modifiers"
+	{
+		"jomays_legacy_dummy"
+		{
+			"Duration"				"%duration"
+			"Passive"           	"1"
+			"IsHidden"				"1" 
+			"OnCreated"
+			{
+				"CreateThinker"
+				{
+					"Target"		"CASTER"
+					"ModifierName"	"jomays_legacy_thinker"
+				}
+
+			}   
+			"States"
+			{
+				"MODIFIER_STATE_UNSELECTABLE" "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"CASTER"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+		}
+
+		"jomays_legacy_thinker"
+		{
+			"Duration"		"%duration"
+            "Aura" "create_jomays_legacy_aura"
+            "Aura_Radius" "%radius"
+            "Aura_Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+            "Aura_Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+            "Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "EffectName" "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf"
+                    "EffectAttachType" "follow_origin"
+                    "Target" "TARGET"
+                    "ControlPoints"
+                    {
+                        "00" "0 0 0"
+                        "01" "%radius 1 1"
+                    }
+                }
+            }
+		}
+		"create_jomays_legacy_aura"
+        {
+            "IsDebuff" "1"
+            "IsPurgable" "0"
+            "EffectName" "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf"                
+            "ThinkInterval" "1.0"
+            "OnIntervalThink"
+            {
+                "RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+					"Function"		"jomays_legacy_tick"
+					"target"		"TARGET"
+				}
+            }
+        }
+
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"20"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"radius"						"800"
+		}
+	}
+}

@@ -1,0 +1,67 @@
+//=================================================================================================================
+// Oak - Backfire Aura
+//=================================================================================================================
+"oak_backfire_aura"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"centaur_return"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_centaur/"
+	}
+	"OnUpgrade"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_backfire_aura_aura"
+			"Target"					"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_backfire_aura_aura"
+			"Target"					"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_backfire_aura_aura"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Aura"					"modifier_backfire_aura"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP" //should it work on basic?		
+			"Aura_ApplyToCaster"	"1"		
+		}
+		"modifier_backfire_aura"
+		{
+			"OnAttacked"
+			{	
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/holywarrior.lua"
+					"Function"				"TippingTheScales"
+					"damage_reflected"		"%damage_reflection_pct"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reflection_pct"	"9 18 27 36 45 54 63 72 81 90"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"300 400 500 600 700 800 900 1000 1100 1200"
+		}
+	}
+}

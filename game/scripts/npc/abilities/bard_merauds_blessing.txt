@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Bard: Meraud's Blessing
+//=================================================================================================================
+"bard_merauds_blessing"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"crystal_maiden_brilliance_aura"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"10"
+	"AbilityManaCost"				"2 3 5 8 12 17 22 28 35 42"
+	"AbilityCooldown"				"1"
+	"AOERadius"						"%radius"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_impact_b.vpcf"
+		"soundfile"					"soundevents/game_sounds_creeps.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/bard.lua"
+			"Function"				"merauds_blessing"
+		}
+		"FireEffect"
+		{
+			"EffectName"			"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_impact_b.vpcf"
+			"EffectAttachType"		"follow_origin"
+			"Target"				"CASTER"
+		}
+		"FireSound"
+		{
+			"Effectname"			"n_creep_ForestTrollHighPriest.Heal"
+			"Target"				"CASTER"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_restored"			"4 8 14 22 32 44 58 74 92 112"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"700"  //probably don't put on tooltip
+		}			
+	}
+}		

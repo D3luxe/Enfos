@@ -1,0 +1,33 @@
+"summoner_hellbear_lifesteal"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"skeleton_king_mortal_strike"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{	
+		"modifier_summoner_hellbear_lifesteal"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target"			"TARGET"
+					"LifestealPercent"	"%lifesteal"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"lifesteal"				"40"
+		}		
+	}
+}

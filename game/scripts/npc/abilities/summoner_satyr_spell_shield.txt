@@ -1,0 +1,7 @@
+"summoner_satyr_spell_shield" //does nothing right now
+{
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"omniknight_repel" //we use this icon too much probably
+	"MaxLevel"						"1"
+}

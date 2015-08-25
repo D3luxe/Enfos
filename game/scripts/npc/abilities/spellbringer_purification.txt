@@ -1,0 +1,49 @@
+"spellbringer_purification"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"shadow_demon_demonic_purge"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+
+	"AbilityManaCost"	"100"
+	"AbilityCooldown"	"60"
+	"AOERadius"			"%radius"
+
+	"MaxLevel"						"1"
+	"AbilityCastRange"	"0"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"purification"
+			"target"		"POINT"
+			"radius"		"%radius"
+		}
+	}
+	"Modifiers"
+	{
+		"spellbringer_modifier"
+		{
+			"Passive"           	"1"
+			"IsHidden"				"1"    
+			"States"
+			{
+				"MODIFIER_STATE_ATTACK_IMMUNE"    "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"radius"						"600"
+		}
+	}
+}

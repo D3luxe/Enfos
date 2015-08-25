@@ -1,0 +1,82 @@
+//=================================================================================================================
+// Elite Elven Boots
+//=================================================================================================================
+"item_elite_elven_boots"
+{
+	"ID"                            "2039"
+	"BaseClass"                     "item_datadriven"
+	"AbilityTextureName"			"item_travel_boots"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityCooldown"				"30.0"
+
+	"ItemCost"                      "1" 		
+	"ItemShopTags"					"boot"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"ItemDroppable"					"1"
+	"ItemSellable"					"1"
+	"ItemKillable"					"0"
+	"ItemDisassemblable"			"0"
+	"ItemQuality"					"epic"
+	"IsUnique"							"1"
+
+	"AbilityCastRange"	"0"
+
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"blink"
+			"Target"	"POINT"
+			"Range"	"%blink_range"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_elite_elven_boots"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%move_speed"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%evasion"
+			}	
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"blink_range"			"1000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agi"				"3"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int"				"3"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"				"50"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"15"
+		}
+	}
+}

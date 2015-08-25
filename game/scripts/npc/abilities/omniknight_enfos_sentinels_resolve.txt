@@ -1,0 +1,40 @@
+//=================================================================================================================
+// Sentinel's Resolve
+//=================================================================================================================
+"omniknight_enfos_sentinels_resolve"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"dragon_knight_dragon_tail"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+	
+
+	"Modifiers"
+	{
+		"modifier_sentinels_resolve"
+		{
+			"IsHidden"	"1"
+			"Passive"	"1"
+			 
+			 "Properties"
+			 {
+			   "MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor"
+			 }
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor"		"4 8 12 16 20 24 28 32 36 40"
+		}
+	}
+	
+}

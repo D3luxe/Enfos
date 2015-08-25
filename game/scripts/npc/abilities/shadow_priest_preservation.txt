@@ -1,0 +1,47 @@
+//=================================================================================================================
+// Dazzle: Shadow Priest
+//=================================================================================================================
+//=================================================================================================================
+// Shadow Priest: Preservation
+//=================================================================================================================
+"shadow_priest_preservation"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"warlock_shadow_word"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCooldown"				"190"
+	"AbilityManaCost"				"0"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_visage/visage_summon_familiars_grnd_energy.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_oracle.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/shadow_priest.lua"
+			"Function"				"preservation"
+		}
+		"FireEffect"
+		{
+			"EffectName"		 "particles/units/heroes/hero_visage/visage_summon_familiars_grnd_energy.vpcf"
+			"EffectAttachType"	 "follow_origin"
+			"Target"			 "CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_Oracle.FalsePromise.Healed"
+			"Target"			"CASTER"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lives"					"1"
+		}			
+	}
+}	

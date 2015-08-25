@@ -1,0 +1,65 @@
+//===============================================
+//	Winged Leather Boots
+//===============================================
+"item_winged_leather_boots"
+{
+	"ID"                            "2040"
+	"ItemCost"						"400"
+	"ItemQuality"					"component"
+	//"ItemStockMax"					"5"
+	//"ItemStockInitial"				"5"
+	//"ItemStockTime"					"120.0"
+
+	// Item Info
+	//--------------------------------------------------------------------
+	"BaseClass"						"item_datadriven"
+
+	"AbilityTextureName"			"item_boots"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityCooldown"				"30.0"
+
+	"AbilityCastRange"				"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"blink"
+			"Target"	"POINT"
+			"Range"	"%blink_range"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_winged_leather_boots"
+		{
+			"Passive"		"1"
+			"IsHidden"		"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"blink_range"		"1050"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agi"				"3"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int"				"3"
+		}
+	}
+}

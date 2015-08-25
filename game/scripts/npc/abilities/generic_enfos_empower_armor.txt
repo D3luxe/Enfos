@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Generic: Empower Armor Innate
+//=================================================================================================================
+"generic_enfos_empower_armor"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"tiny_craggy_exterior"
+	"MaxLevel"					"1"
+
+
+	"Modifiers"
+	{
+		"modifier_empower_armor"
+		{
+			"Passive" "1"
+			"IsHidden"	"1"
+			 
+			"OnTakeDamage"
+			{
+				"Random"
+				{
+					"Chance" "%chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"		"scripts/vscripts/heroes/magic_infuser.lua"
+							"Function"		"Empower_Armor"
+						}
+					}
+				}
+			}
+		}		
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"chance"		"3"
+		}	
+	}
+
+	
+}

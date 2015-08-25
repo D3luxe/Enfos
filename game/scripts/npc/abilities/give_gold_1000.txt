@@ -1,0 +1,8 @@
+"give_gold_1000"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"give_gold_1000"
+}

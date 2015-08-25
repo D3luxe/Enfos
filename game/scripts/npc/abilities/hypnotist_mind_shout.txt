@@ -1,0 +1,43 @@
+//=================================================================================================================
+// Hypnotist: Mind Shout
+//=================================================================================================================
+"hypnotist_mind_shout"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"rattletrap_rocket_flare"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"150 140 130 120 110 100 190 80 70 60"
+	"AbilityManaCost"				"160 175 190 205 220 235 250 265 280 305"
+	"Precache"
+	{
+		"model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+			"Function"				"MindShout"
+			"duration"				"%duration"
+			"radius"				"%radius"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"750"
+		}
+	}
+}

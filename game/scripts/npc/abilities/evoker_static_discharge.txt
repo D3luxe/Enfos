@@ -1,0 +1,76 @@
+//=================================================================================================================
+// Evoker: Static Discharge
+//=================================================================================================================
+"evoker_static_discharge" //I'm very slightly changing the functionality of this. Instead of being targetted (which causes weird autocast issues), it's just a toggle that randomly zaps enemies.
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"razor_eye_of_the_storm"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"0.1"
+	"AbilityManaCost"				"0" //Only costs mana when it zaps a target
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_zuus/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	}
+	"OnToggleOn"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"		"modifier_evoker_static_discharge"
+			"Target"			"CASTER"
+		}
+	}
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"		"modifier_evoker_static_discharge"
+			"Target"			"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_evoker_static_discharge"
+		{
+			"ThinkInterval"		"0.2" //the actual interval doesn't seem to be posted anywhere
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+					"Function"		"StaticDischarge"
+				}
+			}
+		}
+		"modifier_evoker_static_discharge_debuff"
+		{
+			"Duration"				"30"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reduction"		"-50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_cost"				"8"
+		}
+	}	
+}

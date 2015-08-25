@@ -1,0 +1,85 @@
+"mob_curse"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityTextureName"			"skywrath_mage_ancient_seal"
+	"BaseClass" 					"ability_datadriven"
+	"MaxLevel"						"1"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.3"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"8"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40"
+
+	"precache"
+	{
+		"particle"	"particles/generic_gameplay/dropped_dust.vpcf"
+		"particle"	"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf"
+
+	}
+
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_skywrath_mage/skywrath_mage_concussive_shot.vpcf"
+			"MoveSpeed"				"1000"
+			"EffectAttachType"		"follow_origin" //attach_hitloc?
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
+			"Function"				"curse"
+		}
+	}
+
+	"Modifiers"
+	{
+
+		"modifier_mob_curse"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties"
+			 {
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"	 "%miss_chance"
+			 }
+			
+			"EffectName" "particles/generic_gameplay/dropped_dust.vpcf"
+			"EffectAttachType" "attach_hitloc"
+		}
+	}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"15"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"miss_chance"				"20"
+		}
+	}		
+
+}

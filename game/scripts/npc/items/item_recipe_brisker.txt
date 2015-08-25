@@ -1,0 +1,25 @@
+//===============================================
+// Brisker
+//===============================================
+"item_recipe_brisker"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"                            "2011"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                        "item_recipe_arcane_boots"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"7000"	
+	"ItemShopTags"					""
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_brisker"
+	"ItemRequirements"
+	{
+		"01"						"item_polished_elven_telo;item_polished_elven_telo;item_zircon_inset_ring"
+	}
+}

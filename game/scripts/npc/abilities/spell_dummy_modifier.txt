@@ -1,0 +1,40 @@
+//=================================================================================================================
+// Dummy unit spell
+//=================================================================================================================
+"spell_dummy_modifier"
+{
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName"            "rubick_empty1"
+	"MaxLevel"                      "1"
+	"Modifiers"
+	{
+		"modifier_dummy_modifier"
+		{
+			"Passive"           	"1"
+			"IsHidden"				"1"    
+			//"Properties"
+			//{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+			//	"MODIFIER_PROPERTY_HEALTH_BONUS"	"%health_bonus"
+			//	"MODIFIER_PROPERTY_MANA_BONUS"	"%mana_bonus"
+			//	"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			//}
+			"OnCreated"
+			{
+				//"RunScript"
+				//{
+				//	"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
+				//	"Function"				"ModifyHealthStat"
+				//}
+				//"RunScript"
+				//{
+				//	"ScriptFile"			"scripts/vscripts/custom_scripted_abilities.lua"
+				//	"Function"				"ModifyArmorStat"
+				//}
+			}
+	
+
+		}
+	}
+}

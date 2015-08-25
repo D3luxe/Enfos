@@ -1,0 +1,108 @@
+//=================================================================================================================
+// Empower Axe
+//=================================================================================================================
+"ogre_magi_enfos_empower_axe"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_mana_break"
+	"MaxLevel"					"10"
+	"RequiredLevel"				"6"
+	"LevelsBetweenUpgrades"		"3"
+
+	"precache"
+	{
+		"particle_folder"	"particles/items_fx/"
+	}
+
+	"OnChannelSucceeded"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_empower_axe_armor"
+			"Target"
+			{
+				"Center"		"CASTER"
+				"Radius"		"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_zuus/zuus_base_attack_explosion_core.vpcf"
+			"EffectAttachType"	"attach_hitloc"	
+			"Target"			 "CASTER"
+		}
+		
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_empower_axe"
+		{
+			"Passive" "1"
+			"IsHidden"	"1"
+			 
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/heroes/magic_infuser.lua"
+							"Function"		"MagicInfuserSpendMana"
+							"manacost"		"4"
+						}
+					}
+				}
+			}
+		}
+
+		"modifier_empower_axe_armor"
+		{
+			"Duration" "%duration"
+			"EffectName" "particles/items_fx/desolator_projectile_trail_ribbon.vpcf"
+			"EffectAttachType" "follow_overhead"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor"
+			}
+
+		}	
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"chance"		"12 14 16 18 20 22 24 26 28 30"
+		}	
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"armor"		"-9 -12 -15 -18 -21 -24 -27 -30 -33 -36"
+		}
+		"03"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"3"
+		}	
+		"04"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"600"
+		}		
+	}
+}

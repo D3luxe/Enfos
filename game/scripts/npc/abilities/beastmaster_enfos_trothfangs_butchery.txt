@@ -1,0 +1,105 @@
+//=================================================================================================================
+// Beastmaster: Trothfang's Butchery
+//=================================================================================================================
+"beastmaster_enfos_trothfangs_butchery"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"lycan_howl"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"30"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	"AOERadius"						"%radius"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"15 20 25 30 35 40 45 50 55 60"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"particles/dire_fx/bad_ancient002_destruction_sphere.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"%radius"
+		}
+		
+		"Damage"
+		{
+			"Type" "DAMAGE_TYPE_MAGICAL"
+			"Damage" "%damage"
+			"Target"
+			{
+				"Center" "CASTER"
+				"Radius" "%radius"
+				"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_trothfangs_butchery"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_trothfangs_butchery"
+		{
+			 "Duration" "%duration"
+			 "OverrideAnimation" "ACT_DOTA_DISABLED"
+			 
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}		
+			
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"20 30 45 67.5 101.25 151.88 227.81 341.72 512.58 768.87"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"300"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"2 3 4 5 6 7 8 9 10 11"
+		}
+	}
+	
+}

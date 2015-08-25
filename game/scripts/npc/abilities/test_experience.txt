@@ -1,0 +1,52 @@
+"test_experience"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"slardar_slithereen_crush"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"1"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_add_exp"
+			"Target"	   "CASTER"	
+		}
+		
+	}
+	
+	"Modifiers"
+	{
+		"modifier_add_exp"
+		{
+			"Duration" "40"
+			
+			"OnKill"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"custom_scripted_abilities.lua"
+					"Function"		"AddExperience"
+					"expamt"		"2000"
+				}
+			}
+		}
+	}
+}

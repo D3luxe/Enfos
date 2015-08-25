@@ -1,0 +1,31 @@
+"item_spellbringer_summon_havroth"
+{
+	"ID"							"3010"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"spellbringer_greater_darkrift"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityCooldown"				"90"
+	"AbilityManaCost"				"1"		//475
+	"AbilityCastRange"				"0"
+	"ItemDroppable"					"1"
+	"ItemSellable"					"0"
+	"ItemPurchasable"				"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"AbilityManaCost"	"360"
+	"AbilityCooldown"	"60"
+	"AbilityCastRange"	"0"
+	"Precache"
+	{
+		"model"				"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"summon_havroth"
+			"target"		"POINT"
+		}
+	}
+}

@@ -1,0 +1,35 @@
+//=================================================================================================================
+// HERO: Earth Spirit: Entropist
+//=================================================================================================================
+"npc_dota_hero_earth_spirit_enfos"
+{
+	"override_hero"				"npc_dota_hero_earth_spirit"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"entropist_fist_of_stone"
+	"Ability2"					"generic_ethereal_shield"
+	"Ability3"					"entropist_tremor"
+	"Ability4"					"entropist_ring_of_spears"
+	"Ability6"					"entropist_sure_footing"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
+	"AttributeBaseStrength" 	"9"
+	"AttributeStrengthGain" 	"3"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "6" 
+	"AttributeIntelligenceGain" "2" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.4"
+	"AttackRange"               "140"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"9.5"
+	"AttackDamageMax" 			"16.5"	
+	"Team"						"Bad"
+}

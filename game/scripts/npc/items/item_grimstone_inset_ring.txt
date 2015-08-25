@@ -1,0 +1,42 @@
+//===============================================
+// Grimstone-Inset Ring
+//===============================================
+"item_grimstone_inset_ring"
+{
+	"ID"                            "2026"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_ring_of_regen"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "10000" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_grimstone_inset_ring"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"				"200"
+		}
+	}
+}

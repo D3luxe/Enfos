@@ -1,0 +1,26 @@
+//===============================================
+// Uthmor's Mirror Blade
+//===============================================
+"item_recipe_uthmors_mirror_blade"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"                            "2043"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                        "item_recipe_arcane_boots"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"10000"	
+	"ItemShopTags"					""
+	"SecretShop"					"1"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_uthmors_mirror_blade"
+	"ItemRequirements"
+	{
+		"01"						"item_tkashi_mirror_blade;item_uthmors_skullcleaver"
+	}
+}

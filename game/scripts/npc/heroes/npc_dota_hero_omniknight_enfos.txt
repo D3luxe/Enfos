@@ -1,0 +1,55 @@
+//=================================================================================================================
+// HERO: Omniknight - Marcus, the Ahlen
+//=================================================================================================================
+"npc_dota_hero_omniknight_enfos"
+{
+	"override_hero"				"npc_dota_hero_omniknight"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"				"5"
+	"Ability1"				"ahlen_apocalyptic_strike"
+	"Ability2"				"generic_enfos_combat_mastery"
+	"Ability3"				"ahlen_cataclysmic_strike"
+	"Ability4"				"ahlen_dragon_dance"
+	"Ability6"				"ahlen_innate"
+	"Ability5"				"enfos_attribute_bonus"
+	"Ability7"				"ahlen_cataclysmic_strike_proxy"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"				"1"									// Physical protection. // 2.94
+
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackRate"				"1.7"									// Speed of attack.
+	"AttackAnimationPoint"		"0.5"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackRange"				"128"									// Range within a target can be attacked.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"9"									// Base strength
+	"AttributeStrengthGain"		"3"									// Strength bonus per level.
+	"AttributeBaseAgility"		"6"									// Base agility
+	"AttributeAgilityGain"		"2"									// Agility bonus per level.
+	"AttributeBaseIntelligence"	"3"									// Base intelligence
+	"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.5"									// Turning rate.
+	
+	// Status
+	//-------------------------------------------------------------------------------------------------------------
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+
+}

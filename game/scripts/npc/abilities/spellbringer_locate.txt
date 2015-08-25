@@ -1,0 +1,41 @@
+"spellbringer_locate"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"lone_druid_spirit_bear_return"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+
+	"AbilityManaCost"	"50"
+	"AbilityCooldown"	"20"
+	"AOERadius"			"%radius"
+
+	"MaxLevel"						"1"
+	"AbilityCastRange"	"0"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"locate"
+			"target"		"POINT"
+		}
+	}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"30"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"radius"						"800"
+		}
+	}
+
+}

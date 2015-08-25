@@ -1,0 +1,66 @@
+//===============================================
+// Stone Axe
+//===============================================
+"item_stone_axe"
+{
+	"ID"                            "2050"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"stone_axe"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "40" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"30"
+	"IsArtifact"							"1"
+
+	"OnEquip"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"CASTER"
+			"ModifierName"		"modifier_stone_axe"
+		}
+
+	}
+	"OnUnequip"
+	{
+		"RemoveModifier"
+		{
+			"Target" 			"CASTER"
+			"ModifierName"		"modifier_stone_axe"
+		}
+
+	}
+	"Modifiers"
+	{
+		"modifier_stone_axe"
+		{
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+			"OnAttackLanded"
+			{
+				"SpendCharge"
+				{}
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"60"
+		}
+	}
+}	

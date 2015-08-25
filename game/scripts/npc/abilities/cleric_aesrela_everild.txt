@@ -1,0 +1,98 @@
+//=================================================================================================================
+// Cleric: Aesrela Everild
+//=================================================================================================================
+"cleric_aesrela_everild"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"mirana_starfall"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED"
+	"AbilityCooldown"				"150"
+	"AbilityManaCost"				"120 126 135 147 162 180 201 225 252 282"
+	"AOERadius"						"400"
+	"AbilityCastPoint"				"0.5"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityChannelTime"			"7.5"
+	"AbilityDuration"				"7.5"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT" //lol
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_mirana"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts" 
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+			"Function"				"AesrelaEverildStart"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+			"Function"				"AesrelaEverild"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_aesrela_everild"
+			"Target"				"CASTER"
+		}
+	}
+	"OnChannelInterrupted"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+			"Function"				"AesrelaEverildEnd"
+		}
+		
+	}
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"			"modifier_aesrela_everild"
+			"Target"				"CASTER"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+			"Function"				"AesrelaEverildEnd"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_aesrela_everild"
+		{
+			"IsHidden"	"1"
+			"ThinkInterval"			"0.4"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/cleric.lua"
+					"Function"				"AesrelaEverild"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"			"400 600 800 1300 1800 2500 3800 5800 8000 10000"
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"400"
+		}	
+		"03"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"duration"			"7.5"
+		}
+	}
+}

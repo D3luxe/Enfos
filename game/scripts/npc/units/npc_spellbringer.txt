@@ -1,0 +1,88 @@
+//=================================================================================
+// Spellbringer
+//=================================================================================
+"npc_spellbringer"
+{
+	// General
+	//
+	"BaseClass"					"npc_dota_tower"	// Class of entity of link to.
+	"Model"						"models/props_structures/tower_good4.vmdl"// Model.
+	"SoundSet"					"Tower.Water"					// Name of sound set.
+	"MinimapIcon"				"minimap_tower90"
+	"MinimapIconSize"			"200"
+	"Level"						"1"
+	
+	// Abilities
+	//----------------------------------------------------------------
+	"AbilityLayout"				"6"
+	"Ability1"					"spellbringer_battle_sphere"			// Ability 1.
+	"Ability2"					"spellbringer_limb_disruption"			// Ability 2.
+	"Ability3"					"spellbringer_purification"			// Ability 3.
+	"Ability4"					"spellbringer_locate"			// Ability 4.
+	"Ability5"					"spellbringer_mana_disruption"			// Ability 5.
+	"Ability6"					"spellbringer_spell_disruption"			// Ability 6 - Extra.
+	"Ability7"					"spellbringer_jomays_legacy"			// Ability 6 - Extra.
+	"Ability8"					"spellbringer_glythtides_gift"			// Ability 6 - Extra.
+	"Ability9"					"spellbringer_whole_displacement"			// Ability 6 - Extra.
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"9999"		// Physical protection.
+	"MagicalResistance"			"9999"			// Magical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"AttackDamageMin"			"25"		// Damage range min.
+	"AttackDamageMax"			"50"		// Damage range max.
+	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"AttackRate"				"1"			// Speed of attack.
+	"AttackAnimationPoint"		"0.6"		// Normalized time in animation cycle to attack.
+
+	// Attributes
+	//----------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"0"			// Base strength
+	"AttributeStrengthGain"		"0"			// Strength bonus per level.
+	"AttributeBaseIntelligence"	"0"			// Base intelligence
+	"AttributeIntelligenceGain"	"0"			// Intelligence bonus per level.
+	"AttributeBaseAgility"		"0"			// Base agility
+	"AttributeAgilityGain"		"0"			// Agility bonus per level.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"25"	// Experience earn.
+	"BountyGoldMin"				"0"		// Gold earned min.
+	"BountyGoldMax"				"0"		// Gold earned max.
+
+	// Bounds
+	//----------------------------------------------------------------
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+	"HealthBarOffset"			"260"
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"			// Type of locomotion - ground, air
+	"MovementSpeed"				"0"				// Speed
+	"MovementTurnRate"			"1.0"			// Turning rate.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"999999"		// Base health.
+	"StatusHealthRegen"			"999"			// Health regeneration rate.
+	"StatusMana"				"2000"			// Base mana.
+	"StatusStartingMana"		"50"			// Base mana.
+	"StatusManaRegen"			"1"			// Mana regeneration rate.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_GOODGUYS"			// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_BUILDING"
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"50"		// Range of vision during day light.
+	"VisionNighttimeRange"		"50"		// Range of vision at night time.
+}

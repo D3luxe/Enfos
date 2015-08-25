@@ -1,0 +1,42 @@
+//===============================================
+// Emerald-Inset Ring
+//===============================================
+"item_emerald_inset_ring"
+{
+	"ID"                            "2025"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_emerald_inset_ring"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "750" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_emerald_inset_ring"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"				"12"
+		}
+	}
+}

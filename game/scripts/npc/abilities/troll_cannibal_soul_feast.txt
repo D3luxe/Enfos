@@ -1,0 +1,57 @@
+//=================================================================================================================
+// Troll Cannibal: Soul Feast
+//=================================================================================================================
+"troll_cannibal_soul_feast"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"rubick_spell_steal"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+	"MaxLevel"						"10"
+	"Modifiers"
+	{
+		"modifier_soul_feast_thinker"
+		{
+			"ThinkInterval"			"0.1"
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/troll_cannibal.lua"
+					"Function"		"soul_feast_check"
+				}
+			}
+		}	
+		"modifier_soul_feast_passive_timer"
+		{
+			"Duration"				"%passive_spell_duration"
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/troll_cannibal.lua"
+					"Function"		"soul_feast_passive_check"
+				}
+			}
+		}
+	}	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"passive_spell_duration"	"20"
+		}
+		"02"
+		{
+			//For hypnotist ult
+			"var_type"				"FIELD_INTEGER"
+			"spirits"				"20 26 32 38 44 50 56 62 68 74"
+		}
+	}
+}

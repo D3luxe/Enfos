@@ -1,0 +1,89 @@
+//=================================================================================================================
+// Terrorblade: Faenrae Champion
+//=================================================================================================================
+//=================================================================================================================
+// Faenrae Champion: Faenrae Blood
+//=================================================================================================================
+"faenrae_champion_faenrae_blood"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"riki_smoke_screen"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"1"
+	"AOERadius"						"900"
+	"Modifiers"
+	{
+		"modifier_faenrae_champion_faenrae_blood"
+		{
+			"Passive"					"1"
+			"IsHidden"					"1"
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_faenrae_champion_faenrae_blood_true_sight"
+					"Target"			"CASTER"
+				}
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_faenrae_champion_faenrae_blood_hidden"
+					"Target"			"CASTER"
+				}
+			}
+			"OnAttack"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_faenrae_champion_faenrae_blood_hidden"
+					"Target"			"ATTACKER"
+				}
+			}		
+			"OnAbilityExecuted"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_faenrae_champion_faenrae_blood_hidden"
+					"Target"			"UNIT"
+				}
+			}
+		}
+		
+		"modifier_faenrae_champion_faenrae_blood_hidden"
+		{
+			"IsHidden"					"1"
+			"Duration"					"%fade_time"
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_invisible"
+					"Target"			"CASTER"
+				}
+			}
+		}
+		"modifier_faenrae_champion_faenrae_blood_true_sight"
+		{
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"			"faenrae_blood_true_sight"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"fade_time"				"7"
+		}
+	}
+}

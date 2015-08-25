@@ -1,0 +1,80 @@
+//=================================================================================================================
+// Phantom Assassin - Steelrose, the Paladin
+//=================================================================================================================
+
+//=================================================================================================================
+// Courage
+//=================================================================================================================
+"phantom_assassin_enfos_courage"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"terrorblade_metamorphosis"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_omniknight"
+	}
+	"OnUpgrade"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_courage"
+			"Target"					"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_courage"
+			"Target"					"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_courage"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			
+			"Aura"					"modifiers_courage_aura"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+		}
+		
+		"modifiers_courage_aura"
+		{
+			"EffectName"	"particles/units/heroes/hero_omniknight/omniknight_repel_buff_cylinder.vpcf"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%movespeed"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%regen"
+			}
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"regen"		"4 8 12 16 20 24 28 32 36 40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"		"100 200 300 400 500 600 700 800 900 1000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movespeed"		"20 40 60 80 100 120 140 160 180 200"
+		}
+	}
+	
+}

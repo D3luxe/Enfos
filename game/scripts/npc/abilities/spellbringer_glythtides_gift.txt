@@ -1,0 +1,74 @@
+"spellbringer_glythtides_gift"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"brewmaster_drunken_haze"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	"AbilityManaCost"	"90"
+	"AbilityCooldown"	"90"
+	"MaxLevel"						"1"
+	"AbilityCastRange"	"0"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"		"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"			"glythtides_gift"
+		}
+		"ApplyModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_spellbringer_glythtides_gift"
+		}
+	}
+
+	"Modifiers"    				// Can be used to create custom modifier. 
+	{  							// There are many snippets that can be expanded in to the modifiers. 
+		"modifier_spellbringer_glythtides_gift"   	// This should be the name of your modifier
+		{
+			// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+
+			"EffectName" "particles/generic_gameplay/rune_generic_smoke.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"Duration"					"%duration"
+
+
+		
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE"		"%miss_chance"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+			}
+		}
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"15"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"miss_chance"					"90"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"move_speed"					"-20"
+		}
+	}
+
+}

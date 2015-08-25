@@ -1,0 +1,57 @@
+//===============================================
+// Elder Staff
+//===============================================
+"item_elder_staff"
+{
+	"ID"                            "2008"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_oblivion_staff"
+	//"ItemStockMax"					"5"
+	//"ItemStockInitial"				"5"
+	//"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "1200" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_elder_staff"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"			"75"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int"				"4"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"25"
+		}
+	}
+}

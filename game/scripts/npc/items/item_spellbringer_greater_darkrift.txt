@@ -1,0 +1,100 @@
+//=================================================================================================================
+// Sepllbringer: Greater Darkrift
+//=================================================================================================================
+"item_spellbringer_greater_darkrift" //This unit isn't going to have the lifetime indicator. There is no way around this
+{
+	"ID"							"3009"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"spellbringer_greater_darkrift"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityCooldown"				"90"
+	"AbilityManaCost"				"475"		//475
+	"AbilityCastRange"				"0"
+	"ItemDroppable"					"1"
+	"ItemSellable"					"0"
+	"ItemPurchasable"				"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"Precache" //THIS IS REALLY AWFUL. PLEASE FIGURE OUT WHY PRECACHING IN-ABILITY ISN'T WORKING
+	{
+		"model"						"models/courier/smeevil_crab/smeevil_crab.vmdl"											
+		"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"	
+		"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl"	
+		"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll.vmdl"	
+		"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"										
+		"model"						"models/heroes/beastmaster/beastmaster_beast.vmdl"										
+		"model"						"models/heroes/furion/treant.vmdl"									
+		"model"						"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"											
+		"model"						"models/heroes/lycan/summon_wolves.vmdl"										
+		"model"						"models/heroes/broodmother/spiderling.vmdl"												
+		"model"						"models/items/broodmother/spiderling/thistle_crawler/thistle_crawler.vmdl"												
+		"model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"													
+		"model"						"models/heroes/lone_druid/spirit_bear.vmdl"													
+		"model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"														
+		"model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"															
+		"model"						"models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"														
+		"model"						"models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"														
+		"model"						"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"													
+		"model"						"models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl"											
+		"model"						"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"												
+		"model"						"models/heroes/visage/visage_familiar.vmdl"														
+		"model"						"models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl"												
+		"model"						"models/heroes/beastmaster/beastmaster_bird.vmdl"													
+		"model"						"models/heroes/viper/viper.vmdl"													
+		"model"						"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"											
+		"model"						"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"											
+		"model"						"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"										
+		"model"						"models/heroes/enigma/eidelon.vmdl"										
+		"model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"										
+		"model"						"models/heroes/tidehunter/tidehunter.vmdl"										
+		"model"						"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"										
+		"model"						"models/items/courier/raidcall_ems_one_turtle/raidcall_ems_one_turtle.vmdl"										
+		"model"						"models/heroes/dark_seer/dark_seer.vmdl"										
+		"model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"										
+		"model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"											
+		"model"						"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"											
+		"model"						"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"										
+		"model"						"models/creeps/mega_greevil/mega_greevil.vmdl"											
+		"model"						"models/items/courier/snowl/snowl_flying.vmdl"										
+		"model"						"models/heroes/pudge/pudge.vmdl"											
+		"model"						"models/heroes/weaver/weaver.vmdl"												
+		"model"						"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"											
+		"model"						"models/heroes/life_stealer/life_stealer.vmdl"												
+		"model"						"models/heroes/death_prophet/death_prophet.vmdl"										
+		"model"						"models/heroes/doom/doom.vmdl"												
+		"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"		
+		"model"						"models/development/invisiblebox.vmdl"	
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"				"SummonDarkrift"
+			"Target"				"POINT"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_summoner_summon_darkrift"
+		{
+			"Duration"				"%duration"
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"60"
+		}
+	}
+}

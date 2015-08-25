@@ -1,0 +1,44 @@
+//===============================================
+// Elven Stalking Boots
+//===============================================
+"item_elven_stalking_boots"
+{
+	"ID"                            "2022"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_travel_boots"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "300" 		
+	"ItemShopTags"					"boot"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	//"ItemStockMax"					"3"
+	//"ItemStockInitial"				"3"
+	//"ItemStockTime"					"60.0"
+
+	"Modifiers"
+	{
+		"modifier_elven_stalking_boots"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"				"50"
+		}
+	}
+}

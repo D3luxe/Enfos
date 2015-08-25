@@ -1,0 +1,121 @@
+//=================================================================================================================
+// Omniknight - Grake the Holy Warrior 
+//=================================================================================================================
+
+//=================================================================================================================
+// Fallen One
+//=================================================================================================================
+"omniknight_enfos_fallen_one"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"centaur_double_edge"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"300 285 270 255 240 225 210 195 180 165"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	"OnSpellStart"
+	{
+
+		"ApplyModifier"
+		{
+			"ModifierName" 	"modifier_fallen_one_fx"
+			"Target"		"CASTER"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"custom_scripted_abilities.lua"
+			"Function"		"FallenOneHurtCaster"
+
+		}
+		"ActOnTargets"
+		{
+
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}	
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" 	"modifier_fallen_one"
+					"Target"		"TARGET"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"custom_scripted_abilities.lua"
+					"Function"		"FallenOneHurtEnemies"
+				}	
+			}
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_fallen_one"
+		{
+			"Duration" "%duration"
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+			"States"
+			{
+			"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_fallen_one_fx"
+		{
+			"IsHidden"	"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"					"CASTER"
+					"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+					"EffectAttachType"			"follow_origin"
+					"EffectRadius"				"%radius"
+				}
+			}
+			"Duration" "2"
+
+		}
+	}
+
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_omniknight/"
+
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"		"315 330 345 360 375 390 405 420 435 450"
+		}
+	}
+	
+}

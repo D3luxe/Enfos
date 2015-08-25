@@ -1,0 +1,42 @@
+//=================================================================================================================
+// Lich - Revenant
+//=================================================================================================================
+//=================================================================================================================
+// Revenant - Haunting Spirit
+//=================================================================================================================
+"revenant_haunting_spirit"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"shadow_demon_demonic_purge"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"1"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_skeletonking/"
+	}
+	"Modifiers"
+	{
+		"modifier_revenant_haunting_spirit"
+		{
+			"Passive"				"1"
+			"ThinkInterval"			"10"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/revenant.lua"
+					"Function"		"HauntingSpirit"
+					"radius"		"%radius"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"4000" //it's supposed to be for creeps on your own side. this is close enough
+		}
+	}
+}

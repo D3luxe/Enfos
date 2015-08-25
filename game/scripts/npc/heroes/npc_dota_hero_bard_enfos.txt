@@ -1,0 +1,39 @@
+//=================================================================================================================
+// HERO: Medusa: Bard
+//=================================================================================================================
+"npc_dota_hero_bard_enfos"
+{
+	"override_hero"				"npc_dota_hero_medusa"
+	"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+	"AbilityLayout"				"5"
+	"Ability1"					"bard_faenellas_grace"
+	"Ability2"					"bard_merauds_blessing"
+	"Ability3"					"bard_unnerving_symphony"
+	"Ability4"					"bard_call_of_the_siren"
+	"Ability6"					"bard_nexus"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength" 	"7"
+	"AttributeStrengthGain" 	"2.33"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "8" 
+	"AttributeIntelligenceGain" "2.66" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"			
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" 			"0"
+	"AttackDamageMax" 			"7.5"
+	"AttackRate"                "1.5"
+	"AttackRange"               "1000"									// yes, really
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"1200"									// Range within a target can be acquired.
+}		

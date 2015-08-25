@@ -1,0 +1,42 @@
+//=================================================================================================================
+// HERO: Lina: Empath
+//=================================================================================================================
+"npc_dota_hero_lina_enfos"
+{
+	"override_hero"				"npc_dota_hero_lina"
+	"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+	"AbilityLayout"				"6"
+	"Ability1"					"empath_regenerate"
+	"Ability2"					"empath_transference"
+	"Ability3"					"empath_divine_protection"
+	"Ability4"					"empath_alchemy"
+	"Ability6"					"empath_vitality_healing"
+	"Ability5"					"enfos_attribute_bonus"
+	"Ability7"					"empath_nissas_binding"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
+	"AttributeBaseStrength" 	"9"
+	"AttributeStrengthGain" 	"5"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "6" 
+	"AttributeIntelligenceGain" "2" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+		
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"ProjectileModel"			"particles/units/heroes/hero_furion/lina_base_attack.vpcf"			// Particle system model for projectile.
+	"AttackDamageMin" 			"0"
+	"AttackDamageMax" 			"0"
+	"AttackRate"                "1.97"
+	"AttackRange"               "600"
+	"AttackAnimationPoint"		"0.500"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+}

@@ -1,0 +1,42 @@
+//=================================================================================================================
+// Dazzle - Hypnotist
+//=================================================================================================================
+//=================================================================================================================
+// Hypnotist: Prediction
+//=================================================================================================================
+"hypnotist_prediction"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"chaos_knight_chaos_strike"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"600" //range not provided on the site
+	"AbilityCooldown"				"200 183 166 149 132 115 98 81 64 47"
+	"AbilityManaCost"				"20 30 45 65 90 120 155 195 240 290"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_ogre_magi/"
+		"particle_folder"			"particles/hero_hypnotist/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts" //maledict
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/hypnotist.lua"
+			"Function"				"Prediction"
+			"attribute_increase"	"%attribute_increase"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attribute_increase"	"6 6 7 8 9 10 11 12 13 14"
+		}
+	}
+}

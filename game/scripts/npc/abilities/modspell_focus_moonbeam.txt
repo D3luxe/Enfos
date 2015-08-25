@@ -1,0 +1,34 @@
+//=================================================================================================================
+// Subspell (Cast by Focus Moonbeam)
+//=================================================================================================================
+"modspell_focus_moonbeam"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"luna_lucent_beam"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"Modifiers"
+	{
+		"modifier_focus_moonbeam"
+		{
+			"IsHidden"				"0"
+			"Passive"				"1"
+			"Aura"					"moonbeam_mana_regen"
+			"Aura_Radius"			"200"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			"Aura_ApplyToCaster"	"1"
+		}
+		"moonbeam_mana_regen"
+		{
+			"IsHidden"				"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASE_MANA_REGEN"		"5" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead.
+			}
+		}
+	}
+}

@@ -1,0 +1,46 @@
+//=================================================================================================================
+// Evoker: Ball Lightning
+//=================================================================================================================
+"evoker_ball_lightning"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"storm_spirit_ball_lightning"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"600" // again, whoever wrote these tooltips on the site is awful
+	"AbilityCooldown"				"120 112 104 96 88 80 72 64 54 48"
+	"AbilityManaCost"				"300 330 360 390 420 450 480 510 540 570"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_stormspirit/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/evoker.lua"
+			"Function"				"BallLightning"
+			"Target"				"POINT"
+			"damage"				"%damage"
+			"duration"				"%duration"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"800 1150 1700 2400 3400 4700 6350 8400 11000 14000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"15"
+		}
+	}	
+}

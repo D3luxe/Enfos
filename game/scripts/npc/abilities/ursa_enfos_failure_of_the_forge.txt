@@ -1,0 +1,54 @@
+//=================================================================================================================
+// Ursa - Failure of the Forge
+//=================================================================================================================
+"ursa_enfos_failure_of_the_forge"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"nevermore_dark_lord"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+		"ursa_aura_failure_of_the_forge"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			
+			"Aura"					"armor_degen"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		}
+		
+		"armor_degen"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduction"
+			}
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"900"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"armor_reduction"		"-3 -5 -7 -9 -11 -13 -15 -17 -19 -21"
+		}
+	}
+}

@@ -1,0 +1,58 @@
+//=================================================================================================================
+// Attack Type
+//=================================================================================================================
+"item_attack_type_modifier"
+{
+	"ID"							"2107"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+
+	"Modifiers"
+	{
+		//Attack Types: - "CombatClassAttack"
+		//--------------
+		//Normal = DOTA_COMBAT_CLASS_ATTACK_BASIC
+		//Pierce = DOTA_COMBAT_CLASS_ATTACK_PIERCE
+		//Siege = DOTA_COMBAT_CLASS_ATTACK_SIEGE
+		//Chaos = DOTA_COMBAT_CLASS_ATTACK_LIGHT
+		//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
+		"modifier_attack_normal"
+		{
+			"TextureName" "item_normal_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_attack_pierce"
+		{
+			"TextureName" "item_pierce_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_attack_siege"
+		{
+			"TextureName" "item_seige_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_attack_chaos"
+		{
+			"TextureName" "item_chaos_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_attack_magical"
+		{
+			"TextureName" "item_magic_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_attack_hero"
+		{
+			"TextureName" "item_hero_attack"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+	}
+}

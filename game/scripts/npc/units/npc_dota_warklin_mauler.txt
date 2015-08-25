@@ -1,0 +1,102 @@
+//=================================================================================
+// Level 39 - Warklin Mauler
+//=================================================================================
+"npc_dota_warklin_mauler"
+{										
+	// General
+	//----------------------------------------------------------------
+	"Model"						"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"	// Model.
+	"BaseClass"					"npc_dota_creature"
+	"SoundSet"					"n_creep_Melee"
+	"Level"						"1"
+	"ModelScale" 					"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_nyx_assassin.vsndevts"
+	"PathfindingSearchDepthScale" "0.1"
+
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"mob_greater_spell_damage_reduction"			// Ability 1
+	"Ability2"					""			// Ability 2
+	"Ability3"					""			// Ability 3
+	"Ability4"					""			// Ability 4
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"50"			// Physical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"4490"		// Damage range min.
+	"AttackDamageMax"			"5490"		// Damage range max.	
+	"AttackRate"				"0.5"		// Speed of attack.
+	"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"500"		// Range within a target can be acquired.
+	"AttackRange"				"125"		// Range within a target can be attacked.	
+	"ProjectileModel"			"" 
+	"ProjectileSpeed"			""			// Speed of projectile.
+
+	// Bounds
+	//----------------------------------------------------------------
+	"RingRadius"				"70"
+	"HealthBarOffset"			"160"
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"0"		// Experience earn.
+	"BountyGoldMin"				"650"		// Gold earned min.
+	"BountyGoldMax"				"655"		// Gold earned max.
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"				"280"		// Speed.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"75000"		// Base health.
+	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+	"StatusMana"				"0"			// Base mana.
+	"StatusManaRegen"			"0"			// Mana regeneration rate.		 
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1200"		// Range of vision during day light.
+	"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{
+		"CanRespawn"				"0"
+		"States"
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"100.0"
+				"Avoidance"			"0.0"
+				"Support"			"0.0"
+				"RoamDistance"		"150.0"
+			}
+		}
+		"DefaultState"				"Invade"
+
+		"DisableClumpingBehavior"	"1"
+		
+		"AttachWearables"
+		{
+			"Wearable1" { "ItemDef" "195" }
+			"Wearable2" { "ItemDef" "196" }
+			"Wearable3" { "ItemDef" "197" }
+		}
+	}
+}		

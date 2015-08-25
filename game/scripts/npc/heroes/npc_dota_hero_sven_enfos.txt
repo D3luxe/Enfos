@@ -1,0 +1,33 @@
+//=================================================================================================================
+// HERO: Sven (Weaponsmith)
+//=================================================================================================================
+"npc_dota_hero_sven_enfos"
+{
+	"override_hero"				"npc_dota_hero_sven"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"weaponsmith_thunder_maul"
+	"Ability2"					"generic_enfos_combat_mastery"
+	"Ability3"					"weaponsmith_concentrate"
+	"Ability4"					"weaponsmith_forge"
+	"Ability6"					"weaponsmith_cambrinth_charge"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributeBaseStrength" 	"11"
+	"AttributeStrengthGain" 	"3.7"
+	"AttributeBaseAgility" 		"6" 
+	"AttributeAgilityGain" 		"2"
+	"AttributeBaseIntelligence" "1" 
+	"AttributeIntelligenceGain" "0.33" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "3.72"
+	"AttackRange"               "120"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"10.5"
+	"AttackDamageMax" 			"29.5" 
+}

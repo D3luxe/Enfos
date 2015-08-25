@@ -1,0 +1,47 @@
+//=================================================================================================================
+// Medusa: Bard
+//=================================================================================================================
+//=================================================================================================================
+// Bard: Nexus
+//=================================================================================================================
+"bard_nexus"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"keeper_of_the_light_chakra_magic"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCooldown"				"70"
+	"AbilityManaCost"				"128"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_keeper_of_the_light.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/bard.lua"
+			"Function"				"nexus"
+		}
+		"FireEffect"
+		{
+			"EffectName"		 "particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf" //ph
+			"EffectAttachType"	 "follow_origin"
+			"Target"			 "CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_KeeperOfTheLight.ChakraMagic.Target"
+			"Target"			"CASTER"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_restored"			"50"
+		}			
+	}
+}	

@@ -1,0 +1,90 @@
+//=================================================================================================================
+// Summoner: Flag of Summoning
+//=================================================================================================================
+"summoner_flag_of_summoning"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"				"legion_commander_duel"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"900"
+	"AbilityCooldown"				"120"
+	"AbilityManaCost"				"250 280 325 385 460 550 655 775 910 1000"
+	"AOERadius"						"%radius"
+	"OnSpellStart"
+	{
+		"SpawnUnit"
+		{
+			"Target"				"POINT"
+			"UnitName"				"npc_summoner_flag_of_summoning"
+			"UnitCount"				"1"
+			"UnitLimit"				"100"
+			"SpawnRadius"			"25"
+			"Duration"				"%duration"
+			"GrantsGold"			"false"
+			"GrantsXP"				"false"
+		}
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/summoner.lua"
+			"Function"		"FlagOfSummoning"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_summoner_flag_of_summoning_aura"
+		{
+			"Duration"				"%duration"
+			"ThinkInterval"			"0.03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/summoner.lua"
+					"Function"		"CheckFlagValidity"
+					"radius"		"%radius"
+				}
+			}
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+		"modifier_summoner_flag_of_summoning"
+		{
+			"Duration"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_speed"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"     		"%armour"
+			}
+		}	
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armour"				"8 16 24 32 40 48 56 64 72 80"
+		}	
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"10 15 20 25 30 35 40 45 50 55"
+		}			
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30 38 46 54 62 70 78 86 94 102"
+		}				
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"1200 1400 1600 1800 2000 2200 2400 2600 2800 300"
+		}			
+	}
+}	

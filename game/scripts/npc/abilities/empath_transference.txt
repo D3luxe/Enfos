@@ -1,0 +1,134 @@
+//=================================================================================================================	//=================================================================================================================
+// Transference
+//=================================================================================================================
+// Based off of Noya's life drain https://github.com/Pizzalol/SpellLibrary/
+"empath_transference"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"pugna_life_drain"
+	"MaxLevel"						"10"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"500 565 630 695 760 825 890 955 1020 1085"
+	"AbilityCastPoint"				"0"
+	"AbilityChannelTime"			"8 16 24 32 40 48 56 64 72 80"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"9.5 9 8.5 8 7.5 7 6.5 6 5.5 5"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"5"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"health_drain"				"20 50 110 190 280 390 530 680 580 1040"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"cast_range_tooltip"		"500 565 630 695 760 825 890 955 1020 1085"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration_tooltip"		"8 16 24 32 40 48 56 64 72 80"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"tick_rate"					"0.1"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"mana_drain"				"0 0 0 10 20 30 50 70 90 110"
+		}
+	}
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_pugna/pugna_life_give.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/empath.lua"
+			"Function"		"TransferencePreCast"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" 	"modifier_life_drain"
+			"Target" 		"TARGET"
+		}
+
+		"FireSound"
+		{
+			"EffectName"	"Hero_Pugna.LifeDrain.Target"
+			"Target" 		"CASTER"
+		}
+	}
+
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_life_drain"
+			"Target" 		"TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_life_drain"
+		{
+			"IsDebuff"	"0"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/empath.lua"
+					"Function"		"LifeDrainParticle"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/empath.lua"
+					"Function"		"LifeDrainParticleEnd"
+				}
+			}
+
+			"ThinkInterval"		"%tick_rate"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/empath.lua"
+					"Function"		"LifeDrainHealthTransfer"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,73 @@
+"arhat_aura"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"rubick_empty1"
+	"MaxLevel"						"1"
+
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+		"modifier_arhat"
+		{
+			"Duration"				"40"
+			"IsHidden"				"0"
+			"Passive"				"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"				"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MAGIC_IMMUNE"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"CASTER"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+
+		}
+
+		"modifier_arhat_aura_haste"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			
+			"Aura"					"modifier_arhat_haste"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		}
+		
+		"modifier_arhat_haste"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%haste"
+			}
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"haste"					"100"
+		}
+	}
+}

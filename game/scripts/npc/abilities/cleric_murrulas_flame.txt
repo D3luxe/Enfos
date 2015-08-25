@@ -1,0 +1,44 @@
+//=================================================================================================================
+// Cleric: Murrula's Flame
+//=================================================================================================================
+"cleric_murrulas_flame" 
+{
+	"BaseClass"						"skeleton_king_reincarnation"
+	"AbilityTextureName"			"phoenix_supernova"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"AbilityCooldown"				"300 280 260 240 220 200 180 160 140 120"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_skeletonking/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"reincarnate_time"		"12 11 10 9 8 7 6 5 4 3"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_radius"			"0"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movespeed"				"0"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attackslow_tooltip"	"0"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"slow_duration"			"0"
+		}
+	}
+}

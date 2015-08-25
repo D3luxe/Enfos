@@ -1,0 +1,86 @@
+//=================================================================================================================
+// Righteous Wrath
+//=================================================================================================================
+"phantom_assassin_enfos_righteous_wrath"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"axe_battle_hunger"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+
+	"AbilityManaCost"		"80 100 120 140 160 180 200 240 260"
+	"AbilityCooldown"		"75"
+	
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_axe"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_righteous_wrath"
+			"Target"	"CASTER"
+
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_righteous_wrath"
+		{
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target" "TARGET"
+					"EffectName"		"particles/units/heroes/hero_axe/axe_battle_hunger.vpcf"
+					"EffectAttachType"	"follow_overhead"
+				}
+			}
+
+			"Duration"				"%duration"
+
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}	
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
+				"MODIFIER_PROPERTY_TOOLTIP"				"%leech"
+			}
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"		"200 400 800 1400 2000 2900 4000 5000 6000 7000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"		"7 9 11 13 15 17 19 21 23 25"
+		}
+	}
+	
+}

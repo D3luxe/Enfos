@@ -1,0 +1,80 @@
+"mob_critical_strike"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"lycan_summon_wolves_critical_strike"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_mob_critical_strike_passive"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "mob_critical_strike_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+			
+			
+		"mob_critical_strike_crit"
+		{
+			"Duration"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"mob_critical_strike_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+		
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_bonus"				"200"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"20"
+		}
+	}
+	
+}	

@@ -1,0 +1,65 @@
+//=================================================================================================================
+// Entropist: Tremor (this skill sounds incredibly bad)
+//=================================================================================================================
+"entropist_tremor" 
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"brewmaster_thunder_clap"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"100"
+	"AbilityManaCost"				"30 40 55 75 100 130 165 205 250 300"
+	"AOERadius"						"%radius"
+	"AbilityChannelTime"			"56"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	"AbilityCastRange" 			"1300"
+	
+	"precache"
+{
+	"particle" 	"particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap.vpcf"
+	"particle"  "particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap_debuff.vpcf"
+	"particle"  "particles/status_fx/status_effect_brewmaster_thunder_clap.vpcf"
+	"soundfile" "soundevents/game_sounds_heroes/game_sounds_brewmaster.vsndevts"
+}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+			"Function"				"Tremor"
+			"Target"				"POINT"
+			"radius"				"%radius"
+			"slow"				"%slow"
+		}
+	}
+	
+	"OnChannelFinish"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+			"Function"				"TremorEnd"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow"					"-40 -45 -50 -55 -60 -65 -70 -75 -80 -85"
+		}		
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20 24 28 32 36 40 44 48 52 56"
+		}	
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"500"
+		}			
+	}
+}

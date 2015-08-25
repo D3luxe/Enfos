@@ -1,0 +1,100 @@
+//=================================================================================
+// Level 20 - Spirit Hawk
+//=================================================================================
+"npc_dota_spirit_hawk"
+{										
+	// General
+	//----------------------------------------------------------------
+	"Model"						"models/heroes/beastmaster/beastmaster_bird.vmdl"	// Model.
+	"BaseClass"					"npc_dota_creature"
+	"SoundSet"					"n_creep_Ranged"
+	"Level"						"1"
+	"ModelScale" 					"2"
+	"PathfindingSearchDepthScale" "0.1"
+	"precache"
+	{
+		"particle_folder"		"particles/units/heroes/hero_jakiro"
+	}
+
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"brown_bear_evasion"			// Ability 1
+	"Ability2"					"mob_spell_damage_reduction"			// Ability 2
+	"Ability3"					"mob_hardened_skin"			// Ability 3
+	"Ability4"					""			// Ability 4
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"25"			// Physical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"AttackDamageMin"			"0"		// Damage range min.
+	"AttackDamageMax"			"0"		// Damage range max.	
+	"AttackRate"				"1.6"		// Speed of attack.
+	"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"0"		// Range within a target can be acquired.
+	"AttackRange"				"0"		// Range within a target can be attacked.
+	"ProjectileModel"			"particles/units/heroes/hero_jakiro/jakiro_base_attack.vpcf"			// Particle system model for projectile.
+	"ProjectileSpeed"			"1400"			// Speed of projectile.		   
+
+	// Bounds
+	//----------------------------------------------------------------
+	"RingRadius"				"70"
+	"HealthBarOffset"			"160"
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"0"		// Experience earn.
+	"BountyGoldMin"				"60"		// Gold earned min.
+	"BountyGoldMax"				"120"		// Gold earned max.
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"				"280"		// Speed.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"20000"		// Base health.
+	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+	"StatusMana"				"0"			// Base mana.
+	"StatusManaRegen"			"0"			// Mana regeneration rate.		 
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1200"		// Range of vision during day light.
+	"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{
+		"CanRespawn"				"0"
+		"States"
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"0.0"
+				"Avoidance"			"10.0"
+				"Support"			"0.0"
+				"RoamDistance"		"1.0"
+			}
+		}
+		"DefaultState"				"Invade"
+
+		"DisableClumpingBehavior"	"1"
+		
+		
+	}
+}			

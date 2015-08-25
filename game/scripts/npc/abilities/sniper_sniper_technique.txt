@@ -1,0 +1,55 @@
+//=================================================================================================================
+// Sniper - Sniper
+//=================================================================================================================
+//=================================================================================================================
+// Sniper: Technique
+//=================================================================================================================
+"sniper_sniper_technique" //guessing on cooldown
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sniper_take_aim"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"2"
+	"AbilityCooldown"				"30"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+			"Function"		"TechniqueAcqRangeDown"
+		}
+
+	}
+	"Modifiers"
+	{
+		"modifier_sniper_technique"
+		{
+			"Passive"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
+			}
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+					"Function"		"TechniquePierce"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_range"			"3000" //it's supposed to be for creeps on your own side. this is close enough
+		}
+	}
+}

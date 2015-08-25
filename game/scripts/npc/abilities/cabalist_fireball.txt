@@ -1,0 +1,97 @@
+//=================================================================================================================
+// Cabalist: Fireball
+//=================================================================================================================
+"cabalist_fireball"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ogre_magi_fireblast"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"3"
+	"AbilityCastRange"				"825"
+	"AbilityManaCost"				"20 28 39 54 76 107 150 210 295 413"
+	"precache"
+	{
+		"particle"				"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
+		"particle"				"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
+			"MoveSpeed"				"1500"
+			// "SourceAttachment" 		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+			"EffectAttachType"		"follow_origin"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_OgreMagi.Fireblast.Cast"
+			"Target"				"CASTER"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"Damage"
+		{
+			"Type" 					"DAMAGE_TYPE_MAGICAL"
+			"Damage" 				"%damage"
+			"Target" 				"TARGET"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_cabalist_fireball"
+			"Target"				"TARGET"
+		}
+		"FireEffect"
+		{
+			"EffectName"			"particles/units/heroes/hero_jakiro/jakiro_liquid_fire_explosion.vpcf"
+			"EffectAttachType"		"attach_hitloc"
+			"Target"				"TARGET"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Jakiro.LiquidFire"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_cabalist_fireball"
+		{
+			"IsDebuff"				"1"
+			"Duration" 				"%stun_duration"
+			"EffectName" 			"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" 		"follow_overhead"
+			"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"100 200 400 800 1600 3200 6400 12800 25600 51200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cast_range"			"600 650 700 750 800 850 900 950 1000 1050"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun_duration"			"4"
+		}	
+	}
+}	

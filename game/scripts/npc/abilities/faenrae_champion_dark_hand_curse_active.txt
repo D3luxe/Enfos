@@ -1,0 +1,56 @@
+//=================================================================================================================
+// Faenrae Champion: Dark Hand Curse Active
+//=================================================================================================================
+"faenrae_champion_dark_hand_curse_active"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"undying_soul_rip"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AOERadius"						"%radius"
+	"AbilityCooldown"				"1"
+	"AbilityCastRange"				"825"
+	"AbilityManaCost"				"18 21 25 29 34 31 48 57 67 79"
+	"Modifiers"
+	{
+		"modifier_faenrae_champion_dark_hand_curse_active"
+		{
+			"Passive"				"1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"		"dark_hand_curse_active_counter"
+				}
+			}
+		}
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/faenrae_champion.lua"
+			"Function"				"dark_hand_curse"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"825"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"100 200 400 800 1600 3200 6400 12800 25600 51200"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"targets"				"4 4 4 5 5 5 6 6 6 7"
+		}
+	}
+}	

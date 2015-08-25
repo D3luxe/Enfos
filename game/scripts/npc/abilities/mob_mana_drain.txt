@@ -1,0 +1,90 @@
+"mob_mana_drain"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"witch_doctor_voodoo_restoration"
+	"AOERadius"						"%radius"
+
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_witchdoctor"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"aura_mana_drain"
+			"Target"	"CASTER"
+		}
+	}
+
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+		"fx_drain_aura"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration.vpcf"
+					"EffectAttachType"	"follow_origin"
+					
+					"ControlPoints"
+					{
+						"00"	"0 0 0"
+						"01"	"%health_radius 0 0"
+						"02"	"0 0 -200"
+					}
+				}
+			}
+		}
+		
+		"aura_mana_drain"
+		{
+			"IsHidden"				"0"
+			"Passive"				"1"
+			
+			"Aura"					"mana_drain"
+			"Aura_Radius"			"%health_radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+			"Aura_ApplyToCaster"	"0"
+		}
+		
+		"mana_drain"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"%mana_drain_amount"
+			}
+		
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"health_radius"				"450"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"mana_drain_amount"		"-4"
+		}
+	}
+
+}

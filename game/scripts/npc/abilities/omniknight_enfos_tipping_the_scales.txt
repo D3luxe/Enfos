@@ -1,0 +1,47 @@
+//=================================================================================================================
+// Tipping the Scales
+//=================================================================================================================
+"omniknight_enfos_tipping_the_scales"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"spectre_dispersion"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+
+	"Modifiers"
+	{
+		"modifier_tipping_the_scales"
+		{	
+			"IsHidden"	"1"
+			"Passive"	"1"
+
+			"OnAttacked"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/holywarrior.lua"
+					"Function"				"TippingTheScales"
+					"damage_reflected"		"%damage_reflection_pct"
+				}
+
+			}
+
+		}
+
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reflection_pct"	"18 36 54 72 90 108 126 144 162 180"
+		}
+	}
+	
+}

@@ -1,0 +1,60 @@
+//=================================================================================================================
+// Thirsting Blade
+//=================================================================================================================
+"item_thirsting_blade"
+{
+	"ID"                            "2042"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_ethereal_blade"
+
+	"ItemDroppable"					"1"
+	"ItemSellable"					"1"
+	"ItemKillable"					"0"
+	"ItemDisassemblable"			"0"
+	"ItemQuality"					"epic"
+
+	"ItemCost"                      "5000" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_thirsting_blade"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"660"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"10"
+		}
+	}
+}

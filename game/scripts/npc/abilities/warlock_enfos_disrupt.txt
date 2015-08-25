@@ -1,0 +1,59 @@
+//=================================================================================================================
+// Disrupt
+//=================================================================================================================
+"warlock_enfos_disrupt"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"warlock_upheaval"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"120 116 112 108 104 100 96 92 88 84"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"70 78 90 106 126 150 178 210 246 286"
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"		"heroes/warlock.lua"
+			"Function"		"StealManaDisrupt"
+			"manaStolen"	"%Max_Mana_Stolen"
+			"manaReplenish"	"%Mana_Replenish"
+		}
+		"FireEffect"
+		{
+			"EffectName"		 "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_ti_5.vpcf"
+			"EffectAttachType"	 "follow_origin"
+			"Target"			 "CASTER"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"Max_Mana_Stolen"			"100"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"Mana_Replenish"			"50"
+		}
+	}
+
+}

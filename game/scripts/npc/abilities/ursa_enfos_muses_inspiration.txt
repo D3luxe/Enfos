@@ -1,0 +1,48 @@
+//=================================================================================================================
+// Ursa - Muse's Inspiration
+//=================================================================================================================
+"ursa_enfos_muses_inspiration"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"brewmaster_storm_dispel_magic"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"170 165 160 155 150 145 140 135 130 125"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 110 125 145 170 200 235 275 320 370"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"TARGET"
+			"EffectName"				"particles/items2_fx/refresher.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"300"
+		}
+		
+		"RunScript"
+		{
+			"ScriptFile"		"custom_scripted_abilities.lua"
+			"Function"		"ResetCooldowns"
+			"target"		"TARGET"
+		}
+	}
+	
+}

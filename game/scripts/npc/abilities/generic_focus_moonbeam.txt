@@ -1,0 +1,52 @@
+//=================================================================================================================
+// Generic: Focus Moonbeam
+//=================================================================================================================
+"generic_focus_moonbeam"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"luna_lucent_beam"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"30.0"
+	"AbilityManaCost"				"50"
+	"AbilityCastRange"				"250"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle_folder"			"particles/hero_mentalist/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/generic.lua"
+			"Function"				"FocusMoonbeam"
+			"Target"				"POINT"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"300"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"100"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"5"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cast_range"			"250"
+		}
+	}
+}

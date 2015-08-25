@@ -1,0 +1,28 @@
+"tempest_zephyr_proxy"
+{
+	//All this does is give the buff icon to heroes in the radius
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"lone_druid_spirit_bear_return"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"Modifiers"
+	{
+		"modifier_tempest_zephyr_proxy"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"Aura"					"modifier_tempest_zephyr_proxy_aura"
+			"Aura_Radius"			"500"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			"Aura_ApplyToCaster"	"1"
+		}
+		"modifier_tempest_zephyr_proxy_aura"
+		{
+
+		}
+	}
+}

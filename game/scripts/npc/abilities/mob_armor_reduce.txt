@@ -1,0 +1,71 @@
+"mob_armor_reduce"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"viper_poison_attack"
+
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_witchdoctor"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_mob_armor_reduce"
+			"Target"	"CASTER"
+		}
+	}
+
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+		
+		"modifier_mob_armor_reduce"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_mob_armor_reduce_target"
+					"Target"	"TARGET"
+				}
+			}
+		}
+		
+		"modifier_mob_armor_reduce_target"
+		{
+			"Duration"	"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduction"
+			}
+		
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"armor_reduction"			"-5"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"5"
+		}
+	}
+
+}

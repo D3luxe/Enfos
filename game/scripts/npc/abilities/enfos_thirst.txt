@@ -1,0 +1,38 @@
+//=================================================================================================================
+// Ability: Bloodseeker's Thirst
+//=================================================================================================================
+"enfos_thirst"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"bloodseeker_thirst"
+
+	"IsPurgable" "0"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"visibility_threshold_pct"	"50"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"invis_threshold_pct"	"25"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_movement_speed"		"0"
+		}			
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bonus_damage"				"0"
+		}
+	}
+}

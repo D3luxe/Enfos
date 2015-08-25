@@ -1,0 +1,84 @@
+//=================================================================================================================
+// Arcane Mistress: Frost Scythe
+//=================================================================================================================
+"arcane_mistress_frost_scythe"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"drow_ranger_frost_arrows"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.3" //I've been using 0.5 almost universally but 0.5 just felt weird on this spell
+	"AbilityCooldown"				"0.5"
+	"AbilityCastRange"				"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
+	"AbilityManaCost"				"3 4 5 6 7 8 9 10 11 12"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_drow/"
+		"particle_folder"			"particles/units/heroes/hero_crystalmaiden/"
+	}
+	"OnUpgrade"
+	{
+		"LevelUpAbility"
+		{
+			"Target"				"CASTER"
+			"AbilityName"			"arcane_mistress_targeted_magic"
+		}
+	}
+	"OnSpellStart"
+	{
+		"TrackingProjectile"	
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_drow/drow_frost_arrow.vpcf"
+			"MoveSpeed"				"2000" // Verified
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"Damage"
+		{
+			"Target"				"TARGET"
+			"Type"					"DAMAGE_TYPE_MAGICAL"
+			"Damage"				"%damage"
+		}
+		"ApplyModifier"
+		{
+			"Target"				"TARGET"
+			"ModifierName"			"modifier_arcane_mistress_frost_scythe"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_arcane_mistress_frost_scythe"
+		{
+			"Duration" "%duration"
+			"EffectName" "particles/units/heroes/hero_crystalmaiden/maiden_frostbite_buff.vpcf"
+			"EffectAttachType" "follow_origin"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}	
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"35 52 79 118 177 266 399 598 897 1346" //values rounded.
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cast_range"			"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"4 5 6 7 8 9 10 11 12 13"
+		}
+	}
+}	

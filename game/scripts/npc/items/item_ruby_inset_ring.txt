@@ -1,0 +1,45 @@
+//===============================================
+// Ruby-Inset Ring
+//===============================================
+"item_ruby_inset_ring"
+{
+	"ID"                            "2013"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_ruby_inset_ring"
+	//"ItemStockMax"					"4"
+	//"ItemStockInitial"				"4"
+	//"ItemStockTime"					"10.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "1000" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_ruby_inset_ring"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"				"12"
+		}
+	}
+}

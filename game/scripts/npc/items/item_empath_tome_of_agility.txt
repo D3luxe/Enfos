@@ -1,0 +1,70 @@
+//=================================================================================================================
+// Empath Tome of Agility
+//=================================================================================================================
+"item_empath_tome_of_agility"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"3019"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"BaseClass"						"item_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"item_tome_of_strength"
+	"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+	"AbilityCastPoint"				"0.1"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	//"ItemCost"						"0"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"1"
+	"ItemKillable"					"1"
+	"ItemPurchasable"				"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"SideShop"						"0"
+	"SecretShop" "1"
+	"ItemCastOnPickup"	"1"
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"empath_pickup"
+		}
+		"FireEffect"
+		{
+			"Target" "CASTER"
+			"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+			"EffectAttachType" 	"follow_origin"
+		}
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_cast_once"
+		{
+			"Duration"	"0.3"
+			"IsHidden"	"1"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"			"50"
+		}
+
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"stat"			"3"
+		}
+	}
+}

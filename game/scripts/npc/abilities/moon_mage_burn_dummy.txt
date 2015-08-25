@@ -1,0 +1,60 @@
+"moon_mage_burn_dummy"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"luna_lucent_beam"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"Modifiers"
+	{
+		"modifier_burn_dummy"
+		{
+			"Duration"				"20"
+			"IsHidden"				"0"
+			"Passive"				"1"
+			"Aura"					"modifier_burn_dummy_aura"
+			"Aura_Radius"			"175"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"CASTER"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"999999"
+				}
+			}
+		}
+		"modifier_burn_dummy_aura"
+		{
+			"IsHidden"				"0"
+			"OnCreated"
+			{
+				"Damage" //apparently it works on birds so it's fine to do it this way
+				{
+					"Target"	"TARGET"
+					"Damage"	"%damage"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+				}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+					"Function"				"BurnFX"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"90000"
+		}
+	}
+
+}

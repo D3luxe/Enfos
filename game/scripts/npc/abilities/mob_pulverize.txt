@@ -1,0 +1,73 @@
+"mob_pulverize"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"earthshaker_enchant_totem"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_slardar.vsndevts"
+	}		
+	"Modifiers"
+	{
+		"modifier_mob_pulverize"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%chance"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/mobs/pirate.lua"
+							"Function"		"Pulverize"
+						}
+						"FireSound"
+						{
+							"EffectName"	"Hero_Slardar.Bash"
+							"Target"		"TARGET"
+						}
+					}
+				}
+			}
+		}	
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"chance"				"25"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_near"				"30" //actual damage dealt is 60, as both far and near are dealt. also note this is the default WC3 value. the enfo's value is surely much higher.
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_far"				"30"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"range_near"				"250"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"range_far"					"350"
+		}
+	}
+}

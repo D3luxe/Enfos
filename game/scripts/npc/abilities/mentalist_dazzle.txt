@@ -1,0 +1,43 @@
+//=================================================================================================================
+// Mentalist: Dazzle
+//=================================================================================================================
+"mentalist_dazzle"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"wisp_spirits"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"150 140 130 120 110 100 90 80 70 60"
+	"AbilityManaCost"				"0" //?
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_silencer/"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+			"Function"				"Dazzle"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cooldown"				"150 140 130 120 110 100 90 80 70 60"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"500"
+		}
+	}
+}

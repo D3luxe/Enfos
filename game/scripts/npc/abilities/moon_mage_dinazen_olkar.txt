@@ -1,0 +1,58 @@
+//=================================================================================================================
+// Moon Mage: Dinazen Olkar
+//=================================================================================================================
+"moon_mage_dinazen_olkar"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"nevermore_shadowraze1"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0"
+	"AbilityCastRange"				"1000"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"8 9 11 13 15 18 20 23 27 30"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_queenofpain/" 
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+			"Function"				"CancelAnimation"
+		}
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_queenofpain/queen_shadow_strike.vpcf"
+			"MoveSpeed"				"1000"
+			"EffectAttachType"		"follow_origin" //attach_hitloc?
+		}
+		"FireSound"
+		{
+			"Target"				"CASTER"
+			"EffectName"			"Hero_QueenOfPain.ShadowStrike"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"Damage"
+		{
+			"Target"			"TARGET"
+			"Type"				"DAMAGE_TYPE_MAGICAL"
+			"Damage"			"%damage"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"40 70 125 215 375 650 1250 2500 4000 6000"
+		}
+	}	
+}

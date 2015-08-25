@@ -1,0 +1,101 @@
+//=================================================================================================================
+// Bard: Unnerving Symphony (site has "Smyphany" which is completely wrong)
+//=================================================================================================================
+"bard_unnerving_symphony"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"naga_siren_song_of_the_siren"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"50"
+	"AbilityManaCost"				"50 55 60 65 70 75 80 85 90 95"
+	"AbilityCastRange"				"0"
+	"AOERadius"						"%radius"
+	"LevelsBetweenUpgrades"			"3"
+	"RequiredLevel"					"6"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+		"soundfile"					"soundevents/game_sounds_items.vsndevts"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"		"POINT"
+				"Radius"		"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"			"DOTA_UNIT_TARGET_CREEP"
+			}
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_unnerving_symphony"
+					"Target"			"TARGET"
+				}
+			}
+		}
+		"FireSound"
+		{
+			"EffectName"			"DOTA_Item.VeilofDiscord.Activate" //ph
+			"Target"				"CASTER"
+		}			
+		"FireSound"
+		{
+			"EffectName"			"Hero_Phoenix.SunRay.Stop" //ph
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_unnerving_symphony"
+		{
+			"IsDebuff"			"1"
+			"Duration"			"%duration"
+			"EffectName"		"particles/units/heroes/hero_pugna/pugna_decrepify.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_DECREPIFY_UNIQUE"	"%damage_amplify"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"			"%slow"
+			}
+			"States"
+			{
+				"MODIFIER_STATE_DISARMED"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_FLOAT"
+			"slow"					"-90" //use tooltip special below
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_tooltip"			"90"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_amplify"		"-66"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"250 270 290 310 330 350 370 390 410 430"
+		}
+	}
+}	

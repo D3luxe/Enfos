@@ -1,0 +1,46 @@
+"spellbringer_mana_disruption"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"antimage_mana_void"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	"AbilityManaCost"	"85"
+	"AbilityCooldown"	"60"
+
+	"AbilityCastRange"	"0"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_antimage/"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"mana_disruption"
+			"target"		"TARGET"
+			"duration"		"%duration"
+			"mana_per_second"		"%mana_per_second"
+		}
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"duration"						"45"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_INTEGER"
+			"mana_per_second"				"100"
+		}
+	}
+}

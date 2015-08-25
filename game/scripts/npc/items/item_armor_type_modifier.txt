@@ -1,0 +1,62 @@
+//=================================================================================================================
+// Armor Type
+//=================================================================================================================
+"item_armor_type_modifier"
+{
+	"ID"							"2106"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+
+	"Modifiers"
+	{
+		//Unarmored = DOTA_COMBAT_CLASS_DEFEND_SOFT
+		//Light = DOTA_COMBAT_CLASS_DEFEND_WEAK
+		//Medium = DOTA_COMBAT_CLASS_DEFEND_BASIC
+		//Heavy = DOTA_COMBAT_CLASS_DEFEND_STRONG
+		//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
+		"modifier_armor_unarmored"
+		{
+			"TextureName" "item_unarmored"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_armor_light"
+		{
+			"TextureName" "item_light_armor"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_armor_medium"
+		{
+			"TextureName" "item_medium_armor"
+			"IsHidden"				"0" 
+			"IsPurgable" "0" 
+		}
+		"modifier_armor_heavy"
+		{
+			"TextureName" "item_heavy_armor"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_armor_fortified"
+		{
+			"TextureName" "item_fortified_armor"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_armor_hero"
+		{
+			"TextureName" "item_hero_armor"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+		"modifier_armor_divine"
+		{
+			"TextureName" "item_divine_armor"
+			"IsHidden"				"0"  
+			"IsPurgable" "0"
+		}
+	}
+}

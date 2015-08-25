@@ -1,0 +1,74 @@
+//=================================================================================================================
+// Tempest: Paeldryth's Wrath
+//=================================================================================================================
+"tempest_paeldryths_wrath"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"vengefulspirit_wave_of_terror"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
+	"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_vengeful/"
+		"particle_folder"			"particles/hero_tempest"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"LinearProjectile"			//I'm guessing on so many of these values
+		{
+			"Target"				"POINT"
+			"EffectName"			"particles/hero_tempest/tempest_wave_of_terror.vpcf"
+			"MoveSpeed"				"3000"
+			"StartRadius"			"400"
+			"EndRadius"				"400"
+			"FixedDistance"			"600"
+			"StartPosition"			"follow_origin"
+			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone"		"0"
+		}
+		"FireSound"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"Hero_DeathProphet.Silence"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"				"0"
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+			"Function"				"paeldryths_wrath"
+			"damage"				"%damage"
+			"distance"				"%distance"
+		}
+		"Knockback"
+		{
+			"Target" "TARGET"
+			"Center" "PROJECTILE"
+			"Distance"	"%distance"
+			"Height"	"10"
+			"Duration"	"0.3"
+		}
+		
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"39 44 48 52 56 60 63 66 68 71"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"distance"					"300 350 400 450 500 550 600 650 700 750"
+		}			
+	}
+}

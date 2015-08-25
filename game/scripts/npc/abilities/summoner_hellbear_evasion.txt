@@ -1,0 +1,29 @@
+"summoner_hellbear_evasion"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"phantom_assassin_blur"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{	
+		"modifier_summoner_hellbear_evasion"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"   "%evasion"
+			}	
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"evasion"				"30"
+		}		
+	}
+}

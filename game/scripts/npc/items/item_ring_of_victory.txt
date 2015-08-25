@@ -1,0 +1,49 @@
+//=================================================================================================================
+// Ring of Victory
+//=================================================================================================================
+"item_ring_of_victory"
+{
+	"ID"                            "2049"
+	"BaseClass"                     "item_datadriven"
+	"AbilityTextureName"			"item_ring_of_victory"
+	
+	"ItemDroppable"					"1"
+	"ItemSellable"					"1"
+	"ItemKillable"					"0"
+	"ItemDisassemblable"			"0"
+	"ItemQuality"					"epic"
+
+	"ItemCost"                      "1500" 		
+	"ItemShopTags"					"ring"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_ring_of_victory"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"				"72"
+		}
+	}
+}

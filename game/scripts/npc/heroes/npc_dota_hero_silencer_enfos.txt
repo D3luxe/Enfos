@@ -1,0 +1,34 @@
+//=================================================================================================================
+// HERO: Silencer (Mentalist)
+//=================================================================================================================
+"npc_dota_hero_silencer_enfos"
+{
+	"override_hero"				"npc_dota_hero_silencer"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"mentalist_dazzle"
+	"Ability2"					"mentalist_seal_of_deflection"
+	"Ability3"					"mentalist_moonblade"
+	"Ability4"					"mentalist_aura_sight"
+	"Ability6"					"generic_focus_moonbeam"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength" 	"3"
+	"AttributeStrengthGain" 	"1.5"
+	"AttributeBaseAgility" 		"6" 
+	"AttributeAgilityGain" 		"2"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.65"
+	"AttackRange"               "160"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+}

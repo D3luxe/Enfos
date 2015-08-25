@@ -1,0 +1,66 @@
+//=================================================================================================================
+// Generic: Bloodlust
+//=================================================================================================================
+"generic_enfos_bloodlust"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"ogre_magi_bloodlust"
+	"MaxLevel"					"1"
+	
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"0.1"
+	"AbilityManaCost"				"40"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "bloodlust"
+			"Target"	   "CASTER"	
+		}
+	}
+
+	"Modifiers"
+	{
+		"bloodlust"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties" 
+			 {
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+			 }
+			
+
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
+		}		
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_speed"			"40"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_speed"			"80"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"					"40"
+		}
+	}
+}

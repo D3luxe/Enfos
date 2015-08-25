@@ -1,0 +1,46 @@
+//=================================================================================================================
+// HERO: Dazzle (Hypnotist)
+//=================================================================================================================
+"npc_dota_hero_dazzle_enfos"
+{
+	"override_hero"				"npc_dota_hero_dazzle"
+	"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"hypnotist_prediction"
+	"Ability2"					"hypnotist_hallucination"
+	"Ability3"					"hypnotist_mind_shout"
+	"Ability4"					"hypnotist_telekinetic_storm"
+	"Ability6"					"generic_focus_moonbeam"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"6" 
+	"AttributeAgilityGain" 		"2"
+	"AttributeBaseIntelligence" "6" 
+	"AttributeIntelligenceGain" "2" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.25"
+	"AttackRange"               "300"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"1"
+	"AttackDamageMax" 			"6" 
+
+
+	// Vision
+	//-------------------------------------------------------------------------------------------------------------
+	"VisionDaytimeRange"		"8000"									// Range of vision during day light.
+	"VisionNighttimeRange"		"8000"									// Range of vision at night time.
+
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_luna/"
+		"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
+	}
+}

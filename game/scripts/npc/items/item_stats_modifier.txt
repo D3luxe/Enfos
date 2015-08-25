@@ -1,0 +1,121 @@
+"item_stats_modifier"
+{
+	"ID"							"2006"
+ 
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+ 
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+ 
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+ 
+	"Modifiers"
+	{
+		"modifier_armor_1"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-1"
+			}
+		}
+		"modifier_armor_2"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-2"
+			}
+		}
+		"modifier_armor_3"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-3"
+			}
+		}
+		"modifier_armor_4"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-4"
+			}
+		}
+		"modifier_armor_5"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-5"
+			}
+		}
+		"modifier_armor_6"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-6"
+			}
+		}
+		"modifier_armor_7"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-7"
+			}
+		}
+		"modifier_armor_8"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-8"
+			}
+		}
+		"modifier_armor_9"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-9"
+			}
+		}
+		"modifier_armor_10"
+		{
+			"IsHidden"	"1"
+			"Duration"	"3"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-10"
+			}
+		}
+	}
+}

@@ -1,0 +1,45 @@
+//===============================================
+// Spineripper
+//===============================================
+"item_spineripper"
+{
+	"ID"                            "2024"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_demon_edge"
+	//"ItemStockMax"					"5"
+	//"ItemStockInitial"				"5"
+	//"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "8000" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_spineripper"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"480"
+		}
+	}
+}

@@ -1,0 +1,80 @@
+//=================================================================================================================
+// Cleric: Holy Binding
+//=================================================================================================================
+"cleric_holy_binding"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"shadow_shaman_shackles"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AOERadius"						"%radius"
+	"AbilityCooldown"				"50 48 46 44 42 40 38 36 34 32"
+	"AbilityCastRange"				"1200"
+	"AbilityManaCost"				"40 45 50 55 60 65 70 75 80 85"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_lone_druid/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+
+	}
+	"OnSpellStart"
+	{
+		"ActOnTargets"	
+		{
+			"Target"
+			{
+				"Center"			"POINT"
+				"Radius"			"%radius"
+				"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_cleric_holy_binding"
+					"Target"		"TARGET"
+				}
+			}
+			"FireSound"
+			{
+				"Target"				"TARGET"
+				"EffectName"			"Hero_NagaSiren.Ensnare.Target"
+			}
+		}
+		"FireSound"
+		{
+			"Target"				"CASTER"
+			"EffectName"			"Hero_NagaSiren.Ensnare.Cast"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_cleric_holy_binding"
+		{
+			"Duration"			"%duration"
+			"EffectName" 		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
+			"EffectAttachType" 	"follow_origin"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED" "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_DISARMED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}	
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"185 230 275 320 365 410 455 500 545 590"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+	}
+}	

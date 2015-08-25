@@ -1,0 +1,34 @@
+//=================================================================================================================
+// HERO: Lich (Revenant)
+//=================================================================================================================
+"npc_dota_hero_lich_enfos"
+{
+	"override_hero"				"npc_dota_hero_lich"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"revenant_animate_dead"
+	"Ability2"					"revenant_deathwave"
+	"Ability3"					"revenant_corpse_explosion"
+	"Ability4"					"revenant_spiritual_swarm"
+	"Ability6"					"revenant_haunting_spirit"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.8"
+	"AttackRange"               "550"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"8.5"									// Damage range max.
+}

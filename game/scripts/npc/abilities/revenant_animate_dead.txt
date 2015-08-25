@@ -1,0 +1,73 @@
+//=================================================================================================================
+// Revenant - Animate Dead
+//=================================================================================================================
+"revenant_animate_dead"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"dark_troll_warlord_raise_dead"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"600" //range not provided on the site
+	"AbilityCooldown"				"40"
+	"AbilityManaCost"				"30 46 65 87 112 141 174 212 256 306"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_visage/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+			"Function"				"AnimateDead"
+			"radius"				"%radius"
+			"duration"				"%duration"
+			"units_raised"			"%units_raised"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_revenant_animate_dead_buff"
+		{
+			"Duration"				"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"      "%damage_block"
+			}
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Damage"		"9999999"
+					"Type"			"DAMAGE_TYPE_PURE"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"units_raised"			"3 4 5 6 7 8 9 10 11 12"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_block"			"5 7 11 16 25 37 56 85 128 192"
+		}
+	}
+}	

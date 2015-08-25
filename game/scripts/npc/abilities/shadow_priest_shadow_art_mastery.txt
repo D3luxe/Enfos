@@ -1,0 +1,33 @@
+//=================================================================================================================
+// Shadow Priest: Shadow Art Mastery
+//=================================================================================================================
+"shadow_priest_shadow_art_mastery"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"dazzle_weave"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lives"					"0 1 1 2 2 3 3 4 4 5"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"1 2 3 4 5 6 7 8 9 10" 
+		}			
+		"03"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"heal"					"150 300 450 600 750 900 1050 1200 1350 1500" 
+		}			
+		"04"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"chance"				"10 20 30 40 50 60 70 80 90 100" //the site says 40% at levels 4 and 5, 50% at level 6, and skips to 70% at level 7. I am assuming this is a typo 
+		}
+	}
+}		

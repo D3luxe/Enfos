@@ -1,0 +1,17 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/resource.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/resource.js" />
+	</scripts>
+	<script>
+		$.Msg( "Compiled Panorama Resource!" );
+	</script>
+	<Panel hittest="false" class='ResourcePanel'>
+		<Panel class="LumberPanel" onmouseover="AbilityShowTooltip()" onmouseout="AbilityHideTooltip()">
+			<Label id="LumberText" text="0" html="true" class="TitleFont" />
+			<Image hittest="true" id="LumberIcon" src="file://{images}/custom_game/lumber_icon.png" />
+		</Panel>
+	</Panel>
+</root>

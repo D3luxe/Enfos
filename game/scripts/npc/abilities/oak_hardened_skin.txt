@@ -1,0 +1,29 @@
+//=================================================================================================================
+// Oak - Hardened Skin
+//=================================================================================================================
+"oak_hardened_skin"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"tiny_craggy_exterior"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"Modifiers"
+	{
+		"modifier_oak_hardened_skin"
+		{
+			"Passive" 				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%strength_bonus"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"strength_bonus"		"7 11 17 25 35 47 61 77 95 115"
+		}
+	}
+}

@@ -1,0 +1,92 @@
+//=================================================================================================================
+// Revenant: Deathwave
+//=================================================================================================================
+"revenant_deathwave"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"vengefulspirit_wave_of_terror"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
+	"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_vengeful/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"LinearProjectile"			//I'm guessing on so many of these values
+		{
+			"Target"				"POINT"
+			"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
+			"MoveSpeed"				"1100"
+			"StartRadius"			"300"
+			"EndRadius"				"300"
+			"FixedDistance"			"810"
+			"StartPosition"			"follow_origin"
+			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone"		"0"
+		}
+		"FireSound"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"Hero_DeathProphet.Silence"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"				"0"
+		"Damage"
+		{
+			"Target"				"TARGET"
+			"Type"					"DAMAGE_TYPE_MAGICAL"
+			"Damage"				"%damage"
+		}
+		"ApplyModifier"
+		{
+			"Target"				"TARGET"
+			"ModifierName"			"modifier_revenant_deathwave_debuff"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_revenant_deathwave_debuff"
+		{
+			"Duration"				"%duration"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"%slow"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"45 67 101 151 227 341 512 765 1153 1729"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow"					"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+		}			
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reduction"		"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"10"	
+		}
+	}
+}

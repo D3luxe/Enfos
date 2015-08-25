@@ -1,0 +1,86 @@
+//=================================================================================================================
+// Arcane Mistress - Hailstorm Proxy
+//=================================================================================================================
+"arcane_mistress_hailstorm_proxy"
+{
+	"BaseClass"						"crystal_maiden_freezing_field"
+	"AbilityTextureName"			"crystal_maiden_freezing_field"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"LevelsBetweenUpgrades"			"0"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.0"
+	"AbilityChannelTime"			"10" //Verified
+	"AbilityDuration"				"10"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityModifierSupportValue"	"0.35"	// dunno
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_crystalmaiden/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts" 
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"340 360 380 400 420 440 460 480 500 520"
+		}	
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"explosion_radius"	"230 230 230"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"explosion_interval"	"0.1"
+		}
+		"05"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"movespeed_slow"	"0"
+		}
+		"06"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"attack_slow"	"0"
+		}
+		"07"
+		{
+			"var_type"			"FIELD_FLOAT"
+			"slow_duration"		"0"
+		}
+		"08"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"explosion_min_dist"	"0"
+		}
+		"09"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"explosion_max_dist"	"340 360 380 400 420 440 460 480 500 520"
+		}
+		"10"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"			"0"
+		}
+		"11" // these three should never be used
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage_scepter"	"170 250 310"
+		}
+		"12"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"movespeed_slow_scepter" "-50"
+		}
+		"13"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"attack_slow_scepter"	"-50"
+		}
+	}
+}

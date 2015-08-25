@@ -1,0 +1,45 @@
+//===============================================
+// Tribal Staff
+//===============================================
+"item_tribal_staff"
+{
+	"ID"                            "2009"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_quarterstaff"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "400" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	//"ItemStockMax"					"3"
+	//"ItemStockInitial"				"3"
+	//"ItemStockTime"					"120.0"
+
+	"Modifiers"
+	{
+		"modifier_tribal_staff"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"			"400"
+		}
+	}
+}

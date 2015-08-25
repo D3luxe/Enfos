@@ -1,0 +1,59 @@
+//=================================================================================================================
+// Riki - Thief
+//=================================================================================================================
+//=================================================================================================================
+// Thief: Sleight of Hand
+//=================================================================================================================
+"thief_sleight_of_hand"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"alchemist_goblins_greed"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"50"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_alchemist/"
+		"particle_folder"			"particles/hero_thief/"
+		"particle_folder"			"particles/hero_hypnotist/"
+		"model"						"models/particle/coin.vmdl"
+		"soundfile"					"soundevents/game_sounds_items.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/thief.lua"
+			"Function"				"SleightOfHand"
+			"percent_stolen"		"%percent_stolen"
+		}
+		"AttachEffect"
+		{
+			"EffectName"			"particles/hero_thief/thief_steal_coins_caster.vpcf"
+			"EffectAttachType"		"follow_origin"
+			"Target"				"CASTER"
+		}
+		//"AttachEffect"
+		//{
+		//	"EffectName"			"particles/hero_thief/thief_steal_coins_target.vpcf"
+		//	"EffectAttachType"		"follow_origin"
+		//	"Target"				"TARGET"
+		//}
+		"FireSound"
+		{
+			"EffectName"			"DOTA_Item.Hand_Of_Midas"
+			"Target"				"CASTER"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"percent_stolen"		"10"
+		}			
+	}
+}

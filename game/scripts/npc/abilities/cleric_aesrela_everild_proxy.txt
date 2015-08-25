@@ -1,0 +1,34 @@
+//=================================================================================================================
+// Cleric: Aesrela Everild Proxy
+//=================================================================================================================
+"cleric_aesrela_everild_proxy"
+{
+	"BaseClass"						"mirana_starfall"
+	"AbilityTextureName"			"mirana_starfall"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_HIDDEN | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"LevelsBetweenUpgrades"			"0"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityDamage"					"400 600 800 1300 1800 2500 3800 5800 8000 10000"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_mirana"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts" 
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"starfall_radius"	"400"		
+		}
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"starfall_secondary_radius"	"0"
+		}
+	}
+}

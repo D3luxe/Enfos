@@ -1,0 +1,35 @@
+"brown_bear_evasion"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"bounty_hunter_wind_walk"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_brown_bear_evasion"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
+			}
+		}
+		
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"evasion"				"15"
+		}
+	}
+}	

@@ -1,0 +1,68 @@
+//=================================================================================================================
+// Troll Cannibal: Behead
+//=================================================================================================================
+"troll_cannibal_behead"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"troll_warlord_berserkers_rage"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"Modifiers"
+	{
+		"modifier_behead_buff"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "modifier_behead_crit"
+							"Target"	   "CASTER"	
+						}		
+					}
+				}
+			}
+		}	
+		"modifier_behead_crit"
+		{
+			"Duration"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_damage"
+			}
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					//particle
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_behead_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_chance"			"4 8 12 16 20 24 28 32 36 40"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_FLOAT"
+			"crit_damage"			"500" 
+		}
+	}
+}		

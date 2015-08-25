@@ -1,0 +1,46 @@
+//=================================================================================================================
+// Evoker: Chain Lightning
+//=================================================================================================================
+"evoker_chain_lightning"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"zuus_arc_lightning"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"600" // don't know if I actually have the right value
+	"AbilityCooldown"				"35 33 32 30 29 27 26 25 23 22"
+	"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_zuus/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_zuus.vsndevts"
+	}		
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+			"Function"		"ChainLightning"
+			"damage"		"%damage"
+			"bounces"		"%bounces"
+		}
+	}	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"700 1106 1747 2761 4362 6892 10890 17206 27186 43000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bounces"				"6 7 8 9 10 11 12 13 14 15"
+		}
+	}	
+}

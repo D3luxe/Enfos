@@ -1,0 +1,34 @@
+//=================================================================================================================
+// HERO: Storm Spirit (Evoker)
+//=================================================================================================================
+"npc_dota_hero_storm_spirit_enfos"
+{
+	"override_hero"				"npc_dota_hero_storm_spirit"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"evoker_gar_zeng"
+	"Ability2"					"generic_ethereal_shield"
+	"Ability3"					"evoker_chain_lightning"
+	"Ability4"					"evoker_ball_lightning"
+	"Ability6"					"evoker_static_discharge"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.8"
+	"AttackRange"               "550"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"8.5"									// Damage range max.
+}

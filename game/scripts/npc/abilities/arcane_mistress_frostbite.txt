@@ -1,0 +1,55 @@
+//=================================================================================================================
+// Arcane Mistress: Frostbite
+//=================================================================================================================
+"arcane_mistress_frostbite" 
+{
+	"BaseClass"						"lich_frost_nova"
+	"AbilityTextureName"			"crystal_maiden_crystal_nova"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0.3"
+	"AbilityCooldown"				"30 28 26 24 22 20 18 16 14 12"
+	"AbilityManaCost"				"100 110 120 130 140 150 160 170 180 190"
+	"AbilityDuration"				"50"
+	"AbilityDamage"					"0" //Verified
+	"AbilityModifierSupportValue"	"0.3" //this is in the original file so I'm adding it. I don't know what it does
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_lich/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"aoe_damage"			"200 320 512 819 1311 2097 3355 5369 8590 13744"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"400 420 440 460 480 500 520 540 560 580"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_movement_speed"	"-30" //unverified value
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_attack_speed"		"-20" //unverified value
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"50" //Verified
+		}
+	}
+}

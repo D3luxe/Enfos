@@ -1,0 +1,98 @@
+//=================================================================================================================
+// Tempest - Vertigo
+//=================================================================================================================
+"tempest_vertigo"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"invoker_tornado"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityCooldown"				"135"
+	"AbilityManaCost"				"250 275 302 332 366 402 442 487 535 589"
+	"AbilityCastRange"				"400"
+	"AbilityCastPoint"				"0.5"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityChannelTime"			"8" //Verified
+	"AbilityDuration"				"8"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	"Precache"
+	{
+		"particle"		"particles/hero_tempest/tornado_ambient.vpcf"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+			"Function"				"vertigo"
+			"Target"				"POINT"
+			"radius"				"%radius"
+			"damage"				"%damage"
+			"aoe"					"%aoe"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_tempest_vertigo_applier"
+		{
+			// "IsHidden"				"1"
+			"ThinkInterval"			"1"
+			"OnIntervalThink"
+			{
+				"ActOnTargets"
+				{
+					"Target"
+					{
+						"Center"			"TARGET"
+						"Radius"			"%radius"
+						"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"				"DOTA_UNIT_TARGET_CREEP"
+					}
+					"Action"
+					{
+						"RunScript"
+						{
+							"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+							"Function"				"vertigo_damage"
+							"Target"		"TARGET"
+						}
+					}
+				}
+			}
+		}
+		"modifier_tempest_vertigo_damage"
+		{
+			"Duration"				"0.1"
+			"IsDebuff"				"1"
+			"IsHidden"				"1"
+			"OnCreated"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"// Don't localize
+		{
+			"var_type"			"FIELD_INTEGER"
+			"radius"			"150"
+		}	
+		"02"
+		{
+			"var_type"			"FIELD_INTEGER"
+			"damage"			"2000 3000 4500 6750 10125 15187 22781 34171 51257 76886"
+		}	
+		"02" 
+		{
+			"var_type"			"FIELD_INTEGER"
+			"aoe"			"400"
+		}
+	}
+}

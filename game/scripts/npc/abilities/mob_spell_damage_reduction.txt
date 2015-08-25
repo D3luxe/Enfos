@@ -1,0 +1,36 @@
+"mob_spell_damage_reduction"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_spell_shield"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_spell_damage_reduction"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT"	"%damage_reduction"
+
+			}
+		}	
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_reduction"			"33"
+		}
+	}
+	
+}

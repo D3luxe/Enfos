@@ -1,0 +1,113 @@
+"mob_hurl_boulder" //this sounds basically identical to frost bolt.
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"AbilityTextureName"			"brewmaster_earth_hurl_boulder"
+	"BaseClass" 					"ability_datadriven"
+	"MaxLevel"						"1"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0.4"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"7"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_brewmaster/brewmaster_hurl_boulder.vpcf"
+
+	}
+
+	"OnSpellStart"
+	{
+		"RemoveModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_mob_hurl_boulder_target"
+		}
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_brewmaster/brewmaster_hurl_boulder.vpcf"
+			"MoveSpeed"				"1000"
+			"EffectAttachType"		"follow_origin" //attach_hitloc?
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/mobs/rock_guardian.lua"
+			"Function"				"hurl_boulder"
+		}
+	}
+
+	"Modifiers"
+	{
+
+		"modifier_mob_hurl_boulder"
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+			"Duration"					"%duration"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_mob_hurl_boulder_checker"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"Target" 			"ATTACKER"
+					"ModifierName"		"modifier_mob_hurl_boulder_target"
+				}
+			}
+		}
+
+		"modifier_mob_hurl_boulder_target"
+		{
+			"Duration"	"2"
+			"IsHidden"	"1"
+		}
+
+	}
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"2"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"100"
+		}
+	}		
+}	

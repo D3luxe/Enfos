@@ -1,0 +1,108 @@
+//=================================================================================
+// Level 27 - Pirate
+//=================================================================================
+"npc_dota_pirate"
+{										
+	// General
+	//----------------------------------------------------------------
+	"Model"						"models/heroes/tidehunter/tidehunter.vmdl"	// Model.
+	"BaseClass"					"npc_dota_creature"
+	"SoundSet"					"n_creep_Melee"
+	"Level"						"1"
+	"ModelScale" 					"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_tidehunter.vsndevts"
+	"PathfindingSearchDepthScale" "0.1"
+
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					"mob_permenant_invisibility"			// Ability 1
+	"Ability2"					"mob_spell_damage_reduction"			// Ability 2
+	"Ability3"					"mob_frenzy"			// Ability 3
+	"Ability4"					"mob_pulverize"			// Ability 4
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"16"			// Physical protection.
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"1200"		// Damage range min.
+	"AttackDamageMax"			"1497"		// Damage range max.	
+	"AttackRate"				"0.7"		// Speed of attack.
+	"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+	"AttackRange"				"100"		// Range within a target can be attacked.	 
+
+	// Bounds
+	//----------------------------------------------------------------
+	"RingRadius"				"70"
+	"HealthBarOffset"			"160"
+	"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"0"		// Experience earn.
+	"BountyGoldMin"				"130"		// Gold earned min.
+	"BountyGoldMax"				"131"		// Gold earned max.
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"				"230"		// Speed.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"13000"		// Base health.
+	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+	"StatusMana"				"0"			// Base mana.
+	"StatusManaRegen"			"0"			// Mana regeneration rate.		 
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"1200"		// Range of vision during day light.
+	"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+	
+	"vscripts"	"mobs/pirate.lua"
+
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{
+		"CanRespawn"				"0"
+		"States"
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"100.0"
+				"Avoidance"			"0.0"
+				"Support"			"0.0"
+				"RoamDistance"		"150.0"
+			}
+		}
+		"DefaultState"				"Invade"
+
+		"DisableClumpingBehavior"	"1"
+		
+
+		"AttachWearables"
+		{
+			"Wearable1" { "ItemDef" "34" }
+			"Wearable2" { "ItemDef" "35" }
+			"Wearable3" { "ItemDef" "36" }
+			"Wearable4" { "ItemDef" "37" }
+		}
+
+		//Level Up
+		"HPGain"					"3250"
+		"DamageGain"				"337"
+	}
+}	

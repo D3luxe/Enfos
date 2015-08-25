@@ -1,0 +1,63 @@
+"summoner_generic_critical_strike"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"lycan_summon_wolves_critical_strike"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{	
+		"modifier_summoner_generic_critical_strike"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_summoner_generic_critical_strike_damage"
+							"Target"		"CASTER"
+						}
+					}
+				}
+			}
+		}	
+		"modifier_summoner_generic_critical_strike_damage"
+		{
+			"Duration"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}	
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_summoner_generic_critical_strike_damage"
+					"Target"			"CASTER"	
+				}
+			}	
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"chance"				"20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_bonus"			"200"
+		}			
+	}
+}

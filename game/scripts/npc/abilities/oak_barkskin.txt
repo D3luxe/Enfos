@@ -1,0 +1,70 @@
+//=================================================================================================================
+// Treant Protector - Oak
+//=================================================================================================================
+//=================================================================================================================
+// Oak: Barkskin
+//=================================================================================================================
+"oak_barkskin"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"treant_living_armor"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"1"
+	"AbilityCastRange"				"900" //Verified
+	"AbilityManaCost"				"20" //Verified
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_treant/"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_oak_barkskin"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_oak_barkskin"
+		{
+			"Duration"				"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //Verified
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"			"%armour_bonus"
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+					"EffectAttachType"	"attach_hitloc"
+					"Target"			"TARGET"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_increase"		"25"
+		}			
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armour_bonus"			"10"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"60"
+		}
+	}
+}

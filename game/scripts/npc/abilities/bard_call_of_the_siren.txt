@@ -1,0 +1,93 @@
+//=================================================================================================================
+// Bard: Call of the Siren (largely taken from Spell Library: https://github.com/Pizzalol/SpellLibrary/)
+//=================================================================================================================
+"bard_call_of_the_siren"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"			"naga_siren_mirror_image"
+	"AbilityCooldown"				"150"
+	"AbilityManaCost"				"250 300 350 400 450 500 550 600 650 700"
+	"AbilityCastPoint"				"0.5"
+	"LevelsBetweenUpgrades"			"5"
+	"RequiredLevel"					"10"
+	"MaxLevel"						"10"
+	"precache"
+	{
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		"particle"					"particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_call_of_the_siren"
+			"Target"		"CASTER"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_call_of_the_siren"
+		{	
+			"Duration"			"%invuln_duration"
+			"IsHidden"			"1"
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE" 			"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_LOW_ATTACK_PRIORITY"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"			"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_UNSELECTABLE"			"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_STUNNED"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_siren/naga_siren_mirror_image.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"CASTER"
+				}
+				"FireSound"
+				{
+					"EffectName"	"Hero_NagaSiren.MirrorImage"
+					"Target"		"CASTER"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"    "scripts/vscripts/heroes/bard.lua"
+					"Function"      "call_of_the_siren"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"illusion_duration"			"15 17 19 21 23 25 27 29 31 33"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"images_count"				"1 1 1 2 2 2 3 3 4 4"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"invuln_duration"			"0.3" //don't put in tooltip
+		}			
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"siren_damage"				"1300 1300 1300 1300 3000 3000 3000 3000 5500 5500"
+		}
+	}
+}

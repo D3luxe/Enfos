@@ -1,0 +1,77 @@
+//=================================================================================================================
+// Spellcurse 
+//=================================================================================================================
+"warlock_enfos_spellcurse"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"skywrath_mage_ancient_seal"
+	"BaseClass" 					"ability_datadriven"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.3 0.3 0.3 0.3"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"90 85 80 75 70 65 60 55 50 45"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 110 121 133 146 161 177 194 214 235"
+
+
+
+	"OnSpellStart"
+	{
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_spellcurse"		
+			"Target"	"TARGET"
+		}
+		"RunScript"
+		{
+			"ScriptFile"		"heroes/warlock.lua"
+			"Function"		"Spellcurse"
+		}
+	}
+
+	"Modifiers"
+	{
+
+		"modifier_spellcurse"
+		{
+			 "Duration" "%duration"
+			 
+			 "States" 
+			 {
+				"MODIFIER_STATE_SILENCED"	 "MODIFIER_STATE_VALUE_ENABLED"
+			 }
+
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/generic_gameplay/generic_silenced.vpcf"
+			"EffectAttachType" "follow_overhead"
+		}
+}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"25"
+		}
+	}
+	
+}

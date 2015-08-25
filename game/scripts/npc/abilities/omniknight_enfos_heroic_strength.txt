@@ -1,0 +1,107 @@
+//=================================================================================================================
+// Heroic Strength
+//=================================================================================================================
+"omniknight_enfos_heroic_strength"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"terrorblade_metamorphosis"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+
+	"AbilityManaCost"	"100 110 120 130 140 150 160 170 180 190"
+	"AbilityCooldown"	"170 160 150 140 130 120 110 100 90 80"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"CASTER"
+			"ModifierName"		"modifier_heroic_strength"
+		}	
+		
+	}
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_terrorblade/"
+
+	}
+	"Modifiers"    				// Can be used to create custom modifier. 
+	{  							// There are many snippets that can be expanded in to the modifiers. 
+		"modifier_heroic_strength"   	// This should be the name of your modifier
+		{
+			// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+			"IsDebuff"					"false"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+			//"AllowIllusionDuplicate"	"false"
+			"EffectName"				"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+			"OverrideAnimation"			"true"
+			//"ThinkInterval"				"10"
+			"Duration"					"%duration"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+				"MODIFIER_PROPERTY_HEALTH_BONUS"			"%health_bonus"
+			}
+
+			"States"
+			{
+			"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"custom_scripted_abilities.lua"
+					"Function"		"modelScale"
+					"scale"			"1.2"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"custom_scripted_abilities.lua"
+					"Function"		"modelScale"
+					"scale"			"1"
+				}
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"			"40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"150 250 400 600 850 1150 1500 1900 2350 2850"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_bonus"			"5 10 15 20 25 30 35 40 45 50"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health_bonus"			"750 1500 2250 3000 3750 4500 5250 6000 6750 7500"
+		}
+
+	}
+
+}

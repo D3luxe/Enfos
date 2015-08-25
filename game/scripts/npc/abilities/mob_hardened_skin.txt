@@ -1,0 +1,35 @@
+"mob_hardened_skin"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"ogre_magi_frost_armor"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_mob_hardened_skin"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+			}
+		}			
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_block"				"12"
+		}
+	}
+	
+}	

@@ -1,0 +1,65 @@
+//=================================================================================================================
+// Oak: Rootage Trap
+//=================================================================================================================
+"oak_rootage_trap"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"treant_overgrowth"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"180 165 150 135 120 105 90 75 60 45"
+	"AbilityManaCost"				"70 105 140 175 210 245 280 315 350 385"
+	// "AbilityCastRange"	
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_lone_druid/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_lone_druid.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"			
+		{
+			"ScriptFile"		"scripts/vscripts/heroes/oak.lua" //this function works for this spell.
+			"Function"			"RootageTrap"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_oak_rootage_trap"
+		{
+			"Duration"				"%duration"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_lone_druid/lone_druid_bear_entangle.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+				}
+				"FireSound"
+				{
+					"EffectName"		"LoneDruid_SpiritBear.Entangle"
+					"Target"			"TARGET"
+				}
+			}
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"		"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_DISARMED"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"7"
+		}			
+	}
+}	

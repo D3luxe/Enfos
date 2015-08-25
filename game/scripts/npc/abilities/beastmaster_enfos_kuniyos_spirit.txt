@@ -1,0 +1,91 @@
+//=================================================================================================================
+// Beastmaster: Innate Kuniyo's Spirit
+//=================================================================================================================
+"beastmaster_enfos_kuniyos_spirit"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"beastmaster_primal_roar"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"MaxLevel"						"1"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	"AOERadius"						"%radius"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"particles/econ/items/earthshaker/egteam_set/hero_earthshaker_egset/earthshaker_echoslam_start_innerring_egset.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"%radius"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_kuniyos_spirit"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_kuniyos_spirit"
+		{
+			 "Duration" "%duration"
+			 
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS" "%armor"
+			}		
+			
+	
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"armor"				"-15"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"600"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"15"
+		}
+	}
+	
+}

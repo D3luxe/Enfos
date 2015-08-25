@@ -1,0 +1,41 @@
+"mob_feedback"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_mana_break"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"soundfile"   "soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		"precache"	  "particles/generic_gameplay/generic_manaburn.vpcf"
+	}		
+	"Modifiers"
+	{
+		"modifier_mob_feedback"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/mobs/skeletal_sailor.lua"
+					"Function"		"Feedback"
+				}
+			}
+		}	
+	}	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"mana_burn"					"20"
+		}
+	}
+}

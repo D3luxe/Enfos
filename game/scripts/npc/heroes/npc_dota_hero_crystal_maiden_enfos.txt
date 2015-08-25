@@ -1,0 +1,40 @@
+//=================================================================================================================
+// HERO: Crystal Maiden: Arcane Mistress
+//=================================================================================================================
+"npc_dota_hero_crystal_maiden_enfos"
+{
+	"override_hero"				"npc_dota_hero_crystal_maiden"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"arcane_mistress_frost_scythe"
+	"Ability2"					"generic_ethereal_shield"
+	"Ability3"					"arcane_mistress_frostbite"
+	"Ability4"					"arcane_mistress_hailstorm"
+	"Ability6"					"arcane_mistress_targeted_magic"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+		
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
+	"AttackDamageMin" 			"9.5"
+	"AttackDamageMax" 			"16.5"
+	"AttackRate"                "2"
+	"AttackRange"               "450"
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+}

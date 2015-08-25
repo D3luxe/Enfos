@@ -1,0 +1,85 @@
+//=================================================================================================================
+// Cabalist: Mantle of Flames
+//=================================================================================================================
+"cabalist_mantle_of_flames"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ember_spirit_fire_remnant"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_TOGGLE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AOERadius"						"%radius"
+	"AbilityCooldown"				"1"
+	"AbilityManaCost"				"8 9.5 11 12.5 14 15.5 17 18.5 20 21.5"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+		"particle"					"particles/items2_fx/radiance.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+	}
+	"OnToggleOn"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_mantle_of_flames_buff"
+			"Target"				"CASTER"
+		}
+	}
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"			"modifier_mantle_of_flames_buff"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mantle_of_flames_buff"
+		{
+			"ThinkInterval"			"0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/cabalist.lua"
+					"Function"		"mantle_of_flames"
+				}
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_ember_spirit/ember_spirit_flameguard.vpcf"
+					"EffectAttachType"		"start_at_customorigin"
+					"ControlPointEntities"
+					{
+						"TARGET"			"attach_origin"
+						"TARGET"			"attach_origin"
+					}
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"50 110 200 320 470 650 860 1100 1370 1670"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_FLOAT"
+			"mana_cost"			".8 .95 1.1 1.25 1.4 1.55 1.7 1.85 2.0 2.15" //do not put in tooltip
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"225"
+		}
+	}
+}	

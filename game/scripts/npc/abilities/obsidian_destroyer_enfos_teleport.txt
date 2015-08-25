@@ -1,0 +1,37 @@
+//=================================================================================================================
+// Obsidian Destroyer - Teleport
+//=================================================================================================================	
+"obsidian_destroyer_enfos_teleport"
+{
+	"BaseClass" 					"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"AbilityTextureName" 			"furion_teleportation"
+	"MaxLevel"	"1"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.2"
+	"AbilityCooldown"				"5"
+	"AbilityManaCost"				"0"
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"blink"
+			"Target"	"POINT"
+			"Range"	"%blink_range"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"blink_range"		"1050"
+		}
+	}
+}

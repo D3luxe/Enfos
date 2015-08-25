@@ -1,0 +1,215 @@
+//=================================================================================================================
+// Armor Modifier
+//=================================================================================================================
+"item_armor_modifier"
+{
+	"ID"							"2105"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+
+	"Modifiers"
+	{
+		"modifier_armor_mod_1"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"1"
+			}
+		}
+		"modifier_armor_mod_2"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"2"
+			}
+		}
+		"modifier_armor_mod_4"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"4"
+			}
+		}
+		"modifier_armor_mod_8"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"8"
+			}
+		}
+		"modifier_armor_mod_16"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"16"
+			}
+		}
+		"modifier_armor_mod_32"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"32"
+			}
+		}
+		"modifier_armor_mod_64"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"64"
+			}
+		}
+		"modifier_armor_mod_128"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"128"
+			}
+		}
+		"modifier_armor_mod_256"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"256"
+			}
+		}
+		"modifier_armor_mod_512"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"512"
+			}
+		}
+		"modifier_negative_armor_mod_1"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-1"
+			}
+		}
+		"modifier_negative_armor_mod_2"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-2"
+			}
+		}
+		"modifier_negative_armor_mod_4"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-4"
+			}
+		}
+		"modifier_negative_armor_mod_8"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-8"
+			}
+		}
+		"modifier_negative_armor_mod_16"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-16"
+			}
+		}
+		"modifier_negative_armor_mod_32"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-32"
+			}
+		}
+		"modifier_negative_armor_mod_64"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-64"
+			}
+		}
+		"modifier_negative_armor_mod_128"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-128"
+			}
+		}
+		"modifier_negative_armor_mod_256"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-256"
+			}
+		}
+		"modifier_negative_armor_mod_512"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-512"
+			}
+		}
+	}
+}

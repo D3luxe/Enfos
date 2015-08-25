@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Iron Helmet
+//=================================================================================================================
+"item_iron_helmet"
+{
+	"ID"                            "2033"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_helm_of_iron_will"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"350"
+	"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+	"ItemQuality"					"rare"
+	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+	"ItemAliases"					"mana;mb"
+	//"ItemStockMax"					"3"
+	//"ItemStockInitial"				"3"
+	//"ItemStockTime"					"120.0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsArtifact"							"1"
+
+	"Modifiers"
+	{
+		"modifier_studded_leather_armor"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+			}
+		}
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"15"
+		}
+	}
+}

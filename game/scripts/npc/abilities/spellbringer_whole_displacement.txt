@@ -1,0 +1,53 @@
+"spellbringer_whole_displacement"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"disruptor_glimpse"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CREEP"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	"AbilityManaCost"	"15"
+	"AbilityCooldown"	"0"
+
+	"AbilityCastRange"	"0"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"particle_folder"	"particles/units/heroes/hero_disruptor"
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"		 "particles/units/heroes/hero_disruptor/disruptor_glimpse_targetstart.vpcf"
+			"EffectAttachType"	 "follow_origin"
+			"Target"			 "TARGET"
+		}	
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"whole_displacement"
+			"target"		"TARGET"
+		}
+		
+		"ApplyModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_spellbringer_whole_displacement_fx"
+		}
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_spellbringer_whole_displacement_fx"
+		{
+			"Duration"	"1"
+			"EffectName" "particles/units/heroes/hero_disruptor/disruptor_glimpse_targetend.vpcf"
+			"EffectAttachType" "follow_origin"
+		}
+	}
+
+}

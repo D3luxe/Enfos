@@ -1,0 +1,56 @@
+//===============================================
+// Agani Tayeu'a
+//===============================================
+"item_agani_tayeua"
+{
+	"ID"                            "2010"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_agani_tayeua"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "0" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"SideShop"					"1"
+	"LumberCost"	"80"
+
+	"Modifiers"
+	{
+		"modifier_agani_tayeua"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
+				"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int"				"12"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana"			"200"
+		}
+	}
+}

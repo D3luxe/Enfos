@@ -1,0 +1,55 @@
+//=================================================================================================================
+// Small Round Shield
+//=================================================================================================================
+"item_small_round_shield"
+{
+	"ID"                            "2032"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_poor_mans_shield"
+	//"ItemStockMax"					"2"
+	//"ItemStockInitial"				"2"
+	//"ItemStockTime"					"120.0"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1200"
+	"ItemQuality"					"rare"
+	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+	"ItemDroppable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_small_round_shield"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+			}
+		}
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_block"	"25"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"5"
+		}
+	}
+}

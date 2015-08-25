@@ -1,0 +1,104 @@
+//=================================================================================
+// Level 5 -  Creature: Wood Troll
+//=================================================================================
+"npc_dota_creature_wood_troll"
+{
+	// General
+	//----------------------------------------------------------------
+	"Model"						"models/heroes/furion/treant.vmdl"
+	"BaseClass"					"npc_dota_creature"
+	"SoundSet"					"Furion_Treant"
+	"Level"						"1"
+	"ModelScale" 				".8"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	"PathfindingSearchDepthScale" "0.1"
+	"precache"
+	{
+		"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	}
+
+	// Abilities
+	//----------------------------------------------------------------
+	"Ability1"					""			// Ability 1
+	"Ability2"					""			// Ability 2
+	"Ability3"					""			// Ability 3
+	"Ability4"					""			// Ability 4
+
+	// Armor
+	//----------------------------------------------------------------
+	"ArmorPhysical"				"2"			// Physical protection.
+	"MagicalResistance"			"10"		// Magical protection (percentage).
+
+	// Attack
+	//----------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"29"		// Damage range min.
+	"AttackDamageMax"			"40"		// Damage range max.	
+	"AttackRate"				"1.6"		// Speed of attack.
+	"AttackAnimationPoint"		"0.38"		// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"700"		// Range within a target can be acquired.
+	"AttackRange"				"100"		// Range within a target can be attacked.   
+
+	// Bounds
+	//----------------------------------------------------------------
+	"RingRadius"				"50"
+	"HealthBarOffset"			"180"
+
+	// Bounty
+	//----------------------------------------------------------------
+	"BountyXP"					"0"		// Experience earn.
+	"BountyGoldMin"				"7"			// Gold earned min.
+	"BountyGoldMax"				"9"			// Gold earned max.
+
+	// Movement
+	//----------------------------------------------------------------
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_GROUND"
+	"MovementSpeed"				"120"		// Speed.
+
+	// Status
+	//----------------------------------------------------------------
+	"StatusHealth"				"160"		// Base health.
+	"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+	"StatusMana"				"300"		// Base mana.
+	"StatusManaRegen"			"2.5"		// Mana regeneration rate.		 
+	
+	// Vision
+	//----------------------------------------------------------------
+	"VisionDaytimeRange"		"800"		// Range of vision during day light.
+	"VisionNighttimeRange"		"800"		// Range of vision at night time.
+
+	// Team
+	//----------------------------------------------------------------
+	"TeamName"					"DOTA_TEAM_NEUTRALS"							// Team name.
+	"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
+	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
+	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
+
+	// Creature Data
+	//----------------------------------------------------------------------------------------------------------------------
+	"Creature"
+	{
+		"CanRespawn"				"0"
+		"States"
+		{
+			"Invade"
+			{
+				"Name"				"Invade"
+				"Aggression"		"100.0"
+				"Avoidance"			"0.0"
+				"Support"			"0.0"
+				"RoamDistance"		"150.0"
+			}
+		}
+		"DefaultState"				"Invade"
+
+		"DisableClumpingBehavior"	"1"
+
+		//Level Up
+		"HPGain"					"40"
+		"DamageGain"				"9"
+		
+		
+	}
+}

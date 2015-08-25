@@ -1,0 +1,73 @@
+//=================================================================================================================
+// ahlen: Dragon Dance
+//=================================================================================================================
+"ahlen_dragon_dance"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"dragon_knight_elder_dragon_form"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"150 140 130 120 110 100 90 80 70 60"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"50 100 150 200 250 300 350 400 450 500"
+	
+	"OnSpellStart"
+	{
+			
+		
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_dragon_dance"
+			"Target"	   "CASTER"	
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_dragon_dance"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties" 
+			 {
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+			 }
+			 "States"
+			 {
+			   "MODIFIER_STATE_MAGIC_IMMUNE" 		"MODIFIER_STATE_VALUE_ENABLED"
+			   "MODIFIER_STATE_PASSIVES_DISABLED"	"MODIFIER_STATE_VALUE_ENABLED"
+			 }
+			 "OnCreated"
+			 {
+			 	"AttachEffect"
+				{
+					"Target"					"CASTER"
+					"EffectName"				"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+					"EffectAttachType"			"follow_origin"
+					"EffectRadius"				"300"
+				}
+
+			 }
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"20"
+		}
+	}
+	
+}

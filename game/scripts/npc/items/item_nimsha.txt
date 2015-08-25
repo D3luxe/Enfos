@@ -1,0 +1,73 @@
+//===============================================
+// Nimsha
+//===============================================
+"item_nimsha"
+{
+	"ID"                            "2003"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_desolator"
+	//"ItemStockMax"					"2"
+	//"ItemStockInitial"				"2"	
+	//"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "10000" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemDroppable"					"1"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_nimsha"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure this doesn't make the modifier apply twice
+			"OnAttackLanded"
+			{			
+				"ApplyModifier"
+				{
+					"ModifierName" "modifier_nimsha_armor"
+					"Target"	   "TARGET"	
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+		}
+		"modifier_nimsha_armor"
+		{
+			"Duration"	"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduction"
+			}
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"120"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armor_reduction"		"-15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"3"
+		}
+	}
+}

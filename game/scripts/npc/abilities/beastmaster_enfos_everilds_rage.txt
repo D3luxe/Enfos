@@ -1,0 +1,93 @@
+//=================================================================================================================
+// Beastmaster: Everild's Rage
+//=================================================================================================================
+"beastmaster_enfos_everilds_rage"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"troll_warlord_battle_trance"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"					"10"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"0"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 108 116 124 132 140 148 156 164 172"
+	
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_everilds_rage"
+			"Target" "CASTER"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_everilds_rage"
+		{
+		
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"					"CASTER"
+					"EffectName"				"particles/units/heroes/hero_ursa/ursa_enrage_buff_glow.vpcf"
+					"EffectAttachType"			"follow_origin"
+					"EffectRadius"				"300"
+				}
+			}
+			
+			 "Duration" "%duration"
+			 
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 	"%damage"
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"%armor"
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"		"%life_regen"
+			}		
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"200 400 600 800 1000 1200 1400 1600 1800 2000"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"armor"				"5 10 15 20 25 30 35 40 45 50"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"life_regen"				"2 5 9 14 19 27 38 50 63 80"
+		}
+		
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"30 60 90 120 150 180 210 240 270 300"
+		}
+	}
+	
+}

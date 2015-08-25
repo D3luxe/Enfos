@@ -1,0 +1,58 @@
+//=================================================================================================================
+// Weaponsmith: Concentrate
+//=================================================================================================================
+"weaponsmith_concentrate"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"bristleback_warpath"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"60"
+	"AbilityManaCost"				"24 25 26 27 28 29 30 31 32"
+	"Precache"
+	{
+		"model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_weaponsmith_concentrate"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_weaponsmith_concentrate"
+		{
+			"Duration"				"30"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_bonus" //use MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE if it's only supposed to be base
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"-50 -40 -30 -20 -10 0 10 20 30 40"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"move_speed"			"10 15 20 25 30 35 40 45 50 55"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_bonus"			"100"
+		}
+	}
+}

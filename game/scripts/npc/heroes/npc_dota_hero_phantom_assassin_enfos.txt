@@ -1,0 +1,55 @@
+//=================================================================================================================
+// HERO: Phantom Assassin - Steelrose, the Paladin
+//=================================================================================================================
+"npc_dota_hero_phantom_assassin_enfos"
+{
+	"override_hero"		"npc_dota_hero_phantom_assassin"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"	"5"
+	"Ability1"				"phantom_assassin_enfos_courage"				// Ability 1
+	"Ability2"				"generic_enfos_combat_mastery"						// Ability 2
+	"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
+	"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
+	"Ability6"				"generic_enfos_trothgangs_rally"					// Ability 4
+	"Ability5"				"enfos_attribute_bonus"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"				"2"									// Physical protection.
+
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackRate"				"1.6"									// Speed of attack.
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackRange"				"170"									// Range within a target can be attacked.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"9"									// Base strength
+	"AttributeStrengthGain"		"3.7"									// Strength bonus per level.
+	"AttributeBaseAgility"		"6"									// Base agility
+	"AttributeAgilityGain"		"2"									// Agility bonus per level.
+	"AttributeBaseIntelligence"	"3"									// Base intelligence
+	"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.4"									// Turning rate.
+
+	"precache"
+	{
+		"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+	}
+}

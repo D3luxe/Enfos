@@ -1,0 +1,94 @@
+//=================================================================================================================
+// Generic: Ethereal Shield
+//=================================================================================================================
+"generic_ethereal_shield"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"storm_spirit_electric_vortex"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"900" // cast range not provided on website. this one FAQ says "casting range is pretty long"
+	"AbilityCooldown"				"40 36 32 28 24 20 16 12 8 4"
+	"AbilityManaCost"				"5 10 15 20 25 30 35 40 45 50"
+	"Precache"
+	{
+		"particle_folder"			"particles/items2_fx/"
+		"particle_folder"			"particles/units/heroes/hero_leshrac/"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_ethereal_shield_buff"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_ethereal_shield_buff"
+		{
+			"Duration"				"%duration"
+			"IsPurgable"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_bonus"
+			}
+			"OnAttacked"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_ethereal_shield_debuff"
+					"Target"		"ATTACKER"
+				}
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/items2_fx/mjollnir_shield.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+			}
+		}
+		"modifier_ethereal_shield_debuff"
+		{
+			"Duration"				"15"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"				"TARGET"
+					"EffectName"			"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
+					"EffectAttachType"		"follow_origin"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20 25 30 35 40 45 50 55 60 65"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"armor_bonus"			"2.5 5 7.5 10 12.5 15 17.5 20 22.5 25"
+		}
+		"03"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed_slow"		"-50"  //this is a complete guess.
+		}
+	}
+}		

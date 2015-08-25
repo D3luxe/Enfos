@@ -1,0 +1,31 @@
+//=================================================================================================================
+// Lina - Empath
+//=================================================================================================================	//=================================================================================================================
+// Vitality Healing Innate
+//=================================================================================================================
+"empath_vitality_healing"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"rubick_spell_steal"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"25"
+	"AbilityManaCost"				"20"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/empath.lua"
+			"Function"		"VitalityHealing"
+		}
+	}
+	"Modifiers"
+	{
+		"empath_no_attack"
+		{
+			"Passive"           	"1"
+			"IsHidden"				"0"    
+		}
+	}
+}

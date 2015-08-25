@@ -1,0 +1,106 @@
+"mob_permenant_invisibility"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	//"ID"					"5218"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+	"MaxLevel"						"1"
+	"BaseClass"					"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"		"riki_permanent_invisibility"
+	
+	"OnOwnerSpawned"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"CASTER"
+			"ModifierName"		"modifier_permenant_invisibility"
+		}
+	}
+
+	"Modifiers"    				// Can be used to create custom modifier. 
+	{  							// There are many snippets that can be expanded in to the modifiers. 
+		"modifier_permenant_invisibility"   	// This should be the name of your modifier
+		{
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
+					"Function"				"apply_invisibility"
+				}
+			}
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"Target" 			"CASTER"
+					"ModifierName"		"modifier_permenant_invisibility"
+				}
+				"ApplyModifier"
+				{
+					"Target" 			"CASTER"
+					"ModifierName"		"modifier_permenant_invisibility_visible"
+				}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
+					"Function"				"remove_invisiblity"
+				}
+			}
+
+			"States"
+			{
+				"MODIFIER_STATE_INVISIBLE"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+		"modifier_permenant_invisibility_visible"
+		{
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+			"Passive"	"0"
+			"IsHidden"	"1"
+			"Duration"	"4"
+
+			"OnDestroy"
+			{
+				"ApplyModifier"
+				{
+					"Target" 			"CASTER"
+					"ModifierName"		"modifier_permenant_invisibility"
+				}
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
+					"Function"				"apply_invisibility"
+				}
+
+			}
+
+		}
+	}
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"fade_time"					"0.0"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"fade_delay"				"1.0"
+		}
+	}
+
+}

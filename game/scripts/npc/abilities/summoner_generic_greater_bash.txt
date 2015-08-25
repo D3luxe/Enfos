@@ -1,0 +1,74 @@
+//=================================================================================================================
+// Summoner: Summon Spells
+//=================================================================================================================
+"summoner_generic_greater_bash"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"slardar_bash"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{	
+		"modifier_summoner_generic_greater_bash"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName"	"modifier_summoner_generic_greater_bash_stun"
+							"Target"		"TARGET"
+						}
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_PHYSICAL"
+							"Damage"		"%damage"
+						}
+					}
+				}
+			}
+		}	
+		"modifier_summoner_generic_greater_bash_stun"
+		{
+			"IsDebuff"					"true"
+			"IsStunDebuff"				"true"
+			"EffectName" 				"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" 			"follow_overhead"
+			"OverrideAnimation" 		"ACT_DOTA_DISABLED"
+			"Duration"					"%duration"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}		
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"chance"				"35"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"100"
+		}			
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"2"
+		}
+	}
+}

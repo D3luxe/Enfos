@@ -1,0 +1,32 @@
+"item_tome_of_strength_2"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"							"3001"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"BaseClass"						"item_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"item_tome_of_strength"
+	//"ItemStockMax"					"30"
+	//"ItemStockInitial"				"30"
+	//"ItemStockTime"					"1.0"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"7000"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemInitialCharges"			"1"
+	"ItemStackable"					"1"
+	"ItemPermanent"					"0"
+	"IsTome"							"strength"
+	"Bonus_Stat"						"10"
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"			"10"
+		}
+	}
+}

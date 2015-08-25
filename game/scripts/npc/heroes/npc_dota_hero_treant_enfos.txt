@@ -1,0 +1,37 @@
+//=================================================================================================================
+// HERO: Treant Protector: Oak
+//=================================================================================================================
+"npc_dota_hero_treant_enfos"
+{
+	"override_hero"				"npc_dota_hero_treant"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"6"
+	"Ability1"					"oak_hardened_skin"
+	"Ability2"					"oak_poison_gas"
+	"Ability3"					"oak_backfire_aura"
+	"Ability4"					"oak_rootage_trap"
+	"Ability6"					"oak_barkskin"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
+	"AttributeBaseStrength" 	"9"
+	"AttributeStrengthGain" 	"3.25"
+	"AttributeBaseAgility" 		"6" 
+	"AttributeAgilityGain" 		"2"
+	"AttributeBaseIntelligence" "3" 
+	"AttributeIntelligenceGain" "1" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "1.5"
+	"AttackRange"               "120"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"2.5"
+	"AttackDamageMax" 			"8.5"
+	"ModelScale" 				"0.80"		
+
+	"Team"						"Bad"
+}

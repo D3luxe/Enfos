@@ -1,0 +1,49 @@
+//=================================================================================================================
+// Enchantress: Cleric
+//=================================================================================================================
+//=================================================================================================================
+// Cleric: Bless Soul
+//=================================================================================================================
+"cleric_bless_soul"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"chen_penitence"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"1"
+	"AOERadius"						"900"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_drow/"
+	}
+	"Modifiers"
+	{
+		"modifier_cleric_bless_soul_aura"
+		{
+			"Passive"				"1"
+			"Aura"					"modifier_cleric_bless_soul"
+			"Aura_Radius"			"900"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+			"Aura_ApplyToCaster"	"1"
+		}
+		"modifier_cleric_bless_soul"
+		{
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/cleric.lua"
+					"Function"		"BlessSoul"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}			
+	}
+}	

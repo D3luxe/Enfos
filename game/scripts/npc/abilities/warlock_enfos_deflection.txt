@@ -1,0 +1,43 @@
+//=================================================================================================================
+// Warlock - Okk`thok the Warlock
+//=================================================================================================================	
+//=================================================================================================================
+// Deflection - Innate
+//=================================================================================================================
+"warlock_enfos_deflection"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_spell_shield"
+	"MaxLevel"						"1"
+	
+
+	"Modifiers"
+	{
+		"modifier_deflection"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/warlock.lua"
+					"Function"		"warlock_deflection"
+				}
+			}
+			"ThinkInterval"			".03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/warlock.lua"
+					"Function"			"warlock_deflection_thinker"
+				}
+			}
+		}
+	}
+	
+}

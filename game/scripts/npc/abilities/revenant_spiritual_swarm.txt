@@ -1,0 +1,104 @@
+//=================================================================================================================
+// Revenant: Spiritual Swarm
+//=================================================================================================================
+"revenant_spiritual_swarm"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"weaver_geminate_attack"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"110"
+	"AbilityManaCost"				"100 135 173 215 262 313 370 432 500 575"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_weaver/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_weaver.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+			"Function"				"SpiritualSwarmCast"
+			"damage"				"%damage"
+			"jumps"					"%jumps"
+		}
+		"FireSound"
+		{
+			"Target"				"CASTER"
+			"EffectName"			"Hero_Weaver.SwarmCast"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_revenant_spiritual_swarm_debuff"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_revenant_spiritual_swarm_debuff"
+		{
+			"ThinkInterval"		"0.1"
+			"OnCreated"
+			{
+				"FireSound"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"Hero_Weaver.SwarmAttach"
+				}
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"		"particles/units/heroes/hero_weaver/weaver_swarm_infected_debuff.vpcf"
+					"EffectAttachType"	"attach_hitloc"
+				}
+			}
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target"	"TARGET"
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Damage"	"%damage_over_time"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/revenant.lua"
+					"Function"		"SpiritualSwarmJump"
+				}
+			}
+		}			
+	}				
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"275 412 618 928 1392 2088 3132 4689 5047 10571" // what the fuck is this damage scaling?
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"jumps"					"31 32 33 34 35 36 37 38 39 40"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow"					"-66"		
+		}
+		"04" //don't add this one to addon_english. it's just for the modifier.
+		{
+			"var_type"				"FIELD_FLOAT"
+			"damage_over_time"		"27.5 41.2 61.8 92.8 139.2 208.8 313.2 468.9 504.7 1057.1"
+		}			
+	}
+}

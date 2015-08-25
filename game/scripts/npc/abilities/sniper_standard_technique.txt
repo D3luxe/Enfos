@@ -1,0 +1,28 @@
+"sniper_standard_technique" //guessing on cooldown
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sniper_take_aim"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"30"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+			"Function"		"TechniqueAcqRangeUp"
+		}
+	}
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_range"			"500" //it's supposed to be for creeps on your own side. this is close enough
+		}
+	}
+
+}

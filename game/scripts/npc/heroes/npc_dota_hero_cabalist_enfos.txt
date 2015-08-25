@@ -1,0 +1,39 @@
+//=================================================================================================================
+// HERO: Ember Spirit: Cabalist
+//=================================================================================================================
+"npc_dota_hero_cabalist_enfos"
+{
+	"override_hero"				"npc_dota_hero_ember_spirit"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+	"AbilityLayout"				"5"
+	"Ability1"					"cabalist_fireball"
+	"Ability2"					"generic_ethereal_shield"
+	"Ability3"					"cabalist_mantle_of_flames"
+	"Ability4"					"cabalist_dragons_breath"
+	"Ability6"					"cabalist_throw_naptha"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength" 	"9"
+	"AttributeStrengthGain" 	"3"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "6" 
+	"AttributeIntelligenceGain" "2" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"			
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin" 			"9.5"
+	"AttackDamageMax" 			"18.5"
+	"AttackRate"                "1.4"
+	"AttackRange"               "180"
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+}

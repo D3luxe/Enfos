@@ -1,0 +1,38 @@
+//=================================================================================================================
+// Obsidian Destroyer - Slow Aura
+//=================================================================================================================	
+"obsidian_destroyer_enfos_slow_aura"
+{
+	"BaseClass"	"omniknight_degen_aura"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"900"
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"speed_bonus"			"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_bonus_tooltip"	"-5 -10 -15 -20 -25 -30 -35 -40 -45 -50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+	}
+}

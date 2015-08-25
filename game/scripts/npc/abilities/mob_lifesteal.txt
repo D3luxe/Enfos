@@ -1,0 +1,39 @@
+"mob_lifesteal"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_mana_break"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"MaxLevel"						"1"
+	"Modifiers"
+	{
+		"modifier_mob_lifesteal"
+		{
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}	
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_TOOLTIP"				"%leech"
+			}
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"10"
+		}
+	}
+	
+}

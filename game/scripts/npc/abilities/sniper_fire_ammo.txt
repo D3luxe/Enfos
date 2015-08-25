@@ -1,0 +1,70 @@
+//=================================================================================================================
+// Sniper: Fire Ammo
+//=================================================================================================================
+"sniper_fire_ammo"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sniper_shrapnel"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_lina/"
+	}
+	"OnToggleOn"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+			"Function"		"FireAmmoRefund" //it's not supposed to cost mana to toggle
+		}	
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_sniper_fire_ammo"
+			"Target"				"CASTER"
+		}
+	}
+	"OnToggleOff"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"			"modifier_sniper_fire_ammo"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_sniper_fire_ammo"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%damage_bonus"
+			}
+			"OnAttackStart"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+					"Function"		"FireAmmoCost"
+				}
+				"TrackingProjectile" // a bit ghetto
+				{
+					"Target"		"TARGET"
+					"EffectName"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+					"MoveSpeed"		"3000"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_bonus"			"100 250 500 1000 1500 2200 3300 4500 5500 7500"
+		}
+	}
+}	

@@ -1,0 +1,43 @@
+//=================================================================================================================	//=================================================================================================================
+// Alchemy
+//=================================================================================================================
+"empath_alchemy"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityTextureName"			"chaos_knight_chaos_strike"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"180 168 156 144 132 120 108 96 84 72"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40"
+
+
+	"precache"
+	{
+		"particle"	"particles/units/heroes/hero_pugna/pugna_life_drain.vpcf"
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/empath.lua"
+			"Function"		"Alchemy"
+		}
+	}
+}

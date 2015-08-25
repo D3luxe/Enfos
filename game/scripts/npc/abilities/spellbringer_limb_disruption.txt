@@ -1,0 +1,80 @@
+"spellbringer_limb_disruption"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"pugna_decrepify"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	"AbilityManaCost"	"75"
+	"AbilityCooldown"	"10"
+
+	"AbilityCastRange"	"0"
+	"MaxLevel"						"1"
+	"precache"
+	{
+		"particle_folder"	"particles/items2_fx/"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"limb_disruption"
+		}
+	}
+
+	"Modifiers"    				// Can be used to create custom modifier. 
+	{  							// There are many snippets that can be expanded in to the modifiers. 
+		"modifier_spellbringer_limb_disruption"   	// This should be the name of your modifier
+		{
+			// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+
+			"EffectName" "particles/items2_fx/rod_of_atos.vpcf"
+			"EffectAttachType" "follow_origin"
+			"Duration"					"%duration"
+
+
+		
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+			}
+		}
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"30"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"attack_slow"					"-80"
+		}
+		"03"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"move_slow"					"-90"
+		}
+		"04"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"damage_reduction"					"-80"
+		}
+	}
+
+}

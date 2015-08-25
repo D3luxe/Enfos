@@ -1,0 +1,27 @@
+//===============================================
+// Ring of Victory
+//===============================================
+"item_recipe_ring_of_victory"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"                            "2048"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                        "item_recipe_arcane_boots"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1500"	
+	"ItemShopTags"					""
+	"SecretShop"					"1"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemDisassemblable"			"0"
+	"ItemResult"					"item_ring_of_victory"
+	"ItemRequirements"
+	{
+		"01"						"item_diamond_etched_ring;item_zircon_inset_ring;item_bloodstone_inset_ring;item_moonstone_inset_ring"
+	}
+}

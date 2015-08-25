@@ -1,0 +1,61 @@
+//=================================================================================================================
+// Evoker: Gar Zeng
+//=================================================================================================================
+"evoker_gar_zeng"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"shadow_shaman_ether_shock"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"400" // Corrected value
+	"AbilityCooldown"				"20 19 18 17 17 16 15 15 14 13" //yep, it actually scales this way
+	"AbilityManaCost"				"45 54 64 77 93 111 134 161 193 232"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_zuus/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_shadowshaman.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/evoker.lua"
+			"Function"		"GarZeng"
+			"damage"		"%damage"
+			"units_hit"		"%units_hit"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"100 170 289 491 835 1419 2413 4103 6975 11858"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"units_hit"				"2 3 4 5 6 7 8 9 10 11"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"start_radius"				"300"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"end_radius"				"480"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"end_distance"				"300"
+		}
+	}	
+}

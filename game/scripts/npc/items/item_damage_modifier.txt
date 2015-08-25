@@ -1,0 +1,115 @@
+//=================================================================================================================
+// Damage Modifier
+//=================================================================================================================
+"item_damage_modifier"
+{
+	"ID"							"2104"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+
+	"Modifiers"
+	{
+		"modifier_damage_mod_1"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1.5"
+			}
+		}
+		"modifier_damage_mod_2"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"3"
+			}
+		}
+		"modifier_damage_mod_4"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"6"
+			}
+		}
+		"modifier_damage_mod_8"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"12"
+			}
+		}
+		"modifier_damage_mod_16"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"24"
+			}
+		}
+		"modifier_damage_mod_32"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"48"
+			}
+		}
+		"modifier_damage_mod_64"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"96"
+			}
+		}
+		"modifier_damage_mod_128"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"192"
+			}
+		}
+		"modifier_damage_mod_256"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"384"
+			}
+		}
+		"modifier_damage_mod_512"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"768"
+			}
+		}
+	}
+}

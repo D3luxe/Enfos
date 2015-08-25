@@ -1,0 +1,79 @@
+//=================================================================================================================
+// Anti-Magic Potion
+//=================================================================================================================
+"item_anti_magic_potion"
+{
+	"ID"                            "2036"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_anti_magic_potion"
+	"ItemKillable"					"0"
+	//"ItemStockMax"					"10"
+	//"ItemStockInitial"				"10"
+	//"ItemStockTime"					"30.0"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"40.0"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1500"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"2"
+	"SideShop"						"1"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_anti_magic_potion"
+		}
+		"FireSound"
+		{
+			"Target" 		"UNIT"
+			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_anti_magic_potion"
+		{
+			"Duration"	"%duration"
+			"States"
+			{
+			"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"EffectName" 				"particles/items_fx/black_king_bar_avatar.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+		}
+
+	}
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}
+	}
+}

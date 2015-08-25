@@ -1,0 +1,44 @@
+//===============================================
+// Arbelog Paw Boots
+//===============================================
+"item_arbelog_paw_boots"
+{
+	"ID"                            "2021"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_tranquil_boots"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "500" 		
+	"ItemShopTags"					"boot"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	//"ItemStockMax"					"3"
+	//"ItemStockInitial"				"3"
+	//"ItemStockTime"					"60.0"
+
+	"Modifiers"
+	{
+		"modifier_arbelog_paw_boots"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"evasion"				"15"
+		}
+	}
+}

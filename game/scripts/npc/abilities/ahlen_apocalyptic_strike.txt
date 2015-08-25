@@ -1,0 +1,143 @@
+//=================================================================================================================
+// Ahlen: Apocalyptic Strike
+//=================================================================================================================
+"ahlen_apocalyptic_strike"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"phantom_assassin_coup_de_grace"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+
+	"Modifiers"
+	{
+		"apocalyptic_strike_crit_passive"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "apocalyptic_strike_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+
+		"apocalyptic_strike_crit"
+		{
+			"Duration"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				//"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%crit_bonus"
+				
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"ActOnTargets"
+				{
+					"Target"
+					{
+						"Center"		"TARGET"
+						"Radius"		"%full_radius"
+						"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"Action"
+					{
+						"Damage"
+						{
+							"Type" 		"DAMAGE_TYPE_PHYSICAL"
+							"Damage" 	"%full_damage"
+							"Target" 	"TARGET"
+						}
+					}
+				}
+				"ActOnTargets"
+
+				{
+					"Target"
+					{
+						"Center"		"TARGET"
+						"Radius"		"%half_radius"
+						"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					}
+					"Action"
+					{
+						"Damage"
+						{
+							"Type" 		"DAMAGE_TYPE_PHYSICAL"
+							"Damage" 	"%half_damage"
+							"Target" 	"TARGET"
+						}
+					}
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"		"apocalyptic_strike_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"10 11 12 14 15 16 18 19 20 22"
+
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_bonus"				"60 90 135 202 303 455 683 1025 1537 2306"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"full_radius"				"180"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"half_radius"				"250"
+		}
+		"05"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"full_damage"				"30 60 68 101 152 228 342 513 769 1153" 
+		}
+		"06"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"half_damage"				"30 60 67 101 151 227 341 512 768 1153" 
+
+		}
+	}
+}

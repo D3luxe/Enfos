@@ -1,0 +1,57 @@
+//=================================================================================================================
+// Faenrae Champion: Dark Hand Curse
+//=================================================================================================================
+"faenrae_champion_dark_hand_curse"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"undying_soul_rip"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AOERadius"						"%radius"
+	"AbilityCooldown"				"1"
+	"AbilityCastRange"				"1200"
+	"AbilityManaCost"				"18 21 25 29 34 31 48 57 67 79"
+	"precache"
+	{
+		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_ambient.vpcf"
+		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack.vpcf"
+		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_light.vpcf"
+		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_medium.vpcf"
+		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_attack_heavy.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+	"Modifiers"
+	{
+		"modifier_faenrae_champion_dark_hand_curse"
+		{
+			"Passive"	"1"
+			"OnKill"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"		"dark_hand_curse_counter"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"825"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"100 200 400 800 1600 3200 6400 12800 25600 51200"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"targets"				"4 4 4 5 5 5 6 6 6 7"
+		}
+	}
+}		

@@ -1,0 +1,28 @@
+"addon"
+{
+	"addon_game_name"	"Enfos"
+	
+	"camera_lock_on"	"Camera Lock ON"
+	"camera_lock_off"	"Camera Lock OFF"
+	
+	"select_difficulty"	"SELECT DIFFICULTY"
+	"difficulty"		"Choose<br>Difficulty"
+	"difficulty0"		"Normal"
+	"difficulty1"		"Ascendant"
+	"difficulty2"		"Elder"
+	"difficulty3"		"Mythical"
+	"difficulty4"		"Legendary"
+	
+	"difficulty_text"				"The difficulty increases mob health and damage.\n"
+	"difficulty0_text"				"This is the Classic difficulty baseline. \n100% HP and Damage.\n"
+	"difficulty1_text"				"An Advanced Challenge\nWatch your step! \n125% HP and Damage."
+	"difficulty2_text"				"An Heroic Challenge\nDon't try this alone or without experience.\n 150% HP and Damage."
+	"difficulty3_text"				"A Brutal Quest\nYou asked for it.\n 175% HP and Damage."
+	"difficulty4_text"				"The Ultimate Difficulty\nOnly recommended for players with previous experience.\n 200% HP and Damage."
+
+	"vote_difficulty"	"VOTE DIFFICULTY"
+
+	"play_again"		"Resurrect at latest check point?"
+	"yes_option"		"Yes"
+	"no_option"			"GG"
+}

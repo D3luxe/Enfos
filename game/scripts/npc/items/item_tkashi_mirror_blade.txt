@@ -1,0 +1,53 @@
+//===============================================
+// T'kashi Mirror Blade
+//===============================================
+"item_tkashi_mirror_blade"
+{
+	"ID"                            "2004"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_sange"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "0" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"SideShop"					"1"
+	"LumberCost"	"240"
+
+	"Modifiers"
+	{
+		"modifier_tkashi_mirror_blade"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+			}
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"960"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"all_stats"				"36"
+		}
+
+	}
+}

@@ -1,0 +1,153 @@
+//=================================================================================================================
+// Faenrae Champion: Inner Chaos (Based on terrorblade_metamorphasis. Written by Noya: https://github.com/Pizzalol/SpellLibrary
+//=================================================================================================================
+"faenrae_champion_inner_chaos"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityTextureName"			"terrorblade_metamorphosis"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+	"MaxLevel"						"10"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"130 128 125 121 116 110 103 95 86 76"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"75 80 85 90 95 100 105 110 115 120"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_terrorblade.vsndevts"
+		"particle"  "particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+		"particle"	"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+		"model"		"models/heroes/terrorblade/demon.vmdl"
+	}
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"		"Hero_Terrorblade.Metamorphosis"
+			"Target"			"CASTER"
+		}
+		"FireEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_transform.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"			"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"		"modifier_faenrae_champion_inner_chaos"
+			"Target"			"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_faenrae_champion_inner_chaos"
+		{
+			"Duration"					"%duration"
+			"EffectName" 				"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
+			"EffectAttachType"  		"follow_origin"
+			"AllowsIllusionDuplicate"	"1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"				"ModelSwapStart"
+					"model"					"models/heroes/terrorblade/demon.vmdl"
+					"projectile_model"		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_base_attack.vpcf"
+				}
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"			"HideWearables"
+				}
+				"AttachEffect"
+				{
+					"EffectName" 		"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis_ambient.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
+				"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_damage"		
+				"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
+			}
+			"OnAttackLanded"
+			{
+				"CleaveAttack" //far
+				{
+					"CleavePercent"	"25"
+					"CleaveRadius"	"275"
+				}
+				"CleaveAttack" //medium
+				{
+					"CleavePercent"	"25"
+					"CleaveRadius"	"210"
+				}
+				"CleaveAttack" //full
+				{
+					"CleavePercent"	"50"
+					"CleaveRadius"	"170"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"		"ModelSwapEnd"
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"		"ShowWearables"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"base_attack_time"		"1.15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_range"			"422"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_attack_range"	"550"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_health"			"350 700 1050 1400 1750 2100 2450 2800 3150 3500"
+		}
+	}
+}

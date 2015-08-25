@@ -1,0 +1,74 @@
+//=================================================================================================================
+// Spirit Breaker - Summoner
+//=================================================================================================================	
+//=================================================================================================================
+// Summoner: Anti-Magic Shell
+//=================================================================================================================
+"summoner_anti_magic_shell"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ember_spirit_flame_guard"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"30.0"
+	"AbilityManaCost"				"100" //Verified
+	"AbilityCastRange"				"300" //Verified
+	"Precache"
+	{
+		"particle_folder"			"particles/econ/courier/courier_trail_orbit/"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+			"Function"				"AntiMagicShell"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"			"summoner_anti_magic_spell_particle"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"summoner_anti_magic_spell_particle"
+		{
+			"IsHidden"				"1"
+			"ThinkInterval"			"0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{					
+					"ScriptFile"		"scripts/vscripts/heroes/summoner.lua"
+					"Function"			"AntiMagicShellParticle"
+				}
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/econ/courier/courier_trail_orbit/courier_trail_orbit.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"40"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"strength"				"75000"
+		}
+	}
+}

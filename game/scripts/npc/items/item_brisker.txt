@@ -1,0 +1,49 @@
+//=================================================================================================================
+// Brisker
+//=================================================================================================================
+"item_brisker"
+{
+	"ID"                            "2012"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_diffusal_blade"
+
+	"ItemQuality"					"artifact"
+	"ItemCost"                      "2600" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_brisker"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		""
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+			}
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"360"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_agi"				"48"
+		}
+
+	}
+}

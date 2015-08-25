@@ -1,0 +1,76 @@
+//=================================================================================================================
+// Bard: Call of the Siren split shot (largely taken from Spell Library: https://github.com/Pizzalol/SpellLibrary/)
+//=================================================================================================================
+"bard_call_of_the_siren_multi_shot"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"naga_siren_mirror_image"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"0"
+	"AbilityCastPoint"				"0"
+	"LevelsBetweenUpgrades"			"0"
+	"RequiredLevel"					"0"
+	"MaxLevel"						"1"
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		
+		"FireSound"
+		{
+			"EffectName"	"Hero_Medusa.AttackSplit"
+			"Target" 		"TARGET"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/bard.lua"
+			"Function"		"SplitShotDamage"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_split_shot_enfos"
+		{
+			"Passive"	"1"
+			"IsHidden"	"0"
+			"OnAttack"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/bard.lua"
+					"Function"		"split_shot"
+				}
+			}
+			
+			"States"
+			{
+				"MODIFIER_STATE_FLYING"		"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"range"						"1000"
+		}			
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"arrow_count"				"3"
+		}			
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"projectile_speed"			"1200"
+		}
+
+	}
+}

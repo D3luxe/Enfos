@@ -1,0 +1,44 @@
+//=================================================================================================================
+// Revenant: Corpse Explosion
+//=================================================================================================================
+"revenant_corpse_explosion"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"nevermore_shadowraze3"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"2"
+	"AbilityManaCost"				"70 77 86 96 107 119 132 147 164 182"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle_folder"			"particles/hero_revenant/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/revenant.lua"
+			"Function"				"CorpseExplosion"
+			"damage"				"%damage"
+			"radius"				"%radius"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"33" //percent of corpse's maximum HP
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"260 300 340 380 420 460 500 540 580 620" //percent of corpse's maximum HP
+		}		
+	}
+}

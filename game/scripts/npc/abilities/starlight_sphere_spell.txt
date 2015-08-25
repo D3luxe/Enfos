@@ -1,0 +1,65 @@
+//=================================================================================================================
+// Starlight Sphere spell
+//=================================================================================================================
+"starlight_sphere_spell"
+{
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName"            "wisp_detonate"
+	"MaxLevel"                      "1"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+			"Function"				"StarlightSphereDetonate"
+			"damage"				"%damage"
+			"full_damage_radius"	"%full_damage_radius"
+			"reduced_damage_radius"	"%reduced_damage_radius"
+		}
+	}	
+	"Modifiers"
+	{
+		"starlight_sphere_modifier"
+		{
+			"Passive"           	"1"
+			"IsHidden"				"1"    
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnDeath" //I don't know if this is proper behaviour but it's the coolest behaviour
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+					"Function"				"StarlightSphereDetonate"
+					"damage"				"%damage"
+					"full_damage_radius"	"%full_damage_radius"
+					"reduced_damage_radius"	"%reduced_damage_radius"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"60000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"full_damage_radius"	"300"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"reduced_damage_radius"	"450"
+		}
+	}	
+}

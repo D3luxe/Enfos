@@ -1,0 +1,65 @@
+//=================================================================================================================
+// Faenrae Champion: Word of Chaos
+//=================================================================================================================
+"faenrae_champion_word_of_chaos"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"chaos_knight_chaos_strike"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AOERadius"						"%radius"
+	"AbilityCooldown"				"40"
+	"AbilityCastRange"				"%radius"
+	"AbilityManaCost"				"30 33 36 39 43 48 53 58 64 70"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf"
+		"particle"					"particles/items_fx/abyssal_blade.vpcf"
+		"particle"					"particles/units/heroes/hero_dazzle/dazzle_poison_debuff.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/faenrae_champion.lua"
+			"Function"				"word_of_chaos"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"450 500 550 600 650 700 750 800 850 900"
+		}	
+		"02"
+		{	
+			"var_type"				"FIELD_INTEGER"
+			"kill"					"10 10 11 11 12 13 14 15 16 18"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun"					"30 31 33 35 37 40 43 46 50 54"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"half_health"			"40 43 45 49 50 47 43 39 34 28" //not all of these added up to 100, so I added onto this one until they did.
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"do_nothing"			"20 16 11 5 0 0 0 0 0 0"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun_duration"			"30 30 30 30 30 30 30 30 30 30"
+		}
+	}
+}	

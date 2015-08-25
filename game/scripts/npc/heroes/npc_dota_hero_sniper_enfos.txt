@@ -1,0 +1,35 @@
+//=================================================================================================================
+// HERO: Sniper (Sniper)
+//=================================================================================================================
+"npc_dota_hero_sniper_enfos"
+{
+	"override_hero"				"npc_dota_hero_sniper"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"sniper_fire_ammo"
+	"Ability2"					"sniper_lucky_shot"
+	"Ability3"					"sniper_burning_grenade"
+	"Ability4"					"sniper_rapid_reload"
+	"Ability6"					"sniper_standard_technique"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	//I had to guess for most of these values. They need to be verified.
+	"AttributeBaseStrength" 	"3"
+	"AttributeStrengthGain" 	"1.5"
+	"AttributeBaseAgility" 		"6" 
+	"AttributeAgilityGain" 		"0.2"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3.5" 
+	
+	"MovementSpeed"				"250"
+	"AttackRate"                "2.56"
+	"AttackRange"               "500"
+	"AttackAcquisitionRange"	"500"	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"1.5"
+	"AttackDamageMax" 			"11.5"
+}

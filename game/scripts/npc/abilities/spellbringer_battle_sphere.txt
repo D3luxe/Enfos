@@ -1,0 +1,134 @@
+"spellbringer_battle_sphere"
+{
+	"BaseClass"					"ability_datadriven"
+	"AbilityTextureName"		"sven_storm_bolt"
+	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	"AbilityManaCost"	"75"
+	"AbilityCooldown"	"60"
+	"AbilityCastPoint"	"1"
+	"MaxLevel"						"1"
+	"AbilityCastRange"	"0"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+		"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+		"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+		"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
+		"particle"			"particles/units/heroes/hero_gyrocopter/gyro_guided_missile_target.vpcf"
+	}
+	"OnSpellStart"
+	{
+		
+		
+	}
+	
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"           	"TARGET"
+			"EffectName"       	"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			"Dodgeable"        	"1"
+			"ProvidesVision"   	"1"
+			"VisionRadius"		"400"
+			"MoveSpeed"        	"%bolt_speed"
+			"SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+
+		"FireSound"
+		{
+			"EffectName"		"Hero_Sven.StormBolt"
+			"Target"			"CASTER"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_battle_sphere_fx"
+			"Target"	"TARGET"
+		}
+	}
+	
+	"OnProjectileHitUnit"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" "modifier_battle_sphere_fx"
+			"Target"	"TARGET"
+		}
+		"FireSound"
+		{
+			"EffectName"		"Hero_Sven.StormBoltImpact"
+			"Target"			"TARGET"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"Target"		"TARGET"
+			"ControlPointEntities"
+			{
+				"TARGET"	"attach_origin"
+				"TARGET"	"attach_origin"
+				"TARGET"	"attach_origin"
+				"TARGET"	"attach_origin"	//CP3 has a child explosion origin
+			}
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"		"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"			"battle_sphere"
+		}
+	}
+
+	"OnProjectileDodge"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" "modifier_battle_sphere_fx"
+			"Target"	"TARGET"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_battle_sphere_fx"   	// This should be the name of your modifier
+		{
+			// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsHidden"					"false"
+			"Duration"					"5"
+
+			"EffectName" "particles/units/heroes/hero_gyrocopter/gyro_guided_missile_target.vpcf"
+			"EffectAttachType" "follow_origin"
+		}
+	}
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"8"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"damage"					"10"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bolt_speed"			"2000"
+		}
+	}
+
+}

@@ -1,0 +1,44 @@
+//=================================================================================================================
+// Furion: Tempest
+//=================================================================================================================
+//=================================================================================================================
+// Tempest: Zephyr
+//=================================================================================================================
+"tempest_zephyr"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"lone_druid_spirit_bear_return"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"						"1"
+	"AOERadius"						"%radius"
+	"AbilityManaCost"				"144"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"20"
+	"AbilityCastRange"			"500"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/tempest.lua"
+			"Function"				"zephyr"
+			"radius"				"%radius"
+			"Target"				"POINT"
+		}
+	}
+
+	"AbilitySpecial"
+	{	
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"500"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+
+
+	}
+}	

@@ -1,0 +1,26 @@
+//===============================================
+// Thirsting Blade
+//===============================================
+"item_recipe_thirsting_blade"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"ID"                            "2041"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+	"Model"							"models/props_gameplay/recipe.mdl"
+	"BaseClass"                        "item_recipe_arcane_boots"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"5000"	
+	"ItemShopTags"					""
+	"SecretShop"					"1"
+	
+	// Recipe
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemRecipe"					"1"
+	"ItemResult"					"item_thirsting_blade"
+	"ItemRequirements"
+	{
+		"01"						"item_gleaming_longsword;item_bloodthirst;item_spineripper"
+	}
+}

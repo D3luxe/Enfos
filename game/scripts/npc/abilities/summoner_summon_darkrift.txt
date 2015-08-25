@@ -1,0 +1,49 @@
+//=================================================================================================================
+// Summoner: Summon Darkrift
+//=================================================================================================================
+"summoner_summon_darkrift" //This unit isn't going to have the lifetime indicator. There is no way around this
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"doom_bringer_doom"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"			"3"
+	"RequiredLevel"					"6"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"160 152 144 136 128 120 112 104 96 88"
+	"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
+	"AbilityCastRange"				"800"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+			"Function"				"SummonDarkrift"
+			"Target"				"POINT"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_summoner_summon_darkrift"
+		{
+			"Duration"				"%duration"
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"60"
+		}
+	}
+}

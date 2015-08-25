@@ -1,0 +1,47 @@
+//===============================================
+// Crystal-Edged Ring
+//===============================================
+"item_crystal_edged_ring"
+{
+	"ID"                            "2015"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_crystal_edged_ring"
+	//"ItemStockMax"					"3"
+	//"ItemStockInitial"				"3"
+	//"ItemStockTime"					"24.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "2250" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+
+	"Modifiers"
+	{
+		"modifier_crystal_edged_ring"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"				"12"
+		}
+	}
+}

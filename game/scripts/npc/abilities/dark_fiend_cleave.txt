@@ -1,0 +1,46 @@
+"dark_fiend_cleave"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"bounty_hunter_wind_walk"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_dark_fiend_cleave"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+
+			"OnAttackLanded"
+			{
+				"CleaveAttack"
+				{
+					"CleavePercent"		"%cleave_percent"
+					"CleaveRadius"      "%radius"
+				}
+			}
+		}
+		
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"cleave_percent"				"25"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"150"
+		}
+	}	
+
+}

@@ -1,0 +1,38 @@
+//=================================================================================================================
+// Juggernaut: Magic Resistance
+//=================================================================================================================
+"juggernaut_enfos_magic_resistance"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"antimage_spell_shield"
+	"MaxLevel"						"10"
+	"AbilityCooldown"				"60 53 46 39 32 25 18 11 4 0"	
+	"Modifiers"
+	{
+		"modifier_magic_resistance"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/blood_dancer.lua"
+					"Function"		"blood_dancer_magic_resistance"
+				}
+			}
+			"ThinkInterval"			".03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/blood_dancer.lua"
+					"Function"			"blood_dancer_magic_resistance_thinker"
+				}
+			}
+		}			
+	}
+}	

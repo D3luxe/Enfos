@@ -1,0 +1,68 @@
+//=================================================================================================================
+// Thief: Khri Strike
+//=================================================================================================================
+"thief_khri_strike"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"riki_backstab"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"Modifiers"
+	{
+		"modifier_khri_strike"
+		{
+			"Passive" 				"1"
+			"IsHidden"				"1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" 		"%chance"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"Target" 		"TARGET"
+							"ModifierName" 	"modifier_khri_strike_target"
+						}
+						"Damage"
+						{
+							"Target"		"TARGET"
+							"Type"			"DAMAGE_TYPE_PHYSICAL"
+							"Damage"		"%damage"
+						}
+					}
+				}
+			}
+		}
+		"modifier_khri_strike_target"
+		{
+			"Duration" 				"%duration"
+			"EffectName" 			"particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" 		"follow_overhead"
+			"OverrideAnimation" 	"ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}			
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"chance"				"50"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"40 60 90 130 180 240 370 390 480 580" //did scaling that made sense mean nothing to these people?
+		}			
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"1 2 3 4 5 6 7 8 9 10"
+		}
+	}
+}

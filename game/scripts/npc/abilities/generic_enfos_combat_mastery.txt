@@ -1,0 +1,100 @@
+//=================================================================================================================
+// Generic: Combat Mastery
+//=================================================================================================================
+"generic_enfos_combat_mastery"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"bounty_hunter_wind_walk"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	
+	"Modifiers"
+	{
+		
+		"combat_mastery_evasion"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
+			}
+			
+		}
+		
+		"combat_mastery_passive"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "combat_mastery_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+			
+			
+		"combat_mastery_crit"
+		{
+			"Duration"	"1"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"combat_mastery_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+		
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_bonus"				"200	"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"crit_chance"				"9 18 27 36 45 54 63 72 81 90"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"evasion"				"5 10 15 20 25 30 35 40 45 50"
+		}
+	}
+	
+}		

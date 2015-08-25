@@ -1,0 +1,101 @@
+//=================================================================================================================
+// Ursa - Abandoned Heart
+//=================================================================================================================	
+"ursa_enfos_abandoned_heart"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"omniknight_repel"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"60"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	"AOERadius"						"%radius"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"10 15 20 25 30 35 40 45 50 55"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"particles/units/heroes/hero_silencer/silencer_global_silence.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"%radius"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_abandoned_heart"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_abandoned_heart"
+		{
+			 "Duration" "%duration"
+
+			 "Properties" 
+			 {
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_slow"
+			 }
+			
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/generic_gameplay/generic_slowed_cold.vpcf"
+			"EffectAttachType" "follow_origin"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"500 550 600 650 700 750 800 850 900 950"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"45"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_slow"				"-3 -6 -9 -12 -15 -18 -21 -24 -27 -30"
+		}
+		
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_slow"				"-10 -18 -26 -34 -42 -50 -58 -66 -74 -85"
+		}
+	}
+	
+}

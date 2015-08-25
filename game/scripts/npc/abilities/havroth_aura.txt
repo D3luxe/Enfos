@@ -1,0 +1,78 @@
+"havroth_aura"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"rubick_empty1"
+	"MaxLevel"						"1"
+
+	"Modifiers"
+	{
+		"modifier_havroth"
+		{
+			"Duration"				"40"
+			"IsHidden"				"0"
+			"Passive"				"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"				"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MAGIC_IMMUNE"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"CASTER"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+
+		}
+
+		"modifier_havroth_aura"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			
+			"Aura"					"modifier_havroth_thorns"
+			"Aura_Radius"			"900"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		}
+
+		"modifier_havroth_thorns"
+		{	
+			"IsHidden"	"0"
+			"Passive"	"1"
+
+			"OnAttacked"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/spellbringer.lua"
+					"Function"				"havroth_reflect"
+					"damage_reflected"		"%damage_reflection_pct"
+					"DamageDealt"			"%attack_damage"
+				}
+
+			}
+
+		}
+
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_reflection_pct"	"33"
+		}
+	}
+	
+}

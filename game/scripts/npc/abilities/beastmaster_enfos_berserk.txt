@@ -1,0 +1,93 @@
+//=================================================================================================================
+// Beastmaster: Berserk
+//=================================================================================================================
+"beastmaster_enfos_berserk"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"troll_warlord_berserkers_rage"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"					"6"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"30"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40 50 60 70 80 90 100 110 120 130"
+	
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_berserk"
+			"Target" "CASTER"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_berserk"
+		{
+			 "Duration" "%duration"
+			 "OnCreated"
+			 {
+				"AttachEffect"
+				{
+					"Target"					"CASTER"
+					"EffectName"				"particles/neutral_fx/thunder_lizard_frenzy.vpcf"
+					"EffectAttachType"			"follow_origin"
+					"EffectRadius"				"300"
+				}
+			 }
+			 
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				"MODIFIER_PROPERTY_INCOMING_DAMAGE_PERCENTAGE"		"%damage_increase"
+			}		
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_speed"				"50 90 130 170 210 250 290 330 370 410"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_speed"				"20 30 40 50 60 70 80 90 100 110"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage_increase"				"50 45 40 35 30 25 20 15 10 5"
+		}
+		
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"28"
+		}
+	}
+	
+}

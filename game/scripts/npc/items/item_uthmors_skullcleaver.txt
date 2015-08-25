@@ -1,0 +1,104 @@
+//===============================================
+// Uthmor's Skullcleaver
+//===============================================
+"item_uthmors_skullcleaver"
+{
+	"ID"                            "2005"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_bfury"
+
+	"ItemQuality"					"rare"
+	"ItemCost"                      "0" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"SideShop"					"1"
+	"LumberCost"	"240"
+
+	"Modifiers"
+	{
+		"modifier_uthmors_skullcleaver"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "uthmors_skullcleaver_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+			}
+		}
+
+		"uthmors_skullcleaver_crit"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	 "follow_origin"
+					"Target"			 "TARGET"
+				}	
+				"RemoveModifier"
+				{
+					"ModifierName"		"uthmors_skullcleaver_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"240"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"all_stats"				"36"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_chance"			"50"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"crit_bonus"			"200"
+		}
+
+	}
+}

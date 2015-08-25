@@ -1,0 +1,49 @@
+//=================================================================================================================
+// Tower Shield
+//=================================================================================================================
+"item_tower_shield"
+{
+	"ID"                            "2108"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_tower_shield"
+	//"ItemStockMax"					"2"
+	//"ItemStockInitial"				"2"
+	//"ItemStockTime"					"120.0"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1500"
+	"ItemQuality"					"rare"
+	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+	"ItemDroppable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_tower_shield"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+			}
+		}
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"5"
+		}
+	}
+}

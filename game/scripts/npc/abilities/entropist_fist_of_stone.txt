@@ -1,0 +1,117 @@
+//=================================================================================================================
+// Entropist: Fist of Stone (note: the website says "First of Stone". Assuming it's a typo)
+//=================================================================================================================
+"entropist_fist_of_stone"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"earth_spirit_rolling_boulder"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"40"
+	"AbilityCastRange"				"900" //Verified
+	"AbilityManaCost"				"60 66 75 87 102 141 165 192 222"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle_folder"			"particles/hero_entropist/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"LinearProjectile"	
+		{
+			"Target"				"POINT"
+			"EffectName"			"particles/hero_entropist/batrider_flamebreak.vpcf"
+			"MoveSpeed"				"900" //Verified
+			"StartRadius"			"0"
+			"EndRadius"				"0"
+			"StartPosition"			"follow_origin"
+			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+			"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone"		"0"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
+			"Target"				"CASTER"
+		}
+	}
+	"OnProjectileFinish"
+	{
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"			"POINT"
+				"Radius"			"%radius"
+				"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+			"Action"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_entropist_fist_of_stone_stun"
+					"Target"		"TARGET"
+				}
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage"
+				}
+			}
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
+			"Target"				"POINT"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+			"Function"				"FistOfStone"
+			"particle_radius"		"%particle_radius"
+			"Target"				"POINT"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_entropist_fist_of_stone_stun"
+		{
+			"Duration" "%duration"
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}	
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"60 112 194 313 475 691 969 1323 1767 2321"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"5 5.5 6 6.7 7.3 8 8.9 9.7 10.7 12"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"200 220 240 260 280 300 320 340 360 380"
+		}
+		"04" //do not localize
+		{
+			"var_type"				"FIELD_FLOAT"
+			"particle_radius"		"0.53 0.58 0.64 0.69 0.75 0.8 0.85 0.91 0.96 1.01"
+		}
+	}
+}	

@@ -1,0 +1,61 @@
+//=================================================================================================================
+// Moon Mage: Starlight Sphere
+//=================================================================================================================
+"moon_mage_starlight_sphere_summon"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"wisp_spirits"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"150 145 140 135 130 125 120 115 110 105"
+	"AbilityManaCost"				"60 82 113 156 212 284 376 492 635 812"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_wisp/" 
+		"model"						"models/heroes/wisp/wisp.vmdl"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"SpawnUnit" //we do this here instead of in Lua because there seems to be no way to get the duration timer to 	
+		{
+			"Target"				"CASTER"
+			"UnitName"				"npc_starlight_sphere"
+			"UnitCount"				"1"
+			"UnitLimit"				"1"
+			"SpawnRadius"			"100"
+			"Duration"				"%duration"
+			"GrantsGold"			"false"
+			"GrantsXP"				"false"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+			"Function"				"StarlightSphereSummon"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"60000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"full_damage_radius"	"300"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"reduced_damage_radius"	"450"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}	
+	}	
+}

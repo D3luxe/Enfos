@@ -1,0 +1,76 @@
+//=================================================================================================================
+// Mentalist: Aura Sight
+//=================================================================================================================
+"mentalist_aura_sight"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"puck_dream_coil"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"70 68 66 64 62 60 58 56 54"
+	"AbilityManaCost"				"20"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_lion/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_mentalist_aura_sight"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mentalist_aura_sight"
+		{
+			"Duration"				"%duration"
+			"ThinkInterval"			"0.1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"ControlPointEntities"
+					{
+						"CASTER"		"attach_hand_r"
+						"TARGET"		"attach_hand_l"
+					}
+					"EffectName"		"particles/units/heroes/hero_lion/lion_spell_mana_drain.vpcf"
+					"EffectAttachType"	"start_at_customorigin"
+				}
+			}
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/heroes/mentalist.lua"
+					"Function"			"AuraSight"
+					"mana_regen"		"%mana_regen"
+				}
+			}
+			// "Properties"
+			// {
+				// "MODIFIER_PROPERTY_BASE_MANA_REGEN"		"%mana_regen" //we can't actually do this way because dota's mana regen per second caps out at 500.
+			// }
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen"			"80 124 190 280 425 600 850 1200 1650"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+	}	
+}

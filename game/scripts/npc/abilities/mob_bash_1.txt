@@ -1,0 +1,82 @@
+"mob_bash_1"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"slardar_bash"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_mob_bash_1"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%bash_chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/heroes/shared.lua"
+							"Function"		"mob_bash"
+							"damage"		"%damage"
+							"duration"		"%duration"
+						}
+
+					}
+				}
+			}
+		}	
+
+		"modifier_mob_bash_1_stun"
+		{
+			"IsDebuff"					"true"
+			"IsPurgable"				"false"
+			"IsStunDebuff"				"true"
+			"IsHidden"					"false"
+
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+			"Duration"					"%duration"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+		}		
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"2"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"bash_chance"				"5"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"25"
+		}
+	}
+	
+}	

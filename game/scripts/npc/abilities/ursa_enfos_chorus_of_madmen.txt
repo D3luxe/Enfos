@@ -1,0 +1,98 @@
+//=================================================================================================================
+// Ursa - Chorus of Madmen Innate
+//=================================================================================================================	
+"ursa_enfos_chorus_of_madmen"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"silencer_last_word"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"1"
+	"LevelsBetweenUpgrades"		"2"
+	"RequiredLevel"			"1"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"60"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0.35 0.35 0.35 0.35"
+	"AOERadius"						"%radius"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"particles/units/heroes/hero_silencer/silencer_curse_aoe.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"350"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_chorus_of_madmen"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_chorus_of_madmen"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties"
+			 {
+				"MODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE" "%damage"
+			 }
+			 "States" 
+			 {
+				"MODIFIER_STATE_MUTED"	 "MODIFIER_STATE_VALUE_ENABLED"
+			 }
+			
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/generic_gameplay/generic_silenced.vpcf"
+			"EffectAttachType" "follow_overhead"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"350"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"20"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"-100"
+		}
+	}
+	
+}

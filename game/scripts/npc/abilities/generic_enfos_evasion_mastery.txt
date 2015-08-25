@@ -1,0 +1,35 @@
+//=================================================================================================================
+// Generic: Evasion Mastery
+//=================================================================================================================
+"generic_enfos_evasion_mastery"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"brewmaster_drunken_brawler"
+	"MaxLevel"						"10"	
+	"Modifiers"
+	{
+		"modifier_evasion_master"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
+			}
+		}			
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"evasion"				"7 14 21 28 35 42 49 56 63 70"
+		}
+	}
+}

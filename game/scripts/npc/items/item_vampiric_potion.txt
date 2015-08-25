@@ -1,0 +1,95 @@
+//=================================================================================================================
+// Vampiric Potion
+//=================================================================================================================
+"item_vampiric_potion"
+{
+	"ID"                            "2037"
+
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"Model"							"models/props_gameplay/salve_red.vmdl"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_vampiric_potion"
+	"ItemKillable"					"0"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"60.0"
+	
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"750"
+	"ItemShopTags"					"consumable"
+	"ItemQuality"					"consumable"
+	"ItemStackable"					"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"SideShop"						"1"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_vampiric_potion"
+		}
+		"FireSound"
+		{
+			"Target" 		"UNIT"
+			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_vampiric_potion"
+		{
+			"Duration"	"%duration"
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
+			}
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%lifesteal"
+				}
+			}
+			"EffectName" 				"particles/items_fx/armlet.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+		}
+
+	}
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"12"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lifesteal"				"75"
+		}
+	}
+}

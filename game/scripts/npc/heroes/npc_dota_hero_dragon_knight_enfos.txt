@@ -1,0 +1,70 @@
+//=================================================================================================================
+// HERO: Dragon Knight - Grake the Holy Warrior
+//=================================================================================================================
+"npc_dota_hero_dragon_knight_enfos"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"override_hero"		"npc_dota_hero_dragon_knight"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"			"5"
+	"Ability1"				"omniknight_enfos_fallen_one"
+	"Ability2"				"omniknight_enfos_sentinels_resolve"
+	"Ability3"				"omniknight_enfos_tipping_the_scales"
+	"Ability4"				"omniknight_enfos_heroic_strength"
+	"Ability6"				"generic_enfos_trothgangs_rally"
+	"Ability5"				"enfos_attribute_bonus"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"			"2"										// Physical protection.
+
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackRate"				"1.8"									// Speed of attack.
+	"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackRange"				"150"									// Range within a target can be attacked.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"9"									// Base strength
+	"AttributeStrengthGain"		"3.25"									// Strength bonus per level.
+	"AttributeBaseAgility"		"6"									// Base agility
+	"AttributeAgilityGain"		"2"									// Agility bonus per level.
+	"AttributeBaseIntelligence"	"3"									// Base intelligence
+	"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.6"									// Turning rate.
+
+	// Status
+	//-------------------------------------------------------------------------------------------------------------
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+
+	// Vision
+	//-------------------------------------------------------------------------------------------------------------
+	"VisionDaytimeRange"		"2000"									// Range of vision during day light.
+	"VisionNighttimeRange"		"2000"									// Range of vision at night time.
+
+	"precache"
+	{
+		"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+	
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+	}
+
+	"Team"						"Bad"
+}

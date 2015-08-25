@@ -1,0 +1,39 @@
+//=================================================================================================================
+// HERO: Dazzle: Shadow Priest
+//=================================================================================================================
+"npc_dota_hero_shadow_priest_enfos"
+{
+	"override_hero"				"npc_dota_hero_witch_doctor"
+	"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+	"AbilityLayout"				"5"
+	"Ability1"					"shadow_priest_enfeeble"
+	"Ability2"					"shadow_priest_shadow_art_mastery"
+	"Ability3"					"shadow_priest_greater_hallucination"
+	"Ability4"					"shadow_priest_armageddon"
+	"Ability6"					"shadow_priest_preservation"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"			
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"AttackDamageMin" 			"2.5"
+	"AttackDamageMax" 			"7.5"
+	"AttackRate"                "1.8"
+	"AttackRange"               "550"
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+}		

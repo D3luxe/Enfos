@@ -1,0 +1,75 @@
+//=================================================================================================================
+// Troll Warlord: Troll Cannibal
+//=================================================================================================================
+//=================================================================================================================
+// Troll Cannibal: Soul Drain
+//=================================================================================================================
+"troll_cannibal_soul_drain"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"dazzle_poison_touch"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELED | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityCooldown"				"0"
+	"AbilityManaCost"				"40"
+	"AbilityCastRange"				"200"
+	"MaxLevel"						"1"
+	"AbilityChannelTime"			"7"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	"precache"
+	{
+		"particle"			"particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_1.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_pugna.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_soul_drain"
+			"Target"				"CASTER"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Pugna.LifeDrain.Cast"
+			"Target"				"CASTER"
+		}
+	}
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"			"modifier_soul_drain"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_soul_drain"
+		{
+			"ThinkInterval"					"0.1"
+			"Duration"						"%duration"
+			"EffectName"					"particles/econ/courier/courier_greevil_green/courier_greevil_green_ambient_1.vpcf"
+			"EffectAttachType"				"follow_origin"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/troll_cannibal.lua"
+					"Function"				"soul_drain_heal"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"7"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"heal"					"8"
+		}
+	}
+}	

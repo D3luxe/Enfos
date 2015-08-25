@@ -1,0 +1,33 @@
+"item_modifier_master"
+{
+	"ID"							"2101"
+ 
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+ 
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"100"
+	"AbilityCastPoint"				"0.0"
+ 
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+ 
+	"Modifiers"
+	{
+		"modifier_custom"
+		{
+			"TextureName" "item_greater_salve"
+			"EffectName" "particles/items_fx/healing_flask.vpcf"
+			"EffectAttachType" "follow_origin"
+ 
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "100"
+			}
+		}
+	}
+}
+

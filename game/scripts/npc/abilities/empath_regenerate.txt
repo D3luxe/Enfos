@@ -1,0 +1,61 @@
+//=================================================================================================================	//=================================================================================================================
+// Regenerate
+//=================================================================================================================
+"empath_regenerate"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"enchantress_natures_attendants"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"25"
+	"AbilityManaCost"				"70"
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/empath.lua"
+			"Function"				"Regenerate"
+			"health_restored" 	"%health_restored"
+			"mana_restored"	"%mana_restored"
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_regenerate"
+			"Target"		"CASTER"
+		}
+	}
+	
+	"Modifiers"
+	{
+		"modifier_regenerate"
+		{
+			 "Duration" "%duration"
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/items2_fx/tranquil_boots_healing.vpcf"
+			"EffectAttachType" "follow_origin"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"health_restored"		"1000 1700 2890 4913 8352 14168 24137 41033 69757 99999"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"mana_restored"		"200 360 648 1166 2099 3779 6802 12244 22039 39671"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"duration"					"30"
+		}
+	}
+}

@@ -1,0 +1,34 @@
+//=================================================================================================================
+// HERO: Riki: Thief
+//=================================================================================================================
+"npc_dota_hero_riki_enfos"
+{
+	"override_hero"				"npc_dota_hero_antimage"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"thief_khri_strike"
+	"Ability2"					"generic_enfos_evasion_mastery"
+	"Ability3"					"thief_khri_silence"
+	"Ability4"					"thief_venom"
+	"Ability6"					"thief_sleight_of_hand"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"9" 
+	"AttributeAgilityGain" 		"3"
+	"AttributeBaseIntelligence" "3" 
+	"AttributeIntelligenceGain" "1" 
+	
+	"MovementSpeed"				"350"
+	"AttackRate"                "2.6"
+	"AttackRange"               "180"
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"9.5"
+	"AttackDamageMax" 			"16.5"	
+}

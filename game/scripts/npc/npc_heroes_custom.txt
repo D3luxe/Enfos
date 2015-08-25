@@ -1,0 +1,1290 @@
+"DOTAHeroes"
+{
+	//=================================================================================================================
+	// HERO: Medusa: Bard
+	//=================================================================================================================
+	"npc_dota_hero_bard_enfos"
+	{
+		"override_hero"				"npc_dota_hero_medusa"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"bard_faenellas_grace"
+		"Ability2"					"bard_merauds_blessing"
+		"Ability3"					"bard_unnerving_symphony"
+		"Ability4"					"bard_call_of_the_siren"
+		"Ability6"					"bard_nexus"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" 	"7"
+		"AttributeStrengthGain" 	"2.33"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "8" 
+		"AttributeIntelligenceGain" "2.66" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"0"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "1.5"
+		"AttackRange"               "1000"									// yes, really
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"1200"									// Range within a target can be acquired.
+	}		
+	//=================================================================================================================
+	// HERO: Beastmaster - Grim Stonecrusher, the Barbarian
+	//=================================================================================================================
+	"npc_dota_hero_beastmaster_enfos"	
+	{
+		"override_hero" "npc_dota_hero_beastmaster"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"beastmaster_enfos_trothfangs_butchery"					// Ability 1
+		"Ability2"					"generic_enfos_combat_mastery"			// Ability 2
+		"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
+		"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
+		"Ability6"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"									// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.4"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"180"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"								// Base strength
+		"AttributeStrengthGain"			"3"								// Strength bonus per level.
+		"AttributeBaseIntelligence"		"3"								// Base intelligence
+		"AttributeIntelligenceGain"		"1"								// Intelligence bonus per level.
+		"AttributeBaseAgility"			"6"								// Base agility
+		"AttributeAgilityGain"			"2"								// Agility bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	}
+	//=================================================================================================================
+	// HERO: Ember Spirit: Cabalist
+	//=================================================================================================================
+	"npc_dota_hero_cabalist_enfos"
+	{
+		"override_hero"				"npc_dota_hero_ember_spirit"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_ember_spirit.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"cabalist_fireball"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"cabalist_mantle_of_flames"
+		"Ability4"					"cabalist_dragons_breath"
+		"Ability6"					"cabalist_throw_naptha"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"18.5"
+		"AttackRate"                "1.4"
+		"AttackRange"               "180"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Crystal Maiden: Arcane Mistress
+	//=================================================================================================================
+	"npc_dota_hero_crystal_maiden_enfos"
+	{
+		"override_hero"				"npc_dota_hero_crystal_maiden"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"arcane_mistress_frost_scythe"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"arcane_mistress_frostbite"
+		"Ability4"					"arcane_mistress_hailstorm"
+		"Ability6"					"arcane_mistress_targeted_magic"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "2"
+		"AttackRange"               "450"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Dazzle (Hypnotist)
+	//=================================================================================================================
+	"npc_dota_hero_dazzle_enfos"
+	{
+		"override_hero"				"npc_dota_hero_dazzle"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"hypnotist_prediction"
+		"Ability2"					"hypnotist_hallucination"
+		"Ability3"					"hypnotist_mind_shout"
+		"Ability4"					"hypnotist_telekinetic_storm"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.25"
+		"AttackRange"               "300"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"1"
+		"AttackDamageMax" 			"6" 
+	
+	
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"8000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"8000"									// Range of vision at night time.
+	
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_luna/"
+			"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
+		}
+	}
+	//=================================================================================================================
+	// HERO: Dragon Knight - Grake the Holy Warrior
+	//=================================================================================================================
+	"npc_dota_hero_dragon_knight_enfos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"		"npc_dota_hero_dragon_knight"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+	
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"				"omniknight_enfos_fallen_one"
+		"Ability2"				"omniknight_enfos_sentinels_resolve"
+		"Ability3"				"omniknight_enfos_tipping_the_scales"
+		"Ability4"				"omniknight_enfos_heroic_strength"
+		"Ability6"				"generic_enfos_trothgangs_rally"
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"			"2"										// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.8"									// Speed of attack.
+		"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"150"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3.25"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+		// Vision
+		//-------------------------------------------------------------------------------------------------------------
+		"VisionDaytimeRange"		"2000"									// Range of vision during day light.
+		"VisionNighttimeRange"		"2000"									// Range of vision at night time.
+	
+		"precache"
+		{
+			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+		
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+		}
+	
+		"Team"						"Bad"
+	}
+	//=================================================================================================================
+	// HERO: Earth Spirit: Entropist
+	//=================================================================================================================
+	"npc_dota_hero_earth_spirit_enfos"
+	{
+		"override_hero"				"npc_dota_hero_earth_spirit"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"entropist_fist_of_stone"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"entropist_tremor"
+		"Ability4"					"entropist_ring_of_spears"
+		"Ability6"					"entropist_sure_footing"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.4"
+		"AttackRange"               "140"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"	
+		"Team"						"Bad"
+	}
+	//=================================================================================================================
+	// HERO: Faenrae Champion
+	//=================================================================================================================
+	"npc_dota_hero_faenrae_champion_enfos"
+	{
+		"override_hero"				"npc_dota_hero_terrorblade"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_nightstalker.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"faenrae_champion_dark_hand_curse"
+		"Ability2"					"generic_enfos_combat_mastery"
+		"Ability3"					"faenrae_champion_word_of_chaos"
+		"Ability4"					"faenrae_champion_inner_chaos"
+		"Ability6"					"faenrae_champion_faenrae_blood"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"3"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"18.5"
+		"AttackRate"                "1.6"
+		"AttackRange"               "180"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Furion: Tempest
+	//=================================================================================================================
+	"npc_dota_hero_furion_enfos"
+	{
+		"override_hero"				"npc_dota_hero_furion"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"tempest_paeldryths_wrath"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"tempest_burst"
+		"Ability4"					"tempest_vertigo"
+		"Ability6"					"tempest_zephyr"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "1.65"
+		"AttackRange"               "750"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Juggernaut - Doko the Blood Dancer
+	//=================================================================================================================
+	"npc_dota_hero_juggernaut_enfos"
+	{
+		"override_hero" "npc_dota_hero_juggernaut"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"				"juggernaut_enfos_magic_resistance"						// Ability 1
+		"Ability2"				"generic_enfos_evasion_mastery"	
+		"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
+		"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
+		"Ability6"				"generic_enfos_bloodlust"
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"			"1"											// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2"									// Damage range min.
+		"AttackDamageMax"			"8"									// Damage range max.
+		"AttackRate"				"0.75"									// Speed of attack.
+		"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+		"AttackRange"				"130"									// Range within a target can be attacked.
+		"ProjectileModel"			""										// Particle system model for projectile.
+		"ProjectileSpeed"			"0"										// Speed of projectile.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"6"									// Base strength
+		"AttributeStrengthGain"		"2"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"9"									// Base agility
+		"AttributeAgilityGain"		"3"									// Agility bonus per level.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+	
+		"Team"						"Bad"
+	}	
+	//=================================================================================================================
+	// HERO: Lich (Revenant)
+	//=================================================================================================================
+	"npc_dota_hero_lich_enfos"
+	{
+		"override_hero"				"npc_dota_hero_lich"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"revenant_animate_dead"
+		"Ability2"					"revenant_deathwave"
+		"Ability3"					"revenant_corpse_explosion"
+		"Ability4"					"revenant_spiritual_swarm"
+		"Ability6"					"revenant_haunting_spirit"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.8"
+		"AttackRange"               "550"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"8.5"									// Damage range max.
+	}
+	//=================================================================================================================
+	// HERO: Lina: Empath
+	//=================================================================================================================
+	"npc_dota_hero_lina_enfos"
+	{
+		"override_hero"				"npc_dota_hero_lina"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_lina.vsndevts"
+		"AbilityLayout"				"6"
+		"Ability1"					"empath_regenerate"
+		"Ability2"					"empath_transference"
+		"Ability3"					"empath_divine_protection"
+		"Ability4"					"empath_alchemy"
+		"Ability6"					"empath_vitality_healing"
+		"Ability5"					"enfos_attribute_bonus"
+		"Ability7"					"empath_nissas_binding"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"5"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_furion/lina_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"0"
+		"AttackDamageMax" 			"0"
+		"AttackRate"                "1.97"
+		"AttackRange"               "600"
+		"AttackAnimationPoint"		"0.500"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Queen of Pain (Moon Mage)
+	//=================================================================================================================
+	"npc_dota_hero_luna_enfos"
+	{
+		"override_hero"				"npc_dota_hero_luna"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"moon_mage_dinazen_olkar"
+		"Ability2"					"moon_mage_starlight_sphere_summon"
+		"Ability3"					"moon_mage_starlight_sphere_detonate"
+		"Ability4"					"moon_mage_moongate"
+		"Ability5"					"moon_mage_burn"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability7"					"moon_mage_glaive"
+		"Ability8"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+		"AttributeBaseStrength" 	"3"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"5" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "3"
+		"AttackRange"               "500"
+		"ProjectileModel"			"particles/base_attacks/generic_projectile.vpcf"					// Particle system model for projectile.
+		"ProjectileSpeed"			"900"									// Speed of projectile.
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+	
+		"precache"
+		{
+			"particle_folder"					"particles/units/heroes/hero_luna/"
+			"particle_folder"					"particles/units/heroes/hero_queenofpain/"
+			"particle_folder"					"particles/base_attacks/"
+		}
+	}
+	//=================================================================================================================
+	// HERO: Naga Siren: Cleric
+	//=================================================================================================================
+	"npc_dota_hero_naga_siren_enfos"
+	{
+		"override_hero"				"npc_dota_hero_naga_siren"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_naga_siren.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"cleric_holy_binding"
+		"Ability2"					"cleric_murrulas_flame"
+		"Ability3"					"cleric_shield_of_light"
+		"Ability4"					"cleric_aesrela_everild"
+		"Ability6"					"cleric_bless_soul"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "1.6"
+		"AttackRange"               "160"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Obsidian Destroyer - Anduin, the Time Mage
+	//=================================================================================================================
+	"npc_dota_hero_obsidian_destroyer_enfos"	
+	{
+		"override_hero" "npc_dota_hero_skywrath_mage"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"			"5"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"Ability1"					"obsidian_destroyer_enfos_haste"
+		"Ability2"					"obsidian_destroyer_enfos_slow"
+		"Ability3"					"obsidian_destroyer_enfos_slow_aura"
+		"Ability4"					"obsidian_destroyer_enfos_time_lapse"
+		"Ability6"					"obsidian_destroyer_enfos_teleport"
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"0"								// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.5"									// Speed of attack.
+		"AttackAnimationPoint"		"0.46"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"550"									// Range within a target can be attacked.
+		"ProjectileSpeed"			"900"									// Speed of projectile.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"6"									// Base strength
+		"AttributeStrengthGain"			"2"									// Strength bonus per level.
+		"AttributeBaseAgility"			"3"									// Base agility
+		"AttributeAgilityGain"			"1"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"9"									// Base intelligence
+		"AttributeIntelligenceGain"		"3"									// Intelligence bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+		"precache"
+		{
+			"particle_folder"				"particles/units/heroes/hero_ogre_magi/"
+	
+		}
+	}
+	//=================================================================================================================
+	// HERO: Ogre Magi - Moradinn the Magic Infuser
+	//=================================================================================================================
+	"npc_dota_hero_ogre_magi_enfos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"override_hero"		"npc_dota_hero_bounty_hunter"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+	
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"					"ogre_magi_enfos_empower_hammer"
+		"Ability2"					"generic_enfos_combat_mastery"
+		"Ability3"					"ogre_magi_enfos_empower_axe"
+		"Ability4"					"ogre_magi_enfos_empower_bracers"
+		"Ability6"					"generic_enfos_empower_armor"
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1.0"								// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.35"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"150"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility"			"6"									// Base agility
+		"AttributeAgilityGain"			"1.7"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"3"									// Base intelligence
+		"AttributeIntelligenceGain"		"1"									// Intelligence bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.6"									// Turning rate.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+	
+		"precache"
+		{
+			"particle"	"particles/units/heroes/hero_huskar/huskar_inner_vitality_cast.vpcf"
+			"particle_folder"	"particles/units/heroes/hero_zuus/"
+		}
+	}
+	//=================================================================================================================
+	// HERO: Omniknight - Marcus, the Ahlen
+	//=================================================================================================================
+	"npc_dota_hero_omniknight_enfos"
+	{
+		"override_hero"				"npc_dota_hero_omniknight"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"				"5"
+		"Ability1"				"ahlen_apocalyptic_strike"
+		"Ability2"				"generic_enfos_combat_mastery"
+		"Ability3"				"ahlen_cataclysmic_strike"
+		"Ability4"				"ahlen_dragon_dance"
+		"Ability6"				"ahlen_innate"
+		"Ability5"				"enfos_attribute_bonus"
+		"Ability7"				"ahlen_cataclysmic_strike_proxy"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"									// Physical protection. // 2.94
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.7"									// Speed of attack.
+		"AttackAnimationPoint"		"0.5"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"128"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+		
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+	}
+	//=================================================================================================================
+	// HERO: Phantom Assassin - Steelrose, the Paladin
+	//=================================================================================================================
+	"npc_dota_hero_phantom_assassin_enfos"
+	{
+		"override_hero"		"npc_dota_hero_phantom_assassin"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"	"5"
+		"Ability1"				"phantom_assassin_enfos_courage"				// Ability 1
+		"Ability2"				"generic_enfos_combat_mastery"						// Ability 2
+		"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
+		"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
+		"Ability6"				"generic_enfos_trothgangs_rally"					// Ability 4
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"2"									// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.6"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"170"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"		"9"									// Base strength
+		"AttributeStrengthGain"		"3.7"									// Strength bonus per level.
+		"AttributeBaseAgility"		"6"									// Base agility
+		"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"3"									// Base intelligence
+		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+	
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+	
+		"precache"
+		{
+			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
+		}
+	}
+	//=================================================================================================================
+	// HERO: Riki: Thief
+	//=================================================================================================================
+	"npc_dota_hero_riki_enfos"
+	{
+		"override_hero"				"npc_dota_hero_antimage"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"thief_khri_strike"
+		"Ability2"					"generic_enfos_evasion_mastery"
+		"Ability3"					"thief_khri_silence"
+		"Ability4"					"thief_venom"
+		"Ability6"					"thief_sleight_of_hand"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"9" 
+		"AttributeAgilityGain" 		"3"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "2.6"
+		"AttackRange"               "180"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"	
+	}
+	//=================================================================================================================
+	// HERO: Dazzle: Shadow Priest
+	//=================================================================================================================
+	"npc_dota_hero_shadow_priest_enfos"
+	{
+		"override_hero"				"npc_dota_hero_witch_doctor"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"shadow_priest_enfeeble"
+		"Ability2"					"shadow_priest_shadow_art_mastery"
+		"Ability3"					"shadow_priest_greater_hallucination"
+		"Ability4"					"shadow_priest_armageddon"
+		"Ability6"					"shadow_priest_preservation"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"2.5"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "1.8"
+		"AttackRange"               "550"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}		
+	//=================================================================================================================
+	// HERO: Shadow shaman - - Okk'thok the Warlock
+	//=================================================================================================================
+	"npc_dota_hero_shadow_shaman_enfos"	
+	{
+		"override_hero" "npc_dota_hero_shadow_shaman"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"warlock_enfos_energy_drain"					// Ability 1
+		"Ability2"					"warlock_enfos_disrupt"					// Ability 2
+		"Ability3"					"warlock_enfos_spellcurse"						// Ability 3
+		"Ability4"					"warlock_enfos_energy_flare"					// Ability 4
+		"Ability6"					"warlock_enfos_deflection"					// Ability 5
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"3"									// Physical protection.
+	
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"5.5"									// Damage range min.
+		"AttackDamageMax"			"19.5"									// Damage range max.
+		"AttackRate"				"1.6"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackRange"				"700"									// Range within a target can be attacked.
+		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"2.75"									// Strength bonus per level.
+		"AttributeBaseIntelligence"		"13"									// Base intelligence
+		"AttributeIntelligenceGain"		"4.5"									// Intelligence bonus per level.
+		"AttributeBaseAgility"			"6"									// Base agility
+		"AttributeAgilityGain"			"1.0"										// Agility bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.4"									// Turning rate.
+		"HasAggressiveStance"			"1"
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	}
+	//=================================================================================================================
+	// HERO: Silencer (Mentalist)
+	//=================================================================================================================
+	"npc_dota_hero_silencer_enfos"
+	{
+		"override_hero"				"npc_dota_hero_silencer"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"mentalist_dazzle"
+		"Ability2"					"mentalist_seal_of_deflection"
+		"Ability3"					"mentalist_moonblade"
+		"Ability4"					"mentalist_aura_sight"
+		"Ability6"					"generic_focus_moonbeam"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+	
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		"AttributeBaseStrength" 	"3"
+		"AttributeStrengthGain" 	"1.5"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.65"
+		"AttackRange"               "160"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+	}
+	//=================================================================================================================
+	// HERO: Sniper (Sniper)
+	//=================================================================================================================
+	"npc_dota_hero_sniper_enfos"
+	{
+		"override_hero"				"npc_dota_hero_sniper"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"sniper_fire_ammo"
+		"Ability2"					"sniper_lucky_shot"
+		"Ability3"					"sniper_burning_grenade"
+		"Ability4"					"sniper_rapid_reload"
+		"Ability6"					"sniper_standard_technique"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
+		//I had to guess for most of these values. They need to be verified.
+		"AttributeBaseStrength" 	"3"
+		"AttributeStrengthGain" 	"1.5"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"0.2"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3.5" 
+		
+		"MovementSpeed"				"250"
+		"AttackRate"                "2.56"
+		"AttackRange"               "500"
+		"AttackAcquisitionRange"	"500"	
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"1.5"
+		"AttackDamageMax" 			"11.5"
+	}
+	//=================================================================================================================
+	// HERO: Spirit Breaker: Summoner
+	//=================================================================================================================
+	"npc_dota_hero_spirit_breaker_enfos"
+	{
+		"override_hero"				"npc_dota_hero_spirit_breaker"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"summoner_summon_hellbear_warriors"
+		"Ability2"					"summoner_summon_satyr_rangers"
+		"Ability3"					"summoner_summon_darkrift"
+		"Ability4"					"summoner_flag_of_summoning"
+		"Ability6"					"summoner_anti_magic_shell"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"9.5"
+		"AttackDamageMax" 			"16.5"
+		"AttackRate"                "2"
+		"AttackRange"               "550"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Storm Spirit (Evoker)
+	//=================================================================================================================
+	"npc_dota_hero_storm_spirit_enfos"
+	{
+		"override_hero"				"npc_dota_hero_storm_spirit"
+		"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"evoker_gar_zeng"
+		"Ability2"					"generic_ethereal_shield"
+		"Ability3"					"evoker_chain_lightning"
+		"Ability4"					"evoker_ball_lightning"
+		"Ability6"					"evoker_static_discharge"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"3" 
+		"AttributeAgilityGain" 		"1"
+		"AttributeBaseIntelligence" "9" 
+		"AttributeIntelligenceGain" "3" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.8"
+		"AttackRange"               "550"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"8.5"									// Damage range max.
+	}
+	//=================================================================================================================
+	// HERO: Sven (Weaponsmith)
+	//=================================================================================================================
+	"npc_dota_hero_sven_enfos"
+	{
+		"override_hero"				"npc_dota_hero_sven"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"weaponsmith_thunder_maul"
+		"Ability2"					"generic_enfos_combat_mastery"
+		"Ability3"					"weaponsmith_concentrate"
+		"Ability4"					"weaponsmith_forge"
+		"Ability6"					"weaponsmith_cambrinth_charge"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributeBaseStrength" 	"11"
+		"AttributeStrengthGain" 	"3.7"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "1" 
+		"AttributeIntelligenceGain" "0.33" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "3.72"
+		"AttackRange"               "120"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"10.5"
+		"AttackDamageMax" 			"29.5" 
+	}
+	//=================================================================================================================
+	// HERO: Treant Protector: Oak
+	//=================================================================================================================
+	"npc_dota_hero_treant_enfos"
+	{
+		"override_hero"				"npc_dota_hero_treant"
+		"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"6"
+		"Ability1"					"oak_hardened_skin"
+		"Ability2"					"oak_poison_gas"
+		"Ability3"					"oak_backfire_aura"
+		"Ability4"					"oak_rootage_trap"
+		"Ability6"					"oak_barkskin"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
+		"AttributeBaseStrength" 	"9"
+		"AttributeStrengthGain" 	"3.25"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		"AttackRate"                "1.5"
+		"AttackRange"               "120"
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+		"AttackDamageMin" 			"2.5"
+		"AttackDamageMax" 			"8.5"
+		"ModelScale" 				"0.80"		
+	
+		"Team"						"Bad"
+	}
+	//=================================================================================================================
+	// HERO: Troll Warlord: Troll Cannibal
+	//=================================================================================================================
+	"npc_dota_hero_troll_cannibal_enfos"
+	{
+		"override_hero"				"npc_dota_hero_troll_warlord"
+		"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"GameSoundsFile"			"soundevents/game_sounds_heroes/game_sounds_troll_warlord.vsndevts"
+		"AbilityLayout"				"5"
+		"Ability1"					"troll_cannibal_scalping_cry"
+		"Ability2"					"troll_cannibal_behead"
+		"Ability3"					"troll_cannibal_bloodboil"
+		"Ability4"					"troll_cannibal_soul_feast"
+		"Ability6"					"troll_cannibal_soul_drain"
+		"Ability5"					"enfos_attribute_bonus"
+		
+		"ArmorPhysical"				"1"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"1.7"
+		"AttributeBaseAgility" 		"9" 
+		"AttributeAgilityGain" 		"2.5"
+		"AttributeBaseIntelligence" "3" 
+		"AttributeIntelligenceGain" "1" 
+		
+		"MovementSpeed"				"350"
+		
+		"StatusHealth"				"10"
+		"StatusMana"				"1"			
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin" 			"2.5"
+		"AttackDamageMax" 			"7.5"
+		"AttackRate"                "0.8"
+		"AttackRange"               "650"
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
+	//=================================================================================================================
+	// HERO: Ursa - GoGo, the Battle Chanter
+	//=================================================================================================================
+	"npc_dota_hero_ursa_enfos"	
+	{
+		"override_hero" "npc_dota_hero_ursa"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		// Abilities
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityLayout"			"5"
+		"Ability1"					"ursa_enfos_abandoned_heart"				// Ability 1
+		"Ability2"					"generic_enfos_combat_mastery"				// Ability 2
+		"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
+		"Ability4"					"ursa_enfos_muses_inspiration"
+		"Ability6"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+		"Ability5"				"enfos_attribute_bonus"
+	
+		// Armor
+		//-------------------------------------------------------------------------------------------------------------
+		"ArmorPhysical"				"1"								// Physical protection.
+		
+		// Attack
+		//-------------------------------------------------------------------------------------------------------------
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		"AttackDamageMin"			"2.5"									// Damage range min.
+		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackRate"				"1.5"									// Speed of attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackRange"				"140"									// Range within a target can be attacked.
+	
+		// Attributes
+		//-------------------------------------------------------------------------------------------------------------
+		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength"			"9"									// Base strength
+		"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility"			"5"									// Base agility
+		"AttributeAgilityGain"			"1.66"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"4"									// Base intelligence
+		"AttributeIntelligenceGain"		"1.33"									// Intelligence bonus per level.
+	
+		// Movement
+		//-------------------------------------------------------------------------------------------------------------
+		"MovementSpeed"				"350"									// Speed.
+		"MovementTurnRate"			"0.5"									// Turning rate.
+	
+		// Status
+		//-------------------------------------------------------------------------------------------------------------
+		"StatusHealth"				"10"
+		"StatusMana"				"1"
+	
+		"Team"						"Bad"
+	}
+}

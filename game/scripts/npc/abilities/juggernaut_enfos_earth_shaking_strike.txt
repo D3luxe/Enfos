@@ -1,0 +1,114 @@
+//=================================================================================================================
+// Juggernaut: Earth Shaking Strike
+//=================================================================================================================
+"juggernaut_enfos_earth_shaking_strike"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"slardar_slithereen_crush"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"MaxLevel"						"10"
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+		
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"20"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0"
+	"AOERadius"						"%radius"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"50"
+	
+	"OnSpellStart"
+	{
+		"AttachEffect"
+		{
+			"Target"					"CASTER"
+			"EffectName"				"particles/units/heroes/hero_brewmaster/brewmaster_thunder_clap.vpcf"
+			"EffectAttachType"			"follow_origin"
+			"EffectRadius"				"300"
+		}
+		
+		"Damage"
+		{
+			"Type" "DAMAGE_TYPE_MAGICAL"
+			"Damage" "%damage"
+			"Target"
+			{
+				"Center" "CASTER"
+				"Radius" "%radius"
+				"Teams" "DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+		
+		"ApplyModifier"
+		{
+			"ModifierName"			"earth_shaking_strike_modifier"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+	
+	"Modifiers"
+	{
+		"earth_shaking_strike_modifier"
+		{
+			 "Duration" "%duration"
+			 
+			 "Properties" 
+			 {
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+			 }
+			
+
+			"StatusEffectPriority" "9"
+			"EffectName" "particles/units/heroes/hero_lich/lich_slowed_cold.vpcf"
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"50 75 112 168 253 379 569 854 1281 1922"
+		}
+		
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"radius"				"300"
+		}
+		
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"slow"				"-10 -15 -20 -25 -30 -35 -40 -45 -50 -55"
+		}
+		
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"10"
+		}
+	}
+	
+}

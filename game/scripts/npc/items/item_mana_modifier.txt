@@ -1,0 +1,125 @@
+//=================================================================================================================
+// Mana Modifier
+//=================================================================================================================
+"item_mana_modifier"
+{
+	"ID"							"2103"
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"BaseClass"						"item_datadriven"
+
+	"Modifiers"
+	{
+		"modifier_mana_mod_1"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"3"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.01"
+			}
+		}
+		"modifier_mana_mod_2"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"6"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.02"
+			}
+		}
+		"modifier_mana_mod_4"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"12"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.04"
+			}
+		}
+		"modifier_mana_mod_8"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"24"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.08"
+			}
+		}
+		"modifier_mana_mod_16"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"48"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.16"
+			}
+		}
+		"modifier_mana_mod_32"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"96"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.32"
+			}
+		}
+		"modifier_mana_mod_64"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"192"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.64"
+			}
+		}
+		"modifier_mana_mod_128"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"384"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"1.28"
+			}
+		}
+		"modifier_mana_mod_256"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"768"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"2.56"
+			}
+		}
+		"modifier_mana_mod_512"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_MANA_BONUS"	"1536"
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"5.12"
+			}
+		}
+	}
+}

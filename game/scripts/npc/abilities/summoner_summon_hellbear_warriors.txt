@@ -1,0 +1,70 @@
+//=================================================================================================================
+// Summoner: Summon Hellbear Warriors
+//=================================================================================================================
+"summoner_summon_hellbear_warriors"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"polar_furbolg_ursa_warrior_thunder_clap"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"80"
+	"AbilityManaCost"				"80 96 120 152 192 240 296 360 432 512"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_wisp/" 
+		"model"						"models/heroes/wisp/wisp.vmdl"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"SpawnUnit"	
+		{
+			"Target"				"CASTER"
+			"UnitName"				"npc_summoner_hellbear_warrior"
+			"UnitCount"				"2"
+			"UnitLimit"				"100"
+			"SpawnRadius"			"200"
+			"Duration"				"%duration"
+			"GrantsGold"			"false"
+			"GrantsXP"				"false"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/summoner.lua"
+			"Function"				"SummonHellbearWarriors"
+			"armour"				"%armour"
+			"base_attack_time"		"%base_attack_time"
+			"damage"				"%damage"
+			"health"				"%health"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armour"				"5 8 11 14 17 20 23 26 29 32"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"base_attack_time"		"3 2.8 2.6 2.4 2.2 2 1.8 1.6 1.4 1.2"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"20 29 47 74 119 191 308 497 803 1298" //this has a damage range of 3 on the site. it's a little extra work for basically no gain to implement that, so I'm just doing the average 
+		}			
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health"				"450 900 1350 2250 3600 5850 9450 15300 24750 35000"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"25 27 29 31 33 35 37 39 41 43"
+		}	
+	}	
+}	

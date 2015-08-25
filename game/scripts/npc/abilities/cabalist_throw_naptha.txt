@@ -1,0 +1,93 @@
+//=================================================================================================================
+// Ember Spirit: Cabalist
+//=================================================================================================================
+//=================================================================================================================
+// Cabalist: Throw Naptha
+//=================================================================================================================
+"cabalist_throw_naptha"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"batrider_flamebreak"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"AbilityCooldown"				"10"
+	"AbilityManaCost"				"50"
+	"AbilityCastRange"				"600"
+	"MaxLevel"						"1"
+	"AOERadius"						"%radius"
+	"precache"
+	{
+		"particle"				"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite.vpcf"
+		"particle"				"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_ogre_magi.vsndevts"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_alchemist.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite.vpcf"
+			"MoveSpeed"				"1500"
+			"SourceAttachment" 		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
+		}
+		"FireSound"
+		{
+			"Target"				"CASTER"
+			"EffectName"			"Hero_Alchemist.UnstableConcoction.Throw"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/cabalist.lua"
+			"Function"				"throw_naptha"
+		}
+		"FireSound"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"Hero_OgreMagi.Ignite.Target"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_throw_naptha_debuff"
+		{
+			"Duration"				"%duration"
+			"IsDebuff"				"1"
+			"EffectName"			"particles/units/heroes/hero_ogre_magi/ogre_magi_ignite_debuff.vpcf"
+			"EffectAttachType"		"follow_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+				"MODIFIER_PROPERTY_MISS_PERCENTAGE "			"%miss_chance"
+			}			
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"700"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow"					"-15"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"miss_chance"			"35"
+		}
+	}
+}	

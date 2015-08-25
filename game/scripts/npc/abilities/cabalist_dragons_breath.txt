@@ -1,0 +1,119 @@
+//=================================================================================================================
+// Cabalist: Dragon's Breath (some code from Spell Library used)
+//=================================================================================================================
+"cabalist_dragons_breath"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityTextureName"			"dragon_knight_breathe_fire"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+	"MaxLevel"						"10"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastPoint"				"0.5"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"45"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_dragon_knight.vsndevts"
+		"particle"		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+		"particle"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+	}
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target" 			"POINT"
+			"EffectName" 		"particles/units/heroes/hero_dragon_knight/dragon_knight_breathe_fire.vpcf"
+			"MoveSpeed" 		"1500"
+			"StartRadius" 		"150"
+			"StartPosition" 	"attach_origin"
+			"EndRadius" 		"500" //don't care about fixed values that are only going to be used in one place and probably won't change...
+			"FixedDistance" 	"%range"
+			"TargetTeams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"TargetTypes" 		"DOTA_UNIT_TARGET_BASIC"
+			"HasFrontalCone" 	"1"
+			"ProvidesVision" 	"0"
+		}
+		"FireSound"
+		{
+			"EffectName" "Hero_DragonKnight.BreathFire"
+			"Target" "CASTER"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit" "0"
+		"RunScript"
+		{
+			"ScriptFile"				"scripts/vscripts/heroes/cabalist.lua" //is this spell supposed to consume the naptha debuff?
+			"Function"					"dragons_breath"
+		}
+		"Damage"
+		{
+			"Type" 					"DAMAGE_TYPE_MAGICAL"
+			"Damage" 				"%impact_damage"
+			"Target" 				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_dragons_breath_ignite"
+		{
+			"ThinkInterval"			"0.1"
+			"IsHidden"				"1"
+			"EffectName"		"particles/units/heroes/hero_huskar/huskar_burning_spear_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Type" 					"DAMAGE_TYPE_MAGICAL"
+					"Damage" 				"%burn_damage"
+					"Target" 				"TARGET"
+				}
+			}
+		}					
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"5 5.5 6.05 6.66 7.32 8.05 8.86 9.74 10.72 12"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"range"					"375"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"impact_damage"			"170 970 2170 3770 5770 8170 10970 14170 17770 21770"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"burn_damage"			"7.0 22.0 44.5 74.5 112.0 157.0 209.5 269.5 337.0 412.0"
+		}		
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"burn_damage_tooltip"	"70 220 445 745 1120 1570 2095 2695 3370 4120"
+		}
+	}
+}

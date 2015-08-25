@@ -1,0 +1,62 @@
+//=================================================================================================================
+// Sniper: Burning Grenade
+//=================================================================================================================
+"sniper_burning_grenade" 	//ALL of the values in this spell with the exception of damage are a complete guess. will need verification in the official game.
+{							//Damage verified
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"alchemist_unstable_concoction_throw"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCastRange"				"2500"
+	"AbilityCooldown"				"80 78 76 74 72 70 68 66 64 62"
+	"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
+	"AOERadius"						"%radius"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_batrider/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target"				"POINT"
+			"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+			"MoveSpeed"				"800"
+			"StartRadius"			"0"
+			"EndRadius"				"0"
+			"StartPosition"			"follow_origin"
+			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+			"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+			"HasFrontalCone"		"0"
+		}
+	}
+	"OnProjectileFinish"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/sniper.lua"
+			"Function"				"BurningGrenade"
+			"Target"				"POINT"
+			"damage"				"%damage"
+			"radius"				"%radius"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"250 750 1425 2325 3450 4800 6375 8175 10200 12450"
+		}	
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"450"
+		}				
+	}
+}

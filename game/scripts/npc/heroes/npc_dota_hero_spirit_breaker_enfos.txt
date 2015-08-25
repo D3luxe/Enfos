@@ -1,0 +1,40 @@
+//=================================================================================================================
+// HERO: Spirit Breaker: Summoner
+//=================================================================================================================
+"npc_dota_hero_spirit_breaker_enfos"
+{
+	"override_hero"				"npc_dota_hero_spirit_breaker"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"summoner_summon_hellbear_warriors"
+	"Ability2"					"summoner_summon_satyr_rangers"
+	"Ability3"					"summoner_summon_darkrift"
+	"Ability4"					"summoner_flag_of_summoning"
+	"Ability6"					"summoner_anti_magic_shell"
+	"Ability5"					"enfos_attribute_bonus"
+	
+	"ArmorPhysical"				"1"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
+	"AttributeBaseStrength" 	"6"
+	"AttributeStrengthGain" 	"2"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "9" 
+	"AttributeIntelligenceGain" "3" 
+	
+	"MovementSpeed"				"350"
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+		
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
+	"AttackDamageMin" 			"9.5"
+	"AttackDamageMax" 			"16.5"
+	"AttackRate"                "2"
+	"AttackRange"               "550"
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+}

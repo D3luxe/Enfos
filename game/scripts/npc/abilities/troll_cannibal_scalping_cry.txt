@@ -1,0 +1,84 @@
+//=================================================================================================================
+// Troll Cannibal: Scalping Cry
+//=================================================================================================================
+"troll_cannibal_scalping_cry"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"troll_warlord_battle_trance"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AOE |DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"65 62 59 56 53 50 47 44 41 38"
+	"AbilityCastRange"				"%radius"
+	"AbilityManaCost"				"20 30 40 50 60 70 80 90 100 110"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_4"
+	"AOERadius"						"%radius"
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_razor/razor_static_link_debuff.vpcf"
+		"particle"					"particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+		"soundfile"						"soundevents/game_sounds_heroes/game_sounds_axe.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/troll_cannibal.lua"
+			"Function"				"scalping_cry"
+		}
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+			"EffectAttachType"  "start_at_customorigin"
+
+			"ControlPointEntities"
+			{
+				"CASTER"	"follow_origin"
+				"CASTER"	"follow_origin"
+				"CASTER"	"follow_origin"
+			}
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Axe.Berserkers_Call"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_scalping_cry"
+		{
+			"IsDebuff"				"1"
+			"Duration" 				"%duration"
+			"EffectName" 			"particles/units/heroes/hero_razor/razor_static_link_debuff.vpcf" //PARTICLES
+			"EffectAttachType" 		"follow_origin"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_reduction"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{	
+			"var_type"						"FIELD_INTEGER"
+			"damage_reduction_tooltip"		"7 14 21 28 35 42 49 56 63 70"
+		}			
+		"02"
+		{	
+			"var_type"						"FIELD_INTEGER"
+			"damage_reduction"			"-7 -14 -21 -28 -35 -42 -49 -56 -63 -70"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"15"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"			"400"
+		}	
+	}
+}	

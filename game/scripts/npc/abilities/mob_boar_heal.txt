@@ -1,0 +1,88 @@
+"mob_boar_heal"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"witch_doctor_voodoo_restoration"
+
+	"precache"
+	{
+		"particle_folder"				"particles/units/heroes/hero_witchdoctor"
+	}
+	// Modifiers
+	//-------------------------------------------------------------------------------------------------------------
+	"Modifiers"
+	{
+		"fx_boar_heal"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/units/heroes/hero_witchdoctor/witchdoctor_voodoo_restoration.vpcf"
+					"EffectAttachType"	"follow_origin"
+					
+					"ControlPoints"
+					{
+						"00"	"0 0 0"
+						"01"	"%health_radius 0 0"
+						"02"	"0 0 -200"
+					}
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MAGICAL_RESISTANCE_BONUS"	"%resistance"
+
+			}
+		}
+		
+		"modifier_boar_heal"
+		{
+			"IsHidden"				"0"
+			"Passive"				"1"
+			
+			"Aura"					"modifier_boar_heal_aura"
+			"Aura_Radius"			"%health_radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL"
+		}
+		
+		"modifier_boar_heal_aura"
+		{
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"%regen"
+			}
+		
+		}
+	}
+	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"health_radius"				"450"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"regen"		"5"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"resistance"		"2"
+		}
+	}
+
+}

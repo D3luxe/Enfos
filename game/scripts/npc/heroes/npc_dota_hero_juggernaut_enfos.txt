@@ -1,0 +1,57 @@
+//=================================================================================================================
+// HERO: Juggernaut - Doko the Blood Dancer
+//=================================================================================================================
+"npc_dota_hero_juggernaut_enfos"
+{
+	"override_hero" "npc_dota_hero_juggernaut"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"				"5"
+	"Ability1"				"juggernaut_enfos_magic_resistance"						// Ability 1
+	"Ability2"				"generic_enfos_evasion_mastery"	
+	"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
+	"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
+	"Ability6"				"generic_enfos_bloodlust"
+	"Ability5"				"enfos_attribute_bonus"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"			"1"											// Physical protection.
+
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2"									// Damage range min.
+	"AttackDamageMax"			"8"									// Damage range max.
+	"AttackRate"				"0.75"									// Speed of attack.
+	"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+	"AttackRange"				"130"									// Range within a target can be attacked.
+	"ProjectileModel"			""										// Particle system model for projectile.
+	"ProjectileSpeed"			"0"										// Speed of projectile.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"		"6"									// Base strength
+	"AttributeStrengthGain"		"2"									// Strength bonus per level.
+	"AttributeBaseIntelligence"	"3"									// Base intelligence
+	"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+	"AttributeBaseAgility"		"9"									// Base agility
+	"AttributeAgilityGain"		"3"									// Agility bonus per level.
+
+	// Status
+	//-------------------------------------------------------------------------------------------------------------
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.6"									// Turning rate.
+	"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
+
+	"Team"						"Bad"
+}	

@@ -1,0 +1,86 @@
+"sidhlot_resurrect"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"rubick_empty1"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0"
+	"AbilityCastRange"				"900" //corrected range
+	"AbilityCooldown"				".1"
+	"AbilityManaCost"				"10"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_visage/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_obsidian_destroyer.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"				"sidhlot_resurrect"
+			"radius"				"%radius"
+			"duration"				"%duration"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_sidhlot"
+		{
+			"Duration"				"40"
+			"IsHidden"				"0"
+			"Passive"				"1"
+
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"				"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_MAGIC_IMMUNE"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"CASTER"
+					"Type"			"DAMAGE_TYPE_PURE"
+					"Damage"		"99999"
+				}
+			}
+
+		}
+		"modifier_sidhlot_resurrect"
+		{
+			"Duration"				"20"
+			"OnDestroy"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Damage"		"9999999"
+					"Type"			"DAMAGE_TYPE_PURE"
+				}
+				"AttachEffect"
+				{
+					"Target"		"TARGET"
+					"EffectName"	"particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy_explosion.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+			}
+		}
+
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+	}
+}

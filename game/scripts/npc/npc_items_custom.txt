@@ -1,0 +1,5074 @@
+"DOTAAbilities"
+{
+	//=================================================================================================================
+	// 10,000 Gold Coin
+	//=================================================================================================================
+	"item_10000_gold"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3015"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_ward_sentry"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_stat"	"10000"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"4"
+			}
+		}
+	}	
+	//===============================================
+	// 2000 Gold Coin
+	//===============================================
+	"item_2000_gold"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3014"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"item_ward_sentry"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_stat"	"2000"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"4"
+			}
+		}
+	}	
+	//===============================================
+	// 80 Lumber
+	//===============================================
+	"item_80_lumber"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3028"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_ward_sentry"
+		"Model"							"models/props_debris/battle_debris3.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"bonus_stat"	"80"
+			}
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"5"
+			}
+		}
+	}	
+	//===============================================
+	// Agani Tayeu'a
+	//===============================================
+	"item_agani_tayeua"
+	{
+		"ID"                            "2010"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_agani_tayeua"
+	
+		"ItemQuality"					"rare"
+		"ItemCost"                      "0" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"SideShop"					"1"
+		"LumberCost"	"80"
+	
+		"Modifiers"
+		{
+			"modifier_agani_tayeua"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
+					"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"12"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"50"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"200"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Anti-Magic Potion
+	//=================================================================================================================
+	"item_anti_magic_potion"
+	{
+		"ID"                            "2036"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_anti_magic_potion"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"10"
+		//"ItemStockInitial"				"10"
+		//"ItemStockTime"					"30.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_anti_magic_potion"
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_anti_magic_potion"
+			{
+				"Duration"	"%duration"
+				"States"
+				{
+				"MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"EffectName" 				"particles/items_fx/black_king_bar_avatar.vpcf"
+				"EffectAttachType"			"attach_hitloc"
+			}
+	
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"30"
+			}
+		}
+	}
+	//===============================================
+	// Data Driven Modifier applier items
+	//===============================================
+	"item_applier_animate_dead"
+	{
+		"ID"							"2002"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"dark_troll_warlord_raise_dead"
+		"AbilityCastRange"				"Global"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"0.0"
+		"AbilityManaCost"				"0"
+		"ItemCost"						"0"
+		"ItemInitialCharges"			"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemRequiresCharges"			"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"Modifiers"
+		{
+			"modifier_sidhlot_resurrect"
+			{
+				"Duration"				"20"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Damage"		"9999999"
+						"Type"			"DAMAGE_TYPE_PURE"
+					}
+					"AttachEffect"
+					{
+						"Target"		"TARGET"
+						"EffectName"	"particles/units/heroes/hero_necrolyte/necrolyte_pulse_enemy_explosion.vpcf"
+						"EffectAttachType"	"follow_origin"
+					}
+				}
+			}
+		}	
+	}	
+	//===============================================
+	// Arbelog Paw Boots
+	//===============================================
+	"item_arbelog_paw_boots"
+	{
+		"ID"                            "2021"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_tranquil_boots"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "500" 		
+		"ItemShopTags"					"boot"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"60.0"
+	
+		"Modifiers"
+		{
+			"modifier_arbelog_paw_boots"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"			"%evasion"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"evasion"				"15"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Armor Modifier
+	//=================================================================================================================
+	"item_armor_modifier"
+	{
+		"ID"							"2105"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			"modifier_armor_mod_1"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"1"
+				}
+			}
+			"modifier_armor_mod_2"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"2"
+				}
+			}
+			"modifier_armor_mod_4"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"4"
+				}
+			}
+			"modifier_armor_mod_8"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"8"
+				}
+			}
+			"modifier_armor_mod_16"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"16"
+				}
+			}
+			"modifier_armor_mod_32"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"32"
+				}
+			}
+			"modifier_armor_mod_64"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"64"
+				}
+			}
+			"modifier_armor_mod_128"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"128"
+				}
+			}
+			"modifier_armor_mod_256"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"256"
+				}
+			}
+			"modifier_armor_mod_512"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"512"
+				}
+			}
+			"modifier_negative_armor_mod_1"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-1"
+				}
+			}
+			"modifier_negative_armor_mod_2"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-2"
+				}
+			}
+			"modifier_negative_armor_mod_4"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-4"
+				}
+			}
+			"modifier_negative_armor_mod_8"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-8"
+				}
+			}
+			"modifier_negative_armor_mod_16"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-16"
+				}
+			}
+			"modifier_negative_armor_mod_32"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-32"
+				}
+			}
+			"modifier_negative_armor_mod_64"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-64"
+				}
+			}
+			"modifier_negative_armor_mod_128"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-128"
+				}
+			}
+			"modifier_negative_armor_mod_256"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-256"
+				}
+			}
+			"modifier_negative_armor_mod_512"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"-512"
+				}
+			}
+		}
+	}
+	//=================================================================================================================
+	// Armor Type
+	//=================================================================================================================
+	"item_armor_type_modifier"
+	{
+		"ID"							"2106"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			//Unarmored = DOTA_COMBAT_CLASS_DEFEND_SOFT
+			//Light = DOTA_COMBAT_CLASS_DEFEND_WEAK
+			//Medium = DOTA_COMBAT_CLASS_DEFEND_BASIC
+			//Heavy = DOTA_COMBAT_CLASS_DEFEND_STRONG
+			//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
+			"modifier_armor_unarmored"
+			{
+				"TextureName" "item_unarmored"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_armor_light"
+			{
+				"TextureName" "item_light_armor"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_armor_medium"
+			{
+				"TextureName" "item_medium_armor"
+				"IsHidden"				"0" 
+				"IsPurgable" "0" 
+			}
+			"modifier_armor_heavy"
+			{
+				"TextureName" "item_heavy_armor"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_armor_fortified"
+			{
+				"TextureName" "item_fortified_armor"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_armor_hero"
+			{
+				"TextureName" "item_hero_armor"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_armor_divine"
+			{
+				"TextureName" "item_divine_armor"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Attack Type
+	//=================================================================================================================
+	"item_attack_type_modifier"
+	{
+		"ID"							"2107"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			//Attack Types: - "CombatClassAttack"
+			//--------------
+			//Normal = DOTA_COMBAT_CLASS_ATTACK_BASIC
+			//Pierce = DOTA_COMBAT_CLASS_ATTACK_PIERCE
+			//Siege = DOTA_COMBAT_CLASS_ATTACK_SIEGE
+			//Chaos = DOTA_COMBAT_CLASS_ATTACK_LIGHT
+			//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
+			"modifier_attack_normal"
+			{
+				"TextureName" "item_normal_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_attack_pierce"
+			{
+				"TextureName" "item_pierce_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_attack_siege"
+			{
+				"TextureName" "item_seige_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_attack_chaos"
+			{
+				"TextureName" "item_chaos_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_attack_magical"
+			{
+				"TextureName" "item_magic_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+			"modifier_attack_hero"
+			{
+				"TextureName" "item_hero_attack"
+				"IsHidden"				"0"  
+				"IsPurgable" "0"
+			}
+		}
+	}
+	//===============================================
+	// Bloodstone-inset Ring
+	//===============================================
+	"item_bloodstone_inset_ring"
+	{
+		"ID"                            "2016"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_bloodstone_inset_ring"
+		//"ItemStockMax"					"6"
+		//"ItemStockInitial"				"6"
+		//"ItemStockTime"					"4.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "4000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_bloodstone_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"36"
+			}
+		}
+	}
+	//===============================================
+	// Bloodthirst
+	//===============================================
+	"item_bloodthirst"
+	{
+		"ID"                            "2031"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_broadsword"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "6500" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemDroppable"					"1"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_bloodthirst"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+				"OnAttackLanded"
+				{
+					"Lifesteal"
+					{
+						"Target" 				"CASTER"
+						"LifestealPercent"		"%leech"
+					}
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"leech"					"10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Brisker
+	//=================================================================================================================
+	"item_brisker"
+	{
+		"ID"                            "2012"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_diffusal_blade"
+	
+		"ItemQuality"					"artifact"
+		"ItemCost"                      "2600" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_brisker"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		""
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"360"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"48"
+			}
+	
+		}
+	}
+	//===============================================
+	// Bundle of 100 gold
+	//===============================================
+	"item_bundle_of_gold_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3025"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_gold_1"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"SecretShop"					"1"
+		"LumberCost"	"1"
+		"GoldRefund"	"100"
+	}	
+	//===============================================
+	// Bundle of 1000 gold
+	//===============================================
+	"item_bundle_of_gold_10"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3026"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_gold_10"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"SecretShop"					"1"
+		"LumberCost"	"10"
+		"GoldRefund"	"1000"
+	}	
+	//===============================================
+	// Bundle of 10000 gold
+	//===============================================
+	"item_bundle_of_gold_100"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3027"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_gold_100"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"SecretShop"					"1"
+		"LumberCost"	"100"
+		"GoldRefund"	"10000"
+	}	
+	//===============================================
+	// Bundle of 1 lumber
+	//===============================================
+	"item_bundle_of_lumber_1"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3022"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_lumber_1"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"125"
+		"SecretShop"					"1"
+		"Lumber"			"1"
+	}	
+	//===============================================
+	// Bundle of 10 lumber
+	//===============================================
+	"item_bundle_of_lumber_10"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3023"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_lumber_10"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1250"
+		"SecretShop"					"1"
+		"Lumber"			"10"
+	}	
+	//===============================================
+	// Bundle of 100 lumber
+	//===============================================
+	"item_bundle_of_lumber_100"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3024"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityTextureName"			"bundle_of_lumber_100"
+		"Model"							"models/props_gameplay/gold_coin001.vmdl"
+		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"12500"
+		"SecretShop"					"1"
+		"Lumber"			"100"
+	}	
+	//===============================================
+	// Crystal-Edged Ring
+	//===============================================
+	"item_crystal_edged_ring"
+	{
+		"ID"                            "2015"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_crystal_edged_ring"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"24.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "2250" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_crystal_edged_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"12"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Damage Modifier
+	//=================================================================================================================
+	"item_damage_modifier"
+	{
+		"ID"							"2104"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			"modifier_damage_mod_1"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1.5"
+				}
+			}
+			"modifier_damage_mod_2"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"3"
+				}
+			}
+			"modifier_damage_mod_4"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"6"
+				}
+			}
+			"modifier_damage_mod_8"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"12"
+				}
+			}
+			"modifier_damage_mod_16"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"24"
+				}
+			}
+			"modifier_damage_mod_32"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"48"
+				}
+			}
+			"modifier_damage_mod_64"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"96"
+				}
+			}
+			"modifier_damage_mod_128"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"192"
+				}
+			}
+			"modifier_damage_mod_256"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"384"
+				}
+			}
+			"modifier_damage_mod_512"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"768"
+				}
+			}
+		}
+	}
+	//===============================================
+	// Diamond-etched Ring
+	//===============================================
+	"item_diamond_etched_ring"
+	{
+		"ID"                            "2019"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_diamond_etched_ring"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"48.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "9000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_crystal_edged_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"36"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Dragonscale Shield
+	//=================================================================================================================
+	"item_dragonscale_shield"
+	{
+		"ID"                            "2045"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_dragonscale_shield"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"SideShop"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"LumberCost"	"180"
+	
+		"Modifiers"
+		{
+			"modifier_dragonscale_shield"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"	"300"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+		}
+	}
+	//===============================================
+	// Elder Staff
+	//===============================================
+	"item_elder_staff"
+	{
+		"ID"                            "2008"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_oblivion_staff"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "1200" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_elder_staff"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"75"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"4"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"25"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Elite Elven Boots
+	//=================================================================================================================
+	"item_elite_elven_boots"
+	{
+		"ID"                            "2039"
+		"BaseClass"                     "item_datadriven"
+		"AbilityTextureName"			"item_travel_boots"
+	
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityCooldown"				"30.0"
+	
+		"ItemCost"                      "1" 		
+		"ItemShopTags"					"boot"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"ItemDroppable"					"1"
+		"ItemSellable"					"1"
+		"ItemKillable"					"0"
+		"ItemDisassemblable"			"0"
+		"ItemQuality"					"epic"
+		"IsUnique"							"1"
+	
+		"AbilityCastRange"	"0"
+	
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"blink"
+				"Target"	"POINT"
+				"Range"	"%blink_range"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_elite_elven_boots"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%move_speed"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
+					"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%evasion"
+				}	
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"			"1000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"3"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"3"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed"				"50"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"evasion"				"15"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Elven Plate Mail
+	//=================================================================================================================
+	"item_elven_plate_mail"
+	{
+		"ID"							"2034"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_platemail"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
+	
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"850"
+		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemAliases"					"mana;mb"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsArtifact"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_elven_plate_mail"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"25"
+			}
+		}
+	}
+	//===============================================
+	// Elven Stalking Boots
+	//===============================================
+	"item_elven_stalking_boots"
+	{
+		"ID"                            "2022"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_travel_boots"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "300" 		
+		"ItemShopTags"					"boot"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"60.0"
+	
+		"Modifiers"
+		{
+			"modifier_elven_stalking_boots"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"move_speed"				"50"
+			}
+		}
+	}
+	//===============================================
+	// Emerald-Inset Ring
+	//===============================================
+	"item_emerald_inset_ring"
+	{
+		"ID"                            "2025"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_emerald_inset_ring"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "750" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_emerald_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"12"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Empath Lesser Tome of Agility
+	//=================================================================================================================
+	"item_empath_lesser_tome_of_agility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3018"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"3"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Empath Lesser Tome of Intelligence
+	//=================================================================================================================
+	"item_empath_lesser_tome_of_intelligence"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3020"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"2"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Empath Lesser Tome of Strength
+	//=================================================================================================================
+	"item_empath_lesser_tome_of_strength"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3016"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"AbilityCastPoint"				"0.1"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"1"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Empath Tome of Agility
+	//=================================================================================================================
+	"item_empath_tome_of_agility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3019"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"50"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"3"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Empath Tome of Intelligence
+	//=================================================================================================================
+	"item_empath_tome_of_intelligence"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3021"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"50"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"2"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Empath Tome of Strength
+	//=================================================================================================================
+	"item_empath_tome_of_strength"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3017"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		"Model"							"models/props_debris/merchant_debris_book001.vmdl"
+		"AbilityCastPoint"				"0.1"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		//"ItemCost"						"0"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"1"
+		"ItemKillable"					"1"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"0"
+		"SecretShop" "1"
+		"ItemCastOnPickup"	"1"
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"empath_pickup"
+			}
+			"FireEffect"
+			{
+				"Target" "CASTER"
+				"EffectName"		"particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf"
+				"EffectAttachType" 	"follow_origin"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_cast_once"
+			{
+				"Duration"	"0.3"
+				"IsHidden"	"1"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"50"
+			}
+	
+			"02"
+			{
+				"var_type"		"FIELD_INTEGER"
+				"stat"			"1"
+			}
+		}
+	}
+	//===============================================
+	// Gleaming Longsword
+	//===============================================
+	"item_gleaming_longsword"
+	{
+		"ID"                            "2001"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_gleaming_longsword"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "400" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_gleaming_longsword"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"60"
+			}
+		}
+	}
+	//===============================================
+	// Grimstone-Inset Ring
+	//===============================================
+	"item_grimstone_inset_ring"
+	{
+		"ID"                            "2026"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_ring_of_regen"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "10000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_grimstone_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%attack_speed"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed"				"200"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Health Modifier
+	//=================================================================================================================
+	"item_health_modifier"
+	{
+		"ID"							"2102"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			"modifier_health_mod_1"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"21"
+				}
+			}
+			"modifier_health_mod_2"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"42"
+				}
+			}
+			"modifier_health_mod_4"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"84"
+				}
+			}
+			"modifier_health_mod_8"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"168"
+				}
+			}
+			"modifier_health_mod_16"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"336"
+				}
+			}
+			"modifier_health_mod_32"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"672"
+				}
+			}
+			"modifier_health_mod_64"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"1344"
+				}
+			}
+			"modifier_health_mod_128"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"2688"
+				}
+			}
+			"modifier_health_mod_256"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"5376"
+				}
+			}
+			"modifier_health_mod_512"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_HEALTH_BONUS"	"10752"
+				}
+			}
+		}
+	}
+	//=================================================================================================================
+	// Hisan Salve
+	//=================================================================================================================
+	"item_hisan_salve"
+	{
+		"ID"                            "2038"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_blue.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_hisan_salve"
+		"AbilitySharedCooldown" "ManaPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"20.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"20"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"4"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target" "CASTER"
+				"ModifierName" "modifier_item_hisan_salve"
+			}
+			"FireSound"
+			{
+				"Target" "UNIT"
+				"EffectName" "DOTA_Item.ClarityPotion.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_item_hisan_salve"
+			{
+				"TextureName" "item_greater_clarity"
+				"EffectName" "particles/items_fx/healing_clarity.vpcf"
+				"EffectAttachType" "follow_origin"
+				"Duration" "%buff_duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT" "%mana_per_tick"
+				}
+				"OnTakeDamage"
+				{
+					"RemoveModifier"
+					{
+						"Target" "UNIT"
+						"ModifierName" "modifier_item_hisan_salve"
+					}
+				}
+			}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"buff_duration"			"45"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"total_mana"			"200"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_per_tick"			"4.4"  // %total_mana / %buff_duration
+			}
+		}
+	}
+	//=================================================================================================================
+	// Ironbark Leathers
+	//=================================================================================================================
+	"item_ironbark_leathers"
+	{
+		"ID"                            "2109"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_ironbark_leathers"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"0"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"SideShop"					"1"
+		"LumberCost"	"150"
+	
+		"AbilityCooldown"				"30.0"
+		
+		
+		"Modifiers"
+		{
+			"modifier_ironbark_spell_block"
+			{
+				"Passive" "1"
+				"IsHidden" "1"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/items/items_shared.lua"
+						"Function"		"ironbark_leathers"
+					}
+				}
+				"ThinkInterval"			".03"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+						"Function"			"ironbark_leathers_thinker"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+						"Function"			"ironbark_leathers_drop"
+					}
+				}
+			}	
+			
+			"modifier_ironbark_leathers"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%bonus_attack_speed"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"			"20"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Iron Helmet
+	//=================================================================================================================
+	"item_iron_helmet"
+	{
+		"ID"                            "2033"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_helm_of_iron_will"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"350"
+		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemAliases"					"mana;mb"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsArtifact"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_studded_leather_armor"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"15"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Mana Modifier
+	//=================================================================================================================
+	"item_mana_modifier"
+	{
+		"ID"							"2103"
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	
+		"Modifiers"
+		{
+			"modifier_mana_mod_1"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"3"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.01"
+				}
+			}
+			"modifier_mana_mod_2"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"6"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.02"
+				}
+			}
+			"modifier_mana_mod_4"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"12"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.04"
+				}
+			}
+			"modifier_mana_mod_8"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"24"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.08"
+				}
+			}
+			"modifier_mana_mod_16"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"48"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.16"
+				}
+			}
+			"modifier_mana_mod_32"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"96"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.32"
+				}
+			}
+			"modifier_mana_mod_64"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"192"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"0.64"
+				}
+			}
+			"modifier_mana_mod_128"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"384"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"1.28"
+				}
+			}
+			"modifier_mana_mod_256"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"768"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"2.56"
+				}
+			}
+			"modifier_mana_mod_512"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"  
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_MANA_BONUS"	"1536"
+					"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"	"5.12"
+				}
+			}
+		}
+	}
+	"item_modifier_master"
+	{
+		"ID"							"2101"
+	 
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	 
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+	 
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+	 
+		"Modifiers"
+		{
+			"modifier_custom"
+			{
+				"TextureName" "item_greater_salve"
+				"EffectName" "particles/items_fx/healing_flask.vpcf"
+				"EffectAttachType" "follow_origin"
+	 
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "100"
+				}
+			}
+		}
+	}
+	
+	//===============================================
+	// moonstone-Inset Ring
+	//===============================================
+	"item_moonstone_inset_ring"
+	{
+		"ID"                            "2018"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_moonstone_inset_ring"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "2000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"20.0"
+	
+		"Modifiers"
+		{
+			"modifier_moonstone_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"36"
+			}
+		}
+	}
+	//===============================================
+	// Nimsha
+	//===============================================
+	"item_nimsha"
+	{
+		"ID"                            "2003"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_desolator"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"	
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "10000" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemDroppable"					"1"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_nimsha"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure this doesn't make the modifier apply twice
+				"OnAttackLanded"
+				{			
+					"ApplyModifier"
+					{
+						"ModifierName" "modifier_nimsha_armor"
+						"Target"	   "TARGET"	
+					}
+				}
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+			}
+			"modifier_nimsha_armor"
+			{
+				"Duration"	"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%armor_reduction"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"armor_reduction"		"-15"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"3"
+			}
+		}
+	}
+	//===============================================
+	// Polished Elvin Telo
+	//===============================================
+	"item_polished_elven_telo"
+	{
+		"ID"                            "2007"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_claymore"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "2500" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"item_polished_elven_telo"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"		"%bonus_attack_speed"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"120"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_attack_speed"			"25 "
+			}
+		}
+	}
+	//=================================================================================================================
+	// Potion of Greater Healing
+	//=================================================================================================================
+	"item_potion_of_greater_healing"
+	{
+		"ID"                            "2028"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_potion_of_greater_healing"
+		"AbilitySharedCooldown" "HealPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"8.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"100"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"5"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"%heal_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"5000"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Potion of Healing
+	//=================================================================================================================
+	"item_potion_of_healing"
+	{
+		"ID"                            "2027"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_potion_of_healing"
+		"ItemKillable"					"0"
+		"AbilitySharedCooldown" "HealPot"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"24.0"
+		
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+	
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"20"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"%heal_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"600"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Kimhiro Draught (mana potion)
+	//=================================================================================================================
+	"item_potion_of_kimhiro_draught"
+	{
+		"ID"                            "2100"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_blue.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_potion_of_kimhiro_draught"
+		"AbilitySharedCooldown" "ManaPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"160"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"2"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"ReplenishMana"
+				"Target"			"UNIT"
+				"mana_amount"		"%mana_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"300"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Large Kimhiro Draught (mana potion)
+	//=================================================================================================================
+	"item_potion_of_large_kimhiro_draught"
+	{
+		"ID"                            "2020"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_blue.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_potion_of_large_kimhiro_draught"
+		"AbilitySharedCooldown" "ManaPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1200"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"4"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"ReplenishMana"
+				"Target"			"UNIT"
+				"mana_amount"		"%mana_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"2000"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Potion of Ultra Healing
+	//=================================================================================================================
+	"item_potion_of_ultra_healing"
+	{
+		"ID"                            "2029"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_potion_of_ultra_healing"
+		"AbilitySharedCooldown" "HealPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"14.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"10"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"%heal_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"20000"
+			}
+		}
+	}
+	//===============================================
+	// Brisker
+	//===============================================
+	"item_recipe_brisker"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2011"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"7000"	
+		"ItemShopTags"					""
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_brisker"
+		"ItemRequirements"
+		{
+			"01"						"item_polished_elven_telo;item_polished_elven_telo;item_zircon_inset_ring"
+		}
+	}
+	//===============================================
+	// Elite Elven Boots
+	//===============================================
+	"item_recipe_elite_elven_boots"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2023"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_elite_elven_boots"
+		"ItemRequirements"
+		{
+			"01"						"item_winged_leather_boots;item_elven_stalking_boots;item_arbelog_paw_boots"
+		}
+	}
+	//===============================================
+	// Ring of Victory
+	//===============================================
+	"item_recipe_ring_of_victory"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2048"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemDisassemblable"			"0"
+		"ItemResult"					"item_ring_of_victory"
+		"ItemRequirements"
+		{
+			"01"						"item_diamond_etched_ring;item_zircon_inset_ring;item_bloodstone_inset_ring;item_moonstone_inset_ring"
+		}
+	}
+	//===============================================
+	// Scepter of the Magi
+	//===============================================
+	"item_recipe_scepter_of_the_magi"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2046"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"5000"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_scepter_of_the_magi"
+		"IsUnique"							"1"
+		
+		"ItemRequirements"
+		{
+			"01"						"item_elder_staff;item_tribal_staff;item_agani_tayeua"
+		}
+	}
+	//===============================================
+	// Thirsting Blade
+	//===============================================
+	"item_recipe_thirsting_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2041"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"5000"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_thirsting_blade"
+		"ItemRequirements"
+		{
+			"01"						"item_gleaming_longsword;item_bloodthirst;item_spineripper"
+		}
+	}
+	//===============================================
+	// Uthmor's Mirror Blade
+	//===============================================
+	"item_recipe_uthmors_mirror_blade"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2043"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"Model"							"models/props_gameplay/recipe.mdl"
+		"BaseClass"                        "item_recipe_arcane_boots"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"10000"	
+		"ItemShopTags"					""
+		"SecretShop"					"1"
+		
+		// Recipe
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemRecipe"					"1"
+		"ItemResult"					"item_uthmors_mirror_blade"
+		"ItemRequirements"
+		{
+			"01"						"item_tkashi_mirror_blade;item_uthmors_skullcleaver"
+		}
+	}
+	//=================================================================================================================
+	// Ring of Victory
+	//=================================================================================================================
+	"item_ring_of_victory"
+	{
+		"ID"                            "2049"
+		"BaseClass"                     "item_datadriven"
+		"AbilityTextureName"			"item_ring_of_victory"
+		
+		"ItemDroppable"					"1"
+		"ItemSellable"					"1"
+		"ItemKillable"					"0"
+		"ItemDisassemblable"			"0"
+		"ItemQuality"					"epic"
+	
+		"ItemCost"                      "1500" 		
+		"ItemShopTags"					"ring"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_ring_of_victory"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"72"
+			}
+		}
+	}
+	//===============================================
+	// Ruby-Inset Ring
+	//===============================================
+	"item_ruby_inset_ring"
+	{
+		"ID"                            "2013"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_ruby_inset_ring"
+		//"ItemStockMax"					"4"
+		//"ItemStockInitial"				"4"
+		//"ItemStockTime"					"10.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "1000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_ruby_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"12"
+			}
+		}
+	}
+	//===============================================
+	// Sapphire-Inset Ring
+	//===============================================
+	"item_sapphire_inset_ring"
+	{
+		"ID"                            "2014"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_sapphire_inset_ring"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "500" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_sapphire_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"12"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Scepter of the Magi
+	//=================================================================================================================
+	"item_scepter_of_the_magi"
+	{
+		"ID"                            "2047"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_scepter_of_the_magi"
+	
+		"ItemDroppable"					"1"
+		"ItemSellable"					"1"
+		"ItemKillable"					"0"
+		"ItemDisassemblable"			"0"
+		"ItemQuality"					"epic"
+	
+		"ItemCost"                      "5000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_scepter_of_the_magi"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
+					"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"16"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen"			"75"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"675"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Scroll of Full Healing
+	//=================================================================================================================
+	"item_scroll_of_full_healing"
+	{
+		"ID"                            "2035"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_greater_salve"
+		"AbilitySharedCooldown" "HealPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"8.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"20.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"10"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"Heal"
+				"Target"			"UNIT"
+				"heal_amount"		"%heal_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"heal_amount"				"999999"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Scroll of Kimhiro
+	//=================================================================================================================
+	"item_scroll_of_kimhiro"
+	{
+		"ID"                            "2051"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_blue.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_scroll_of_kimhiro"
+		"AbilitySharedCooldown" "ManaPot"
+		"ItemKillable"					"0"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"4.0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"6000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"4"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"		"custom_scripted_items.lua"
+				"Function"			"ReplenishMana"
+				"Target"			"UNIT"
+				"mana_amount"		"%mana_amount"
+	
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_amount"				"99999"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Small Round Shield
+	//=================================================================================================================
+	"item_small_round_shield"
+	{
+		"ID"                            "2032"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_poor_mans_shield"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1200"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_small_round_shield"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"	"25"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Sepllbringer: Greater Darkrift
+	//=================================================================================================================
+	"item_spellbringer_greater_darkrift" //This unit isn't going to have the lifetime indicator. There is no way around this
+	{
+		"ID"							"3009"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"475"		//475
+		"AbilityCastRange"				"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"Precache" //THIS IS REALLY AWFUL. PLEASE FIGURE OUT WHY PRECACHING IN-ABILITY ISN'T WORKING
+		{
+			"model"						"models/courier/smeevil_crab/smeevil_crab.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_c/n_creep_kobold_frost.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll_frost.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_gnoll/n_creep_gnoll.vmdl"	
+			"model"						"models/creeps/neutral_creeps/n_creep_kobold/kobold_a/n_creep_kobold_a.vmdl"										
+			"model"						"models/heroes/beastmaster/beastmaster_beast.vmdl"										
+			"model"						"models/heroes/furion/treant.vmdl"									
+			"model"						"models/creeps/neutral_creeps/n_creep_satyr_c/n_creep_satyr_c.vmdl"											
+			"model"						"models/heroes/lycan/summon_wolves.vmdl"										
+			"model"						"models/heroes/broodmother/spiderling.vmdl"												
+			"model"						"models/items/broodmother/spiderling/thistle_crawler/thistle_crawler.vmdl"												
+			"model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"													
+			"model"						"models/heroes/lone_druid/spirit_bear.vmdl"													
+			"model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"														
+			"model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"															
+			"model"						"models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"														
+			"model"						"models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"														
+			"model"						"models/creeps/neutral_creeps/n_creep_satyr_b/n_creep_satyr_b.vmdl"													
+			"model"						"models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_ogre_med/n_creep_ogre_med.vmdl"												
+			"model"						"models/heroes/visage/visage_familiar.vmdl"														
+			"model"						"models/items/beastmaster/boar/fotw_wolf/fotw_wolf.vmdl"												
+			"model"						"models/heroes/beastmaster/beastmaster_bird.vmdl"													
+			"model"						"models/heroes/viper/viper.vmdl"													
+			"model"						"models/creeps/neutral_creeps/n_creep_centaur_lrg/n_creep_centaur_lrg.vmdl"											
+			"model"						"models/items/lone_druid/true_form/rabid_black_bear/rabid_black_bear.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_harpy_b/n_creep_harpy_b.vmdl"										
+			"model"						"models/heroes/enigma/eidelon.vmdl"										
+			"model"						"models/creeps/neutral_creeps/n_creep_golem_a/neutral_creep_golem_a.vmdl"										
+			"model"						"models/heroes/tidehunter/tidehunter.vmdl"										
+			"model"						"models/creeps/neutral_creeps/n_creep_troll_skeleton/n_creep_skeleton_melee.vmdl"										
+			"model"						"models/items/courier/raidcall_ems_one_turtle/raidcall_ems_one_turtle.vmdl"										
+			"model"						"models/heroes/dark_seer/dark_seer.vmdl"										
+			"model"						"models/creeps/lane_creeps/creep_bad_melee_diretide/creep_bad_melee_diretide.vmdl"										
+			"model"						"models/creeps/lane_creeps/creep_radiant_ranged/radiant_ranged.vmdl"											
+			"model"						"models/creeps/item_creeps/i_creep_necro_archer/necro_archer.vmdl"											
+			"model"						"models/creeps/neutral_creeps/n_creep_black_dragon/n_creep_black_dragon.vmdl"										
+			"model"						"models/creeps/mega_greevil/mega_greevil.vmdl"											
+			"model"						"models/items/courier/snowl/snowl_flying.vmdl"										
+			"model"						"models/heroes/pudge/pudge.vmdl"											
+			"model"						"models/heroes/weaver/weaver.vmdl"												
+			"model"						"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"											
+			"model"						"models/heroes/life_stealer/life_stealer.vmdl"												
+			"model"						"models/heroes/death_prophet/death_prophet.vmdl"										
+			"model"						"models/heroes/doom/doom.vmdl"												
+			"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"		
+			"model"						"models/development/invisiblebox.vmdl"	
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"				"SummonDarkrift"
+				"Target"				"POINT"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_summoner_summon_darkrift"
+			{
+				"Duration"				"%duration"
+				"OnDestroy"
+				{
+					"Damage"
+					{
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_PURE"
+						"Damage"		"99999"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"60"
+			}
+		}
+	}
+	"item_spellbringer_summon_arhat"
+	{
+		"ID"							"3012"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"1"		//475
+		"AbilityCastRange"				"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"AbilityManaCost"	"270"
+		"AbilityCooldown"	"60"
+		"AbilityCastRange"	"0"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"summon_arhat"
+				"target"		"POINT"
+			}
+		}
+	}
+	"item_spellbringer_summon_havroth"
+	{
+		"ID"							"3010"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"1"		//475
+		"AbilityCastRange"				"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"AbilityManaCost"	"360"
+		"AbilityCooldown"	"60"
+		"AbilityCastRange"	"0"
+		"Precache"
+		{
+			"model"				"models/heroes/dragon_knight/dragon_knight_dragon.vmdl"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"summon_havroth"
+				"target"		"POINT"
+			}
+		}
+	}
+	"item_spellbringer_summon_sidhlot"
+	{
+		"ID"							"3011"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"1"		//475
+		"AbilityCastRange"				"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"AbilityManaCost"	"250"
+		"AbilityCooldown"	"60"
+		"AbilityCastRange"	"0"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"summon_sidhlot"
+				"target"		"POINT"
+			}
+		}
+	}
+	"item_spellbringer_summon_uthmor"
+	{
+		"ID"							"3013"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityCooldown"				"90"
+		"AbilityManaCost"				"1"		//475
+		"AbilityCastRange"				"0"
+		"ItemDroppable"					"1"
+		"ItemSellable"					"0"
+		"ItemPurchasable"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"AbilityManaCost"	"160"
+		"AbilityCooldown"	"60"
+		"AbilityCastRange"	"0"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"summon_uthmor"
+				"target"		"POINT"
+			}
+		}
+	}
+	//===============================================
+	// Spineripper
+	//===============================================
+	"item_spineripper"
+	{
+		"ID"                            "2024"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_demon_edge"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "8000" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_spineripper"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"480"
+			}
+		}
+	}
+	"item_stats_modifier"
+	{
+		"ID"							"2006"
+	 
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"BaseClass"						"item_datadriven"
+	 
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+	 
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+	 
+		"Modifiers"
+		{
+			"modifier_armor_1"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-1"
+				}
+			}
+			"modifier_armor_2"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-2"
+				}
+			}
+			"modifier_armor_3"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-3"
+				}
+			}
+			"modifier_armor_4"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-4"
+				}
+			}
+			"modifier_armor_5"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-5"
+				}
+			}
+			"modifier_armor_6"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-6"
+				}
+			}
+			"modifier_armor_7"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-7"
+				}
+			}
+			"modifier_armor_8"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-8"
+				}
+			}
+			"modifier_armor_9"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-9"
+				}
+			}
+			"modifier_armor_10"
+			{
+				"IsHidden"	"1"
+				"Duration"	"3"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"		"-10"
+				}
+			}
+		}
+	}
+	//===============================================
+	// Stone Axe
+	//===============================================
+	"item_stone_axe"
+	{
+		"ID"                            "2050"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"stone_axe"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "40" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"30"
+		"IsArtifact"							"1"
+	
+		"OnEquip"
+		{
+			"ApplyModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_stone_axe"
+			}
+	
+		}
+		"OnUnequip"
+		{
+			"RemoveModifier"
+			{
+				"Target" 			"CASTER"
+				"ModifierName"		"modifier_stone_axe"
+			}
+	
+		}
+		"Modifiers"
+		{
+			"modifier_stone_axe"
+			{
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+				"OnAttackLanded"
+				{
+					"SpendCharge"
+					{}
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"60"
+			}
+		}
+	}	
+	//=================================================================================================================
+	// Thirsting Blade
+	//=================================================================================================================
+	"item_thirsting_blade"
+	{
+		"ID"                            "2042"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_ethereal_blade"
+	
+		"ItemDroppable"					"1"
+		"ItemSellable"					"1"
+		"ItemKillable"					"0"
+		"ItemDisassemblable"			"0"
+		"ItemQuality"					"epic"
+	
+		"ItemCost"                      "5000" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_thirsting_blade"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				}
+				"OnAttackLanded"
+				{
+					"Lifesteal"
+					{
+						"Target" 				"CASTER"
+						"LifestealPercent"		"%leech"
+					}
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"660"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"leech"					"10"
+			}
+		}
+	}
+	//===============================================
+	// T'kashi Mirror Blade
+	//===============================================
+	"item_tkashi_mirror_blade"
+	{
+		"ID"                            "2004"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_sange"
+	
+		"ItemQuality"					"rare"
+		"ItemCost"                      "0" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"SideShop"					"1"
+		"LumberCost"	"240"
+	
+		"Modifiers"
+		{
+			"modifier_tkashi_mirror_blade"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"960"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"all_stats"				"36"
+			}
+	
+		}
+	}
+	"item_tome_of_agility"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3002"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"700"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"agility"
+		"Bonus_Stat"						"1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"1"
+			}
+		}
+	}	
+	"item_tome_of_agility_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3003"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"7000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"agility"
+		"Bonus_Stat"						"10"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+		}
+	}
+	"item_tome_of_combat"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3006"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"4000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"damage"
+		"Bonus_Stat"						"30"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"30"
+			}
+		}
+	}
+	"item_tome_of_intellect"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3004"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"700"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"intellect"
+		"Bonus_Stat"						"1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"1"
+			}
+		}
+	}	
+	"item_tome_of_intellect_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3005"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"7000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"intellect"
+		"Bonus_Stat"						"10"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+		}
+	}
+	"item_tome_of_knowledge"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3008"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"7800"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"all"
+		"Bonus_Stat"						"4"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"4"
+			}
+		}
+	}
+	"item_tome_of_retraining"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3007"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"600.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"respec"
+		"Bonus_Stat"						"0"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"30"
+			}
+		}
+	}
+	//===============================================
+	// Tomes
+	//===============================================
+	"item_tome_of_strength"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3000"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"700"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"strength"
+		"Bonus_Stat"						"1"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"1"
+			}
+		}
+	}
+	"item_tome_of_strength_2"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3001"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"item_tome_of_strength"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"7000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"strength"
+		"Bonus_Stat"						"10"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"10"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Tower Shield
+	//=================================================================================================================
+	"item_tower_shield"
+	{
+		"ID"                            "2108"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_tower_shield"
+		//"ItemStockMax"					"2"
+		//"ItemStockInitial"				"2"
+		//"ItemStockTime"					"120.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"1500"
+		"ItemQuality"					"rare"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+		"ItemDroppable"					"1"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+	
+		"Modifiers"
+		{
+			"modifier_tower_shield"
+			{
+				"Passive"	 "1"
+				"IsHidden"	 "1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor"
+				}
+			}
+		}
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor"			"5"
+			}
+		}
+	}
+	//===============================================
+	// Tribal Staff
+	//===============================================
+	"item_tribal_staff"
+	{
+		"ID"                            "2009"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_quarterstaff"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "400" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"120.0"
+	
+		"Modifiers"
+		{
+			"modifier_tribal_staff"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana"			"400"
+			}
+		}
+	}
+	"item_uthmors_mirror_blade"
+	{
+		"ID"                            "2044"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_uthmors_mirror_blade"
+	
+		"ItemDroppable"					"1"
+		"ItemSellable"					"1"
+		"ItemKillable"					"0"
+		"ItemDisassemblable"			"0"
+		"ItemQuality"					"epic"
+	
+		"ItemCost"                      "5000" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"IsUnique"							"1"
+		
+		"Modifiers"
+		{
+			"modifier_uthmors_mirror_blade"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "uthmors_mirror_blade_crit"
+								"Target"	   "CASTER"	
+							}	
+								
+						}
+					}
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+			}
+	
+			"uthmors_mirror_blade_crit"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+				}
+				
+				"OnAttackLanded"
+				{
+					"FireEffect"
+					{
+						"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"	 "follow_origin"
+						"Target"			 "TARGET"
+					}	
+					"RemoveModifier"
+					{
+						"ModifierName"		"uthmors_mirror_blade_crit"
+						"Target"			"CASTER"	
+					}
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"all_stats"				"72"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_bonus"			"200"
+			}
+	
+		}
+	}
+	//===============================================
+	// Uthmor's Skullcleaver
+	//===============================================
+	"item_uthmors_skullcleaver"
+	{
+		"ID"                            "2005"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_bfury"
+	
+		"ItemQuality"					"rare"
+		"ItemCost"                      "0" 		
+		"ItemShopTags"					"damage"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"SideShop"					"1"
+		"LumberCost"	"240"
+	
+		"Modifiers"
+		{
+			"modifier_uthmors_skullcleaver"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+				"OnAttackStart"
+				{
+					"Random"
+					{
+						"Chance" "%crit_chance"
+						"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+						"OnSuccess"
+						{
+							"ApplyModifier"
+							{
+								"ModifierName" "uthmors_skullcleaver_crit"
+								"Target"	   "CASTER"	
+							}	
+								
+						}
+					}
+				}
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+			}
+	
+			"uthmors_skullcleaver_crit"
+			{
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
+				}
+				
+				"OnAttackLanded"
+				{
+					"FireEffect"
+					{
+						"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+						"EffectAttachType"	 "follow_origin"
+						"Target"			 "TARGET"
+					}	
+					"RemoveModifier"
+					{
+						"ModifierName"		"uthmors_skullcleaver_crit"
+						"Target"			"CASTER"	
+					}
+				}
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"240"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"all_stats"				"36"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_chance"			"50"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"crit_bonus"			"200"
+			}
+	
+		}
+	}
+	//=================================================================================================================
+	// Vampiric Potion
+	//=================================================================================================================
+	"item_vampiric_potion"
+	{
+		"ID"                            "2037"
+	
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"Model"							"models/props_gameplay/salve_red.vmdl"
+		"BaseClass"						"item_datadriven"
+		"AbilityTextureName"			"item_vampiric_potion"
+		"ItemKillable"					"0"
+	
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"100"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"60.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"750"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"1"
+		"SideShop"						"1"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_vampiric_potion"
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_vampiric_potion"
+			{
+				"Duration"	"%duration"
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
+				}
+				"OnAttackLanded"
+				{
+					"Lifesteal"
+					{
+						"Target" 				"CASTER"
+						"LifestealPercent"		"%lifesteal"
+					}
+				}
+				"EffectName" 				"particles/items_fx/armlet.vpcf"
+				"EffectAttachType"			"attach_hitloc"
+			}
+	
+		}
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"12"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifesteal"				"75"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Sentry Ward
+	//=================================================================================================================
+	"item_ward_sentry_enfos"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"                            "2030"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_OPTIONAL_UNIT_TARGET"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+		"BaseClass"						"item_ward_sentry"
+		//"ItemStockMax"					"4"
+		//"ItemStockInitial"				"4"
+		//"ItemStockTime"					"24.0"
+		
+		// Stats
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"500"
+		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"1.0"
+		
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"50"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemAliases"					"sentry ward"
+		"ItemStackable"					"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+		"ItemPermanent"					"0"
+		"ItemInitialCharges"			"3"
+		"ItemDeclarations"				"DECLARE_PURCHASES_TO_TEAMMATES"
+		"ItemSupport"					"1"
+	
+		
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lifetime"				"240"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"vision_range"			"0"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"true_sight_range"		"800"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"health"				"200"
+			}
+		}
+	}
+	//===============================================
+	//	Winged Leather Boots
+	//===============================================
+	"item_winged_leather_boots"
+	{
+		"ID"                            "2040"
+		"ItemCost"						"400"
+		"ItemQuality"					"component"
+		//"ItemStockMax"					"5"
+		//"ItemStockInitial"				"5"
+		//"ItemStockTime"					"120.0"
+	
+		// Item Info
+		//--------------------------------------------------------------------
+		"BaseClass"						"item_datadriven"
+	
+		"AbilityTextureName"			"item_boots"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityCooldown"				"30.0"
+	
+		"AbilityCastRange"				"0"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"items/items_shared.lua"
+				"Function"		"blink"
+				"Target"	"POINT"
+				"Range"	"%blink_range"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_winged_leather_boots"
+			{
+				"Passive"		"1"
+				"IsHidden"		"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
+					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"blink_range"		"1050"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_agi"				"3"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int"				"3"
+			}
+		}
+	}
+	//===============================================
+	// Zircon-Inset Ring
+	//===============================================
+	"item_zircon_inset_ring"
+	{
+		"ID"                            "2017"
+		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityTextureName"			"item_zircon_inset_ring"
+		//"ItemStockMax"					"3"
+		//"ItemStockInitial"				"3"
+		//"ItemStockTime"					"20.0"
+	
+		"ItemQuality"					"component"
+		"ItemCost"                      "3000" 		
+		"ItemShopTags"					"caster"
+		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+		"Modifiers"
+		{
+			"modifier_zircon_inset_ring"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				}	
+			}
+		}
+	
+	
+	
+		// Special	
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"				"36"
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+//=================================================================================================================
+// Mentalist: Moonblade
+//=================================================================================================================
+"mentalist_moonblade"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"luna_moon_glaive"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"AbilityCastPoint"				"0.0"
+	"Modifiers"
+	{
+		"modifier_mentalist_moonblade"
+		{
+			"Passive"		"1"
+			"OnAttackLanded"
+			{
+				"CleaveAttack"
+				{
+					"CleavePercent"		"%cleave_percent"
+					"CleaveRadius"		"%cleave_radius"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cleave_percent"		"20 30 45 60 75 90 110 130 160 200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cleave_radius"			"250"
+		}
+	}
+}

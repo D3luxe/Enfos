@@ -1,0 +1,66 @@
+//=================================================================================================================
+// Moon Mage: Moongate
+//=================================================================================================================
+"moon_mage_moongate"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"lich_chain_frost"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCastRange"				"1000"
+	"AbilityCooldown"				"84 78 72 66 60 54 48 42 36 30"
+	"AbilityManaCost"				"130 117 104 91 78 65 52 39 26 13"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"Precache"
+	{
+		"particle_folder"			"particles/hero_moon_mage" 
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
+			"Function"				"Moongate"
+			"Target"				"POINT"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_moon_mage_moongate_debuff"
+		{
+			"Duration"				"%slow_duration"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%movement_slow"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_slow"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"movement_slow"			"-75"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_slow"			"-25"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_duration"			"10"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"gate_duration"			"30"
+		}
+	}
+}

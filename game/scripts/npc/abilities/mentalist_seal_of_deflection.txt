@@ -1,0 +1,119 @@
+//=================================================================================================================
+// Mentalist: Seal of Deflection (spell programmed by Noya - https://github.com/Pizzalol/SpellLibrary/blob/SpellLibrary)
+//=================================================================================================================
+"mentalist_seal_of_deflection"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"medusa_mana_shield"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"5"
+	"AbilityManaCost"				"10"
+	"Precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"
+		"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+		"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+		"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+		"particle"			"particles/units/heroes/hero_medusa/medusa_mana_shield_impact.vpcf"
+	}
+	"OnToggleOn"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Medusa.ManaShield.On" 
+			"Target" 		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_cast.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_mentalist_seal_of_deflection"
+			"Target" 		"CASTER"
+		}
+	}
+	"OnToggleOff"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Medusa.ManaShield.Off"
+			"Target" 		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"        "particles/units/heroes/hero_medusa/medusa_mana_shield_end.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Target"            "CASTER"
+		}
+
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_mentalist_seal_of_deflection"
+			"Target"
+			{
+				"Center"	"CASTER"
+				"Flags" 	"DOTA_UNIT_TARGET_FLAG_DEAD"
+			}
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mentalist_seal_of_deflection"
+		{
+			"Passive"			"0"
+			"IsHidden"			"0"
+			"IsDebuff"			"0"
+	
+			"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
+			"EffectAttachType"	"follow_origin"
+	
+			"OnTakeDamage"
+			// "%attack_damage" is set to the damage value after mitigation
+			{
+				"FireSound"
+				{
+					"EffectName"	"Hero_Medusa.ManaShield.Proc"
+					"Target" 		"UNIT"
+				}
+
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/heroes/mentalist.lua"
+					"Function"		"SealOfDeflection"
+					"Damage"		"%attack_damage"
+				}
+			}
+
+			"ThinkInterval"  "0.03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/mentalist.lua"
+					"Function"				"SealOfDeflectionHealth"
+				}
+			}
+		}
+	}		
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"absorption_tooltip"	"55 60 65 70 75 80 85 90 95 100"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_mana"		"1 2 3 4 5 6 7 8 9 10"
+		}
+	}
+}

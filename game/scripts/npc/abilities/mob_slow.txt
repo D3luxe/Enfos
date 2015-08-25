@@ -1,0 +1,79 @@
+"mob_slow"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"AbilityTextureName"			"skywrath_mage_ancient_seal"
+	"BaseClass" 					"ability_datadriven"
+	"MaxLevel"						"1"
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"600"
+	"AbilityCastPoint"				"0.3"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"8"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"50"
+
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_mob_slow"		
+			"Target"	"TARGET"
+		}
+	}
+
+	"Modifiers"
+	{
+
+		"modifier_mob_slow"
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+
+			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_attack_glow_2.vpcf"
+			"EffectAttachType" "attach_hitloc"
+
+			"Duration"					"%duration"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+			}
+		}
+	}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"10"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_speed"				"-25"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_speed"				"-60"
+		}
+	}		
+
+}

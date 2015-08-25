@@ -1,0 +1,54 @@
+//=================================================================================================================
+// HERO: Beastmaster - Grim Stonecrusher, the Barbarian
+//=================================================================================================================
+"npc_dota_hero_beastmaster_enfos"	
+{
+	"override_hero" "npc_dota_hero_beastmaster"
+	"Role"						"Carry" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	// Abilities
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityLayout"			"5"
+	"Ability1"					"beastmaster_enfos_trothfangs_butchery"					// Ability 1
+	"Ability2"					"generic_enfos_combat_mastery"			// Ability 2
+	"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
+	"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
+	"Ability6"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
+	"Ability5"				"enfos_attribute_bonus"
+
+	// Armor
+	//-------------------------------------------------------------------------------------------------------------
+	"ArmorPhysical"				"1"									// Physical protection.
+
+	// Attack
+	//-------------------------------------------------------------------------------------------------------------
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+	"AttackDamageMin"			"2.5"									// Damage range min.
+	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackRate"				"1.4"									// Speed of attack.
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackRange"				"180"									// Range within a target can be attacked.
+	"ProjectileModel"			""										// Particle system model for projectile.
+	"ProjectileSpeed"			"0"										// Speed of projectile.
+
+	// Attributes
+	//-------------------------------------------------------------------------------------------------------------
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+	"AttributeBaseStrength"			"9"								// Base strength
+	"AttributeStrengthGain"			"3"								// Strength bonus per level.
+	"AttributeBaseIntelligence"		"3"								// Base intelligence
+	"AttributeIntelligenceGain"		"1"								// Intelligence bonus per level.
+	"AttributeBaseAgility"			"6"								// Base agility
+	"AttributeAgilityGain"			"2"								// Agility bonus per level.
+
+	// Movement
+	//-------------------------------------------------------------------------------------------------------------
+	"MovementSpeed"				"350"									// Speed.
+	"MovementTurnRate"			"0.4"									// Turning rate.
+
+	// Status
+	//-------------------------------------------------------------------------------------------------------------
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+}

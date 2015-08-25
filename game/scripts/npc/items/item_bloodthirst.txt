@@ -1,0 +1,59 @@
+//===============================================
+// Bloodthirst
+//===============================================
+"item_bloodthirst"
+{
+	"ID"                            "2031"
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"item_broadsword"
+	//"ItemStockMax"					"5"
+	//"ItemStockInitial"				"5"
+	//"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "6500" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemDroppable"					"1"
+	"IsUnique"							"1"
+
+	"Modifiers"
+	{
+		"modifier_bloodthirst"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"120"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"10"
+		}
+	}
+}

@@ -1,0 +1,92 @@
+//=================================================================================================================
+// Weaponsmith: Thunder Maul
+//=================================================================================================================
+"weaponsmith_thunder_maul"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sven_storm_bolt"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"55"
+	"AbilityManaCost"				"16 19 22 25 28 31 34 37 40 43"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_sven/"
+		"particle_folder"			"particles/hero_weaponsmith/"
+		"particle_folder"			"particles/prototype_fx/"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/weaponsmith.lua"
+			"Function"				"ThunderMaul"
+			"damage"				"%damage"
+			"stun_area_of_effect"	"%stun_area_of_effect"
+			"stun_duration"			"%stun_duration"
+			"slow_area_of_effect"	"%slow_area_of_effect"
+			"slow_duration"			"%slow_duration"
+		}
+		"RemoveModifier"
+		{
+			"Target"		"CASTER"
+			"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_weaponsmith_cambrinth_charge_thunder_maul_debuff"
+		{
+			"Duration"				"%slow_duration"
+			"IsDebuff"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"      "%slow_amount"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"      "%attack_slow_amount"
+			}
+		}
+	}
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"30 50 82 132 209 327 505 774 1180 1791" //not doing the decimals. they're pointless
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun_area_of_effect"	"300"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun_duration"			"10 11 12 13 14 15 16 17 18 19" //says 12 for levels 3 and 4 on site; assuming it's a typo
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_area_of_effect"	"3000"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_duration"			"30"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_amount"			"-80"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_slow_amount"	"-75"
+		}
+	}
+}

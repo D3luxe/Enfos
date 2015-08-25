@@ -1,0 +1,32 @@
+//=================================================================================================================
+// Sniper: Rapid Reload
+//=================================================================================================================
+"sniper_rapid_reload"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sniper_assassinate"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"Modifiers"
+	{
+		"modifier_sniper_rapid_reload"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
+			}
+		}
+	}				
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed"			"15 30 45 60 75 90 105 120 135 150"
+		}					
+	}
+}

@@ -1,0 +1,103 @@
+//=================================================================================================================
+// Ogre Magi - Antimage - Moradinn the Magic Infuser
+//=================================================================================================================
+
+
+//=================================================================================================================
+// Empower Hammer
+//=================================================================================================================
+"ogre_magi_enfos_empower_hammer"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"kunkka_tidebringer"
+	"MaxLevel"					"10"
+
+	"OnChannelSucceeded"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_empower_weapon_stun"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"%radius"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}	
+		}
+
+		"FireEffect"
+		{
+			"EffectName"		 "particles/econ/events/coal/coal_projectile_explosion.vpcf"
+			"EffectAttachType"	 "follow_origin"
+			"Target"			 "CASTER"
+		}
+		
+		
+
+	}
+
+	"Modifiers"
+	{
+		"modifier_empower_weapon"
+		{
+			"Passive" "1"
+			"IsHidden"	"1"
+			 
+			"OnAttackLanded"
+			{
+				"Random"
+				{
+					"Chance" "%stun_chance"
+					//"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"RunScript"
+						{
+							"ScriptFile"	"scripts/vscripts/heroes/magic_infuser.lua"
+							"Function"		"MagicInfuserSpendMana"
+							"manacost"		"2"
+							"radius"		"%radius"
+						}
+					}
+				}
+			}
+
+		}
+
+		"modifier_empower_weapon_stun"
+		{
+			"Duration" "%duration"
+			"EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			"EffectAttachType" "follow_overhead"
+			"OverrideAnimation" "ACT_DOTA_DISABLED"
+
+			"States"
+			{
+				"MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}	
+	}
+	
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"stun_chance"		"3 6 9 12 15 18 21 24 27 30"
+		}	
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"radius"		"900"
+		}	
+		"03"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"duration"		"1"
+		}	
+	}
+}

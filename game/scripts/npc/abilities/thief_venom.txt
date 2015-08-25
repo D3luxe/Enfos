@@ -1,0 +1,83 @@
+//=================================================================================================================
+// Thief: Venom
+//=================================================================================================================
+"thief_venom"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"gnoll_assassin_envenomed_weapon"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_venomancer"
+	}
+	"Modifiers"
+	{
+		"modifier_thief_venom_applier"
+		{
+			"Passive"				"1"
+			"IsHidden"				"1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_thief_venom_debuff"
+					"Target"		"TARGET"
+				}
+			}
+		}
+		"modifier_thief_venom_debuff"
+		{
+			"Duration"				"%duration"
+			"ThinkInterval"			"0.1"
+			"OnIntervalThink"
+			{
+				"Damage"
+				{
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage_over_time"
+				}
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_venomancer/venomancer_poison_debuff_nova.vpcf"
+					"EffectAttachType"	"follow_origin"
+					"Target"			"TARGET"
+				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%slow"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_per_second"		"200 304 462 702 1067 1623 2466 3749 5698 8662"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"5 7 9 11 13 15 17 19 21 23"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow"					"-25 -30 -35 -40 -45 -50 -55 -60 -65 -70"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_FLOAT" //do not localize this one
+			"damage_over_time"		"20 30.4 46.2 70.2 106.7 162.3 246.6 374.9 569.8 866.2"
+		}
+	}
+}

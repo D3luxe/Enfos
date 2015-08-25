@@ -1,0 +1,29 @@
+//=================================================================================================================
+// Crystal Maiden: Arcane Mistress
+//=================================================================================================================
+//=================================================================================================================
+// Arcane Mistress: Targeted Magic
+//=================================================================================================================
+"arcane_mistress_targeted_magic"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ancient_apparition_ice_blast"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+	"MaxLevel"						"1"
+	"AOERadius"						"%radius"
+	"AbilityManaCost"				"1" //unverified value
+	"AbilityCastPoint"				"0.3"
+	"AbilityCooldown"				"18"
+	"Precache"
+	{
+		"particle_folder"			"particles/units/heroes/hero_drow/"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/arcanemistress.lua"
+			"Function"				"TargetedMagic"
+		}
+	}
+}	

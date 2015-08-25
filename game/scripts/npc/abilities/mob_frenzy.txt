@@ -1,0 +1,50 @@
+"mob_frenzy" //not quite working?
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ogre_magi_bloodlust"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"MaxLevel"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"30"
+	"AbilityManaCost"				"0"
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_mob_frenzy"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_mob_frenzy"
+		{
+			"Duration" 				"%duration"
+			"Properties" 
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"attack_speed"			"40"
+		}				
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"move_speed"			"25"
+		}				
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"20"
+		}		
+	}	
+}

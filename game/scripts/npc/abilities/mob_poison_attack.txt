@@ -1,0 +1,81 @@
+"mob_poison_attack"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"viper_poison_attack"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"MaxLevel"						"1"
+	
+	"Modifiers"
+	{
+		
+		"modifier_poison_attack"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"OnAttackLanded"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName" "modifier_poison_attack_slow"
+					"Target"	   "TARGET"	
+				}
+				"Damage"
+				{
+					"Type" 			"DAMAGE_TYPE_MAGICAL"
+					"Damage" 		"%damage"
+					"Target"		"TARGET"
+				}
+
+			}
+		}	
+
+		"modifier_poison_attack_slow"
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+
+			"EffectName"	"particles/units/heroes/hero_viper/viper_poison_attack_glow_2.vpcf"
+			"EffectAttachType" "attach_hitloc"
+
+			"Duration"					"%duration"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE" "%move_speed"
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" "%attack_speed"
+			}
+
+		}	
+	}
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"duration"				"1"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"damage"				"4"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"attack_speed"				"-25"
+		}
+		"04"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"move_speed"				"-50"
+		}
+	}
+	
+}

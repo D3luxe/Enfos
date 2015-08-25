@@ -1,0 +1,41 @@
+//=================================================================================================================
+// Sniper: Lucky Shot
+//=================================================================================================================
+"sniper_lucky_shot"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"sniper_headshot"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"10"
+	"Modifiers"
+	{
+		"modifier_sniper_lucky_shot"
+		{
+			"Passive"				"1"
+			"OnAttackStart"
+			{
+				"Random"
+				{
+					"Chance"			"%chance"
+					"OnSuccess"
+					{
+						"Damage" //apparently it works on birds so it's fine to do it this way
+						{
+							"Target"	"TARGET"
+							"Damage"	"9999999"
+							"Type"		"DAMAGE_TYPE_PURE"
+						}
+					}
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"chance"				"1 2 3 4 5 6 7 8 9 10"
+		}			
+	}
+}

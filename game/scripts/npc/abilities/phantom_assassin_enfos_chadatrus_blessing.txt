@@ -1,0 +1,82 @@
+//=================================================================================================================
+// Chadatru's Blessing
+//=================================================================================================================
+"phantom_assassin_enfos_chadatrus_blessing"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"omniknight_purification"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"3"
+	"RequiredLevel"			"6"
+
+	"AbilityManaCost"		"30 40 50 60 70 80 90 100 110 120"
+	"AbilityCooldown"		"180 170 160 150 140 130 120 110 100 90"
+
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_omniknight.vsndevts"
+		"particle"	"particles/units/heroes/hero_omniknight/omniknight_guardian_angel_halo_buff.vpcf"
+		"particle"  "particles/status_fx/status_effect_guardian_angel.vpcf"
+		"particle"  "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_ally.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Omniknight.GuardianAngel.Cast"
+			"Target"		"CASTER"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_chadatrus_blessing_aura"
+			"Target"	"CASTER"
+
+		}
+
+	}
+	"Modifiers"
+	{
+		"modifier_chadatrus_blessing_aura"
+		{
+			"Duration"				"%duration"
+
+			"Aura"					"modifier_chadatrus_blessing"
+			"Aura_Radius"			"9999"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO"		
+			"Aura_ApplyToCaster"	"0"
+		}
+		"modifier_chadatrus_blessing"
+		{
+			"EffectName"     "particles/units/heroes/hero_omniknight/omniknight_guardian_angel_omni.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+			
+			"Properties" 
+			 {
+				"MODIFIER_PROPERTY_ABSOLUTE_NO_DAMAGE_PHYSICAL"	"1"
+			 }
+			 "States"
+			 {
+			   "MODIFIER_STATE_MAGIC_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+			 }
+		}
+
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"15"
+		}
+	}
+	
+}

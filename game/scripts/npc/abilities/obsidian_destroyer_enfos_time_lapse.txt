@@ -1,0 +1,63 @@
+//=================================================================================================================
+// Obsidian Destroyer - Time Lapse
+//=================================================================================================================	
+"obsidian_destroyer_enfos_time_lapse"
+{
+	"BaseClass"	"ability_datadriven"
+	"AbilityBehavior"	"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"	"faceless_void_time_lock"
+	
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"190 180 170 160 150 140 130 120 110 100"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"100 170 240 310 380 450 520 590 660 730"
+	
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName" "modifier_time_lapse"
+			"Target"
+			{
+				"Center"			"CASTER"
+				"Radius"			"10000"
+				"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types"				"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+			}
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_time_lapse"
+		{
+			 "Duration" "%duration"
+			 "EffectName" "particles/generic_gameplay/generic_stunned.vpcf"
+			 "EffectAttachType" "follow_overhead"
+			 "OverrideAnimation" "ACT_DOTA_DISABLED"
+			 
+			 "States"
+			 {
+			   "MODIFIER_STATE_STUNNED" "MODIFIER_STATE_VALUE_ENABLED"
+			 }
+		}
+	}
+	// Special
+	// ------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"		"40"
+		}
+	}
+	
+}
