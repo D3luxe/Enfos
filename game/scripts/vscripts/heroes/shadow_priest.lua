@@ -42,6 +42,10 @@ function greater_hallucination(keys)
 	local outgoingDamage = ability:GetLevelSpecialValueFor("outgoing_damage", ability:GetLevel() - 1 )
 	local incomingDamage = ability:GetLevelSpecialValueFor("incoming_damage", ability:GetLevel() - 1 )
 
+	if shadowArtsHeal ~= nil then
+		target:Heal(shadowArtsHeal, ability)
+	end
+
 	-- handle_UnitOwner needs to be nil, else it will crash the game.
 	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
 	illusion:SetPlayerID(target:GetPlayerID())
@@ -82,14 +86,30 @@ function greater_hallucination(keys)
 	-- Set the unit as an illusion
 	-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
 	illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	ability:ApplyDataDrivenModifier(caster, illusion, "modifier_illusion_lifesteal", {})
 	
 	-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
 	illusion:MakeIllusion()
-	if shadowArtsHeal ~= nil then
-		illusion:Heal(shadowArtsHeal, ability)
-	end
+	
 end
 
+function greater_hallucination_lifesteal(keys)
+	--Adds life steal to the illusions since it is hardcoded for normal lifesteal not to work.
+	PrintTable(keys)
+	local caster = keys.caster
+	local attacker = keys.attacker
+	local ability = keys.ability
+	local damage = keys.DamageDealt
+	--Defined in item_bloodthirst
+	local lifesteal = 10
+	print("Illusion life steal check")
+	--Checks to see if the illusion has a bloodthirst
+	if attacker:HasItemInInventory("item_bloodthirst") then
+		local healAmount = damage / lifesteal
+		print("Illusion has bloodthirst - healing for "..healAmount)
+		attacker:Heal(healAmount, attacker)
+	end
+end
 function armageddon(keys)
 	local caster = keys.caster
 	local ability = keys.ability

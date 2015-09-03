@@ -32,6 +32,28 @@
 			"Target"				"TARGET"
 		}
 	}
+	"Modifiers"
+	{
+		"modifier_illusion_lifesteal"
+		{
+			"IsPurgable"		"0"
+			"Passive"			"0"
+			"IsHidden"			"1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/shadow_priest.lua"
+					"Function"				"greater_hallucination_lifesteal"
+					"DamageDealt"			"%attack_damage"
+				}
+
+			}
+
+		}
+
+	}
 	"AbilitySpecial"
 	{
 		"01"

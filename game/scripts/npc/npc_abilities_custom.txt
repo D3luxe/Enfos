@@ -5324,6 +5324,8 @@
 			"modifier_mentalist_moonblade"
 			{
 				"Passive"		"1"
+				"IsPurgable"	"0"
+	
 				"OnAttackLanded"
 				{
 					"CleaveAttack"
@@ -6638,74 +6640,50 @@
 			}
 		}
 	
-		"Modifiers"    				// Can be used to create custom modifier. 
-		{  							// There are many snippets that can be expanded in to the modifiers. 
-			"modifier_permenant_invisibility"   	// This should be the name of your modifier
+		"Modifiers"
+		{
+			"modifier_mob_permanent_invisibility"
 			{
-				"IsDebuff"					"true"
-				"IsPurgable"				"false"
-				"IsStunDebuff"				"true"
-				"IsHidden"					"false"
-				"Passive"	"1"
-				"IsHidden"	"1"
-	
+				"Passive"					"1"
+				"IsHidden"					"1"
 				"OnCreated"
 				{
-					"RunScript"
-					{
-						"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-						"Function"				"apply_invisibility"
-					}
-				}
-				"OnAttackLanded"
-				{
-					"RemoveModifier"
-					{
-						"Target" 			"CASTER"
-						"ModifierName"		"modifier_permenant_invisibility"
-					}
 					"ApplyModifier"
 					{
-						"Target" 			"CASTER"
-						"ModifierName"		"modifier_permenant_invisibility_visible"
-					}
-					"RunScript"
-					{
-						"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-						"Function"				"remove_invisiblity"
+						"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+						"Target"			"CASTER"
 					}
 				}
-	
-				"States"
+				"OnAttack"
 				{
-					"MODIFIER_STATE_INVISIBLE"				"MODIFIER_STATE_VALUE_ENABLED"
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+						"Target"			"ATTACKER"
+					}
+				}		
+				"OnAbilityExecuted"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+						"Target"			"UNIT"
+					}
 				}
 			}
-			"modifier_permenant_invisibility_visible"
+			
+			"modifier_mob_permanent_invisibility_hidden"
 			{
-				"IsDebuff"					"true"
-				"IsPurgable"				"false"
-				"IsStunDebuff"				"true"
-				"IsHidden"					"false"
-				"Passive"	"0"
-				"IsHidden"	"1"
-				"Duration"	"4"
-	
+				"IsHidden"					"1"
+				"Duration"					"%fade_time"
 				"OnDestroy"
 				{
 					"ApplyModifier"
 					{
-						"Target" 			"CASTER"
-						"ModifierName"		"modifier_permenant_invisibility"
+						"ModifierName"		"modifier_invisible"
+						"Target"			"CASTER"
 					}
-					"RunScript"
-					{
-						"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-						"Function"				"apply_invisibility"
-					}
-	
 				}
-	
 			}
 		}
 		// Special
@@ -6715,7 +6693,7 @@
 			"01"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"fade_time"					"0.0"
+				"fade_time"					"1.0"
 			}
 			"02"
 			{
@@ -8110,6 +8088,7 @@
 					"Radius"			"10000"
 					"Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 					"Types"				"DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+					"ExcludeFlags"	"DOTA_UNIT_TARGET_FLAG_PLAYER_CONTROLLED"
 				}
 			}
 		}
@@ -9577,6 +9556,28 @@
 				"Target"				"TARGET"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_illusion_lifesteal"
+			{
+				"IsPurgable"		"0"
+				"Passive"			"0"
+				"IsHidden"			"1"
+	
+				"OnAttackLanded"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/shadow_priest.lua"
+						"Function"				"greater_hallucination_lifesteal"
+						"DamageDealt"			"%attack_damage"
+					}
+	
+				}
+	
+			}
+	
+		}
 		"AbilitySpecial"
 		{
 			"01"
@@ -10033,11 +10034,9 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
+					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
 				}
-				"States"
-				{
-					"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-				}
+				
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -10252,6 +10251,15 @@
 		}
 	
 		"OnProjectileDodge"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName" "modifier_battle_sphere_fx"
+				"Target"	"TARGET"
+			}
+		}
+	
+		"OnProjectileFinish"
 		{
 			"RemoveModifier"
 			{
@@ -10527,7 +10535,6 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
-		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	
 		"AbilityManaCost"	"75"
 		"AbilityCooldown"	"10"
@@ -10553,7 +10560,7 @@
 			{
 				// Refer to http://hex6.se/dota/modifier_functions.txt to see what snippets can be expanded in here.
 				"IsDebuff"					"true"
-				"IsPurgable"				"false"
+				"IsPurgable"				"true"
 				"IsStunDebuff"				"true"
 				"IsHidden"					"false"
 	
@@ -13716,6 +13723,12 @@
 			{
 				"ScriptFile"		"heroes/warlock.lua"
 				"Function"		"Spellcurse"
+			}
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_sniper_fire_ammo"
+				"Target"	"TARGET"
+	
 			}
 		}
 	

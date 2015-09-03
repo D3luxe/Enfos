@@ -5,7 +5,7 @@ Fendryad Spawn Logic
 function Spawn( entityKeyValues )
 	ABILITY_curse = thisEntity:FindAbilityByName( "mob_curse" )
 	ABILITY_mana_burn = thisEntity:FindAbilityByName( "mob_mana_burn" )
-	thisEntity:SetContextThink( "FendryadThink", FendryadThink, 0.25 )
+	--thisEntity:SetContextThink( "FendryadThink", FendryadThink, 0.25 )
 
 	--Find the closest waypoint, use it as a goal entity if we can
 	local waypoint = Entities:FindByNameNearest( "*_wp_*", thisEntity:GetOrigin(), 0 )

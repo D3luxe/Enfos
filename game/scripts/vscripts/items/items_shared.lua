@@ -85,3 +85,10 @@ end
 function ironbark_leathers_drop(keys)
 	keys.caster:RemoveModifierByName("modifier_item_sphere_target")
 end
+
+function purge(keys)
+	local caster = keys.caster
+	
+	--CustomPurge(unit, RemoveBuff, RemoveDebuff)
+	CustomPurge(caster, true, true)
+end

@@ -95,6 +95,15 @@
 			"Target"	"TARGET"
 		}
 	}
+
+	"OnProjectileFinish"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" "modifier_battle_sphere_fx"
+			"Target"	"TARGET"
+		}
+	}
 	
 	"Modifiers"
 	{

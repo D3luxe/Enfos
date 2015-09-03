@@ -29,11 +29,9 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
+				"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
 			}
-			"States"
-			{
-				"MODIFIER_STATE_ROOTED"	"MODIFIER_STATE_VALUE_ENABLED"
-			}
+			
 			"OnAttackLanded"
 			{
 				"RunScript"

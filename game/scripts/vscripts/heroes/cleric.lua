@@ -8,19 +8,28 @@ function BlessSoul(keys)
 		local ability = unit:FindAbilityByName("cleric_murrulas_flame")
 		local cooldown = ability:GetCooldown(ability:GetLevel()-1)
 		local cooldownRemaining = ability:GetCooldownTimeRemaining()
-		if cooldown - cooldownRemaining <= 1 then
+		--print("Cooldown: "..cooldown.." | Remaining: "..cooldownRemaining)
+		if ability:GetLevel() >= 1 and cooldownRemaining <= 1 then
+			--print("Has murrula's ready so not going through bless soul")
 			return
 		end
 	end
 
-
-	unit:SetTimeUntilRespawn(unit:GetRespawnTime() / 2)
-	Timers:CreateTimer(DoUniqueString("blss"), {
-		endTime = unit:GetTimeUntilRespawn(),
+	print("No murrula's, continueing in blesssoul")
+	Timers:CreateTimer(DoUniqueString("blss_start"), {
+		endTime = 0.05,
 		callback = function()
-			unit:RespawnHero(false, false, false)
+			unit:SetTimeUntilRespawn(unit:GetTimeUntilRespawn() / 2)
+			--print("Time to respawn: "..unit:GetTimeUntilRespawn())
+			Timers:CreateTimer(DoUniqueString("blss"), {
+				endTime = unit:GetTimeUntilRespawn(),
+				callback = function()
+					unit:RespawnHero(false, false, false)
+				end
+			})
 		end
 	})
+	
 end
 
 function AesrelaEverild(keys)

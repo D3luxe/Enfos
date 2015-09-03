@@ -42,6 +42,12 @@
 			"ScriptFile"		"heroes/warlock.lua"
 			"Function"		"Spellcurse"
 		}
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_sniper_fire_ammo"
+			"Target"	"TARGET"
+
+		}
 	}
 
 	"Modifiers"

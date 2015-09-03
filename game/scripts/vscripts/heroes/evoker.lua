@@ -64,11 +64,12 @@ function GarZeng(keys)
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
 
 	local cone_units = GetEnemiesInCone( target, start_radius, end_radius, end_distance )
-	--DeepPrintTable(cone_units)
+	print("_________________________________________________________________")
+	PrintTable(cone_units)
 	local targets_shocked = 1 --Is targets=extra targets or total?
 	for _,unit in pairs(cone_units) do
 		if targets_shocked < targets then
-			if unit ~= caster and unit ~= target then
+			if unit ~= caster and unit ~= target and unit:IsAlive() then
 				-- Particle
 				local origin = unit:GetAbsOrigin()
 				local lightningBolt = ParticleManager:CreateParticle(particleName, PATTACH_WORLDORIGIN, caster)
@@ -80,11 +81,13 @@ function GarZeng(keys)
 
 				-- Increment counter
 				targets_shocked = targets_shocked + 1
+				print(targets_shocked)
 			end
 		else
 			break
 		end
 	end
+
 end
 
 function ChainLightning(keys)
@@ -142,7 +145,7 @@ function ChainLightning(keys)
 end
 
 function GetEnemiesInCone( unit, start_radius, end_radius, end_distance)
-	local DEBUG = false
+	local DEBUG = true
 	
 	-- Positions
 	local fv = unit:GetForwardVector() * -1
@@ -170,7 +173,7 @@ function GetEnemiesInCone( unit, start_radius, end_radius, end_distance)
 	local team = unit:GetTeamNumber()
 	local iTeam = DOTA_UNIT_TARGET_TEAM_FRIENDLY
 	local iType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
-	local iFlag = DOTA_UNIT_TARGET_FLAG_NONE
+	local iFlag = DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE + DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES
 	local iOrder = FIND_ANY_ORDER
 
 	local start_units = FindUnitsInRadius(team, start_point, nil, start_radius, iTeam, iType, iFlag, iOrder, false)

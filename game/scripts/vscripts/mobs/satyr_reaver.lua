@@ -29,8 +29,12 @@ function SatyrReaverThink()
 		local units = FindUnitsInRadius(thisEntity:GetTeamNumber(), thisEntity:GetAbsOrigin(), thisEntity, 800, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, DOTA_UNIT_TARGET_FLAG_NO_INVIS, 1, false)
 		if units ~= nil then
 			if #units > 0 then
-				local unitPicked = math.random(1,#units)
-				thisEntity:SetForceAttackTarget(units[unitPicked])
+				for i=1,#units do
+					if not units[i]:IsAttackImmune() then
+						thisEntity:SetForceAttackTarget(units[i])
+						break
+					end
+				end
 			end
 		end
 	end

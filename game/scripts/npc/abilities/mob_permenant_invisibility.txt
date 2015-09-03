@@ -17,74 +17,50 @@
 		}
 	}
 
-	"Modifiers"    				// Can be used to create custom modifier. 
-	{  							// There are many snippets that can be expanded in to the modifiers. 
-		"modifier_permenant_invisibility"   	// This should be the name of your modifier
+	"Modifiers"
+	{
+		"modifier_mob_permanent_invisibility"
 		{
-			"IsDebuff"					"true"
-			"IsPurgable"				"false"
-			"IsStunDebuff"				"true"
-			"IsHidden"					"false"
-			"Passive"	"1"
-			"IsHidden"	"1"
-
+			"Passive"					"1"
+			"IsHidden"					"1"
 			"OnCreated"
 			{
-				"RunScript"
-				{
-					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-					"Function"				"apply_invisibility"
-				}
-			}
-			"OnAttackLanded"
-			{
-				"RemoveModifier"
-				{
-					"Target" 			"CASTER"
-					"ModifierName"		"modifier_permenant_invisibility"
-				}
 				"ApplyModifier"
 				{
-					"Target" 			"CASTER"
-					"ModifierName"		"modifier_permenant_invisibility_visible"
-				}
-				"RunScript"
-				{
-					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-					"Function"				"remove_invisiblity"
+					"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+					"Target"			"CASTER"
 				}
 			}
-
-			"States"
+			"OnAttack"
 			{
-				"MODIFIER_STATE_INVISIBLE"				"MODIFIER_STATE_VALUE_ENABLED"
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+					"Target"			"ATTACKER"
+				}
+			}		
+			"OnAbilityExecuted"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_mob_permanent_invisibility_hidden"
+					"Target"			"UNIT"
+				}
 			}
 		}
-		"modifier_permenant_invisibility_visible"
+		
+		"modifier_mob_permanent_invisibility_hidden"
 		{
-			"IsDebuff"					"true"
-			"IsPurgable"				"false"
-			"IsStunDebuff"				"true"
-			"IsHidden"					"false"
-			"Passive"	"0"
-			"IsHidden"	"1"
-			"Duration"	"4"
-
+			"IsHidden"					"1"
+			"Duration"					"%fade_time"
 			"OnDestroy"
 			{
 				"ApplyModifier"
 				{
-					"Target" 			"CASTER"
-					"ModifierName"		"modifier_permenant_invisibility"
+					"ModifierName"		"modifier_invisible"
+					"Target"			"CASTER"
 				}
-				"RunScript"
-				{
-					"ScriptFile"			"scripts/vscripts/mobs/satyr_reaver.lua"
-					"Function"				"apply_invisibility"
-				}
-
 			}
-
 		}
 	}
 	// Special
@@ -94,7 +70,7 @@
 		"01"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"fade_time"					"0.0"
+			"fade_time"					"1.0"
 		}
 		"02"
 		{

@@ -97,7 +97,5 @@
 		//Level Up
 		"HPGain"					"113"
 		"DamageGain"				"22"
-		
-		
 	}
 }		

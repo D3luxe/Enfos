@@ -1743,9 +1743,18 @@
 	
 			"DisableClumpingBehavior"	"1"
 	
-			//Level Up
-			"HPGain"					"1875"
-			"DamageGain"				"236"
+			"OffensiveAbilities"
+			{
+				"Ability1"
+				{
+					"Name"				"mob_curse"
+					"Debuff"            "1"
+				}
+				"Ability2"
+				{
+					"Name"				"mob_mana_burn"
+				}
+			}
 			
 		}
 	}	
@@ -2145,8 +2154,6 @@
 			//Level Up
 			"HPGain"					"113"
 			"DamageGain"				"22"
-			
-			
 		}
 	}		
 	//=================================================================================
