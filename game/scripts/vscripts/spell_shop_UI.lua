@@ -58,7 +58,7 @@ end
 
 -- function that takes care of buying the spell
 function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
-	--print("Buy Spell.")
+	print("Buy Spell.")
 	local pID = player:GetPlayerID()
 	local hero = player:GetAssignedHero()
 	if hero == nil then
@@ -86,10 +86,12 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 		end
 
 	else
+		print("Bad guys")
 		nilCheck = GameRules.direPlayers[goldTarget]
 		if nilCheck ~= nil then
 			targetID = nilCheck.id
 		else
+			print("Target was nil")
 			return
 		end
 

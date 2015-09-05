@@ -10,6 +10,11 @@ Enfos
 		"b"		Boolean
 ]]
 
+if CEnfosGameMode == nil then
+	_G.CEnfosGameMode = class({})
+	CEnfosGameMode.__index = CEnfosGameMode
+end
+
 ENFOS_VERSION = "1.0.0"
 
 
@@ -31,6 +36,8 @@ require('libraries/notifications')
 require('libraries/animations')
 require('HeroSelection')
 require('stats')
+require('developer')
+require('libraries/popups')
 
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
@@ -104,144 +111,190 @@ armorTable = {
 }
 playerColors = {
 }
-expTable = {
-				{ 	["name"]="npc_dota_creature_crab",
+_G.mobTable = {
+				{ 	["name"]="npc_dota_creature_crab",					-- Level 1
 					["exp"]="25",
+					["gold"]="1",
 				},
-				{ 	["name"]="npc_dota_creature_kobold_tunneler",
+				{ 	["name"]="npc_dota_creature_kobold_tunneler",		-- Level 2
 					["exp"]="25",
+					["gold"]="2",
 				},
-				{ 	["name"]="npc_dota_creature_gnoll_assassin",
+				{ 	["name"]="npc_dota_creature_gnoll_assassin",		-- Level 2
 					["exp"]="25",
+					["gold"]="2",
 				},
-				{ 	["name"]="npc_dota_creep_crazed_spearman",
+				{ 	["name"]="npc_dota_creep_crazed_spearman",			-- Level 3
 					["exp"]="40",
+					["gold"]="4",
 				},
-				{ 	["name"]="npc_dota_creep_crazed_madmen",
+				{ 	["name"]="npc_dota_creep_crazed_madmen",			-- Level 3
 					["exp"]="40",
+					["gold"]="4",
 				},
-				{ 	["name"]="npc_dota_creature_boar",
+				{ 	["name"]="npc_dota_creature_boar",					-- Level 4
 					["exp"]="40",
+					["gold"]="6",
 				},
-				{ 	["name"]="npc_dota_creature_wood_troll",
+				{ 	["name"]="npc_dota_creature_wood_troll",			-- Level 5
 					["exp"]="60",
+					["gold"]="8",
 				},
-				{ 	["name"]="npc_dota_creature_wood_troll_rock_tosser",
+				{ 	["name"]="npc_dota_creature_wood_troll_rock_tosser",	-- Level 5
 					["exp"]="60",
+					["gold"]="8",
 				},
-				{ 	["name"]="npc_dota_neutral_satyr_reaver",
+				{ 	["name"]="npc_dota_neutral_satyr_reaver",			-- Level 6
 					["exp"]="60",
+					["gold"]="10",
 				},
-				{ 	["name"]="npc_dota_blood_wolf",
+				{ 	["name"]="npc_dota_blood_wolf",						-- Level 7
 					["exp"]="85",
+					["gold"]="12",
 				},
-				{ 	["name"]="npc_dota_giant_spider",
+				{ 	["name"]="npc_dota_giant_spider",					-- Level 8
 					["exp"]="85",
+					["gold"]="13",
 				},
-				{ 	["name"]="npc_dota_giant_poison_spider",
+				{ 	["name"]="npc_dota_giant_poison_spider",			-- Level 8
 					["exp"]="85",
+					["gold"]="13",
 				},
-				{ 	["name"]="npc_dota_rock_troll",
+				{ 	["name"]="npc_dota_rock_troll",						-- Level 9
 					["exp"]="115",
+					["gold"]="14",
 				},
 				{ 	["name"]="npc_dota_brown_bear",
 					["exp"]="115",
+					["gold"]="16",
 				},
 				{ 	["name"]="npc_dota_dark_fiend",
 					["exp"]="150",
+					["gold"]="20",
 				},
 				{ 	["name"]="npc_dota_snowbeast",
 					["exp"]="150",
+					["gold"]="25",
 				},
 				{ 	["name"]="npc_dota_lesser_sluagh",
 					["exp"]="190",
+					["gold"]="27",
 				},
 				{ 	["name"]="npc_dota_arbelog",
 					["exp"]="190",
+					["gold"]="30",
 				},
 				{ 	["name"]="npc_dota_moss_mey",
 					["exp"]="235",
+					["gold"]="36",
 				},
 				{ 	["name"]="npc_dota_swamp_troll",
 					["exp"]="235",
+					["gold"]="38",
 				},
 				{ 	["name"]="npc_dota_young_ogre",
 					["exp"]="285",
+					["gold"]="40",
 				},
 				{ 	["name"]="npc_dota_mottled_westanuryn",
 					["exp"]="285",
+					["gold"]="45",
 				},
-				{ 	["name"]="npc_dota_small_peccary",
+				{ 	["name"]="npc_dota_small_peccary",				-- Level 19
 					["exp"]="340",
+					["gold"]="50",
 				},
 				{ 	["name"]="npc_dota_spirit_hawk",
 					["exp"]="690",
+					["gold"]="90",
 				},
 				{ 	["name"]="npc_dota_giant_thicket_viper",
 					["exp"]="340",
+					["gold"]="58",
 				},
 				{ 	["name"]="npc_dota_yvhh_latami",
 					["exp"]="400",
+					["gold"]="67",
 				},
 				{ 	["name"]="npc_dota_giant_black_leucro",
 					["exp"]="400",
+					["gold"]="78",
 				},
 				{ 	["name"]="npc_dota_fendryad",
 					["exp"]="465",
+					["gold"]="88",
 				},
 				{ 	["name"]="npc_dota_death_spirit",
 					["exp"]="465",
+					["gold"]="100",
 				},
 				{ 	["name"]="npc_dota_rock_guardian",
 					["exp"]="535",
+					["gold"]="113",
 				},
 				{ 	["name"]="npc_dota_pirate",
 					["exp"]="535",
+					["gold"]="130",
 				},
 				{ 	["name"]="npc_dota_skeletal_sailor",
 					["exp"]="610",
+					["gold"]="150",
 				},
 				{ 	["name"]="npc_dota_giant_sea_turtle",
 					["exp"]="610",
+					["gold"]="156",
 				},
 				{ 	["name"]="npc_dota_blood_warrior",
 					["exp"]="690",
+					["gold"]="216",
 				},
 				{ 	["name"]="npc_dota_zombie_nomad",
 					["exp"]="690",
+					["gold"]="256",
 				},
 				{ 	["name"]="npc_dota_shadow_mage",
 					["exp"]="775",
+					["gold"]="291",
 				},
 				{ 	["name"]="npc_dota_hunter",
 					["exp"]="775",
+					["gold"]="331",
 				},
 				{ 	["name"]="npc_dota_krahei",
 					["exp"]="865",
+					["gold"]="371",
 				},
 				{ 	["name"]="npc_dota_polohizh",
 					["exp"]="865",
+					["gold"]="411",
 				},
 				{ 	["name"]="npc_dota_spirit_owl",
 					["exp"]="1165",
+					["gold"]="400",
 				},
 				{ 	["name"]="npc_dota_misshapen",
 					["exp"]="960",
+					["gold"]="480",
 				},
 				{ 	["name"]="npc_dota_armored_warklin",
 					["exp"]="960",
+					["gold"]="520",
 				},
 				{ 	["name"]="npc_dota_warklin_mauler",
 					["exp"]="1060",
+					["gold"]="652",
 				},
 				{ 	["name"]="npc_dota_ssugi_malchata",
 					["exp"]="1060",
+					["gold"]="700",
 				},
 				{ 	["name"]="npc_dota_snaer_hafwa",
 					["exp"]="1165",
+					["gold"]="900",
 				},
 				{ 	["name"]="npc_dota_slai_screamer",
 					["exp"]="2490",
+					["gold"]="0",
 				}
 }
 heroTable = {
@@ -379,10 +432,6 @@ artifactItems = { "item_stone_axe",
 			}
 
 
-if CEnfosGameMode == nil then
-	CEnfosGameMode = class({})
-	CEnfosGameMode.__index = CEnfosGameMode
-end
 
 -- Stat collection
 require('lib.statcollection')
@@ -505,6 +554,9 @@ function CEnfosGameMode:InitGameMode()
 
 	
 
+	-- Game options
+	GameRules.ExtraBounty = 1;
+	GameRules.SharedBounty = false;
 
 
 	-- Custom console commands
@@ -532,6 +584,7 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent( "dota_item_picked_up", Dynamic_Wrap(CEnfosGameMode, 'OnItemPickedUp'), self)
 	ListenToGameEvent("dota_player_used_ability", Dynamic_Wrap(CEnfosGameMode, "OnPlayerCastAbility"), self)
 	ListenToGameEvent("dota_item_gifted", Dynamic_Wrap(CEnfosGameMode, "OnItemGifted"), self)
+	ListenToGameEvent('player_chat', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerChat'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
 
 	CustomGameEventManager:RegisterListener( "get_player_color", GetPlayerColor )
@@ -578,18 +631,21 @@ end
 
 
 function ClearTeams(eventSourceIndex, args)
+	--print("Clearing teams")
 	GameRules.radiantPlayers = {}
-	GameRules.direPlayer = {}
+	GameRules.direPlayers = {}
 end
 function UpdateRadiant(eventSourceIndex, args)
 	table.insert( GameRules.radiantPlayers, {
 			id = args['key1'] or "00",
 		} ) 
+	--PrintTable(GameRules.radiantPlayers)
 end
 function UpdateDire(eventSourceIndex, args)
 	table.insert( GameRules.direPlayers, {
 			id = args['key1'] or "00",
 		} ) 
+	--PrintTable(GameRules.direPlayers)
 end
 function GetPlayerColor(eventSourceIndex, args)
 	--PrintTable(args)
@@ -1248,6 +1304,18 @@ function CEnfosGameMode:OnEveryonePicked()
     GameRules:SendCustomMessage("Ported by <font color='#2EFE2E'>Amuse</font> & <font color='#2EFE2E'>vc</font>", 0, 0)
     GameRules:SendCustomMessage("Version: " .. ENFOS_VERSION, 0, 0)
     GameRules:SendCustomMessage("Please report bugs and leave feedback in our workshop page", 0, 0)
+
+    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
+		-- ignore broadcasters to count players for the solo buff
+		if PlayerResource:IsValidPlayer(nPlayerID) and not PlayerResource:IsBroadcaster(nPlayerID) then 
+			local player = PlayerResource:GetPlayer(nPlayerID)
+			if GameRules:PlayerHasCustomGameHostPrivileges(player) then
+				GameRules:SendCustomMessage("Type '<font color='#2EFE2E'>commands</font>' to get a list of available commands", 0, 0)
+				Notifications:Bottom(nPlayerID, {text="You are host! Type 'commands' to see available commands.", duration=20, style={color="green", ["font-size"]="35px"}})
+			end
+		end
+	end
+   
 
     CustomGameEventManager:Send_ServerToAllClients("start_voting", {})
     --[[Warchasers:OnEveryoneVoted()
@@ -2372,17 +2440,51 @@ function CEnfosGameMode:OnEntityKilled( event )
 
 	end
 
+	-- Bounty calculation
+	local bounty = 0
+	local teamMembers = 1
+	for i = 1, #mobTable do
+			if mobTable[i].name == killedUnit:GetUnitName() then
+				bounty = mobTable[i].gold	
+			end
+	end
+	
+	if GameRules.SharedBounty and killer:IsHero() then
+		if killer:IsHero() then
+			local team = killer:GetTeamNumber()
+			teamMembers = PlayerResource:GetPlayerCountForTeam(team)
+		end
+		
+	end
+	local extraBounty = math.ceil(bounty * GameRules.ExtraBounty / teamMembers)
+	if teamMembers == 1 then
+		killer:ModifyGold(extraBounty, false, 1)
+		PopupGoldGain(killer, extraBounty)
+	else
+		for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+			local teamID = PlayerResource:GetTeam(xpPlayerID)
+			local player = PlayerResource:GetSelectedHeroEntity(xpPlayerID)
+			-- If player isn't nil and is on an enemy team, give exp
+			if player ~= nil and player:GetTeam() ~= xpKilledUnitTeam and player:IsAlive() then
+				player:ModifyGold(extraBounty, false, 1)
+				PopupGoldGain(player, extraBounty)
+			end
+		end
+	end
+	
+
 	--Global creep experience
 	if killedUnit.noxp then
 		return
 	end
+
 	local exp = 0
 	local xpKilledUnitTeam = killedUnit:GetTeam()
 	local radiantPlayers = PlayerResource:GetPlayerCountForTeam(2)
 	local direPlayers = PlayerResource:GetPlayerCountForTeam(3)
-	for i = 1, #expTable do
-			if expTable[i].name == killedUnit:GetUnitName() then
-				exp = tonumber(expTable[i].exp)
+	for i = 1, #mobTable do
+			if mobTable[i].name == killedUnit:GetUnitName() then
+				exp = tonumber(mobTable[i].exp)
 				
 			end
 	end

@@ -64,8 +64,8 @@ function GarZeng(keys)
 	target:EmitSound("Hero_ShadowShaman.EtherShock.Target")
 
 	local cone_units = GetEnemiesInCone( target, start_radius, end_radius, end_distance )
-	print("_________________________________________________________________")
-	PrintTable(cone_units)
+	--print("_________________________________________________________________")
+	--PrintTable(cone_units)
 	local targets_shocked = 1 --Is targets=extra targets or total?
 	for _,unit in pairs(cone_units) do
 		if targets_shocked < targets then
@@ -145,7 +145,7 @@ function ChainLightning(keys)
 end
 
 function GetEnemiesInCone( unit, start_radius, end_radius, end_distance)
-	local DEBUG = true
+	local DEBUG = false
 	
 	-- Positions
 	local fv = unit:GetForwardVector() * -1
