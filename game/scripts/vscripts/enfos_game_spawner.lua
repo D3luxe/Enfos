@@ -288,8 +288,7 @@ function CEnfosGameSpawner:AddTypes(mob, armor, attack)
 
 	local hpGain = math.floor(spawnedUnitIndex:GetMaxHealth() * .25)
  	local damageGain = math.floor((spawnedUnitIndex:GetBaseDamageMin() + spawnedUnitIndex:GetBaseDamageMax()) *.125)
-	spawnedUnitIndex:SetMinimumGoldBounty(0)
-	spawnedUnitIndex:SetMaximumGoldBounty(0)
+
  	spawnedUnitIndex:SetDamageGain(damageGain)
  	spawnedUnitIndex:SetHPGain(hpGain)
 	spawnedUnitIndex:CreatureLevelUp(GameRules.DIFFICULTY)
