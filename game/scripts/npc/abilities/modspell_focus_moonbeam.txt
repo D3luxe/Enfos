@@ -27,7 +27,7 @@
 			"IsHidden"				"0"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_BASE_MANA_REGEN"		"5" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead.
+				"MODIFIER_PROPERTY_MANA_REGEN_CONSTANT"		"5" //affected by percentage regen. if this is incorrect behaviour, use MODIFIER_PROPERTY_MANA_REGEN_CONSTANT instead.
 			}
 		}
 	}

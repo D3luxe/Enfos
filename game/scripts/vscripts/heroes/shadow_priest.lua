@@ -81,7 +81,7 @@ function greater_hallucination(keys)
 		end
 	end
 
-	GameRules.Enfos:ModifyStatBonuses(illusion)
+	Stats:ModifyStatBonuses(illusion)
 
 	-- Set the unit as an illusion
 	-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle

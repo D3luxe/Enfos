@@ -65,14 +65,14 @@ function Stats:ModifyStatBonuses(unit)
 
 		-- STR
 		if strength ~= hero.strength then
-			print("Strength: "..strength.." | hero.strength: "..hero.strength)
+			--print("Strength: "..strength.." | hero.strength: "..hero.strength)
 			-- HP Bonus
 			if not hero:HasModifier("modifier_health_bonus") then
 				applier:ApplyDataDrivenModifier(hero, hero, "modifier_health_bonus", {})
 			end
 
 			local health_stacks = strength * hp_adjustment
-			print("Giving "..health_stacks.." health stacks of "..hp_adjustment.." adjustment")
+			--print("Giving "..health_stacks.." health stacks of "..hp_adjustment.." adjustment")
 			hero:SetModifierStackCount("modifier_health_bonus", hero, health_stacks)
 
 			-- HP Regen Bonus

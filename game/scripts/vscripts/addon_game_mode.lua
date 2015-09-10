@@ -51,6 +51,8 @@ end
 RADIANT_TEAM_MEMBERS = {}
 DIRE_TEAM_MEMBERS = {}
 
+VOTING_TIME = 30
+
 -- Stage constants
 local STAGE_WAITING = 0
 local STAGE_VOTING = 1
@@ -466,6 +468,7 @@ function Precache( context )
 	PrecacheResource("particle","particles/units/heroes/hero_shadowshaman/shadowshaman_ether_shock.vpcf", context )
 	PrecacheResource("particle","particles/units/heroes/hero_gyrocopter/gyro_guided_missile_target.vpcf", context )
 	PrecacheResource( "soundfile","soundevents/game_sounds_heroes/game_sounds_lion.vsndevts", context )
+	PrecacheResource( "soundfile","soundevents/game_sounds_ui.vsndevts", context )
 	
 	
 
@@ -504,7 +507,7 @@ end
 
 
 function CEnfosGameMode:InitGameMode()
-	SpellShopUI:InitGameMode();
+	SpellShopUI:InitGameMode()
 	STARTING_GOLD = 25
 	curRound = 0
 	self._nRoundNumber = 1
@@ -555,8 +558,8 @@ function CEnfosGameMode:InitGameMode()
 	
 
 	-- Game options
-	GameRules.ExtraBounty = 1;
-	GameRules.SharedBounty = false;
+	GameRules.ExtraBounty = 1
+	GameRules.SharedBounty = false
 
 
 	-- Custom console commands
@@ -685,9 +688,9 @@ function CEnfosGameMode:UpdateVotes( event )
 
     if not GameRules.difficulty_selected then
 		table.insert(GameRules.PLAYER_VOTES,difficulty)
-		print("========VOTE TABLE========")
-		DeepPrintTable(GameRules.PLAYER_VOTES)
-		print("==========================")
+		--print("========VOTE TABLE========")
+		--DeepPrintTable(GameRules.PLAYER_VOTES)
+		--print("==========================")
 
 	  	local difficulty_level = 0
 	    for k,v in pairs(GameRules.PLAYER_VOTES) do
@@ -695,9 +698,9 @@ function CEnfosGameMode:UpdateVotes( event )
 	    end
 
 	    difficulty_level = difficulty_level / #GameRules.PLAYER_VOTES
-	    print("Average: " ..difficulty_level)
+	    --print("Average: " ..difficulty_level)
 	    difficulty_level = math.floor(difficulty_level+0.5)
-	    print("Rounded difficulty: ".. difficulty_level)
+	    --print("Rounded difficulty: ".. difficulty_level)
 	    GameRules.DIFFICULTY = difficulty_level
 
 	    if (#GameRules.PLAYER_VOTES>=GameRules.PLAYER_COUNT) then
@@ -842,6 +845,7 @@ function CEnfosGameMode:_ReadGameConfiguration()
 	self:_ReadDireSpawnsConfiguration( kv["DireSpawns"] )
 	--self:_ReadLootItemDropsConfiguration( kv["ItemDrops"] )
 	self:_ReadRoundConfigurations( kv )
+	print("[GAME CONFIGURATION] loaded")
 end
 
 -- Verify spawners if random is set
@@ -912,6 +916,7 @@ function CEnfosGameMode:_ReadRoundConfigurations( kv )
 		roundObj:ReadConfiguration( kvRoundData, self, #self._vRounds + 1 )
 		table.insert( self._vRounds, roundObj )
 	end
+	print("[ROUND CONFIGURATION] loaded")
 end
 
 
@@ -952,8 +957,19 @@ function CEnfosGameMode:OnThink()
 
 		if (#GameRules.PLAYER_VOTES>=GameRules.PLAYER_COUNT) and not GameRules.GAMESTARTED then
 			self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds + 5
-	    	GameRules.GAMESTARTED = true
-	    	for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+			GameRules.GAMESTARTED = true
+			for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+				if PlayerResource:HasSelectedHero( nPlayerID ) then
+					local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
+					hero:RemoveModifierByName("modifier_stunned")
+				end
+			end
+	    end
+
+	    if GameRules:GetDOTATime(false, false) >= VOTING_TIME and not GameRules.GAMESTARTED then
+	    	self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds + 5
+			GameRules.GAMESTARTED = true
+			for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 				if PlayerResource:HasSelectedHero( nPlayerID ) then
 					local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
 					hero:RemoveModifierByName("modifier_stunned")
@@ -1160,7 +1176,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
     --Stuns the player so they are unable to do anything until the game is started
     if not GameRules.GAMESTARTED then
-    	spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, 'modifier_stunned', {duration = 120})
+    	spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, 'modifier_stunned', {duration = VOTING_TIME})
     	--Fire Game Event to our UI
 	end
 
@@ -1325,11 +1341,9 @@ function CEnfosGameMode:OnEveryonePicked()
 	    GameRules:SendCustomMessage("Higher difficulty levels will be added as soon as we fix some bugs.<br>Thank you for playing, enjoy your run!", 0, 0)
     end)]]
 
-    GameRules:SendCustomMessage("<br>2 minutes to select a difficulty",0,0)
-    Timers:CreateTimer(60,function() if not GameRules.difficulty_selected then GameRules:SendCustomMessage("60 seconds remaining",0,0) end end)
-    Timers:CreateTimer(90,function() if not GameRules.difficulty_selected then GameRules:SendCustomMessage("30 seconds remaining",0,0) end end)
-    Timers:CreateTimer(110,function() if not GameRules.difficulty_selected then GameRules:SendCustomMessage("10 seconds remaining!",0,0) end end)
-    Timers:CreateTimer(120,function() if not GameRules.difficulty_selected then CEnfosGameMode:OnEveryoneVoted() end end)
+    GameRules:SendCustomMessage("<br>30 seconds to select a difficulty",0,0)
+    Timers:CreateTimer(20,function() if not GameRules.difficulty_selected then GameRules:SendCustomMessage("10 seconds remaining!",0,0) end end)
+    Timers:CreateTimer(30,function() if not GameRules.difficulty_selected then CEnfosGameMode:OnEveryoneVoted() end end)
 
 
 end
@@ -2454,20 +2468,32 @@ function CEnfosGameMode:OnEntityKilled( event )
 			local team = killer:GetTeamNumber()
 			teamMembers = PlayerResource:GetPlayerCountForTeam(team)
 		end
-		
 	end
+
 	local extraBounty = math.ceil(bounty * GameRules.ExtraBounty / teamMembers)
 	if teamMembers == 1 then
-		killer:ModifyGold(extraBounty, false, 1)
-		PopupGoldGain(killer, extraBounty)
+		if killer:IsHero() then
+			killer:ModifyGold(extraBounty, false, 1)
+			PopupGoldGain(killer, extraBounty)
+		else
+			killer:GetOwner():ModifyGold(extraBounty, false, 1)
+			PopupGoldGain(killer:GetOwner(), extraBounty)
+		end
+		EmitSoundOnClient("General.Coins", killer:GetPlayerOwner())
 	else
 		for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 			local teamID = PlayerResource:GetTeam(xpPlayerID)
 			local player = PlayerResource:GetSelectedHeroEntity(xpPlayerID)
 			-- If player isn't nil and is on an enemy team, give exp
 			if player ~= nil and player:GetTeam() ~= xpKilledUnitTeam and player:IsAlive() then
-				player:ModifyGold(extraBounty, false, 1)
-				PopupGoldGain(player, extraBounty)
+				if player:IsHero() then
+					player:ModifyGold(extraBounty, false, 1)
+					PopupGoldGain(player, extraBounty)
+				else
+					player:GetOwner():ModifyGold(extraBounty, false, 1)
+					PopupGoldGain(player:GetOwner(), extraBounty)
+				end
+				EmitSoundOnClient("General.Coins", player:GetPlayerOwner())
 			end
 		end
 	end
