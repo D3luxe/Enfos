@@ -5,7 +5,7 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"ogre_magi_bloodlust"
 	"MaxLevel"					"1"
@@ -15,6 +15,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCooldown"				"0.1"
 	"AbilityManaCost"				"40"
+	"AbilityCastPoint"				"0"
 
 	"OnSpellStart"
 	{

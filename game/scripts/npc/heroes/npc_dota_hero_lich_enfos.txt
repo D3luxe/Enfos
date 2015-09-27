@@ -14,7 +14,7 @@
 	"Ability6"					"revenant_haunting_spirit"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 	"AttributeBaseStrength" 	"6"
@@ -25,10 +25,13 @@
 	"AttributeIntelligenceGain" "3" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "1.8"
 	"AttackRange"               "550"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin"			"2.5"									// Damage range min.
-	"AttackDamageMax"			"8.5"									// Damage range max.
+	"AttackDamageMin"			"3"									// Damage range min.
+	"AttackDamageMax"			"9"									// Damage range max.
+	"ProjectileSpeed"			"1200"										// Speed of projectile.
+	"AttackAcquisitionRange"	"550"
 }

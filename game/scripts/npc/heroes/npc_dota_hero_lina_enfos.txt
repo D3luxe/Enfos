@@ -16,7 +16,7 @@
 	"Ability5"					"enfos_attribute_bonus"
 	"Ability7"					"empath_nissas_binding"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"0"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
 	"AttributeBaseStrength" 	"9"
 	"AttributeStrengthGain" 	"5"
@@ -26,6 +26,7 @@
 	"AttributeIntelligenceGain" "2" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"

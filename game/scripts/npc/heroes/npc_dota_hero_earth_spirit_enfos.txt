@@ -14,7 +14,7 @@
 	"Ability6"					"entropist_sure_footing"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 	"AttributeBaseStrength" 	"9"
@@ -25,11 +25,13 @@
 	"AttributeIntelligenceGain" "2" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "1.4"
 	"AttackRange"               "140"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"9.5"
-	"AttackDamageMax" 			"16.5"	
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"10"
+	"AttackAcquisitionRange"	"400"
 	"Team"						"Bad"
 }

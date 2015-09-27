@@ -23,6 +23,7 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	"SideShop"					"1"
 	"LumberCost"	"150"
+	"IsArtifact"							"1"
 
 	"AbilityCooldown"				"30.0"
 	

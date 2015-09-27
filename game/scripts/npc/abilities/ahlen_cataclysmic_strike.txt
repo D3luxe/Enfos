@@ -2,11 +2,12 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"BaseClass" 					"ability_datadriven"
-	"AbilityTextureName"			"spirit_breaker_charge_of_darkness"
+	"AbilityTextureName"			"phantom_assassin_phantom_strike"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"MaxLevel"						"10"
 	"LevelsBetweenUpgrades"		"3"
 	"RequiredLevel"			"6"
@@ -23,17 +24,42 @@
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+	}
+
 	"OnSpellStart"
 	{
+		"Blink"
+		{
+			"Target"	"TARGET"
+		}
 		"ApplyModifier"
 		{
 			"Target" 			"CASTER"
 			"ModifierName"		"modifier_cataclysmic_strike"
 		}
-		"RunScript"
+		"FireSound"
 		{
-			"ScriptFile"			"scripts/vscripts/heroes/ahlen.lua"
-			"Function"				"cataclysmic_strike"
+			"EffectName"		"Hero_PhantomAssassin.Strike.Start"
+			"Target"			"CASTER"
+		}
+		"AttachEffect"
+		{
+			"EffectName"		"particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+			"EffectAttachType"	"follow_origin"
+			"Target"			"CASTER"
+		}
+
+		"FireSound"
+		{
+			"EffectName"		"Hero_PhantomAssassin.Strike.End"
+			"Target"			"CASTER"
 		}
 	}
 	"Modifiers"    				// Can be used to create custom modifier. 
@@ -44,6 +70,7 @@
 			"IsPurgable"				"false"
 			"IsHidden"					"1"
 			"Duration"					"20"
+			"OverrideAnimation"		"ACT_DOTA_RUN"
 			"OnAttackLanded"
 			{
 				"Damage"

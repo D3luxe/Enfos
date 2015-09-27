@@ -9,6 +9,13 @@
 	"AbilityManaCost"				"0"
 	"Modifiers"
 	{
+		"modifier_burn_fx"
+		{
+			"Passive"	"1"
+			"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"
+			"EffectAttachType"	"follow_origin"
+
+		}
 		"modifier_burn_dummy"
 		{
 			"Duration"				"20"
@@ -18,6 +25,7 @@
 			"Aura_Radius"			"175"
 			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 			"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+			
 
 			"OnDestroy"
 			{

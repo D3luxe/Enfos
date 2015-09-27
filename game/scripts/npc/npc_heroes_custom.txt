@@ -17,7 +17,7 @@
 		"Ability6"					"bard_nexus"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" 	"7"
 		"AttributeStrengthGain" 	"2.33"
@@ -26,18 +26,20 @@
 		"AttributeBaseIntelligence" "8" 
 		"AttributeIntelligenceGain" "2.66" 
 		
-		"MovementSpeed"				"350"
+		"MovementSpeed"				"400"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"			
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin" 			"0"
-		"AttackDamageMax" 			"7.5"
-		"AttackRate"                "1.5"
+		"AttackDamageMin" 			"2"
+		"AttackDamageMax" 			"12"
+		"AttackRate"                "1.6"
 		"AttackRange"               "1000"									// yes, really
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"1200"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"1000"									// Range within a target can be acquired.
+		"ProjectileSpeed"			"1500"										// Speed of projectile.
 	}		
 	//=================================================================================================================
 	// HERO: Beastmaster - Grim Stonecrusher, the Barbarian
@@ -59,16 +61,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1"									// Physical protection.
+		"ArmorPhysical"				"3"									// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackRate"				"1.4"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"180"									// Range within a target can be attacked.
 		"ProjectileModel"			""										// Particle system model for projectile.
 		"ProjectileSpeed"			"0"										// Speed of projectile.
@@ -86,7 +88,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.4"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 	
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
@@ -110,7 +112,7 @@
 		"Ability6"					"cabalist_throw_naptha"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"3"
@@ -120,17 +122,18 @@
 		"AttributeIntelligenceGain" "2" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"			
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"18.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
 		"AttackRate"                "1.4"
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"180"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Crystal Maiden: Arcane Mistress
@@ -148,7 +151,7 @@
 		"Ability6"					"arcane_mistress_targeted_magic"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
@@ -158,6 +161,7 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -165,12 +169,12 @@
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"
-		"AttackRate"                "2"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
+		"AttackRate"                "1.65"
 		"AttackRange"               "450"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"450"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Dazzle (Hypnotist)
@@ -188,7 +192,7 @@
 		"Ability6"					"generic_focus_moonbeam"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
@@ -199,12 +203,14 @@
 		"AttributeIntelligenceGain" "2" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"2.0"									// Turning rate.
 		"AttackRate"                "1.25"
 		"AttackRange"               "300"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin" 			"1"
-		"AttackDamageMax" 			"6" 
+		"AttackDamageMin" 			"2"
+		"AttackDamageMax" 			"7" 
+		"AttackAcquisitionRange"	"300"
 	
 	
 		// Vision
@@ -241,16 +247,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"			"2"										// Physical protection.
+		"ArmorPhysical"			"4"										// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"11"									// Damage range max.
 		"AttackRate"				"1.8"									// Speed of attack.
 		"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"150"									// Range within a target can be attacked.
 	
 		// Attributes
@@ -304,7 +310,7 @@
 		"Ability6"					"entropist_sure_footing"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 		"AttributeBaseStrength" 	"9"
@@ -315,12 +321,14 @@
 		"AttributeIntelligenceGain" "2" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "1.4"
 		"AttackRange"               "140"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"	
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
+		"AttackAcquisitionRange"	"400"
 		"Team"						"Bad"
 	}
 	//=================================================================================================================
@@ -340,7 +348,7 @@
 		"Ability6"					"faenrae_champion_faenrae_blood"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"3"
@@ -350,6 +358,7 @@
 		"AttributeIntelligenceGain" "1" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -357,12 +366,12 @@
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"18.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
 		"AttackRate"                "1.6"
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Furion: Tempest
@@ -380,7 +389,7 @@
 		"Ability6"					"tempest_zephyr"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
@@ -390,6 +399,7 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -397,12 +407,12 @@
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"			"particles/units/heroes/hero_furion/furion_base_attack.vpcf"			// Particle system model for projectile.
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
 		"AttackRate"                "1.65"
-		"AttackRange"               "750"
+		"AttackRange"               "700"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Juggernaut - Doko the Blood Dancer
@@ -424,15 +434,15 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"			"1"											// Physical protection.
+		"ArmorPhysical"			"3"											// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2"									// Damage range min.
+		"AttackDamageMin"			"3"									// Damage range min.
 		"AttackDamageMax"			"8"									// Damage range max.
 		"AttackRate"				"0.75"									// Speed of attack.
-		"AttackAnimationPoint"		"0.33"									// Normalized time in animation cycle to attack.
+		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"130"									// Range within a target can be attacked.
 		"ProjectileModel"			""										// Particle system model for projectile.
@@ -477,7 +487,7 @@
 		"Ability6"					"revenant_haunting_spirit"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
@@ -488,12 +498,15 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "1.8"
 		"AttackRange"               "550"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"8.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"9"									// Damage range max.
+		"ProjectileSpeed"			"1200"										// Speed of projectile.
+		"AttackAcquisitionRange"	"550"
 	}
 	//=================================================================================================================
 	// HERO: Lina: Empath
@@ -513,7 +526,7 @@
 		"Ability5"					"enfos_attribute_bonus"
 		"Ability7"					"empath_nissas_binding"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"5"
@@ -523,6 +536,7 @@
 		"AttributeIntelligenceGain" "2" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -555,7 +569,7 @@
 		"Ability7"					"moon_mage_glaive"
 		"Ability8"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"3"
@@ -566,14 +580,15 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "3"
 		"AttackRange"               "500"
 		"ProjectileModel"			"particles/base_attacks/generic_projectile.vpcf"					// Particle system model for projectile.
 		"ProjectileSpeed"			"900"									// Speed of projectile.
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 	
 		"precache"
 		{
@@ -599,7 +614,7 @@
 		"Ability6"					"cleric_bless_soul"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
 		"AttributeBaseStrength" 	"9"
 		"AttributeStrengthGain" 	"3"
@@ -609,6 +624,7 @@
 		"AttributeIntelligenceGain" "1" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -616,12 +632,12 @@
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 		"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"8"
 		"AttackRate"                "1.6"
 		"AttackRange"               "160"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Obsidian Destroyer - Anduin, the Time Mage
@@ -643,16 +659,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"0"								// Physical protection.
+		"ArmorPhysical"				"2"								// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackRate"				"1.5"									// Speed of attack.
 		"AttackAnimationPoint"		"0.46"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 		"AttackRange"				"550"									// Range within a target can be attacked.
 		"ProjectileSpeed"			"900"									// Speed of projectile.
 	
@@ -669,7 +685,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.5"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 	
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
@@ -705,16 +721,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1.0"								// Physical protection.
+		"ArmorPhysical"				"3"								// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackRate"				"1.35"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"150"									// Range within a target can be attacked.
 	
 		// Attributes
@@ -766,17 +782,17 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1"									// Physical protection. // 2.94
+		"ArmorPhysical"				"3"									// Physical protection. // 2.94
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
-		"AttackRate"				"1.7"									// Speed of attack.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
+		"AttackRate"				"1.5"									// Speed of attack.
 		"AttackAnimationPoint"		"0.5"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
-		"AttackRange"				"128"									// Range within a target can be attacked.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+		"AttackRange"				"150"									// Range within a target can be attacked.
 	
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
@@ -791,7 +807,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.5"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
@@ -819,16 +835,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"2"									// Physical protection.
+		"ArmorPhysical"				"4"									// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackRate"				"1.6"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"170"									// Range within a target can be attacked.
 	
 		// Attributes
@@ -847,7 +863,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.4"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 	
 		"precache"
 		{
@@ -870,7 +886,7 @@
 		"Ability6"					"thief_sleight_of_hand"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
 		"AttributeBaseStrength" 	"6"
@@ -881,12 +897,14 @@
 		"AttributeIntelligenceGain" "1" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "2.6"
 		"AttackRange"               "180"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"	
+		"AttackDamageMin" 			"9"
+		"AttackDamageMax" 			"16"	
+		"AttackAcquisitionRange"	"400"
 	}
 	//=================================================================================================================
 	// HERO: Dazzle: Shadow Priest
@@ -905,7 +923,7 @@
 		"Ability6"					"shadow_priest_preservation"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
@@ -915,17 +933,18 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"			
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin" 			"2.5"
-		"AttackDamageMax" 			"7.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
 		"AttackRate"                "1.8"
 		"AttackRange"               "550"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 	}		
 	//=================================================================================================================
 	// HERO: Shadow shaman - - Okk'thok the Warlock
@@ -947,16 +966,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"3"									// Physical protection.
+		"ArmorPhysical"				"5"									// Physical protection.
 	
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin"			"5.5"									// Damage range min.
-		"AttackDamageMax"			"19.5"									// Damage range max.
+		"AttackDamageMin"			"6"									// Damage range min.
+		"AttackDamageMax"			"20"									// Damage range max.
 		"AttackRate"				"1.6"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"700"									// Range within a target can be acquired.
 		"AttackRange"				"700"									// Range within a target can be attacked.
 		"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
 	
@@ -973,7 +992,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.4"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"HasAggressiveStance"			"1"
 	
 		// Status
@@ -997,7 +1016,7 @@
 		"Ability6"					"generic_focus_moonbeam"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 	
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		"AttributeBaseStrength" 	"3"
@@ -1008,12 +1027,14 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "1.65"
 		"AttackRange"               "160"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
+		"AttackAcquisitionRange"	"400"
 	}
 	//=================================================================================================================
 	// HERO: Sniper (Sniper)
@@ -1031,7 +1052,7 @@
 		"Ability6"					"sniper_standard_technique"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		//I had to guess for most of these values. They need to be verified.
 		"AttributeBaseStrength" 	"3"
@@ -1042,9 +1063,11 @@
 		"AttributeIntelligenceGain" "3.5" 
 		
 		"MovementSpeed"				"250"
-		"AttackRate"                "2.56"
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"AttackRate"                "3.2"
 		"AttackRange"               "500"
 		"AttackAcquisitionRange"	"500"	
+		"ProjectileSpeed"			"10000"									// Speed of projectile.
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
 		"AttackDamageMin" 			"1.5"
@@ -1066,7 +1089,7 @@
 		"Ability6"					"summoner_anti_magic_shell"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"2"
@@ -1076,6 +1099,7 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
@@ -1083,12 +1107,13 @@
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 		"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
-		"AttackDamageMin" 			"9.5"
-		"AttackDamageMax" 			"16.5"
+		"ProjectileSpeed"			"1300"									// Speed of projectile.
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"10"
 		"AttackRate"                "2"
 		"AttackRange"               "550"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 	}
 	//=================================================================================================================
 	// HERO: Storm Spirit (Evoker)
@@ -1106,7 +1131,7 @@
 		"Ability6"					"evoker_static_discharge"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 		"AttributeBaseStrength" 	"6"
@@ -1117,12 +1142,14 @@
 		"AttributeIntelligenceGain" "3" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "1.8"
 		"AttackRange"               "550"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"8.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"9"									// Damage range max.
+		"AttackAcquisitionRange"	"550"
 	}
 	//=================================================================================================================
 	// HERO: Sven (Weaponsmith)
@@ -1140,7 +1167,7 @@
 		"Ability6"					"weaponsmith_cambrinth_charge"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		
 		"AttributeBaseStrength" 	"11"
 		"AttributeStrengthGain" 	"3.7"
@@ -1150,12 +1177,14 @@
 		"AttributeIntelligenceGain" "0.33" 
 		
 		"MovementSpeed"				"350"
-		"AttackRate"                "3.72"
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"AttackRate"                "4.65"
 		"AttackRange"               "120"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin" 			"10.5"
-		"AttackDamageMax" 			"29.5" 
+		"AttackDamageMin" 			"11"
+		"AttackDamageMax" 			"30" 
+		"AttackAcquisitionRange"	"400"
 	}
 	//=================================================================================================================
 	// HERO: Treant Protector: Oak
@@ -1173,7 +1202,7 @@
 		"Ability6"					"oak_barkskin"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"5"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 		"AttributeBaseStrength" 	"9"
@@ -1184,12 +1213,14 @@
 		"AttributeIntelligenceGain" "1" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"0.6"									// Turning rate.
 		"AttackRate"                "1.5"
-		"AttackRange"               "120"
+		"AttackRange"               "100"
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
-		"AttackDamageMin" 			"2.5"
-		"AttackDamageMax" 			"8.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"9"
+		"AttackAcquisitionRange"	"400"
 		"ModelScale" 				"0.80"		
 	
 		"Team"						"Bad"
@@ -1211,7 +1242,7 @@
 		"Ability6"					"troll_cannibal_soul_drain"
 		"Ability5"					"enfos_attribute_bonus"
 		
-		"ArmorPhysical"				"1"
+		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 		"AttributeBaseStrength" 	"6"
 		"AttributeStrengthGain" 	"1.7"
@@ -1221,17 +1252,19 @@
 		"AttributeIntelligenceGain" "1" 
 		
 		"MovementSpeed"				"350"
+		"MovementTurnRate"			"2.0"									// Turning rate.
 		
 		"StatusHealth"				"10"
 		"StatusMana"				"1"			
 	
 		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"AttackDamageMin" 			"2.5"
-		"AttackDamageMax" 			"7.5"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"8"
 		"AttackRate"                "0.8"
 		"AttackRange"               "650"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.
+		"ProjectileSpeed"			"1400"
 	}
 	//=================================================================================================================
 	// HERO: Ursa - GoGo, the Battle Chanter
@@ -1253,16 +1286,16 @@
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------
-		"ArmorPhysical"				"1"								// Physical protection.
+		"ArmorPhysical"				"3"								// Physical protection.
 		
 		// Attack
 		//-------------------------------------------------------------------------------------------------------------
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-		"AttackDamageMin"			"2.5"									// Damage range min.
-		"AttackDamageMax"			"9.5"									// Damage range max.
+		"AttackDamageMin"			"3"									// Damage range min.
+		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackRate"				"1.5"									// Speed of attack.
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 		"AttackRange"				"140"									// Range within a target can be attacked.
 	
 		// Attributes
@@ -1278,7 +1311,7 @@
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
 		"MovementSpeed"				"350"									// Speed.
-		"MovementTurnRate"			"0.5"									// Turning rate.
+		"MovementTurnRate"			"0.6"									// Turning rate.
 	
 		// Status
 		//-------------------------------------------------------------------------------------------------------------

@@ -31,6 +31,15 @@
 			"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 		}
 	}
+	"Modifiers"
+	{
+		"modifier_weaponsmith_forge_stack"
+		{
+			"IsBuff"	"1"
+			"IsPurgable"	"0"
+		}
+
+	}
 	"AbilitySpecial"
 	{
 		"01"

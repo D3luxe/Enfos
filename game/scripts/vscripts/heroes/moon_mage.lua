@@ -109,8 +109,14 @@ function Burn(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
 	--local partDummy = FastDummy(AdjustZ(Enfos.moonbeamActive[pid]:GetAbsOrigin(), 128), caster:GetTeamNumber())
+	if Enfos.moonbeamActive[pid] == nil then
+		caster:GiveMana(keys.ability:GetManaCost(keys.ability:GetLevel() - 1))
+		keys.ability:EndCooldown()
+		print("INACTIVE MOON BEAM")
+		return
+	end
 	local unit = CreateUnitByName("npc_dummy_unit", Enfos.moonbeamActive[pid]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
-	local explosion = ParticleManager:CreateParticle("particles/items_fx/aura_assault.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	local fx = ParticleManager:CreateParticle("particles/items_fx/aura_shivas.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 	unit:SetAbsOrigin(Enfos.moonbeamActive[pid]:GetAbsOrigin()) -- CreateUnitByName uses only the x and y coordinates so we have to move it with SetAbsOrigin()
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:SetDayTimeVisionRange(250)

@@ -18,16 +18,16 @@
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
-	"ArmorPhysical"				"1"									// Physical protection.
+	"ArmorPhysical"				"3"									// Physical protection.
 
 	// Attack
 	//-------------------------------------------------------------------------------------------------------------
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin"			"2.5"									// Damage range min.
-	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackDamageMin"			"3"									// Damage range min.
+	"AttackDamageMax"			"10"									// Damage range max.
 	"AttackRate"				"1.4"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"600"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"180"									// Range within a target can be attacked.
 	"ProjectileModel"			""										// Particle system model for projectile.
 	"ProjectileSpeed"			"0"										// Speed of projectile.
@@ -45,7 +45,7 @@
 	// Movement
 	//-------------------------------------------------------------------------------------------------------------
 	"MovementSpeed"				"350"									// Speed.
-	"MovementTurnRate"			"0.4"									// Turning rate.
+	"MovementTurnRate"			"0.6"									// Turning rate.
 
 	// Status
 	//-------------------------------------------------------------------------------------------------------------

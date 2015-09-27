@@ -14,7 +14,7 @@
 	"Ability6"					"generic_focus_moonbeam"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 	"AttributeBaseStrength" 	"3"
@@ -25,10 +25,12 @@
 	"AttributeIntelligenceGain" "3" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "1.65"
 	"AttackRange"               "160"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin"			"2.5"									// Damage range min.
-	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackDamageMin"			"3"									// Damage range min.
+	"AttackDamageMax"			"10"									// Damage range max.
+	"AttackAcquisitionRange"	"400"
 }

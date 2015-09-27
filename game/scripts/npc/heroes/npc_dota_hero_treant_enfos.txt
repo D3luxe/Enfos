@@ -14,7 +14,7 @@
 	"Ability6"					"oak_barkskin"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"5"
 	
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
 	"AttributeBaseStrength" 	"9"
@@ -25,12 +25,14 @@
 	"AttributeIntelligenceGain" "1" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "1.5"
-	"AttackRange"               "120"
+	"AttackRange"               "100"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"2.5"
-	"AttackDamageMax" 			"8.5"
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"9"
+	"AttackAcquisitionRange"	"400"
 	"ModelScale" 				"0.80"		
 
 	"Team"						"Bad"

@@ -147,11 +147,12 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"			"spirit_breaker_charge_of_darkness"
+		"AbilityTextureName"			"phantom_assassin_phantom_strike"
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 		"MaxLevel"						"10"
 		"LevelsBetweenUpgrades"		"3"
 		"RequiredLevel"			"6"
@@ -168,17 +169,42 @@
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityManaCost"				"30 33 36 39 42 45 48 51 54 57"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+		}
+	
 		"OnSpellStart"
 		{
+			"Blink"
+			{
+				"Target"	"TARGET"
+			}
 			"ApplyModifier"
 			{
 				"Target" 			"CASTER"
 				"ModifierName"		"modifier_cataclysmic_strike"
 			}
-			"RunScript"
+			"FireSound"
 			{
-				"ScriptFile"			"scripts/vscripts/heroes/ahlen.lua"
-				"Function"				"cataclysmic_strike"
+				"EffectName"		"Hero_PhantomAssassin.Strike.Start"
+				"Target"			"CASTER"
+			}
+			"AttachEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_phantom_assassin/phantom_assassin_phantom_strike_end.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"CASTER"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"		"Hero_PhantomAssassin.Strike.End"
+				"Target"			"CASTER"
 			}
 		}
 		"Modifiers"    				// Can be used to create custom modifier. 
@@ -189,6 +215,7 @@
 				"IsPurgable"				"false"
 				"IsHidden"					"1"
 				"Duration"					"20"
+				"OverrideAnimation"		"ACT_DOTA_RUN"
 				"OnAttackLanded"
 				{
 					"Damage"
@@ -4109,7 +4136,7 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"ogre_magi_bloodlust"
 		"MaxLevel"					"1"
@@ -4119,6 +4146,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCooldown"				"0.1"
 		"AbilityManaCost"				"40"
+		"AbilityCastPoint"				"0"
 	
 		"OnSpellStart"
 		{
@@ -4811,6 +4839,25 @@
 				"Function"				"Prediction"
 				"attribute_increase"	"%attribute_increase"
 			}
+		}
+		"Modifiers"
+		{
+			"modifier_prediction_str"
+			{
+				"IsBuff"	"1"
+				"IsPurgable"	"0"
+			}
+			"modifier_prediction_int"
+			{
+				"IsBuff"	"1"
+				"IsPurgable"	"0"
+			}
+			"modifier_prediction_agi"
+			{
+				"IsBuff"	"1"
+				"IsPurgable"	"0"
+			}
+	
 		}
 		"AbilitySpecial"
 		{
@@ -7127,6 +7174,9 @@
 		{
 			"particle_folder"			"particles/hero_moon_mage"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
+			"particle" 	"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -7135,7 +7185,9 @@
 				"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
 				"Function"				"Burn"
 			}
+	
 		}
+	
 		"AbilitySpecial"
 		{
 			"01"
@@ -7147,6 +7199,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"damage"			"90000"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
 			}
 		}
 	}
@@ -7161,6 +7218,13 @@
 		"AbilityManaCost"				"0"
 		"Modifiers"
 		{
+			"modifier_burn_fx"
+			{
+				"Passive"	"1"
+				"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura_debuff.vpcf"
+				"EffectAttachType"	"follow_origin"
+	
+			}
 			"modifier_burn_dummy"
 			{
 				"Duration"				"20"
@@ -7170,6 +7234,7 @@
 				"Aura_Radius"			"175"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Types"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+				
 	
 				"OnDestroy"
 				{
@@ -7225,10 +7290,11 @@
 		"AbilityCastRange"				"1000"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"8 9 11 13 15 18 20 23 27 30"
-		"Precache"
+		"precache"
 		{
-			"particle_folder"			"particles/units/heroes/hero_queenofpain/" 
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+			"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger_debuff.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -7239,15 +7305,18 @@
 			}
 			"TrackingProjectile"
 			{
-				"Target"				"TARGET"
-				"EffectName"			"particles/units/heroes/hero_queenofpain/queen_shadow_strike.vpcf"
-				"MoveSpeed"				"1000"
-				"EffectAttachType"		"follow_origin" //attach_hitloc?
+				"Target"           "TARGET"
+			    "EffectName"       "particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+			    "Dodgeable"        "1"
+			    "ProvidesVision"   "1"
+			    "VisionRadius"     "300"
+			    "MoveSpeed"        "1000"
+			    "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 			}
 			"FireSound"
 			{
-				"Target"				"CASTER"
-				"EffectName"			"Hero_QueenOfPain.ShadowStrike"
+				"EffectName"		"Hero_PhantomAssassin.Dagger.Cast"
+				"Target"			"CASTER"
 			}
 		}
 		"OnProjectileHitUnit"
@@ -10304,6 +10373,95 @@
 		}
 	
 	}
+	"spellbringer_chain_heal"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"				"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_PHYSICAL"	
+		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+		"AbilityTextureName"			"dazzle_shadow_wave"
+		"MaxLevel"						"1"
+	
+		// Precache
+		//-------------------------------------------------------------------------------------------------------------
+		"precache"
+		{
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+			"particle"			"particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+		}
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0.3"
+		
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"200"
+	
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"250"
+		
+		// Damage.
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityDamage"					"0"
+			
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"			"FIELD_INTEGER"
+				"bounce_radius"		"99999"
+			}
+			"02"
+			{	
+				"var_type"			"FIELD_INTEGER"
+				"max_targets"		"7"
+			}
+			"03"
+			{	
+				"var_type"			"FIELD_INTEGER"
+				"heal"		"99999"
+			}
+		}
+	
+		"OnSpellStart"
+		{
+			"FireSound"
+			{
+				"EffectName"	"Hero_Dazzle.Shadow_Wave"
+				"Target" 		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"        "particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+				"EffectAttachType"  "start_at_customorigin"
+				
+				"ControlPointEntities"
+				{
+					"CASTER"	"attach_attack1"
+					"TARGET"	"follow_origin"
+				}
+			}
+	
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/spellbringer.lua"
+				"Function"		"chain_heal"
+				"shadow_wave_particle"	"particles/units/heroes/hero_dazzle/dazzle_shadow_wave.vpcf"
+				"damage_particle"		"particles/units/heroes/hero_dazzle/dazzle_shadow_wave_impact_damage.vpcf"
+			}
+		}
+	}
 	"spellbringer_glythtides_gift"
 	{
 		"BaseClass"					"ability_datadriven"
@@ -12531,6 +12689,7 @@
 			{
 				"Passive"				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"OnAttackLanded"
 				{
 					"ApplyModifier"
@@ -14016,6 +14175,15 @@
 				"Target"		"CASTER"
 				"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 			}
+		}
+		"Modifiers"
+		{
+			"modifier_weaponsmith_forge_stack"
+			{
+				"IsBuff"	"1"
+				"IsPurgable"	"0"
+			}
+	
 		}
 		"AbilitySpecial"
 		{

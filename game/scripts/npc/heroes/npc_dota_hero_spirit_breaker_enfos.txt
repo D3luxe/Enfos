@@ -14,7 +14,7 @@
 	"Ability6"					"summoner_anti_magic_shell"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
 	"AttributeBaseStrength" 	"6"
 	"AttributeStrengthGain" 	"2"
@@ -24,6 +24,7 @@
 	"AttributeIntelligenceGain" "3" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
@@ -31,10 +32,11 @@
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
-	"AttackDamageMin" 			"9.5"
-	"AttackDamageMax" 			"16.5"
+	"ProjectileSpeed"			"1300"									// Speed of projectile.
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"10"
 	"AttackRate"                "2"
 	"AttackRange"               "550"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 }

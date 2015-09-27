@@ -4,6 +4,7 @@ function Prediction(keys)
 	local target = keys.target
 	local pid = target:GetPlayerID() -- this is the target's pid, not the caster's pid!
 	local maxIncrease = keys.attribute_increase
+	local ability = keys.ability
 	if Enfos.strPrediction[pid] == nil then
 		Enfos.strPrediction[pid] = 0
 	end
@@ -20,6 +21,19 @@ function Prediction(keys)
 	target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
 	target:SetBaseAgility(target:GetBaseAgility() - Enfos.agiPrediction[pid])
 	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])
+
+-- Add the stacking modifier if player doesnt have them
+	if not target:HasModifier("modifier_prediction_str") then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_prediction_str", {})
+	end
+	if not target:HasModifier("modifier_prediction_int") then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_prediction_int", {})
+	end
+	if not target:HasModifier("modifier_prediction_agi") then
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_prediction_agi", {})
+	end
+
+
 -- roll the increase
 	local strIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
 	local agiIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
@@ -34,6 +48,10 @@ function Prediction(keys)
 	target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
 	target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
 	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
+-- Adjust the stacks for display only
+	target:SetModifierStackCount("modifier_prediction_str", caster, Enfos.strPrediction[pid])
+	target:SetModifierStackCount("modifier_prediction_int", caster, Enfos.intPrediction[pid])
+	target:SetModifierStackCount("modifier_prediction_agi", caster, Enfos.agiPrediction[pid])
 -- particles and sounds
 	local effect = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_symbol.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 

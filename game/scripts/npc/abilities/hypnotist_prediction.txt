@@ -31,6 +31,25 @@
 			"attribute_increase"	"%attribute_increase"
 		}
 	}
+	"Modifiers"
+	{
+		"modifier_prediction_str"
+		{
+			"IsBuff"	"1"
+			"IsPurgable"	"0"
+		}
+		"modifier_prediction_int"
+		{
+			"IsBuff"	"1"
+			"IsPurgable"	"0"
+		}
+		"modifier_prediction_agi"
+		{
+			"IsBuff"	"1"
+			"IsPurgable"	"0"
+		}
+
+	}
 	"AbilitySpecial"
 	{
 		"01"

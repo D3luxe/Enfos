@@ -14,7 +14,7 @@
 	"Ability6"					"thief_sleight_of_hand"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	
 	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
 	"AttributeBaseStrength" 	"6"
@@ -25,10 +25,12 @@
 	"AttributeIntelligenceGain" "1" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "2.6"
 	"AttackRange"               "180"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"9.5"
-	"AttackDamageMax" 			"16.5"	
+	"AttackDamageMin" 			"9"
+	"AttackDamageMax" 			"16"	
+	"AttackAcquisitionRange"	"400"
 }

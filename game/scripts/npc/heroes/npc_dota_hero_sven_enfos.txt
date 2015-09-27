@@ -14,7 +14,7 @@
 	"Ability6"					"weaponsmith_cambrinth_charge"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	
 	"AttributeBaseStrength" 	"11"
 	"AttributeStrengthGain" 	"3.7"
@@ -24,10 +24,12 @@
 	"AttributeIntelligenceGain" "0.33" 
 	
 	"MovementSpeed"				"350"
-	"AttackRate"                "3.72"
+	"MovementTurnRate"			"0.6"									// Turning rate.
+	"AttackRate"                "4.65"
 	"AttackRange"               "120"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"10.5"
-	"AttackDamageMax" 			"29.5" 
+	"AttackDamageMin" 			"11"
+	"AttackDamageMax" 			"30" 
+	"AttackAcquisitionRange"	"400"
 }

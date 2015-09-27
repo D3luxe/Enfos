@@ -4871,6 +4871,7 @@
 		"Ability7"					"spellbringer_jomays_legacy"			// Ability 6 - Extra.
 		"Ability8"					"spellbringer_glythtides_gift"			// Ability 6 - Extra.
 		"Ability9"					"spellbringer_whole_displacement"			// Ability 6 - Extra.
+		"Ability10"					"spellbringer_chain_heal"			// Ability 6 - Extra.
 	
 		// Armor
 		//----------------------------------------------------------------

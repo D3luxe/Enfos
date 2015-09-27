@@ -455,7 +455,8 @@ function Precache( context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray_debuff.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_huskar/huskar_inner_vitality.vpcf", context )
 	PrecacheResource( "particle", "particles/hero_moon_mage/jakiro_liquid_fire_explosion.vpcf", context )
-	PrecacheResource( "particle", "particles/items_fx/aura_assault.vpcf", context )
+	PrecacheResource( "particle", "particles/units/heroes/hero_undying/undying_fg_aura.vpcf", context )
+	PrecacheResource( "particle", "particles/items_fx/aura_shivas.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_viper/viper_base_attack.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", context )
 	PrecacheResource( "particle", "particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_ti_5.vpcf", context )
@@ -469,31 +470,16 @@ function Precache( context )
 	PrecacheResource("particle","particles/units/heroes/hero_gyrocopter/gyro_guided_missile_target.vpcf", context )
 	PrecacheResource( "soundfile","soundevents/game_sounds_heroes/game_sounds_lion.vsndevts", context )
 	PrecacheResource( "soundfile","soundevents/game_sounds_ui.vsndevts", context )
-	
-	
-
-	--Arhat
-	PrecacheResource( "model", "models/heroes/invoker/invoker.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_cape.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_shoulder.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_head.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_hair.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_bracer.vmdl", context )
-	PrecacheResource( "model", "models/heroes/invoker/invoker_dress.vmdl", context )
 
 
-	--Uthmor
-	PrecacheResource( "model", "models/heroes/elder_titan/ancestral_spirit.vmdl", context )
-
-	--Sidhlot
-	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte_sickle.vmdl", context )
-	PrecacheResource( "model", "models/heroes/necrolyte/beard.vmdl", context )
-	PrecacheResource( "model", "models/heroes/necrolyte/hat.vmdl", context )
-	PrecacheResource( "model", "models/heroes/necrolyte/shoulders.vmdl", context )
-	PrecacheResource( "model", "models/heroes/necrolyte/necrolyte.vmdl", context )
 	PrecacheItemByNameSync("item_spellbringer_greater_darkrift", context)
 
 	PrecacheUnitByNameSync("npc_dota_hero_omniknight", context)
+	PrecacheUnitByNameSync("npc_dota_hero_invoker", context)
+	PrecacheUnitByNameSync("npc_dota_hero_necrolyte", context)
+	PrecacheUnitByNameSync("npc_dota_hero_elder_titan", context)
+	PrecacheUnitByNameSync("npc_dota_hero_luna", context)
+	PrecacheUnitByNameSync("npc_spellbringer", context)
 
 	--PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf", context )
 end
@@ -530,7 +516,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
 	GameRules:SetUseUniversalShopMode( false )
 	GameRules:SetHeroSelectionTime( 60.0 )
-	GameRules:SetPreGameTime( 1.0 )
+	GameRules:SetPreGameTime( 10.0 )
 	GameRules:SetPostGameTime( 60.0 )
 	GameRules:SetTreeRegrowTime( 60.0 )
 	--GameRules:SetHeroMinimapIconSize( 400 )
@@ -554,12 +540,15 @@ function CEnfosGameMode:InitGameMode()
 	GameRules.direPlayers = {}
 
 	--GameRules:GetGameModeEntity():SetCustomGameForceHero( "npc_dota_hero_lina" )
+	GameRules:SetCustomGameSetupTimeout(60)
 
 	
 
 	-- Game options
 	GameRules.ExtraBounty = 1
 	GameRules.SharedBounty = false
+	GameRules.AllRandom = false
+	GameRules.ItemSharing = true
 
 
 	-- Custom console commands
@@ -594,30 +583,36 @@ function CEnfosGameMode:InitGameMode()
 	CustomGameEventManager:RegisterListener( "updateDire", UpdateDire )
 	CustomGameEventManager:RegisterListener( "updateRadiant", UpdateRadiant )
 	CustomGameEventManager:RegisterListener( "clearTeams", ClearTeams )
+	CustomGameEventManager:RegisterListener( "vote_update", VoteUpdate )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
 	GameRules.PLAYER_VOTES = {}
+	GameRules.EXTRABOUNTY_VOTES = {}
+	GameRules.SHAREBOUNTY_VOTES = {}
+	GameRules.ALLRANDOM_VOTES = {}
+	GameRules.ITEMSHARING_VOTES = {}
 	GameRules.DIFFICULTY = 0
 	GameRules.difficulty_selected = false
 	GameRules.PLAYER_COUNT = 0
 	GameRules.PLAYERS_PICKED_HERO = 0
 	GameRules.GAMESTARTED = false
 
+
+	local playercounter = 0
+	for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
+		-- ignore broadcasters to count players for the solo buff
+		if PlayerResource:IsValidPlayer(nPlayerID) and not PlayerResource:IsBroadcaster(nPlayerID) then 
+			playercounter=playercounter+1
+		end
+	end
+
+	GameRules.PLAYER_COUNT = playercounter
+	print("Total Players: " .. GameRules.PLAYER_COUNT)
+
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 )
 	-- defining our global tables here. we need to populate them with initial player values or else we won't be able to index them.
-
-	--Catch the Spellbringer UI
-	--register the 'BuyAbilityPoint' command in our console
-	Convars:RegisterCommand( "CastSpellbringerAbility", function(name, p)
-	    --get the player that sent the command
-	    local cmdPlayer = Convars:GetCommandClient()
-	    if cmdPlayer then 
-	        --if the player is valid, execute PlayerBuyAbilityPoint
-	        return self:CastSpellbringerAbility( cmdPlayer, p ) 
-	    end
-	end, "A player casted an ability", 0 )
 	
 	self._idmap = {}
 	for k,v in pairs(LoadKeyValues("scripts/npc/npc_items_custom.txt")) do
@@ -631,6 +626,7 @@ function CEnfosGameMode:InitGameMode()
 
 	CustomPurgeInit()
 end
+
 
 
 function ClearTeams(eventSourceIndex, args)
@@ -685,10 +681,18 @@ end
 function CEnfosGameMode:UpdateVotes( event )
     local pID = event.pID
     local difficulty = event.difficulty
+    local extraBounty = event.extraB
+    local shareBounty = event.shareB
+    local allRandom = event.allR
+    local noItemSharing = event.noI
 
+    --PrintTable(event)
     if not GameRules.difficulty_selected then
+    	--============================================================================================
+    	--Handle difficulty voting
+    	--============================================================================================
 		table.insert(GameRules.PLAYER_VOTES,difficulty)
-		--print("========VOTE TABLE========")
+		--print("========Difficulty VOTE TABLE========")
 		--DeepPrintTable(GameRules.PLAYER_VOTES)
 		--print("==========================")
 
@@ -703,73 +707,88 @@ function CEnfosGameMode:UpdateVotes( event )
 	    --print("Rounded difficulty: ".. difficulty_level)
 	    GameRules.DIFFICULTY = difficulty_level
 
-	    if (#GameRules.PLAYER_VOTES>=GameRules.PLAYER_COUNT) then
-	    	CEnfosGameMode:OnEveryoneVoted()
+	    --============================================================================================
+	    --Handle extra bounty voting
+	    --============================================================================================
+		table.insert(GameRules.EXTRABOUNTY_VOTES,extraBounty)
+		--print("========ExtraBounty VOTE TABLE========")
+		--DeepPrintTable(GameRules.EXTRABOUNTY_VOTES)
+		--print("==========================")
+
+	  	local extra_bounty = 0
+	    for k,v in pairs(GameRules.EXTRABOUNTY_VOTES) do
+	    	extra_bounty = extra_bounty + v
+	    end
+
+	    extra_bounty = extra_bounty / #GameRules.EXTRABOUNTY_VOTES
+	    --print("Average: " ..extra_bounty)
+	    extra_bounty = math.floor(extra_bounty+0.5)
+	    --print("Rounded bounty: ".. extra_bounty)
+	    GameRules.ExtraBounty = extra_bounty
+
+	    --============================================================================================
+	    --Handle shared bounty voting
+	    --============================================================================================
+		table.insert(GameRules.SHAREBOUNTY_VOTES,shareBounty)
+		--print("========ShareBounty VOTE TABLE========")
+		--DeepPrintTable(GameRules.SHAREBOUNTY_VOTES)
+		--print("==========================")
+
+	  	local share_bounty = 0
+	    for k,v in pairs(GameRules.SHAREBOUNTY_VOTES) do
+	    	share_bounty = share_bounty + v
+	    end
+
+	    share_bounty = share_bounty / #GameRules.SHAREBOUNTY_VOTES
+	    --print("Average: " ..share_bounty)
+	    share_bounty = math.floor(share_bounty+0.5)
+	    --print("Rounded bounty: ".. share_bounty)
+	    if share_bounty == 1 then
+	    	GameRules.SharedBounty = true
+	    end
+
+	    --============================================================================================
+	    --Handle all random voting
+	    --============================================================================================
+		table.insert(GameRules.ALLRANDOM_VOTES,allRandom)
+		--print("========All Random VOTE TABLE========")
+		--DeepPrintTable(GameRules.ALLRANDOM_VOTES)
+		--print("==========================")
+
+	  	local all_random = 0
+	    for k,v in pairs(GameRules.ALLRANDOM_VOTES) do
+	    	all_random = all_random + v
+	    end
+
+	    all_random = all_random / #GameRules.ALLRANDOM_VOTES
+	    --print("Average: " ..all_random)
+	    all_random = math.floor(all_random+0.5)
+	    --print("All Random?: ".. all_random)
+	    if all_random == 1 then
+	    	GameRules.AllRandom = true
+	    end
+
+	    --============================================================================================
+	    --Handle item sharing voting
+	    --============================================================================================
+		table.insert(GameRules.ITEMSHARING_VOTES,noItemSharing)
+		--print("========Item Sharing VOTE TABLE========")
+		--DeepPrintTable(GameRules.ITEMSHARING_VOTES)
+		--print("==========================")
+
+	  	local _itemSharing = 0
+	    for k,v in pairs(GameRules.ITEMSHARING_VOTES) do
+	    	_itemSharing = _itemSharing + v
+	    end
+
+	    _itemSharing = _itemSharing / #GameRules.ITEMSHARING_VOTES
+	    --print("Average: " .._itemSharing)
+	    _itemSharing = math.floor(_itemSharing+0.5)
+	    --print("All Random?: ".. _itemSharing)
+	    if _itemSharing == 1 then
+	    	GameRules.ItemSharing = false
 	    end
 	end
-end
-
-function CEnfosGameMode:OnEveryoneVoted()
-	
-	--Fire Game Event to our UI
-	CustomGameEventManager:Send_ServerToAllClients("finished_voting", {})
-
-    GameRules:SendCustomMessage("<font color='#2EFE2E'>Finished voting!</font>", 0, 0)
-
-    -- Set the difficulty here.
-    GameRules.difficulty_selected = true
-    --add_affixes_to_pre_dificulty_creeps()
-
-    -- Change this to the proper strings later
-    if GameRules.DIFFICULTY == 0 then
-    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Normal</font>", 0, 0)
-    	GameRules:SendCustomMessage("Hey, Not Too Rough. 100% Life and Damage", 0, 0)
-    elseif GameRules.DIFFICULTY == 1 then
-    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Ascendant (1)</font>", 0, 0)
-    	GameRules:SendCustomMessage("Bring it on! 125% Life and Damage", 0, 0)
-    elseif GameRules.DIFFICULTY == 2 then
-    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Elder (2)</font>", 0, 0)
-    	GameRules:SendCustomMessage("Hurt Me Plenty. 150% Life and Damage", 0, 0)
-    elseif GameRules.DIFFICULTY == 3 then
-    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Mythical (3)</font>", 0, 0)
-    	GameRules:SendCustomMessage("Ultra-Violence. 175% Life and Damage" , 0, 0)
-    elseif GameRules.DIFFICULTY == 4 then
-    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Legendary (4)</font>", 0, 0)
-    	GameRules:SendCustomMessage("Nightmare! 200% Life and Damage" , 0, 0)
-    end
-
-    for i=#GameRules.PLAYER_VOTES, GameRules.PLAYER_COUNT do
-    	table.insert(GameRules.PLAYER_VOTES,0)
-
-    end
-
-
-    for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-		if PlayerResource:HasSelectedHero( nPlayerID ) then
-			local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
-			hero:RemoveModifierByName("modifier_stunned")
-		end
-	end
-
-	Timers:CreateTimer(DoUniqueString("StartGame2"), {
-			endTime = 5,
-			callback = function()
-				if not GameRules.GAMESTARTED then
-					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
-			    	GameRules.GAMESTARTED = true
-				end
-			end
-		})
-
-	
-	
-    -- Add settings to our stat collector
-    --[[statcollection.addStats({
-        modes = {
-            difficulty = GameRules.DIFFICULTY
-        }
-    })]]
-	
 end
 
 function CEnfosGameMode:OnPlayerCastAbility(keys)
@@ -810,17 +829,6 @@ function CEnfosGameMode:new (o)
     return o
 end
 
---Spellbringer casting from UI
-function CEnfosGameMode:CastSpellbringerAbility(player, p)
-	local price = 200
-	local pID = player:GetPlayerID()
-	local playerGold = PlayerResource:GetGold(pID)
-	local playerHero = player:GetAssignedHero()
-
-	local abilityToCast = playerHero:FindAbilityByName("evoker_gar_zeng_proxy")
-
-	playerHero:CastAbilityNoTarget(abilityToCast, -1)
-end
 
 -- Read and assign configurable keyvalues if applicable
 function CEnfosGameMode:_ReadGameConfiguration()
@@ -923,15 +931,70 @@ end
 -- When game state changes set state in script
 function CEnfosGameMode:OnGameRulesStateChange()
 	local nNewState = GameRules:State_Get()
-	if nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+	print(nNewState)
+	if nNewState == DOTA_GAMERULES_STATE_CUSTOM_GAME_SETUP then
         --HeroSelection:Start()
+    elseif nNewState == DOTA_GAMERULES_STATE_HERO_SELECTION then
+
+    	Timers:CreateTimer(DoUniqueString("votingResults"), {
+		endTime = 0.1,
+		callback = function()
+				if GameRules.AllRandom then
+		    		for player_id = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+						if PlayerResource:IsValidPlayer( player_id ) then
+							local player = PlayerResource:GetPlayer(player_id)
+							player:MakeRandomHeroSelection()
+							PlayerResource:SetHasRandomed(player_id)
+							PlayerResource:SetHasRepicked(player_id)
+						end
+					end
+				end
+
+			    -- Set the difficulty here.
+			    GameRules.difficulty_selected = true
+
+			    -- Change this to the proper strings later
+			    if GameRules.DIFFICULTY == 0 then
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Casual</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Hey, Not Too Rough. <font color='#2EFE2E'>100% Life and Damage</font>", 0, 0)
+			    elseif GameRules.DIFFICULTY == 1 then
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Ascendant (1)</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Bring it on! <font color='#2EFE2E'>125% Life and Damage</font>", 0, 0)
+			    elseif GameRules.DIFFICULTY == 2 then
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Elder (2)</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Hurt Me Plenty. <font color='#2EFE2E'>150% Life and Damage</font>", 0, 0)
+			    elseif GameRules.DIFFICULTY == 3 then
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Mythical (3)</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Ultra-Violence. <font color='#2EFE2E'>175% Life and Damage</font>" , 0, 0)
+			    elseif GameRules.DIFFICULTY == 4 then
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Legendary (4)</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Nightmare! <font color='#2EFE2E'>200% Life and Damage</font>" , 0, 0)
+			    end	
+			    if GameRules.ExtraBounty > 1 then
+			   		GameRules:SendCustomMessage("Extra bounty is set at <font color='#2EFE2E'>"..GameRules.ExtraBounty.."x</font>", 0,0)
+			   	end
+			    if GameRules.SharedBounty then
+			    	GameRules:SendCustomMessage("Bounty will be shared between team members!", 0,0)
+			    end
+			    if GameRules.AllRandom then
+					GameRules:SendCustomMessage("All players are <font color='#2EFE2E'>randomed!</font>", 0,0)
+			    end
+			    if not GameRules.ItemSharing then
+					GameRules:SendCustomMessage("Item sharing is <font color='#2EFE2E'>disabled!</font>", 0,0)
+			    end
+
+
+	    	end
+		})
+
 
 	elseif nNewState == DOTA_GAMERULES_STATE_PRE_GAME then
 		--ShowGenericPopup( "#Enfos_instructions_title", "#Enfos_instructions_body", "", "", DOTA_SHOWGENERICPOPUP_TINT_SCREEN )
+		--GameRules:FinishCustomGameSetup()
 		
 	elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		--self:_RespawnPlayers()
-		--self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
+		self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
 
 		for player_id = 0, 9 do
 			local hero = PlayerResource:GetSelectedHeroEntity(player_id) 
@@ -954,56 +1017,31 @@ end
 -- Evaluate the state of the game
 function CEnfosGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		self:_CheckForDefeat()
 
-		if (#GameRules.PLAYER_VOTES>=GameRules.PLAYER_COUNT) and not GameRules.GAMESTARTED then
-			self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds + 5
-			GameRules.GAMESTARTED = true
-			for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-				if PlayerResource:HasSelectedHero( nPlayerID ) then
-					local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
-					hero:RemoveModifierByName("modifier_stunned")
+		if self._flPrepTimeEnd ~= nil then
+			self:_ThinkPrepTime()
+		elseif self._currentRound ~= nil then
+			self._currentRound:Think()
+			if self._currentRound:IsFinished() then
+				self._currentRound:End()
+				self._currentRound = nil
+				-- Heal all players
+				-- self:_RefreshPlayers()
+
+				self._nRoundNumber = self._nRoundNumber + 1
+				if self._nRoundNumber > #self._vRounds then
+					self._nRoundNumber = #self._vRounds
+					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
+				else
+					self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
 				end
 			end
-	    end
-
-	    if GameRules:GetDOTATime(false, false) >= VOTING_TIME and not GameRules.GAMESTARTED then
-	    	self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds + 5
-			GameRules.GAMESTARTED = true
-			for nPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
-				if PlayerResource:HasSelectedHero( nPlayerID ) then
-					local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
-					hero:RemoveModifierByName("modifier_stunned")
-				end
-			end
-	    end
-		
-	    if GameRules.GAMESTARTED then
-			self:_CheckForDefeat()
-
-			if self._flPrepTimeEnd ~= nil then
-				self:_ThinkPrepTime()
-			elseif self._currentRound ~= nil then
-				self._currentRound:Think()
-				if self._currentRound:IsFinished() then
-					self._currentRound:End()
-					self._currentRound = nil
-					-- Heal all players
-					-- self:_RefreshPlayers()
-
-					self._nRoundNumber = self._nRoundNumber + 1
-					if self._nRoundNumber > #self._vRounds then
-						self._nRoundNumber = #self._vRounds
-						self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
-					else
-						self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
-					end
-				end
-		
-				
-			end
+	
+			
 		end
 	elseif GameRules:State_Get() >= DOTA_GAMERULES_STATE_POST_GAME then		-- Safe guard catching any state that may exist beyond DOTA_GAMERULES_STATE_POST_GAME
-		statcollection.sendStats()
+		--statcollection.sendStats()
 		return
 	end
 	for player_id = 0, 9 do
@@ -1174,11 +1212,6 @@ function CEnfosGameMode:OnPlayerPicked( event )
     	CEnfosGameMode:OnEveryonePicked()
     end
 
-    --Stuns the player so they are unable to do anything until the game is started
-    if not GameRules.GAMESTARTED then
-    	spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, 'modifier_stunned', {duration = VOTING_TIME})
-    	--Fire Game Event to our UI
-	end
 
 	--Sets the initial cannibal index for if Troll Warlord is being played.
 	if spawnedUnit == "npc_dota_hero_troll_warlord" then
@@ -1320,32 +1353,6 @@ function CEnfosGameMode:OnEveryonePicked()
     GameRules:SendCustomMessage("Ported by <font color='#2EFE2E'>Amuse</font> & <font color='#2EFE2E'>vc</font>", 0, 0)
     GameRules:SendCustomMessage("Version: " .. ENFOS_VERSION, 0, 0)
     GameRules:SendCustomMessage("Please report bugs and leave feedback in our workshop page", 0, 0)
-
-    for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-		-- ignore broadcasters to count players for the solo buff
-		if PlayerResource:IsValidPlayer(nPlayerID) and not PlayerResource:IsBroadcaster(nPlayerID) then 
-			local player = PlayerResource:GetPlayer(nPlayerID)
-			if GameRules:PlayerHasCustomGameHostPrivileges(player) then
-				GameRules:SendCustomMessage("Type '<font color='#2EFE2E'>commands</font>' to get a list of available commands", 0, 0)
-				Notifications:Bottom(nPlayerID, {text="You are host! Type 'commands' to see available commands.", duration=20, style={color="green", ["font-size"]="35px"}})
-			end
-		end
-	end
-   
-
-    CustomGameEventManager:Send_ServerToAllClients("start_voting", {})
-    --[[Warchasers:OnEveryoneVoted()
-
-    Timers:CreateTimer(5, function()	
-	    GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Reborn</font>", 0, 0)
-	    GameRules:SendCustomMessage("Higher difficulty levels will be added as soon as we fix some bugs.<br>Thank you for playing, enjoy your run!", 0, 0)
-    end)]]
-
-    GameRules:SendCustomMessage("<br>30 seconds to select a difficulty",0,0)
-    Timers:CreateTimer(20,function() if not GameRules.difficulty_selected then GameRules:SendCustomMessage("10 seconds remaining!",0,0) end end)
-    Timers:CreateTimer(30,function() if not GameRules.difficulty_selected then CEnfosGameMode:OnEveryoneVoted() end end)
-
-
 end
 
 
@@ -1895,6 +1902,7 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 	end
 	
 	if order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
+		
 		--PrintTable(units)
 		--print("Giving an item!")
 		local first_unit = EntIndexToHScript(units["0"])
@@ -1907,6 +1915,11 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			return true
 		end
 		
+		if not GameRules.ItemSharing then
+			Notifications:Bottom(first_unit:GetPlayerID(), {text="Item sharing is disabled!", duration=3, style={color="red", ["font-size"]="50px"}})
+			EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
+			return false
+		end
 		--print(first_unit:GetUnitName())
 		--print(second_unit:GetUnitName())
 		--print(item:GetAbilityName())
@@ -2371,26 +2384,12 @@ function CEnfosGameMode:OnNPCSpawned( event )
 			attackItem = nil
 		end
 
-		local playercounter = 0
-		for nPlayerID = 0, DOTA_MAX_PLAYERS-1 do
-			-- ignore broadcasters to count players for the solo buff
-			if PlayerResource:IsValidPlayer(nPlayerID) and not PlayerResource:IsBroadcaster(nPlayerID) then 
-				playercounter=playercounter+1
-			end
-		end
-
-		GameRules.PLAYER_COUNT = playercounter
-		print("Total Players: " .. GameRules.PLAYER_COUNT)
-
 		if spawnedUnit.bFirstSpawned == nil then
 			spawnedUnit.bFirstSpawned = true
 
 			GameRules.PLAYERS_PICKED_HERO=GameRules.PLAYERS_PICKED_HERO+1
 		end
 
-		if GameRules.GAMESTARTED then
-			spawnedUnit:RemoveModifierByName("modifier_stunned")
-		end
 	 end
 
 end
@@ -2442,7 +2441,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 		end
 
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
-			if killer:IsHero() then
+			if killer:IsOwnedByAnyPlayer()  then
 				local killerTeam = killer:GetTeam()
 				if(killerTeam == 2) then
 					CEnfosGameMode:ModifyLife(DOTA_TEAM_GOODGUYS, 0, 1)
@@ -2467,6 +2466,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 		if killer:IsHero() then
 			local team = killer:GetTeamNumber()
 			teamMembers = PlayerResource:GetPlayerCountForTeam(team)
+			--print("Team members: "..teamMembers)
 		end
 	end
 
@@ -2476,16 +2476,19 @@ function CEnfosGameMode:OnEntityKilled( event )
 			killer:ModifyGold(extraBounty, false, 1)
 			PopupGoldGain(killer, extraBounty)
 		else
-			killer:GetOwner():ModifyGold(extraBounty, false, 1)
-			PopupGoldGain(killer:GetOwner(), extraBounty)
+			if killer:IsOwnedByAnyPlayer() then
+				killer:GetOwner():ModifyGold(extraBounty, false, 1)
+				PopupGoldGain(killer:GetOwner(), extraBounty)
+			end
 		end
 		EmitSoundOnClient("General.Coins", killer:GetPlayerOwner())
 	else
 		for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 			local teamID = PlayerResource:GetTeam(xpPlayerID)
 			local player = PlayerResource:GetSelectedHeroEntity(xpPlayerID)
-			-- If player isn't nil and is on an enemy team, give exp
-			if player ~= nil and player:GetTeam() ~= xpKilledUnitTeam and player:IsAlive() then
+			-- If player isn't nil and is on the same team, give gold
+			if player ~= nil and player:GetTeam() == killer:GetTeam() and player:IsAlive() then
+				--print("Giving "..extraBounty.." gold to: "..player:GetName().." Player ID: "..xpPlayerID)
 				if player:IsHero() then
 					player:ModifyGold(extraBounty, false, 1)
 					PopupGoldGain(player, extraBounty)

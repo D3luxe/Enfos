@@ -16,7 +16,7 @@
 	"Ability7"					"moon_mage_glaive"
 	"Ability8"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
 	"AttributeBaseStrength" 	"3"
@@ -27,14 +27,15 @@
 	"AttributeIntelligenceGain" "3" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	"AttackRate"                "3"
 	"AttackRange"               "500"
 	"ProjectileModel"			"particles/base_attacks/generic_projectile.vpcf"					// Particle system model for projectile.
 	"ProjectileSpeed"			"900"									// Speed of projectile.
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin"			"2.5"									// Damage range min.
-	"AttackDamageMax"			"9.5"									// Damage range max.
+	"AttackDamageMin"			"3"									// Damage range min.
+	"AttackDamageMax"			"10"									// Damage range max.
 
 	"precache"
 	{

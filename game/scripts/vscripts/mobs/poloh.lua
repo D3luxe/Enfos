@@ -30,21 +30,11 @@ function PolohThink()
 		if units ~= nil then
 			if #units > 0 then
 				for i=1,#units do
-					if not units[i]:IsAttackImmune()
+					if not units[i]:IsAttackImmune() then
 						thisEntity:SetForceAttackTarget(units[i])
 						break
 					end
 				end
-			end
-		else
-			local waypoint = Entities:FindByNameNearest( "*_wp_*", thisEntity:GetOrigin(), 0 )
-			if waypoint then
-				thisEntity:SetInitialGoalEntity( waypoint )
-				thisEntity:MoveToPositionAggressive( waypoint:GetOrigin() )
-			else
-				local ancient =  Entities:FindByName( nil, "*_wp_12" )
-				thisEntity:SetInitialGoalEntity( ancient )
-				thisEntity:MoveToPositionAggressive( ancient:GetOrigin() )
 			end
 		end
 	end

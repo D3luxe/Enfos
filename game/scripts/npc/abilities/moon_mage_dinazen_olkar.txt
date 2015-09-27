@@ -13,10 +13,11 @@
 	"AbilityCastRange"				"1000"
 	"AbilityCooldown"				"0"
 	"AbilityManaCost"				"8 9 11 13 15 18 20 23 27 30"
-	"Precache"
+	"precache"
 	{
-		"particle_folder"			"particles/units/heroes/hero_queenofpain/" 
-		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_queenofpain.vsndevts"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger_debuff.vpcf"
 	}
 	"OnSpellStart"
 	{
@@ -27,15 +28,18 @@
 		}
 		"TrackingProjectile"
 		{
-			"Target"				"TARGET"
-			"EffectName"			"particles/units/heroes/hero_queenofpain/queen_shadow_strike.vpcf"
-			"MoveSpeed"				"1000"
-			"EffectAttachType"		"follow_origin" //attach_hitloc?
+			"Target"           "TARGET"
+		    "EffectName"       "particles/units/heroes/hero_phantom_assassin/phantom_assassin_stifling_dagger.vpcf"
+		    "Dodgeable"        "1"
+		    "ProvidesVision"   "1"
+		    "VisionRadius"     "300"
+		    "MoveSpeed"        "1000"
+		    "SourceAttachment"  "DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 		}
 		"FireSound"
 		{
-			"Target"				"CASTER"
-			"EffectName"			"Hero_QueenOfPain.ShadowStrike"
+			"EffectName"		"Hero_PhantomAssassin.Dagger.Cast"
+			"Target"			"CASTER"
 		}
 	}
 	"OnProjectileHitUnit"

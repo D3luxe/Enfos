@@ -15,7 +15,7 @@
 	"Ability6"					"troll_cannibal_soul_drain"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 	"AttributeBaseStrength" 	"6"
 	"AttributeStrengthGain" 	"1.7"
@@ -25,15 +25,17 @@
 	"AttributeIntelligenceGain" "1" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"2.0"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"			
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" 			"2.5"
-	"AttackDamageMax" 			"7.5"
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"8"
 	"AttackRate"                "0.8"
 	"AttackRange"               "650"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.
+	"ProjectileSpeed"			"1400"
 }

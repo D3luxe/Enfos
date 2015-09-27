@@ -15,7 +15,7 @@
 	"Ability6"					"bard_nexus"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 	"AttributeBaseStrength" 	"7"
 	"AttributeStrengthGain" 	"2.33"
@@ -24,16 +24,18 @@
 	"AttributeBaseIntelligence" "8" 
 	"AttributeIntelligenceGain" "2.66" 
 	
-	"MovementSpeed"				"350"
+	"MovementSpeed"				"400"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"			
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-	"AttackDamageMin" 			"0"
-	"AttackDamageMax" 			"7.5"
-	"AttackRate"                "1.5"
+	"AttackDamageMin" 			"2"
+	"AttackDamageMax" 			"12"
+	"AttackRate"                "1.6"
 	"AttackRange"               "1000"									// yes, really
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"1200"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"1000"									// Range within a target can be acquired.
+	"ProjectileSpeed"			"1500"										// Speed of projectile.
 }		

@@ -15,7 +15,7 @@
 	"Ability6"					"cleric_bless_soul"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
 	"AttributeBaseStrength" 	"9"
 	"AttributeStrengthGain" 	"3"
@@ -25,6 +25,7 @@
 	"AttributeIntelligenceGain" "1" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
@@ -32,10 +33,10 @@
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
-	"AttackDamageMin" 			"9.5"
-	"AttackDamageMax" 			"16.5"
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"8"
 	"AttackRate"                "1.6"
 	"AttackRange"               "160"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 }

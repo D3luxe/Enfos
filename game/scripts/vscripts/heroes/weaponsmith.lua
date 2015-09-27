@@ -10,6 +10,7 @@ function ThunderMaul(keys)
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, stunArea, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 	local thisSpell = caster:GetAbilityByIndex(0)
 	local particle = ParticleManager:CreateParticle("particles/prototype_fx/item_linkens_buff_explosion.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+
 	caster:EmitSound("Hero_Sven.StormBolt")
 -- logic
 	for k,v in pairs(units) do
@@ -25,12 +26,15 @@ function ThunderMaul(keys)
 			thisSpell:ApplyDataDrivenModifier(caster, v, "modifier_weaponsmith_cambrinth_charge_thunder_maul_debuff", {})
 		end
 	end
+
+
 end
 
 function Forge(keys)
 -- vars
 	local caster = keys.caster
 	local damageBonus = keys.damage_bonus
+	local ability = keys.ability
 	if caster:HasModifier("modifier_weaponsmith_cambrinth_charge") then
 		damageBonus = damageBonus * 2
 	end
@@ -44,4 +48,10 @@ function Forge(keys)
 	caster.forge = caster.forge + damageBonus
 	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - strength)
 	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - strength)
+
+	if not caster:HasModifier("modifier_weaponsmith_forge_stack") then
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_weaponsmith_forge_stack", {})
+	end
+
+	caster:SetModifierStackCount("modifier_weaponsmith_forge_stack", caster, caster.forge)
 end	

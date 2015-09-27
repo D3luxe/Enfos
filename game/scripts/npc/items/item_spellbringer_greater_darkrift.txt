@@ -60,8 +60,7 @@
 		"model"						"models/heroes/nerubian_assassin/nerubian_assassin.vmdl"											
 		"model"						"models/heroes/life_stealer/life_stealer.vmdl"												
 		"model"						"models/heroes/death_prophet/death_prophet.vmdl"										
-		"model"						"models/heroes/doom/doom.vmdl"												
-		"model"						"models/creeps/neutral_creeps/n_creep_dragonspawn_a/n_creep_dragonspawn_a.vmdl"		
+		"model"						"models/heroes/doom/doom.vmdl"
 		"model"						"models/development/invisiblebox.vmdl"	
 	}
 	"OnSpellStart"

@@ -15,7 +15,7 @@
 	"Ability6"					"cabalist_throw_naptha"
 	"Ability5"					"enfos_attribute_bonus"
 	
-	"ArmorPhysical"				"1"
+	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 	"AttributeBaseStrength" 	"9"
 	"AttributeStrengthGain" 	"3"
@@ -25,15 +25,16 @@
 	"AttributeIntelligenceGain" "2" 
 	
 	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
 	"StatusMana"				"1"			
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
-	"AttackDamageMin" 			"9.5"
-	"AttackDamageMax" 			"18.5"
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"10"
 	"AttackRate"                "1.4"
 	"AttackRange"               "180"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
-	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	"AttackAcquisitionRange"	"180"									// Range within a target can be acquired.
 }

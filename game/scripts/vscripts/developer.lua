@@ -1,6 +1,4 @@
-CHEAT_CODES = {
-    ["extrabounty"] = function(args) CEnfosGameMode:ExtraBounty(args) end,                  -- "Speeds construction of buildings and units" 
-    ["sharebounty"] = function() CEnfosGameMode:SharedBounty() end,                  -- "Speeds construction of buildings and units"   
+CHEAT_CODES = {  
     ["commands"] = function() CEnfosGameMode:Commands() end,                  -- "Speeds construction of buildings and units"            
 }
 
@@ -19,8 +17,6 @@ function CEnfosGameMode:DeveloperMode(player)
 	local pID = player:GetPlayerID()
 	local hero = player:GetAssignedHero()
 
-	hero:SetGold(50000, false)
-	ModifyLumber(player, 500)
 
 	--[[local position = GameRules.StartingPositions[pID].position
 	dotacraft:SpawnTestUnits("orc_spirit_walker", 8, player, position + Vector(0,-600,0), false)
@@ -55,38 +51,9 @@ end
 function CEnfosGameMode:CommandTimeCheck(time)
     return time >= COMMAND_TIME
 end
-function CEnfosGameMode:ExtraBounty(level)
-    if self:CommandTimeCheck(GameRules:GetDOTATime(false, false)) then
-        GameRules:SendCustomMessage("Settings can only be changed in the first <font color='#2EFE2E'>"..COMMAND_TIME.."</font> seconds of the game! ", 0, 0)
-        return
-    end
-    if level == nil then
-        level = 0
-    end
-    local bountyLevel = tonumber(level)
-    print("Extra Bounty: "..bountyLevel)
-    if bountyLevel >= 2 and bountyLevel <= 5 then
-        GameRules.ExtraBounty = bountyLevel
-        GameRules:SendCustomMessage("You now get <font color='#2EFE2E'>"..bountyLevel.."</font> times the gold for each kill. ", 0, 0)
-    else
-        GameRules:SendCustomMessage("Extra bounty must be between <font color='#2EFE2E'>2</font> and <font color='#2EFE2E'>5</font> ", 0, 0)
-    end
-end
-
-function CEnfosGameMode:SharedBounty()
-    if self:CommandTimeCheck(GameRules:GetDOTATime(false, false)) then
-        GameRules:SendCustomMessage("Settings can only be changed in the first <font color='#2EFE2E'>"..COMMAND_TIME.."</font> seconds of the game! ", 0, 0)
-        return
-    end
-    GameRules.SharedBounty = not GameRules.SharedBounty
-
-    local message = GameRules.SharedBounty and "Bounty is now shared between team members!" or "Bounty is no longer shared between team members!"
-    GameRules:SendCustomMessage(message, 0, 0)
-end
 
 function CEnfosGameMode:Commands()
-    GameRules:SendCustomMessage(" <font color='#2EFE2E'>'extrabounty (2,5)'</font> - Multiples the bounty given by creeps.", 0, 0)
-    GameRules:SendCustomMessage(" <font color='#2EFE2E'>'sharebounty'</font> - Bounty is shared between teammates", 0, 0)
+
 end
 
 function CEnfosGameMode:CreateUnits(unitName, numUnits, bEnemy, pID)

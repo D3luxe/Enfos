@@ -69,6 +69,11 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 	local success = false
 	local gold = hero:GetGold()
 	local goldTarget = tonumber(_pnt)
+	if not GameRules.ItemSharing then
+		Notifications:Bottom(hero:GetPlayerID(), {text="Gold sharing is disabled!", duration=3, style={color="red", ["font-size"]="50px"}})
+		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", hero:GetPlayerOwner())
+		return false
+	end
 
 	if team == DOTA_TEAM_GOODGUYS then
 		nilCheck = GameRules.radiantPlayers[goldTarget]
