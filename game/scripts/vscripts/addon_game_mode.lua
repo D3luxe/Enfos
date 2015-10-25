@@ -420,6 +420,10 @@ heroTable = {
 				{	["name"]="npc_dota_hero_lion",
 					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_heavy",
+				},	
+				{	["name"]="npc_dota_hero_furion",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
 				}
 		}	
 

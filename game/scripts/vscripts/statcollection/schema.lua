@@ -73,7 +73,7 @@ function BuildPlayersArray()
                     player_deaths = hero:GetDeaths(),                                       -- Number of deaths of this players hero
                     player_last_hits = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),    -- Number of last hits of this players hero
                     player_healing = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),       -- How much health this player has healed
-                    player_gpm = PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID()),        -- Get player GPM
+                    player_gpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),        -- Get player GPM
                     item_list = GetItemList(hero)                                           -- Item list
                 })
             end
