@@ -43,7 +43,7 @@ function BuildGameArray()
     local game = {}
 
     -- Add game values here as game.someValue = GetSomeGameValue()
-    game.Round = Enfos.curRound
+    game.r = Enfos.curRound
 
     return game
 end
@@ -63,18 +63,18 @@ function BuildPlayersArray()
 
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
-                    hero_name = GetHeroName(playerID),
-                    hero_level = hero:GetLevel(),
-                    hero_networth = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),
-                    player_team = hero:GetTeam(),                                           -- Hero's team
-                    player_connection_status = PlayerResource:GetConnectionState(playerID), -- Player connection state at the end of the game
-                    player_kills = hero:GetKills(),                                         -- Number of kills of this players hero
-                    player_assists = hero:GetAssists(),                                     -- Number of assists of this players hero
-                    player_deaths = hero:GetDeaths(),                                       -- Number of deaths of this players hero
-                    player_last_hits = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),    -- Number of last hits of this players hero
-                    player_healing = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),       -- How much health this player has healed
-                    player_gpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),        -- Get player GPM
-                    item_list = GetItemList(hero)                                           -- Item list
+                    hn = GetHeroName(playerID),                                             -- name
+                    hl = hero:GetLevel(),                                                   -- level
+                    hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),      -- Networth
+                    pt = hero:GetTeam(),                                           -- Hero's team
+                    pcs = PlayerResource:GetConnectionState(playerID), -- Player connection state
+                    pk = hero:GetKills(),                                         -- Kills
+                    pa = hero:GetAssists(),                                     -- Assists
+                    pd = hero:GetDeaths(),                                       -- Deaths
+                    plh = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),    -- Last hits
+                    ph = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),       -- Healing
+                    pgpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),        -- GPM
+                    il = GetItemList(hero)                                           -- Item list
                 })
             end
         end
