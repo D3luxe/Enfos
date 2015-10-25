@@ -106,8 +106,29 @@ function ModelSwapStart( keys )
 	caster:SetOriginalModel(model)
 	caster:SetRangedProjectileName(projectile_model)
 
-	-- Sets the new attack type
+	-- Sets the new attack to ranged
 	caster:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
+
+	--Stores the old attack and armor types
+	if caster.armorType == nil then
+		caster.armorType = "modifier_armor_light"
+	end
+
+	if caster.attackType == nil then
+		caster.attackType = "modifier_attack_hero"
+	end
+	caster:RemoveModifierByName(caster.armorType)
+	caster:RemoveModifierByName(caster.attackType)
+	local armorType = CreateItem("item_armor_type_modifier", nil, nil) 
+	armorType:ApplyDataDrivenModifier(caster, caster, "modifier_armor_hero", {})
+	UTIL_RemoveImmediate(armorType)
+	armorType = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	attackItem:ApplyDataDrivenModifier(caster, caster, "modifier_attack_chaos", {})
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+
 end
 
 function ModelSwapEnd( keys )
@@ -118,6 +139,21 @@ function ModelSwapEnd( keys )
 	caster:SetAttackCapability(caster.caster_attack)
 	if caster:GetUnitName() == "npc_dota_hero_troll_warlord" then
 		caster:SetRangedProjectileName("particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf")
+	end
+
+	--Resets Faenrae's attack and armor types
+	if caster:GetUnitName() == "npc_dota_hero_terrorblade" then
+		caster:RemoveModifierByName("modifier_armor_hero")
+		caster:RemoveModifierByName("modifier_attack_chaos")
+		local armorType = CreateItem("item_armor_type_modifier", nil, nil) 
+		armorType:ApplyDataDrivenModifier(caster, caster, caster.armorType, {})
+		UTIL_RemoveImmediate(armorType)
+		armorType = nil
+
+		local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+		attackItem:ApplyDataDrivenModifier(caster, caster, caster.attackType, {})
+		UTIL_RemoveImmediate(attackItem)
+		attackItem = nil
 	end
 end
 

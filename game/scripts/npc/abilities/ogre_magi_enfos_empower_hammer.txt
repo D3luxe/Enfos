@@ -92,12 +92,12 @@
 		"02"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"radius"		"900"
+			"radius"		"200"
 		}	
 		"03"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"duration"		"1"
+			"duration"		"1.5"
 		}	
 	}
 }

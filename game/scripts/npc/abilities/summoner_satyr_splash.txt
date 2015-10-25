@@ -14,20 +14,38 @@
 			{
 				"CleaveAttack" //far
 				{
-					"CleavePercent"	"25"
+					"CleavePercent"	"%far"
 					"CleaveRadius"	"190"
 				}
 				"CleaveAttack" //medium
 				{
-					"CleavePercent"	"25"
+					"CleavePercent"	"%medium"
 					"CleaveRadius"	"140"
 				}
 				"CleaveAttack" //full
 				{
-					"CleavePercent"	"50"
+					"CleavePercent"	"%close"
 					"CleaveRadius"	"90"
 				}
 			}
 		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"far"				"20 21 22 24 26 29 33 39 45 55"
+		}	
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"medium"			"15 15 15 14 14 14 13 10 9 4"
+		}	
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"close"				"65 64 63 62 60 57 54 51 46 41"
+		}		
 	}
 }

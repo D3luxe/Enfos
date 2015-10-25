@@ -11,8 +11,7 @@
 	"Ability2"					"summoner_summon_satyr_rangers"
 	"Ability3"					"summoner_summon_darkrift"
 	"Ability4"					"summoner_flag_of_summoning"
-	"Ability6"					"summoner_anti_magic_shell"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"summoner_anti_magic_shell"
 	
 	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
@@ -35,7 +34,7 @@
 	"ProjectileSpeed"			"1300"									// Speed of projectile.
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"10"
-	"AttackRate"                "2"
+	"AttackRate"                "1.6"
 	"AttackRange"               "550"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.

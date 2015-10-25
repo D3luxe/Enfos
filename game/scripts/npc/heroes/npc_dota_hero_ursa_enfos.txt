@@ -13,8 +13,7 @@
 	"Ability2"					"generic_enfos_combat_mastery"				// Ability 2
 	"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
 	"Ability4"					"ursa_enfos_muses_inspiration"
-	"Ability6"					"ursa_enfos_chorus_of_madmen"				// Ability 7
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"10"									// Damage range max.
-	"AttackRate"				"1.5"									// Speed of attack.
+	"AttackRate"				"1.2"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"140"									// Range within a target can be attacked.

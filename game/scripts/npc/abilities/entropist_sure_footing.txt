@@ -10,6 +10,7 @@
 	"AbilityTextureName"			"earth_spirit_stone_caller"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AOERadius"						"%radius"
 	"Modifiers"
 	{

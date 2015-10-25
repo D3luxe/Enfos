@@ -1,0 +1,97 @@
+"warrior_mage_aether_lance"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"mirana_arrow"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"2"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_mirana.vsndevts"
+		"particle"			"particles/econ/items/mirana/mirana_crescent_arrow/mirana_spell_crescent_arrow.vpcf"
+	}
+	
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"900"
+	"AbilityCastPoint"				"0.45 0.45 0.45 0.45"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"27 24 21 18 15 12 9 6 3 0"
+	"AbilityDuration"				"0"
+
+	// Damage.
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityDamage"					"60 120 270 480 840 1500 2400 3600 6000 9000"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"80 95 110 125 140 155 170 185 200 215"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"proj_speed"		"800"
+		}
+		"02"
+		{
+			"var_type"					"FIELD_INTEGER"
+			"proj_distance"			"1100"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"LinearProjectile"
+		{
+			"Target"      "POINT"
+		    "EffectName"  "particles/econ/items/mirana/mirana_crescent_arrow/mirana_spell_crescent_arrow.vpcf"
+		    "MoveSpeed"   "%proj_speed"
+		    "StartRadius"   "70"
+		    "StartPosition" "attach_origin"
+		    "EndRadius"     "70"
+		    "FixedDistance" "%proj_distance"
+		    "TargetTeams"   "DOTA_UNIT_TARGET_TEAM_ENEMY"
+		    "TargetTypes"   "DOTA_UNIT_TARGET_BASIC"
+		    "TargetFlags"   "DOTA_UNIT_TARGET_FLAG_NONE"
+		    "HasFrontalCone"    "0"
+		    "ProvidesVision" "0"
+		}
+
+		"FireSound"
+		{
+			"EffectName"			"Hero_Mirana.ArrowCast"
+			"Target"				"CASTER"
+		}
+	}
+
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"0"
+		"Damage"
+		{
+			"Target"	"TARGET"
+			"Type"		"DAMAGE_TYPE_MAGICAL"
+			"Damage"	"%AbilityDamage"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Mirana.ArrowImpact"
+			"Target"				"TARGET"
+		}
+	}
+}

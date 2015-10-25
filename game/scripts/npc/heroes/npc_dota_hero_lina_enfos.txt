@@ -12,9 +12,8 @@
 	"Ability2"					"empath_transference"
 	"Ability3"					"empath_divine_protection"
 	"Ability4"					"empath_alchemy"
-	"Ability6"					"empath_vitality_healing"
-	"Ability5"					"enfos_attribute_bonus"
-	"Ability7"					"empath_nissas_binding"
+	"Ability5"					"empath_vitality_healing"
+	"Ability6"					"empath_nissas_binding"
 	
 	"ArmorPhysical"				"0"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified

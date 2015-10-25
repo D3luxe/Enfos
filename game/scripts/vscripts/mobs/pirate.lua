@@ -27,7 +27,7 @@ function PirateThink()
 		if units ~= nil then
 			if #units > 0 then
 				for i=1,#units do
-					if not units[i]:IsAttackImmune()
+					if not units[i]:IsAttackImmune() then
 						thisEntity:SetForceAttackTarget(units[i])
 						break
 					end

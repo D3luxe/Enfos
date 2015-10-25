@@ -8,7 +8,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.0"
-	"AbilityCastRange"				"1000"
+	"AbilityCastRange"				"800"
 	"AbilityCooldown"				"84 78 72 66 60 54 48 42 36 30"
 	"AbilityManaCost"				"130 117 104 91 78 65 52 39 26 13"
 	"RequiredLevel"					"6"

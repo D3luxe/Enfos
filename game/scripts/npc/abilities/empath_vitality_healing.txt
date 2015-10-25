@@ -12,8 +12,29 @@
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"25"
 	"AbilityManaCost"				"20"
+	"Innate"						"1"
+
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_dazzle.vsndevts"
+		"particle"			"particles/units/heroes/hero_oracle/oracle_purifyingflames_heal.vpcf"
+	}
+
+
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Dazzle.Shadow_Wave"
+			"Target" 		"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"		"empath_vitality_healing_effect"
+			"Target"		"CASTER"
+
+		}
+
 		"RunScript"
 		{
 			"ScriptFile"	"scripts/vscripts/heroes/empath.lua"
@@ -26,6 +47,16 @@
 		{
 			"Passive"           	"1"
 			"IsHidden"				"0"    
+		}
+		"empath_vitality_healing_effect"
+		{
+			"IsHidden"		"1"
+			"EffectName"        "particles/units/heroes/hero_oracle/oracle_purifyingflames_heal.vpcf"
+			"EffectAttachType"  "follow_origin"
+			"Duration"		"2"
+
+
+
 		}
 	}
 }

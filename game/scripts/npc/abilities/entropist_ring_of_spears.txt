@@ -11,8 +11,8 @@
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCastRange"				"700" //Verified
-	"AbilityCooldown"				"80 75 70 65 60 55 50 45 40 35"
-	"AbilityManaCost"				"200 230 260 290 320 350 380 410 440 470"
+	"AbilityCooldown"				"110 105 100 95 90 85 80 75 70 65"
+	"AbilityManaCost"				"250 300 350 400 450 500 550 600 650 700"
 	"AOERadius"						"%radius"
 	"Precache"
 	{
@@ -43,7 +43,17 @@
 					"Type"			"DAMAGE_TYPE_MAGICAL"
 					"Damage"		"%damage"
 				}
+				"Knockback"
+				{
+					"Target"	"TARGET"
+					"Center"	"CASTER"
+					"Distance"	"0"
+					"Duration"	"0.5"
+					"Height"	"%knockback_height"
+					"IsFixedDistance"	"1"
+				}
 			}
+			
 		}
 		"RunScript"
 		{
@@ -72,17 +82,22 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage"				"1000 2250 3812 5765 8207 11258 15073 19841 25802 33252"
+			"damage"				"1000 3000 6000 10000 15000 21000 28000 36000 45000 55000"
 		}			
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"duration"				"15 15.9 16.8 17.8 18.9 20 21.3 22.5 23.9 25"
+			"duration"				"11 12 13 14 15 16 17 18 19 20"
 		}			
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"radius"				"800"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"knockback_height"				"100 150 200 250 300 350 400 450 500 550"
 		}
 	}
 }

@@ -13,8 +13,7 @@
 	"Ability2"					"obsidian_destroyer_enfos_slow"
 	"Ability3"					"obsidian_destroyer_enfos_slow_aura"
 	"Ability4"					"obsidian_destroyer_enfos_time_lapse"
-	"Ability6"					"obsidian_destroyer_enfos_teleport"
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"					"obsidian_destroyer_enfos_teleport"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,11 +24,11 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"10"									// Damage range max.
-	"AttackRate"				"1.5"									// Speed of attack.
+	"AttackRate"				"1.2"									// Speed of attack.
 	"AttackAnimationPoint"		"0.46"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 	"AttackRange"				"550"									// Range within a target can be attacked.
-	"ProjectileSpeed"			"900"									// Speed of projectile.
+	"ProjectileSpeed"			"1300"									// Speed of projectile.
 
 	// Attributes
 	//-------------------------------------------------------------------------------------------------------------

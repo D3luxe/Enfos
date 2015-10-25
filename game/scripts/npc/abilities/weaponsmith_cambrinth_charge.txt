@@ -10,8 +10,9 @@
 	"AbilityTextureName"			"omniknight_repel"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"0"
+	"AbilityCooldown"				"10"
 	"AbilityManaCost"				"7"
 	"AbilityChannelTime"			"3.0"
 	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
@@ -98,12 +99,41 @@
 					"Target" 			"TARGET"
 					"ModifierName"		"modifier_weaponsmith_charge_fx"
 				}
+				"ApplyModifier"
+				{
+					"Target" 			"CASTER"
+					"ModifierName"		"modifier_weaponsmith_cambrinth_charge_linger"
+				}
 				"RemoveModifier"
 				{
 					"Target"		"CASTER"
 					"ModifierName"	"modifier_weaponsmith_cambrinth_charge"
 				}
 
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/weaponsmith.lua"
+					"Function"				"EndCD"
+				}
+
+			}
+		}
+
+		"modifier_weaponsmith_cambrinth_charge_linger"
+		{
+			"Duration"				"3"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //the website does not say the damage increase anywhere so this is a guess.
+			}
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"		"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+					"EffectAttachType"	"attach_attack1"
+					"Target"			"CASTER"
+				}
 			}
 		}
 		"modifier_weaponsmith_charge_fx"
@@ -129,20 +159,10 @@
 			"IsPurgable" "0"
 			"OnAttackLanded"
 			{
-				"CleaveAttack" //far
-				{
-					"CleavePercent"	"25"
-					"CleaveRadius"	"286"
-				}
-				"CleaveAttack" //medium
-				{
-					"CleavePercent"	"25"
-					"CleaveRadius"	"198"
-				}
 				"CleaveAttack" //full
 				{
-					"CleavePercent"	"50"
-					"CleaveRadius"	"137"
+					"CleavePercent"	"100"
+					"CleaveRadius"	"175"
 				}
 			}
 		}

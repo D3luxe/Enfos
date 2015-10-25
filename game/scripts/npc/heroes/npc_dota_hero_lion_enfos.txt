@@ -1,0 +1,40 @@
+//=================================================================================================================
+// HERO: Lion: Warrior Mage
+//=================================================================================================================
+"npc_dota_hero_lion_enfos"
+{
+	"override_hero"				"npc_dota_hero_lion"
+	"Role"						"Nuker" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"warrior_mage_aether_lance"
+	"Ability2"					"generic_ethereal_shield"
+	"Ability3"					"warrior_mage_fortress_of_ice"
+	"Ability4"					"warrior_mage_fire_rain"
+	"Ability5"					"warrior_mage_tingle"
+	
+	"ArmorPhysical"				"3"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"		
+	"AttributeBaseStrength" 	"9"
+	"AttributeStrengthGain" 	"3"
+	"AttributeBaseAgility" 		"3" 
+	"AttributeAgilityGain" 		"1"
+	"AttributeBaseIntelligence" "6" 
+	"AttributeIntelligenceGain" "2" 
+	
+	"MovementSpeed"				"350"
+	"MovementTurnRate"			"0.6"									// Turning rate.
+	
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+		
+
+	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+	"ProjectileModel"			"particles/units/heroes/hero_lion/lion_base_attack.vpcf"			// Particle system model for projectile.
+	"AttackDamageMin" 			"3"
+	"AttackDamageMax" 			"10"
+	"AttackRate"                "1.4"
+	"AttackRange"               "180"
+	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
+	"AttackAcquisitionRange"	"300"									// Range within a target can be acquired.
+}

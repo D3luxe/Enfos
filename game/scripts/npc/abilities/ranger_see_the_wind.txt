@@ -1,0 +1,120 @@
+"ranger_see_the_wind"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"drow_ranger_marksmanship"
+	"MaxLevel"						"10"
+	"RequiredLevel"				"6"
+	"LevelsBetweenUpgrades"		"3"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_phantom_assassin.vsndevts"
+		"particle"			"particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+	}
+	"OnUpgrade"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_ranger_see_the_wind"
+			"Target"					"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_ranger_see_the_wind"
+			"Target"					"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_ranger_see_the_wind"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"IsPurgable"	"0"
+			"OnAttackStart"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_ranger_see_the_wind_crit"
+					"Target"			"CASTER"	
+				}
+				"Random"
+				{
+					"Chance" "%crit_chance"
+					"PseudoRandom" "DOTA_PSEUDO_RANDOM_PHANTOMASSASSIN_CRIT"
+					"OnSuccess"
+					{
+						"ApplyModifier"
+						{
+							"ModifierName" "modifier_ranger_see_the_wind_crit"
+							"Target"	   "CASTER"	
+						}	
+							
+					}
+				}
+			}
+		}
+
+		"modifier_ranger_see_the_wind_crit"
+		{
+			"IsHidden"	"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE" 			"%crit_bonus"
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" 	"%damage_bonus"
+			}
+			
+			"OnAttackLanded"
+			{
+				"FireEffect"
+				{
+					"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
+					"EffectAttachType"	"start_at_customorigin"
+					
+					"ControlPointEntities"
+					{
+						"TARGET"	"follow_origin"
+						"TARGET"	"follow_origin"
+					}
+				}	
+				"FireSound"
+				{
+					"EffectName"	"Hero_PhantomAssassin.CoupDeGrace"
+					"Target"		"TARGET"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_ranger_see_the_wind_crit"
+					"Target"			"CASTER"	
+				}
+			}
+		}
+	}
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"crit_chance"				"16 17 18 19 20 21 22 23 24 25"
+
+		}
+		"02"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"crit_bonus"				"110 111 112 113 114 115 116 117 118 119 120"
+		}
+		"03"
+		{
+			"var_type"					"FIELD_FLOAT"
+			"damage_bonus"				"50 75 113 169 253 380 570 854 1281 1922"
+		}
+	}
+}

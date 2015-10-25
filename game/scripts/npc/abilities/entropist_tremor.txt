@@ -32,7 +32,7 @@
 			"Function"				"Tremor"
 			"Target"				"POINT"
 			"radius"				"%radius"
-			"slow"				"%slow"
+			"slow"					"%slow"
 		}
 	}
 	

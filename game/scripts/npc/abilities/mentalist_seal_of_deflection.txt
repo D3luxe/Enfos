@@ -8,8 +8,8 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"5"
-	"AbilityManaCost"				"10"
+	"AbilityCooldown"				"10"
+	"AbilityManaCost"				"5"
 	"Precache"
 	{
 		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_medusa.vsndevts"

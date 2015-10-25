@@ -5,7 +5,7 @@
 {
 	"BaseClass"						"ability_datadriven"
 	"AbilityTextureName"			"storm_spirit_electric_vortex"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
 	"MaxLevel"						"10"
@@ -13,6 +13,12 @@
 	"AbilityCastRange"				"900" // cast range not provided on website. this one FAQ says "casting range is pretty long"
 	"AbilityCooldown"				"40 36 32 28 24 20 16 12 8 4"
 	"AbilityManaCost"				"5 10 15 20 25 30 35 40 45 50"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityModifierSupportValue"	"0.3"	// Easy to spam 
+
+	
 	"Precache"
 	{
 		"particle_folder"			"particles/items2_fx/"
@@ -20,6 +26,11 @@
 	}
 	"OnSpellStart"
 	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lich.FrostArmor"
+			"Target"		"TARGET"
+		}
 		"ApplyModifier"
 		{
 			"ModifierName"			"modifier_ethereal_shield_buff"
@@ -58,9 +69,11 @@
 		{
 			"Duration"				"15"
 			"IsDebuff"				"1"
+
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
 			}
 			"OnCreated"
 			{
@@ -72,6 +85,30 @@
 				}
 			}
 		}
+		"modifier_frost_armor_autocast_aura"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+
+			"Aura" 				"modifier_frost_armor_autocast_attacked"
+			"Aura_Radius" 		"%autocast_radius"
+			"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types" 		"DOTA_UNIT_TARGET_HERO"
+		}
+
+		"modifier_frost_armor_autocast_attacked"
+		{
+			"IsHidden"	"1"
+			"OnAttacked"
+			{
+				"RunScript"
+			    {
+			        "ScriptFile"    "heroes/generic.lua"
+			        "Function"      "EtherealShieldAutocast"
+			    }
+			}
+		}
+
 	}
 	"AbilitySpecial"
 	{
@@ -88,7 +125,19 @@
 		"03"
 		{	
 			"var_type"				"FIELD_INTEGER"
-			"attack_speed_slow"		"-50"  //this is a complete guess.
+			"attack_speed_slow"		"-25"  //this is a complete guess.
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_movement_speed"	"-50"
+		}
+
+		// Extra values to control the Autocast AI
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"autocast_radius"		"1100"
 		}
 	}
 }		

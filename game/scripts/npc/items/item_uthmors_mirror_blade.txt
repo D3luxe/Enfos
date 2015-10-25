@@ -52,6 +52,7 @@
 
 		"uthmors_mirror_blade_crit"
 		{
+			"IsHidden"		"1"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"

@@ -12,8 +12,8 @@
 	"LevelsBetweenUpgrades"			"3"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCastRange"				"600" // don't know if I actually have the right value
-	"AbilityCooldown"				"35 33 32 30 29 27 26 25 23 22"
+	"AbilityCastRange"				"900" 
+	"AbilityCooldown"				"35 33.6 32.2 30.8 29.4 28 26.6 25.2 23.8 22.4"
 	"AbilityManaCost"				"150 180 216 259 311 373 447 537 644 773"
 	"Precache"
 	{

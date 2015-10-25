@@ -9,6 +9,7 @@
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"tiny_craggy_exterior"
 	"MaxLevel"					"1"
+	"Innate"						"1"
 
 
 	"Modifiers"
@@ -43,7 +44,12 @@
 		{
 			"var_type"		"FIELD_INTEGER"
 			"chance"		"3"
-		}	
+		}
+		"02"
+		{
+			"var_type"		"FIELD_INTEGER"
+			"mana_cost"		"20"
+		}
 	}
 
 	

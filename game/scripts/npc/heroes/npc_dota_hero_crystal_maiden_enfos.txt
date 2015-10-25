@@ -11,8 +11,7 @@
 	"Ability2"					"generic_ethereal_shield"
 	"Ability3"					"arcane_mistress_frostbite"
 	"Ability4"					"arcane_mistress_hailstorm"
-	"Ability6"					"arcane_mistress_targeted_magic"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"arcane_mistress_targeted_magic"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
@@ -34,7 +33,7 @@
 	"ProjectileModel"			"particles/units/heroes/hero_crystalmaiden/maiden_base_attack.vpcf"			// Particle system model for projectile.
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"10"
-	"AttackRate"                "1.65"
+	"AttackRate"                "1.32"
 	"AttackRange"               "450"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"450"									// Range within a target can be acquired.

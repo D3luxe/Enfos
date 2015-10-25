@@ -12,8 +12,7 @@
 	"Ability2"					"generic_enfos_combat_mastery"
 	"Ability3"					"faenrae_champion_word_of_chaos"
 	"Ability4"					"faenrae_champion_inner_chaos"
-	"Ability6"					"faenrae_champion_faenrae_blood"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"faenrae_champion_faenrae_blood"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
@@ -35,7 +34,7 @@
 	"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"10"
-	"AttackRate"                "1.6"
+	"AttackRate"                "1.28"
 	"AttackRange"               "180"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.

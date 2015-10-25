@@ -15,6 +15,7 @@
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_PURE"
 	"AbilityTextureName"			"bane_nightmare"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------

@@ -8,8 +8,8 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
-	"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+	"AbilityCooldown"				"40 38 36 34 32 30 28 26 24 22"
+	"AbilityManaCost"				"35 41 47 53 59 65 71 77 83 89"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_vengeful/"
@@ -63,7 +63,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage"				"39 44 48 52 56 60 63 66 68 71"
+			"damage"				"34 39 44 49 53 57 60 63 66 69"
 		}			
 		"02"
 		{

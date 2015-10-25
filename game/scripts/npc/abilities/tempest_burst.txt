@@ -10,7 +10,7 @@
 	"RequiredLevel"					"6"
 	"LevelsBetweenUpgrades"			"3"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"45 42 39 36 33 30 27 24 21 18"
+	"AbilityCooldown"				"50 49 48 47 46 45 44 43 42 41"
 	"AbilityManaCost"				"80 88 96 106 117 128 141 155 171 188"
 	"AbilityCastRange"				"800"
 	"Precache"
@@ -31,7 +31,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"radius"			"240 250 260 270 280 290 300 310 320 330"
+			"radius"			"290 305 320 335 350 365 380 395 410 425"
 		}
 		"02"
 		{
@@ -41,7 +41,7 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage_per_second"				"80 150 300 500 780 1150 1600 2200 3000 3900"
+			"damage_per_second"				"60 140 260 420 620 860 1140 1460 1820 2220"
 		}
 	}	
 }

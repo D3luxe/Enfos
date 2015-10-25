@@ -112,7 +112,7 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_speed"			"10 16 22 28 34 40 46 52 58 64"
+			"bonus_speed"			"10 16 22 28 34 40 46 52 58 65"
 		}
 		"03"
 		{

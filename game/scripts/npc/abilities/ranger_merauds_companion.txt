@@ -1,0 +1,71 @@
+//=================================================================================================================
+// Summoner: Summon Satyr Rangers
+//=================================================================================================================
+"ranger_merauds_companion"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"lycan_summon_wolves"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"		"5"
+	"RequiredLevel"			"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"30"
+	"AbilityManaCost"				"60 72 84 96 108 120 132 144 156 168"
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_lycan.vsndevts"
+		"particle"		"particles/units/heroes/hero_lycan/lycan_summon_wolves_cast.vpcf"			
+	}
+	"OnSpellStart"
+	{
+		"FireSound"
+		{
+			"EffectName"	"Hero_Lycan.SummonWolves"
+			"Target"		"CASTER"
+		}
+		"SpawnUnit"
+		{
+			"Target"				"CASTER"
+			"UnitName"				"npc_merauds_companion"
+			"UnitCount"				"%unit_count"
+			"UnitLimit"				"100"
+			"SpawnRadius"			"200"
+			"Duration"				"%duration"
+			"GrantsGold"			"false"
+			"GrantsXP"				"false"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/ranger.lua"
+			"Function"				"SummonMeraudsCompanion"
+			"damage"				"%damage"
+			"health"				"%health"
+		}
+	}
+	"AbilitySpecial"
+	{			
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"150 150 450 450 1350 1350 4050 4050 8000 8000"
+		}		
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health"				"2000 2000 6000 6000 18000 180100 54000 54000 162000 162000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"unit_count"			"1 2 1 2 1 2 1 2 1 2"
+		}
+	}	
+}

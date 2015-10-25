@@ -11,8 +11,7 @@
 	"Ability2"					"oak_poison_gas"
 	"Ability3"					"oak_backfire_aura"
 	"Ability4"					"oak_rootage_trap"
-	"Ability6"					"oak_barkskin"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"oak_barkskin"
 	
 	"ArmorPhysical"				"5"
 	
@@ -26,7 +25,7 @@
 	
 	"MovementSpeed"				"350"
 	"MovementTurnRate"			"0.6"									// Turning rate.
-	"AttackRate"                "1.5"
+	"AttackRate"                "1.2"
 	"AttackRange"               "100"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"

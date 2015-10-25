@@ -1,0 +1,36 @@
+//=================================================================================================================
+// HERO: Ranger (Drow)
+//=================================================================================================================
+"npc_dota_hero_ranger_enfos"
+{
+	"override_hero"				"npc_dota_hero_drow_ranger"
+	"Role"						"Disabler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+	"Rolelevels"				"1"
+	"AbilityLayout"				"5"
+	"Ability1"					"ranger_haraweps_bonds"
+	"Ability2"					"ranger_nature_lore"
+	"Ability3"					"ranger_see_the_wind"
+	"Ability4"					"ranger_merauds_companion"
+	"Ability5"					"ranger_favored_enemy"
+	
+	"ArmorPhysical"				"0"
+	"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
+	
+	"AttributeBaseStrength" 	"4"
+	"AttributeStrengthGain" 	"1.5"
+	"AttributeBaseAgility" 		"11" 
+	"AttributeAgilityGain" 		"3.5"
+	"AttributeBaseIntelligence" "3" 
+	"AttributeIntelligenceGain" "1" 
+	
+	"MovementSpeed"				"350"
+	"MovementTurnRate"			"2.0"									// Turning rate.
+	"AttackRate"                "2.46"
+	"AttackRange"               "1400"
+	"AttackAcquisitionRange"	"1400"	
+	"ProjectileSpeed"			"3000"									// Speed of projectile.
+	"StatusHealth"				"10"
+	"StatusMana"				"1"
+	"AttackDamageMin" 			"7"
+	"AttackDamageMax" 			"17"
+}

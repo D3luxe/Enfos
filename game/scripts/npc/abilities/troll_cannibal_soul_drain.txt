@@ -13,6 +13,7 @@
 	"AbilityManaCost"				"40"
 	"AbilityCastRange"				"200"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityChannelTime"			"7"
 	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
 	"precache"
@@ -22,10 +23,16 @@
 	}
 	"OnSpellStart"
 	{
-		"ApplyModifier"
+		//"ApplyModifier"
+		//{
+		//	"ModifierName"			"modifier_soul_drain"
+		//	"Target"				"CASTER"
+		//}
+		"RunScript"
 		{
-			"ModifierName"			"modifier_soul_drain"
-			"Target"				"CASTER"
+			"ScriptFile"			"scripts/vscripts/heroes/troll_cannibal.lua"
+			"Function"				"soul_drain_start"
+			"manacost"				"%AbilityManaCost"
 		}
 		"FireSound"
 		{

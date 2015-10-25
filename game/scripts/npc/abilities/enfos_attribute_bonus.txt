@@ -3,21 +3,18 @@
 //=================================================================================================================
 "enfos_attribute_bonus"
 {
-	// General
-	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"attribute_bonus"
-	"AbilityType"					"DOTA_ABILITY_TYPE_ATTRIBUTES"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"MaxLevel"						"100"
-	
-	// Special
-	//-------------------------------------------------------------------------------------------------------------
-	"AbilitySpecial"
-	{
-		"01"
-		{
-			"var_type"						"FIELD_FLOAT"
-			"attribute_bonus_per_level"		"4.0"
-		}
-	}
+	"BaseClass"                     "ability_lua"
+    "ScriptFile"                    "abilities/attribute.lua"
+    "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "MaxLevel"  "100"
+    "LevelsBetweenUpgrades" "1"
+    "AbilitySpecial"
+    {
+        "01"
+        {
+            "var_type"                      "FIELD_FLOAT"
+            "attribute_bonus_per_level"     "0"
+        }
+    }
 }

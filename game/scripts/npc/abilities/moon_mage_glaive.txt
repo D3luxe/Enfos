@@ -8,6 +8,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	"BaseClass"						"luna_moon_glaive"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 
 	
 	// Special

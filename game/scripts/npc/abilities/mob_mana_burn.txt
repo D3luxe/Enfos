@@ -2,12 +2,12 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"necronomicon_archer_mana_burn"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
+	"BaseClass"						"ability_datadriven"														// unique ID number for this ability.  Do not change this once established or it will invalidate collected stats.
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"	
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
-	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"		
+	"AbilityTextureName"			"nyx_assassin_mana_burn"	
 			
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
@@ -30,6 +30,22 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"burn_amount"			"100"
+		}
+	}
+
+	// Data drive
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"particle"					"particles/units/heroes/hero_nyx_assassin/nyx_assassin_mana_burn_msg.vpcf"
+	}
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/mobs/fendryad.lua"
+			"Function"				"mana_burn_function"
 		}
 	}
 }

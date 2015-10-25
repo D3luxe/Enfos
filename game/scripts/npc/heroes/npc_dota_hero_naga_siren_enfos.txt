@@ -12,8 +12,7 @@
 	"Ability2"					"cleric_murrulas_flame"
 	"Ability3"					"cleric_shield_of_light"
 	"Ability4"					"cleric_aesrela_everild"
-	"Ability6"					"cleric_bless_soul"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"cleric_bless_soul"
 	
 	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
@@ -35,7 +34,7 @@
 	"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"8"
-	"AttackRate"                "1.6"
+	"AttackRate"                "1.28"
 	"AttackRange"               "160"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.

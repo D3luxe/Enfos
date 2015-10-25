@@ -13,8 +13,7 @@
 	"Ability2"					"warlock_enfos_disrupt"					// Ability 2
 	"Ability3"					"warlock_enfos_spellcurse"						// Ability 3
 	"Ability4"					"warlock_enfos_energy_flare"					// Ability 4
-	"Ability6"					"warlock_enfos_deflection"					// Ability 5
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"					"warlock_enfos_deflection"					// Ability 5
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,11 +24,12 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin"			"6"									// Damage range min.
 	"AttackDamageMax"			"20"									// Damage range max.
-	"AttackRate"				"1.6"									// Speed of attack.
+	"AttackRate"				"1.28"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"700"									// Range within a target can be acquired.
 	"AttackRange"				"700"									// Range within a target can be attacked.
 	"AttackDamageType"			"DAMAGE_TYPE_ArmorPhysical"
+	"ProjectileSpeed"			"1500"
 
 	// Attributes
 	//-------------------------------------------------------------------------------------------------------------

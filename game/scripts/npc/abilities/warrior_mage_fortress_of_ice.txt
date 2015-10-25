@@ -1,0 +1,86 @@
+//=================================================================================================================
+// Warrior Mage: Fortress of Ice
+//=================================================================================================================
+"warrior_mage_fortress_of_ice"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"polar_furbolg_ursa_warrior_thunder_clap"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"80 76 72 68 84 60 56 52 48"
+	"AbilityManaCost"				"100 115 130 145 160 175 190 205 220"
+
+	"precache"
+	{
+		"soundfile"				"soundevents/game_sounds_heroes/game_sounds_crystalmaiden.vsndevts"
+		"particle"				"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+		"particle"				"particles/generic_gameplay/generic_slowed_cold.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"SpawnUnit"	
+		{
+			"Target"				"POINT"
+			"UnitName"				"npc_fortress_of_ice"
+			"UnitCount"				"1"
+			"UnitLimit"				"100"
+			"SpawnRadius"			"5"
+			"Duration"				"%duration"
+			"GrantsGold"			"false"
+			"GrantsXP"				"false"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
+			"Function"				"FortressOfIce"
+			"armour"				"%armour"
+			"health"				"%health"
+		}
+
+		"FireEffect"
+		{
+			"TargetPoint"			"POINT"
+			"EffectName"			"particles/units/heroes/hero_crystalmaiden/maiden_crystal_nova.vpcf"
+			"EffectAttachType"		"world_origin"
+			"ControlPoints"
+			{
+				"01"				"25 2 50"
+			}
+		}
+
+		"FireSound"
+		{
+			"EffectName"			"Hero_Crystal.CrystalNova"
+			"Target"				"CASTER"
+		}
+	}
+
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"armour"				"180"
+		}			
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"health"				"50000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"30"
+		}	
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"800"
+		}	
+	}	
+}	

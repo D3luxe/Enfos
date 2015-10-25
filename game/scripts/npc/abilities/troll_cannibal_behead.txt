@@ -8,12 +8,26 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
+	"OnUpgrade"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_behead_buff"
+			"Target"					"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_behead_buff"
+			"Target"					"CASTER"
+		}
+	}
 	"Modifiers"
 	{
 		"modifier_behead_buff"
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
+			"IsPurgable"	"0"
 			"OnAttackStart"
 			{
 				"Random"

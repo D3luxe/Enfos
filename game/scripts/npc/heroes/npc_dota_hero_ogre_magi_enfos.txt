@@ -16,8 +16,7 @@
 	"Ability2"					"generic_enfos_combat_mastery"
 	"Ability3"					"ogre_magi_enfos_empower_axe"
 	"Ability4"					"ogre_magi_enfos_empower_bracers"
-	"Ability6"					"generic_enfos_empower_armor"
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"					"generic_enfos_empower_armor"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -28,7 +27,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"10"									// Damage range max.
-	"AttackRate"				"1.35"									// Speed of attack.
+	"AttackRate"				"1.08"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"150"									// Range within a target can be attacked.
@@ -41,7 +40,7 @@
 	"AttributeBaseAgility"			"6"									// Base agility
 	"AttributeAgilityGain"			"1.7"									// Agility bonus per level.
 	"AttributeBaseIntelligence"		"3"									// Base intelligence
-	"AttributeIntelligenceGain"		"1"									// Intelligence bonus per level.
+	"AttributeIntelligenceGain"		"1.5"									// Intelligence bonus per level.
 
 	// Movement
 	//-------------------------------------------------------------------------------------------------------------

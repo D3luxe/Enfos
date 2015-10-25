@@ -5,7 +5,7 @@
 {										
 	// General
 	//----------------------------------------------------------------
-	"Model"						"models/creeps/neutral_creeps/n_creep_vulture_b/n_creep_vulture_b.vmdl"	// Model.
+	"Model"						"models/creeps/neutral_creeps/n_creep_forest_trolls/n_creep_forest_troll_berserker.vmdl"	// Model.
 	"BaseClass"					"npc_dota_creature"
 	"SoundSet"					"n_creep_Melee"
 	"Level"						"1"
@@ -71,7 +71,7 @@
 	"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 	"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_DEFAULT"
 
-	"vscript"				"swamp_troll.lua"
+	"vscripts"				"mobs/swamp_troll.lua"
 
 	// Creature Data
 	//----------------------------------------------------------------------------------------------------------------------

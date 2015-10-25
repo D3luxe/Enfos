@@ -26,9 +26,18 @@
 	"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
 	"AbilityCastRange"				"99999"
 	
+	"Precache"
+	{
+		"particle"	"particles/items2_fx/rod_of_atos.vpcf"
+	}
+	
 	"OnSpellStart"
 	{
-		
+		"FireSound"
+		{
+			"EffectName"		"DOTA_Item.RodOfAtos.Activate"
+			"Target"			"TARGET"
+		}
 		"ApplyModifier"
 		{
 			"Target"	   "TARGET"	
@@ -41,13 +50,16 @@
 	{
 		"modifier_slow"
 		{
-			 "Duration" "%duration"
+			"Duration" "%duration"
 			 
-			 "Properties" 
-			 {
+			"EffectName"			"particles/items2_fx/rod_of_atos.vpcf"
+			"EffectAttachType"		"follow_origin"
+
+			"Properties" 
+			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT" 	"%attack_speed"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%move_speed"
-			 }
+			}
 		}		
 	}
 	

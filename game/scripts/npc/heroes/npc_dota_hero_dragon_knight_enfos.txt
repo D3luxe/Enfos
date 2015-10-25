@@ -16,8 +16,7 @@
 	"Ability2"				"omniknight_enfos_sentinels_resolve"
 	"Ability3"				"omniknight_enfos_tipping_the_scales"
 	"Ability4"				"omniknight_enfos_heroic_strength"
-	"Ability6"				"generic_enfos_trothgangs_rally"
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"				"generic_enfos_trothgangs_rally"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -27,8 +26,8 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
-	"AttackDamageMax"			"11"									// Damage range max.
-	"AttackRate"				"1.8"									// Speed of attack.
+	"AttackDamageMax"			"10"									// Damage range max.
+	"AttackRate"				"1.44"									// Speed of attack.
 	"AttackAnimationPoint"		"0.433"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"150"									// Range within a target can be attacked.

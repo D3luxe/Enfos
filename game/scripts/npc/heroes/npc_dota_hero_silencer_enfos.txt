@@ -11,8 +11,7 @@
 	"Ability2"					"mentalist_seal_of_deflection"
 	"Ability3"					"mentalist_moonblade"
 	"Ability4"					"mentalist_aura_sight"
-	"Ability6"					"generic_focus_moonbeam"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"generic_focus_moonbeam"
 	
 	"ArmorPhysical"				"3"
 
@@ -26,7 +25,7 @@
 	
 	"MovementSpeed"				"350"
 	"MovementTurnRate"			"0.6"									// Turning rate.
-	"AttackRate"                "1.65"
+	"AttackRate"                "1.32"
 	"AttackRange"               "160"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"

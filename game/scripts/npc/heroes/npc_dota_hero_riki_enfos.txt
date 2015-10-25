@@ -11,8 +11,7 @@
 	"Ability2"					"generic_enfos_evasion_mastery"
 	"Ability3"					"thief_khri_silence"
 	"Ability4"					"thief_venom"
-	"Ability6"					"thief_sleight_of_hand"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"thief_sleight_of_hand"
 	
 	"ArmorPhysical"				"3"
 	
@@ -26,7 +25,7 @@
 	
 	"MovementSpeed"				"350"
 	"MovementTurnRate"			"0.6"									// Turning rate.
-	"AttackRate"                "2.6"
+	"AttackRate"                "2.08"
 	"AttackRange"               "180"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"

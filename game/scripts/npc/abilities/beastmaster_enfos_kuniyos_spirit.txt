@@ -10,6 +10,7 @@
 	"AbilityTextureName" 			"beastmaster_primal_roar"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 	"MaxLevel"						"1"
+	"Innate"						"1"
 		
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
@@ -23,7 +24,7 @@
 	
 	// Cost
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityManaCost"				"0"
+	"AbilityManaCost"				"15"
 	
 	"OnSpellStart"
 	{

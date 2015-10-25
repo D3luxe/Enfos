@@ -11,8 +11,7 @@
 	"Ability2"					"hypnotist_hallucination"
 	"Ability3"					"hypnotist_mind_shout"
 	"Ability4"					"hypnotist_telekinetic_storm"
-	"Ability6"					"generic_focus_moonbeam"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"generic_focus_moonbeam"
 	
 	"ArmorPhysical"				"3"
 	
@@ -26,12 +25,12 @@
 	
 	"MovementSpeed"				"350"
 	"MovementTurnRate"			"2.0"									// Turning rate.
-	"AttackRate"                "1.25"
+	"AttackRate"                "1"
 	"AttackRange"               "300"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"2"
-	"AttackDamageMax" 			"7" 
+	"AttackDamageMin" 			"1"
+	"AttackDamageMax" 			"6" 
 	"AttackAcquisitionRange"	"300"
 
 

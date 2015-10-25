@@ -11,8 +11,7 @@
 	"Ability2"					"revenant_deathwave"
 	"Ability3"					"revenant_corpse_explosion"
 	"Ability4"					"revenant_spiritual_swarm"
-	"Ability6"					"revenant_haunting_spirit"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"revenant_haunting_spirit"
 	
 	"ArmorPhysical"				"3"
 	
@@ -26,12 +25,12 @@
 	
 	"MovementSpeed"				"350"
 	"MovementTurnRate"			"0.6"									// Turning rate.
-	"AttackRate"                "1.8"
+	"AttackRate"                "1.44"
 	"AttackRange"               "550"
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
 	"AttackDamageMin"			"3"									// Damage range min.
-	"AttackDamageMax"			"9"									// Damage range max.
+	"AttackDamageMax"			"8"									// Damage range max.
 	"ProjectileSpeed"			"1200"										// Speed of projectile.
 	"AttackAcquisitionRange"	"550"
 }

@@ -51,7 +51,7 @@
 		}
 		"modifier_entropist_tremor_slow"
 		{
-			"Duration"				"%duration"
+			"Duration"				"2"
 			"IsDebuff"				"1"
 			"Properties"
 			{

@@ -10,7 +10,7 @@
 	"RequiredLevel"					"10"
 	"LevelsBetweenUpgrades"			"5"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"70 68 66 64 62 60 58 56 54"
+	"AbilityCooldown"				"70 68 66 64 62 60 58 56 54 52"
 	"AbilityManaCost"				"20"
 	"Precache"
 	{
@@ -65,7 +65,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"mana_regen"			"80 124 190 280 425 600 850 1200 1650"
+			"mana_regen"			"80 124 190 280 425 600 850 1200 1650 2255"
 		}
 		"02"
 		{

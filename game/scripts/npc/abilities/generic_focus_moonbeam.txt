@@ -7,6 +7,7 @@
 	"AbilityTextureName"			"luna_lucent_beam"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"30.0"
 	"AbilityManaCost"				"50"

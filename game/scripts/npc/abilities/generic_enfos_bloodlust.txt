@@ -9,6 +9,7 @@
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"ogre_magi_bloodlust"
 	"MaxLevel"					"1"
+	"Innate"						"1"
 	
 	
 	// Time		
@@ -21,14 +22,14 @@
 	{
 		"ApplyModifier"
 		{
-			"ModifierName" "bloodlust"
+			"ModifierName" "modifier_bloodlust"
 			"Target"	   "CASTER"	
 		}
 	}
 
 	"Modifiers"
 	{
-		"bloodlust"
+		"modifier_bloodlust"
 		{
 			 "Duration" "%duration"
 			 

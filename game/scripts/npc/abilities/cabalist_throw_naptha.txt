@@ -15,6 +15,7 @@
 	"AbilityManaCost"				"50"
 	"AbilityCastRange"				"600"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AOERadius"						"%radius"
 	"precache"
 	{

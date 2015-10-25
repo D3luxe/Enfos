@@ -70,6 +70,10 @@ function SummonHellbearWarriors(keys)
 			v:SetMaxHealth(keys.health)
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
+
+			if thisSpellLevel == 10 then
+				v:SetMana(200)
+			end
 		end
 	end
 end

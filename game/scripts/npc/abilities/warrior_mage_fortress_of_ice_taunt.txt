@@ -1,0 +1,108 @@
+"warrior_mage_fortress_of_ice_taunt"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"FightRecapLevel"				"1"
+	"AbilityTextureName"			"axe_berserkers_call"
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"300"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"40"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"2.0 2.4 2.8 3.2"
+		}	
+	}
+
+	"OnSpellStart"
+	{
+
+	}
+
+	
+	"Modifiers"
+	{
+		"modifier_fortress_of_ice_caster"
+		{
+			"IsPurgable"		"0"
+			"IsBuff"			"1"
+			"Passive"			"1"
+	
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"        "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+					"EffectAttachType" 	"follow_origin"
+					"ControlPoints"
+					{
+						"02"		"%radius 1 1"	//Required for Rampant Outrage (axe immortal)
+					}
+					"ControlPointEntities"
+					{
+						"CASTER"	"follow_origin"
+						"CASTER"	"follow_origin"
+						"CASTER"	"follow_origin"
+					}
+				}
+			}
+		}
+
+		"modifier_fortress_of_ice_enemy"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"IsPurgable"			"0"
+
+			"Aura"					"modifier_fortress_of_ice_enemy_aura"
+			"Aura_Radius"			"700"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_BASIC"
+		}
+
+		"modifier_fortress_of_ice_enemy_aura"
+		{
+			"IsPurgable"		"0"
+			"IsDebuff"			"1"
+			"Duration"			"30"
+
+			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+			"StatusEffectPriority"  "10"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/warrior_mage.lua"
+					"Function"		"BerserkersCall"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/warrior_mage.lua"
+					"Function"		"BerserkersCallEnd"
+				}
+			}
+		}
+	}
+}

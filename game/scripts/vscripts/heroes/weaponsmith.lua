@@ -25,6 +25,7 @@ function ThunderMaul(keys)
 		for k,v in pairs(unitsSlow) do
 			thisSpell:ApplyDataDrivenModifier(caster, v, "modifier_weaponsmith_cambrinth_charge_thunder_maul_debuff", {})
 		end
+		caster:GetAbilityByIndex(4):EndCooldown()
 	end
 
 
@@ -37,6 +38,7 @@ function Forge(keys)
 	local ability = keys.ability
 	if caster:HasModifier("modifier_weaponsmith_cambrinth_charge") then
 		damageBonus = damageBonus * 2
+		caster:GetAbilityByIndex(4):EndCooldown()
 	end
 	if caster.forge == nil then
 		caster.forge = 0
@@ -54,4 +56,8 @@ function Forge(keys)
 	end
 
 	caster:SetModifierStackCount("modifier_weaponsmith_forge_stack", caster, caster.forge)
-end	
+end
+
+function EndCD(keys)
+	keys.caster:GetAbilityByIndex(4):EndCooldown()
+end

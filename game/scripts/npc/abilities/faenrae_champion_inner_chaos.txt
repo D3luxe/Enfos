@@ -93,12 +93,12 @@
 			{
 				"CleaveAttack" //far
 				{
-					"CleavePercent"	"25"
+					"CleavePercent"	"10"
 					"CleaveRadius"	"275"
 				}
 				"CleaveAttack" //medium
 				{
-					"CleavePercent"	"25"
+					"CleavePercent"	"40"
 					"CleaveRadius"	"210"
 				}
 				"CleaveAttack" //full
@@ -132,17 +132,17 @@
 		"02"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"base_attack_time"		"1.15"
+			"base_attack_time"		"0.92"
 		}
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_range"			"422"
+			"bonus_range"			"520"
 		}
 		"04"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"tooltip_attack_range"	"550"
+			"tooltip_attack_range"	"700"
 		}
 		"05"
 		{

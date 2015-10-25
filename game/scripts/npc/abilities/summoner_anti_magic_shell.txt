@@ -12,6 +12,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"30.0"
 	"AbilityManaCost"				"100" //Verified

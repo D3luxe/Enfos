@@ -3,10 +3,11 @@
 //=================================================================================================================
 "starlight_sphere_spell"
 {
-	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName"            "wisp_detonate"
 	"MaxLevel"                      "1"
+	"AOERadius"						"%reduced_damage_radius"
 	"OnSpellStart"
 	{
 		"RunScript"

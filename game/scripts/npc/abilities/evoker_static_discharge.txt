@@ -10,6 +10,7 @@
 	"AbilityCastPoint"				"0.0"
 	"AbilityCooldown"				"0.1"
 	"AbilityManaCost"				"0" //Only costs mana when it zaps a target
+	"Innate"						"1"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_zuus/"

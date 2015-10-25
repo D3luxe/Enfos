@@ -24,7 +24,7 @@
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastPoint"				"0.47 0.47 0.47 0.47"
-	"AbilityCastRange"				"800"
+	"AbilityCastRange"				"900"
 	"precache"
 	{
 		"particle_folder"	"particles/units/heroes/hero_ogre_magi"

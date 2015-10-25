@@ -10,7 +10,7 @@
 	"LevelsBetweenUpgrades"			"5"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCastRange"				"600" // again, whoever wrote these tooltips on the site is awful
+	"AbilityCastRange"				"500"
 	"AbilityCooldown"				"120 112 104 96 88 80 72 64 54 48"
 	"AbilityManaCost"				"300 330 360 390 420 450 480 510 540 570"
 	"AOERadius"						"%radius"
@@ -35,12 +35,32 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage"				"800 1150 1700 2400 3400 4700 6350 8400 11000 14000"
+			"damage"				"750 1200 1600 2400 3000 3600 4500 5300 6000 6500"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
 			"duration"				"15"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"base_attack_time"		"0.4 0.4 0.4 0.4 0.3 0.3 0.3 0.3 0.2 0.2"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_close"				"75 75 100 100 150 150 150 150 175 200"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_medium"				"100 100 150 150 200 200 200 200 225 300"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_far"				"150 150 200 200 250 250 250 250 275 400"
 		}
 	}	
 }

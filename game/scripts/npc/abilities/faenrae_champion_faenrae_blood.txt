@@ -10,6 +10,7 @@
 	"AbilityTextureName"			"riki_smoke_screen"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AOERadius"						"900"
 	"Modifiers"
 	{

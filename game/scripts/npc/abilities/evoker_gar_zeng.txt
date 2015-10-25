@@ -13,7 +13,7 @@
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCastRange"				"400" // Corrected value
-	"AbilityCooldown"				"20 19 18 17 17 16 15 15 14 13" //yep, it actually scales this way
+	"AbilityCooldown"				"20 19.3 18.6 17.9 17.2 16.5 15.8 15.1 14.4 13.7" //yep, it actually scales this way
 	"AbilityManaCost"				"45 54 64 77 93 111 134 161 193 232"
 	"Precache"
 	{

@@ -1,0 +1,170 @@
+// Based on Bounty Hunter Track ability rewritten by Pizzalol, chrislotix
+"ranger_favored_enemy"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
+	"AbilityTextureName"			"bounty_hunter_track"
+	"Innate"						"1"
+	"MaxLevel"						"1"
+
+	// Precache
+	//-------------------------------------------------------------------------------------------------------------
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_bounty_hunter.vsndevts"
+		"particle"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track.vpcf"
+		"particle"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail.vpcf"
+		"particle"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_haste.vpcf"
+		"particle"		"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+	}
+	
+	// Unit Targeting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"800"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"220"
+	"AbilityManaCost"				"0"
+		
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"2000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"stun_duration"			"2"
+		}
+	}
+
+	"OnSpellStart"
+	{
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_cast.vpcf"
+   			"EffectAttachType"	"start_at_customorigin"
+
+			"ControlPointEntities"
+			{
+			    "CASTER" "attach_attack1"
+			    "TARGET" "attach_hitloc"
+			}
+
+		}
+		
+		"FireSound"
+		{
+			"EffectName"	"Hero_BountyHunter.Target"
+			"Target"		"TARGET"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/ranger.lua"
+			"Function"				"Favored_Enemy"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_favored_enemy_damage"
+		{
+			"IsHidden"		"1"
+			"Passive"		"1"
+			"IsPurgable"	"0"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/ranger.lua"
+					"Function"				"Favored_Enemy_Damage"
+				}
+			}
+
+		}
+		"modifier_favored_enemy_aura"
+		{
+			"IsHidden"		"1"
+			"Passive"		"1"
+			"IsPurgable"	"0"
+
+			"Aura" 			"modifier_track_speed_datadriven"
+			"Aura_Radius" 	"9999"
+			"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types" 	"DOTA_UNIT_TARGET_BASIC"
+			"Aura_ApplyToCaster"	"0"
+
+			"ThinkInterval"  "0.5"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/ranger.lua"
+					"Function"				"Favored_Enemy_Tick"
+				}
+			}
+
+		}
+
+		"modifier_favored_enemy_targeted"
+		{
+			"IsDebuff"	"1"
+
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_trail.vpcf"
+					"EffectAttachType"  "follow_origin"
+					"Target"            "TARGET"
+
+					"ControlPointEntities"
+					{
+						"TARGET"	"attach_origin"
+						"TARGET"	"attach_hitloc"
+					}
+				}
+
+				"AttachEffect"
+				{
+					"EffectName"        "particles/units/heroes/hero_bounty_hunter/bounty_hunter_track_shield.vpcf"
+					"EffectAttachType"  "follow_overhead"
+					"Target"            "TARGET"
+				}
+			}
+
+		}
+
+		"modifier_ranger_check"
+		{
+			"IsHidden"		"0"
+			"Passive"		"1"
+			"IsPurgable"	"0"
+
+			"Aura" 			"modifier_ranger_check_aura"
+			"Aura_Radius" 	"250"
+			"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types" 	"DOTA_UNIT_TARGET_BASIC"
+			"Aura_ApplyToCaster"	"0"
+		}
+
+		"modifier_ranger_check_aura"
+		{
+			"IsDebuff"			"1"
+			"IsHidden"		"1"
+
+		}
+	}
+}

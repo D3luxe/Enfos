@@ -8,8 +8,8 @@
 	"BaseClass"						"ability_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"			"naga_siren_mirror_image"
-	"AbilityCooldown"				"150"
-	"AbilityManaCost"				"250 300 350 400 450 500 550 600 650 700"
+	"AbilityCooldown"				"79 78 77 76 75 74 73 72 71 70"
+	"AbilityManaCost"				"150 166 182 198 214 230 246 262 278 294"
 	"AbilityCastPoint"				"0.5"
 	"LevelsBetweenUpgrades"			"5"
 	"RequiredLevel"					"10"
@@ -88,6 +88,6 @@
 		{
 			"var_type"					"FIELD_INTEGER"
 			"siren_damage"				"1300 1300 1300 1300 3000 3000 3000 3000 5500 5500"
-		}
+		}	
 	}
 }

@@ -11,8 +11,7 @@
 	"Ability2"					"sniper_lucky_shot"
 	"Ability3"					"sniper_burning_grenade"
 	"Ability4"					"sniper_rapid_reload"
-	"Ability6"					"sniper_standard_technique"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"sniper_standard_technique"
 	
 	"ArmorPhysical"				"0"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
@@ -26,12 +25,12 @@
 	
 	"MovementSpeed"				"250"
 	"MovementTurnRate"			"0.6"									// Turning rate.
-	"AttackRate"                "3.2"
+	"AttackRate"                "2.56"
 	"AttackRange"               "500"
 	"AttackAcquisitionRange"	"500"	
 	"ProjectileSpeed"			"10000"									// Speed of projectile.
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
-	"AttackDamageMin" 			"1.5"
-	"AttackDamageMax" 			"11.5"
+	"AttackDamageMin" 			"2"
+	"AttackDamageMax" 			"12"
 }

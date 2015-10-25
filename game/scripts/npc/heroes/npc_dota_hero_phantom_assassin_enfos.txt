@@ -13,8 +13,7 @@
 	"Ability2"				"generic_enfos_combat_mastery"						// Ability 2
 	"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
 	"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
-	"Ability6"				"generic_enfos_trothgangs_rally"					// Ability 4
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"				"generic_enfos_trothgangs_rally"					// Ability 4
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"10"									// Damage range max.
-	"AttackRate"				"1.6"									// Speed of attack.
+	"AttackRate"				"1.28"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"170"									// Range within a target can be attacked.

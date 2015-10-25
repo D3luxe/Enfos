@@ -98,7 +98,8 @@ function Stats:ModifyStatBonuses(unit)
 
 			-- Armor bonus
 			-- To remove armor (such as in Enfos 20 agi = 1 armor instead of 7 agi) you have to also remove the default armor gained
-			local armorAdjustment = (ARMOR_PER_AGI * agility) - (DEFAULT_ARMOR_PER_AGI * agility)
+			
+			local armorAdjustment = (ARMOR_PER_AGI * agility) - (DEFAULT_ARMOR_PER_AGI * agility) + hero.baseArmor
 			hero:SetPhysicalArmorBaseValue(armorAdjustment)
 			
 		end

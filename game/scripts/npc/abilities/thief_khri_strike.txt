@@ -57,7 +57,7 @@
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"damage"				"40 60 90 130 180 240 370 390 480 580" //did scaling that made sense mean nothing to these people?
+			"damage"				"40 60 90 130 180 310 370 390 480 580" //did scaling that made sense mean nothing to these people?
 		}			
 		"03"
 		{

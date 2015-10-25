@@ -5,7 +5,7 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AOE | DOTA_ABILITY_BEHAVIOR_POINT"
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"silencer_last_word"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
@@ -13,6 +13,8 @@
 	"MaxLevel"						"1"
 	"LevelsBetweenUpgrades"		"2"
 	"RequiredLevel"			"1"
+	"Innate"						"1"
+	"AbilityCastRange"				"900"
 		
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------

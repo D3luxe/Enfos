@@ -23,6 +23,7 @@
 	}
 	"OnSpellStart"
 	{
+		
 		"RunScript"
 		{
 			"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"

@@ -12,8 +12,7 @@
 	"Ability2"					"shadow_priest_shadow_art_mastery"
 	"Ability3"					"shadow_priest_greater_hallucination"
 	"Ability4"					"shadow_priest_armageddon"
-	"Ability6"					"shadow_priest_preservation"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"shadow_priest_preservation"
 	
 	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
@@ -33,8 +32,9 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"10"
-	"AttackRate"                "1.8"
+	"AttackRate"                "1.44"
 	"AttackRange"               "550"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
+	"ProjectileSpeed"			"900"
 }		

@@ -155,4 +155,5 @@ function EnergyFlare(keys)
 	--print(dmg)
 	--DealDamage(caster, caster, dmg, DAMAGE_TYPE_PURE, 0)
 	ApplyDamage({ victim = caster, attacker = caster, damage = dmg, damage_type = DAMAGE_TYPE_PURE, ability = keys.ability})
+	caster:SetMana(0)
 end

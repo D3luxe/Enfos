@@ -9,7 +9,7 @@
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"150 140 130 120 110 100 90 80 70 60"
-	"AbilityManaCost"				"0" //?
+	"AbilityManaCost"				"60"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_silencer/"

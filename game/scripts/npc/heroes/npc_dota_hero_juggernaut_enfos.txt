@@ -13,8 +13,7 @@
 	"Ability2"				"generic_enfos_evasion_mastery"	
 	"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
 	"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
-	"Ability6"				"generic_enfos_bloodlust"
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"				"generic_enfos_bloodlust"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"8"									// Damage range max.
-	"AttackRate"				"0.75"									// Speed of attack.
+	"AttackRate"				"0.55"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"130"									// Range within a target can be attacked.

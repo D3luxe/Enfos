@@ -86,18 +86,29 @@ function call_of_the_siren( keys )
 		illusion:SetBaseIntellect(0)
 		illusion:SetBaseDamageMin(damage)
 		illusion:SetBaseDamageMax(damage)
-		illusion:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = duration})
-		--ability:ApplyDataDrivenModifier(caster, illusion, "modifier_split_shot_enfos", {duration = duration})
 		illusion:AddAbility("bard_call_of_the_siren_multi_shot")
 		illusion:FindAbilityByName("bard_call_of_the_siren_multi_shot"):SetLevel(1)
 		-- Set the unit as an illusion
 		-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
-		illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = 100, incoming_damage = 100 })
+		illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = duration, outgoing_damage = 100, incoming_damage = 0 })
+
+		if ability:GetLevel() < 4 then
+			illusion:SetBaseAttackTime(0.6)
+		elseif ability:GetLevel() >= 4 and ability:GetLevel() < 9 then
+			illusion:SetBaseAttackTime(0.5)
+		elseif ability:GetLevel() >= 9 then
+			illusion:SetBaseAttackTime(0.25)
+		else
+			illusion:SetBaseAttackTime(0.6)
+		end
 		
 		-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
 		illusion:MakeIllusion()
 		-- Set the illusion hp to be the same as the caster
-		illusion:SetHealth(caster:GetHealth())
+		illusion:SetMaxHealth(999999)
+		illusion:SetBaseMaxHealth(999999)
+		illusion:SetHealth(999999)
+		illusion:SetPhysicalArmorBaseValue(9999)
 		-- Add the illusion created to a table within the caster handle, to remove the illusions on the next cast if necessary
 		table.insert(caster.mirror_image_illusions, illusion)
 	end
@@ -142,11 +153,9 @@ end
 
 -- Apply the auto attack damage to the hit unit
 function SplitShotDamage( keys )
-	print("Damageing")
 	local caster = keys.caster
 	local target = keys.target
 	local ability = keys.ability
-	print(target:GetName())
 	local damage_table = {}
 
 	damage_table.attacker = caster

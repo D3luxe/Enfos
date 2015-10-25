@@ -11,7 +11,7 @@
 	"AOERadius"						"%radius"
 	"AbilityCooldown"				"1"
 	"AbilityCastRange"				"1200"
-	"AbilityManaCost"				"18 21 25 29 34 31 48 57 67 79"
+	"AbilityManaCost"				"18 21 25 29 34 41 48 57 67 79"
 	"precache"
 	{
 		"particle"  "particles/units/heroes/hero_pugna/pugna_ward_ambient.vpcf"

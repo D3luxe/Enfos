@@ -39,4 +39,18 @@ function SwampTrollThink()
 	return 0.25 + RandomFloat( 0.25, 0.5 )
 end
 
--- it seems like this spell is not being cast at all. why not?
+function mob_slow( keys )
+	print("mob slow")
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local sphereCheck = magic_block_check(target)
+	
+	if sphereCheck then
+		print("sphere check succeeded")
+		return
+	else
+		print("sphere check failed, applying modifier")
+		ability:ApplyDataDrivenModifier(caster, target, "modifier_mob_slow", {})
+	end
+end

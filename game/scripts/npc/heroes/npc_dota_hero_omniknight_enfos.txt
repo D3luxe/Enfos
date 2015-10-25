@@ -14,9 +14,8 @@
 	"Ability2"				"generic_enfos_combat_mastery"
 	"Ability3"				"ahlen_cataclysmic_strike"
 	"Ability4"				"ahlen_dragon_dance"
-	"Ability6"				"ahlen_innate"
-	"Ability5"				"enfos_attribute_bonus"
-	"Ability7"				"ahlen_cataclysmic_strike_proxy"
+	"Ability5"				"ahlen_innate"
+	"Ability6"				"ahlen_cataclysmic_strike_proxy"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------

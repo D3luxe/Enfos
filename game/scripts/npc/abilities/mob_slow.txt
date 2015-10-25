@@ -26,10 +26,10 @@
 
 	"OnSpellStart"
 	{
-		"ApplyModifier"
+		"RunScript"
 		{
-			"ModifierName"	"modifier_mob_slow"		
-			"Target"	"TARGET"
+			"ScriptFile"			"scripts/vscripts/mobs/swamp_troll.lua"
+			"Function"				"mob_slow"
 		}
 	}
 

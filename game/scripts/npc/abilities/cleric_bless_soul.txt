@@ -11,6 +11,7 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"1"
 	"AOERadius"						"900"
+	"Innate"						"1"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_drow/"
@@ -35,6 +36,10 @@
 					"ScriptFile"	"scripts/vscripts/heroes/cleric.lua"
 					"Function"		"BlessSoul"
 				}
+			}
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"1" //Yep this is a thing...
 			}
 		}
 	}

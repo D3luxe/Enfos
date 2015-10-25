@@ -12,6 +12,8 @@
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"antimage_spell_shield"
 	"MaxLevel"						"1"
+	"Innate"						"1"
+	"AbilityCooldown"				"40"
 	
 
 	"Modifiers"

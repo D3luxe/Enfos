@@ -12,8 +12,7 @@
 	"Ability2"					"troll_cannibal_behead"
 	"Ability3"					"troll_cannibal_bloodboil"
 	"Ability4"					"troll_cannibal_soul_feast"
-	"Ability6"					"troll_cannibal_soul_drain"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"troll_cannibal_soul_drain"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
@@ -33,7 +32,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"8"
-	"AttackRate"                "0.8"
+	"AttackRate"                "0.64"
 	"AttackRange"               "650"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.

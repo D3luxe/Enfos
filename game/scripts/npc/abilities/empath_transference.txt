@@ -34,7 +34,7 @@
 		"01"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"health_drain"				"20 50 110 190 280 390 530 680 580 1040"
+			"health_drain"				"20 57 114 190 284 398 530 681 851 1040"
 		}
 		"02"
 		{
@@ -54,7 +54,7 @@
 		"05"
 		{
 			"var_type"					"FIELD_INTEGER"
-			"mana_drain"				"0 0 0 10 20 30 50 70 90 110"
+			"mana_drain"				"0 0 0 10 21 35 51 69 90 113"
 		}
 	}
 

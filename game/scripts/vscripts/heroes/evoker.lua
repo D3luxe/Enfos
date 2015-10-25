@@ -3,7 +3,7 @@ function StaticDischarge(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 450, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false) -- only creeps targetted. change if you want others
-	local thisSpell = caster:GetAbilityByIndex(5)
+	local thisSpell = keys.ability
 	local cost = thisSpell:GetLevelSpecialValueFor("mana_cost", thisSpell:GetLevel() - 1)
 	local target = nil
 	local lightningBolt = nil
@@ -107,8 +107,8 @@ function ChainLightning(keys)
 		endTime = 0.2,
 		callback = function()
 -- unit selection and counting
-			units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), caster, 1200, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, true) -- again, cast range not documented. these tooltips suck
-			PrintTable(units)
+			units = FindUnitsInRadius(caster:GetTeamNumber(), target:GetOrigin(), caster, 800, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, true) -- again, cast range not documented. these tooltips suck
+			--PrintTable(units)
 -- end the spell if there are no valid targets
 			if #units < 1 then
 				return
@@ -219,25 +219,62 @@ function BallLightning(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
 	local damage = keys.damage
-	local duration = keys.duration * 4 -- multiplying by 4 since it's firing every 0.25
+
+	local ability = keys.ability
+	local level = ability:GetLevel() - 1
+	local bat = ability:GetLevelSpecialValueFor("base_attack_time", level )
+	local splash_close = ability:GetLevelSpecialValueFor("splash_close", level )
+	local splash_medium = ability:GetLevelSpecialValueFor("splash_medium", level )
+	local splash_far = ability:GetLevelSpecialValueFor("splash_far", level )
+
+	local duration = keys.duration * 1/bat -- Calculates attacks per second and adjusts the duration accordingly.
 	local ball = FastDummy(AdjustZ(target, 128), DOTA_TEAM_NOTEAM) --AdjustZ is a function in enfos.lua
 	local ballLightning = ParticleManager:CreateParticle("particles/units/heroes/hero_stormspirit/stormspirit_ball_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, ball)
 -- timer
 	Timers:CreateTimer(DoUniqueString("blit"), {
-		endTime = 0.25, -- guessing on the interval. it's not listed.
+		endTime = bat, -- guessing on the interval. it's not listed.
 		callback = function()
 			duration = duration - 1
 			local units = FindUnitsInRadius(caster:GetTeamNumber(), ball:GetAbsOrigin(), caster, 500, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 			if #units > 0 then
+				--Deal main damage
 				tTarget = units[math.random(1,#units)]
 				local lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, ball)
 				ParticleManager:SetParticleControl(lightningBolt,1,Vector(tTarget:GetAbsOrigin().x,tTarget:GetAbsOrigin().y,tTarget:GetAbsOrigin().z+((tTarget:GetBoundingMaxs().z - tTarget:GetBoundingMins().z)/2)))
 				tTarget:EmitSound("Hero_Zuus.ArcLightning.Target")	
 				DealDamage(caster, tTarget, damage, DAMAGE_TYPE_MAGICAL, 0)
+
+
+				--Deal splash damage
+				local close = FindUnitsInRadius(caster:GetTeamNumber(), tTarget:GetAbsOrigin(), caster, splash_close, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+				local medium = FindUnitsInRadius(caster:GetTeamNumber(), tTarget:GetAbsOrigin(), caster, splash_medium, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+				local far = FindUnitsInRadius(caster:GetTeamNumber(), tTarget:GetAbsOrigin(), caster, splash_far, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+
+				--20% splash damage total
+				if #far > 0 then
+					for i=1, #far do
+						DealDamage(caster, far[i], damage*0.2, DAMAGE_TYPE_MAGICAL, 0)
+					end
+				end
+
+
+				--40% splash damage total
+				if #medium > 0 then
+					for i=1, #medium do
+						DealDamage(caster, medium[i], damage*0.2, DAMAGE_TYPE_MAGICAL, 0)
+					end
+				end
+
+				--100% splash damage total
+				if #close > 0 then
+					for i=1, #close do
+						DealDamage(caster, close[i], damage*0.6, DAMAGE_TYPE_MAGICAL, 0)
+					end
+				end
 			end
-			print (duration)
+			--print (duration)
 			if duration > 0 then
-				return 0.25
+				return bat
 			elseif duration <= 0 then
 				ball:Destroy()
 				return

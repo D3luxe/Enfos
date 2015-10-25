@@ -12,8 +12,7 @@
 	"Ability2"					"bard_merauds_blessing"
 	"Ability3"					"bard_unnerving_symphony"
 	"Ability4"					"bard_call_of_the_siren"
-	"Ability6"					"bard_nexus"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"bard_nexus"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
@@ -33,7 +32,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin" 			"2"
 	"AttackDamageMax" 			"12"
-	"AttackRate"                "1.6"
+	"AttackRate"                "1.28"
 	"AttackRange"               "1000"									// yes, really
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"1000"									// Range within a target can be acquired.

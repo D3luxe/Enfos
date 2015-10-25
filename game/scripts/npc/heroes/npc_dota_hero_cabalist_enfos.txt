@@ -12,8 +12,7 @@
 	"Ability2"					"generic_ethereal_shield"
 	"Ability3"					"cabalist_mantle_of_flames"
 	"Ability4"					"cabalist_dragons_breath"
-	"Ability6"					"cabalist_throw_naptha"
-	"Ability5"					"enfos_attribute_bonus"
+	"Ability5"					"cabalist_throw_naptha"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
@@ -33,7 +32,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin" 			"3"
 	"AttackDamageMax" 			"10"
-	"AttackRate"                "1.4"
+	"AttackRate"                "1.12"
 	"AttackRange"               "180"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"180"									// Range within a target can be acquired.

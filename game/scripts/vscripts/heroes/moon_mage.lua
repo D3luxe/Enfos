@@ -127,6 +127,15 @@ function Burn(keys)
 	unit:AddAbility("moon_mage_burn_dummy")
 	unit:FindAbilityByName("moon_mage_burn_dummy"):SetLevel(1)
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
+
+	local timeofday = GameRules:GetTimeOfDay()
+	GameRules:SetTimeOfDay(0.75)
+	if GameRules.BurnNightTime then
+		Timers:RemoveTimer(GameRules.BurnNightTime)
+	end
+	GameRules.BurnNightTime = Timers:CreateTimer(20, function()		
+			GameRules:SetTimeOfDay(timeofday)
+		end)
 	
 end
 

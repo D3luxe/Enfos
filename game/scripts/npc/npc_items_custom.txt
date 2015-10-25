@@ -872,55 +872,6 @@
 			}
 		}
 	}
-	//=================================================================================================================
-	// Brisker
-	//=================================================================================================================
-	"item_brisker"
-	{
-		"ID"                            "2012"
-		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_diffusal_blade"
-	
-		"ItemQuality"					"artifact"
-		"ItemCost"                      "2600" 		
-		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-	
-		"Modifiers"
-		{
-			"modifier_brisker"
-			{
-				"Passive"			"1"
-				"IsHidden"			"1"
-				"Attributes"		""
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%bonus_agi"
-				}
-			}
-		}
-	
-	
-	
-		// Special	
-		//-------------------------------------------------------------------------------------------------------------
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"360"
-			}
-			"02"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_agi"				"48"
-			}
-	
-		}
-	}
 	//===============================================
 	// Bundle of 100 gold
 	//===============================================
@@ -3114,31 +3065,6 @@
 		}
 	}
 	//===============================================
-	// Brisker
-	//===============================================
-	"item_recipe_brisker"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"                            "2011"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"Model"							"models/props_gameplay/recipe.mdl"
-		"BaseClass"                        "item_recipe_arcane_boots"
-		
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"7000"	
-		"ItemShopTags"					""
-		
-		// Recipe
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemRecipe"					"1"
-		"ItemResult"					"item_brisker"
-		"ItemRequirements"
-		{
-			"01"						"item_polished_elven_telo;item_polished_elven_telo;item_zircon_inset_ring"
-		}
-	}
-	//===============================================
 	// Elite Elven Boots
 	//===============================================
 	"item_recipe_elite_elven_boots"
@@ -4756,6 +4682,7 @@
 	
 			"uthmors_mirror_blade_crit"
 			{
+				"IsHidden"		"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -4860,6 +4787,7 @@
 	
 			"uthmors_skullcleaver_crit"
 			{
+				"IsHidden"		"1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"

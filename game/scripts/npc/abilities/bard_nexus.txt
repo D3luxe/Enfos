@@ -9,9 +9,10 @@
 	"BaseClass"						"ability_datadriven"
 	"AbilityTextureName"			"keeper_of_the_light_chakra_magic"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
-	"AbilityCooldown"				"70"
+	"AbilityCooldown"				"90"
 	"AbilityManaCost"				"128"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"precache"
 	{
 		"particle"					"particles/units/heroes/hero_keeper_of_the_light/keeper_chakra_magic.vpcf"

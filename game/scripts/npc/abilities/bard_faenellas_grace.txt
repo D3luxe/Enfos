@@ -12,6 +12,7 @@
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"60 55 50 45 40 35 30 25 20 15"
 	"AbilityManaCost"				"40 52 67 87 114 148 193 250 326 424"
+	"AbilityCastRange"				"700"
 	"precache"
 	{
 		"particle"					"particles/units/heroes/hero_lina/lina_fiery_soul.vpcf"		

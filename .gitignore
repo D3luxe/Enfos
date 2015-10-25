@@ -1,36 +1,28 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+# Cache crap that Valve autogenerates
+*.bin
 
-# Folder config file
-Desktop.ini
+# Compiled formats
+*.vpcf_c
+*.vtex_c
+*.vsndevts_c
+*.vmat_c
+*.vjs_c
+*.vxml_c
+*.vcss_c
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+# Commit panorama compiled textures
+!game/dota_addons/dotacraft/panorama/images/*.vtex_c
+!game/dota_addons/dotacraft/panorama/images/custom_game/*.vtex_c
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# Map files
+*.vpk
 
-# =========================
-# Operating System Files
-# =========================
+# Map overviews
+content/dota_addons/dotacraft/materials/overviews/*
+game/dota_addons/dotacraft/materials/overviews/*
+game/dota_addons/dotacraft/resource/overviews/*
 
-# OSX
-# =========================
+#Github dump
+*.stackdump
 
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Icon must ends with two \r.
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
+settings.kv

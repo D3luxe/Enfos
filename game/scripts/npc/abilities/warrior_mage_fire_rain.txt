@@ -1,0 +1,106 @@
+"warrior_mage_fire_rain"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"MaxLevel"						"10"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
+	"AbilityTextureName"			"invoker_chaos_meteor"
+	"AbilityChannelTime"			"15"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	
+	"AOERadius"						"%radius"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"1000"
+	"AbilityCastPoint"				"0"
+	"AbilityCooldown"				"170 166 162 158 154 150 146 142 138 134"
+	"AbilityManaCost"				"340 374 408 442 476 510 544 578 612 646"
+
+	"precache"
+	{
+		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		"particle"		"particles/hero_warrior_mage/fire_rain_storm.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_armageddon"
+		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
+			"Function"				"fire_rain"
+			"Target"				"POINT"
+		}
+	}
+	"OnChannelFinish"
+	{
+		"RemoveModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_armageddon"
+		}
+
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
+			"Function"				"fire_rain_end"
+		}
+
+	}
+	"Modifiers"
+	{
+		"modifier_armageddon"
+		{
+			"Duration"				"%duration"
+			"ThinkInterval"			"%interval"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
+					"Function"				"fire_rain_damage"
+				}
+			}
+
+			"OverrideAnimation"			"ACT_DOTA_TELEPORT"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"duration"				"15"
+		}		
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}		
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"initial_damage"				"100 175 293 467 708 1036 1470 2037 2772 3715"
+		}		
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_over_time"				"250 375 562 843 1265 1898 2847 4271 6407 9610"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"interval"				"1 0.95 0.9 0.85 0.8 0.75 0.7 0.65 0.6 0.55"
+		}
+	}
+}

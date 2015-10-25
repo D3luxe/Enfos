@@ -1,0 +1,47 @@
+//=================================================================================================================	//=================================================================================================================
+// Warrior Mage Tingle
+//=================================================================================================================
+"warrior_mage_tingle"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"				"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
+	"AbilityTextureName"			"chaos_knight_chaos_strike"
+	"MaxLevel"						"1"
+	"Innate"						"1"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0"
+	
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"90"
+
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"40"
+
+
+	"precache"
+	{
+		"soundfile"         "soundevents/game_sounds_heroes/game_sounds_leshrac.vsndevts"
+		"particle"			"particles/units/heroes/hero_leshrac/leshrac_lightning_bolt.vpcf"
+		"particle"			"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
+		"particle"			"particles/units/heroes/hero_leshrac/leshrac_lightning_impact.vpcf"
+		"particle"			"particles/units/heroes/hero_leshrac/leshrac_lightning_sparks.vpcf"
+	}
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/warrior_mage.lua"
+			"Function"		"Tingle"
+		}
+	}
+}

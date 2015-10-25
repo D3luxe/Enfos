@@ -10,8 +10,9 @@
 	"AbilityTextureName"			"warlock_shadow_word"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCooldown"				"190"
-	"AbilityManaCost"				"0"
+	"AbilityManaCost"				"100"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"precache"
 	{
 		"particle"					"particles/units/heroes/hero_visage/visage_summon_familiars_grnd_energy.vpcf"

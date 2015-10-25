@@ -10,6 +10,7 @@
 	"AbilityTextureName"			"shadow_demon_demonic_purge"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_skeletonking/"

@@ -11,7 +11,7 @@
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"60"
-	"AbilityManaCost"				"24 25 26 27 28 29 30 31 32"
+	"AbilityManaCost"				"24 25 26 27 28 29 30 31 32 33"
 	"Precache"
 	{
 		"model"						"models/items/hex/sheep_hex/sheep_hex.vmdl"

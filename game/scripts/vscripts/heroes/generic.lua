@@ -28,3 +28,41 @@ function FocusMoonbeam(keys)
 -- placeholder particle
 end
 
+function EtherealShieldAutocast( event )
+	local caster = event.caster
+	local target = event.target -- victim of the attack
+	local ability = event.ability
+
+	-- Name of the modifier to avoid casting the spell on targets that were already buffed
+	local modifier = "modifier_ethereal_shield_buff"
+
+	-- Get if the ability is on autocast mode and cast the ability on the attacked target if it doesn't have the modifier
+	if ability:GetAutoCastState() then
+		if not IsChanneling( caster ) then
+			if not target:HasModifier(modifier) then
+				caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
+			end
+		end	
+	end	
+end
+
+-- Auxiliar function that goes through every ability and item, checking for any ability being channelled
+function IsChanneling ( hero )
+	
+	for abilitySlot=0,15 do
+		local ability = hero:GetAbilityByIndex(abilitySlot)
+		if ability ~= nil and ability:IsInAbilityPhase() then 
+			return true
+		end
+	end
+
+	for itemSlot=0,5 do
+		local item = hero:GetItemInSlot(itemSlot)
+		if item ~= nil and item:IsChanneling() then
+			return true
+		end
+	end
+
+	return false
+end
+

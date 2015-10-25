@@ -13,8 +13,7 @@
 	"Ability2"					"generic_enfos_combat_mastery"			// Ability 2
 	"Ability3"					"beastmaster_enfos_berserk"			// Ability 3
 	"Ability4"					"beastmaster_enfos_everilds_rage"				// Ability 4
-	"Ability6"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
-	"Ability5"				"enfos_attribute_bonus"
+	"Ability5"					"beastmaster_enfos_kuniyos_spirit"				// Ability 5
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -25,7 +24,7 @@
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"AttackDamageMin"			"3"									// Damage range min.
 	"AttackDamageMax"			"10"									// Damage range max.
-	"AttackRate"				"1.4"									// Speed of attack.
+	"AttackRate"				"1.12"									// Speed of attack.
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
 	"AttackRange"				"180"									// Range within a target can be attacked.

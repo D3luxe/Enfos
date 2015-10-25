@@ -10,10 +10,12 @@
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"39 38 37 36 35 34 33 32 31 30"
 	"AbilityManaCost"				"45 56 70 87 109 137 171 214 268 335"
+	"AbilityCastRange"				"700"
 	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"Precache"
 	{
-		"particle_folder"			"particles/units/heroes/hero_vengeful/"
+		"particle"			"particles/units/heroes/hero_death_prophet/death_prophet_carrion_swarm.vpcf"
+		"particle"			"particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_death_prophet.vsndevts"
 	}
 	"OnSpellStart"
@@ -21,11 +23,11 @@
 		"LinearProjectile"			//I'm guessing on so many of these values
 		{
 			"Target"				"POINT"
-			"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
-			"MoveSpeed"				"1100"
+			"EffectName"			"particles/econ/items/death_prophet/death_prophet_acherontia/death_prophet_acher_swarm.vpcf"
+			"MoveSpeed"				"1500"
 			"StartRadius"			"300"
 			"EndRadius"				"300"
-			"FixedDistance"			"810"
+			"FixedDistance"			"800"
 			"StartPosition"			"follow_origin"
 			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 			"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"

@@ -12,6 +12,7 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"1"
 	"AbilityCastRange"				"900" //Verified
@@ -19,6 +20,9 @@
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_treant/"
+		"particle"					"particles/generic_gameplay/rune_regeneration.vpcf"
+		"particle"					"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
+		"particle"					"particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
 	}
 	"OnSpellStart"
 	{
@@ -33,6 +37,8 @@
 		"modifier_oak_barkskin"
 		{
 			"Duration"				"%duration"
+			"EffectName"			"particles/generic_gameplay/rune_regeneration.vpcf"
+			"EffectAttachType"		"follow_origin"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_BASEDAMAGEOUTGOING_PERCENTAGE"	"%damage_increase" //Verified
@@ -42,9 +48,9 @@
 			{
 				"AttachEffect"
 				{
-					"EffectName"		"particles/units/heroes/hero_treant/treant_livingarmor.vpcf"
-					"EffectAttachType"	"attach_hitloc"
-					"Target"			"TARGET"
+				 	"EffectName"		"particles/units/heroes/hero_dazzle/dazzle_armor_friend.vpcf"
+				 	"EffectAttachType"	"follow_overhead"
+				 	"Target" 			"TARGET"
 				}
 			}
 		}

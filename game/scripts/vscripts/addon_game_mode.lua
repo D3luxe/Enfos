@@ -34,10 +34,11 @@ require('libraries/projectiles')
 require('libraries/notifications')
 -- This library can be used for starting customized animations on units from lua
 require('libraries/animations')
-require('HeroSelection')
 require('stats')
 require('developer')
 require('libraries/popups')
+
+require("statcollection/init")
 
 MAX_LEVEL = 125
 XP_PER_LEVEL_TABLE = {}
@@ -64,7 +65,7 @@ armorTable = {
 				{	["armorType"]="modifier_armor_unarmored",
 					["modifier_attack_normal"]="1",
 					["modifier_attack_pierce"]="1.5",
-					["modifier_attack_siege"]="1",
+					["modifier_attack_siege"]="1.5",
 					["modifier_attack_chaos"]="1",
 					["modifier_attack_hero"]="1",
 					["modifier_attack_magical"]="1",
@@ -75,39 +76,39 @@ armorTable = {
 					["modifier_attack_siege"]="1",
 					["modifier_attack_chaos"]="1",
 					["modifier_attack_hero"]="1",
-					["modifier_attack_magical"]="1",
+					["modifier_attack_magical"]="1.25",
 				},
 				{	["armorType"]="modifier_armor_medium",
-					["modifier_attack_normal"]="1.5",
+					["modifier_attack_normal"]="1.25",
 					["modifier_attack_pierce"]="0.75",
 					["modifier_attack_siege"]="0.50",
 					["modifier_attack_chaos"]="1",
 					["modifier_attack_hero"]="1",
-					["modifier_attack_magical"]="1",
+					["modifier_attack_magical"]="0.75",
 				},
 				{	["armorType"]="modifier_armor_heavy",
-					["modifier_attack_normal"]="1.25",
-					["modifier_attack_pierce"]="0.75",
-					["modifier_attack_siege"]="1.25",
+					["modifier_attack_normal"]="1",
+					["modifier_attack_pierce"]="1",
+					["modifier_attack_siege"]="1",
 					["modifier_attack_chaos"]="1",
 					["modifier_attack_hero"]="1",
-					["modifier_attack_magical"]="1",
+					["modifier_attack_magical"]="1.5",
 				},
 				{	["armorType"]="modifier_armor_fortified",
-					["modifier_attack_normal"]="0.70",
-					["modifier_attack_pierce"]="0.35",
+					["modifier_attack_normal"]="0.80",
+					["modifier_attack_pierce"]="0.5",
 					["modifier_attack_siege"]="1.50",
 					["modifier_attack_chaos"]="0.40",
 					["modifier_attack_hero"]="0.50",
-					["modifier_attack_magical"]="1",
+					["modifier_attack_magical"]=".4",
 				},
 				{	["armorType"]="modifier_armor_hero",
-					["modifier_attack_normal"]="0.75",
+					["modifier_attack_normal"]="1",
 					["modifier_attack_pierce"]="0.50",
-					["modifier_attack_siege"]="0.75",
+					["modifier_attack_siege"]="0.5",
 					["modifier_attack_chaos"]="1",
 					["modifier_attack_hero"]="1",
-					["modifier_attack_magical"]="0.75",
+					["modifier_attack_magical"]="0.5",
 				},
 
 }
@@ -317,7 +318,7 @@ heroTable = {
 					["armorType"]="modifier_armor_heavy",
 				},
 				{	["name"]="npc_dota_hero_ursa",
-					["attackType"]="modifier_attack_magical",
+					["attackType"]="modifier_attack_hero",
 					["armorType"]="modifier_armor_heavy",
 				},
 				{	["name"]="npc_dota_hero_shadow_shaman",
@@ -330,14 +331,14 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_bounty_hunter",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_medium",
+					["armorType"]="modifier_armor_light",
 				},
 				{	["name"]="npc_dota_hero_phantom_assassin",
 					["attackType"]="modifier_attack_hero",
 					["armorType"]="modifier_armor_fortified",
 				},
 				{	["name"]="npc_dota_hero_silencer",
-					["attackType"]="modifier_attack_normal",
+					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_heavy",
 				},
 				{	["name"]="npc_dota_hero_storm_spirit",
@@ -386,11 +387,7 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_sven",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_light",
-				},
-				{	["name"]="npc_dota_hero_sven",
-					["attackType"]="modifier_attack_magical",
-					["armorType"]="modifier_armor_heavy",
+					["armorType"]="modifier_armor_unarmored",
 				},
 				{	["name"]="npc_dota_hero_lina",
 					["attackType"]="modifier_attack_hero",
@@ -398,7 +395,7 @@ heroTable = {
 				},
 				{	["name"]="npc_dota_hero_terrorblade",
 					["attackType"]="modifier_attack_hero",
-					["armorType"]="modifier_armor_medium",
+					["armorType"]="modifier_armor_light",
 				},
 				{	["name"]="npc_dota_hero_ember_spirit",
 					["attackType"]="modifier_attack_hero",
@@ -415,6 +412,14 @@ heroTable = {
 				{	["name"]="npc_dota_hero_medusa",
 					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_unarmored",
+				},	
+				{	["name"]="npc_dota_hero_drow_ranger",
+					["attackType"]="modifier_attack_pierce",
+					["armorType"]="modifier_armor_medium",
+				},	
+				{	["name"]="npc_dota_hero_lion",
+					["attackType"]="modifier_attack_magical",
+					["armorType"]="modifier_armor_heavy",
 				}
 		}	
 
@@ -434,13 +439,6 @@ artifactItems = { "item_stone_axe",
 			}
 
 
-
--- Stat collection
-require('lib.statcollection')
-statcollection.addStats({
-	modID = '70a4cb33084fbba671a53c58706f4017' --GET THIS FROM http://getdotastats.com/#d2mods__my_mods
-})
-
 -- Precache resources
 function Precache( context )
 	PrecacheResource( "soundfile", "soundevents/game_sounds_heroes/game_sounds_sven.vsndevts", context )
@@ -449,6 +447,7 @@ function Precache( context )
 	PrecacheResource( "model", "models/props_structures/tower_good4.vmdl", context )
 	PrecacheResource( "model", "models/props_debris/merchant_debris_book001.vmdl", context )
 	PrecacheResource( "model", "models/props_debris/battle_debris3.vmdl", context )
+	PrecacheResource( "model", "models/heroes/dragon_knight/dragon_knight_dragon.vmdl", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", context )
 	PrecacheResource( "particle", "particles/items2_fx/necronomicon_archer_manaburn.vpcf", context )
 	PrecacheResource( "particle", "particles/units/heroes/hero_alchemist/alchemist_acid_spray.vpcf", context )
@@ -479,6 +478,9 @@ function Precache( context )
 	PrecacheUnitByNameSync("npc_dota_hero_necrolyte", context)
 	PrecacheUnitByNameSync("npc_dota_hero_elder_titan", context)
 	PrecacheUnitByNameSync("npc_dota_hero_luna", context)
+	PrecacheUnitByNameSync("npc_dota_hero_skywrath_mage", context)
+	PrecacheUnitByNameSync("npc_dota_hero_drow_ranger", context)
+	PrecacheUnitByNameSync("npc_dota_hero_lina", context)
 	PrecacheUnitByNameSync("npc_spellbringer", context)
 
 	--PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf", context )
@@ -515,10 +517,10 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( CEnfosGameMode, "FilterExecuteOrder" ), self )
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
 	GameRules:SetUseUniversalShopMode( false )
-	GameRules:SetHeroSelectionTime( 60.0 )
 	GameRules:SetPreGameTime( 10.0 )
 	GameRules:SetPostGameTime( 60.0 )
 	GameRules:SetTreeRegrowTime( 60.0 )
+	GameRules:SetHeroSelectionTime( 60.0 )
 	--GameRules:SetHeroMinimapIconSize( 400 )
 	GameRules:GetGameModeEntity():SetCameraDistanceOverride( 1400 )		--1134 default dota 2
 	GameRules:SetCreepMinimapIconScale( 0.7 )
@@ -543,6 +545,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:SetCustomGameSetupTimeout(60)
 
 	
+	GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 
 	-- Game options
 	GameRules.ExtraBounty = 1
@@ -555,7 +558,7 @@ function CEnfosGameMode:InitGameMode()
 	Convars:RegisterCommand( "Enfos_test_round", function(...) return self:_TestRoundConsoleCommand( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_Set_Armor", function(...) return self:_SetArmor( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
-	--Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -597,6 +600,10 @@ function CEnfosGameMode:InitGameMode()
 	GameRules.PLAYER_COUNT = 0
 	GameRules.PLAYERS_PICKED_HERO = 0
 	GameRules.GAMESTARTED = false
+
+	-- Lua Modifiers
+    LinkLuaModifier("modifier_sniper_ms_limit_lua", "abilities/modifier_sniper_ms_limit_lua", LUA_MODIFIER_MOTION_NONE)
+    LinkLuaModifier("lua_attribute_bonus_modifier", "abilities/lua_attribute_bonus_modifier", LUA_MODIFIER_MOTION_NONE)
 
 
 	local playercounter = 0
@@ -950,6 +957,7 @@ function CEnfosGameMode:OnGameRulesStateChange()
 					end
 				end
 
+
 			    -- Set the difficulty here.
 			    GameRules.difficulty_selected = true
 
@@ -1001,7 +1009,10 @@ function CEnfosGameMode:OnGameRulesStateChange()
 			if hero ~= nil then
 				
 				local nTeam = hero:GetTeamNumber()
-				local tower = hero.spellbringer:GetAbsOrigin()
+				local tower
+				if hero.spellbringer ~= nil then
+					tower = hero.spellbringer:GetAbsOrigin()
+				end
 				MinimapEvent( nTeam, hero, tower.x, tower.y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 5 )
 
 				
@@ -1096,10 +1107,10 @@ function CEnfosGameMode:_CheckForDefeat()
 		return
 	end
 	if goodLives <= 0 then
-		GameRules:MakeTeamLose( DOTA_TEAM_GOODGUYS )
+		GameRules:SetGameWinner( DOTA_TEAM_BADGUYS )
 	end
 	if badLives <= 0 then
-		GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
+		GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 	end
 end
 
@@ -1211,7 +1222,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	if GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT then
     	CEnfosGameMode:OnEveryonePicked()
     end
-
+    spawnedUnitIndex:RemoveAbility("attribute_bonus")
+    spawnedUnitIndex:AddAbility("enfos_attribute_bonus")
 
 	--Sets the initial cannibal index for if Troll Warlord is being played.
 	if spawnedUnit == "npc_dota_hero_troll_warlord" then
@@ -1222,20 +1234,44 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_treant" then
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, 'modifier_item_ultimate_scepter', {duration = -1})
 	end
+
+	-- Applies sniper max ms
+	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_sniper" then
+		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_sniper_ms_limit_lua", {})
+	end
+
+
 	-- we have to handle exceptions here, since not all units will have their passive on index 4. we can add "ors" here later
-	if spawnedUnitIndex:GetClassname() == "npc_dota_hero_luna" then
-		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+	--if spawnedUnitIndex:GetClassname() == "npc_dota_hero_luna" then
+	--	spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
 		--Moon glaives
 
-		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
-	elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_crystal_maiden" then
+	--	spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
+	--elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_crystal_maiden" then
 		-- do nothing in this case
-	elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_lina" then
-		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
-		spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
-	else
-		spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+	--elseif spawnedUnitIndex:GetClassname() == "npc_dota_hero_lina" then
+	--	spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+	--	spawnedUnitIndex:GetAbilityByIndex(6):SetLevel(1)
+	--else
+	--	spawnedUnitIndex:GetAbilityByIndex(5):SetLevel(1)
+	--end
+
+	--print("Checking hero for innate abilities")
+	for i = 0, spawnedUnitIndex:GetAbilityCount() do
+		if i > 15 then
+			break
+		end
+		if spawnedUnitIndex:GetAbilityByIndex(i) ~= nil then
+			--print("Checking ability "..spawnedUnitIndex:GetAbilityByIndex(i):GetAbilityName().." if it's an innate.")
+			if GameRules.AbilityKV[spawnedUnitIndex:GetAbilityByIndex(i):GetAbilityName()] ~= nil then
+				if GameRules.AbilityKV[spawnedUnitIndex:GetAbilityByIndex(i):GetAbilityName()].Innate then
+					--print("Ability is an innate, leveling it.")
+					spawnedUnitIndex:GetAbilityByIndex(i):SetLevel(1)
+				end
+			end
+		end
 	end
+
 
 	--Handles starting and bonus gold
 	local curRound = self._vRounds[ self._nRoundNumber ]
@@ -1561,6 +1597,11 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	if victim:IsMagicImmune() and attackType == "modifier_attack_magical" then
 		return false
 	end
+	if attacker:GetUnitName() == "npc_dota_hero_drow_ranger" then
+		if victim:HasModifier("modifier_ranger_check_aura") then
+			return false
+		end
+	end
 
 	-- Use this to calculate the damage based on armor adjustment
 	local armorTypeAdjustment = CEnfosGameMode:CalculateDamageBonus(attackType, armorType)
@@ -1604,7 +1645,7 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 	--[[print("---------------------------")
 	for k, v in pairs( filterTable ) do
 		print("Order: " .. k .. " " .. tostring(v) )
-	end]]
+	end]]--
 
     local units = filterTable["units"]
     local order_type = filterTable["order_type"]
@@ -1822,7 +1863,18 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		if item == nil then
 			return true
 		end
+
+		
+
 		local pickedItem = item:GetContainedItem()
+
+		if pickedItem.CanBePickedUp ~= nil then
+			if pickedItem.CanBePickedUp > 0 then
+				Notifications:Bottom(first_unit:GetPlayerID(), {text="This item cannot be picked up yet! "..pickedItem.CanBePickedUp.." seconds remaining.", duration=3, style={color="red", ["font-size"]="25px"}})
+				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
+				return false
+			end
+		end
 		--print(pickedItem:GetAbilityName())
 		if pickedItem == nil then
 			return true
@@ -2015,6 +2067,16 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		local first_unit = EntIndexToHScript(units["0"])
 		local ability = EntIndexToHScript( filterTable["entindex_ability"] )
 		
+		--Handles error checking abilities
+
+		--Soul drain cannot be casted if Troll is already at full health
+		if ability:GetAbilityName() == "troll_cannibal_soul_drain" then
+			if first_unit:GetHealth() >= first_unit:GetMaxHealth() then
+				Notifications:Bottom(first_unit:GetPlayerID(), {text="Cannot be casted at full health!", duration=3, style={color="red", ["font-size"]="50px"}})
+				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
+				return false
+			end
+		end
 		--print("No Target "..ability:GetAbilityName())
 	end
 	
@@ -2038,6 +2100,17 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit)
 				--FireGameEvent('custom_error_show', {player_ID = first_unit:GetPlayerID(), _error = "Empath cannot cast this on herself!"})
 				Notifications:Bottom(first_unit:GetPlayerID(), {text="Empath cannot cast this on herself!", duration=3, style={color="red", ["font-size"]="50px"}})
+				return false
+			end
+		end
+
+
+		--Checking if Battle Chanter is trying to cast Muse's Inspiration on himself
+		if ability:GetAbilityName() == "ursa_enfos_muses_inspiration" then
+			if first_unit == target then
+				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit)
+				--FireGameEvent('custom_error_show', {player_ID = first_unit:GetPlayerID(), _error = "Empath cannot cast this on herself!"})
+				Notifications:Bottom(first_unit:GetPlayerID(), {text="Battle Chanter cannot cast this on himself!", duration=3, style={color="red", ["font-size"]="50px"}})
 				return false
 			end
 		end
@@ -2359,6 +2432,7 @@ function CEnfosGameMode:OnNPCSpawned( event )
 	 	spawnedUnit.intBonus = 0
 	 	spawnedUnit.primaryStatBonus = 0
 	 	spawnedUnit.agilityBonus = 0
+	 	spawnedUnit.baseArmor = spawnedUnit:GetPhysicalArmorBaseValue()
 	 	local heroPicked = spawnedUnit:GetUnitName()
 		local heroArmorType = nil
 		local heroAttackType = nil
@@ -2411,6 +2485,11 @@ function CEnfosGameMode:OnEntityKilled( event )
 	local killedUnit = EntIndexToHScript( event.entindex_killed )
 	local exp = killedUnit:GetDeathXP()
 	if not killedUnit or killedUnit:GetClassname() == "npc_dota_thinker" or killedUnit:IsPhantom() then
+		return
+	end
+
+	--This double checks if the unit killed itself by walking onto the base triggers, and prevents gold or exp from being distributed.
+	if killer == killedUnit then
 		return
 	end
 
@@ -2736,7 +2815,7 @@ function CEnfosGameMode:_ResetLivesConsoleCommand( cmdName )
 	print(goodLives)
 	Triggers._badLives = 100
 	Triggers._goodLives = 100
-	GameRules:MakeTeamLose( DOTA_TEAM_BADGUYS )
+	GameRules:SetGameWinner( DOTA_TEAM_GOODGUYS )
 
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(DOTA_TEAM_GOODGUYS, Triggers._goodLives)
 

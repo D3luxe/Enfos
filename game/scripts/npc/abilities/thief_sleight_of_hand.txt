@@ -12,8 +12,10 @@
 	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"MaxLevel"						"1"
+	"Innate"						"1"
 	"AbilityCastPoint"				"0.5"
 	"AbilityCooldown"				"50"
+	"AbilityManaCost"				"40"
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_alchemist/"

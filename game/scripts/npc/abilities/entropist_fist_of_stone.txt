@@ -8,9 +8,9 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"40"
+	"AbilityCooldown"				"40 38 36 34 32 30 28 26 24 22"
 	"AbilityCastRange"				"900" //Verified
-	"AbilityManaCost"				"60 66 75 87 102 141 165 192 222"
+	"AbilityManaCost"				"60 66 75 87 102 120 141 165 192 222"
 	"AOERadius"						"%radius"
 	"Precache"
 	{

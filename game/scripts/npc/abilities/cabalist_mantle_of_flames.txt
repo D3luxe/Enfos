@@ -10,7 +10,7 @@
 	"AbilityCastPoint"				"0.5"
 	"AOERadius"						"%radius"
 	"AbilityCooldown"				"1"
-	"AbilityManaCost"				"8 9.5 11 12.5 14 15.5 17 18.5 20 21.5"
+	"AbilityManaCost"				"5"
 	"LevelsBetweenUpgrades"		"3"
 	"RequiredLevel"			"6"
 	"precache"

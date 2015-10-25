@@ -1,0 +1,107 @@
+"ranger_haraweps_bonds"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_CREEP"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"naga_siren_ensnare"
+	"MaxLevel"						"10"
+	"LevelsBetweenUpgrades"			"2"
+
+	// Unit Targeting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC"
+	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+
+	// Stats
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"500 600 700 800 900 1000 1100 1200 1300 1400"
+	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"1.5 1.4 1.3 1.2 1.1 1 0.9 0.8 0.7 0.6"
+	"AbilityManaCost"				"6 6 7 8 8 9 10 10 11 12"
+	"precache"
+	{
+		"particle"	"particles/neutral_fx/dark_troll_ensnare.vpcf"
+		"particle"	"particles/basic_projectile/basic_projectile.vpcf"
+	}
+	"OnSpellStart"
+	{
+		"TrackingProjectile"
+		{
+			"Target"				"TARGET"
+			"EffectName"			"particles/basic_projectile/basic_projectile.vpcf"
+			"MoveSpeed"				"1000"
+			"EffectAttachType"		"follow_origin" //attach_hitloc?
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"ApplyModifier"
+		{
+			"Target" 			"TARGET"
+			"ModifierName"		"modifier_ranger_haraweps_bonds"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_ranger_haraweps_bonds"
+		{
+			"IsDebuff"					"1"
+			"IsPurgable"				"0"
+
+			"EffectName" "particles/neutral_fx/dark_troll_ensnare.vpcf"
+			"EffectAttachType" "attach_hitloc"
+			"Duration"					"%duration"
+
+			"States"
+			{
+				"MODIFIER_STATE_ROOTED"				"MODIFIER_STATE_VALUE_ENABLED"
+			}
+		}
+
+		"modifier_ranger_haraweps_bonds_aura"
+		{
+			"Passive"	"1"
+			"IsHidden"	"1"
+			"IsPurgable"	"0"
+
+			"Aura" 				"modifier_ranger_haraweps_bonds_aura_caster"
+			"Aura_Radius" 		"%autocast_radius"
+			"Aura_Teams" 		"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types" 		"DOTA_UNIT_TARGET_CREEP"
+		}
+
+		"modifier_ranger_haraweps_bonds_aura_caster"
+		{
+			"IsHidden"	"1"
+			"ThinkInterval"	"1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+			    {
+			        "ScriptFile"    "heroes/ranger.lua"
+			        "Function"      "Haraweps_Bonds_Autocast"
+			    }
+			}
+		}
+	}	
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"11 12 13 14 15 16 17 18 19 20"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"autocast_radius"				"500 600 700 800 900 1000 1100 1200 1300 1400"
+		}
+	}
+}

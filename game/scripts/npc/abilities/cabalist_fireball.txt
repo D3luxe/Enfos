@@ -26,7 +26,7 @@
 		{
 			"Target"				"TARGET"
 			"EffectName"			"particles/units/heroes/hero_jakiro/jakiro_base_attack_fire.vpcf"
-			"MoveSpeed"				"1500"
+			"MoveSpeed"				"800"
 			// "SourceAttachment" 		"DOTA_PROJECTILE_ATTACHMENT_ATTACK_1"
 			"EffectAttachType"		"follow_origin"
 		}

@@ -32,7 +32,7 @@
 	"AttackRate"				"1"		// Speed of attack.
 	"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"1200"		// Range within a target can be acquired.
-	"AttackRange"				"500"		//unverified value
+	"AttackRange"				"750"		//unverified value
 	"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
 	"ProjectileSpeed"			"1000"			// Speed of projectile.
 

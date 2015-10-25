@@ -140,7 +140,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"spirit_speed"			"700"				
+			"spirit_speed"			"522"				
 		}
 		"06"
 		{
@@ -155,12 +155,12 @@
 		"08"	
 		{
 			"var_type"					"FIELD_FLOAT"
-			"delay_between_spirits"		"0.01"
+			"delay_between_spirits"		"0.1"
 		}		
 		"09"
 		{
 			"var_type"					"FIELD_FLOAT"
-			"min_time_between_attacks"	"0.5"
+			"min_time_between_attacks"	"1 0.9 0.8 0.7 0.6 0.5 0.4 0.3 0.2 0.1"
 		}			
 	}
 }

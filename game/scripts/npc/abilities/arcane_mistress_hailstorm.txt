@@ -26,6 +26,16 @@
 			"damage"				"%damage"
 		}
 	}
+	"Modifiers"
+	{
+		"modifier_hailstorm_hit"
+		{
+			"Duration"		"15"
+			"IsHidden"		"1"
+			"IsPurgable"	"0"
+		}
+
+	}
 	"OnChannelFinish"
 	{
 		"RunScript"

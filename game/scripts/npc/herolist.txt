@@ -35,4 +35,6 @@
 	"npc_dota_hero_troll_warlord" "1"
 	"npc_dota_hero_witch_doctor" "1"
 	"npc_dota_hero_medusa" "1"
+	"npc_dota_hero_drow_ranger" "1"
+	"npc_dota_hero_lion" "0"
 }

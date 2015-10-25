@@ -1,5 +1,30 @@
+function soul_drain_start(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	local manacost = keys.manacost
+
+	if caster:GetHealth() < caster:GetMaxHealth() then
+		print("Applying modifier")
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_soul_drain", {})
+	else
+		print("Already at max health")
+		Timers:CreateTimer(DoUniqueString("soul_drain_cancel"), {
+			endTime = 0.01,
+			callback = function()
+				ability:EndChannel(true)
+				ability:EndCooldown()
+				caster:GiveMana(manacost)
+			end
+		})
+		
+	end
+end
+
 function soul_drain_heal(keys)
 	keys.caster:Heal(keys.caster:GetMaxHealth() * (keys.ability:GetSpecialValueFor("heal") / 1000), keys.caster) -- 0.8% of his max health per tick. 10 ticks per second
+	if keys.caster:GetHealth() >= keys.caster:GetMaxHealth() then
+		keys.ability:EndChannel(true)
+	end
 end
 
 function scalping_cry(keys)

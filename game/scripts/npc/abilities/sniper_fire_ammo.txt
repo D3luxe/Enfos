@@ -5,58 +5,69 @@
 {
 	"BaseClass"						"ability_datadriven"
 	"AbilityTextureName"			"sniper_shrapnel"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_TOGGLE | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 	"MaxLevel"						"10"
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
 	"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
+	"AbilityCastRange" "3000"
 	"Precache"
 	{
-		"particle_folder"			"particles/units/heroes/hero_lina/"
+		"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
+		"particle"  "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+		"soundfile" "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
 	}
-	"OnToggleOn"
-	{
-		"RunScript"
-		{
-			"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
-			"Function"		"FireAmmoRefund" //it's not supposed to cost mana to toggle
-		}	
-		"ApplyModifier"
-		{
-			"ModifierName"			"modifier_sniper_fire_ammo"
-			"Target"				"CASTER"
-		}
-	}
-	"OnToggleOff"
-	{
-		"RemoveModifier"
-		{
-			"ModifierName"			"modifier_sniper_fire_ammo"
-			"Target"				"CASTER"
-		}
-	}
+
 	"Modifiers"
 	{
 		"modifier_sniper_fire_ammo"
 		{
-			"Properties"
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsBuff"			"0"
+			"IsDebuff"			"0"
+			"IsPurgable"		"0"
+
+			"Orb"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"%damage_bonus"
+				"Priority"	"DOTA_ORB_PRIORITY_ABILITY"
+				"ProjectileName"    "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+				"ProjectileSpeed"	"10000"
+				"CastAttack"	"1"
 			}
-			"OnAttackStart"
+
+			"OnOrbFire"
 			{
-				"RunScript"
+				"SpendMana"
 				{
-					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
-					"Function"		"FireAmmoCost"
+					"Mana"    		"%AbilityManaCost"
 				}
-				"TrackingProjectile" // a bit ghetto
+
+				"FireSound"
 				{
+					"EffectName"	"Hero_Clinkz.SearingArrows"
+					"Target"		"CASTER"
+				}
+			}
+			
+			"OnOrbImpact"
+			{
+				"Damage"
+				{
+					"Type"          "DAMAGE_TYPE_PHYSICAL"
+					"Damage"        "%damage_bonus"
 					"Target"		"TARGET"
-					"EffectName"	"particles/units/heroes/hero_lina/lina_base_attack.vpcf"
-					"MoveSpeed"		"3000"
+				}
+
+				"FireSound"
+				{
+					"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
+					"Target"		"CASTER"
 				}
 			}
+
 		}
 	}
 	"AbilitySpecial"
