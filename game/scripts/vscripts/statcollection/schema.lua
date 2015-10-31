@@ -63,18 +63,18 @@ function BuildPlayersArray()
 
                     -- Example functions for generic stats are defined in statcollection/lib/utilities.lua
                     -- Add player values here as someValue = GetSomePlayerValue(),
-                    hn = GetHeroName(playerID),                                             -- name
-                    hl = hero:GetLevel(),                                                   -- level
-                    hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),      -- Networth
-                    pt = hero:GetTeam(),                                           -- Hero's team
-                    pcs = PlayerResource:GetConnectionState(playerID), -- Player connection state
-                    pk = hero:GetKills(),                                         -- Kills
-                    pa = hero:GetAssists(),                                     -- Assists
-                    pd = hero:GetDeaths(),                                       -- Deaths
-                    plh = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),    -- Last hits
-                    ph = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),       -- Healing
-                    pgpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),        -- GPM
-                    il = GetItemList(hero)                                           -- Item list
+                    hn = GetHeroName(playerID),                                                 -- name
+                    hl = hero:GetLevel(),                                                       -- level
+                    hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),          -- Networth
+                    pt = hero:GetTeam(),                                                        -- Hero's team
+                    pcs = PlayerResource:GetConnectionState(playerID),                          -- Player connection state
+                    pk = hero:GetKills(),                                                       -- Kills
+                    pa = hero:GetAssists(),                                                     -- Assists
+                    pd = hero:GetDeaths(),                                                      -- Deaths
+                    plh = PlayerResource:GetLastHits(hero:GetPlayerOwnerID()),                  -- Last hits
+                    ph = PlayerResource:GetHealing(hero:GetPlayerOwnerID()),                    -- Healing
+                    pgpm = math.floor(PlayerResource:GetGoldPerMin(hero:GetPlayerOwnerID())),   -- GPM
+                    il = GetItemList(hero)                                                      -- Item list
                 })
             end
         end
