@@ -1,0 +1,90 @@
+﻿// **********************************************************************************************************************
+// This file contains generated tooltips created from the files in the scripts/npc directory of this mod.
+// It does not contain tooltips already defined in addon_english.txt, nor modifiers with the property "IsHidden" "1".
+// **********************************************************************************************************************
+
+// ******************** HEROES ********************
+
+// ******************** UNITS ********************
+
+// ******************** ABILITY MODIFIERS ********************
+
+// ******************** ITEM MODIFIERS ********************
+"DOTA_Tooltip_uthmors_skullcleaver_crit"                                          "Uthmors Skullcleaver Crit"
+"DOTA_Tooltip_uthmors_skullcleaver_crit_Description"                              ""
+
+
+// ******************** ABILITIES ********************
+
+// ******************** ITEMS ********************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

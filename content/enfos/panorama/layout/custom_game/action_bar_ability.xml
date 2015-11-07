@@ -22,7 +22,9 @@
 						<Panel id="CooldownOverlay" />
 						<Label id="CooldownTimer" />
 					</Panel>
+					<Label id="GoldCost" />
 					<Label id="ManaCost" />
+					
 				</Button>
 			</Panel>
 			<Panel hittest="false" id="AbilityLevelContainer" />

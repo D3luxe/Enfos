@@ -4,8 +4,8 @@ function customSchema:init()
 
     -- Check the schema_examples folder for different implementations
 
-    -- Flag Example
-    -- statCollection:setFlags({version = GetVersion()})
+     -- Flags
+    statCollection:setFlags({version = CEnfosGameMode:GetVersion()})
 
     -- Listen for changes in the current state
     ListenToGameEvent('game_rules_state_change', function(keys)
@@ -66,8 +66,7 @@ function BuildPlayersArray()
                     hn = GetHeroName(playerID),                                             -- name
                     hl = hero:GetLevel(),                                                   -- level
                     hnw = GetNetworth(PlayerResource:GetSelectedHeroEntity(playerID)),      -- Networth
-                    pt = hero:GetTeam(),                                           -- Hero's team
-                    pcs = PlayerResource:GetConnectionState(playerID), -- Player connection state
+                    pt = GetPlayerTeam(PlayerResource:GetSelectedHeroEntity(playerID)),                                           -- Hero's team
                     pk = hero:GetKills(),                                         -- Kills
                     pa = hero:GetAssists(),                                     -- Assists
                     pd = hero:GetDeaths(),                                       -- Deaths

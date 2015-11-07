@@ -1,3 +1,11 @@
+function TableCount(t)
+  local n = 0
+  for _ in pairs( t ) do
+    n = n + 1
+  end
+  return n
+end
+
 function PrintTable(t, indent, done)
 	--print ( string.format ('PrintTable type %s', type(keys)) )
     if type(t) ~= "table" then return end

@@ -38,6 +38,25 @@
 	horizontal-align: right;
 }
 
+
+#GoldCost
+{
+	color: #c0e8fb;
+    font-size: 14px;
+    font-weight: bold;
+	text-shadow: 0px 0px 6px 8 #245191;
+	margin-left: -2px;
+	margin-bottom: -4px;
+
+	vertical-align: bottom;
+	horizontal-align: left;
+}
+
+.no_gold_cost #GoldCost
+{
+	visibility: collapse;
+}
+
 .no_mana_cost #ManaCost
 {
 	visibility: collapse;

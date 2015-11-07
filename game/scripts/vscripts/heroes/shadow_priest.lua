@@ -24,6 +24,7 @@ function enfeeble(keys)
 		return
 	else
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_enfeeble_enfos", {duration = totalDuration}) -- the logic for enfeeble is handled in addon_game_mode.lua in the OnEntityKilled block
+		target:RemoveModifierByName("modifier_faenellas_grace")
 	end
 end
 

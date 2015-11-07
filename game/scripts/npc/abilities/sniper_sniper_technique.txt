@@ -12,6 +12,7 @@
 	"MaxLevel"						"1"
 	"AbilityCastPoint"				"2"
 	"AbilityCooldown"				"30"
+	"Innate"						"1"
 	"OnSpellStart"
 	{
 		"RunScript"
@@ -26,6 +27,7 @@
 		"modifier_sniper_technique"
 		{
 			"Passive"	"1"
+			"IsPurgable"			"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"

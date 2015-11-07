@@ -1,3 +1,57 @@
+function EquipThirstingBlade(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	if caster:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+		--print("Attacker is ranged")
+		return
+	else
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_thirsting_blade_leech", {})
+	end
+end
+
+function UnequipThirstingBlade(keys)
+	local ability = keys.ability
+	local caster = keys.caster
+
+	caster:RemoveModifierByName("modifier_thirsting_blade_leech")
+end
+
+function EquipBloodthirst(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	if caster:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+		--print("Attacker is ranged")
+		return
+	else
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_bloodthirst_leech", {})
+	end
+end
+
+function UnequipBloodthirst(keys)
+	local ability = keys.ability
+	local caster = keys.caster
+
+	caster:RemoveModifierByName("modifier_bloodthirst_leech")
+end
+
+function EquipVampiricPotion(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	if caster:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
+		--print("Attacker is ranged")
+		return
+	else
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_leech", {})
+	end
+end
+
+function UnequipVampiricPotion(keys)
+	local ability = keys.ability
+	local caster = keys.caster
+
+	caster:RemoveModifierByName("modifier_vampiric_potion_leech")
+end
+
 function empath_pickup(keys)
 	--[[
 	1: STRENGTH
@@ -92,3 +146,4 @@ function purge(keys)
 	--CustomPurge(unit, RemoveBuff, RemoveDebuff)
 	CustomPurge(caster, true, true)
 end
+

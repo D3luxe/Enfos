@@ -168,3 +168,12 @@ function GetItemList(hero)
 
     return itemList
 end
+
+function GetPlayerTeam(hero)
+	if hero:GetTeam() == 2 then
+		return "Radiant"
+	else
+		return "Dire"
+	end
+	return "Nil"
+end

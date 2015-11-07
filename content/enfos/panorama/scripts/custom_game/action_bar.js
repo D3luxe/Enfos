@@ -1,8 +1,8 @@
 "use strict";
 function UpdateTeamPanel()
 {
-	GameEvents.SendCustomGameEventToServer( "clearTeams", { });
-
+	GameEvents.SendCustomGameEventToServer( "clearTeams", { "key1" : 1 });
+ 	$.Msg("Updating team panel")
 	//Check radiant
 	var radiantPlayers = Game.GetPlayerIDsOnTeam( 2 );
     for ( var i = 0; i < radiantPlayers.length; ++i )
@@ -14,10 +14,19 @@ function UpdateTeamPanel()
 	var direPlayers = Game.GetPlayerIDsOnTeam( 3 );
     for ( var i = 0; i < direPlayers.length; ++i )
     {
-    	if (direPlayers[i] == Game.GetLocalPlayerID) {
-           GameEvents.SendCustomGameEventToServer( "updateDire", { "key1" : direPlayers[i] });
-    	}
+        GameEvents.SendCustomGameEventToServer( "updateDire", { "key1" : direPlayers[i] });
     }
+    
+    /*var queryUnit = Players.GetLocalPlayerPortraitUnit();
+    $.Msg(Entities.GetTeamNumber(queryUnit))
+    $.Msg(Game.GetLocalPlayerID())
+    if (Entities.GetTeamNumber(queryUnit) == 2) {
+    	GameEvents.SendCustomGameEventToServer( "updateRadiant", { "key1" : Game.GetLocalPlayerID() });
+    }
+    else {
+    	GameEvents.SendCustomGameEventToServer( "updateDire", { "key1" : Game.GetLocalPlayerID() });
+
+    }*/
 
 }
 function UpdateDire(playerID)

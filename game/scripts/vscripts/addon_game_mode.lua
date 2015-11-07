@@ -54,6 +54,8 @@ DIRE_TEAM_MEMBERS = {}
 
 VOTING_TIME = 30
 
+TIP_TIMER  = 5
+
 -- Stage constants
 local STAGE_WAITING = 0
 local STAGE_VOTING = 1
@@ -440,6 +442,7 @@ uniqueItems = { "item_nimsha",
 artifactItems = { "item_stone_axe",
 				"item_iron_helmet",
 				"item_elven_plate_mail",
+				"item_ironbark_leathers",
 			}
 
 
@@ -550,6 +553,7 @@ function CEnfosGameMode:InitGameMode()
 
 	
 	GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
+	GameRules.TipKV = LoadKeyValues("scripts/kv/tips.kv")
 
 	-- Game options
 	GameRules.ExtraBounty = 1
@@ -623,6 +627,8 @@ function CEnfosGameMode:InitGameMode()
 
 	-- Register OnThink with the game engine so it is called every 0.25 seconds
 	GameRules:GetGameModeEntity():SetThink( "OnThink", self, 0.25 )
+	-- Register OnTip that is called every 45 seconds
+	GameRules:GetGameModeEntity():SetThink( "OnTip", self, 2 )
 	-- defining our global tables here. we need to populate them with initial player values or else we won't be able to index them.
 	
 	self._idmap = {}
@@ -638,7 +644,9 @@ function CEnfosGameMode:InitGameMode()
 	CustomPurgeInit()
 end
 
-
+function CEnfosGameMode:OnTip()
+	
+end
 
 function ClearTeams(eventSourceIndex, args)
 	--print("Clearing teams")
@@ -1032,6 +1040,21 @@ end
 -- Evaluate the state of the game
 function CEnfosGameMode:OnThink()
 	if GameRules:State_Get() == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
+		TIP_TIMER = TIP_TIMER - 1
+		--print(TIP_TIMER)
+		if TIP_TIMER <= 0 then
+			--print("OnTip")
+			--print("TipKV exists")
+
+			local tipCount = TableCount(GameRules.TipKV)
+			local tip = math.random(1, tipCount)
+			--print("Tip value: "..tip)
+			print(GameRules.TipKV[tostring(tip)])
+			GameRules:SendCustomMessage(GameRules.TipKV[tostring(tip)], 0, 0)
+			TIP_TIMER = 45
+		end
+
+
 		self:_CheckForDefeat()
 
 		if self._flPrepTimeEnd ~= nil then
@@ -1465,14 +1488,8 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 		local caster = hero
 		local pointsUsed = 0
 
-		--Handle unique cases here where innate is in slot 6
-		if caster:GetClassname() == "npc_dota_hero_luna" then
-			for i=0,4 do
-				pointsUsed = pointsUsed + caster:GetAbilityByIndex(i):GetLevel()
-				caster:GetAbilityByIndex(i):SetLevel(0)
-			end
-		else
-			for i=0,3 do
+		for i=0,7 do
+			if caster:GetAbilityByIndex(i) ~= nil and GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()].Innate == nil and caster:GetAbilityByIndex(i):IsCooldownReady() then
 				pointsUsed = pointsUsed + caster:GetAbilityByIndex(i):GetLevel()
 				caster:GetAbilityByIndex(i):SetLevel(0)
 			end
@@ -2118,6 +2135,16 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 				return false
 			end
 		end
+
+		--Checking if Battle Chanter is trying to cast Muse's Inspiration on himself
+		if ability:GetAbilityName() == "bard_faenellas_grace" then
+			if first_unit == target then
+				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit)
+				--FireGameEvent('custom_error_show', {player_ID = first_unit:GetPlayerID(), _error = "Empath cannot cast this on herself!"})
+				Notifications:Bottom(first_unit:GetPlayerID(), {text="Bard cannot cast this on herself!", duration=3, style={color="red", ["font-size"]="50px"}})
+				return false
+			end
+		end
 		
 		
 	end
@@ -2436,7 +2463,6 @@ function CEnfosGameMode:OnNPCSpawned( event )
 	 	spawnedUnit.intBonus = 0
 	 	spawnedUnit.primaryStatBonus = 0
 	 	spawnedUnit.agilityBonus = 0
-	 	spawnedUnit.baseArmor = spawnedUnit:GetPhysicalArmorBaseValue()
 	 	local heroPicked = spawnedUnit:GetUnitName()
 		local heroArmorType = nil
 		local heroAttackType = nil
@@ -2464,6 +2490,9 @@ function CEnfosGameMode:OnNPCSpawned( event )
 
 		if spawnedUnit.bFirstSpawned == nil then
 			spawnedUnit.bFirstSpawned = true
+
+		 	spawnedUnit.baseArmor = spawnedUnit:GetPhysicalArmorBaseValue()
+		 	print("Base armor: "..spawnedUnit.baseArmor)
 
 			GameRules.PLAYERS_PICKED_HERO=GameRules.PLAYERS_PICKED_HERO+1
 		end
@@ -2754,6 +2783,10 @@ end
 ROUND_EXPECTED_VALUES_TABLE = {
 
 }
+
+function CEnfosGameMode:GetVersion()
+    return ENFOS_VERSION
+end
 
 -- Custom game specific console command "Enfos_test_round"
 function CEnfosGameMode:_TestRoundConsoleCommand( cmdName, roundNumber, delay )

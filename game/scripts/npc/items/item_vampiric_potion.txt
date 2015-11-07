@@ -53,11 +53,38 @@
 		"modifier_vampiric_potion"
 		{
 			"Duration"	"%duration"
+			"IsHidden"	"1"
 			"Properties"
 			{
 				// You may use "modifierProperty" completions within quotes here. Below is an example
 				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
 			}
+			"EffectName" 				"particles/items_fx/armlet.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"EquipVampiricPotion"
+				}
+			}
+
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"UnequipVampiricPotion"
+				}
+			}
+		}
+		"modifier_vampiric_potion_leech"
+		{
+			"IsHidden"		"0"
+			"Duration"	"%duration"
 			"OnAttackLanded"
 			{
 				"Lifesteal"
@@ -66,8 +93,7 @@
 					"LifestealPercent"		"%lifesteal"
 				}
 			}
-			"EffectName" 				"particles/items_fx/armlet.vpcf"
-			"EffectAttachType"			"attach_hitloc"
+
 		}
 
 	}

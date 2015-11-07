@@ -53,6 +53,11 @@ function OnFinishedVoting (args) {
 	$.GetContextPanel().visible = false;
 }
 
+function OnStartVoting (args) {
+	$.GetContextPanel().visible = true;
+}
+
 (function () {
 	GameEvents.Subscribe( "finished_voting", OnFinishedVoting );
+	GameEvents.Subscribe( "start_voting", OnStartVoting );
 })();

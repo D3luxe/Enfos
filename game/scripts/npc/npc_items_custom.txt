@@ -839,10 +839,33 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
 				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"EquipBloodthirst"
+					}
+				}
+	
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"UnequipBloodthirst"
+					}
+				}
+			}
+			"modifier_bloodthirst_leech"
+			{
+				"IsHidden"		"1"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -851,6 +874,7 @@
 						"LifestealPercent"		"%leech"
 					}
 				}	
+	
 			}
 		}
 	
@@ -1326,12 +1350,12 @@
 	{
 		"ID"                            "2039"
 		"BaseClass"                     "item_datadriven"
-		"AbilityTextureName"			"item_travel_boots"
+		"AbilityTextureName"			"item_travel_boots_tinker"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
 	
-		"ItemCost"                      "1" 		
+		"ItemCost"                      "1500" 		
 		"ItemShopTags"					"boot"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	
@@ -4151,16 +4175,42 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"IsUnique"							"1"
 	
+		
+	
 		"Modifiers"
 		{
 			"modifier_thirsting_blade"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
 				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"EquipThirstingBlade"
+					}
+				}
+	
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"UnequipThirstingBlade"
+					}
+				}
+				
+			}
+			"modifier_thirsting_blade_leech"
+			{
+				"IsHidden"		"1"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -4894,11 +4944,38 @@
 			"modifier_vampiric_potion"
 			{
 				"Duration"	"%duration"
+				"IsHidden"	"1"
 				"Properties"
 				{
 					// You may use "modifierProperty" completions within quotes here. Below is an example
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%damage"
 				}
+				"EffectName" 				"particles/items_fx/armlet.vpcf"
+				"EffectAttachType"			"attach_hitloc"
+	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"EquipVampiricPotion"
+					}
+				}
+	
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"		"items/items_shared.lua"
+						"Function"			"UnequipVampiricPotion"
+					}
+				}
+			}
+			"modifier_vampiric_potion_leech"
+			{
+				"IsHidden"		"0"
+				"Duration"	"%duration"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -4907,8 +4984,7 @@
 						"LifestealPercent"		"%lifesteal"
 					}
 				}
-				"EffectName" 				"particles/items_fx/armlet.vpcf"
-				"EffectAttachType"			"attach_hitloc"
+	
 			}
 	
 		}

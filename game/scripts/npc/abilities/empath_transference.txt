@@ -16,7 +16,7 @@
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"500 565 630 695 760 825 890 955 1020 1085"
-	"AbilityCastPoint"				"0"
+	"AbilityCastPoint"				"0.1"
 	"AbilityChannelTime"			"8 16 24 32 40 48 56 64 72 80"
 	
 	// Time		
@@ -97,11 +97,39 @@
 		}
 	}
 
+	"OnChannelInterrupted"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_life_drain"
+			"Target" 		"TARGET"
+		}
+	}
+
+	"OnAbilityEndChannel"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_life_drain"
+			"Target" 		"TARGET"
+		}
+	}
+
+	"OnStateChanged"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_life_drain"
+			"Target" 		"TARGET"
+		}
+	}
+
 	"Modifiers"
 	{
 		"modifier_life_drain"
 		{
 			"IsDebuff"	"0"
+			"Duration"	"%duration_tooltip"
 			"OnCreated"
 			{
 				"RunScript"

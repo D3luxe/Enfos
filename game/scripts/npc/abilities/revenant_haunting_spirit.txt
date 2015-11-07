@@ -20,6 +20,7 @@
 		"modifier_revenant_haunting_spirit"
 		{
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"ThinkInterval"			"10"
 			"OnIntervalThink"
 			{

@@ -19,6 +19,21 @@ function merauds_blessing(keys)
 	end
 end
 
+function FaenellasGracePreCast( event )
+	local caster = event.caster
+	local target = event.target
+	local player = caster:GetPlayerOwner()
+	local pID = caster:GetPlayerOwnerID()
+	-- This prevents the spell from going off
+	if target == caster then
+		caster:Stop()
+
+		-- Play Error Sound
+		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", player)
+
+	end
+end
+
 -- mainly taken from Spell Library. https://github.com/Pizzalol/SpellLibrary/
 function call_of_the_siren( keys )
 	local caster = keys.caster

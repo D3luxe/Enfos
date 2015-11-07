@@ -722,3 +722,8 @@ function chain_heal( keys )
 		end
 	end
 end
+
+function mana_recharge(keys)
+	local caster = keys.caster
+	caster:GiveMana(30)
+end

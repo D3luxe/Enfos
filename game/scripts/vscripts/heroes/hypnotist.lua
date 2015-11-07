@@ -4,6 +4,7 @@ function Prediction(keys)
 	local target = keys.target
 	local pid = target:GetPlayerID() -- this is the target's pid, not the caster's pid!
 	local maxIncrease = keys.attribute_increase
+	local minIncrease = 0
 	local ability = keys.ability
 	if Enfos.strPrediction[pid] == nil then
 		Enfos.strPrediction[pid] = 0
@@ -16,6 +17,7 @@ function Prediction(keys)
 	end
 	if caster == target then -- attribute penalty for self-targetting
 		maxIncrease = maxIncrease - 2
+		minIncrease = minIncrease - 2
 	end 
 -- reset the values
 	target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
@@ -35,15 +37,16 @@ function Prediction(keys)
 
 
 -- roll the increase
-	local strIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
-	local agiIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
-	local intIncreaseAmount = math.random(0,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local strIncreaseAmount = math.random(minIncrease,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local agiIncreaseAmount = math.random(minIncrease,maxIncrease) -- we can't directly add it because we need this amount for the particles
+	local intIncreaseAmount = math.random(minIncrease,maxIncrease) -- we can't directly add it because we need this amount for the particles
 	local strCharacters = string.len(tostring(strIncreaseAmount))
 	local agiCharacters = string.len(tostring(agiIncreaseAmount))
 	local intCharacters = string.len(tostring(intIncreaseAmount))
 	Enfos.strPrediction[pid] = Enfos.strPrediction[pid] + strIncreaseAmount
 	Enfos.agiPrediction[pid] = Enfos.agiPrediction[pid] + agiIncreaseAmount
 	Enfos.intPrediction[pid] = Enfos.intPrediction[pid] + intIncreaseAmount
+	print("Str: "..strIncreaseAmount.." | Agi: "..agiIncreaseAmount.." | Int: "..intIncreaseAmount)
 -- set the increase
 	target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
 	target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])

@@ -18,12 +18,27 @@
 		"particle"					"particles/units/heroes/hero_lina/lina_fiery_soul.vpcf"		
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
 	}
+	"OnAbilityPhaseStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"heroes/bard.lua"
+			"Function"		"FaenellasGracePreCast"
+		}
+	}
+
 	"OnSpellStart"
 	{
 		"ApplyModifier"
 		{
 			"ModifierName"			"modifier_faenellas_grace"
 			"Target"				"TARGET"
+		}
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_enfeeble_enfos"
+			"Target"						"TARGET"
+
 		}
 	}
 	"Modifiers"

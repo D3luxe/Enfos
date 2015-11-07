@@ -515,6 +515,7 @@
 		"AbilityCooldown"				"0.5"
 		"AbilityCastRange"				"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
 		"AbilityManaCost"				"3 4 5 6 7 8 9 10 11 12"
+		
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_drow/"
@@ -1025,12 +1026,27 @@
 			"particle"					"particles/units/heroes/hero_lina/lina_fiery_soul.vpcf"		
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_chen.vsndevts"
 		}
+		"OnAbilityPhaseStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"heroes/bard.lua"
+				"Function"		"FaenellasGracePreCast"
+			}
+		}
+	
 		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
 				"ModifierName"			"modifier_faenellas_grace"
 				"Target"				"TARGET"
+			}
+			"RemoveModifier"
+			{
+				"ModifierName"				"modifier_enfeeble_enfos"
+				"Target"						"TARGET"
+	
 			}
 		}
 		"Modifiers"
@@ -2801,9 +2817,9 @@
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"enchantress_natures_attendants"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"MaxLevel"						"10"
-		"AbilityCastPoint"				"0"
+		"AbilityCastPoint"				"0.05"
 		"AbilityCooldown"				"25"
 		"AbilityManaCost"				"70"
 		"OnSpellStart"
@@ -2873,7 +2889,7 @@
 		// Casting
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500 565 630 695 760 825 890 955 1020 1085"
-		"AbilityCastPoint"				"0"
+		"AbilityCastPoint"				"0.1"
 		"AbilityChannelTime"			"8 16 24 32 40 48 56 64 72 80"
 		
 		// Time		
@@ -2954,11 +2970,39 @@
 			}
 		}
 	
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_life_drain"
+				"Target" 		"TARGET"
+			}
+		}
+	
+		"OnAbilityEndChannel"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_life_drain"
+				"Target" 		"TARGET"
+			}
+		}
+	
+		"OnStateChanged"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_life_drain"
+				"Target" 		"TARGET"
+			}
+		}
+	
 		"Modifiers"
 		{
 			"modifier_life_drain"
 			{
 				"IsDebuff"	"0"
+				"Duration"	"%duration_tooltip"
 				"OnCreated"
 				{
 					"RunScript"
@@ -9815,7 +9859,7 @@
 			"02"
 			{
 				"var_type"					"FIELD_FLOAT"
-				"crit_bonus"				"110 111 112 113 114 115 116 117 118 119 120"
+				"crit_bonus"				"1000 1100 1200 1300 1400 1500 1600 1700 1800 1900 2000"
 			}
 			"03"
 			{
@@ -10057,6 +10101,7 @@
 			"modifier_revenant_haunting_spirit"
 			{
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"ThinkInterval"			"10"
 				"OnIntervalThink"
 				{
@@ -10839,6 +10884,7 @@
 		"MaxLevel"						"1"
 		"AbilityCastPoint"				"2"
 		"AbilityCooldown"				"30"
+		"Innate"						"1"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -10853,6 +10899,7 @@
 			"modifier_sniper_technique"
 			{
 				"Passive"	"1"
+				"IsPurgable"			"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
@@ -11642,6 +11689,56 @@
 			{
 				"var_type"						"FIELD_INTEGER"
 				"mana_per_second"				"100"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Spellbringer Abilities
+	//=================================================================================================================
+	"spellbringer_mana_recharge"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"BaseClass" 					"ability_datadriven"
+		"AbilityTextureName" 			"keeper_of_the_light_chakra_magic"
+		"MaxLevel"						"1"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"0"
+		"AbilityCastPoint"				"0"
+		
+		// Cost
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityManaCost"				"0"
+		"AbilityGoldCost"				"10000"
+	
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+				"Function"		"mana_recharge"
+			}
+		}
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"mana_regen"						"30"
+			}
+			"02"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"gold_cost"					"10000"
 			}
 		}
 	}

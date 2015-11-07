@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Spellbringer Abilities
+//=================================================================================================================
+"spellbringer_mana_recharge"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"BaseClass" 					"ability_datadriven"
+	"AbilityTextureName" 			"keeper_of_the_light_chakra_magic"
+	"MaxLevel"						"1"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"0"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"0"
+	"AbilityCastPoint"				"0"
+	
+	// Cost
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityManaCost"				"0"
+	"AbilityGoldCost"				"10000"
+
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"		"mana_recharge"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"mana_regen"						"30"
+		}
+		"02"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"gold_cost"					"10000"
+		}
+	}
+}

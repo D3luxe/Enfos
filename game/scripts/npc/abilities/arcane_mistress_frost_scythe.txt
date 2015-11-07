@@ -13,6 +13,7 @@
 	"AbilityCooldown"				"0.5"
 	"AbilityCastRange"				"700 900 1100 1300 1500 1700 1900 2100 2300 2500"
 	"AbilityManaCost"				"3 4 5 6 7 8 9 10 11 12"
+	
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_drow/"

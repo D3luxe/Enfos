@@ -8,6 +8,7 @@
     horizontal-align: center;
     vertical-align: center;
     transform: translateY(-15%);
+    border-radius:15px;
 }
 
 .TestParent

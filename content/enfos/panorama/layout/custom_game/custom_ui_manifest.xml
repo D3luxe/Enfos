@@ -44,6 +44,8 @@
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_bar.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/player_color.xml" />
     <CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/resource.xml" />
-    <CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/enfos_diff.xml" />
+    <!--<CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/enfos_diff.xml" />-->
+    <CustomUIElement type="GameSetup"         layoutfile="file://{resources}/layout/custom_game/team_select.xml" />
+    <!--<CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/hero_selection.xml" />-->
   </Panel>
 </root>

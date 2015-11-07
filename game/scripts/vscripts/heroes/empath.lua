@@ -47,7 +47,6 @@ function TransferencePreCast( event )
 	local target = event.target
 	local player = caster:GetPlayerOwner()
 	local pID = caster:GetPlayerOwnerID()
-
 	-- This prevents the spell from going off
 	if target == caster then
 		caster:Stop()
@@ -83,6 +82,14 @@ function LifeDrainHealthTransfer( event )
 		--print("BREAKING! "..break_distance)
 		ability:OnChannelFinish(false)
 		caster:Stop()
+		return
+	end
+
+	if not ability:IsChanneling() then
+		caster:Stop()
+		target:RemoveModifierByName("modifier_life_drain") --[[Returns:void
+		Removes a modifier
+		]]
 		return
 	end
 

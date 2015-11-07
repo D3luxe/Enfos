@@ -19,16 +19,42 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	"IsUnique"							"1"
 
+	
+
 	"Modifiers"
 	{
 		"modifier_thirsting_blade"
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
+			"IsPurgable"		"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
 			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"EquipThirstingBlade"
+				}
+			}
+
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"UnequipThirstingBlade"
+				}
+			}
+			
+		}
+		"modifier_thirsting_blade_leech"
+		{
+			"IsHidden"		"1"
 			"OnAttackLanded"
 			{
 				"Lifesteal"

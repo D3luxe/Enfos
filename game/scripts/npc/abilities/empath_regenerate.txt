@@ -5,9 +5,9 @@
 {
 	"BaseClass"						"ability_datadriven"
 	"AbilityTextureName"			"enchantress_natures_attendants"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"MaxLevel"						"10"
-	"AbilityCastPoint"				"0"
+	"AbilityCastPoint"				"0.05"
 	"AbilityCooldown"				"25"
 	"AbilityManaCost"				"70"
 	"OnSpellStart"

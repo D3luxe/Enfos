@@ -10,13 +10,16 @@ function UpdateAbility()
 	var noLevel =( 0 == Abilities.GetLevel(ability) );
 	var isCastable = !Abilities.IsPassive(ability) && !noLevel;
 	var manaCost = Abilities.GetManaCost( ability );
+	//var goldCost = Ability.GetGoldCost( ability );
 	var hotkey = Abilities.GetKeybind( ability, queryUnit );
 	var unitMana = Entities.GetMana( queryUnit );
+	var unitGold = Players.GetGold(Players.GetLocalPlayer() );
 
 	$.GetContextPanel().SetHasClass( "no_level", noLevel );
 	$.GetContextPanel().SetHasClass( "is_passive", Abilities.IsPassive(ability) );
 	$.GetContextPanel().SetHasClass( "no_mana_cost", ( 0 == manaCost ) );
 	$.GetContextPanel().SetHasClass( "insufficient_mana", ( manaCost > unitMana ) );
+	//$.GetContextPanel().SetHasClass( "insufficient_gold", ( goldCost > unitGold ) )
 	$.GetContextPanel().SetHasClass( "auto_cast_enabled", Abilities.GetAutoCastState(ability) );
 	$.GetContextPanel().SetHasClass( "toggle_active", Abilities.GetToggleState(ability) );
 
@@ -28,6 +31,20 @@ function UpdateAbility()
 	$( "#AbilityImage" ).contextEntityIndex = ability;
 	
 	$( "#ManaCost" ).text = manaCost;
+
+	if(Abilities.GetAbilityName(ability) == "spellbringer_mana_recharge")
+	{
+		$.GetContextPanel().SetHasClass( "insufficient_gold", ( 10000 > unitGold ) )
+		$( "#GoldCost" ).text = "10000";
+		$.GetContextPanel().SetHasClass( "no_gold_cost", false )
+	}
+	else
+	{	
+		$( "#GoldCost" ).text = "500";
+		$.GetContextPanel().SetHasClass( "no_gold_cost", true )
+		$.GetContextPanel().SetHasClass( "insufficient_gold", ( 10000 < unitGold ) )
+	}
+	
 	
 	if ( Abilities.IsCooldownReady( ability ) )
 	{

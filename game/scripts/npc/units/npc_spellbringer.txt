@@ -25,6 +25,7 @@
 	"Ability8"					"spellbringer_glythtides_gift"			// Ability 6 - Extra.
 	"Ability9"					"spellbringer_whole_displacement"			// Ability 6 - Extra.
 	"Ability10"					"spellbringer_chain_heal"			// Ability 6 - Extra.
+	"Ability10"					"spellbringer_mana_recharge"			// Ability 6 - Extra.
 
 	// Armor
 	//----------------------------------------------------------------

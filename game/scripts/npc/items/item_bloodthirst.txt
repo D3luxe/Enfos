@@ -24,10 +24,33 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
+			"IsPurgable"		"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
 			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"EquipBloodthirst"
+				}
+			}
+
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"UnequipBloodthirst"
+				}
+			}
+		}
+		"modifier_bloodthirst_leech"
+		{
+			"IsHidden"		"1"
 			"OnAttackLanded"
 			{
 				"Lifesteal"
@@ -36,6 +59,7 @@
 					"LifestealPercent"		"%leech"
 				}
 			}	
+
 		}
 	}
 
