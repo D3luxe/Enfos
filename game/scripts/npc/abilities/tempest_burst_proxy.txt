@@ -38,7 +38,7 @@
 		}
 		"modifier_tempest_burst"
 		{
-			"Duration"				"%duration"
+			"Duration"				"1"
 			"ThinkInterval"			"1.0"
 			"OnCreated"
 			{

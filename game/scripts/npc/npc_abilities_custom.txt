@@ -9662,7 +9662,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"health"				"2000 2000 6000 6000 18000 180100 54000 54000 162000 162000"
+				"health"				"2000 2000 6000 6000 18000 18000 54000 54000 162000 162000"
 			}
 			"03"
 			{
@@ -12857,7 +12857,7 @@
 			}
 			"modifier_tempest_burst"
 			{
-				"Duration"				"%duration"
+				"Duration"				"1"
 				"ThinkInterval"			"1.0"
 				"OnCreated"
 				{

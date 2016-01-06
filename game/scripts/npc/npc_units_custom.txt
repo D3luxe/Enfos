@@ -4997,16 +4997,16 @@
 		//----------------------------------------------------------------
 		"AbilityLayout"				"6"
 		"Ability1"					"spellbringer_battle_sphere"			// Ability 1.
-		"Ability2"					"spellbringer_limb_disruption"			// Ability 2.
+		"Ability2"					"spellbringer_chain_heal"			// Ability 2.
 		"Ability3"					"spellbringer_purification"			// Ability 3.
-		"Ability4"					"spellbringer_locate"			// Ability 4.
+		"Ability4"					"spellbringer_whole_displacement"			// Ability 4.
 		"Ability5"					"spellbringer_mana_disruption"			// Ability 5.
 		"Ability6"					"spellbringer_spell_disruption"			// Ability 6 - Extra.
 		"Ability7"					"spellbringer_jomays_legacy"			// Ability 6 - Extra.
 		"Ability8"					"spellbringer_glythtides_gift"			// Ability 6 - Extra.
-		"Ability9"					"spellbringer_whole_displacement"			// Ability 6 - Extra.
-		"Ability10"					"spellbringer_chain_heal"			// Ability 6 - Extra.
-		"Ability10"					"spellbringer_mana_recharge"			// Ability 6 - Extra.
+		"Ability9"					"spellbringer_locate"			// Ability 6 - Extra.
+		"Ability10"					"spellbringer_limb_disruption"			// Ability 6 - Extra.
+		"Ability11"					"spellbringer_mana_recharge"			// Ability 6 - Extra.
 	
 		// Armor
 		//----------------------------------------------------------------
