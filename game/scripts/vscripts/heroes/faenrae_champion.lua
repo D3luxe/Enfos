@@ -90,6 +90,45 @@ function word_of_chaos(keys)
 	caster:EmitSound("Hero_Nightstalker.Darkness")
 end
 
+function inner_chaos_splash(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local splash_close = ability:GetLevelSpecialValueFor("splash_close", 1 )
+	local splash_medium = ability:GetLevelSpecialValueFor("splash_medium", 1 )
+	local splash_far = ability:GetLevelSpecialValueFor("splash_far", 1 )
+
+	local damage = caster:GetAttackDamage()
+		
+	--Deal splash damage
+
+	local close = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), caster, splash_close, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+	local medium = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), caster, splash_medium, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+	local far = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), caster, splash_far, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+
+	--10% splash damage total
+	if #far > 0 then
+		for i=1, #far do
+			DealDamage(caster, far[i], damage*0.1, DAMAGE_TYPE_MAGICAL, 0)
+		end
+	end
+
+
+	--50% splash damage total
+	if #medium > 0 then
+		for i=1, #medium do
+			DealDamage(caster, medium[i], damage*0.4, DAMAGE_TYPE_MAGICAL, 0)
+		end
+	end
+
+	--100% splash damage total
+	if #close > 0 then
+		for i=1, #close do
+			DealDamage(caster, close[i], damage*0.5, DAMAGE_TYPE_MAGICAL, 0)
+		end
+	end
+end
+
 -- All functions beyond this by Pizzalol/Noya. https://github.com/Pizzalol/SpellLibrary
 function ModelSwapStart( keys )
 	local caster = keys.caster

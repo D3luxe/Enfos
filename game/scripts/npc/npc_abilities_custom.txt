@@ -3167,18 +3167,18 @@
 		"AbilityCastRange"				"900" //Verified
 		"AbilityManaCost"				"60 66 75 87 102 120 141 165 192 222"
 		"AOERadius"						"%radius"
-		"Precache"
+		"precache"
 		{
-			"particle_folder"			"particles/hero_entropist/"
+			"particle_folder"			"particles/units/heroes/hero_batrider/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 		}
 		"OnSpellStart"
 		{
-			"LinearProjectile"	
+			"LinearProjectile"
 			{
 				"Target"				"POINT"
-				"EffectName"			"particles/hero_entropist/batrider_flamebreak.vpcf"
-				"MoveSpeed"				"900" //Verified
+				"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+				"MoveSpeed"				"900"
 				"StartRadius"			"0"
 				"EndRadius"				"0"
 				"StartPosition"			"follow_origin"
@@ -3187,6 +3187,7 @@
 				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
 				"HasFrontalCone"		"0"
 			}
+	
 			"FireSound"
 			{
 				"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
@@ -4142,20 +4143,11 @@
 				}
 				"OnAttackLanded"
 				{
-					"CleaveAttack" //far
+					"RunScript"
 					{
-						"CleavePercent"	"10"
-						"CleaveRadius"	"275"
-					}
-					"CleaveAttack" //medium
-					{
-						"CleavePercent"	"40"
-						"CleaveRadius"	"210"
-					}
-					"CleaveAttack" //full
-					{
-						"CleavePercent"	"50"
-						"CleaveRadius"	"170"
+						"ScriptFile"			"scripts/vscripts/heroes/faenrae_champion.lua"
+						"Function"				"inner_chaos_splash"
+						"Target"				"TARGET"
 					}
 				}
 				"OnDestroy"
@@ -4199,6 +4191,21 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_health"			"350 700 1050 1400 1750 2100 2450 2800 3150 3500"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_close"				"170"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_medium"				"210"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"splash_far"				"275"
 			}
 		}
 	}
@@ -7948,16 +7955,34 @@
 		"AbilityCastRange"				"450" //Verified
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_oak/"
+			"particle_folder"			"particles/units/heroes/hero_venomancer/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
 		}
 		"OnSpellStart"
 		{
-			"RunScript"
+			"FireEffect"
 			{
-				"ScriptFile"			"scripts/vscripts/heroes/oak.lua"
-				"Function"				"PoisonGas"
-				"radius"				"%radius"
+				"EffectName"	"particles/units/heroes/hero_venomancer/venomancer_poison_nova_cast.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"		"CASTER"
+			}
+	
+			"FireEffect"
+			{
+				"EffectName"	"particles/units/heroes/hero_venomancer/venomancer_poison_nova.vpcf"
+				"EffectAttachType"	"attach_origin"
+				"Target"	"TARGET"
+				
+				"ControlPointEntities"
+				{
+					"TARGET"	"attach_origin"
+				}
+	
+				"ControlPoints"
+				{
+					"01"	"1 1 1"
+					"02"	"0 0 0"
+				}
 			}
 			"Damage"
 			{
@@ -10662,7 +10687,7 @@
 		"AbilityCooldown"				"80 78 76 74 72 70 68 66 64 62"
 		"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
 		"AOERadius"						"%radius"
-		"Precache"
+		"precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_batrider/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"

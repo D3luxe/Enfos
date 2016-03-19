@@ -12,18 +12,18 @@
 	"AbilityCastRange"				"900" //Verified
 	"AbilityManaCost"				"60 66 75 87 102 120 141 165 192 222"
 	"AOERadius"						"%radius"
-	"Precache"
+	"precache"
 	{
-		"particle_folder"			"particles/hero_entropist/"
+		"particle_folder"			"particles/units/heroes/hero_batrider/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 	}
 	"OnSpellStart"
 	{
-		"LinearProjectile"	
+		"LinearProjectile"
 		{
 			"Target"				"POINT"
-			"EffectName"			"particles/hero_entropist/batrider_flamebreak.vpcf"
-			"MoveSpeed"				"900" //Verified
+			"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
+			"MoveSpeed"				"900"
 			"StartRadius"			"0"
 			"EndRadius"				"0"
 			"StartPosition"			"follow_origin"
@@ -32,6 +32,7 @@
 			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
 			"HasFrontalCone"		"0"
 		}
+
 		"FireSound"
 		{
 			"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"

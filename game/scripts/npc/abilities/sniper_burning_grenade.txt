@@ -14,7 +14,7 @@
 	"AbilityCooldown"				"80 78 76 74 72 70 68 66 64 62"
 	"AbilityManaCost"				"100 150 200 250 300 350 400 450 500 550"
 	"AOERadius"						"%radius"
-	"Precache"
+	"precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_batrider/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"

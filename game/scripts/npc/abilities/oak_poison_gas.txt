@@ -15,16 +15,34 @@
 	"AbilityCastRange"				"450" //Verified
 	"Precache"
 	{
-		"particle_folder"			"particles/hero_oak/"
+		"particle_folder"			"particles/units/heroes/hero_venomancer/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_venomancer.vsndevts"
 	}
 	"OnSpellStart"
 	{
-		"RunScript"
+		"FireEffect"
 		{
-			"ScriptFile"			"scripts/vscripts/heroes/oak.lua"
-			"Function"				"PoisonGas"
-			"radius"				"%radius"
+			"EffectName"	"particles/units/heroes/hero_venomancer/venomancer_poison_nova_cast.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"Target"		"CASTER"
+		}
+
+		"FireEffect"
+		{
+			"EffectName"	"particles/units/heroes/hero_venomancer/venomancer_poison_nova.vpcf"
+			"EffectAttachType"	"attach_origin"
+			"Target"	"TARGET"
+			
+			"ControlPointEntities"
+			{
+				"TARGET"	"attach_origin"
+			}
+
+			"ControlPoints"
+			{
+				"01"	"1 1 1"
+				"02"	"0 0 0"
+			}
 		}
 		"Damage"
 		{

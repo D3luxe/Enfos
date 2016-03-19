@@ -91,20 +91,11 @@
 			}
 			"OnAttackLanded"
 			{
-				"CleaveAttack" //far
+				"RunScript"
 				{
-					"CleavePercent"	"10"
-					"CleaveRadius"	"275"
-				}
-				"CleaveAttack" //medium
-				{
-					"CleavePercent"	"40"
-					"CleaveRadius"	"210"
-				}
-				"CleaveAttack" //full
-				{
-					"CleavePercent"	"50"
-					"CleaveRadius"	"170"
+					"ScriptFile"			"scripts/vscripts/heroes/faenrae_champion.lua"
+					"Function"				"inner_chaos_splash"
+					"Target"				"TARGET"
 				}
 			}
 			"OnDestroy"
@@ -148,6 +139,21 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"bonus_health"			"350 700 1050 1400 1750 2100 2450 2800 3150 3500"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_close"				"170"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_medium"				"210"
+		}
+		"07"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"splash_far"				"275"
 		}
 	}
 }
