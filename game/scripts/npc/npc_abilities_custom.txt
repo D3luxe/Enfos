@@ -10286,6 +10286,7 @@
 			"modifier_armageddon"
 			{
 				"Duration"				"%duration"
+				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"ThinkInterval"			"%interval"
 				"OnIntervalThink"
 				{
@@ -10322,12 +10323,17 @@
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"interval"				"0.69 0.63 0.57 0.51 0.45 0.39 0.33 0.27 0.21 0.15"
+				"interval"				"0.8"
 			}
 			"06"
 			{
 				"var_type"				"FIELD_INTEGER"
 				"meteor_fall_area"		"800"
+			}
+			"07"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"delay"					"0.69 0.63 0.57 0.51 0.45 0.39 0.33 0.27 0.21 0.15"
 			}
 		}
 	}
