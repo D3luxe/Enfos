@@ -115,6 +115,7 @@ function armageddon(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local damage = ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1)
+	local impactDelay = ability:GetLevelSpecialValueFor("delay", ability:GetLevel() - 1)
 	local impactRadius = ability:GetLevelSpecialValueFor("radius", ability:GetLevel() - 1)
 	local searchRadius = ability:GetSpecialValueFor("meteor_fall_area")
 	local shadowArts = caster:FindAbilityByName("shadow_priest_shadow_art_mastery")
@@ -136,15 +137,26 @@ function armageddon(keys)
 		randomPoint = caster:GetAbsOrigin() + (RandomVector(searchRadius) * RandomFloat(0,1))
 	end
 	local blastDummy = FastDummy(randomPoint, caster:GetTeamNumber())
-	blastDummy:EmitSound("Hero_Invoker.SunStrike.Ignite")
-	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
-	ParticleManager:SetParticleControl(particle, 0, randomPoint) 
-	ParticleManager:SetParticleControl(particle, 1, Vector(impactRadius,0,0))
-	local enemies = FindUnitsInRadius(caster:GetTeamNumber(), blastDummy:GetAbsOrigin(), caster, impactRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	for k,v in pairs(enemies) do
-		DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
-	end
-	DelayDestroy(blastDummy, 1)
+	blastDummy:EmitSound("Hero_Invoker.SunStrike.Charge")
+	local preParticle = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_sun_strike_team.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+	ParticleManager:SetParticleControl(preParticle, 0, randomPoint) 
+	ParticleManager:SetParticleControl(preParticle, 1, Vector(impactRadius,0,0))
+	Timers:CreateTimer(DoUniqueString("armageddonDelay"), {
+		endTime = impactDelay,
+		callback = function()
+			blastDummy:StopSound("Hero_Invoker.SunStrike.Charge")
+			ParticleManager:DestroyParticle(preParticle, true)
+			blastDummy:EmitSound("Hero_Invoker.SunStrike.Ignite")
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_sun_strike.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+			ParticleManager:SetParticleControl(particle, 0, randomPoint) 
+			ParticleManager:SetParticleControl(particle, 1, Vector(impactRadius,0,0))
+			local enemies = FindUnitsInRadius(caster:GetTeamNumber(), blastDummy:GetAbsOrigin(), caster, impactRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+			for k,v in pairs(enemies) do
+				DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
+			end
+			DelayDestroy(blastDummy, 1)
+		end
+	})
 end
 
 
