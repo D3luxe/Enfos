@@ -11,6 +11,7 @@
 	"MaxLevel"					"10"
 	"RequiredLevel"				"6"
 	"LevelsBetweenUpgrades"		"3"
+	"AbilityManaCost"	"4"
 
 	"precache"
 	{

@@ -4454,6 +4454,8 @@
 		"AbilityTextureName" 			"tiny_craggy_exterior"
 		"MaxLevel"					"1"
 		"Innate"						"1"
+		"AbilityManaCost"	"20"
+		"AbilityCooldown"	"30"
 	
 	
 		"Modifiers"
@@ -4492,7 +4494,7 @@
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"mana_cost"		"20"
+				"heal_per_str"		"20"
 			}
 		}
 	
@@ -8461,6 +8463,7 @@
 		"MaxLevel"					"10"
 		"RequiredLevel"				"6"
 		"LevelsBetweenUpgrades"		"3"
+		"AbilityManaCost"	"4"
 	
 		"precache"
 		{
@@ -8662,6 +8665,7 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"kunkka_tidebringer"
 		"MaxLevel"					"10"
+		"AbilityManaCost"	"2"
 	
 		"OnChannelSucceeded"
 		{

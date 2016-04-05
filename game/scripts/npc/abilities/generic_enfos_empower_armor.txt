@@ -10,6 +10,8 @@
 	"AbilityTextureName" 			"tiny_craggy_exterior"
 	"MaxLevel"					"1"
 	"Innate"						"1"
+	"AbilityManaCost"	"20"
+	"AbilityCooldown"	"30"
 
 
 	"Modifiers"
@@ -48,7 +50,7 @@
 		"02"
 		{
 			"var_type"		"FIELD_INTEGER"
-			"mana_cost"		"20"
+			"heal_per_str"		"20"
 		}
 	}
 
