@@ -14,6 +14,7 @@
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"kunkka_tidebringer"
 	"MaxLevel"					"10"
+	"AbilityManaCost"	"2"
 
 	"OnChannelSucceeded"
 	{
