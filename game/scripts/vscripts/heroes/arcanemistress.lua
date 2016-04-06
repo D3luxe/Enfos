@@ -44,26 +44,18 @@ function Hailstorm(keys)
 		callback = function()
 			if Enfos.hailstormDummy ~= 0 then
 				local units = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.hailstormDummy:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+				local unitCount = table.getn(units)
 				local damageLimit = 99999
+				local newDamage = damage
 				for k,v in pairs(units) do
 
-						local targetLife = v:GetHealth()
-
-						if damage < targetLife then
-							damageLimit = damageLimit - damage
+						if damage * unitCount > damageLimit then
+							newDamage = damageLimit / unitCount
 						else
-							damageLimit = damageLimit - targetLife - 10
+							newDamage = damage
 						end
 
-						if damageLimit < 0 then
-							damageLimit = 0
-						end
-
-						if damageLimit < damage then
-							damage = damageLimit
-						end
-
-						DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
+						DealDamage(caster, v, newDamage, DAMAGE_TYPE_MAGICAL, 0)
 				
 				end
 				return 1
