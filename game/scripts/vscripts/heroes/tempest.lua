@@ -62,13 +62,18 @@ function burst (keys)
 	local damage = keys.damage
 	local health = target:GetHealth()
 
+	--Checks if there is an overkill, and sets the damage to be non-lethal if it is
 	if damage > health then
 		damage = health - 1
 	end
+
+	--Gets the owner for the tornado
 	if caster:IsRealHero() == false then
 		caster = caster:GetPlayerOwner():GetAssignedHero()
 	end
-	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
+
+	--Damage
+	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability})
 end
 
 function burst_dummy(keys)

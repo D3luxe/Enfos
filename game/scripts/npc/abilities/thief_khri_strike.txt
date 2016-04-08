@@ -4,7 +4,7 @@
 "thief_khri_strike"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"			"riki_backstab"
+	"AbilityTextureName"			"riki_tricks_of_the_trade"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"10"
 	"Modifiers"

@@ -54,20 +54,17 @@
 
 .no_level DOTAAbilityImage
 {
-	desaturation: 1;
 	wash-color: #303030;
 }
 
 .insufficient_mana DOTAAbilityImage
 {
-	desaturation: 1;
 	wash-color: #1569be;
 }
 
 
 .insufficient_gold DOTAAbilityImage
 {
-	desaturation: 1;
 	wash-color: #1569be;
 }
 

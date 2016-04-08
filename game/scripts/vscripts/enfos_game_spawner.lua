@@ -340,6 +340,8 @@ function CEnfosGameSpawner:_DoSpawn()
 				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 				entUnit.Enfos_IsCore = true
 				self:AddTypes(entUnit, self._armorType, self._attackType)
+				entUnit.armorType = self._armorType
+				entUnit.attackType = self._attackType
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1

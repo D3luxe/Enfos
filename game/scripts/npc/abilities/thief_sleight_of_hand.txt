@@ -32,12 +32,12 @@
 			"Function"				"SleightOfHand"
 			"percent_stolen"		"%percent_stolen"
 		}
-		"AttachEffect"
-		{
-			"EffectName"			"particles/hero_thief/thief_steal_coins_caster.vpcf"
-			"EffectAttachType"		"follow_origin"
-			"Target"				"CASTER"
-		}
+		//"AttachEffect"
+		//{
+		//	"EffectName"			"particles/hero_thief/thief_steal_coins_caster.vpcf"
+		//	"EffectAttachType"		"follow_origin"
+		//	"Target"				"CASTER"
+		//}
 		//"AttachEffect"
 		//{
 		//	"EffectName"			"particles/hero_thief/thief_steal_coins_target.vpcf"

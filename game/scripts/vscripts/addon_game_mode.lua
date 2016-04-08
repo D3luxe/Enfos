@@ -706,108 +706,116 @@ function CEnfosGameMode:UpdateVotes( event )
     local noItemSharing = event.noI
 
     --PrintTable(event)
-    if not GameRules.difficulty_selected then
-    	--============================================================================================
-    	--Handle difficulty voting
-    	--============================================================================================
-		table.insert(GameRules.PLAYER_VOTES,difficulty)
-		--print("========Difficulty VOTE TABLE========")
-		--DeepPrintTable(GameRules.PLAYER_VOTES)
-		--print("==========================")
+    for playerID = 0, DOTA_MAX_TEAM_PLAYERS do
+        if PlayerResource:IsValidPlayerID(playerID) then
+            local player = PlayerResource:GetPlayer(playerID)
 
-	  	local difficulty_level = 0
-	    for k,v in pairs(GameRules.PLAYER_VOTES) do
-	    	difficulty_level = difficulty_level + v
-	    end
+            if not GameRules.difficulty_selected then
+		    	--============================================================================================
+		    	--Handle difficulty voting
+		    	--============================================================================================
+				table.insert(GameRules.PLAYER_VOTES,difficulty)
+				--print("========Difficulty VOTE TABLE========")
+				--DeepPrintTable(GameRules.PLAYER_VOTES)
+				--print("==========================")
 
-	    difficulty_level = difficulty_level / #GameRules.PLAYER_VOTES
-	    --print("Average: " ..difficulty_level)
-	    difficulty_level = math.floor(difficulty_level+0.5)
-	    --print("Rounded difficulty: ".. difficulty_level)
-	    GameRules.DIFFICULTY = difficulty_level
+			  	local difficulty_level = 0
+			    for k,v in pairs(GameRules.PLAYER_VOTES) do
+			    	difficulty_level = difficulty_level + v
+			    end
 
-	    --============================================================================================
-	    --Handle extra bounty voting
-	    --============================================================================================
-		table.insert(GameRules.EXTRABOUNTY_VOTES,extraBounty)
-		--print("========ExtraBounty VOTE TABLE========")
-		--DeepPrintTable(GameRules.EXTRABOUNTY_VOTES)
-		--print("==========================")
+			    difficulty_level = difficulty_level / #GameRules.PLAYER_VOTES
+			    --print("Average: " ..difficulty_level)
+			    difficulty_level = math.floor(difficulty_level+0.5)
+			    --print("Rounded difficulty: ".. difficulty_level)
+			    GameRules.DIFFICULTY = difficulty_level
 
-	  	local extra_bounty = 0
-	    for k,v in pairs(GameRules.EXTRABOUNTY_VOTES) do
-	    	extra_bounty = extra_bounty + v
-	    end
+			    --============================================================================================
+			    --Handle extra bounty voting
+			    --============================================================================================
+				table.insert(GameRules.EXTRABOUNTY_VOTES,extraBounty)
+				--print("========ExtraBounty VOTE TABLE========")
+				--DeepPrintTable(GameRules.EXTRABOUNTY_VOTES)
+				--print("==========================")
 
-	    extra_bounty = extra_bounty / #GameRules.EXTRABOUNTY_VOTES
-	    --print("Average: " ..extra_bounty)
-	    extra_bounty = math.floor(extra_bounty+0.5)
-	    --print("Rounded bounty: ".. extra_bounty)
-	    GameRules.ExtraBounty = extra_bounty
+			  	local extra_bounty = 0
+			    for k,v in pairs(GameRules.EXTRABOUNTY_VOTES) do
+			    	extra_bounty = extra_bounty + v
+			    end
 
-	    --============================================================================================
-	    --Handle shared bounty voting
-	    --============================================================================================
-		table.insert(GameRules.SHAREBOUNTY_VOTES,shareBounty)
-		--print("========ShareBounty VOTE TABLE========")
-		--DeepPrintTable(GameRules.SHAREBOUNTY_VOTES)
-		--print("==========================")
+			    extra_bounty = extra_bounty / #GameRules.EXTRABOUNTY_VOTES
+			    --print("Average: " ..extra_bounty)
+			    extra_bounty = math.floor(extra_bounty+0.5)
+			    --print("Rounded bounty: ".. extra_bounty)
+			    GameRules.ExtraBounty = extra_bounty
 
-	  	local share_bounty = 0
-	    for k,v in pairs(GameRules.SHAREBOUNTY_VOTES) do
-	    	share_bounty = share_bounty + v
-	    end
+			    --============================================================================================
+			    --Handle shared bounty voting
+			    --============================================================================================
+				table.insert(GameRules.SHAREBOUNTY_VOTES,shareBounty)
+				--print("========ShareBounty VOTE TABLE========")
+				--DeepPrintTable(GameRules.SHAREBOUNTY_VOTES)
+				--print("==========================")
 
-	    share_bounty = share_bounty / #GameRules.SHAREBOUNTY_VOTES
-	    --print("Average: " ..share_bounty)
-	    share_bounty = math.floor(share_bounty+0.5)
-	    --print("Rounded bounty: ".. share_bounty)
-	    if share_bounty == 1 then
-	    	GameRules.SharedBounty = true
-	    end
+			  	local share_bounty = 0
+			    for k,v in pairs(GameRules.SHAREBOUNTY_VOTES) do
+			    	share_bounty = share_bounty + v
+			    end
 
-	    --============================================================================================
-	    --Handle all random voting
-	    --============================================================================================
-		table.insert(GameRules.ALLRANDOM_VOTES,allRandom)
-		--print("========All Random VOTE TABLE========")
-		--DeepPrintTable(GameRules.ALLRANDOM_VOTES)
-		--print("==========================")
+			    share_bounty = share_bounty / #GameRules.SHAREBOUNTY_VOTES
+			    --print("Average: " ..share_bounty)
+			    share_bounty = math.floor(share_bounty+0.5)
+			    --print("Rounded bounty: ".. share_bounty)
+			    if share_bounty == 1 then
+			    	GameRules.SharedBounty = true
+			    end
 
-	  	local all_random = 0
-	    for k,v in pairs(GameRules.ALLRANDOM_VOTES) do
-	    	all_random = all_random + v
-	    end
+			    --============================================================================================
+			    --Handle all random voting
+			    --============================================================================================
+				table.insert(GameRules.ALLRANDOM_VOTES,allRandom)
+				--print("========All Random VOTE TABLE========")
+				--DeepPrintTable(GameRules.ALLRANDOM_VOTES)
+				--print("==========================")
 
-	    all_random = all_random / #GameRules.ALLRANDOM_VOTES
-	    --print("Average: " ..all_random)
-	    all_random = math.floor(all_random+0.5)
-	    --print("All Random?: ".. all_random)
-	    if all_random == 1 then
-	    	GameRules.AllRandom = true
-	    end
+			  	local all_random = 0
+			    for k,v in pairs(GameRules.ALLRANDOM_VOTES) do
+			    	all_random = all_random + v
+			    end
 
-	    --============================================================================================
-	    --Handle item sharing voting
-	    --============================================================================================
-		table.insert(GameRules.ITEMSHARING_VOTES,noItemSharing)
-		--print("========Item Sharing VOTE TABLE========")
-		--DeepPrintTable(GameRules.ITEMSHARING_VOTES)
-		--print("==========================")
+			    all_random = all_random / #GameRules.ALLRANDOM_VOTES
+			    --print("Average: " ..all_random)
+			    all_random = math.floor(all_random+0.5)
+			    --print("All Random?: ".. all_random)
+			    if all_random == 1 then
+			    	GameRules.AllRandom = true
+			    end
 
-	  	local _itemSharing = 0
-	    for k,v in pairs(GameRules.ITEMSHARING_VOTES) do
-	    	_itemSharing = _itemSharing + v
-	    end
+			    --============================================================================================
+			    --Handle item sharing voting
+			    --============================================================================================
+				table.insert(GameRules.ITEMSHARING_VOTES,noItemSharing)
+				--print("========Item Sharing VOTE TABLE========")
+				--DeepPrintTable(GameRules.ITEMSHARING_VOTES)
+				--print("==========================")
 
-	    _itemSharing = _itemSharing / #GameRules.ITEMSHARING_VOTES
-	    --print("Average: " .._itemSharing)
-	    _itemSharing = math.floor(_itemSharing+0.5)
-	    --print("All Random?: ".. _itemSharing)
-	    if _itemSharing == 1 then
-	    	GameRules.ItemSharing = false
-	    end
-	end
+			  	local _itemSharing = 0
+			    for k,v in pairs(GameRules.ITEMSHARING_VOTES) do
+			    	_itemSharing = _itemSharing + v
+			    end
+
+			    _itemSharing = _itemSharing / #GameRules.ITEMSHARING_VOTES
+			    --print("Average: " .._itemSharing)
+			    _itemSharing = math.floor(_itemSharing+0.5)
+			    --print("All Random?: ".. _itemSharing)
+			    if _itemSharing == 1 then
+			    	GameRules.ItemSharing = false
+			    end
+			end
+        end
+    end
+    
+    
 end
 
 function CEnfosGameMode:OnPlayerCastAbility(keys)
@@ -1811,6 +1819,7 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		--Checks to see if the item is a tome
 		if itemdata.IsTome ~= nil then
 			--local tome = tomeData:GetContainedItem()
+			
 			local cost = itemdata.ItemCost
 			print(cost)
 			if first_unit:GetGold() >= cost then

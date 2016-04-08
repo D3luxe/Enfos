@@ -265,6 +265,7 @@ function CheckForHostPrivileges()
 	// Set the "player_has_host_privileges" class on the panel, this can be used 
 	// to have some sub-panels on display or be enabled for the host player.
 	$.GetContextPanel().SetHasClass( "player_has_host_privileges", playerInfo.player_has_host_privileges );
+
 }
 
 
@@ -303,7 +304,7 @@ function UpdateTimer()
 		
 	if (Game.GetState() == 3)
 	{
-		if (transitionHappened == false && Game.GetLocalPlayerInfo().player_has_host_privileges) {
+		if (transitionHappened == false) {
 			SendVotes()
 		};
 	}
@@ -363,7 +364,7 @@ function SendVotes( )
 	if ($( "#NoShare" ).checked == true) {
 		noItemSharing = 1
 	};
-
+	$.Msg('Sending vote: ', Players.GetLocalPlayer(),'-',killsVoted,'-',extraBounty,'-',shareBounty,'-',allRandom,'-',noItemSharing);
 	GameEvents.SendCustomGameEventToServer("player_voted_difficulty", {player: Players.GetLocalPlayer(), difficulty: killsVoted, extraB: extraBounty, shareB: shareBounty, allR: allRandom, noI: noItemSharing})
 }
 	

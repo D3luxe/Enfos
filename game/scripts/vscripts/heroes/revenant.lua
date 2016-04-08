@@ -1,3 +1,19 @@
+function AddTypes(mob, armor, attack)
+	local spawnedUnitIndex = mob
+	local armorType = armor
+	local attackType = attack
+
+	local armorItem = CreateItem("item_armor_type_modifier", nil, nil) 
+	armorItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, armorType, {})
+	UTIL_RemoveImmediate(armorItem)
+	armorItem = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	attackItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, attackType, {})
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+end
+
 function HauntingSpirit(keys) -- this thinks every 10 seconds in kv
 -- vars
 	local caster = keys.caster
@@ -21,6 +37,7 @@ function AnimateDead(keys)
 	local unitsRaised = keys.units_raised
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
 	local validTargets = {}
+
 	if units[1] == nil then
 		return
 	end
@@ -47,6 +64,8 @@ function AnimateDead(keys)
 		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff", {})
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
+
+		AddTypes(raisedUnit, validTargets[i].armorType, validTargets[i].attackType)
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end

@@ -16,7 +16,7 @@
 	"AbilityManaCost"				"200 220 240 260 280 300 320 340 360 380"
 	"Precache"
 	{
-		"particle_folder"			"particles/hero_hypnotist/"
+		"particle_folder"			"particles/econ/items/bounty_hunter/bounty_hunter_shuriken_hidden/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_shredder.vsndevts"
 	}
 	"OnSpellStart"
@@ -93,7 +93,7 @@
 				}
 				"AttachEffect"
 				{
-					"EffectName"        "particles/hero_hypnotist/bounty_hunter_suriken_toss_hidden_hunter.vpcf"
+					"EffectName"        "particles/econ/items/bounty_hunter/bounty_hunter_shuriken_hidden/bounty_hunter_suriken_toss_hidden_hunter.vpcf"
 					"EffectAttachType"  "follow_origin"
 					"Target"            "TARGET"
 					"ControlPointEntities"
