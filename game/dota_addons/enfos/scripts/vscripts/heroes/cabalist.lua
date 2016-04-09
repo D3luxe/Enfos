@@ -24,6 +24,7 @@ function mantle_of_flames(keys)
 	end
 	if cost > caster:GetMana() then
 		caster:RemoveModifierByName("modifier_mantle_of_flames_buff")
+		ability:ToggleAbility()
 	end
 end
 

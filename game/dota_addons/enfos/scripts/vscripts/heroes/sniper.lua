@@ -1,4 +1,13 @@
 function TechniqueAcqRangeUp(keys)
+	local ammo = keys.caster:FindAbilityByName("sniper_fire_ammo")
+	local ammoLevel = ammo:GetLevel()
+	local ammoCast = ammo:GetAutoCastState()
+	keys.caster:RemoveAbility("sniper_fire_ammo")
+	keys.caster:AddAbility("sniper_fire_ammo_2")
+	keys.caster:FindAbilityByName("sniper_fire_ammo_2"):SetLevel(ammoLevel)
+	if ammoCast == true then
+		keys.caster:FindAbilityByName("sniper_fire_ammo_2"):ToggleAutoCast()
+	end
 	keys.caster:RemoveAbility("sniper_standard_technique")
 	keys.caster:AddAbility("sniper_sniper_technique")
 	keys.caster:SetAcquisitionRange(3600)
@@ -10,11 +19,27 @@ function TechniqueAcqRangeUp(keys)
 end
 
 function TechniqueAcqRangeDown(keys)
+	local ammo = keys.caster:FindAbilityByName("sniper_fire_ammo_2")
+	local ammoLevel = ammo:GetLevel()
+	local ammoCast = ammo:GetAutoCastState()
+	local stance = keys.caster:FindAbilityByName("sniper_sniper_technique")
+	local cooldown = stance:GetCooldownTimeRemaining()
+	local dead = keys.am_i_dead
+	keys.caster:RemoveAbility("sniper_fire_ammo_2")
+	keys.caster:AddAbility("sniper_fire_ammo")
+	keys.caster:FindAbilityByName("sniper_fire_ammo"):SetLevel(ammoLevel)
+	if ammoCast == true then
+		keys.caster:FindAbilityByName("sniper_fire_ammo"):ToggleAutoCast()
+	end
 	keys.caster:RemoveModifierByName("modifier_sniper_technique")
 	keys.caster:RemoveAbility("sniper_sniper_technique")
 	keys.caster:AddAbility("sniper_standard_technique")
 	keys.caster:SetAcquisitionRange(700)
-	keys.caster:FindAbilityByName("sniper_standard_technique"):StartCooldown(30.0)
+	if dead == 0 then
+		keys.caster:FindAbilityByName("sniper_standard_technique"):StartCooldown(30.0)
+	else
+		keys.caster:FindAbilityByName("sniper_standard_technique"):StartCooldown(cooldown)
+	end
 	keys.caster:FindAbilityByName("sniper_standard_technique"):SetLevel(1)
 end
 
