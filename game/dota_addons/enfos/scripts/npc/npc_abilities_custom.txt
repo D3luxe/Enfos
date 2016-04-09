@@ -8576,6 +8576,12 @@
 		"AbilityManaCost"			"65 77 95 119 149 185 227 275 329 389"
 		"AbilityCooldown"			"120"
 	
+		"precache"
+		{
+			"particle"			"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
+			"particle"			"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
+		}
+	
 		"OnSpellStart"
 		{
 			"ApplyModifier"
@@ -8589,7 +8595,7 @@
 			"modifier_empower_bracers"
 			{
 				"Duration"	"%duration"
-				"EffectName"	"particles/units/heroes/hero_life_stealer/life_stealer_rage.vpcf"
+				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
 				"EffectAttachType"	"attach_hitloc"
 				"OnAttackStart"
 				{
@@ -8610,16 +8616,11 @@
 				
 				"OnAttackLanded"
 				{
-					"FireEffect"
-					{
-						"EffectName"		 "particles/units/heroes/hero_phantom_assassin/phantom_assassin_crit_impact.vpcf"
-						"EffectAttachType"	 "follow_origin"
-						"Target"			 "TARGET"
-					}	
 					"CleaveAttack"
 					{
 						"CleavePercent"		"100"
 						"CleaveRadius"      "%radius"
+						"CleaveEffect"		"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
 					}
 					"RemoveModifier"
 					{
