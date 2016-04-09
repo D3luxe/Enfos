@@ -58,6 +58,7 @@ function SealOfDeflection(keys)
 			mana_needed =
 			caster:SpendMana(mana_needed, ability)
 			caster:SetHealth(newHealth)
+			ability:ToggleAbility()
 		end
 	end	
 end

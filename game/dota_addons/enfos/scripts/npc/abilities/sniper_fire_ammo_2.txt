@@ -1,7 +1,7 @@
 //=================================================================================================================
-// Sniper: Fire Ammo
+// Sniper: Fire Ammo (long version)
 //=================================================================================================================
-"sniper_fire_ammo"
+"sniper_fire_ammo_2"
 {
 	"BaseClass"						"ability_datadriven"
 	"AbilityTextureName"			"sniper_shrapnel"
@@ -12,7 +12,7 @@
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
 	"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-	"AbilityCastRange" "500"
+	"AbilityCastRange" "3000"
 	"Precache"
 	{
 		"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
@@ -22,7 +22,7 @@
 
 	"Modifiers"
 	{
-		"modifier_sniper_fire_ammo"
+		"modifier_sniper_fire_ammo_2"
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
@@ -79,3 +79,4 @@
 		}
 	}
 }	
+
