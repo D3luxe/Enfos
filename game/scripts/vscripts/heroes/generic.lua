@@ -32,13 +32,14 @@ function EtherealShieldAutocast( event )
 	local caster = event.caster
 	local target = event.target -- victim of the attack
 	local ability = event.ability
+	local level = ability:GetLevel()
 
 	-- Name of the modifier to avoid casting the spell on targets that were already buffed
 	local modifier = "modifier_ethereal_shield_buff"
 
 	-- Get if the ability is on autocast mode and cast the ability on the attacked target if it doesn't have the modifier
 	if ability:GetAutoCastState() then
-		if not IsChanneling( caster ) then
+		if not IsChanneling( caster ) and caster:GetMana() >= ability:GetManaCost(level) and ability:GetCooldownTimeRemaining() == 0 then
 			if not target:HasModifier(modifier) then
 				caster:CastAbilityOnTarget(target, ability, caster:GetPlayerOwnerID())
 			end
