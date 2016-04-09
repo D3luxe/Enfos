@@ -19,6 +19,7 @@
 		{
 			"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
 			"Function"		"TechniqueAcqRangeDown"
+			"am_i_dead"	"0"
 		}
 
 	}
@@ -40,6 +41,17 @@
 				{
 					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
 					"Function"		"TechniquePierce"
+				}
+			}
+			"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"TechniqueAcqRangeDown"
+						"am_i_dead"	"1"
+					}
+	
 				}
 			}
 		}
