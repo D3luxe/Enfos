@@ -10751,14 +10751,14 @@
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"sniper_shrapnel"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
 		"MaxLevel"						"10"
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-		"AbilityCastRange" "3000"
+		"AbilityCastRange" "500"
 		"Precache"
 		{
 			"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
@@ -10824,7 +10824,88 @@
 				"damage_bonus"			"100 250 500 1000 1500 2200 3300 4500 5500 7500"
 			}
 		}
-	}	
+	}
+	//=================================================================================================================
+	// Sniper: Fire Ammo (long version)
+	//=================================================================================================================
+	"sniper_fire_ammo_2"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"sniper_shrapnel"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AUTOCAST | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0"
+		"AbilityCooldown"				"0"
+		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
+		"AbilityCastRange" "3000"
+		"Precache"
+		{
+			"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
+			"particle"  "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+			"soundfile" "soundevents/game_sounds_heroes/game_sounds_clinkz.vsndevts"
+		}
+	
+		"Modifiers"
+		{
+			"modifier_sniper_fire_ammo_2"
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsBuff"			"0"
+				"IsDebuff"			"0"
+				"IsPurgable"		"0"
+	
+				"Orb"
+				{
+					"Priority"	"DOTA_ORB_PRIORITY_ABILITY"
+					"ProjectileName"    "particles/units/heroes/hero_lina/lina_base_attack.vpcf"
+					"ProjectileSpeed"	"10000"
+					"CastAttack"	"1"
+				}
+	
+				"OnOrbFire"
+				{
+					"SpendMana"
+					{
+						"Mana"    		"%AbilityManaCost"
+					}
+	
+					"FireSound"
+					{
+						"EffectName"	"Hero_Clinkz.SearingArrows"
+						"Target"		"CASTER"
+					}
+				}
+			
+				"OnOrbImpact"
+				{
+				"Damage"
+					{
+						"Type"          "DAMAGE_TYPE_PHYSICAL"
+						"Damage"        "%damage_bonus"
+						"Target"		"TARGET"
+					}
+		
+					"FireSound"
+					{
+						"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
+							"Target"		"CASTER"
+					}
+				}
+
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_bonus"			"100 250 500 1000 1500 2200 3300 4500 5500 7500"
+			}
+		}
+	}		
 	//=================================================================================================================
 	// Sniper: Lucky Shot
 	//=================================================================================================================
@@ -10927,6 +11008,7 @@
 			{
 				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
 				"Function"		"TechniqueAcqRangeDown"
+				"am_i_dead"	"0"
 			}
 	
 		}
@@ -10948,6 +11030,15 @@
 					{
 						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
 						"Function"		"TechniquePierce"
+					}
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"TechniqueAcqRangeDown"
+						"am_i_dead"	"1"
 					}
 				}
 			}
