@@ -5,22 +5,24 @@ function BlessSoul(keys)
 
 	--Double checks to make sure the hero isn't Cleric, and if it is that Murrula's Flame isn't available
 	if unit:HasAbility("cleric_murrulas_flame") then
+		--print("-----CLERIC LUA-----")
 		local ability = unit:FindAbilityByName("cleric_murrulas_flame")
 		local cooldown = ability:GetCooldown(ability:GetLevel()-1)
 		local cooldownRemaining = ability:GetCooldownTimeRemaining()
 		--print("Cooldown: "..cooldown.." | Remaining: "..cooldownRemaining)
-		if ability:GetLevel() >= 1 and cooldownRemaining <= 1 then
+		--print("Cooldown Floor: "..math.floor(cooldown+0.5).." | Remaining Floor: "..math.floor(cooldownRemaining+0.5))
+		if ability:GetLevel() >= 1 and math.floor(cooldownRemaining+0.5) == math.floor(cooldown+0.5) then
 			--print("Has murrula's ready so not going through bless soul")
 			return
 		end
 	end
 
-	print("No murrula's, continueing in blesssoul")
+	--print("No murrula's, continueing in blesssoul")
 	Timers:CreateTimer(DoUniqueString("blss_start"), {
 		endTime = 0.05,
 		callback = function()
 			unit:SetTimeUntilRespawn(unit:GetTimeUntilRespawn() / 2)
-			--print("Time to respawn: "..unit:GetTimeUntilRespawn())
+			print("Time to respawn: "..unit:GetTimeUntilRespawn())
 			Timers:CreateTimer(DoUniqueString("blss"), {
 				endTime = unit:GetTimeUntilRespawn(),
 				callback = function()
