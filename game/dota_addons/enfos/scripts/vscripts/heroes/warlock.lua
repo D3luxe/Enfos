@@ -16,6 +16,10 @@ function EnergyDrainTransfer( event )
 		caster:Stop()
 		return
 	end
+	
+	if caster:HasModifier("modifier_energy_drain_channel_workaround") == false then
+		target:RemoveModifierByNameAndCaster("modifier_energy_drain",caster)
+	end
 	-- Location variables
 	local caster_location = caster:GetAbsOrigin()
 	local target_location = target:GetAbsOrigin()
