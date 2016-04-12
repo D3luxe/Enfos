@@ -8,15 +8,18 @@ function Favored_Enemy(keys)
 	if caster.FavoredEnemy == nil then
 		--print("Favored Enemy nil, setting")
 		caster.FavoredEnemy = target:GetUnitName()
-		print(caster.FavoredEnemy)
+		--print(caster.FavoredEnemy)
+		if caster.FavoredEnemy == "npc_dota_creep_crazed_madmen" then caster.FavoredEnemy2 = "npc_dota_creep_crazed_spearman" end if caster.FavoredEnemy == "npc_dota_creep_crazed_spearman" then caster.FavoredEnemy2 = "npc_dota_creep_crazed_madmen" end
+		if caster.FavoredEnemy == "npc_dota_creature_wood_troll" then caster.FavoredEnemy2 = "npc_dota_creature_wood_troll_rock_tosser" end if caster.FavoredEnemy == "npc_dota_creature_wood_troll_rock_tosser" then caster.FavoredEnemy2 = "npc_dota_creature_wood_troll" end
+		if caster.FavoredEnemy == "npc_dota_giant_spider" then caster.FavoredEnemy2 = "npc_dota_giant_poison_spider" end if caster.FavoredEnemy == "npc_dota_giant_poison_spider" then caster.FavoredEnemy2 = "npc_dota_giant_spider" end
 		return
 	end
 	--print("Favored enemy currently is "..caster.FavoredEnemy)
 	-- If a favored enemy already exists, then cycle through all of the mobs and remove the modifier to prepare to switch targets
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-
+	
 	for k,v in pairs(units) do
-		if v:GetUnitName() == caster.FavoredEnemy then
+		if v:GetUnitName() == caster.FavoredEnemy or v:GetUnitName() == caster.FavoredEnemy2 then
 			if v:HasModifier("modifier_favored_enemy_targeted") then
 				--print("Removing favored enemy from "..v:GetUnitName())
 				v:RemoveModifierByName("modifier_favored_enemy_targeted")
@@ -24,15 +27,19 @@ function Favored_Enemy(keys)
 		end
 	end
 
+	caster.FavoredEnemy2 = nil
 	--Set the new favored enemy
 	caster.FavoredEnemy = target:GetUnitName()
+	if caster.FavoredEnemy == "npc_dota_creep_crazed_madmen" then caster.FavoredEnemy2 = "npc_dota_creep_crazed_spearman" end if caster.FavoredEnemy == "npc_dota_creep_crazed_spearman" then caster.FavoredEnemy2 = "npc_dota_creep_crazed_madmen" end
+	if caster.FavoredEnemy == "npc_dota_creature_wood_troll" then caster.FavoredEnemy2 = "npc_dota_creature_wood_troll_rock_tosser" end if caster.FavoredEnemy == "npc_dota_creature_wood_troll_rock_tosser" then caster.FavoredEnemy2 = "npc_dota_creature_wood_troll" end
+	if caster.FavoredEnemy == "npc_dota_giant_spider" then caster.FavoredEnemy2 = "npc_dota_giant_poison_spider" end if caster.FavoredEnemy == "npc_dota_giant_poison_spider" then caster.FavoredEnemy2 = "npc_dota_giant_spider" end
 	--print("New favored enemy is "..caster.FavoredEnemy)
 
 	-- Initial application of favored enemy debuff
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 
 	for k,v in pairs(units) do
-		if v:GetUnitName() == caster.FavoredEnemy then
+		if v:GetUnitName() == caster.FavoredEnemy or v:GetUnitName() == caster.FavoredEnemy2 then
 			if not v:HasModifier("modifier_favored_enemy_targeted") then
 				ability:ApplyDataDrivenModifier(caster, target, "modifier_favored_enemy_targeted", {})
 			end
@@ -53,18 +60,18 @@ function Favored_Enemy_Damage(keys)
 		return
 	end
 
-	if target:GetUnitName() == caster.FavoredEnemy then
+	if target:GetUnitName() == caster.FavoredEnemy or target:GetUnitName() == caster.FavoredEnemy2 then
 		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
 		target:AddNewModifier(caster, ability, "modifier_stunned", {duration = duration})
 	end
 
 
 	--Removes favored enemy if Ranger attacks a mob from another wave.
-	if target:GetUnitName() ~= caster.FavoredEnemy then
+	if target:GetUnitName() ~= caster.FavoredEnemy and target:GetUnitName() ~= caster.FavoredEnemy2 then
 		local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 
 		for k,v in pairs(units) do
-			if v:GetUnitName() == caster.FavoredEnemy then
+			if v:GetUnitName() == caster.FavoredEnemy or v:GetUnitName() == caster.FavoredEnemy2 then
 				if v:HasModifier("modifier_favored_enemy_targeted") then
 					--print("Removing favored enemy from "..v:GetUnitName())
 					v:RemoveModifierByName("modifier_favored_enemy_targeted")
@@ -73,6 +80,7 @@ function Favored_Enemy_Damage(keys)
 		end
 
 		caster.FavoredEnemy = nil
+		caster.FavoredEnemy2 = nil
 	end
 end
 
@@ -88,7 +96,7 @@ function Favored_Enemy_Tick(keys)
 	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 
 	for k,v in pairs(units) do
-		if v:GetUnitName() == caster.FavoredEnemy then
+		if v:GetUnitName() == caster.FavoredEnemy or v:GetUnitName() == caster.FavoredEnemy2 then
 			if not v:HasModifier("modifier_favored_enemy_targeted") then
 				--print("Ticking - applying modifier to mob "..v:GetUnitName())
 				ability:ApplyDataDrivenModifier(caster, v, "modifier_favored_enemy_targeted", {})
