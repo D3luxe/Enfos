@@ -14834,7 +14834,7 @@
 		"AbilityManaCost"				"100 175 250 325 400 475 550 625 700 775"
 	
 	
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"RunScript"
 			{
