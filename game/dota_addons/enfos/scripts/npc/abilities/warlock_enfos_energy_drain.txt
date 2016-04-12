@@ -62,6 +62,11 @@
 			"ModifierName" 	"modifier_energy_drain"
 			"Target" 		"TARGET"
 		}
+		"ApplyModifier"
+		{
+			"ModifierName" 	"modifier_energy_drain_channel_workaround"
+			"Target" 		"CASTER"
+		}
 
 		"FireSound"
 		{
@@ -77,13 +82,31 @@
 			"ModifierName" 	"modifier_energy_drain"
 			"Target" 		"TARGET"
 		}
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_energy_drain_channel_workaround"
+			"Target" 		"CASTER"
+		}
 	}
-
+	"OnChannelInterrupted"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_energy_drain"
+			"Target" 		"TARGET"
+		}
+		"RemoveModifier"
+		{
+			"ModifierName" 	"modifier_energy_drain_channel_workaround"
+			"Target" 		"CASTER"
+		}
+	}
 	"Modifiers"
 	{
 		"modifier_energy_drain"
 		{
 			"IsDebuff"	"0"
+			"Duration"	"%duration_tooltip"
 			"OnCreated"
 			{
 				"AttachEffect"
@@ -111,6 +134,10 @@
 					"Function"		"EnergyDrainTransfer"
 				}
 			}
+		}
+		"modifier_energy_drain_channel_workaround"
+		{
+			"IsHidden"	"1"
 		}
 	}
 }

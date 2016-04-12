@@ -13005,7 +13005,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"radius"			"240 250 260 270 280 290 300 310 320 330"
+				"radius"			"290 305 320 335 350 365 380 395 410 425"
 			}
 			"02"
 			{
@@ -13015,7 +13015,7 @@
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"damage_per_second"				"80 150 300 500 780 1150 1600 2200 3000 3900"
+				"damage_per_second"				"60 140 260 420 620 860 1140 1460 1820 2220"
 			}
 		}	
 	}
@@ -14723,6 +14723,11 @@
 				"ModifierName" 	"modifier_energy_drain"
 				"Target" 		"TARGET"
 			}
+			"ApplyModifier"
+			{
+				"ModifierName" 	"modifier_energy_drain_channel_workaround"
+				"Target" 		"CASTER"
+			}
 	
 			"FireSound"
 			{
@@ -14738,13 +14743,32 @@
 				"ModifierName" 	"modifier_energy_drain"
 				"Target" 		"TARGET"
 			}
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_energy_drain_channel_workaround"
+				"Target" 		"CASTER"
+			}
 		}
-	
+		"OnChannelInterrupted"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_energy_drain"
+				"Target" 		"TARGET"
+			}
+			"RemoveModifier"
+			{
+				"ModifierName" 	"modifier_energy_drain_channel_workaround"
+				"Target" 		"CASTER"
+			}
+		}
+
 		"Modifiers"
 		{
 			"modifier_energy_drain"
 			{
 				"IsDebuff"	"0"
+				"Duration"	"%duration_tooltip"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -14772,6 +14796,10 @@
 						"Function"		"EnergyDrainTransfer"
 					}
 				}
+			}
+			"modifier_energy_drain_channel_workaround"
+			{
+				"IsHidden"	"1"
 			}
 		}
 	}

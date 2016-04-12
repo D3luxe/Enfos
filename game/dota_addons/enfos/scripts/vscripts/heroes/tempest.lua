@@ -60,12 +60,12 @@ function burst (keys)
 	local caster = keys.caster
 	local target = keys.target
 	local damage = keys.damage
-	local health = target:GetHealth()
+	--[[local health = target:GetHealth()
 
 	--Checks if there is an overkill, and sets the damage to be non-lethal if it is
 	if damage > health then
 		damage = health - 1
-	end
+	end]]
 
 	--Gets the owner for the tornado
 	if caster:IsRealHero() == false then
@@ -73,7 +73,7 @@ function burst (keys)
 	end
 
 	--Damage
-	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability})
+	ApplyDamage({ victim = target, attacker = caster, damage = damage, damage_type = DAMAGE_TYPE_MAGICAL, ability = keys.ability, damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL})
 end
 
 function burst_dummy(keys)
