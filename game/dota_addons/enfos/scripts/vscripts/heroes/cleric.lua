@@ -13,6 +13,19 @@ function BlessSoul(keys)
 		--print("Cooldown Floor: "..math.floor(cooldown+0.5).." | Remaining Floor: "..math.floor(cooldownRemaining+0.5))
 		if ability:GetLevel() >= 1 and math.floor(cooldownRemaining+0.5) == math.floor(cooldown+0.5) then
 			--print("Has murrula's ready so not going through bless soul")
+			Timers:CreateTimer(DoUniqueString("murr_start"), {
+				endTime = 0.05,
+				callback = function()
+					unit:SetTimeUntilRespawn(ability:GetLevelSpecialValueFor("reincarnate_time",ability:GetLevel()-1))
+					--[[print("Time to respawn: "..unit:GetTimeUntilRespawn())
+					Timers:CreateTimer(DoUniqueString("murr"), {
+						endTime = unit:GetTimeUntilRespawn(),
+						callback = function()
+							unit:RespawnHero(false, false, false)
+						end
+					})]]
+				end
+			})
 			return
 		end
 	end
@@ -22,13 +35,13 @@ function BlessSoul(keys)
 		endTime = 0.05,
 		callback = function()
 			unit:SetTimeUntilRespawn(unit:GetTimeUntilRespawn() / 2)
-			print("Time to respawn: "..unit:GetTimeUntilRespawn())
-			Timers:CreateTimer(DoUniqueString("blss"), {
+			--print("Time to respawn: "..unit:GetTimeUntilRespawn())
+			--[[Timers:CreateTimer(DoUniqueString("blss"), {
 				endTime = unit:GetTimeUntilRespawn(),
 				callback = function()
 					unit:RespawnHero(false, false, false)
 				end
-			})
+			})]]
 		end
 	})
 	

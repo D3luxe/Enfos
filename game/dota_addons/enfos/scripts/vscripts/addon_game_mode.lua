@@ -2677,32 +2677,12 @@ function CEnfosGameMode:OnEntityKilled( event )
 	
 	if killedUnit:IsHero() then
 
-		if killedUnit:HasAbility("cleric_murrulas_flame") then
-			--print("-----ONENTITYKILLED-----")
-			--print("Has murrulas")
-			local ability = killedUnit:FindAbilityByName("cleric_murrulas_flame")
-			local cooldown = ability:GetCooldown(ability:GetLevel()-1)
-			local cooldownRemaining = ability:GetCooldownTimeRemaining()
-			--print("Ability level: "..ability:GetLevel())
-			--print("Cooldown: "..cooldown.." | Remaining: "..cooldownRemaining)
-			--print("Cooldown Floor: "..math.floor(cooldown+0.5).." | Remaining Floor: "..math.floor(cooldownRemaining+0.5))
-			if ability:GetLevel() == 0 or math.floor(cooldownRemaining+0.5) ~= math.floor(cooldown+0.5) then
-				--print("Has murrulas but not ready")
-				local level = killedUnit:GetLevel()
-				local baseRespawnTime = 45
-				killedUnit:SetTimeUntilRespawn(45 + level)
-				if killedUnit:GetTimeUntilRespawn() > 150 then
-					killedUnit:SetTimeUntilRespawn(150)
-				end
-			end
-		else
-			--print("No murrulas")
-			local level = killedUnit:GetLevel()
-			local baseRespawnTime = 45
-			killedUnit:SetTimeUntilRespawn(45 + level)
-			if killedUnit:GetTimeUntilRespawn() > 150 then
-				killedUnit:SetTimeUntilRespawn(150)
-			end
+		--print("No murrulas")
+		local level = killedUnit:GetLevel()
+		local baseRespawnTime = 45
+		killedUnit:SetTimeUntilRespawn(45 + level)
+		if killedUnit:GetTimeUntilRespawn() > 150 then
+			killedUnit:SetTimeUntilRespawn(150)
 		end
 
 		killedUnit:SetBuybackGoldLimitTime(0)
