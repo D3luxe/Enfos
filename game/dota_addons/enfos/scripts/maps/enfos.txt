@@ -161,7 +161,7 @@
 			"UnitsPerSpawn"			"1"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_siege"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round6" // Satyr Reavers
@@ -406,8 +406,8 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
-			"AttackType"			"modifier_attack_normal"
-			"ArmorType"				"modifier_armor_hero"
+			"AttackType"			"modifier_attack_siege"
+			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
 	"Round19" // Small Peccary
@@ -460,7 +460,7 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
-			"AttackType"			"modifier_attack_normal"
+			"AttackType"			"modifier_attack_magic"
 			"ArmorType"				"modifier_armor_light"
 		}
 	}
@@ -514,7 +514,7 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
-			"AttackType"			"modifier_attack_normal"
+			"AttackType"			"modifier_attack_magic"
 			"ArmorType"				"modifier_armor_heavy"
 		}
 	}
@@ -605,7 +605,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_chaos"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round30"	// Blood Warrior
@@ -695,7 +695,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round35" // Poloh`izh
@@ -749,7 +749,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round38" // Armored Warklin
@@ -767,7 +767,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round39" // Warklin Mauler
@@ -785,7 +785,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round40" // S`sugi Malchata
@@ -803,7 +803,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_siege"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round41" // Snaer Hafwa
@@ -821,7 +821,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_chaos"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	"Round42" // S`lai Screamer
@@ -839,7 +839,7 @@
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_chaos"
-			"ArmorType"				"modifier_armor_hero"
+			"ArmorType"				"modifier_armor_fortified"
 		}
 	}
 	
