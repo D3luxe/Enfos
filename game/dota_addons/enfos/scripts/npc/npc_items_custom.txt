@@ -682,7 +682,7 @@
 			{
 				"TextureName" "item_medium_armor"
 				"IsHidden"				"0" 
-				"IsPurgable" "0" 
+				"IsPurgable" "0"
 			}
 			"modifier_armor_heavy"
 			{
@@ -4984,6 +4984,12 @@
 						"LifestealPercent"		"%lifesteal"
 					}
 				}
+	
+			}
+			"modifier_vampiric_potion_nope"
+			{
+				"IsHidden"		"0"
+				"Duration"	"%duration"
 	
 			}
 	
