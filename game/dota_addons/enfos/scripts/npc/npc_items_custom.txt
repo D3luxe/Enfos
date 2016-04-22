@@ -671,42 +671,105 @@
 				"TextureName" "item_unarmored"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"0"
+					}
+				}
 			}
 			"modifier_armor_light"
 			{
 				"TextureName" "item_light_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"0"
+					}
+				}
 			}
 			"modifier_armor_medium"
 			{
 				"TextureName" "item_medium_armor"
 				"IsHidden"				"0" 
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"0"
+					}
+				}
 			}
 			"modifier_armor_heavy"
 			{
 				"TextureName" "item_heavy_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"-25"
+					}
+				}
 			}
 			"modifier_armor_fortified"
 			{
 				"TextureName" "item_fortified_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"0"
+					}
+				}
 			}
 			"modifier_armor_hero"
 			{
 				"TextureName" "item_hero_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"25"
+					}
+				}
 			}
 			"modifier_armor_divine"
 			{
 				"TextureName" "item_divine_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/armortypes.lua"
+						"Function"	"BaseSpellResist"
+						"newResist"	"0"
+					}
+				}
 			}
 		}
 	}
