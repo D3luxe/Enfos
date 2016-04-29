@@ -38,8 +38,7 @@ function EquipVampiricPotion(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	if caster:GetAttackCapability() == DOTA_UNIT_CAP_RANGED_ATTACK then
-		--print("Attacker is ranged")
-		return
+		ability:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_nope", {})
 	else
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_leech", {})
 	end
@@ -50,6 +49,7 @@ function UnequipVampiricPotion(keys)
 	local caster = keys.caster
 
 	caster:RemoveModifierByName("modifier_vampiric_potion_leech")
+	caster:RemoveModifierByName("modifier_vampiric_potion_nope")
 end
 
 function empath_pickup(keys)

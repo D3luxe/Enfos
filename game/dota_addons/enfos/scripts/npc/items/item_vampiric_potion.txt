@@ -95,6 +95,12 @@
 			}
 
 		}
+		"modifier_vampiric_potion_nope"
+		{
+			"IsHidden"		"0"
+			"Duration"	"%duration"
+
+		}
 
 	}
 

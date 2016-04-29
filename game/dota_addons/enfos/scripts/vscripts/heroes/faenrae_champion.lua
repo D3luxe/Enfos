@@ -134,6 +134,8 @@ function ModelSwapStart( keys )
 	local caster = keys.caster
 	local model = keys.model
 	local projectile_model = keys.projectile_model
+	local lifeMod = nil
+	local lifeItem = nil
 
 	-- Saves the original model and attack capability
 	if caster.caster_model == nil then 
@@ -148,6 +150,20 @@ function ModelSwapStart( keys )
 	-- Sets the new attack to ranged
 	caster:SetAttackCapability(DOTA_UNIT_CAP_RANGED_ATTACK)
 
+	-- Makes Inner Chaos respect lifesteal rules
+	if caster:HasModifier("modifier_thirsting_blade_leech") then
+		caster:RemoveModifierByName("modifier_thirsting_blade_leech")
+	end
+	if caster:HasModifier("modifier_bloodthirst_leech") then
+		caster:RemoveModifierByName("modifier_bloodthirst_leech")
+	end
+	if caster:HasModifier("modifier_vampiric_potion_leech") then
+		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_leech")
+		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
+		caster:RemoveModifierByName("modifier_vampiric_potion_leech")
+		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_nope", {})
+	end
+	
 	--Stores the old attack and armor types
 	if caster.armorType == nil then
 		caster.armorType = "modifier_armor_light"
@@ -172,12 +188,29 @@ end
 
 function ModelSwapEnd( keys )
 	local caster = keys.caster
+	local lifeMod = nil
+	local lifeItem = nil
 
 	caster:SetModel(caster.caster_model)
 	caster:SetOriginalModel(caster.caster_model)
 	caster:SetAttackCapability(caster.caster_attack)
 	if caster:GetUnitName() == "npc_dota_hero_troll_warlord" then
 		caster:SetRangedProjectileName("particles/units/heroes/hero_troll_warlord/troll_warlord_base_attack.vpcf")
+	end
+
+	if caster:HasItemInInventory("item_thirsting_blade") then
+		lifeMod = CreateItem("item_thirsting_blade", nil, nil)
+		lifeMod:ApplyDataDrivenModifier(caster, caster, "modifier_thirsting_blade_leech", {})
+	end
+	if caster:HasItemInInventory("item_bloodthirst") then
+		lifeMod = CreateItem("item_bloodthirst", nil, nil)
+		lifeMod:ApplyDataDrivenModifier(caster, caster, "modifier_bloodthirst_leech", {})
+	end
+	if caster:HasModifier("modifier_vampiric_potion_nope") then
+		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_nope")
+		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
+		caster:RemoveModifierByName("modifier_vampiric_potion_nope")
+		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_leech", {})
 	end
 
 	--Resets Faenrae's attack and armor types

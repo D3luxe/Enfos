@@ -978,6 +978,8 @@
 				"States"
 				{
 					"MODIFIER_STATE_FLYING"		"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE" "MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_MAGIC_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"Properties"
 		    	{
@@ -8576,12 +8578,32 @@
 		"AbilityManaCost"			"65 77 95 119 149 185 227 275 329 389"
 		"AbilityCooldown"			"120"
 	
+		"Precache"
+		{
+			"particle"			"particles/units/heroes/hero_magnataur/magnataur_shockwave.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_magnataur.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"ApplyModifier"
 			{
 				"Target" 			"CASTER"
 				"ModifierName"		"modifier_empower_bracers"
+			}
+			"FireSound"
+			{
+				"Target"					"CASTER"
+				"EffectName"				"Hero_Magnataur.Empower.Target"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "0"
+			"Damage"
+			{
+				"Type" 					"DAMAGE_TYPE_MAGICAL"
+				"Damage" 				"%damage"
+				"Target" 				"TARGET"
 			}
 		}
 		"Modifiers"
@@ -8593,29 +8615,19 @@
 				"EffectAttachType"	"attach_hitloc"
 				"OnAttackStart"
 				{
-					"ApplyModifier"
+					"RunScript"			
 					{
-						"ModifierName" "modifier_empower_bracers_proc"
-						"Target"	   "CASTER"	
-					}	
+						"ScriptFile"		"scripts/vscripts/heroes/magic_infuser.lua"
+						"Function"			"BracerShot"
+					}
 				}
 			}
 	
 			"modifier_empower_bracers_proc"
 			{
-				"Properties"
-				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE" "%damage_bonus"
-				}
-				
+				"IsHidden"	"1"
 				"OnAttackLanded"
 				{
-					"CleaveAttack"
-					{
-						"CleavePercent"		"100"
-						"CleaveRadius"      "%radius"
-						"CleaveEffect"		"particles/units/heroes/hero_magnataur/magnataur_empower_cleave_effect.vpcf"
-					}
 					"RemoveModifier"
 					{
 						"ModifierName"		"modifier_empower_bracers_proc"
@@ -8630,17 +8642,17 @@
 			"01"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"damage_bonus"		"200 290 420.5 609.7 884.1 1281.6 1858.8 2695.3 3908.1 5666.8"
+				"damage"		"200 290 420.5 609.7 884.1 1281.6 1858.8 2695.3 3908.1 5666.8"
 			}	
 			"02"
 			{
 				"var_type"		"FIELD_INTEGER"
 				"radius"		"250"
 			}
-			"02"
+			"03"
 			{
 				"var_type"		"FIELD_INTEGER"
-				"duration"		"40"
+				"duration"		"25"
 			}		
 		}
 	}
@@ -14834,7 +14846,7 @@
 		"AbilityManaCost"				"100 175 250 325 400 475 550 625 700 775"
 	
 	
-		"OnChannelFinish"
+		"OnChannelSucceeded"
 		{
 			"RunScript"
 			{
