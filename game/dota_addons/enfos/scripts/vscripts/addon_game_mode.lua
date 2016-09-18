@@ -1326,14 +1326,23 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local r = 0
 	local g = 0
 	local b = 0
+	local playerSlot = 0
 	
 
 	--Handles spawning the spellbringers
 	local spellbringerName = nil
 	local spellbringerLocation = nil
 	
-	spellbringerName = "spellbringer_"..playerID
-	--print(spellbringerName)
+	for i = 1, 5 do
+		print(playerID)
+		if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
+			playerSlot = i + ((3 - playerTeam)*5)
+		end
+		print(playerSlot)
+	end
+	
+	spellbringerName = "spellbringer_"..playerSlot
+	print(spellbringerName)
 	if spellbringerName ~= nil then
 		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
 	end
