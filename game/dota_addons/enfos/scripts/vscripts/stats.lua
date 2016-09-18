@@ -16,9 +16,9 @@ MAX_MOVE_SPEED = 522
 
 -- Default Dota Values
 DEFAULT_DMG_PER_STAT = 1
-DEFAULT_HP_PER_STR = 19
+DEFAULT_HP_PER_STR = 20
 DEFAULT_HP_REGEN_PER_STR = 0.03
-DEFAULT_MANA_PER_INT = 13
+DEFAULT_MANA_PER_INT = 12
 DEFAULT_MANA_REGEN_PER_INT = 0.04
 DEFAULT_ARMOR_PER_AGI = 0.14
 DEFAULT_ATKSPD_PER_AGI = 1
@@ -99,7 +99,7 @@ function Stats:ModifyStatBonuses(unit)
 			-- Armor bonus
 			-- To remove armor (such as in Enfos 20 agi = 1 armor instead of 7 agi) you have to also remove the default armor gained
 			
-			local armorAdjustment = (ARMOR_PER_AGI * agility) - (DEFAULT_ARMOR_PER_AGI * agility) + hero.baseArmor
+			local armorAdjustment = (ARMOR_PER_AGI * agility) - (DEFAULT_ARMOR_PER_AGI * agility) + (hero.baseArmor - 2)
 			hero:SetPhysicalArmorBaseValue(armorAdjustment)
 			
 		end

@@ -1625,6 +1625,12 @@ function CEnfosGameMode:FilterDamage( filterTable )
 
 	--We want it to just continue with the damage if it was from a spell, we only want to adjust for auto attacks
 	if ability ~= nil then
+		print(damage)
+		if attacker:IsHero() then
+			damage = damage/(1+((attacker:GetIntellect()/16)/100))
+			print(damage)
+		end
+
 		return true
 	end
 
