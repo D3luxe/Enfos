@@ -145,6 +145,7 @@ function SummonDarkrift(keys)
 		end
 		unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 		thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {})
+		thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_summon_purge_target", {})
 		unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 3})
 		for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 			if unit:GetAbilityByIndex(i) ~= nil then
