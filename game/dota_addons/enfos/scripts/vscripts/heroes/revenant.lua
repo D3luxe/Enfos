@@ -61,7 +61,7 @@ function AnimateDead(keys)
 		raisedUnit:SetControllableByPlayer(caster:GetPlayerID(), true)
 		FindClearSpaceForUnit(raisedUnit, raisedUnit:GetAbsOrigin(), true)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
-		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff", {})
+		thisSpell:ApplyDataDrivenModifier(raisedUnit, raisedUnit, "modifier_revenant_animate_dead_buff", {})
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
 
