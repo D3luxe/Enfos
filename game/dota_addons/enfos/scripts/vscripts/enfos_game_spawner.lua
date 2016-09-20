@@ -23,6 +23,7 @@ function CEnfosGameSpawner:ReadConfiguration( name, kv, gameRound )
 
 	self._armorType = kv.ArmorType or "modifier_armor_unarmored"
 	self._attackType = kv.AttackType or "modifier_attack_normal"
+	self._hullSize = kv.HullSize or 16.0
 
 	self._nTotalUnitsToSpawn = tonumber( kv.TotalUnitsToSpawn or 0 )
 	self._nUnitsPerSpawn = tonumber( kv.UnitsPerSpawn or 0 )
@@ -290,6 +291,8 @@ function CEnfosGameSpawner:AddTypes(mob, armor, attack)
  	local damageGain = math.floor((spawnedUnitIndex:GetBaseDamageMin() + spawnedUnitIndex:GetBaseDamageMax()) *.125)
 	spawnedUnitIndex:SetMinimumGoldBounty(0)
 	spawnedUnitIndex:SetMaximumGoldBounty(0)
+	--spawnedUnitIndex:SetHullRadius(25.0)
+	--spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_phased", {duration = 0.2})
  	spawnedUnitIndex:SetDamageGain(damageGain)
  	spawnedUnitIndex:SetHPGain(hpGain)
 	spawnedUnitIndex:CreatureLevelUp(GameRules.DIFFICULTY)
@@ -342,6 +345,9 @@ function CEnfosGameSpawner:_DoSpawn()
 				self:AddTypes(entUnit, self._armorType, self._attackType)
 				entUnit.armorType = self._armorType
 				entUnit.attackType = self._attackType
+				entUnit:SetHullRadius(self._hullSize)
+				entUnit.hullSize = self._hullSize --just in case
+				entUnit:AddNewModifier(entUnit, nil, "modifier_phased", {duration = 0.2})
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
@@ -368,6 +374,9 @@ function CEnfosGameSpawner:_DoSpawn()
 				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 				entUnit2.Enfos_IsCore = true
 				self:AddTypes(entUnit2, self._armorType, self._attackType)
+				entUnit2:SetHullRadius(self._hullSize)
+				entUnit2.hullSize = self._hullSize
+				entUnit2:AddNewModifier(entUnit2, nil, "modifier_phased", {duration = 0.2})
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1

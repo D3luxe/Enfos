@@ -123,11 +123,14 @@ function Hallucination(keys)
 	local target = keys.target
 	local targetName = target:GetUnitName()
 	local targetHealth = target:GetHealth()
+	local targetHull = target.hullSize --just in case
 -- make the unit and give it the modifiers
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 	unit:SetHealth(targetHealth)
 	unit:SetRenderColor(0,84,255)
+	unit.hullSize = targetHull
+	unit:SetHullRadius(targetHull)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})

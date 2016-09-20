@@ -479,11 +479,17 @@ function SummonDarkrift(keys)
 				unit.summonerUnit = true
 				if curUnits == 3 or curUnits == 6 then
 					if unitToSpawn2 == unitToSpawn then
+						unit:SetHullRadius(roundData.UnitFodder_1a.HullSize)
+						unit.hullSize = roundData.UnitFodder_1a.HullSize --just in case
 						AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
 					else
+						unit:SetHullRadius(roundData.UnitFodder_2a.HullSize)
+						unit.hullSize = roundData.UnitFodder_2a.HullSize
 						AddTypes(unit, roundData.UnitFodder_2a.ArmorType, roundData.UnitFodder_2a.AttackType)
 					end
 				else
+					unit:SetHullRadius(roundData.UnitFodder_1a.HullSize)
+					unit.hullSize = roundData.UnitFodder_1a.HullSize
 					AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
 				end
 				for i=1,3 do -- I dunno why I need to FindClearSpaceForUnit a bunch, but I do
@@ -496,7 +502,7 @@ function SummonDarkrift(keys)
 				--print(unit:GetGoldBounty())
 				thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
 				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
-				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
+				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
 				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 					if unit:GetAbilityByIndex(i) ~= nil then
 						unit:GetAbilityByIndex(i):SetLevel(1)
