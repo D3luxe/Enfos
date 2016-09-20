@@ -3759,26 +3759,6 @@
 					}
 				}
 			}
-			"modifier_summon_purge_target"
-			{
-				"Duration"				"9999"
-				"IsHidden"				"1"
-				"OnDestroy"
-				{
-					"Damage"
-					{
-						"Target"		"TARGET"
-						"Type"			"DAMAGE_TYPE_PURE"
-						"Damage"		"30000"
-					}
-					"ApplyModifier"
-					{
-						"ModifierName" "modifier_darkrift_purge_target"
-						"Target" 		"CASTER"
-					}
-
-				}
-			}
 		}
 		"AbilitySpecial"
 		{
