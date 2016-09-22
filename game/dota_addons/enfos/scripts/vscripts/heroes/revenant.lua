@@ -66,6 +66,7 @@ function AnimateDead(keys)
 		thisSpell:ApplyDataDrivenModifier(raisedUnit, raisedUnit, "modifier_revenant_animate_dead_buff", {})
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
+		raisedUnit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 
 		AddTypes(raisedUnit, validTargets[i].armorType, validTargets[i].attackType)
 	end

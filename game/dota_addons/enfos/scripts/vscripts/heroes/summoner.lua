@@ -169,6 +169,7 @@ function SummonDarkrift(keys)
 			end
 		end
 		unit:SetRenderColor(0, 84, 255)
+		unit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 	end
 end
 

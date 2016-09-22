@@ -295,7 +295,7 @@ function CEnfosGameSpawner:AddTypes(mob, armor, attack)
 	--spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_phased", {duration = 0.2})
  	spawnedUnitIndex:SetDamageGain(damageGain)
  	spawnedUnitIndex:SetHPGain(hpGain)
-	spawnedUnitIndex:CreatureLevelUp(GameRules.DIFFICULTY)
+	spawnedUnitIndex:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 
 end
 
@@ -374,6 +374,8 @@ function CEnfosGameSpawner:_DoSpawn()
 				self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
 				entUnit2.Enfos_IsCore = true
 				self:AddTypes(entUnit2, self._armorType, self._attackType)
+				entUnit2.armorType = self._armorType
+				entUnit2.attackType = self._attackType
 				entUnit2:SetHullRadius(self._hullSize)
 				entUnit2.hullSize = self._hullSize
 				entUnit2:AddNewModifier(entUnit2, nil, "modifier_phased", {duration = 0.2})
