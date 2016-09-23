@@ -844,7 +844,7 @@
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_siege"
 			"ArmorType"				"modifier_armor_fortified"
-			"HullSize"				"32.0"//come back for this one later, needs verification
+			"HullSize"				"28.0"
 		}
 	}
 	"Round41" // Snaer Hafwa
@@ -882,7 +882,7 @@
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_chaos"
 			"ArmorType"				"modifier_armor_fortified"
-			"HullSize"				"42.0"
+			"HullSize"				"40.0"
 		}
 	}
 	
