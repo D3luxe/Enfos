@@ -510,7 +510,7 @@ function SummonDarkrift(keys)
 				end
 				ParticleManager:CreateParticle("particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 				unit:SetRenderColor(0, 84, 255)
-				unit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
+				--unit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 				--print(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1)
 				return 0.3
 			end
