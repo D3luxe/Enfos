@@ -59,11 +59,14 @@ function AnimateDead(keys)
 		end
 		local raisedUnit = CreateUnitByName(validTargets[i]:GetUnitName(), validTargets[i]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 		raisedUnit:SetControllableByPlayer(caster:GetPlayerID(), true)
+		raisedUnit:SetHullRadius(validTargets[i].hullSize)
+		raisedUnit.hullSize = validTargets[i].hullSize --just in case
 		FindClearSpaceForUnit(raisedUnit, raisedUnit:GetAbsOrigin(), true)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
-		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_revenant_animate_dead_buff", {})
+		thisSpell:ApplyDataDrivenModifier(raisedUnit, raisedUnit, "modifier_revenant_animate_dead_buff", {})
 		validTargets[i]:Destroy()
 		raisedUnit:SetRenderColor(0, 84, 255)
+		raisedUnit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 
 		AddTypes(raisedUnit, validTargets[i].armorType, validTargets[i].attackType)
 	end

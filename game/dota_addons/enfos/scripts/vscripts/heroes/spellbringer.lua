@@ -449,6 +449,8 @@ function SummonDarkrift(keys)
 	local roundString = string.format("Round" .. round)
 	local roundData = kvRound[roundString]
 	local unitToSpawn = roundData.UnitFodder_1a.NPCName
+	local unitToSpawn2 = nil
+	--print(unitToSpawn, unitToSpawn2)
 -- spawn the unit
 	for i=1,6 do
 		
@@ -462,17 +464,45 @@ function SummonDarkrift(keys)
 			if curUnits <= maxUnits then
 				spawnLocation = Vector(target.x, target.y, target.z)
 				spawnLocation = spawnLocation + RandomVector( RandomFloat( 0, 200 ) )
-				local unit = CreateUnitByName(unitToSpawn, spawnLocation, true, caster, caster, caster:GetTeamNumber())
+				unitToSpawn2 = unitToSpawn
+				if unitToSpawn == "npc_dota_creep_crazed_madmen" then unitToSpawn2 = "npc_dota_creep_crazed_spearman" end if unitToSpawn == "npc_dota_creep_crazed_spearman" then unitToSpawn2 = "npc_dota_creep_crazed_madmen" end
+				if unitToSpawn == "npc_dota_creature_wood_troll" then unitToSpawn2 = "npc_dota_creature_wood_troll_rock_tosser" end if unitToSpawn == "npc_dota_creature_wood_troll_rock_tosser" then unitToSpawn2 = "npc_dota_creature_wood_troll" end
+				if unitToSpawn == "npc_dota_giant_spider" then unitToSpawn2 = "npc_dota_giant_poison_spider" end if unitToSpawn == "npc_dota_giant_poison_spider" then unitToSpawn2 = "npc_dota_giant_spider" end
+				
+				local unitToSpawnForReal = unitToSpawn
+				--print(unitToSpawn, unitToSpawn2)
+				if curUnits == 3 or curUnits == 6 then
+					unitToSpawnForReal = unitToSpawn2
+				end
+				local unit = CreateUnitByName(unitToSpawnForReal, spawnLocation, true, caster, caster, caster:GetTeamNumber())
 				unit:SetInitialGoalEntity(nil) -- (should) stop the spawned units from trying to run to the goal.
 				unit.summonerUnit = true
-				AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
+				if curUnits == 3 or curUnits == 6 then
+					if unitToSpawn2 == unitToSpawn then
+						unit:SetHullRadius(roundData.UnitFodder_1a.HullSize)
+						unit.hullSize = roundData.UnitFodder_1a.HullSize --just in case
+						AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
+					else
+						unit:SetHullRadius(roundData.UnitFodder_2a.HullSize)
+						unit.hullSize = roundData.UnitFodder_2a.HullSize
+						AddTypes(unit, roundData.UnitFodder_2a.ArmorType, roundData.UnitFodder_2a.AttackType)
+					end
+				else
+					unit:SetHullRadius(roundData.UnitFodder_1a.HullSize)
+					unit.hullSize = roundData.UnitFodder_1a.HullSize
+					AddTypes(unit, roundData.UnitFodder_1a.ArmorType, roundData.UnitFodder_1a.AttackType)
+				end
 				for i=1,3 do -- I dunno why I need to FindClearSpaceForUnit a bunch, but I do
 					FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 				end
 				unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
 				unit:SetOwner(caster:GetOwner())
-				thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_summoner_summon_darkrift", {duration = 60})
-				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 1})
+				--unit:SetMaximumGoldBounty(0)
+				--unit:SetMinimumGoldBounty(0)
+				--print(unit:GetGoldBounty())
+				thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
+				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
 				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 					if unit:GetAbilityByIndex(i) ~= nil then
 						unit:GetAbilityByIndex(i):SetLevel(1)
@@ -480,11 +510,13 @@ function SummonDarkrift(keys)
 				end
 				ParticleManager:CreateParticle("particles/econ/events/ti4/teleport_end_ground_flash_ti4.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 				unit:SetRenderColor(0, 84, 255)
-				unit:CreatureLevelUp(GameRules.DIFFICULTY)
+				--unit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
+				--print(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1)
 				return 0.3
 			end
 		end
 	})
+	unitToSpawn2 = nil
 end
 
 --[[Author: Pizzalol

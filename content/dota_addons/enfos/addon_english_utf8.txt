@@ -1,4 +1,4 @@
-﻿//fixed one of Ahlen's tooltips being a stock holdout tooltip
+//fixed one of Ahlen's tooltips being a stock holdout tooltip
 //fixed many tooltips displaying as a percentage
 //fixed a tooltip that didn't close properly
 
@@ -1078,6 +1078,7 @@
 		"DOTA_Tooltip_ability_revenant_animate_dead_radius"								"RADIUS:"
 		"DOTA_Tooltip_ability_revenant_animate_dead_duration"							"DURATION:"
 		"DOTA_Tooltip_ability_revenant_animate_dead_units_raised"						"UNITS RAISED:"
+		"DOTA_Tooltip_ability_revenant_animate_dead_damage_block"						"DAMAGE BLOCKED:"
 
 		"DOTA_Tooltip_modifier_revenant_deathwave_debuff"										"Deathwave"
 		"DOTA_Tooltip_modifier_revenant_deathwave_debuff_Description"							"Slowed by %dMODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT%%%\nDeals %dMODIFIER_PROPERTY_DAMAGEOUTGOING_PERCENTAGE%%% less damage"

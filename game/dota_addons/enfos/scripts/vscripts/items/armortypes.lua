@@ -252,3 +252,9 @@ function CalculateArmor(keys)
 	--print("No damage change "..dealOrHeal)
 	end
 end
+
+function BaseSpellResist(keys)
+	local caster = keys.caster
+	local ability = keys.ability
+	caster:SetBaseMagicalResistanceValue(keys.newResist)
+end

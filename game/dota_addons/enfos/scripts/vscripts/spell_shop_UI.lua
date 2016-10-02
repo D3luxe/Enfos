@@ -76,10 +76,11 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 	end
 
 	if team == DOTA_TEAM_GOODGUYS then
-		nilCheck = GameRules.radiantPlayers[goldTarget]
+		--nilCheck = GameRules.radiantPlayers[goldTarget]
+		nilCheck = PlayerResource:GetNthPlayerIDOnTeam(team,goldTarget)
 
 		if nilCheck ~= nil then
-			targetID = nilCheck.id
+			targetID = nilCheck
 		else
 			return
 		end
@@ -92,9 +93,11 @@ function SpellShopUI:PlayerBuySpell( player, _ID, abilityName, _cost, _pnt )
 
 	else
 		print("Bad guys")
-		nilCheck = GameRules.direPlayers[goldTarget]
+		--nilCheck = GameRules.direPlayers[goldTarget]
+		nilCheck = PlayerResource:GetNthPlayerIDOnTeam(team,goldTarget)
+		
 		if nilCheck ~= nil then
-			targetID = nilCheck.id
+			targetID = nilCheck
 		else
 			print("Target was nil")
 			return

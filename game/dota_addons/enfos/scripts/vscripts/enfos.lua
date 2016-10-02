@@ -49,6 +49,16 @@ function CustomPurge(unit, RemoveBuff,RemoveDebuff )
 	for i,v in pairs(GameRules.CustomPurgeTable) do
 		if target:HasModifier(i) then
 			print("Target has "..i)
+			--damage summons
+			if i == "modifier_summoner_summon_darkrift" then
+				local damageTable = {
+					victim = unit,
+					attacker = unit,
+					damage = 30000,
+					damage_type = DAMAGE_TYPE_MAGICAL,
+				}
+				ApplyDamage(damageTable)
+			end
 			if v.IsDebuff or not v.IsDebuff then
 				print(v.IsDebuff,v.IsPurgable)
 				if v.IsPurgable == 1 or v.IsPurgable == nil and RemoveDebuff then

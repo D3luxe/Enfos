@@ -39,10 +39,10 @@
 				<Panel id="VoteGroup" >
 					<Panel id="VoteGroupKills">
 						<Label id="VoteGroupKillsTitle" text="SELECT DIFFICULTY" />
-						<RadioButton checked="checked" group="GameKills" id="KillsButton1" text="Casual (100% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton2" text="Ascendant (125% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton3" text="Elder (150% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton4" text="Mythical (175% HP/Dmg)"/>
+						<RadioButton group="GameKills" id="KillsButton1" text="Casual (75% HP/Dmg)"/>
+						<RadioButton checked="checked" group="GameKills" id="KillsButton2" text="Ascendant (100% HP/Dmg)"/>
+						<RadioButton group="GameKills" id="KillsButton3" text="Elder (125% HP/Dmg)"/>
+						<RadioButton group="GameKills" id="KillsButton4" text="Mythical (150% HP/Dmg)"/>
 						<RadioButton group="GameKills" id="KillsButton5" text="Legendary (200% HP/Dmg)"/>
 					</Panel>
 

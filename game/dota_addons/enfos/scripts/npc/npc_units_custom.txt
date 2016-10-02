@@ -1047,7 +1047,7 @@
 	{
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/heroes/furion/treant.vmdl"
+		"Model"						"models/items/furion/treant_stump.vmdl"
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Furion_Treant"
 		"Level"						"1"
@@ -1056,7 +1056,6 @@
 		"PathfindingSearchDepthScale" "0.1"
 		"precache"
 		{
-			"particle"			"particles/econ/events/coal/coal_projectile.vpcf"
 			"soundfile"				"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
 		}
 	

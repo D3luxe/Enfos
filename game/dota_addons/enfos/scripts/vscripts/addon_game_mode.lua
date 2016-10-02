@@ -984,16 +984,16 @@ function CEnfosGameMode:OnGameRulesStateChange()
 			    -- Change this to the proper strings later
 			    if GameRules.DIFFICULTY == 0 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Casual</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Hey, Not Too Rough. <font color='#2EFE2E'>100% Life and Damage</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Hey, Not Too Rough. <font color='#2EFE2E'>75% Life and Damage</font>", 0, 0)
 			    elseif GameRules.DIFFICULTY == 1 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Ascendant (1)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Bring it on! <font color='#2EFE2E'>125% Life and Damage</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Bring it on! <font color='#2EFE2E'>100% Life and Damage</font>", 0, 0)
 			    elseif GameRules.DIFFICULTY == 2 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Elder (2)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Hurt Me Plenty. <font color='#2EFE2E'>150% Life and Damage</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Hurt Me Plenty. <font color='#2EFE2E'>125% Life and Damage</font>", 0, 0)
 			    elseif GameRules.DIFFICULTY == 3 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Mythical (3)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Ultra-Violence. <font color='#2EFE2E'>175% Life and Damage</font>" , 0, 0)
+			    	GameRules:SendCustomMessage("Ultra-Violence. <font color='#2EFE2E'>150% Life and Damage</font>" , 0, 0)
 			    elseif GameRules.DIFFICULTY == 4 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Legendary (4)</font>", 0, 0)
 			    	GameRules:SendCustomMessage("Nightmare! <font color='#2EFE2E'>200% Life and Damage</font>" , 0, 0)
@@ -1326,14 +1326,23 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local r = 0
 	local g = 0
 	local b = 0
+	local playerSlot = 0
 	
 
 	--Handles spawning the spellbringers
 	local spellbringerName = nil
 	local spellbringerLocation = nil
 	
-	spellbringerName = "spellbringer_"..playerID
-	--print(spellbringerName)
+	for i = 1, 5 do
+		print(playerID)
+		if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
+			playerSlot = i + ((3 - playerTeam)*5)
+		end
+		print(playerSlot)
+	end
+	
+	spellbringerName = "spellbringer_"..playerSlot
+	print(spellbringerName)
 	if spellbringerName ~= nil then
 		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
 	end

@@ -379,7 +379,7 @@ function SendVotes( )
 	ToggleLockButton( false )
 	$.Schedule( 2, ToggleLockButtonTrue );
 
-	$( "#KillsButton1" ).checked = true
+	$( "#KillsButton2" ).checked = true
 
 	// get any custom config
 	if ( GameUI.CustomUIConfig().team_select )

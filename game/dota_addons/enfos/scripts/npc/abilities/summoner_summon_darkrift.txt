@@ -27,13 +27,14 @@
 		"modifier_summoner_summon_darkrift"
 		{
 			"Duration"				"%duration"
+			"IsPurgable"			"0"
 			"OnDestroy"
 			{
 				"Damage"
 				{
 					"Target"		"TARGET"
 					"Type"			"DAMAGE_TYPE_PURE"
-					"Damage"		"99999"
+					"Damage"		"9999999"
 				}
 			}
 		}
