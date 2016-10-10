@@ -99,6 +99,7 @@ function ChainLightning(keys)
 	local units = nil
 	local lightningBolt = nil
 	local boltDummy = nil
+	local failsafe = 10
 	lightningBolt = ParticleManager:CreateParticle("particles/units/heroes/hero_zuus/zuus_arc_lightning.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 	ParticleManager:SetParticleControl(lightningBolt,1,Vector(target:GetAbsOrigin().x,target:GetAbsOrigin().y,target:GetAbsOrigin().z+((target:GetBoundingMaxs().z - target:GetBoundingMins().z)/2)))	
 	DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
@@ -113,6 +114,8 @@ function ChainLightning(keys)
 			if #units < 1 then
 				return
 			end
+			
+			failsafe = 10
 -- particle stuff. the bounding box stuff is so that the lightning shoots out of the middle. it still attaches to the feet so it's a bit weird but it's mostly fine. 
 -- the particle must be created during the timer but before the target switch	
 			targetVec = target:GetAbsOrigin()
@@ -126,6 +129,11 @@ function ChainLightning(keys)
 			local tTarget = units[math.random(1,#units)]
 			while tTarget == target do
 				tTarget = units[math.random(1,#units)]
+				--print(#units)
+				--failsafe
+				failsafe = failsafe - 1
+				--print(failsafe)
+				if failsafe == 0 then return end
 			end
 			target = tTarget
 			DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
