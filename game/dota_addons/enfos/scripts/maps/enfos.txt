@@ -465,7 +465,7 @@
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
 			"ArmorType"				"modifier_armor_hero"
-			"HullSize"				"1.0"
+			"HullSize"				"0.0"
 		}
 	}
 	"Round21" // Giant Thicket Viper
@@ -769,6 +769,7 @@
 			"SpawnInterval"			"2.5"
 			"AttackType"			"modifier_attack_normal"
 			"ArmorType"				"modifier_armor_hero"
+			"HullSize"				"0.0"
 		}
 	}
 	"Round37" // Misshapen

@@ -112,7 +112,7 @@ function Stats:ModifyStatBonuses(unit)
 				applier:ApplyDataDrivenModifier(hero, hero, "modifier_mana_bonus", {})
 			end
 
-			local mana_stacks = intellect * mana_adjustment
+			local mana_stacks = (intellect * mana_adjustment) -1
 			hero:SetModifierStackCount("modifier_mana_bonus", hero, mana_stacks)
 
 			-- Mana Regen Bonus
