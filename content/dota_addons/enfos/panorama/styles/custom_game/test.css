@@ -1,0 +1,143 @@
+.Main {
+	width: 100%;
+    height: 100%;
+}
+
+#goldMenu {
+	vertical-align: center;
+	horizontal-align: left;
+	padding-top: 36px;
+	padding-bottom: 12px;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 400px;
+	height: 240px;
+	background-color: gradient( linear, 100% 100%, -100% 100%, from( #333333 ), to( #666666 ) );
+	flow-children: down;
+	margin-left: 16px;
+}
+
+#newPanel {
+	height: 40px;
+	width: 360px;
+	flow-children: right-wrap;
+}
+#newerPanel {
+	height: 6px;
+	width: 360px;
+	flow-children: right-wrap;
+}
+#EvenNewerPanel {
+	height: 194px;
+	width: 360px;
+	flow-children: right-wrap;
+}
+#AnEvenNewerStillPanel {
+	height: 194px;
+	width: 196px;
+	flow-children: down-wrap;
+}
+#CashPanelLeft, #CashPanelRight {
+	height: 146px;
+	width: 82px;
+	//background-color: #000;
+	vertical-align: bottom;
+	//text-align: center;
+	//color: #FFFFFFFF;
+	//font-size: 16px;
+	//text-overflow: clip;
+}
+#PurchaseTextPanel1, #PurchaseTextPanel2 {
+	height: 26px;
+	width: 196px;
+	//background-color: #000;
+	vertical-align: top;
+	flow-children: right-wrap;
+	text-align: center;
+	color: #DDFFAAFF;
+	font-size: 24px;
+	text-overflow: clip;
+}
+#PurchaseButtonPanel1, #PurchaseButtonPanel2 {
+	height: 40px;
+	width: 196px;
+	//background-color: #0ff;
+	vertical-align: top;
+	flow-children: right;
+}
+
+#GoldButton1, #GoldButton2, #GoldButton3, #GoldButton4, #GoldButton5 {
+	background-image: url('s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex');
+	background-size: 100%;
+	width: 72px;
+ 	height: 40px;
+}
+
+#GoldButton1:hover, #GoldButton2:hover, #GoldButton3:hover, #GoldButton4:hover, #GoldButton5:hover {
+ 	border: 3px solid #999;
+}
+#GoldButton1:active, #GoldButton2:active, #GoldButton3:active, #GoldButton4:active, #GoldButton5:active {
+ 	border: 3px solid #fff;
+}
+
+#ButtonGlow1, #ButtonGlow2, #ButtonGlow3, #ButtonGlow4, #ButtonGlow5 {
+ 	width: 100%;
+ 	height: 100%;
+	box-shadow: inset #FFBB33AA 0px 0px 10px 0px;
+}
+
+#ButtonColor1, #ButtonColor2, #ButtonColor3, #ButtonColor4, #ButtonColor5 {
+	background-color: #fff;
+	width: 72px;
+ 	height: 6px;
+	box-shadow: inset #000000AA 0px 0px 1px 1px;
+}
+
+#GiveGold10, #GiveGold100, #GiveGold1000, #GiveWood1, #GiveWood10, #GiveWood100 {
+	background-image: url('s2r://panorama/images/custom_game/trade_button.png');
+	background-color: #999;
+	background-size: 100%;
+	width: 40px;
+ 	height: 40px;
+	margin-right: 12px;
+}
+#GiveGoldAll, #GiveWoodAll {
+	background-image: url('s2r://panorama/images/custom_game/trade_button.png');
+	background-color: #999;
+	background-size: 100%;
+	width: 40px;
+ 	height: 40px;
+}
+#GiveGold10:active, #GiveGold100:active, #GiveGold1000:active, #GiveGoldAll:active, #GiveWood1:active, #GiveWood10:active, #GiveWood100:active, #GiveWoodAll:active {
+	background-image: url('s2r://panorama/images/custom_game/trade_button_pressed.png');
+}
+
+#GiveGoldText {
+	width: 40px;
+ 	height: 30px;
+	text-align: center;
+	color: #FFE269FF;
+	vertical-align: bottom;
+	horizontal-align: center;
+	text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 1px 3.0 #FFE26930;
+}
+#GiveWoodText {
+	width: 40px;
+ 	height: 30px;
+	text-align: center;
+	color: #00DB2BFF;
+	vertical-align: bottom;
+	horizontal-align: center;
+	text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 1px 3.0 #00DB2B30;
+}
+
+#ButtonArrow1, #ButtonArrow2, #ButtonArrow3, #ButtonArrow4, #ButtonArrow5 {
+	background-image: url('s2r://panorama/images/custom_game/trade_arrow.png');
+	background-size: 100%;
+	vertical-align: top;
+	horizontal-align: center;
+	width: 27px;
+ 	height: 15px;
+}

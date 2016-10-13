@@ -40,13 +40,14 @@ require('libraries/popups')
 
 require("statcollection/init")
 
-MAX_LEVEL = 125
+MAX_LEVEL = 149
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
 radiantXP = 0
 direXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
+  print(XP_PER_LEVEL_TABLE[i])
 end
 
 RADIANT_TEAM_MEMBERS = {}
@@ -1253,6 +1254,9 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	--Initialize variables for tracking
 	player.lumber = 0 -- Secondary resource of the player
 
+	print(spawnedUnit, spawnedUnitIndex, player, event.PlayerID, event.HeroName)
+	CustomGameEventManager:Send_ServerToAllClients( "hero_change", {} )
+	
 	--Starts the game if everyone has picked and loaded
 	if GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT then
     	CEnfosGameMode:OnEveryonePicked()
