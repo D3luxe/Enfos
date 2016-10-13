@@ -482,7 +482,7 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
-			"AttackType"			"modifier_attack_magic"
+			"AttackType"			"modifier_attack_magical"
 			"ArmorType"				"modifier_armor_light"
 			"HullSize"				"32.0"
 		}
@@ -539,7 +539,7 @@
 			"TotalUnitsToSpawn"		"96"
 			"UnitsPerSpawn"			"3"
 			"SpawnInterval"			"2.5"
-			"AttackType"			"modifier_attack_magic"
+			"AttackType"			"modifier_attack_magical"
 			"ArmorType"				"modifier_armor_heavy"
 			"HullSize"				"32.0"
 		}
