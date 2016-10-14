@@ -7,6 +7,9 @@
 		<include src="file://{resources}/scripts/custom_game/test.js"/>
 	</scripts>
 	<Panel hittest="false" class="Main">
+		<Button id="TradeUIButton" onactivate="FlipTradeUI()">
+			<Label id="TradeButtonText" text="TRADE RESOURCES"/>
+		</Button>
 		<Panel id="goldMenu">
 			<Panel id="newPanel">
 				<Button id="GoldButton1" onactivate="TransferSelect(0)">

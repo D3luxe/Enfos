@@ -159,6 +159,14 @@ function UpdateTradeUI() {
 	}
 }
 
+function FlipTradeUI() {
+	if($('#goldMenu').visible != true){
+		$('#goldMenu').visible = true;
+		UpdateTradeUI();
+	}
+	else{$('#goldMenu').visible = false;}
+}
+
 (function () {
-	UpdateTradeUI();
+	FlipTradeUI();
 })();

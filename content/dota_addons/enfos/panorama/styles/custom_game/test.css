@@ -3,6 +3,24 @@
     height: 100%;
 }
 
+#TradeUIButton {
+	vertical-align: center;
+	horizontal-align: left;
+	background-color: #630;
+	width: 200px;
+	height: 40px;
+	margin-left: 16px;
+	margin-top: 450px;
+}
+#TradeButtonText {
+	color: #ffc;
+	width: 200px;
+	height: 60px;
+	font-size: 24px;
+	text-align: center;
+	margin-top: 6px;
+}
+
 #goldMenu {
 	vertical-align: center;
 	horizontal-align: left;
@@ -15,6 +33,7 @@
 	background-color: gradient( linear, 100% 100%, -100% 100%, from( #333333 ), to( #666666 ) );
 	flow-children: down;
 	margin-left: 16px;
+	margin-top: 150px;
 }
 
 #newPanel {
