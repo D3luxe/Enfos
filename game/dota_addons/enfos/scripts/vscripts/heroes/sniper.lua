@@ -47,7 +47,7 @@ function TechniquePierce(keys)
 -- vars
 	local caster = keys.caster
 	local target = keys.target
-	local damage = caster:GetAverageTrueAttackDamage() -- this isn't perfect but it's good enough. damage ranges really aren't a meaningful factor
+	local damage = caster:GetAverageTrueAttackDamage(caster) -- this isn't perfect but it's good enough. damage ranges really aren't a meaningful factor
 	local pid = caster:GetPlayerID()
 	local start_radius = 50
 	local end_radius = 100
@@ -58,7 +58,7 @@ function TechniquePierce(keys)
 	for _,unit in pairs(cone_units) do
 		if unit ~= target and unit ~= caster then
 			-- Damage
-			DealDamage(caster, unit, damage, DAMAGE_TYPE_PHYSICAL, 0)
+			DealDamage(caster, unit, damage, DAMAGE_TYPE_PHYSICAL, DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR)
 		end
 	end
 
