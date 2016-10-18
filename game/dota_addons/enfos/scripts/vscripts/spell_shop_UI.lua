@@ -54,6 +54,8 @@ function SpellShopUI:InitGameMode()
 		end
 	end, "Remove abaddons abilities", 0 )]]
 	
+	
+	CustomGameEventManager:RegisterListener("trade_ui_event", Dynamic_Wrap(SpellShopUI, 'TradeResources'))
 end
 
 -- function that takes care of buying the spell
@@ -205,4 +207,98 @@ function SpellShopUI:PlayerSellSkillpoint( player, _cost)
 	local success = false
 	
 
+end
+
+function SpellShopUI:TradeResources(keys)
+	local playerID = tonumber(keys.player)
+	local target = tonumber(keys.target)
+	local amount = tonumber(keys.amount)
+	local resource = tostring(keys.resource)
+	local player = PlayerResource:GetPlayer(playerID)
+	local hero = player:GetAssignedHero()
+	if hero == nil then
+		return 0
+	end
+	local team = hero:GetTeam()
+	local targetID = 0
+	local success = false
+	
+	--local goldTarget = tonumber(_pnt)
+	if not GameRules.ItemSharing then
+		Notifications:Bottom(hero:GetPlayerID(), {text="Resource sharing is disabled!", duration=3, style={color="red", ["font-size"]="50px"}})
+		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", hero:GetPlayerOwner())
+		return false
+	end
+
+	--[[if team == DOTA_TEAM_GOODGUYS then
+		--nilCheck = GameRules.radiantPlayers[goldTarget]
+		--nilCheck = PlayerResource:GetNthPlayerIDOnTeam(team,goldTarget)
+		nilCheck = target
+
+		if nilCheck ~= nil then
+			targetID = nilCheck
+		else
+			return
+		end
+
+		if targetID == nil then
+			print("ERROR!")
+		else
+			print("Target ID: "..targetID)
+		end
+
+	else]]
+		--print("Bad guys")
+		--nilCheck = GameRules.direPlayers[goldTarget]
+		--nilCheck = PlayerResource:GetNthPlayerIDOnTeam(team,goldTarget)
+		nilCheck = target
+		
+		if nilCheck ~= nil then
+			targetID = nilCheck
+		else
+			print("Target was nil")
+			return
+		end
+
+		if targetID == nil then
+			print("ERROR!")
+		else
+			--print(targetID)
+		end
+	--end
+
+	if ( PlayerResource:IsValidPlayer( targetID ) ) then
+		local targetPlayer = PlayerResource:GetPlayer(targetID):GetAssignedHero()
+
+		if resource == "gold" then
+				
+			if amount == 0 then amount = 99999 end
+			local gold = hero:GetGold()
+			if amount > gold then amount = gold end
+			local targetGold = targetPlayer:GetGold()
+			if targetGold + amount > 99999 then amount = (99999 - targetGold) end
+			
+			hero:SpendGold(amount, DOTA_ModifyGold_Unspecified)
+			
+			--print("target gold: "..targetGold)
+			targetPlayer:ModifyGold(amount, false, 1)
+			--targetGold = targetPlayer:GetGold()
+			--print("target gold 2: "..targetGold)
+		end
+		
+		if resource == "lumber" then
+				
+			if amount == 0 then amount = 99999 end
+			local wood = player.lumber
+			if amount > wood then amount = wood end
+			local targetWood = PlayerResource:GetPlayer(targetID).lumber
+			if targetWood + amount > 99999 then amount = (99999 - targetWood) end
+			
+			ModifyLumber(player,-amount)
+			
+			--print("wood "..PlayerResource:GetPlayer(targetID).lumber)
+			ModifyLumber(PlayerResource:GetPlayer(targetID),amount)
+			--print("woode "..PlayerResource:GetPlayer(targetID).lumber)
+		end
+	end
 end
