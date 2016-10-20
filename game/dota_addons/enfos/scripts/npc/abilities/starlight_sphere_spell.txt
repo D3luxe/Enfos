@@ -5,9 +5,15 @@
 {
 	"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	"BaseClass" 					"ability_datadriven"
-	"AbilityTextureName"            "wisp_detonate"
+	"AbilityTextureName"            "wisp_overcharge"
 	"MaxLevel"                      "1"
+	"AbilityCastRange"				"50"
 	"AOERadius"						"%reduced_damage_radius"
+	"Precache"
+	{
+		//"particle_folder"					"particles/units/heroes/hero_puck"
+		//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"RunScript"
@@ -31,6 +37,7 @@
 				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
 			"OnDeath" //I don't know if this is proper behaviour but it's the coolest behaviour
 			{

@@ -4752,7 +4752,7 @@
 		"AOERadius"						"%radius"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_mentalist/"
+			"particle"					"particles/hero_generic/moonbeam.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
 		}
 		"OnSpellStart"
@@ -7396,11 +7396,9 @@
 		"AbilityManaCost"				"150 170 190 210 230 250 270 290 310 330"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_moon_mage"
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
-			"particle" 	"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+			//"particle_folder"			"particles/econ/items/phoenix/phoenix_solar_forge"
+			"particle"			"particles/hero_moonmage/burn.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -7613,7 +7611,7 @@
 		"LevelsBetweenUpgrades"			"3"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_moon_mage" 
+			"particle_folder"			"particles/hero_moonmage" 
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
 		}
 		"OnSpellStart"
@@ -7674,6 +7672,11 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"0"
+		"Precache"
+		{
+			//"particle"					"particles/units/heroes/hero_puck/puck_illusory_orb_explode.vpcf"
+			//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -7723,23 +7726,25 @@
 		"AbilityManaCost"				"60 82 113 156 212 284 376 492 635 812"
 		"Precache"
 		{
-			"particle_folder"			"particles/units/heroes/hero_wisp/" 
+			//"particle_folder"			"particles/units/heroes/hero_wisp/" 
 			"model"						"models/heroes/wisp/wisp.vmdl"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+			"particle_folder"			"particles/hero_moonmage"
 		}
 		"OnSpellStart"
 		{
-			"SpawnUnit" //we do this here instead of in Lua because there seems to be no way to get the duration timer to 	
-			{
-				"Target"				"CASTER"
-				"UnitName"				"npc_starlight_sphere"
-				"UnitCount"				"1"
-				"UnitLimit"				"1"
-				"SpawnRadius"			"100"
-				"Duration"				"%duration"
-				"GrantsGold"			"false"
-				"GrantsXP"				"false"
-			}
+			//"SpawnUnit" //we do this here instead of in Lua because there seems to be no way to get the duration timer to 	
+			//{
+			//	"Target"				"CASTER"
+			//	"UnitName"				"npc_starlight_sphere"
+			//	"UnitCount"				"1"
+			//	"UnitLimit"				"1"
+			//	"SpawnRadius"			"100"
+			//	"Duration"				"%duration"
+			//	"GrantsGold"			"false"
+			//	"GrantsXP"				"false"
+			//}
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
@@ -10806,13 +10811,17 @@
 				
 				"OnOrbImpact"
 				{
-					"Damage"
+					//"Damage"
+					//{
+					//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+					//	"Damage"        "%damage_bonus"
+					//	"Target"		"TARGET"
+					//}
+					"RunScript"
 					{
-						"Type"          "DAMAGE_TYPE_PHYSICAL"
-						"Damage"        "%damage_bonus"
-						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"FireAmmo"
 					}
-	
 					"FireSound"
 					{
 						"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
@@ -10845,7 +10854,7 @@
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-		"AbilityCastRange" "3000"
+		"AbilityCastRange" "3500"
 		"Precache"
 		{
 			"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
@@ -10887,13 +10896,17 @@
 				
 				"OnOrbImpact"
 				{
-					"Damage"
+					//"Damage"
+					//{
+					//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+					//	"Damage"        "%damage_bonus"
+					//	"Target"		"TARGET"
+					//}
+					"RunScript"
 					{
-						"Type"          "DAMAGE_TYPE_PHYSICAL"
-						"Damage"        "%damage_bonus"
-						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"FireAmmo"
 					}
-	
 					"FireSound"
 					{
 						"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
@@ -11003,12 +11016,16 @@
 	"sniper_sniper_technique" //guessing on cooldown
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"sniper_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityTextureName"			"clinkz_wind_walk"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"						"1"
-		"AbilityCastPoint"				"2"
+		"AbilityCastPoint"				"0.6"
 		"AbilityCooldown"				"30"
 		"Innate"						"1"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_sniper"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -11019,26 +11036,36 @@
 			}
 	
 		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "0"
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+				"Function"		"TechniquePierce"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_sniper_technique"
 			{
 				"Passive"	"1"
 				"IsPurgable"			"0"
+				"TextureName"	"sniper_take_aim"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
 					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
 				}
 				
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
-						"Function"		"TechniquePierce"
-					}
-				}
+				//"OnAttackLanded"
+				//{
+				//	"RunScript"
+				//	{
+				//		"ScriptFile"	"scripts/vscripts/enfos.lua"
+				//		"Function"		"DamageSpill"
+				//	}
+				//}
 				"OnDeath"
 				{
 					"RunScript"
@@ -11063,10 +11090,10 @@
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"sniper_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"						"1"
 		"Innate"						"1"
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastPoint"				"0.6"
 		"AbilityCooldown"				"30"
 		"OnSpellStart"
 		{
@@ -11180,7 +11207,7 @@
 	
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_gyrocopter.vsndevts"
 			"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
 			"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
 			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
@@ -11227,7 +11254,12 @@
 			}
 			"FireSound"
 			{
-				"EffectName"		"Hero_Sven.StormBoltImpact"
+				"EffectName"		"Hero_Gyrocopter.HomingMissile.Destroy"
+				"Target"			"TARGET"
+			}
+			"FireSound"
+			{
+				"EffectName"		"Hero_Gyrocopter.HomingMissile.Target"
 				"Target"			"TARGET"
 			}
 	
@@ -12120,9 +12152,15 @@
 	{
 		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"            "wisp_detonate"
+		"AbilityTextureName"            "wisp_overcharge"
 		"MaxLevel"                      "1"
+		"AbilityCastRange"				"50"
 		"AOERadius"						"%reduced_damage_radius"
+		"Precache"
+		{
+			//"particle_folder"					"particles/units/heroes/hero_puck"
+			//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -12146,6 +12184,7 @@
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"OnDeath" //I don't know if this is proper behaviour but it's the coolest behaviour
 				{

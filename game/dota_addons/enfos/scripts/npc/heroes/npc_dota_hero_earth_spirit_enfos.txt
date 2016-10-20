@@ -12,6 +12,7 @@
 	"Ability3"					"entropist_tremor"
 	"Ability4"					"entropist_ring_of_spears"
 	"Ability5"					"entropist_sure_footing"
+	"Ability6"					""
 	
 	"ArmorPhysical"				"3"
 	

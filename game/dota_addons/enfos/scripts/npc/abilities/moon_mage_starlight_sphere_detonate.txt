@@ -10,6 +10,11 @@
 	"AbilityCastPoint"				"0.0"
 	"AbilityCooldown"				"0"
 	"AbilityManaCost"				"0"
+	"Precache"
+	{
+		//"particle"					"particles/units/heroes/hero_puck/puck_illusory_orb_explode.vpcf"
+		//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+	}
 	"OnSpellStart"
 	{
 		"RunScript"

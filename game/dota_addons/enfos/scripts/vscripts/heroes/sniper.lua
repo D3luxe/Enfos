@@ -44,7 +44,25 @@ function TechniqueAcqRangeDown(keys)
 end
 
 function TechniquePierce(keys)
--- vars
+	local caster = keys.caster
+	local pID = caster:GetPlayerID()
+	local target = keys.target
+	local damage = Enfos.damageSpillValue[pID]
+	local ability = keys.ability
+	--print("spill dmg "..damage)
+	if target ~= Enfos.damageSpillTarget[pID] then
+		local dTable = {
+			victim = target,
+			attacker = caster,
+			damage = damage,
+			damage_type = DAMAGE_TYPE_PURE,
+			damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR,
+			ability = ability
+		}
+		ApplyDamage(dTable)
+	end
+end
+--[[
 	local caster = keys.caster
 	local target = keys.target
 	local damage = caster:GetAverageTrueAttackDamage(caster) -- this isn't perfect but it's good enough. damage ranges really aren't a meaningful factor
@@ -57,70 +75,86 @@ function TechniquePierce(keys)
 
 	for _,unit in pairs(cone_units) do
 		if unit ~= target and unit ~= caster then
-			-- Damage
+			PrintTable(cone_units)
+			print(damage)
 			DealDamage(caster, unit, damage, DAMAGE_TYPE_PHYSICAL, DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR)
 		end
 	end
 
+end]]
+
+function DamageSpill(keys)
+	--print("keep the Os")
+	local caster = keys.caster
+	local target = keys.target
+	local pID = caster:GetPlayerID()
+	local ability = keys.ability
+	local spawnpoint = target:GetAbsOrigin()
+	--local origin = caster:GetAbsOrigin()
+	--origin.z = spawnpoint.z
+	--local diff = spawnpoint - origin
+	local velocity = caster:GetForwardVector() * 10000
+	--local velocity = diff:Normalized() * 10000
+	--Enfos.damageSpillValue[pID] = keys.damage
+	--Enfos.damageSpillTarget[pID] = target
+	Timers:CreateTimer(DoUniqueString("spill"..pID), {
+		endTime = 0.15,
+		callback = function()
+			local shot = 
+			{
+				Ability = keys.ability,
+				vSpawnOrigin = spawnpoint,
+				fDistance = 150,
+				fStartRadius = 50,
+				fEndRadius = 50,
+				Source = caster,
+				bHasFrontalCone = false,
+				bReplaceExisting = false,
+				iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+				iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
+				iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP,
+				fExpireTime = GameRules:GetGameTime() + 10.0,
+				bDeleteOnHit = false,
+				vVelocity = velocity,
+				bProvidesVision = false,
+				iVisionRadius = 0,
+				iVisionTeamNumber = nil
+			}
+			print(caster.damageSpillValue)
+			print(caster.damageSpillTarget)
+			print(velocity)
+			print(spawnpoint)
+			projectile = ProjectileManager:CreateLinearProjectile(shot)
+			caster:EmitSound("Hero_Clinkz.SearingArrows.Impact")
+		end
+	})
 end
 
-function GetEnemiesInCone( caster, unit, start_radius, end_radius, end_distance)
-	local DEBUG = false
-	
-	-- Positions
-	local fv = caster:GetForwardVector()
-	local origin = unit:GetAbsOrigin()
+function FireAmmo(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local ability_level = ability:GetLevel() - 1
+	local damage = ability:GetLevelSpecialValueFor("damage_bonus", ability_level)
+	local pID = caster:GetPlayerID()
 
-	local start_point = origin + fv * start_radius -- Position to find units with start_radius
-	local end_point = origin + fv * (start_radius + end_distance) -- Position to find units with end_radius
-
-	if DEBUG then
-		DebugDrawCircle(start_point, Vector(255,0,0), 100, start_radius, true, 3)
-		DebugDrawCircle(end_point, Vector(255,0,0), 100, end_radius, true, 3)
-	end
-
-	-- 1 medium circle should be enough as long as the mid_interval isn't too large
-	local mid_interval = end_distance - start_radius - end_radius
-	local mid_radius = (start_radius + end_radius) / 2
-	local mid_point = origin + fv * mid_radius * 2
-	
-	if DEBUG then
-		--print("There's a space of "..mid_interval.." between the circles at the cone edges")
-		DebugDrawCircle(mid_point, Vector(0,255,0), 100, mid_radius, true, 3)
-	end
-
-	-- Find the units
-	local team = unit:GetTeamNumber()
-	local iTeam = DOTA_UNIT_TARGET_TEAM_FRIENDLY
-	local iType = DOTA_UNIT_TARGET_BASIC + DOTA_UNIT_TARGET_HERO
-	local iFlag = DOTA_UNIT_TARGET_FLAG_NONE
-	local iOrder = FIND_ANY_ORDER
-
-	local start_units = FindUnitsInRadius(team, start_point, nil, start_radius, iTeam, iType, iFlag, iOrder, false)
-	local end_units = FindUnitsInRadius(team, end_point, nil, end_radius, iTeam, iType, iFlag, iOrder, false)
-	local mid_units = FindUnitsInRadius(team, mid_point, nil, mid_radius, iTeam, iType, iFlag, iOrder, false)
-
-	-- Join the tables
-	local cone_units = {}
-	for k,v in pairs(end_units) do
-		table.insert(cone_units, v)
-	end
-
-	for k,v in pairs(start_units) do
-		if not tableContains(cone_units, k) then
-			table.insert(cone_units, v)
+	local dTable = {
+		victim = target,
+		attacker = caster,
+		damage = damage,
+		damage_type = DAMAGE_TYPE_PHYSICAL,
+		damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL,
+		ability = ability
+	}
+	ApplyDamage(dTable)
+	Timers:CreateTimer(DoUniqueString("spillend"..pID), {
+		endTime = 0.20,
+		callback = function()
+			Enfos.damageSpillValue[pID] = nil
+			Enfos.damageSpillTarget[pID] = nil
+			--print("damage clear - ammo")
 		end
-	end	
-
-	for k,v in pairs(mid_units) do
-		if not tableContains(cone_units, k) then
-			table.insert(cone_units, v)
-		end
-	end
-
-	--DeepPrintTable(cone_units)
-	return cone_units
-
+	})
 end
 
 -- Returns true if the element can be found on the list, false otherwise

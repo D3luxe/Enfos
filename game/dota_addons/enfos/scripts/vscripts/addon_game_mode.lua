@@ -40,13 +40,14 @@ require('libraries/popups')
 
 require("statcollection/init")
 
-MAX_LEVEL = 125
+MAX_LEVEL = 149
 XP_PER_LEVEL_TABLE = {}
 XP_PER_LEVEL_TABLE[0] = 0
 radiantXP = 0
 direXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
+  print(XP_PER_LEVEL_TABLE[i])
 end
 
 RADIANT_TEAM_MEMBERS = {}
@@ -523,6 +524,8 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( CEnfosGameMode, "FilterExecuteOrder" ), self )
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
+	GameRules:GetGameModeEntity():SetMaximumAttackSpeed(300)
+	--GameRules:GetGameModeEntity():SetMaximumAttackSpeed()
 	GameRules:SetUseUniversalShopMode( false )
 	GameRules:SetPreGameTime( 10.0 )
 	GameRules:SetPostGameTime( 60.0 )
@@ -1253,6 +1256,9 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	--Initialize variables for tracking
 	player.lumber = 0 -- Secondary resource of the player
 
+	print(spawnedUnit, spawnedUnitIndex, player, event.PlayerID, event.HeroName)
+	CustomGameEventManager:Send_ServerToAllClients( "hero_change", {} )
+	
 	--Starts the game if everyone has picked and loaded
 	if GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT then
     	CEnfosGameMode:OnEveryonePicked()
@@ -1625,10 +1631,21 @@ function CEnfosGameMode:FilterDamage( filterTable )
 
 	--We want it to just continue with the damage if it was from a spell, we only want to adjust for auto attacks
 	if ability ~= nil then
-		print(damage)
+		--print(damage)
 		if attacker:IsHero() then
 			damage = damage/(1+((attacker:GetIntellect()/16)/100))
-			print(damage)
+			if attacker:GetUnitName() == "npc_dota_hero_sniper" then
+				if damageType == DAMAGE_TYPE_PHYSICAL then
+					if attacker:HasModifier("modifier_sniper_technique") then
+						if ability:GetAbilityName() == "sniper_fire_ammo_2" then
+							local pID = attacker:GetPlayerID()
+							if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+							else Enfos.damageSpillValue[pID] = damage end
+						end
+					end
+				end
+			end
+			--print(damage)
 		end
 
 		return true
@@ -1679,6 +1696,44 @@ function CEnfosGameMode:FilterDamage( filterTable )
 			damage = damage * 0.7
 		end
 	end
+	
+	--spill
+	if attacker:GetUnitName() == "npc_dota_hero_sniper" then
+		--print("DBM: "..damage)
+		--print(filterTable["entindex_inflictor_const"])
+		if damageType == DAMAGE_TYPE_PHYSICAL then
+			--if ability == nil then
+				--[[local ammo
+				local ammoLevel
+				local ammoDamage
+				if attacker:HasModifier("modifier_sniper_fire_ammo") then
+					ammo = attacker:FindAbilityByName("sniper_fire_ammo")
+					ammoLevel = ammo:GetLevel() - 1
+					ammoDamage = ammo:GetLevelSpecialValueFor("damage_bonus", ammoLevel)
+					ammoDamage = ammoDamage * preMitigation
+					ammoDamage = ammoDamage / postMitigation  * armorTypeAdjustment
+					damage = damage + ammoDamage
+				end
+				if attacker:HasModifier("modifier_sniper_fire_ammo_2") then
+					ammo = attacker:FindAbilityByName("sniper_fire_ammo_2")
+					ammoLevel = ammo2:GetLevel() - 1
+					ammoDamage = ammo2:GetLevelSpecialValueFor("damage_bonus", ammoLevel)
+					ammoDamage = ammoDamage * preMitigation
+					ammoDamage = ammoDamage / postMitigation  * armorTypeAdjustment
+					damage = damage + ammoDamage
+				end]]
+				if attacker:HasModifier("modifier_sniper_technique") then
+					local pID = attacker:GetPlayerID()
+					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+					else Enfos.damageSpillValue[pID] = damage end
+					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
+					--attacker.damageSpillValue = damage
+					--attacker.damageSpillTarget = victim
+				end
+			--end
+		end
+	end
+	
 	--Sets the damage table to the updated damage
 	filterTable["damage"] = damage	
 	--print("Post adjust---------------------------")

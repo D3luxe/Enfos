@@ -12,7 +12,7 @@
 	"AbilityCastPoint"				"0"
 	"AbilityCooldown"				"0"
 	"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-	"AbilityCastRange" "3000"
+	"AbilityCastRange" "3500"
 	"Precache"
 	{
 		"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
@@ -54,13 +54,17 @@
 			
 			"OnOrbImpact"
 			{
-				"Damage"
+				//"Damage"
+				//{
+				//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+				//	"Damage"        "%damage_bonus"
+				//	"Target"		"TARGET"
+				//}
+				"RunScript"
 				{
-					"Type"          "DAMAGE_TYPE_PHYSICAL"
-					"Damage"        "%damage_bonus"
-					"Target"		"TARGET"
+					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+					"Function"		"FireAmmo"
 				}
-
 				"FireSound"
 				{
 					"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
