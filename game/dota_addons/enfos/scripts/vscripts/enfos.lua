@@ -346,3 +346,21 @@ function DamageSpill(keys)
 	end
 	
 end
+
+function DamageReflect(keys)
+	local damage = keys.damage
+	local ability = keys.ability
+	--local ability_level = ability:GetLevel() - 1
+	--local ability_value = ability:GetLevelSpecialValueFor("damage_reflection_pct",ability_level)
+	
+	local dTable = {
+		victim = keys.target,
+		attacker = keys.caster,
+		--damage = damage*(ability_value/100),
+		damage = damage,
+		damage_type = DAMAGE_TYPE_PURE,
+		damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+		ability = ability
+	}
+	ApplyDamage(dTable)
+end

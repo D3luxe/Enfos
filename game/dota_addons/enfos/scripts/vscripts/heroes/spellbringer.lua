@@ -191,7 +191,7 @@ function havroth_reflect(keys)
 
 	local reflectedDamage = damage * percentReflected
 
-	DealDamage(caster, attacker, reflectedDamage, DAMAGE_TYPE_PURE, 0)
+	--DealDamage(caster, attacker, reflectedDamage, DAMAGE_TYPE_PURE, 0)
 end
 
 
