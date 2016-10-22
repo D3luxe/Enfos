@@ -122,9 +122,11 @@ function Burn(keys)
 		Enfos.moonbeamActive[pid]:Destroy()
 		Enfos.moonbeamActive[pid] = nil
 		Timers:RemoveTimer("moonbeam_timer" .. pid)
+		Timers:RemoveTimer("burn_sound_timer" .. pid)
 	end
 	if Enfos.burnActive[pid] ~= nil then
-		StopSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+		--StopSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+		Enfos.burnActive[pid]:StopSound("Hero_Phoenix.SunRay.Loop")
 		Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Stop")
 		ParticleManager:DestroyParticle(Enfos.burnFx[pid],true)
 		Enfos.burnActive[pid]:ForceKill(false)
@@ -142,11 +144,26 @@ function Burn(keys)
 	Enfos.burnActive[pid]:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	Enfos.burnActive[pid]:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
 	Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Cast")
-	StartSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+	--Enfos.burnActive[pid]:EmitSoundParams("Hero_Phoenix.SunRay.Loop",0,1,20.0)
+	--StartSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+	Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Loop")
+	--StartSoundEventFromPosition("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid]:GetAbsOrigin())
+	--EmitSoundOnLocationWithCaster(Enfos.burnActive[pid]:GetAbsOrigin(),"Hero_Phoenix.SunRay.Loop",caster)
 	Enfos.burnActive[pid]:AddAbility("moon_mage_burn_dummy")
 	Enfos.burnActive[pid]:FindAbilityByName("moon_mage_burn_dummy"):SetLevel(1)
 	Enfos.burnActive[pid]:SetControllableByPlayer(caster:GetPlayerID(), true)
 
+	--jesus wept
+	Timers:CreateTimer("burn_sound_timer" .. pid, {
+		endTime = 5.5,
+		useGameTime = false,
+		callback = function()
+			Enfos.burnActive[pid]:StopSound("Hero_Phoenix.SunRay.Loop")
+			Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Loop")
+			return 5.5
+		end
+	})
+	
 	if GameRules.BurnNightTime then Timers:RemoveTimer(GameRules.BurnNightTime)
 	else GameRules.BurnStoredTime = GameRules:GetTimeOfDay() end
 	
@@ -154,8 +171,9 @@ function Burn(keys)
 	Timers:CreateTimer("moonbeam_timer" .. pid, {
 		endTime = 20,
 		callback = function()
-			StopSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+			Enfos.burnActive[pid]:StopSound("Hero_Phoenix.SunRay.Loop")
 			Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Stop")
+			Timers:RemoveTimer("burn_sound_timer" .. pid)
 			ParticleManager:DestroyParticle(Enfos.burnFx[pid],true)
 			Enfos.burnActive[pid]:ForceKill(false)
 			--Enfos.burnActive[pid]:Destroy()

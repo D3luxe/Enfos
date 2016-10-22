@@ -10,13 +10,14 @@ function FocusMoonbeam(keys)
 		Enfos.moonbeamActive[pid] = nil
 	end
 	if Enfos.burnActive[pid] then
-		StopSoundEvent("Hero_Phoenix.SunRay.Loop",Enfos.burnActive[pid])
+		Enfos.burnActive[pid]:StopSound("Hero_Phoenix.SunRay.Loop")
 		Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Stop")
 		ParticleManager:DestroyParticle(Enfos.burnFx[pid],true)
 		Enfos.burnActive[pid]:ForceKill(false)
 		--Enfos.burnActive[pid]:Destroy()
 		Enfos.burnActive[pid] = nil
 		Timers:RemoveTimer("moonbeam_timer" .. pid)
+		Timers:RemoveTimer("burn_sound_timer" .. pid)
 	end
 -- creates the moonbeam unit and sets a timer to destroy it after the duration expires
 	Enfos.moonbeamActive[pid] = FastDummy(AdjustZ(target, 1536), caster:GetTeamNumber())
