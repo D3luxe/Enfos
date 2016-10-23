@@ -1,0 +1,81 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/test.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/test.js"/>
+	</scripts>
+	<Panel hittest="false" class="Main">
+		<Button id="TradeUIButton" onactivate="FlipTradeUI()">
+			<Label id="TradeButtonText" text="TRADE RESOURCES"/>
+		</Button>
+		<Panel id="goldMenu">
+			<Panel id="newPanel">
+				<Button id="GoldButton1" onactivate="TransferSelect(0)">
+					<Panel id="ButtonGlow1" hittest="false" visible="false"/>
+					<Image id="ButtonArrow1" hittest="false" visible="false"/>
+				</Button>
+				<Button id="GoldButton2" onactivate="TransferSelect(1)">
+					<Panel id="ButtonGlow2" hittest="false" visible="false"/>
+					<Image id="ButtonArrow2" hittest="false" visible="false"/>
+				</Button>
+				<Button id="GoldButton3" onactivate="TransferSelect(2)">
+					<Panel id="ButtonGlow3" hittest="false" visible="false"/>
+					<Image id="ButtonArrow3" hittest="false" visible="false"/>
+				</Button>
+				<Button id="GoldButton4" onactivate="TransferSelect(3)">
+					<Panel id="ButtonGlow4" hittest="false" visible="false"/>
+					<Image id="ButtonArrow4" hittest="false" visible="false"/>
+				</Button>
+				<Button id="GoldButton5" onactivate="TransferSelect(4)">
+					<Panel id="ButtonGlow5" hittest="false" visible="false"/>
+					<Image id="ButtonArrow5" hittest="false" visible="false"/>
+				</Button>
+			</Panel>
+			<Panel id="newerPanel">
+				<Panel id="ButtonColor1"/>
+				<Panel id="ButtonColor2"/>
+				<Panel id="ButtonColor3"/>
+				<Panel id="ButtonColor4"/>
+				<Panel id="ButtonColor5"/>
+			</Panel>
+			<Panel id="EvenNewerPanel">
+				<Panel id="CashPanelLeft"/>
+				<Panel id="AnEvenNewerStillPanel">
+					<Label id="PurchaseTextPanel1" text="GIVE GOLD"/>
+					<Panel id="PurchaseButtonPanel1">
+						<Button id="GiveGold10" onactivate="TransferSelect(5)">
+							<Label id="GiveGoldText" text="10"/>
+						</Button>
+						<Button id="GiveGold100" onactivate="TransferSelect(6)">
+							<Label id="GiveGoldText" text="100"/>
+						</Button>
+						<Button id="GiveGold1000" onactivate="TransferSelect(7)">
+							<Label id="GiveGoldText" text="1000"/>
+						</Button>
+						<Button id="GiveGoldAll" onactivate="TransferSelect(8)">
+							<Label id="GiveGoldText" text="ALL"/>
+						</Button>
+					</Panel>
+					<Label id="PurchaseTextPanel2" text="GIVE LUMBER"/>
+					<Panel id="PurchaseButtonPanel2">
+						<Button id="GiveWood1" onactivate="TransferSelect(9)">
+							<Label id="GiveWoodText" text="1"/>
+						</Button>
+						<Button id="GiveWood10" onactivate="TransferSelect(10)">
+							<Label id="GiveWoodText" text="10"/>
+						</Button>
+						<Button id="GiveWood100" onactivate="TransferSelect(11)">
+							<Label id="GiveWoodText" text="100"/>
+						</Button>
+						<Button id="GiveWoodAll" onactivate="TransferSelect(12)">
+							<Label id="GiveWoodText" text="ALL"/>
+						</Button>
+					</Panel>
+				</Panel>
+				<Panel id="CashPanelRight"/>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>
