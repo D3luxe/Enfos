@@ -78,3 +78,14 @@ function IsChanneling ( hero )
 	return false
 end
 
+function FrostSplash(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local duration = ability:GetSpecialValueFor("duration")
+	local enemies = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), caster, 150, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+	for k,v in pairs(enemies) do
+		DealDamage(caster, v, 1, DAMAGE_TYPE_PHYSICAL, 0)
+		ability:ApplyDataDrivenModifier(caster,v,"modifier_enfos_slow_generic",{duration = duration})
+	end
+end

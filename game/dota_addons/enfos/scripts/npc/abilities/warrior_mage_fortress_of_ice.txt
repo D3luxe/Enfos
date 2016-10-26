@@ -4,14 +4,17 @@
 "warrior_mage_fortress_of_ice"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"			"polar_furbolg_ursa_warrior_thunder_clap"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityTextureName"			"invoker_ice_wall"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 	"MaxLevel"						"10"
 	"RequiredLevel"					"6"
 	"LevelsBetweenUpgrades"			"3"
 	"AbilityCastPoint"				"0.5"
-	"AbilityCooldown"				"80 76 72 68 84 60 56 52 48"
-	"AbilityManaCost"				"100 115 130 145 160 175 190 205 220"
+	"AbilityCooldown"				"80 76 72 68 84 60 56 52 48 44"
+	"AbilityManaCost"				"100 115 130 145 160 175 190 205 220 235"
+	"AbilityCastRange"				"700"
+	"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+	"AOERadius"						"75"
 
 	"precache"
 	{

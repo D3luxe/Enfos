@@ -31,6 +31,7 @@ function Hailstorm(keys)
 	local damage = keys.damage
 	local radius = keys.radius
 	local ability = keys.ability
+	local pid = caster:GetPlayerID()
 	local hailstormLevel = caster:GetAbilityByIndex(3):GetLevel()
 	Enfos.hailstormDummy = FastDummy(target, caster:GetTeamNumber())
 	Enfos.hailstormDummy:AddAbility("arcane_mistress_hailstorm_proxy")
@@ -39,7 +40,7 @@ function Hailstorm(keys)
 	dummySpell:SetLevel(hailstormLevel)
 	Enfos.hailstormDummy:SetCursorTargetingNothing(true) -- dunno if needed
 	dummySpell:OnSpellStart()
-	Timers:CreateTimer(DoUniqueString("hlsm"), {
+	Timers:CreateTimer(DoUniqueString("hlsm"..pid), {
 		endTime = 0.03,
 		callback = function()
 			if Enfos.hailstormDummy ~= 0 then
@@ -67,6 +68,9 @@ function Hailstorm(keys)
 end
 
 function HailstormEnd(keys)
+	local caster = keys.caster
+	local pid = caster:GetPlayerID()
 	Enfos.hailstormDummy:Destroy()
 	Enfos.hailstormDummy = 0
+	Timers:RemoveTimer("hlsm"..pid)
 end

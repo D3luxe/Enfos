@@ -47,7 +47,6 @@ radiantXP = 0
 direXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
-  print(XP_PER_LEVEL_TABLE[i])
 end
 
 RADIANT_TEAM_MEMBERS = {}

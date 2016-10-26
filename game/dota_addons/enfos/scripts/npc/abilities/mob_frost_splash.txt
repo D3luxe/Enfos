@@ -1,0 +1,96 @@
+"mob_frost_splash"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"ancient_apparition_ice_vortex"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+
+	// Casting
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCastRange"				"700"
+	"AbilityCastPoint"				"0.0"
+
+	// Time		
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityCooldown"				"0.0"
+
+	// Data-Driven
+	//-------------------------------------------------------------------------------------------------------------
+	"Precache"
+	{
+		"particle"			"particles/status_fx/status_effect_frost_lich.vpcf"
+	}
+	"Modifiers"
+	{
+		"modifier_mob_frost_splash"
+		{
+			"Passive"               "1"
+			"IsHidden"				"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_DISABLE_TURNING"		"1"
+				"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE"	"1"
+			}
+			"Orb"
+			{
+				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+			}
+
+			"OnOrbImpact"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/generic.lua"
+					"Function"		"FrostSplash"
+				}
+			}
+		}
+		"modifier_enfos_slow_generic"
+		{
+			"Duration"				"%duration"
+			"IsDebuff"				"1"
+			"TextureName"	"ancient_apparition_cold_feet"
+			"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+			}
+			//"OnCreated"
+			//{
+			//	"AttachEffect"
+			//	{
+			//		"Target"				"TARGET"
+			//		"EffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+			//		"EffectAttachType"		"follow_origin"
+			//	}
+			//}
+		}
+	}
+
+
+	// Special
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"						"FIELD_FLOAT"
+			"duration"						"5"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"slow_movement_speed"	"-50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"attack_speed_slow"		"-25"
+		}
+	}
+}

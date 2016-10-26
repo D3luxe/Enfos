@@ -22,7 +22,7 @@
 	"Precache"
 	{
 		"particle_folder"			"particles/items2_fx/"
-		"particle_folder"			"particles/units/heroes/hero_leshrac/"
+		"particle"			"particles/status_fx/status_effect_frost_lich.vpcf"
 	}
 	"OnSpellStart"
 	{
@@ -51,7 +51,7 @@
 			{
 				"ApplyModifier"
 				{
-					"ModifierName"	"modifier_ethereal_shield_debuff"
+					"ModifierName"	"modifier_enfos_slow_generic"
 					"Target"		"ATTACKER"
 				}
 			}
@@ -65,25 +65,27 @@
 				}
 			}
 		}
-		"modifier_ethereal_shield_debuff"
+		"modifier_enfos_slow_generic"
 		{
 			"Duration"				"15"
 			"IsDebuff"				"1"
+			"TextureName"	"ancient_apparition_cold_feet"
+			"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
 
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
 			}
-			"OnCreated"
-			{
-				"AttachEffect"
-				{
-					"Target"				"TARGET"
-					"EffectName"			"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
-					"EffectAttachType"		"follow_origin"
-				}
-			}
+			//"OnCreated"
+			//{
+			//	"AttachEffect"
+			//	{
+			//		"Target"				"TARGET"
+			//		"EffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+			//		"EffectAttachType"		"follow_origin"
+			//	}
+			//}
 		}
 		"modifier_frost_armor_autocast_aura"
 		{

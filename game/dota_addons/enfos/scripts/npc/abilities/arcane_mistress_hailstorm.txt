@@ -15,6 +15,7 @@
 	"MaxLevel"						"10"
 	"AbilityChannelTime"			"10" //Verified
 	"AbilityDuration"				"10"
+	"AOERadius"						"%radius"
 	"OnSpellStart"
 	{
 		"RunScript"
