@@ -7,13 +7,24 @@ function FocusMoonbeam(keys)
 	if Enfos.moonbeamActive[pid] ~= nil then
 		Enfos.moonbeamActive[pid]:Destroy()
 		Timers:RemoveTimer("moonbeam_timer" .. pid)
+		Enfos.moonbeamActive[pid] = nil
+	end
+	if Enfos.burnActive[pid] then
+		Enfos.burnActive[pid]:StopSound("Hero_Phoenix.SunRay.Loop")
+		Enfos.burnActive[pid]:EmitSound("Hero_Phoenix.SunRay.Stop")
+		ParticleManager:DestroyParticle(Enfos.burnFx[pid],true)
+		Enfos.burnActive[pid]:ForceKill(false)
+		--Enfos.burnActive[pid]:Destroy()
+		Enfos.burnActive[pid] = nil
+		Timers:RemoveTimer("moonbeam_timer" .. pid)
+		Timers:RemoveTimer("burn_sound_timer" .. pid)
 	end
 -- creates the moonbeam unit and sets a timer to destroy it after the duration expires
 	Enfos.moonbeamActive[pid] = FastDummy(AdjustZ(target, 1536), caster:GetTeamNumber())
 	Enfos.moonbeamActive[pid]:AddAbility("modspell_focus_moonbeam")
 	Enfos.moonbeamActive[pid]:FindAbilityByName("modspell_focus_moonbeam"):SetLevel(1)
 	Enfos.moonbeamActive[pid]:EmitSound("Hero_Luna.LucentBeam.Cast")
-	local cPart = ParticleManager:CreateParticle("particles/hero_mentalist/luna_lucent_beam.vpcf", PATTACH_ABSORIGIN_FOLLOW, Enfos.moonbeamActive[pid])	
+	local cPart = ParticleManager:CreateParticle("particles/hero_generic/moonbeam.vpcf", PATTACH_ABSORIGIN_FOLLOW, Enfos.moonbeamActive[pid])	
 	ParticleManager:SetParticleControl(cPart,1,target)
 	
 	Timers:CreateTimer("moonbeam_timer" .. pid, {
@@ -67,3 +78,14 @@ function IsChanneling ( hero )
 	return false
 end
 
+function FrostSplash(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local duration = ability:GetSpecialValueFor("duration")
+	local enemies = FindUnitsInRadius(caster:GetTeamNumber(), target:GetAbsOrigin(), caster, 150, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+	for k,v in pairs(enemies) do
+		DealDamage(caster, v, 1, DAMAGE_TYPE_PHYSICAL, 0)
+		ability:ApplyDataDrivenModifier(caster,v,"modifier_enfos_slow_generic",{duration = duration})
+	end
+end

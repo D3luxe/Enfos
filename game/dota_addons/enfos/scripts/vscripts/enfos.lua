@@ -11,7 +11,8 @@ function Enfos:new (o)
 end
 
 Enfos.moonbeamActive = {} -- value for the moonbeam
-Enfos.starlightSphere = {} -- value for the starlight sphere
+Enfos.burnActive = {} -- value for burn
+Enfos.burnFx = {} -- burn visuals
 Enfos.strPrediction = {} -- value for prediction
 Enfos.agiPrediction = {} -- value for prediction
 Enfos.intPrediction = {} -- value for prediction
@@ -23,6 +24,8 @@ Enfos.vertigoDummy = {}
 Enfos.aesrelaEverildDummy = 0
 Enfos.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
 Enfos.tremorDummy = 0
+Enfos.damageSpillValue = {}
+Enfos.damageSpillTarget = {} -- value for the moonbeam
 
 
 function spellAbsorb(keys)
@@ -266,4 +269,98 @@ function SendErrorMessage( pID, string )
 	Notifications:ClearBottom(pID)
 	Notifications:Bottom(pID, {text=string, style={color='#E62020'}, duration=2})
 	EmitSoundOnClient("General.Cancel", PlayerResource:GetPlayer(pID))
+end
+
+function DamageSpill(keys)
+	--print("keep the Os")
+	local caster = keys.caster
+	local target = keys.target
+	local damage = keys.damage
+	local ability = keys.ability
+	
+	local pID = caster:GetPlayerID()
+	local startpoint = caster:GetAbsOrigin()
+	local spawnpoint = target:GetAbsOrigin()
+	
+	if ability ~= nil then
+		--if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+		--else Enfos.damageSpillValue[pID] = damage end
+		--print("no")
+		return
+	end
+	if ability == nil then
+		ability = caster:FindAbilityByName("sniper_sniper_technique")
+		
+		local velocity = caster:GetForwardVector() * 10000
+		
+		--if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+		--else Enfos.damageSpillValue[pID] = damage end
+		--print("yes")
+		Enfos.damageSpillTarget[pID] = target
+		Timers:CreateTimer(DoUniqueString("spill"..pID), {
+			endTime = 0.15,
+			callback = function()
+				local shot = 
+				{
+					--EffectName = "particles/units/heroes/hero_sniper/sniper_assassinate_impact_sparks.vpcf",
+					Ability = ability,
+					vSpawnOrigin = spawnpoint,
+					fDistance = 150,
+					fStartRadius = 50,
+					fEndRadius = 50,
+					Source = caster,
+					bHasFrontalCone = false,
+					bReplaceExisting = false,
+					iUnitTargetTeam = DOTA_UNIT_TARGET_TEAM_ENEMY,
+					iUnitTargetFlags = DOTA_UNIT_TARGET_FLAG_NONE,
+					iUnitTargetType = DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_CREEP,
+					fExpireTime = GameRules:GetGameTime() + 10.0,
+					bDeleteOnHit = false,
+					vVelocity = velocity,
+					bProvidesVision = false,
+					iVisionRadius = 0,
+					iVisionTeamNumber = nil
+				}
+				--print("call me mister")
+				--print(Enfos.damageSpillValue[pID])
+				--print(Enfos.damageSpillTarget[pID])
+				--print(velocity)
+				--print(spawnpoint)
+				projectile = ProjectileManager:CreateLinearProjectile(shot)
+				--PrintTable(projectile)
+				local partDummy = FastDummy(startpoint, caster:GetTeamNumber())
+				local explosion = ParticleManager:CreateParticle("particles/hero_sniper/sniper_damage_spill.vpcf", PATTACH_OVERHEAD_FOLLOW, partDummy)
+				ParticleManager:SetParticleControl(explosion,1,AdjustZ(spawnpoint,60))
+				ParticleManager:SetParticleControl(explosion,0,AdjustZ(startpoint,60))
+				partDummy:ForceKill(false)
+				Timers:CreateTimer(DoUniqueString("spillend"..pID), {
+					endTime = 0.05,
+					callback = function()
+						Enfos.damageSpillValue[pID] = nil
+						Enfos.damageSpillTarget[pID] = nil
+						--print("damage clear - shot")
+					end
+				})
+			end
+		})
+	end
+	
+end
+
+function DamageReflect(keys)
+	local damage = keys.damage
+	local ability = keys.ability
+	--local ability_level = ability:GetLevel() - 1
+	--local ability_value = ability:GetLevelSpecialValueFor("damage_reflection_pct",ability_level)
+	
+	local dTable = {
+		victim = keys.target,
+		attacker = keys.caster,
+		--damage = damage*(ability_value/100),
+		damage = damage,
+		damage_type = DAMAGE_TYPE_PURE,
+		damage_flags = DOTA_DAMAGE_FLAG_REFLECTION,
+		ability = ability
+	}
+	ApplyDamage(dTable)
 end

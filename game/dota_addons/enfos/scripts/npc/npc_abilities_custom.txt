@@ -450,12 +450,12 @@
 	//=================================================================================================================
 	"arcane_mistress_frostbite" 
 	{
-		"BaseClass"						"lich_frost_nova"
+		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"crystal_maiden_crystal_nova"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_AOE"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_BASIC"
-		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
+		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"3"
 		"MaxLevel"						"10"
@@ -486,17 +486,93 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow_movement_speed"	"-30" //unverified value
+				"slow_movement_speed"	"-50"
 			}
 			"04"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"slow_attack_speed"		"-20" //unverified value
+				"attack_speed_slow"		"-25"
 			}
 			"05"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"duration"		"50" //Verified
+				"duration"		"50" //35 for hero/resistant skin
+			}
+		}
+		"OnSpellStart"
+		{
+			"FireEffect"
+			{
+				"EffectName"		"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
+				"EffectAttachType"	"follow_origin"
+				"Target"			"TARGET"
+			}
+	
+			"FireSound"
+			{
+				"EffectName"	"Ability.FrostNova"
+				"Target"		"TARGET"
+			}
+	
+			"Damage"
+			{
+				"Type"		"DAMAGE_TYPE_MAGICAL"
+				"Target"	"TARGET"
+				"Damage"	"%AbilityDamage"
+			}
+	
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"TARGET"
+					"Radius" 				"%radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+	
+				"Action"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"    	"modifier_enfos_slow_generic"
+						"Target"			"TARGET"
+						"Duration"			"%AbilityDuration"
+					}
+	
+					"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage"	"%aoe_damage"
+					}
+	
+				}
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_enfos_slow_generic"
+			{
+				"Duration"				"%duration"
+				"IsDebuff"				"1"
+				"TextureName"	"ancient_apparition_cold_feet"
+				"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+				}
+				//"OnCreated"
+				//{
+				//	"AttachEffect"
+				//	{
+				//		"Target"				"TARGET"
+				//		"EffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+				//		"EffectAttachType"		"follow_origin"
+				//	}
+				//}
 			}
 		}
 	}
@@ -602,6 +678,7 @@
 		"MaxLevel"						"10"
 		"AbilityChannelTime"			"10" //Verified
 		"AbilityDuration"				"10"
+		"AOERadius"						"%radius"
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -4616,7 +4693,7 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/items2_fx/"
-			"particle_folder"			"particles/units/heroes/hero_leshrac/"
+			"particle"			"particles/status_fx/status_effect_frost_lich.vpcf"
 		}
 		"OnSpellStart"
 		{
@@ -4645,7 +4722,7 @@
 				{
 					"ApplyModifier"
 					{
-						"ModifierName"	"modifier_ethereal_shield_debuff"
+						"ModifierName"	"modifier_enfos_slow_generic"
 						"Target"		"ATTACKER"
 					}
 				}
@@ -4659,25 +4736,27 @@
 					}
 				}
 			}
-			"modifier_ethereal_shield_debuff"
+			"modifier_enfos_slow_generic"
 			{
 				"Duration"				"15"
 				"IsDebuff"				"1"
+				"TextureName"	"ancient_apparition_cold_feet"
+				"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
 	
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
 				}
-				"OnCreated"
-				{
-					"AttachEffect"
-					{
-						"Target"				"TARGET"
-						"EffectName"			"particles/units/heroes/hero_leshrac/leshrac_lightning_slow.vpcf"
-						"EffectAttachType"		"follow_origin"
-					}
-				}
+				//"OnCreated"
+				//{
+				//	"AttachEffect"
+				//	{
+				//		"Target"				"TARGET"
+				//		"EffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+				//		"EffectAttachType"		"follow_origin"
+				//	}
+				//}
 			}
 			"modifier_frost_armor_autocast_aura"
 			{
@@ -4752,7 +4831,7 @@
 		"AOERadius"						"%radius"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_mentalist/"
+			"particle"					"particles/hero_generic/moonbeam.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_luna.vsndevts"
 		}
 		"OnSpellStart"
@@ -6529,6 +6608,102 @@
 		}		
 	
 	}
+	"mob_frost_splash"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"ancient_apparition_ice_vortex"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_MECHANICAL"
+	
+		// Casting
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCastRange"				"700"
+		"AbilityCastPoint"				"0.0"
+	
+		// Time		
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilityCooldown"				"0.0"
+	
+		// Data-Driven
+		//-------------------------------------------------------------------------------------------------------------
+		"Precache"
+		{
+			"particle"			"particles/status_fx/status_effect_frost_lich.vpcf"
+		}
+		"Modifiers"
+		{
+			"modifier_mob_frost_splash"
+			{
+				"Passive"               "1"
+				"IsHidden"				"1"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_DISABLE_TURNING"		"1"
+					"MODIFIER_PROPERTY_IGNORE_CAST_ANGLE"	"1"
+				}
+				"Orb"
+				{
+					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
+				}
+	
+				"OnOrbImpact"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/generic.lua"
+						"Function"		"FrostSplash"
+					}
+				}
+			}
+			"modifier_enfos_slow_generic"
+			{
+				"Duration"				"%duration"
+				"IsDebuff"				"1"
+				"TextureName"	"ancient_apparition_cold_feet"
+				"StatusEffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+	
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed_slow"
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%slow_movement_speed"
+				}
+				//"OnCreated"
+				//{
+				//	"AttachEffect"
+				//	{
+				//		"Target"				"TARGET"
+				//		"EffectName"			"particles/status_fx/status_effect_frost_lich.vpcf"
+				//		"EffectAttachType"		"follow_origin"
+				//	}
+				//}
+			}
+		}
+	
+	
+		// Special
+		//-------------------------------------------------------------------------------------------------------------
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"						"FIELD_FLOAT"
+				"duration"						"5"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"slow_movement_speed"	"-50"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"attack_speed_slow"		"-25"
+			}
+		}
+	}
 	"mob_greater_spell_damage_reduction"
 	{
 		// General
@@ -7396,11 +7571,9 @@
 		"AbilityManaCost"				"150 170 190 210 230 250 270 290 310 330"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_moon_mage"
-			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_jakiro.vsndevts"
-			"particle" 	"particles/units/heroes/hero_lich/lich_frost_nova.vpcf"
-			"particle"	"particles/status_fx/status_effect_frost_lich.vpcf"
-			"soundfile" "soundevents/game_sounds_heroes/game_sounds_lich.vsndevts"
+			//"particle_folder"			"particles/econ/items/phoenix/phoenix_solar_forge"
+			"particle"			"particles/hero_moonmage/burn.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_phoenix.vsndevts"
 		}
 		"OnSpellStart"
 		{
@@ -7613,7 +7786,7 @@
 		"LevelsBetweenUpgrades"			"3"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_moon_mage" 
+			"particle_folder"			"particles/hero_moonmage" 
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
 		}
 		"OnSpellStart"
@@ -7674,6 +7847,11 @@
 		"AbilityCastPoint"				"0.0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"0"
+		"Precache"
+		{
+			//"particle"					"particles/units/heroes/hero_puck/puck_illusory_orb_explode.vpcf"
+			//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -7723,23 +7901,25 @@
 		"AbilityManaCost"				"60 82 113 156 212 284 376 492 635 812"
 		"Precache"
 		{
-			"particle_folder"			"particles/units/heroes/hero_wisp/" 
+			//"particle_folder"			"particles/units/heroes/hero_wisp/" 
 			"model"						"models/heroes/wisp/wisp.vmdl"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_wisp.vsndevts"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abaddon.vsndevts"
+			"particle_folder"			"particles/hero_moonmage"
 		}
 		"OnSpellStart"
 		{
-			"SpawnUnit" //we do this here instead of in Lua because there seems to be no way to get the duration timer to 	
-			{
-				"Target"				"CASTER"
-				"UnitName"				"npc_starlight_sphere"
-				"UnitCount"				"1"
-				"UnitLimit"				"1"
-				"SpawnRadius"			"100"
-				"Duration"				"%duration"
-				"GrantsGold"			"false"
-				"GrantsXP"				"false"
-			}
+			//"SpawnUnit" //we do this here instead of in Lua because there seems to be no way to get the duration timer to 	
+			//{
+			//	"Target"				"CASTER"
+			//	"UnitName"				"npc_starlight_sphere"
+			//	"UnitCount"				"1"
+			//	"UnitLimit"				"1"
+			//	"SpawnRadius"			"100"
+			//	"Duration"				"%duration"
+			//	"GrantsGold"			"false"
+			//	"GrantsXP"				"false"
+			//}
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/moon_mage.lua"
@@ -10806,13 +10986,17 @@
 				
 				"OnOrbImpact"
 				{
-					"Damage"
+					//"Damage"
+					//{
+					//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+					//	"Damage"        "%damage_bonus"
+					//	"Target"		"TARGET"
+					//}
+					"RunScript"
 					{
-						"Type"          "DAMAGE_TYPE_PHYSICAL"
-						"Damage"        "%damage_bonus"
-						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"FireAmmo"
 					}
-	
 					"FireSound"
 					{
 						"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
@@ -10845,7 +11029,7 @@
 		"AbilityCastPoint"				"0"
 		"AbilityCooldown"				"0"
 		"AbilityManaCost"				"8 11 22 30 35 48 55 62 70 75"
-		"AbilityCastRange" "3000"
+		"AbilityCastRange" "3500"
 		"Precache"
 		{
 			"particle"  "particles/units/heroes/hero_clinkz/clinkz_searing_arrow.vpcf"
@@ -10887,13 +11071,17 @@
 				
 				"OnOrbImpact"
 				{
-					"Damage"
+					//"Damage"
+					//{
+					//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+					//	"Damage"        "%damage_bonus"
+					//	"Target"		"TARGET"
+					//}
+					"RunScript"
 					{
-						"Type"          "DAMAGE_TYPE_PHYSICAL"
-						"Damage"        "%damage_bonus"
-						"Target"		"TARGET"
+						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+						"Function"		"FireAmmo"
 					}
-	
 					"FireSound"
 					{
 						"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
@@ -11003,12 +11191,16 @@
 	"sniper_sniper_technique" //guessing on cooldown
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"sniper_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityTextureName"			"clinkz_wind_walk"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"						"1"
-		"AbilityCastPoint"				"2"
+		"AbilityCastPoint"				"0.6"
 		"AbilityCooldown"				"30"
 		"Innate"						"1"
+		"Precache"
+		{
+			"particle_folder"			"particles/hero_sniper"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -11019,26 +11211,36 @@
 			}
 	
 		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit" "0"
+			"RunScript"
+			{
+				"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+				"Function"		"TechniquePierce"
+			}
+		}
 		"Modifiers"
 		{
 			"modifier_sniper_technique"
 			{
 				"Passive"	"1"
 				"IsPurgable"			"0"
+				"TextureName"	"sniper_take_aim"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"	"%attack_range"
 					"MODIFIER_PROPERTY_MOVESPEED_ABSOLUTE"	"0.1"
 				}
 				
-				"OnAttackLanded"
-				{
-					"RunScript"
-					{
-						"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
-						"Function"		"TechniquePierce"
-					}
-				}
+				//"OnAttackLanded"
+				//{
+				//	"RunScript"
+				//	{
+				//		"ScriptFile"	"scripts/vscripts/enfos.lua"
+				//		"Function"		"DamageSpill"
+				//	}
+				//}
 				"OnDeath"
 				{
 					"RunScript"
@@ -11063,10 +11265,10 @@
 	{
 		"BaseClass"						"ability_datadriven"
 		"AbilityTextureName"			"sniper_take_aim"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"MaxLevel"						"1"
 		"Innate"						"1"
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastPoint"				"0.6"
 		"AbilityCooldown"				"30"
 		"OnSpellStart"
 		{
@@ -11166,7 +11368,7 @@
 	"spellbringer_battle_sphere"
 	{
 		"BaseClass"					"ability_datadriven"
-		"AbilityTextureName"		"sven_storm_bolt"
+		"AbilityTextureName"		"vengefulspirit_magic_missile"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
@@ -11180,9 +11382,11 @@
 	
 		"precache"
 		{
-			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
-			"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
-			"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_vengefulspirit.vsndevts"
+			//"particle"			"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+			//"particle"			"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+			"particle"			"particles/units/heroes/hero_vengeful/vengeful_magic_missle_end.vpcf"
+			"particle"			"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
 			"particle"			"particles/generic_gameplay/generic_stunned.vpcf"
 			"particle"			"particles/units/heroes/hero_gyrocopter/gyro_guided_missile_target.vpcf"
 		}
@@ -11197,7 +11401,7 @@
 			"TrackingProjectile"
 			{
 				"Target"           	"TARGET"
-				"EffectName"       	"particles/units/heroes/hero_sven/sven_spell_storm_bolt.vpcf"
+				"EffectName"       	"particles/units/heroes/hero_vengeful/vengeful_magic_missle.vpcf"
 				"Dodgeable"        	"1"
 				"ProvidesVision"   	"1"
 				"VisionRadius"		"400"
@@ -11207,8 +11411,8 @@
 	
 			"FireSound"
 			{
-				"EffectName"		"Hero_Sven.StormBolt"
-				"Target"			"CASTER"
+				"EffectName"		"Hero_VengefulSpirit.MagicMissile"
+				"Target"			"TARGET"
 			}
 			
 			"ApplyModifier"
@@ -11227,13 +11431,13 @@
 			}
 			"FireSound"
 			{
-				"EffectName"		"Hero_Sven.StormBoltImpact"
+				"EffectName"		"Hero_VengefulSpirit.MagicMissileImpact"
 				"Target"			"TARGET"
 			}
 	
 			"FireEffect"
 			{
-				"EffectName"	"particles/units/heroes/hero_sven/sven_storm_bolt_projectile_explosion.vpcf"
+				"EffectName"	"particles/units/heroes/hero_vengeful/vengeful_magic_missle_end.vpcf"
 				"EffectAttachType"	"attach_origin"
 				"Target"		"TARGET"
 				"ControlPointEntities"
@@ -12120,9 +12324,15 @@
 	{
 		"AbilityBehavior" 				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName"            "wisp_detonate"
+		"AbilityTextureName"            "wisp_overcharge"
 		"MaxLevel"                      "1"
+		"AbilityCastRange"				"50"
 		"AOERadius"						"%reduced_damage_radius"
+		"Precache"
+		{
+			//"particle_folder"					"particles/units/heroes/hero_puck"
+			//"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abbadon.vsndevts"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
@@ -12146,6 +12356,7 @@
 					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
 					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_FLYING_FOR_PATHING_PURPOSES_ONLY"	"MODIFIER_STATE_VALUE_ENABLED"
 				}
 				"OnDeath" //I don't know if this is proper behaviour but it's the coolest behaviour
 				{
@@ -15083,15 +15294,15 @@
 		// General
 		//-------------------------------------------------------------------------------------------------------------
 		"BaseClass"						"ability_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
 		"MaxLevel"						"10"
 		"RequiredLevel"					"10"
 		"LevelsBetweenUpgrades"			"5"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"invoker_chaos_meteor"
-		"AbilityChannelTime"			"15"
-		"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+		"AbilityTextureName"			"warrior_mage_firerain"
+		"AbilityChannelTime"			"3.5"
+		"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
 		
 		"AOERadius"						"%radius"
 	
@@ -15104,17 +15315,12 @@
 	
 		"precache"
 		{
-			"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-			"particle"		"particles/hero_warrior_mage/fire_rain_storm.vpcf"
+			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+			"particle_folder"			"particles/hero_warriormage"
 		}
 	
 		"OnSpellStart"
 		{
-			"ApplyModifier"
-			{
-				"Target"				"CASTER"
-				"ModifierName"			"modifier_armageddon"
-			}
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
@@ -15124,12 +15330,6 @@
 		}
 		"OnChannelFinish"
 		{
-			"RemoveModifier"
-			{
-				"Target"				"CASTER"
-				"ModifierName"			"modifier_armageddon"
-			}
-	
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
@@ -15139,20 +15339,21 @@
 		}
 		"Modifiers"
 		{
-			"modifier_armageddon"
+			"modifier_fire_rain"
 			{
 				"Duration"				"%duration"
 				"ThinkInterval"			"%interval"
+				"EffectName"			"particles/hero_warriormage/firerain_burn.vpcf"
+				"EffectAttachType"		"follow_origin"
 				"OnIntervalThink"
 				{
-					"RunScript"
+					"Damage"
 					{
-						"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
-						"Function"				"fire_rain_damage"
+						"Target"		"TARGET"
+						"Type"			"DAMAGE_TYPE_MAGICAL"
+						"Damage"		"%damage_over_time"
 					}
 				}
-	
-				"OverrideAnimation"			"ACT_DOTA_TELEPORT"
 			}
 		}
 		"AbilitySpecial"
@@ -15180,7 +15381,7 @@
 			"05"
 			{
 				"var_type"				"FIELD_FLOAT"
-				"interval"				"1 0.95 0.9 0.85 0.8 0.75 0.7 0.65 0.6 0.55"
+				"interval"				"1.0"
 			}
 		}
 	}
@@ -15190,14 +15391,17 @@
 	"warrior_mage_fortress_of_ice"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"polar_furbolg_ursa_warrior_thunder_clap"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+		"AbilityTextureName"			"invoker_ice_wall"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT| DOTA_ABILITY_BEHAVIOR_AOE"
 		"MaxLevel"						"10"
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"3"
 		"AbilityCastPoint"				"0.5"
-		"AbilityCooldown"				"80 76 72 68 84 60 56 52 48"
-		"AbilityManaCost"				"100 115 130 145 160 175 190 205 220"
+		"AbilityCooldown"				"80 76 72 68 84 60 56 52 48 44"
+		"AbilityManaCost"				"100 115 130 145 160 175 190 205 220 235"
+		"AbilityCastRange"				"700"
+		"AbilityCastAnimation"			"ACT_DOTA_CAST_ABILITY_1"
+		"AOERadius"						"75"
 	
 		"precache"
 		{
@@ -15389,7 +15593,7 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
 		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
-		"AbilityTextureName"			"chaos_knight_chaos_strike"
+		"AbilityTextureName"			"storm_spirit_overload"
 		"MaxLevel"						"1"
 		"Innate"						"1"
 	
@@ -15404,7 +15608,7 @@
 	
 		// Cost
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityManaCost"				"40"
+		"AbilityManaCost"				"10"
 	
 	
 		"precache"

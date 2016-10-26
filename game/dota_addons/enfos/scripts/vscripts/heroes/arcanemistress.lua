@@ -31,6 +31,7 @@ function Hailstorm(keys)
 	local damage = keys.damage
 	local radius = keys.radius
 	local ability = keys.ability
+	local pid = caster:GetPlayerID()
 	local hailstormLevel = caster:GetAbilityByIndex(3):GetLevel()
 	Enfos.hailstormDummy = FastDummy(target, caster:GetTeamNumber())
 	Enfos.hailstormDummy:AddAbility("arcane_mistress_hailstorm_proxy")
@@ -39,12 +40,14 @@ function Hailstorm(keys)
 	dummySpell:SetLevel(hailstormLevel)
 	Enfos.hailstormDummy:SetCursorTargetingNothing(true) -- dunno if needed
 	dummySpell:OnSpellStart()
-	Timers:CreateTimer(DoUniqueString("hlsm"), {
+	Timers:CreateTimer(DoUniqueString("hlsm"..pid), {
 		endTime = 0.03,
 		callback = function()
 			if Enfos.hailstormDummy ~= 0 then
 				local units = FindUnitsInRadius(caster:GetTeamNumber(), Enfos.hailstormDummy:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
 				local unitCount = table.getn(units)
+				--failsafe
+				if unitCount == 0 then return 1 end
 				local damageLimit = 99999
 				local newDamage = damage
 				for k,v in pairs(units) do
@@ -65,6 +68,9 @@ function Hailstorm(keys)
 end
 
 function HailstormEnd(keys)
+	local caster = keys.caster
+	local pid = caster:GetPlayerID()
 	Enfos.hailstormDummy:Destroy()
 	Enfos.hailstormDummy = 0
+	Timers:RemoveTimer("hlsm"..pid)
 end

@@ -15,7 +15,7 @@
 	"LevelsBetweenUpgrades"			"3"
 	"Precache"
 	{
-		"particle_folder"			"particles/hero_moon_mage" 
+		"particle_folder"			"particles/hero_moonmage" 
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_enigma.vsndevts"
 	}
 	"OnSpellStart"

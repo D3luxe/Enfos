@@ -3,15 +3,15 @@
 	// General
 	//-------------------------------------------------------------------------------------------------------------
 	"BaseClass"						"ability_datadriven"
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_CHANNELLED | DOTA_ABILITY_BEHAVIOR_AOE"
 	"MaxLevel"						"10"
 	"RequiredLevel"					"10"
 	"LevelsBetweenUpgrades"			"5"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"invoker_chaos_meteor"
-	"AbilityChannelTime"			"15"
-	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	"AbilityTextureName"			"warrior_mage_firerain"
+	"AbilityChannelTime"			"3.5"
+	"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
 	
 	"AOERadius"						"%radius"
 
@@ -24,17 +24,12 @@
 
 	"precache"
 	{
-		"soundfile"		"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
-		"particle"		"particles/hero_warrior_mage/fire_rain_storm.vpcf"
+		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_abyssal_underlord.vsndevts"
+		"particle_folder"			"particles/hero_warriormage"
 	}
 
 	"OnSpellStart"
 	{
-		"ApplyModifier"
-		{
-			"Target"				"CASTER"
-			"ModifierName"			"modifier_armageddon"
-		}
 		"RunScript"
 		{
 			"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
@@ -44,12 +39,6 @@
 	}
 	"OnChannelFinish"
 	{
-		"RemoveModifier"
-		{
-			"Target"				"CASTER"
-			"ModifierName"			"modifier_armageddon"
-		}
-
 		"RunScript"
 		{
 			"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
@@ -59,20 +48,21 @@
 	}
 	"Modifiers"
 	{
-		"modifier_armageddon"
+		"modifier_fire_rain"
 		{
 			"Duration"				"%duration"
 			"ThinkInterval"			"%interval"
+			"EffectName"			"particles/hero_warriormage/firerain_burn.vpcf"
+			"EffectAttachType"		"follow_origin"
 			"OnIntervalThink"
 			{
-				"RunScript"
+				"Damage"
 				{
-					"ScriptFile"			"scripts/vscripts/heroes/warrior_mage.lua"
-					"Function"				"fire_rain_damage"
+					"Target"		"TARGET"
+					"Type"			"DAMAGE_TYPE_MAGICAL"
+					"Damage"		"%damage_over_time"
 				}
 			}
-
-			"OverrideAnimation"			"ACT_DOTA_TELEPORT"
 		}
 	}
 	"AbilitySpecial"
@@ -100,7 +90,7 @@
 		"05"
 		{
 			"var_type"				"FIELD_FLOAT"
-			"interval"				"1 0.95 0.9 0.85 0.8 0.75 0.7 0.65 0.6 0.55"
+			"interval"				"1.0"
 		}
 	}
 }

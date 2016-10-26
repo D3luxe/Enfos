@@ -302,6 +302,7 @@
 		"Ability3"					"entropist_tremor"
 		"Ability4"					"entropist_ring_of_spears"
 		"Ability5"					"entropist_sure_footing"
+		"Ability6"					""
 		
 		"ArmorPhysical"				"3"
 		
@@ -571,11 +572,11 @@
 		"StatusMana"				"1"
 			
 	
-		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
-		"ProjectileModel"			"particles/units/heroes/hero_lion/lion_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
+		//"ProjectileModel"			"particles/units/heroes/hero_lion/lion_base_attack.vpcf"			// Particle system model for projectile.
 		"AttackDamageMin" 			"3"
 		"AttackDamageMax" 			"10"
-		"AttackRate"                "1.4"
+		"AttackRate"                "1.12"
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"300"									// Range within a target can be acquired.
@@ -591,11 +592,10 @@
 		"AbilityLayout"				"5"
 		"Ability1"					"moon_mage_dinazen_olkar"
 		"Ability2"					"moon_mage_starlight_sphere_summon"
-		"Ability3"					"moon_mage_starlight_sphere_detonate"
-		"Ability4"					"moon_mage_moongate"
-		"Ability5"					"moon_mage_burn"
-		"Ability6"					"generic_focus_moonbeam"
-		"Ability7"					"moon_mage_glaive"
+		"Ability3"					"moon_mage_moongate"
+		"Ability4"					"moon_mage_burn"
+		"Ability5"					"generic_focus_moonbeam"
+		"Ability6"					"moon_mage_glaive"
 		
 		"ArmorPhysical"				"3"
 		
@@ -1334,6 +1334,7 @@
 		"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
 		"Ability4"					"ursa_enfos_muses_inspiration"
 		"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+		"Ability6"					""
 	
 		// Armor
 		//-------------------------------------------------------------------------------------------------------------

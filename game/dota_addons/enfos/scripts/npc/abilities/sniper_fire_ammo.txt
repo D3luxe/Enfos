@@ -54,13 +54,17 @@
 			
 			"OnOrbImpact"
 			{
-				"Damage"
+				//"Damage"
+				//{
+				//	"Type"          "DAMAGE_TYPE_PHYSICAL"
+				//	"Damage"        "%damage_bonus"
+				//	"Target"		"TARGET"
+				//}
+				"RunScript"
 				{
-					"Type"          "DAMAGE_TYPE_PHYSICAL"
-					"Damage"        "%damage_bonus"
-					"Target"		"TARGET"
+					"ScriptFile"	"scripts/vscripts/heroes/sniper.lua"
+					"Function"		"FireAmmo"
 				}
-
 				"FireSound"
 				{
 					"EffectName"	"Hero_Clinkz.SearingArrows.Impact"
@@ -78,4 +82,4 @@
 			"damage_bonus"			"100 250 500 1000 1500 2200 3300 4500 5500 7500"
 		}
 	}
-}	
+}

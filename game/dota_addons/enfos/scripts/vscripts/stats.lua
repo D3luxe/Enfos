@@ -11,7 +11,8 @@ HP_REGEN_PER_STR = 0.03
 MANA_PER_INT = 16
 MANA_REGEN_PER_INT = 0.05
 ARMOR_PER_AGI = 0.05
-ATKSPD_PER_AGI = 2
+ATKSPD_PER_AGI = 1
+MOVE_SPEED_PER_AGI = 0.03
 MAX_MOVE_SPEED = 522
 
 -- Default Dota Values
@@ -112,7 +113,7 @@ function Stats:ModifyStatBonuses(unit)
 				applier:ApplyDataDrivenModifier(hero, hero, "modifier_mana_bonus", {})
 			end
 
-			local mana_stacks = intellect * mana_adjustment
+			local mana_stacks = (intellect * mana_adjustment) -1
 			hero:SetModifierStackCount("modifier_mana_bonus", hero, mana_stacks)
 
 			-- Mana Regen Bonus

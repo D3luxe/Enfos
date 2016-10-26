@@ -71,6 +71,10 @@ function Tingle( keys )
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
 			v:GetAbilityByIndex(0):SetLevel(1)
+			v:SetHullRadius(75.0)
+			for i=1,3 do
+				FindClearSpaceForUnit(v, v:GetAbsOrigin(), true)
+			end
 		end
 	end
 end
@@ -127,24 +131,54 @@ function fire_rain(keys)
 	local caster = keys.caster
 	local ability = keys.ability
 	local target = keys.target_points[1]
-	local damage = ability:GetLevelSpecialValueFor("damage", ability:GetLevel() - 1)
+	local pid = caster:GetPlayerID()
+	local damage = ability:GetLevelSpecialValueFor("initial_damage", ability:GetLevel() - 1)
 	local impactRadius = ability:GetLevelSpecialValueFor("radius", ability:GetLevel() - 1)
+	local duration = ability:GetSpecialValueFor("duration")
 	local searchRadius = ability:GetSpecialValueFor("meteor_fall_area")
 
-	caster.blastDummy = FastDummy(target, caster:GetTeamNumber())
-	caster.blastDummy:EmitSound("Hero_Invoker.SunStrike.Ignite")
-	local particle = ParticleManager:CreateParticle("particles/hero_warrior_mage/fire_rain_storm.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.blastDummy)
-	ParticleManager:SetParticleControl(particle,62,Vector(impactRadius/228,1,1))
-	local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster.blastDummy:GetAbsOrigin(), caster, impactRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-	for k,v in pairs(enemies) do
-		DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
+	if caster.blastDummy ~= nil then
+		caster.blastDummy:Destroy()
+		Timers:RemoveTimer("frrn"..pid)
+		--print("destroy")
+		caster.blastDummy = nil
 	end
+	caster.blastDummy = FastDummy(target, caster:GetTeamNumber())
+	caster.blastDummy:EmitSound("Hero_AbyssalUnderlord.Firestorm.Cast")
+	caster.blasticle = ParticleManager:CreateParticle("particles/hero_warriormage/firerain_pre.vpcf", PATTACH_ABSORIGIN, caster.blastDummy)
+	ParticleManager:SetParticleControl(caster.blasticle,1,Vector(impactRadius,impactRadius,1))
+	
+	Timers:CreateTimer("frrn"..pid, {
+		endTime = 0.6,
+		callback = function()
+			if caster.blastDummy ~= nil then
+				if caster.blasticle ~= nil then ParticleManager:DestroyParticle(caster.blasticle,false) end
+				caster.blastDummy:EmitSound("Hero_AbyssalUnderlord.Firestorm")
+				caster.blasticle = ParticleManager:CreateParticle("particles/hero_warriormage/firerain_wave.vpcf", PATTACH_ABSORIGIN, caster.blastDummy)
+				ParticleManager:SetParticleControl(caster.blasticle,4,Vector(impactRadius*1.25,impactRadius*1.25,impactRadius*1.25))
+				local enemies = FindUnitsInRadius(caster:GetTeamNumber(), caster.blastDummy:GetAbsOrigin(), caster, impactRadius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 1, false)
+				local unitCount = table.getn(enemies)
+				--failsafe
+				if unitCount == 0 then return 1 end
+				for k,v in pairs(enemies) do
+					DealDamage(caster, v, damage, DAMAGE_TYPE_MAGICAL, 0)
+					ability:ApplyDataDrivenModifier(caster,v,"modifier_fire_rain",{duration = duration})
+				end
+				return 1
+			end
+		end
+	})
 end
 
 function fire_rain_end(keys)
-local caster = keys.caster
+	local caster = keys.caster
+	local pid = caster:GetPlayerID()
 	if caster.blastDummy ~= nil then
-		caster.blastDummy:Destroy()
-		caster.blastDummy = 0
+		--caster.blasticle = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster.blastDummy)
+		ParticleManager:DestroyParticle(caster.blasticle,false)
+		--caster.blasticle = ParticleManager:CreateParticle("particles/units/heroes/heroes_underlord/abyssal_underlord_firestorm_wave.vpcf", PATTACH_ABSORIGIN, caster.blastDummy)
+		--caster.blastDummy:Destroy()
+		Timers:RemoveTimer("frrn"..pid)
+		--caster.blastDummy = nil
 	end
 end

@@ -14,6 +14,7 @@
 	"Ability3"					"ursa_enfos_failure_of_the_forge"				// Ability 3
 	"Ability4"					"ursa_enfos_muses_inspiration"
 	"Ability5"					"ursa_enfos_chorus_of_madmen"				// Ability 7
+	"Ability6"					""
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------

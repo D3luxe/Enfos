@@ -4862,7 +4862,7 @@
 		// Abilities
 		//----------------------------------------------------------------
 		"AbilityLayout"				"4"
-		"Ability1"					"warrior_mage_fortress_of_ice_taunt"
+		"Ability1"					"mob_frost_splash"
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4870,21 +4870,21 @@
 	
 		// Attack
 		//----------------------------------------------------------------
-		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
-		"AttackDamageMin"			"0"		// Damage range min.
-		"AttackDamageMax"			"0"		// Damage range max.	
-		"AttackRate"				"1"		// Speed of attack.
-		"AttackAnimationPoint"		"0.33"		// Normalized time in animation cycle to attack.
-		"AttackAcquisitionRange"	"1200"		// Range within a target can be acquired.
+		"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
+		"AttackDamageMin"			"1"		// Damage range min.
+		"AttackDamageMax"			"1"		// Damage range max.	
+		"AttackRate"				"5"		// Speed of attack.
+		"AttackAnimationPoint"		"0.1"		// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"600"		// Range within a target can be acquired.
 		"AttackRange"				"500"		//unverified value
-		"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
-		"ProjectileSpeed"			"1000"			// Speed of projectile.
+		//"ProjectileModel"			"particles/neutral_fx/gnoll_base_attack.vpcf" // Particle system model for projectile.
+		"ProjectileSpeed"			"2000"			// Speed of projectile.
 	
 		// Bounds
 		//----------------------------------------------------------------
-		"RingRadius"				"70"
+		"RingRadius"				"150"
 		"HealthBarOffset"			"160"
-		"BoundsHullName"			"DOTA_HULL_SIZE_SMALL"			// Hull type used for navigation/locomotion.
+		"BoundsHullName"			"DOTA_HULL_SIZE_BUILDING"			// Hull type used for navigation/locomotion.
 	
 		// Bounty
 		//----------------------------------------------------------------
@@ -4900,7 +4900,7 @@
 		// Status
 		//----------------------------------------------------------------
 		"StatusHealth"				"10"		// Base health.
-		"StatusHealthRegen"			"0"		// Health regeneration rate.
+		"StatusHealthRegen"			"1"		// Health regeneration rate.
 		"StatusMana"				"0"			// Base mana.
 		"StatusManaRegen"			"0"			// Mana regeneration rate.		 
 		
@@ -5304,6 +5304,8 @@
 		"CombatClassAttack"			"DOTA_COMBAT_CLASS_ATTACK_HERO"
 		"CombatClassDefend"			"DOTA_COMBAT_CLASS_DEFEND_HERO"
 		"UnitRelationshipClass"		"DOTA_NPC_UNIT_RELATIONSHIP_TYPE_WARD"
+		
+		"ConsideredHero"        "1" //so it cant just fly off and nuke the enemy team
 	}	
 	//=================================================================================
 	// Flag of Summoning

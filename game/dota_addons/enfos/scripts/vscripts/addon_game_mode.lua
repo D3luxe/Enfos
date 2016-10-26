@@ -47,7 +47,6 @@ radiantXP = 0
 direXP = 0
 for i=1,MAX_LEVEL do
   XP_PER_LEVEL_TABLE[i] = i * 100 + XP_PER_LEVEL_TABLE[i-1] + 100
-  print(XP_PER_LEVEL_TABLE[i])
 end
 
 RADIANT_TEAM_MEMBERS = {}
@@ -524,6 +523,8 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( CEnfosGameMode, "FilterExecuteOrder" ), self )
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
+	GameRules:GetGameModeEntity():SetMaximumAttackSpeed(300)
+	--GameRules:GetGameModeEntity():SetMaximumAttackSpeed()
 	GameRules:SetUseUniversalShopMode( false )
 	GameRules:SetPreGameTime( 10.0 )
 	GameRules:SetPostGameTime( 60.0 )
@@ -1626,35 +1627,114 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	if filterTable["entindex_inflictor_const"] ~= nil then
 		ability = EntIndexToHScript(filterTable["entindex_inflictor_const"])
 	end
-
-	--We want it to just continue with the damage if it was from a spell, we only want to adjust for auto attacks
-	if ability ~= nil then
-		print(damage)
-		if attacker:IsHero() then
-			damage = damage/(1+((attacker:GetIntellect()/16)/100))
-			print(damage)
-		end
-
-		return true
-	end
-
+	
 	local armorType = CEnfosGameMode:GetArmorType(victim)
 	local attackType = CEnfosGameMode:GetAttackType(attacker)
-
-	--If the victim is magic immune and the attack is magical then just return false since it shouldn't damage the victim at all
-	if victim:IsMagicImmune() and attackType == "modifier_attack_magical" then
-		return false
-	end
-	if attacker:GetUnitName() == "npc_dota_hero_drow_ranger" then
-		if victim:HasModifier("modifier_ranger_check_aura") then
-			return false
+	
+	if damageType == DAMAGE_TYPE_PHYSICAL then
+		--Calculate the damage before any armor affected it
+		local armor = math.floor(victim:GetPhysicalArmorValue())
+		local preMitigation = ((0.06 * math.abs(armor)) / (1 + 0.06 * math.abs(armor))) + 1
+		
+		if victim:HasModifier("modifier_tipping_the_scales") or victim:HasModifier("modifier_backfire_aura") or victim:HasModifier("modifier_havroth_thorns") then
+			if attacker:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then
+				local thorn = 0
+				local back = 0
+				local scale = 0
+				local abilityValue = 0
+				local abilityIndex = nil
+				if victim:HasModifier("modifier_havroth_thorns") then
+					local thorncheck = victim:FindModifierByName("modifier_havroth_thorns"):GetCaster()
+					local thornlevel = thorncheck:FindAbilityByName("havroth_aura")
+					thorn = thornlevel:GetLevelSpecialValueFor("damage_reflection_pct",thornlevel:GetLevel() - 1)
+				end
+				if victim:HasModifier("modifier_backfire_aura") then
+					local backcheck = victim:FindModifierByName("modifier_backfire_aura"):GetCaster()
+					local backlevel = backcheck:FindAbilityByName("oak_backfire_aura")
+					back = backlevel:GetLevelSpecialValueFor("damage_reflection_pct",backlevel:GetLevel() - 1)
+				end
+				if victim:HasModifier("modifier_tipping_the_scales") then
+					local scalelevel = victim:FindAbilityByName("omniknight_enfos_tipping_the_scales")
+					scale = scalelevel:GetLevelSpecialValueFor("damage_reflection_pct",scalelevel:GetLevel() - 1)
+				end
+				if thorn > back and thorn > scale then
+					abilityValue = thorn
+					abilityIndex = thornlevel
+				end
+				if back > thorn and back > scale then
+					abilityValue = back
+					abilityIndex = backlevel
+				end
+				if scale > thorn and scale > back then
+					abilityValue = scale
+					abilityIndex = scalelevel
+				end
+				DamageReflect({
+				caster = victim,
+				target = attacker,
+				damage = (damage*preMitigation)*(abilityValue/100),
+				ability = abilityIndex})
+			end
+		end
+		
+		-- Use this to calculate the damage based on armor adjustment
+		local armorTypeAdjustment = CEnfosGameMode:CalculateDamageBonus(attackType, armorType)
+		
+		local damage = damage * armorTypeAdjustment
+		
+		--If the victim is magic immune and the attack is magical then just return false since it shouldn't damage the victim at all
+		if attackType == "modifier_attack_magical" then
+			if victim:HasModifier("modifier_unnerving_symphony") then
+				damage = damage * 1.66
+			end
+			if victim:IsMagicImmune() then 
+				return false
+			end
+		end
+		
+		--self-reminder to remove this later after i figure out order filters
+		if attacker:GetUnitName() == "npc_dota_hero_drow_ranger" then
+			if victim:HasModifier("modifier_ranger_check_aura") then
+				return false
+			end
+		end
+		
+		if attacker:GetUnitName() == "npc_dota_hero_sniper" then
+			if attacker:HasModifier("modifier_sniper_technique") then
+				if ability == nil then
+					local pID = attacker:GetPlayerID()
+					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+					else Enfos.damageSpillValue[pID] = damage end
+					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
+				end
+			end
+		end
+		
+		if attackType == "modifier_attack_pierce" and CEnfosGameMode:CheckTowerShield(victim) then
+			damage = damage * 0.7
 		end
 	end
+	
+	--We want it to just continue with the damage if it was from a spell, we only want to adjust for auto attacks
+	if ability ~= nil and attacker:IsHero() then
+		damage = damage/(1+((attacker:GetIntellect()/16)/100))
+		--fire ammo spill check
+		if attacker:GetUnitName() == "npc_dota_hero_sniper" then
+			if damageType == DAMAGE_TYPE_PHYSICAL then
+				if attacker:HasModifier("modifier_sniper_technique") then
+					if ability:GetAbilityName() == "sniper_fire_ammo_2" then
+						local pID = attacker:GetPlayerID()
+						if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+						else Enfos.damageSpillValue[pID] = damage end
+					end
+				end
+			end
+		end
+		--print(damage)
 
-	-- Use this to calculate the damage based on armor adjustment
-	local armorTypeAdjustment = CEnfosGameMode:CalculateDamageBonus(attackType, armorType)
+	end
 
-	--Calculate the damage before any armor affected it
+	--[[--Calculate the damage before any armor affected it
 	local armor = math.floor(victim:GetPhysicalArmorValue())
 	local preMitigation = ((0.06 * math.abs(armor)) / (1 + 0.06 * math.abs(armor))) + 1
 	--print(preMitigation)
@@ -1676,14 +1756,48 @@ function CEnfosGameMode:FilterDamage( filterTable )
 		postMitigation = ((0.06 * math.abs(armor)) / (1 + 0.06 * math.abs(armor))) + 1
 	end
 	--print("post mitigation: "..postMitigation)
-	local damage = damage / postMitigation  * armorTypeAdjustment
-
-	if attackType == "modifier_attack_pierce" then
-		if CEnfosGameMode:CheckTowerShield(victim) then
-			damage = damage * 0.7
+	local damage = damage / postMitigation  * armorTypeAdjustment]]
+	
+	--spill
+	--[[
+	if attacker:GetUnitName() == "npc_dota_hero_sniper" then
+		--print("DBM: "..damage)
+		--print(filterTable["entindex_inflictor_const"])
+		if damageType == DAMAGE_TYPE_PHYSICAL then
+			--if ability == nil then
+				local ammo
+				local ammoLevel
+				local ammoDamage
+				if attacker:HasModifier("modifier_sniper_fire_ammo") then
+					ammo = attacker:FindAbilityByName("sniper_fire_ammo")
+					ammoLevel = ammo:GetLevel() - 1
+					ammoDamage = ammo:GetLevelSpecialValueFor("damage_bonus", ammoLevel)
+					ammoDamage = ammoDamage * preMitigation
+					ammoDamage = ammoDamage / postMitigation  * armorTypeAdjustment
+					damage = damage + ammoDamage
+				end
+				if attacker:HasModifier("modifier_sniper_fire_ammo_2") then
+					ammo = attacker:FindAbilityByName("sniper_fire_ammo_2")
+					ammoLevel = ammo2:GetLevel() - 1
+					ammoDamage = ammo2:GetLevelSpecialValueFor("damage_bonus", ammoLevel)
+					ammoDamage = ammoDamage * preMitigation
+					ammoDamage = ammoDamage / postMitigation  * armorTypeAdjustment
+					damage = damage + ammoDamage
+				end
+				if attacker:HasModifier("modifier_sniper_technique") then
+					local pID = attacker:GetPlayerID()
+					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+					else Enfos.damageSpillValue[pID] = damage end
+					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
+					--attacker.damageSpillValue = damage
+					--attacker.damageSpillTarget = victim
+				end
+			--end
 		end
-	end
+	end]]
+	
 	--Sets the damage table to the updated damage
+	
 	filterTable["damage"] = damage	
 	--print("Post adjust---------------------------")
 	--PrintTable(filterTable)
@@ -2467,6 +2581,7 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
 		--GameRules.Enfos:UpdateBaseStats(hero)
+		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
 	else
 		print("Invalid player!")
 	end
