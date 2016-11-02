@@ -49,7 +49,7 @@ function AnimateDead(keys)
 	local thisSpell = caster:GetAbilityByIndex(0)
 	if #validTargets == 0 then
 		thisSpell:EndCooldown()
-		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel())
+		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel()-1)
 		caster:GiveMana(manaCost)
 	end
 -- find all the nearby dead units and reraise them
@@ -78,10 +78,16 @@ function CorpseExplosion(keys)
 	local caster = keys.caster
 	local damage = keys.damage -- this is a percentage of the corpse's max life
 	local radius = keys.radius
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, 400, DOTA_UNIT_TARGET_TEAM_ENEMY + DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
+	local ability = keys.ability
+	local searchrange = keys.searchrange
+	local spell = caster:FindAbilityByName("revenant_corpse_explosion")
+	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, searchrange, DOTA_UNIT_TARGET_TEAM_ENEMY + DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
 	local validTargets = {}
 -- fail if no units found.
 	if units[1] == nil then
+		spell:EndCooldown()
+		local manaCost = spell:GetManaCost(spell:GetLevel()-1)
+		caster:GiveMana(manaCost)
 		return
 	end
 -- place dead units into a table
@@ -92,18 +98,32 @@ function CorpseExplosion(keys)
 	end
 -- fail if no units are dead
 	if #validTargets == 0 then
-		thisSpell:EndCooldown()
-		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel())
+		spell:EndCooldown()
+		local manaCost = spell:GetManaCost(spell:GetLevel()-1)
 		caster:GiveMana(manaCost)
+		return
 	end
 	local targetUnits = FindUnitsInRadius(caster:GetTeamNumber(), validTargets[1]:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 -- deal the damage and detonate the corpse
+	print(validTargets[1]:GetMaxHealth() * (damage/100))
 	for k,v in pairs(targetUnits) do
-		DealDamage(caster, v, validTargets[1]:GetMaxHealth() / (100/damage), DAMAGE_TYPE_MAGICAL, 0)
+		--DealDamage(caster, v, validTargets[1]:GetMaxHealth() * (damage/100), DAMAGE_TYPE_MAGICAL, 0)
+		local dTable = {
+			victim = v,
+			attacker = caster,
+			damage = validTargets[1]:GetMaxHealth() * (1/3),
+			damage_type = DAMAGE_TYPE_PHYSICAL,
+			damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR,
+			ability = ability
+		}
+		ApplyDamage(dTable)
 	end
-	local particle = ParticleManager:CreateParticle("particles/hero_revenant/revenant_corpse_explosion_bloody.vpcf", PATTACH_ABSORIGIN_FOLLOW, validTargets[1])
-	ParticleManager:SetParticleControl(particle, 62, Vector(radius, 0, 400))
+	local corpsedummy = FastDummy(validTargets[1]:GetAbsOrigin(), caster:GetTeamNumber())
+	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf", PATTACH_ABSORIGIN_FOLLOW, corpsedummy)
+	--ParticleManager:SetParticleControl(particle, 62, Vector(radius, 0, 400))
+	ParticleManager:SetParticleControl(particle, 4, corpsedummy:GetAbsOrigin())
 	validTargets[1]:EmitSound("Hero_LifeStealer.Consume")
+	corpsedummy:ForceKill(false)
 	DelayDestroy(validTargets[1], 0.2)
 end
 		

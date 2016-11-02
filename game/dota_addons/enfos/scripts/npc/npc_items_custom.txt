@@ -2281,7 +2281,7 @@
 		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"4"
+		"ItemInitialCharges"			"5"
 		"SideShop"						"1"
 	
 		"OnSpellStart"
@@ -2837,7 +2837,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"8.0"
+		"AbilityCooldown"				"11.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2974,16 +2974,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"40.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"160"
+		"ItemCost"						"125"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"2"
+		"ItemInitialCharges"			"1"
 		"SideShop"						"1"
 	
 		"OnSpellStart"
@@ -3041,16 +3042,17 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"60.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"1200"
+		"ItemCost"						"1000"
 		"ItemShopTags"					"consumable"
 		"ItemQuality"					"consumable"
 		"ItemStackable"					"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
-		"ItemInitialCharges"			"4"
+		"ItemInitialCharges"			"2"
 		"SideShop"						"1"
 	
 		"OnSpellStart"
@@ -3108,7 +3110,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"14.0"
+		"AbilityCooldown"				"18.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3503,7 +3505,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"20.0"
+		"AbilityCooldown"				"30.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3571,6 +3573,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
+		"AbilityCooldown"				"80.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -5102,7 +5105,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"500"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"1.0"
+		"AbilityCooldown"				"5.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -5125,7 +5128,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"lifetime"				"240"
+				"lifetime"				"40"
 			}
 			"02"
 			{

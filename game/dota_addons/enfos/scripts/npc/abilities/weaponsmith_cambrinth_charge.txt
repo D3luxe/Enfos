@@ -22,6 +22,7 @@
 		"particle_folder"			"particles/units/heroes/hero_clinkz/"
 		"particle"					"particles/units/heroes/hero_zuus/zuus_lightning_bolt_start.vpcf"
 		"particle"					"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+		"particle"					"particles/units/heroes/hero_omniknight/omniknight_degen_aura.vpcf"
 	}
 
 	"OnSpellStart"
@@ -65,14 +66,9 @@
 			{
 				"AttachEffect"
 				{
-					"EffectName"		"particles/test_particle/channel_field_1.vpcf"
+					"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura.vpcf"
 					"EffectAttachType"	"follow_origin"
 					"Target"			"CASTER"
-				
-					"ControlPoints"
-					{
-						"00"		"0 0 5"
-					}
 				}
 			}
 		}

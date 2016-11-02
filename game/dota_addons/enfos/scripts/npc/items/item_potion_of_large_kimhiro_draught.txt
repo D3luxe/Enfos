@@ -23,16 +23,17 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"100"
 	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"60.0"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"1200"
+	"ItemCost"						"1000"
 	"ItemShopTags"					"consumable"
 	"ItemQuality"					"consumable"
 	"ItemStackable"					"0"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"4"
+	"ItemInitialCharges"			"2"
 	"SideShop"						"1"
 
 	"OnSpellStart"

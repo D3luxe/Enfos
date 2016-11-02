@@ -24,7 +24,9 @@ end
 
 function ResetCooldowns(keys) 
 	for i=0,6 do
-		keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(i):EndCooldown()
+		if keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(i) ~= nil then
+			keys.target:GetPlayerOwner():GetAssignedHero():GetAbilityByIndex(i):EndCooldown()
+		end
 	end
 end
 

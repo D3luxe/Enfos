@@ -7,6 +7,10 @@
 	"AbilityTextureName" 			"bounty_hunter_wind_walk"
 	"MaxLevel"						"1"
 	
+	"Precache"
+	{
+		"particle"						"particles/items_fx/battlefury_cleave.vpcf"
+	}
 	"Modifiers"
 	{
 		
@@ -21,6 +25,7 @@
 				{
 					"CleavePercent"		"%cleave_percent"
 					"CleaveRadius"      "%radius"
+					"CleaveEffect"		"particles/items_fx/battlefury_cleave.vpcf"
 				}
 			}
 		}

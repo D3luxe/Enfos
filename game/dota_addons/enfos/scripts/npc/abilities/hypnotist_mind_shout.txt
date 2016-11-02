@@ -4,7 +4,7 @@
 "hypnotist_mind_shout"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"			"rattletrap_rocket_flare"
+	"AbilityTextureName"			"shadow_shaman_voodoo"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	"RequiredLevel"					"6"

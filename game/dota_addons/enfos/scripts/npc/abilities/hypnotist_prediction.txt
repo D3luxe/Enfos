@@ -19,7 +19,7 @@
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_ogre_magi/"
-		"particle_folder"			"particles/hero_hypnotist/"
+		"particle"			"particles/msg_fx/msg_evade.vpcf"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts" //maledict
 	}
 	"OnSpellStart"

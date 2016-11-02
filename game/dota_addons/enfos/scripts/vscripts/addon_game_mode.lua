@@ -1631,6 +1631,10 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	local armorType = CEnfosGameMode:GetArmorType(victim)
 	local attackType = CEnfosGameMode:GetAttackType(attacker)
 	
+	if ability ~= nil and attacker:IsHero() then
+		damage = math.floor(damage/(1+((attacker:GetIntellect()/16)/100))+0.5)
+	end
+	
 	if damageType == DAMAGE_TYPE_PHYSICAL then
 		--Calculate the damage before any armor affected it
 		local armor = math.floor(victim:GetPhysicalArmorValue())
@@ -1679,8 +1683,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 		
 		-- Use this to calculate the damage based on armor adjustment
 		local armorTypeAdjustment = CEnfosGameMode:CalculateDamageBonus(attackType, armorType)
-		
-		local damage = damage * armorTypeAdjustment
+		damage = damage * armorTypeAdjustment
 		
 		--If the victim is magic immune and the attack is magical then just return false since it shouldn't damage the victim at all
 		if attackType == "modifier_attack_magical" then
@@ -1706,6 +1709,10 @@ function CEnfosGameMode:FilterDamage( filterTable )
 					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
 					else Enfos.damageSpillValue[pID] = damage end
 					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
+				elseif ability:GetAbilityName() == "sniper_fire_ammo_2" then
+					local pID = attacker:GetPlayerID()
+					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
+					else Enfos.damageSpillValue[pID] = damage end
 				end
 			end
 		end
@@ -1714,10 +1721,10 @@ function CEnfosGameMode:FilterDamage( filterTable )
 			damage = damage * 0.7
 		end
 	end
-	
+	--[[
 	--We want it to just continue with the damage if it was from a spell, we only want to adjust for auto attacks
 	if ability ~= nil and attacker:IsHero() then
-		damage = damage/(1+((attacker:GetIntellect()/16)/100))
+		damage = math.floor(damage/(1+((attacker:GetIntellect()/16)/100))+0.5)
 		--fire ammo spill check
 		if attacker:GetUnitName() == "npc_dota_hero_sniper" then
 			if damageType == DAMAGE_TYPE_PHYSICAL then
@@ -1732,7 +1739,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 		end
 		--print(damage)
 
-	end
+	end]]
 
 	--[[--Calculate the damage before any armor affected it
 	local armor = math.floor(victim:GetPhysicalArmorValue())
@@ -1797,7 +1804,6 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	end]]
 	
 	--Sets the damage table to the updated damage
-	
 	filterTable["damage"] = damage	
 	--print("Post adjust---------------------------")
 	--PrintTable(filterTable)

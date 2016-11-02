@@ -53,24 +53,29 @@ function Prediction(keys)
 	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
 -- Adjust the stacks for display only
 	target:SetModifierStackCount("modifier_prediction_str", caster, Enfos.strPrediction[pid])
-	target:SetModifierStackCount("modifier_prediction_int", caster, Enfos.intPrediction[pid])
 	target:SetModifierStackCount("modifier_prediction_agi", caster, Enfos.agiPrediction[pid])
+	target:SetModifierStackCount("modifier_prediction_int", caster, Enfos.intPrediction[pid])
 -- particles and sounds
 	local effect = ParticleManager:CreateParticle("particles/units/heroes/hero_ogre_magi/ogre_magi_bloodlust_buff_symbol.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
 
 	Timers:CreateTimer(DoUniqueString("strBonus"), {
 		endTime = 0.01,
 		callback = function()		
-			local increaseParticleStr = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			local increaseParticleStr = ParticleManager:CreateParticle("particles/msg_fx/msg_evade.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if strIncreaseAmount > 0 then
-				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(100,strIncreaseAmount,0)) -- (plus sign, amount, symbol at the end [never used])
-				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(strCharacters + 1,0,0)) -- total number of characters in the string
-				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,0,0)) -- colour
+				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(0,strIncreaseAmount,2)) -- (plus sign, amount, symbol at the end [never used])
+				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,strCharacters+2,0)) -- total number of characters in the string
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,50,50)) -- colour
 				target:EmitSound("Hero_WitchDoctor.Maledict_Cast")
 			else
-				ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(2,0,0)) -- create a sad face
-				ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,255,255))
+				if strIncreaseAmount == 0 then
+					ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(2,0,2)) -- create a sad face
+					ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,2,0))
+				else
+					ParticleManager:SetParticleControl(increaseParticleStr,1,Vector(1,math.abs(strIncreaseAmount),2))
+					ParticleManager:SetParticleControl(increaseParticleStr,2,Vector(1,3,0))
+				end
+				ParticleManager:SetParticleControl(increaseParticleStr,3,Vector(255,125,125))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end
@@ -78,15 +83,20 @@ function Prediction(keys)
 	Timers:CreateTimer(DoUniqueString("agiBonus"), {
 		endTime = 0.5,
 		callback = function()		
-			local increaseParticleAgi = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			local increaseParticleAgi = ParticleManager:CreateParticle("particles/msg_fx/msg_evade.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if agiIncreaseAmount > 0 then
-				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(100,agiIncreaseAmount,0))
-				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(agiCharacters + 1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(0,255,0))
+				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(0,agiIncreaseAmount,2))
+				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,agiCharacters+2,0))
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(50,255,50))
 			else
-				ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(2,0,0))
-				ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(255,255,255))
+				if agiIncreaseAmount == 0 then
+					ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(2,0,2))
+					ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,2,0))
+				else
+					ParticleManager:SetParticleControl(increaseParticleAgi,1,Vector(1,math.abs(agiIncreaseAmount),2))
+					ParticleManager:SetParticleControl(increaseParticleAgi,2,Vector(1,3,0))
+				end
+				ParticleManager:SetParticleControl(increaseParticleAgi,3,Vector(125,255,125))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end
@@ -94,15 +104,20 @@ function Prediction(keys)
 	Timers:CreateTimer(DoUniqueString("intBonus"), {
 		endTime = 1,
 		callback = function()		
-			local increaseParticleInt = ParticleManager:CreateParticle("particles/hero_hypnotist/hypnotist_increase_amount.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+			local increaseParticleInt = ParticleManager:CreateParticle("particles/msg_fx/msg_evade.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
 			if intIncreaseAmount > 0 then
-				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(100,intIncreaseAmount,0))
-				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(intCharacters + 1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(0,50,255))
+				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(0,intIncreaseAmount,2))
+				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,intCharacters+2,0))
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(50,50,255))
 			else
-				ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(2,0,0))
-				ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,0,0))
-				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(255,255,255))
+				if intIncreaseAmount == 0 then
+					ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(2,0,2))
+					ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,2,0))
+				else
+					ParticleManager:SetParticleControl(increaseParticleInt,1,Vector(1,math.abs(intIncreaseAmount),2))
+					ParticleManager:SetParticleControl(increaseParticleInt,2,Vector(1,3,0))
+				end
+				ParticleManager:SetParticleControl(increaseParticleInt,3,Vector(125,125,255))
 				target:EmitSound("Hero_WitchDoctor.Maledict_CastFail")
 			end
 		end
@@ -147,6 +162,10 @@ function MindShout(keys) -- warning: the sound effect for this can get a bit lou
 		for k,v in pairs(units) do
 			v:AddNewModifier(caster, nil, "modifier_sheepstick_debuff", {duration = hexDuration})
 		end
+		-- destroy the moonbeam 
+		Enfos.moonbeamActive[pid]:Destroy()
+		Timers:RemoveTimer("moonbeam_timer" .. pid)
+		Enfos.moonbeamActive[pid] = nil
 	end
 end
 

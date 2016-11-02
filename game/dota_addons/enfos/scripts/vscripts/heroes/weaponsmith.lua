@@ -19,7 +19,7 @@ function ThunderMaul(keys)
 	end
 	if caster:HasModifier("modifier_weaponsmith_cambrinth_charge") then
 		local unitsSlow = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, slowArea, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
-		local particleSlow = ParticleManager:CreateParticle("particles/hero_weaponsmith/invoker_chaos_meteor_land_ring_lrg.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
+		local particleSlow = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_chaos_meteor_land_ring_lrg.vpcf", PATTACH_ABSORIGIN_FOLLOW, caster)
 		ParticleManager:SetParticleControl(particleSlow, 62, Vector(10,0,0)) -- x represents the scale. 0 to 10, where 0 is invisible, 1 is normal size, and 10 is ten times larger
 		caster:EmitSound("Hero_Sven.StormBoltImpact")
 		for k,v in pairs(unitsSlow) do

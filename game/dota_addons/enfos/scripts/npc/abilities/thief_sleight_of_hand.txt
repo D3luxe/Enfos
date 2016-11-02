@@ -19,9 +19,8 @@
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_alchemist/"
-		"particle_folder"			"particles/hero_thief/"
-		"particle_folder"			"particles/hero_hypnotist/"
-		"model"						"models/particle/coin.vmdl"
+		"particle"					"particles/msg_fx/msg_evade.vpcf"
+		"particle"					"particles/items2_fx/hand_of_midas.vpcf"
 		"soundfile"					"soundevents/game_sounds_items.vsndevts"
 	}
 	"OnSpellStart"
@@ -38,12 +37,17 @@
 		//	"EffectAttachType"		"follow_origin"
 		//	"Target"				"CASTER"
 		//}
-		//"AttachEffect"
-		//{
-		//	"EffectName"			"particles/hero_thief/thief_steal_coins_target.vpcf"
-		//	"EffectAttachType"		"follow_origin"
-		//	"Target"				"TARGET"
-		//}
+		"AttachEffect"
+		{
+			"EffectName"			"particles/items2_fx/hand_of_midas.vpcf"
+			"EffectAttachType"		"follow_origin"
+			"Target"				"TARGET"
+			"ControlPointEntities"
+			{
+				"TARGET" "follow_origin"
+				"CASTER" "follow_origin"
+			}
+		}
 		"FireSound"
 		{
 			"EffectName"			"DOTA_Item.Hand_Of_Midas"

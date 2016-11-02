@@ -14,70 +14,77 @@
 	"AOERadius"						"%radius"
 	"precache"
 	{
-		"particle_folder"			"particles/units/heroes/hero_batrider/"
+		"particle_folder"			"particles/hero_entropist/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 	}
 	"OnSpellStart"
 	{
-		"LinearProjectile"
-		{
-			"Target"				"POINT"
-			"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
-			"MoveSpeed"				"900"
-			"StartRadius"			"0"
-			"EndRadius"				"0"
-			"StartPosition"			"follow_origin"
-			"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
-			"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
-			"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
-			"HasFrontalCone"		"0"
-		}
-
-		"FireSound"
-		{
-			"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
-			"Target"				"CASTER"
-		}
-	}
-	"OnProjectileFinish"
-	{
-		"ActOnTargets"
-		{
-			"Target"
-			{
-				"Center"			"POINT"
-				"Radius"			"%radius"
-				"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-				"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
-			}
-			"Action"
-			{
-				"ApplyModifier"
-				{
-					"ModifierName"	"modifier_entropist_fist_of_stone_stun"
-					"Target"		"TARGET"
-				}
-				"Damage"
-				{
-					"Target"		"TARGET"
-					"Type"			"DAMAGE_TYPE_MAGICAL"
-					"Damage"		"%damage"
-				}
-			}
-		}
-		"FireSound"
-		{
-			"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
-			"Target"				"POINT"
-		}
 		"RunScript"
 		{
 			"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
 			"Function"				"FistOfStone"
-			"particle_radius"		"%particle_radius"
 			"Target"				"POINT"
 		}
+		
+		//"LinearProjectile"
+		//{
+		//	"Target"				"POINT"
+		//	"EffectName"			"particles/hero_entropist/fist_of_stone_fly.vpcf"
+		//	"MoveSpeed"				"900"
+		//	"StartRadius"			"0"
+		//	"EndRadius"				"0"
+		//	"StartPosition"			"follow_origin"
+		//	"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+		//	"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+		//	"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+		//	"HasFrontalCone"		"0"
+		//}
+
+		//"FireSound"
+		//{
+		//	"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
+		//	"Target"				"CASTER"
+		//}
 	}
+	//"OnProjectileFinish"
+	//{
+	//	"ActOnTargets"
+	//	{
+	//		"Target"
+	//		{
+	//			"Center"			"POINT"
+	//			"Radius"			"%radius"
+	//			"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	//			"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+	//		}
+	//		"Action"
+	//		{
+	//			"ApplyModifier"
+	//			{
+	//				"ModifierName"	"modifier_entropist_fist_of_stone_stun"
+	//				"Target"		"TARGET"
+	//			}
+	//			"Damage"
+	//			{
+	//				"Target"		"TARGET"
+	//				"Type"			"DAMAGE_TYPE_MAGICAL"
+	//				"Damage"		"%damage"
+	//			}
+	//		}
+	//	}
+	//	"FireSound"
+	//	{
+	//		"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
+	//		"Target"				"POINT"
+	//	}
+	//	"RunScript"
+	//	{
+	//		"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+	//		"Function"				"FistOfStone"
+	//		"particle_radius"		"%particle_radius"
+	//		"Target"				"POINT"
+	//	}
+	//}
 	"Modifiers"
 	{
 		"modifier_entropist_fist_of_stone_stun"

@@ -126,7 +126,7 @@ function vertigo (keys)
 			}
 			ExecuteOrderFromTable(movement)
 -- apply particles
-			local tPart = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+			local tPart = ParticleManager:CreateParticle("particles/hero_tempest/vertigo.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
 			-- ParticleManager:SetParticleControl(tPart, 1, Vector(450,0,0)) -- needed?
 -- kill the guy when the time runs out
 			Timers:CreateTimer(DoUniqueString("kltmp"), {
@@ -148,8 +148,8 @@ function vertigo (keys)
 				local unitR = FastDummy(casterPos - Vector((spawnPosR.x * (400 + count)) * math.random(0.85,1.15), (spawnPosR.y * (400 + count)) * math.random(0.85,1.15), spawnPosR.z), caster:GetTeamNumber())
 				thisSpell:ApplyDataDrivenModifier(caster, unitR, "modifier_tempest_vertigo_applier", {})
 				unitR:SetMoveCapability(DOTA_UNIT_CAP_MOVE_FLY)
-				local tPartL = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitL)
-				local tPartR = ParticleManager:CreateParticle("particles/hero_tempest/tornado_ambient.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitR)
+				local tPartL = ParticleManager:CreateParticle("particles/hero_tempest/vertigo.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitL)
+				local tPartR = ParticleManager:CreateParticle("particles/hero_tempest/vertigo.vpcf", PATTACH_ABSORIGIN_FOLLOW, unitR)
 				local movementL = {
 					UnitIndex = unitL:entindex(),
 					OrderType = DOTA_UNIT_ORDER_MOVE_TO_POSITION,

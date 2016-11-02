@@ -14,6 +14,7 @@
 	"Precache"
 	{
 		"particle"			"particles/neutral_fx/tornado_ambient.vpcf"
+		"particle"			"particles/hero_tempest/burst_debuff.vpcf"
 	}
 	"Modifiers"
 	{
@@ -45,7 +46,7 @@
 				"AttachEffect"
 				{
 					"Target"			"TARGET"
-					"EffectName"		"particles/neutral_fx/tornado_ambient.vpcf"
+					"EffectName"		"particles/hero_tempest/burst_debuff.vpcf"
 					"EffectAttachType"	"follow_origin"
 				}
 			}
