@@ -166,12 +166,12 @@ function ModelSwapStart( keys )
 	if caster:HasModifier("modifier_bloodthirst_leech") then
 		caster:RemoveModifierByName("modifier_bloodthirst_leech")
 	end
-	if caster:HasModifier("modifier_vampiric_potion_leech") then
+	--[[if caster:HasModifier("modifier_vampiric_potion_leech") then
 		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_leech")
 		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
 		caster:RemoveModifierByName("modifier_vampiric_potion_leech")
 		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_nope", {})
-	end
+	end]]
 	
 	--Stores the old attack and armor types
 	if caster.armorType == nil then
@@ -215,12 +215,12 @@ function ModelSwapEnd( keys )
 		lifeMod = CreateItem("item_bloodthirst", nil, nil)
 		lifeMod:ApplyDataDrivenModifier(caster, caster, "modifier_bloodthirst_leech", {})
 	end
-	if caster:HasModifier("modifier_vampiric_potion_nope") then
+	--[[if caster:HasModifier("modifier_vampiric_potion_nope") then
 		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_nope")
 		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
 		caster:RemoveModifierByName("modifier_vampiric_potion_nope")
 		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_leech", {})
-	end
+	end]]
 
 	--Resets Faenrae's attack and armor types
 	if caster:GetUnitName() == "npc_dota_hero_terrorblade" then
