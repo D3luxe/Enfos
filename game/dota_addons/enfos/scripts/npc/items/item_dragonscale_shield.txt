@@ -18,6 +18,10 @@
 	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 	"SideShop"					"1"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"30.0"
 	"LumberCost"	"180"
 
 	"Modifiers"

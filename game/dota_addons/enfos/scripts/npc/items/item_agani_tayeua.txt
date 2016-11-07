@@ -12,6 +12,10 @@
 	"ItemCost"                      "0" 		
 	"ItemShopTags"					"caster"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"120.0"
 	"SideShop"					"1"
 	"LumberCost"	"80"
 

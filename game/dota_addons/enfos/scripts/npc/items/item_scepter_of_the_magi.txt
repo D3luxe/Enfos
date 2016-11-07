@@ -8,15 +8,16 @@
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_scepter_of_the_magi"
 
-	"ItemDroppable"					"1"
-	"ItemSellable"					"1"
+	"ItemDroppable"					"0"
+	"ItemSellable"					"0"
 	"ItemKillable"					"0"
 	"ItemDisassemblable"			"0"
 	"ItemQuality"					"epic"
 
 	"ItemCost"                      "5000" 		
 	"ItemShopTags"					"caster"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
+	"IsUnique"							"1"
 
 	"Modifiers"
 	{

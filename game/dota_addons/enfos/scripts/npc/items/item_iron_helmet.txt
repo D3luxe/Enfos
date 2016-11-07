@@ -18,9 +18,10 @@
 	"ItemQuality"					"rare"
 	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 	"ItemAliases"					"mana;mb"
-	//"ItemStockMax"					"3"
-	//"ItemStockInitial"				"3"
-	//"ItemStockTime"					"120.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"3"
+	"ItemStockInitial"				"3"
+	"ItemStockTime"					"120.0"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	"IsArtifact"							"1"
 

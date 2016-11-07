@@ -12,9 +12,10 @@
 	"ItemCost"                      "500" 		
 	"ItemShopTags"					"boot"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-	//"ItemStockMax"					"3"
-	//"ItemStockInitial"				"3"
-	//"ItemStockTime"					"60.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"3"
+	"ItemStockInitial"				"3"
+	"ItemStockTime"					"60.0"
 
 	"Modifiers"
 	{

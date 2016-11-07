@@ -12,10 +12,10 @@
 
 	"ItemCost"                      "1500" 		
 	"ItemShopTags"					"boot"
-	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemShareability"				"ITEM_NOT_SHAREABLE"
 
-	"ItemDroppable"					"1"
-	"ItemSellable"					"1"
+	"ItemDroppable"					"0"
+	"ItemSellable"					"0"
 	"ItemKillable"					"0"
 	"ItemDisassemblable"			"0"
 	"ItemQuality"					"epic"

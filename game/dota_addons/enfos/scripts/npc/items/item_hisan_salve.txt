@@ -15,9 +15,9 @@
 	"AbilityTextureName"			"item_hisan_salve"
 	"AbilitySharedCooldown" "ManaPot"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"20.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"20.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------

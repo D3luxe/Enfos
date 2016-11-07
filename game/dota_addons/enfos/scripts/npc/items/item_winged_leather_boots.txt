@@ -6,9 +6,10 @@
 	"ID"                            "2040"
 	"ItemCost"						"400"
 	"ItemQuality"					"component"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"120.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"120.0"
 
 	// Item Info
 	//--------------------------------------------------------------------

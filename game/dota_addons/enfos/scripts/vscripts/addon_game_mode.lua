@@ -2209,7 +2209,7 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			
 	end
 	
-	if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
+	--[[if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
 		local first_unit = EntIndexToHScript(units["0"])
 		local item = EntIndexToHScript( filterTable["entindex_ability"] )
 		local uniqueItem = false
@@ -2230,7 +2230,7 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
 			return false
 		end
-	end
+	end]]
 	
 	if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
 		local first_unit = EntIndexToHScript(units["0"])

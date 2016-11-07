@@ -7,9 +7,10 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_desolator"
-	//"ItemStockMax"					"2"
-	//"ItemStockInitial"				"2"	
-	//"ItemStockTime"					"120.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"120.0"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "10000" 		

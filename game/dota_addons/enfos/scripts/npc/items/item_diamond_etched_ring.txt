@@ -7,9 +7,10 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_diamond_etched_ring"
-	//"ItemStockMax"					"2"
-	//"ItemStockInitial"				"2"
-	//"ItemStockTime"					"48.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"40.0"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "9000" 		

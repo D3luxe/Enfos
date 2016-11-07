@@ -15,9 +15,9 @@
 	"AbilityTextureName"			"item_scroll_of_kimhiro"
 	"AbilitySharedCooldown" "ManaPot"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"4.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"3.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------

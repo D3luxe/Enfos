@@ -7,9 +7,10 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_ruby_inset_ring"
-	//"ItemStockMax"					"4"
-	//"ItemStockInitial"				"4"
-	//"ItemStockTime"					"10.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"4"
+	"ItemStockInitial"				"4"
+	"ItemStockTime"					"10.0"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "1000" 		

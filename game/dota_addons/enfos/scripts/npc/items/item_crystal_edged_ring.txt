@@ -7,9 +7,10 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_crystal_edged_ring"
-	//"ItemStockMax"					"3"
-	//"ItemStockInitial"				"3"
-	//"ItemStockTime"					"24.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"3"
+	"ItemStockInitial"				"3"
+	"ItemStockTime"					"20.0"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "2250" 		

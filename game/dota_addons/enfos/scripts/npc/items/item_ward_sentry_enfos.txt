@@ -11,9 +11,10 @@
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 	"BaseClass"						"item_ward_sentry"
-	//"ItemStockMax"					"4"
-	//"ItemStockInitial"				"4"
-	//"ItemStockTime"					"24.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"4"
+	"ItemStockInitial"				"4"
+	"ItemStockTime"					"20.0"
 	
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------

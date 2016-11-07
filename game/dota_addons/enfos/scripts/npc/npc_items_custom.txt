@@ -221,6 +221,10 @@
 		"ItemCost"                      "0" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 		"SideShop"					"1"
 		"LumberCost"	"80"
 	
@@ -279,9 +283,9 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_anti_magic_potion"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"10"
-		//"ItemStockInitial"				"10"
-		//"ItemStockTime"					"30.0"
+		"ItemStockMax"					"10"
+		"ItemStockInitial"				"10"
+		"ItemStockTime"					"2.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -403,9 +407,10 @@
 		"ItemCost"                      "500" 		
 		"ItemShopTags"					"boot"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"60.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"60.0"
 	
 		"Modifiers"
 		{
@@ -840,14 +845,15 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_bloodstone_inset_ring"
-		//"ItemStockMax"					"6"
-		//"ItemStockInitial"				"6"
-		//"ItemStockTime"					"4.0"
+		"ItemStockMax"					"6"
+		"ItemStockInitial"				"6"
+		"ItemStockTime"					"2.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "4000" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
 	
 		"Modifiers"
 		{
@@ -885,9 +891,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_broadsword"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "6500" 		
@@ -1076,7 +1083,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"ID"							"3024"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"AbilityTextureName"			"bundle_of_lumber_100"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
@@ -1097,9 +1104,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_crystal_edged_ring"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"24.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"20.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "2250" 		
@@ -1259,9 +1267,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_diamond_etched_ring"
-		//"ItemStockMax"					"2"
-		//"ItemStockInitial"				"2"
-		//"ItemStockTime"					"48.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"40.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "9000" 		
@@ -1317,6 +1326,10 @@
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"SideShop"					"1"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"30.0"
 		"LumberCost"	"180"
 	
 		"Modifiers"
@@ -1358,9 +1371,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_oblivion_staff"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "1200" 		
@@ -1420,10 +1434,10 @@
 	
 		"ItemCost"                      "1500" 		
 		"ItemShopTags"					"boot"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 	
-		"ItemDroppable"					"1"
-		"ItemSellable"					"1"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
@@ -1500,9 +1514,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_platemail"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"120.0"
 	
 	
 		// Item Info
@@ -1553,9 +1568,10 @@
 		"ItemCost"                      "300" 		
 		"ItemShopTags"					"boot"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"60.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"120.0"
 	
 		"Modifiers"
 		{
@@ -1597,6 +1613,10 @@
 		"ItemCost"                      "750" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"4"
+		"ItemStockInitial"				"4"
+		"ItemStockTime"					"10.0"
 	
 		"Modifiers"
 		{
@@ -2054,9 +2074,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_gleaming_longsword"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"20.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "400" 		
@@ -2264,9 +2285,9 @@
 		"AbilityTextureName"			"item_hisan_salve"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"20.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"20.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2356,9 +2377,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_ironbark_leathers"
-		//"ItemStockMax"					"2"
-		//"ItemStockInitial"				"2"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"30.0"
 	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -2455,9 +2477,10 @@
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemAliases"					"mana;mb"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"120.0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"IsArtifact"							"1"
 	
@@ -2657,9 +2680,10 @@
 		"ItemCost"                      "2000" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"20.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"20.0"
 	
 		"Modifiers"
 		{
@@ -2697,9 +2721,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_desolator"
-		//"ItemStockMax"					"2"
-		//"ItemStockInitial"				"2"	
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"120.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "10000" 		
@@ -2770,9 +2795,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_claymore"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "2500" 		
@@ -2829,9 +2855,9 @@
 		"AbilityTextureName"			"item_potion_of_greater_healing"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"8.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"5.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2897,9 +2923,9 @@
 		"AbilityTextureName"			"item_potion_of_healing"
 		"ItemKillable"					"0"
 		"AbilitySharedCooldown" "HealPot"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"24.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"20.0"
 		
 	
 		// Stats
@@ -2966,9 +2992,9 @@
 		"AbilityTextureName"			"item_potion_of_kimhiro_draught"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"4.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"3.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3034,9 +3060,9 @@
 		"AbilityTextureName"			"item_potion_of_large_kimhiro_draught"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"4.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"3.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3102,9 +3128,9 @@
 		"AbilityTextureName"			"item_potion_of_ultra_healing"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"8.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"5.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3293,17 +3319,18 @@
 	{
 		"ID"                            "2049"
 		"BaseClass"                     "item_datadriven"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ring_of_victory"
 		
-		"ItemDroppable"					"1"
-		"ItemSellable"					"1"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
 	
 		"ItemCost"                      "1500" 		
 		"ItemShopTags"					"ring"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"IsUnique"							"1"
 	
 		"Modifiers"
@@ -3344,9 +3371,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ruby_inset_ring"
-		//"ItemStockMax"					"4"
-		//"ItemStockInitial"				"4"
-		//"ItemStockTime"					"10.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"4"
+		"ItemStockInitial"				"4"
+		"ItemStockTime"					"10.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "1000" 		
@@ -3389,6 +3417,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_sapphire_inset_ring"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"4"
+		"ItemStockInitial"				"4"
+		"ItemStockTime"					"10.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "500" 		
@@ -3432,15 +3464,16 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_scepter_of_the_magi"
 	
-		"ItemDroppable"					"1"
-		"ItemSellable"					"1"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
 	
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"caster"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
+		"IsUnique"							"1"
 	
 		"Modifiers"
 		{
@@ -3497,9 +3530,9 @@
 		"AbilityTextureName"			"item_greater_salve"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"8.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"5.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3565,9 +3598,9 @@
 		"AbilityTextureName"			"item_scroll_of_kimhiro"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"4.0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"3.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3628,9 +3661,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_poor_mans_shield"
-		//"ItemStockMax"					"2"
-		//"ItemStockInitial"				"2"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"120.0"
 	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -3896,9 +3930,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_demon_edge"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "8000" 		
@@ -4170,6 +4205,10 @@
 		"ItemCost"                      "40" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"1"
+		"ItemStockInitial"				"1"
+		"ItemStockTime"					"300.0"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"30"
 		"IsArtifact"							"1"
@@ -4232,15 +4271,15 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_ethereal_blade"
 	
-		"ItemDroppable"					"1"
-		"ItemSellable"					"1"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
 	
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"IsUnique"							"1"
 	
 		
@@ -4322,6 +4361,10 @@
 		"ItemCost"                      "0" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"30.0"
 		"SideShop"					"1"
 		"LumberCost"	"240"
 	
@@ -4664,9 +4707,10 @@
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_tower_shield"
-		//"ItemStockMax"					"2"
-		//"ItemStockInitial"				"2"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"120.0"
 	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -4715,9 +4759,10 @@
 		"ItemCost"                      "400" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"120.0"
 	
 		"Modifiers"
 		{
@@ -4753,15 +4798,15 @@
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_uthmors_mirror_blade"
 	
-		"ItemDroppable"					"1"
-		"ItemSellable"					"1"
+		"ItemDroppable"					"0"
+		"ItemSellable"					"0"
 		"ItemKillable"					"0"
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
 	
 		"ItemCost"                      "5000" 		
 		"ItemShopTags"					"damage"
-		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemShareability"				"ITEM_NOT_SHAREABLE"
 		"IsUnique"							"1"
 		
 		"Modifiers"
@@ -4866,6 +4911,10 @@
 		"ItemCost"                      "0" 		
 		"ItemShopTags"					"damage"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"2"
+		"ItemStockInitial"				"2"
+		"ItemStockTime"					"30.0"
 		"SideShop"					"1"
 		"LumberCost"	"240"
 	
@@ -4973,12 +5022,15 @@
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_vampiric_potion"
 		"ItemKillable"					"0"
+		"ItemStockMax"					"1"
+		"ItemStockInitial"				"1"
+		"ItemStockTime"					"240.0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
-		"AbilityCooldown"				"60.0"
+		"AbilityCooldown"				"120.0"
 		
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -5097,9 +5149,10 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 		"BaseClass"						"item_ward_sentry"
-		//"ItemStockMax"					"4"
-		//"ItemStockInitial"				"4"
-		//"ItemStockTime"					"24.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"4"
+		"ItemStockInitial"				"4"
+		"ItemStockTime"					"20.0"
 		
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5155,9 +5208,10 @@
 		"ID"                            "2040"
 		"ItemCost"						"400"
 		"ItemQuality"					"component"
-		//"ItemStockMax"					"5"
-		//"ItemStockInitial"				"5"
-		//"ItemStockTime"					"120.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"5"
+		"ItemStockInitial"				"5"
+		"ItemStockTime"					"120.0"
 	
 		// Item Info
 		//--------------------------------------------------------------------
@@ -5221,9 +5275,10 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_zircon_inset_ring"
-		//"ItemStockMax"					"3"
-		//"ItemStockInitial"				"3"
-		//"ItemStockTime"					"20.0"
+		"ItemKillable"					"0"
+		"ItemStockMax"					"3"
+		"ItemStockInitial"				"3"
+		"ItemStockTime"					"20.0"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "3000" 		
