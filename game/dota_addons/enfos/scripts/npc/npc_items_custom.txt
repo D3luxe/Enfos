@@ -2283,7 +2283,7 @@
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"item_hisan_salve"
-		"AbilitySharedCooldown" "ManaPot"
+		"AbilitySharedCooldown" "ClarityPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
 		"ItemStockInitial"				"5"
