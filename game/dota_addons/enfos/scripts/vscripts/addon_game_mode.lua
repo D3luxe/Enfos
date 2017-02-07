@@ -549,6 +549,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules.CustomPurgeTable = {}
 	GameRules.radiantPlayers = {}
 	GameRules.direPlayers = {}
+	GameRules:SetStrategyTime( 0.1 )
 
 	--GameRules:GetGameModeEntity():SetCustomGameForceHero( "npc_dota_hero_lina" )
 	GameRules:SetCustomGameSetupTimeout(60)
@@ -2587,7 +2588,7 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
 		--GameRules.Enfos:UpdateBaseStats(hero)
-		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
+		--if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
 	else
 		print("Invalid player!")
 	end

@@ -1,6 +1,25 @@
 <root>
   <script>
-    // Uncomment any of the following lines in order to disable that portion of the default UI
+    //v taken from https://github.com/SinZ163/TwilightsEveORPG/blob/master/content/panorama/layout/custom_game/custom_ui_manifest.xml#L6-L19 to remove talent tree
+	
+	var newUI = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
+
+	//Use this line if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
+	newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
+	//newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "160px";
+
+	newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
+	//you are not spawning the talent UI, fuck off (Disabling mouseover and onactivate)
+	//We also don't want to crash, valve plz
+	newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
+	newUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){});
+
+	//Fuck that levelup button
+	newUI.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+	
+	//^ taken from https://github.com/SinZ163/TwilightsEveORPG/blob/master/content/panorama/layout/custom_game/custom_ui_manifest.xml#L6-L19 to remove talent tree
+	
+	// Uncomment any of the following lines in order to disable that portion of the default UI
 
     //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_TIMEOFDAY, false );      //Time of day (clock).
     //GameUI.SetDefaultUIEnabled( DotaDefaultUIElement_t.DOTA_DEFAULT_UI_TOP_HEROES, false );     //Heroes and team score at the top of the HUD.

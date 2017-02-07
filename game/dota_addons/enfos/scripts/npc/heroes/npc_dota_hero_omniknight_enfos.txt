@@ -16,6 +16,18 @@
 	"Ability4"				"ahlen_dragon_dance"
 	"Ability5"				"ahlen_innate"
 	"Ability6"				"ahlen_cataclysmic_strike_proxy"
+	"Ability7"				""
+	"Ability8"				""
+	"Ability9"				""
+	"Ability10"				""
+	"Ability11"				""
+	"Ability12"				""
+	"Ability13"				""
+	"Ability14"				""
+	"Ability15"				""
+	"Ability16"				""
+	"Ability17"				""
+	"Ability18"				""
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
