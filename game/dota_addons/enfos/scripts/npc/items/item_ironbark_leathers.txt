@@ -10,9 +10,10 @@
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"						"item_datadriven"
 	"AbilityTextureName"			"item_ironbark_leathers"
-	//"ItemStockMax"					"2"
-	//"ItemStockInitial"				"2"
-	//"ItemStockTime"					"120.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"30.0"
 
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------

@@ -22,7 +22,8 @@ function Dazzle(keys)
 	Timers:RemoveTimer("moonbeam_timer" .. pid)
 	Enfos.moonbeamActive[pid] = nil
 -- destroy the particle after a brief delay (particle won't play if you destroy immediately)
-	DelayDestroy(dUnit, 0.05) -- DelayDestroy is a function in enfos.lua
+	--DelayDestroy(dUnit, 0.05) -- DelayDestroy is a function in enfos.lua
+	dUnit:ForceKill(false)
 end
 
 function SealOfDeflection(keys)

@@ -15,24 +15,25 @@
 	"AbilityTextureName"			"item_potion_of_kimhiro_draught"
 	"AbilitySharedCooldown" "ManaPot"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"4.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"3.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"100"
 	"AbilityCastPoint"				"0.0"
+	"AbilityCooldown"				"40.0"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
-	"ItemCost"						"160"
+	"ItemCost"						"125"
 	"ItemShopTags"					"consumable"
 	"ItemQuality"					"consumable"
 	"ItemStackable"					"0"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"2"
+	"ItemInitialCharges"			"1"
 	"SideShop"						"1"
 
 	"OnSpellStart"

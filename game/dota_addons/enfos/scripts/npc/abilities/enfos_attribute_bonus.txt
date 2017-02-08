@@ -5,8 +5,8 @@
 {
 	"BaseClass"                     "ability_lua"
     "ScriptFile"                    "abilities/attribute.lua"
-    "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"
     "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityTextureName" 			"attribute_bonus"
     "MaxLevel"  "100"
     "LevelsBetweenUpgrades" "1"
     "AbilitySpecial"

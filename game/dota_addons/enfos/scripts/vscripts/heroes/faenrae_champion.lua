@@ -71,7 +71,16 @@ function word_of_chaos(keys)
 	for k,v in pairs(units) do
 		local chance = math.random(1,100)
 		if chance <= killChance then
-			v:Kill(ability, caster)
+			--v:Kill(ability, caster) apparently because of int spell amp reversal this doesnt kill anymore. oops!
+			local dTable = {
+				victim = v,
+				attacker = caster,
+				damage = 9999999,
+				damage_type = DAMAGE_TYPE_PURE,
+				damage_flags = 0,
+				ability = ability
+			}
+			ApplyDamage(dTable)
 			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf", PATTACH_CUSTOMORIGIN, caster)
 			ParticleManager:SetParticleControlEnt(particle, 0, v, PATTACH_POINT_FOLLOW, "attach_hitloc", v:GetAbsOrigin(), true)
 			ParticleManager:SetParticleControlEnt(particle, 1, v, PATTACH_POINT_FOLLOW, "attach_hitloc", v:GetAbsOrigin(), true)
@@ -157,12 +166,12 @@ function ModelSwapStart( keys )
 	if caster:HasModifier("modifier_bloodthirst_leech") then
 		caster:RemoveModifierByName("modifier_bloodthirst_leech")
 	end
-	if caster:HasModifier("modifier_vampiric_potion_leech") then
+	--[[if caster:HasModifier("modifier_vampiric_potion_leech") then
 		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_leech")
 		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
 		caster:RemoveModifierByName("modifier_vampiric_potion_leech")
 		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_nope", {})
-	end
+	end]]
 	
 	--Stores the old attack and armor types
 	if caster.armorType == nil then
@@ -206,12 +215,12 @@ function ModelSwapEnd( keys )
 		lifeMod = CreateItem("item_bloodthirst", nil, nil)
 		lifeMod:ApplyDataDrivenModifier(caster, caster, "modifier_bloodthirst_leech", {})
 	end
-	if caster:HasModifier("modifier_vampiric_potion_nope") then
+	--[[if caster:HasModifier("modifier_vampiric_potion_nope") then
 		lifeMod = caster:FindModifierByName("modifier_vampiric_potion_nope")
 		lifeItem = CreateItem("item_vampiric_potion", nil, nil)
 		caster:RemoveModifierByName("modifier_vampiric_potion_nope")
 		lifeItem:ApplyDataDrivenModifier(caster, caster, "modifier_vampiric_potion_leech", {})
-	end
+	end]]
 
 	--Resets Faenrae's attack and armor types
 	if caster:GetUnitName() == "npc_dota_hero_terrorblade" then

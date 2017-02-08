@@ -9,13 +9,13 @@
 	"RequiredLevel"					"6"
 	"LevelsBetweenUpgrades"			"3"
 	"MaxLevel"						"10"
-	"AbilityCastPoint"				"0.5"
+	"AbilityCastPoint"				"0.1"
 	"AbilityCooldown"				"2"
 	"AbilityManaCost"				"70 77 86 96 107 119 132 147 164 182"
-	"AOERadius"						"%radius"
+	"AOERadius"						"400"
 	"Precache"
 	{
-		"particle_folder"			"particles/hero_revenant/"
+		"particle"			"particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 	}
 	"OnSpellStart"
@@ -26,6 +26,7 @@
 			"Function"				"CorpseExplosion"
 			"damage"				"%damage"
 			"radius"				"%radius"
+			"searchrange"			"400"
 		}
 	}
 	"AbilitySpecial"

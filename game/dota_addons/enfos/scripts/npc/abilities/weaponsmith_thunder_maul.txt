@@ -13,7 +13,7 @@
 	"Precache"
 	{
 		"particle_folder"			"particles/units/heroes/hero_sven/"
-		"particle_folder"			"particles/hero_weaponsmith/"
+		"particle"					"particles/units/heroes/hero_invoker/invoker_chaos_meteor_land_ring_lrg.vpcf"
 		"particle_folder"			"particles/prototype_fx/"
 		"soundfile"					"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 	}

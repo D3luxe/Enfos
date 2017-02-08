@@ -7,9 +7,10 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_demon_edge"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"120.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"120.0"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "8000" 		

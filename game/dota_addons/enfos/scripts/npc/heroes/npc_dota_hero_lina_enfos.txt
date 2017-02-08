@@ -14,6 +14,18 @@
 	"Ability4"					"empath_alchemy"
 	"Ability5"					"empath_vitality_healing"
 	"Ability6"					"empath_nissas_binding"
+	"Ability7"				""
+	"Ability8"				""
+	"Ability9"				""
+	"Ability10"				""
+	"Ability11"				""
+	"Ability12"				""
+	"Ability13"				""
+	"Ability14"				""
+	"Ability15"				""
+	"Ability16"				""
+	"Ability17"				""
+	"Ability18"				""
 	
 	"ArmorPhysical"				"0"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified

@@ -11,15 +11,16 @@
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
 	"BaseClass"						"item_ward_sentry"
-	//"ItemStockMax"					"4"
-	//"ItemStockInitial"				"4"
-	//"ItemStockTime"					"24.0"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"4"
+	"ItemStockInitial"				"4"
+	"ItemStockTime"					"20.0"
 	
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"500"
 	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"1.0"
+	"AbilityCooldown"				"5.0"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
@@ -42,7 +43,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"lifetime"				"240"
+			"lifetime"				"40"
 		}
 		"02"
 		{

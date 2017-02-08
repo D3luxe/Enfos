@@ -14,12 +14,15 @@
 	"BaseClass"						"item_datadriven"
 	"AbilityTextureName"			"item_vampiric_potion"
 	"ItemKillable"					"0"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
+	"ItemStockTime"					"240.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"100"
 	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"60.0"
+	"AbilityCooldown"				"120.0"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------

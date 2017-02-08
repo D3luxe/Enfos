@@ -14,6 +14,19 @@
 	"Ability3"					"obsidian_destroyer_enfos_slow_aura"
 	"Ability4"					"obsidian_destroyer_enfos_time_lapse"
 	"Ability5"					"obsidian_destroyer_enfos_teleport"
+	"Ability6"				""
+	"Ability7"				""
+	"Ability8"				""
+	"Ability9"				""
+	"Ability10"				""
+	"Ability11"				""
+	"Ability12"				""
+	"Ability13"				""
+	"Ability14"				""
+	"Ability15"				""
+	"Ability16"				""
+	"Ability17"				""
+	"Ability18"				""
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------

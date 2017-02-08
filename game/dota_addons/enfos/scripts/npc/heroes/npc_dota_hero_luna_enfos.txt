@@ -13,6 +13,18 @@
 	"Ability4"					"moon_mage_burn"
 	"Ability5"					"generic_focus_moonbeam"
 	"Ability6"					"moon_mage_glaive"
+	"Ability7"				""
+	"Ability8"				""
+	"Ability9"				""
+	"Ability10"				""
+	"Ability11"				""
+	"Ability12"				""
+	"Ability13"				""
+	"Ability14"				""
+	"Ability15"				""
+	"Ability16"				""
+	"Ability17"				""
+	"Ability18"				""
 	
 	"ArmorPhysical"				"3"
 	

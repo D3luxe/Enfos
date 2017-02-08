@@ -15,15 +15,15 @@
 	"AbilityTextureName"			"item_potion_of_greater_healing"
 	"AbilitySharedCooldown" "HealPot"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"8.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"5.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"100"
 	"AbilityCastPoint"				"0.0"
-	"AbilityCooldown"				"8.0"
+	"AbilityCooldown"				"11.0"
 	
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------

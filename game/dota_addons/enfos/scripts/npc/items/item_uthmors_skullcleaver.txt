@@ -12,6 +12,10 @@
 	"ItemCost"                      "0" 		
 	"ItemShopTags"					"damage"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"30.0"
 	"SideShop"					"1"
 	"LumberCost"	"240"
 

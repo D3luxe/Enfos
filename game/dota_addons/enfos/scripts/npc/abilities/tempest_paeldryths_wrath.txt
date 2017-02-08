@@ -21,7 +21,7 @@
 		"LinearProjectile"			//I'm guessing on so many of these values
 		{
 			"Target"				"POINT"
-			"EffectName"			"particles/hero_tempest/tempest_wave_of_terror.vpcf"
+			"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
 			"MoveSpeed"				"3000"
 			"StartRadius"			"400"
 			"EndRadius"				"400"

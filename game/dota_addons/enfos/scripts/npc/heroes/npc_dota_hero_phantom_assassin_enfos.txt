@@ -14,6 +14,19 @@
 	"Ability3"				"phantom_assassin_enfos_chadatrus_blessing"					// Ability 3
 	"Ability4"				"phantom_assassin_enfos_righteous_wrath"					// Ability 4
 	"Ability5"				"generic_enfos_trothgangs_rally"					// Ability 4
+	"Ability6"				""
+	"Ability7"				""
+	"Ability8"				""
+	"Ability9"				""
+	"Ability10"				""
+	"Ability11"				""
+	"Ability12"				""
+	"Ability13"				""
+	"Ability14"				""
+	"Ability15"				""
+	"Ability16"				""
+	"Ability17"				""
+	"Ability18"				""
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------

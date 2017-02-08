@@ -14,9 +14,9 @@
 	"BaseClass"						"item_datadriven"
 	"AbilityTextureName"			"item_anti_magic_potion"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"10"
-	//"ItemStockInitial"				"10"
-	//"ItemStockTime"					"30.0"
+	"ItemStockMax"					"10"
+	"ItemStockInitial"				"10"
+	"ItemStockTime"					"2.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------

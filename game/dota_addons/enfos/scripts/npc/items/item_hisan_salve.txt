@@ -13,11 +13,11 @@
 	"Model"							"models/props_gameplay/salve_blue.vmdl"
 	"BaseClass"						"item_datadriven"
 	"AbilityTextureName"			"item_hisan_salve"
-	"AbilitySharedCooldown" "ManaPot"
+	"AbilitySharedCooldown" "ClarityPot"
 	"ItemKillable"					"0"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"20.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"20.0"
 
 	// Stats
 	//-------------------------------------------------------------------------------------------------------------
@@ -32,7 +32,7 @@
 	"ItemStackable"					"0"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
-	"ItemInitialCharges"			"4"
+	"ItemInitialCharges"			"5"
 	"SideShop"						"1"
 
 	"OnSpellStart"

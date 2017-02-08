@@ -15,9 +15,9 @@
 	"AbilityTextureName"			"item_potion_of_healing"
 	"ItemKillable"					"0"
 	"AbilitySharedCooldown" "HealPot"
-	//"ItemStockMax"					"5"
-	//"ItemStockInitial"				"5"
-	//"ItemStockTime"					"24.0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"20.0"
 	
 
 	// Stats

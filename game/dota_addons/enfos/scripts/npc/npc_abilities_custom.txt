@@ -2587,6 +2587,10 @@
 		"AbilityTextureName" 			"bounty_hunter_wind_walk"
 		"MaxLevel"						"1"
 		
+		"Precache"
+		{
+			"particle"						"particles/items_fx/battlefury_cleave.vpcf"
+		}
 		"Modifiers"
 		{
 			
@@ -2601,6 +2605,7 @@
 					{
 						"CleavePercent"		"%cleave_percent"
 						"CleaveRadius"      "%radius"
+						"CleaveEffect"		"particles/items_fx/battlefury_cleave.vpcf"
 					}
 				}
 			}
@@ -3181,8 +3186,8 @@
 	{
 		"BaseClass"                     "ability_lua"
 	    "ScriptFile"                    "abilities/attribute.lua"
-	    "AbilityType"                   "DOTA_ABILITY_TYPE_ATTRIBUTES"
 	    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	    "AbilityTextureName" 			"attribute_bonus"
 	    "MaxLevel"  "100"
 	    "LevelsBetweenUpgrades" "1"
 	    "AbilitySpecial"
@@ -3248,70 +3253,77 @@
 		"AOERadius"						"%radius"
 		"precache"
 		{
-			"particle_folder"			"particles/units/heroes/hero_batrider/"
+			"particle_folder"			"particles/hero_entropist/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_earth_spirit.vsndevts"
 		}
 		"OnSpellStart"
 		{
-			"LinearProjectile"
-			{
-				"Target"				"POINT"
-				"EffectName"			"particles/units/heroes/hero_batrider/batrider_flamebreak.vpcf"
-				"MoveSpeed"				"900"
-				"StartRadius"			"0"
-				"EndRadius"				"0"
-				"StartPosition"			"follow_origin"
-				"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
-				"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
-				"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
-				"HasFrontalCone"		"0"
-			}
-	
-			"FireSound"
-			{
-				"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
-				"Target"				"CASTER"
-			}
-		}
-		"OnProjectileFinish"
-		{
-			"ActOnTargets"
-			{
-				"Target"
-				{
-					"Center"			"POINT"
-					"Radius"			"%radius"
-					"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
-					"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
-				}
-				"Action"
-				{
-					"ApplyModifier"
-					{
-						"ModifierName"	"modifier_entropist_fist_of_stone_stun"
-						"Target"		"TARGET"
-					}
-					"Damage"
-					{
-						"Target"		"TARGET"
-						"Type"			"DAMAGE_TYPE_MAGICAL"
-						"Damage"		"%damage"
-					}
-				}
-			}
-			"FireSound"
-			{
-				"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
-				"Target"				"POINT"
-			}
 			"RunScript"
 			{
 				"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
 				"Function"				"FistOfStone"
-				"particle_radius"		"%particle_radius"
 				"Target"				"POINT"
 			}
+			
+			//"LinearProjectile"
+			//{
+			//	"Target"				"POINT"
+			//	"EffectName"			"particles/hero_entropist/fist_of_stone_fly.vpcf"
+			//	"MoveSpeed"				"900"
+			//	"StartRadius"			"0"
+			//	"EndRadius"				"0"
+			//	"StartPosition"			"follow_origin"
+			//	"TargetTeams"			"DOTA_UNIT_TARGET_TEAM_NONE" //so it doesn't blow up when it hits an enemy
+			//	"TargetTypes"			"DOTA_UNIT_TARGET_CREEP"
+			//	"TargetFlags"			"DOTA_UNIT_TARGET_FLAG_NONE"
+			//	"HasFrontalCone"		"0"
+			//}
+	
+			//"FireSound"
+			//{
+			//	"EffectName"			"Hero_EarthSpirit.RollingBoulder.Cast"
+			//	"Target"				"CASTER"
+			//}
 		}
+		//"OnProjectileFinish"
+		//{
+		//	"ActOnTargets"
+		//	{
+		//		"Target"
+		//		{
+		//			"Center"			"POINT"
+		//			"Radius"			"%radius"
+		//			"Teams"				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		//			"Types"				"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP | DOTA_UNIT_TARGET_MECHANICAL | DOTA_UNIT_TARGET_OTHER"
+		//		}
+		//		"Action"
+		//		{
+		//			"ApplyModifier"
+		//			{
+		//				"ModifierName"	"modifier_entropist_fist_of_stone_stun"
+		//				"Target"		"TARGET"
+		//			}
+		//			"Damage"
+		//			{
+		//				"Target"		"TARGET"
+		//				"Type"			"DAMAGE_TYPE_MAGICAL"
+		//				"Damage"		"%damage"
+		//			}
+		//		}
+		//	}
+		//	"FireSound"
+		//	{
+		//		"EffectName"			"Hero_EarthSpirit.RollingBoulder.Destroy"
+		//		"Target"				"POINT"
+		//	}
+		//	"RunScript"
+		//	{
+		//		"ScriptFile"			"scripts/vscripts/heroes/entropist.lua"
+		//		"Function"				"FistOfStone"
+		//		"particle_radius"		"%particle_radius"
+		//		"Target"				"POINT"
+		//	}
+		//}
 		"Modifiers"
 		{
 			"modifier_entropist_fist_of_stone_stun"
@@ -3523,7 +3535,7 @@
 		"AbilityCooldown"				"100"
 		"AbilityManaCost"				"30 40 55 75 100 130 165 205 250 300"
 		"AOERadius"						"%radius"
-		"AbilityChannelTime"			"56"
+		"AbilityChannelTime"			"%duration"
 		"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
 		"AbilityCastRange" 			"1300"
 		
@@ -5057,7 +5069,7 @@
 	"hypnotist_mind_shout"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"rattletrap_rocket_flare"
+		"AbilityTextureName"			"shadow_shaman_voodoo"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityUnitTargetFlags"		"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 		"RequiredLevel"					"6"
@@ -5115,7 +5127,7 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_ogre_magi/"
-			"particle_folder"			"particles/hero_hypnotist/"
+			"particle"			"particles/msg_fx/msg_evade.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_witchdoctor.vsndevts" //maledict
 		}
 		"OnSpellStart"
@@ -10169,13 +10181,13 @@
 		"RequiredLevel"					"6"
 		"LevelsBetweenUpgrades"			"3"
 		"MaxLevel"						"10"
-		"AbilityCastPoint"				"0.5"
+		"AbilityCastPoint"				"0.1"
 		"AbilityCooldown"				"2"
 		"AbilityManaCost"				"70 77 86 96 107 119 132 147 164 182"
-		"AOERadius"						"%radius"
+		"AOERadius"						"400"
 		"Precache"
 		{
-			"particle_folder"			"particles/hero_revenant/"
+			"particle"			"particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_life_stealer.vsndevts"
 		}
 		"OnSpellStart"
@@ -10186,6 +10198,7 @@
 				"Function"				"CorpseExplosion"
 				"damage"				"%damage"
 				"radius"				"%radius"
+				"searchrange"			"400"
 			}
 		}
 		"AbilitySpecial"
@@ -13180,6 +13193,7 @@
 		"Precache"
 		{
 			"particle"			"particles/neutral_fx/tornado_ambient.vpcf"
+			"particle"			"particles/hero_tempest/burst_debuff.vpcf"
 		}
 		"Modifiers"
 		{
@@ -13211,7 +13225,7 @@
 					"AttachEffect"
 					{
 						"Target"			"TARGET"
-						"EffectName"		"particles/neutral_fx/tornado_ambient.vpcf"
+						"EffectName"		"particles/hero_tempest/burst_debuff.vpcf"
 						"EffectAttachType"	"follow_origin"
 					}
 				}
@@ -13268,7 +13282,7 @@
 			"LinearProjectile"			//I'm guessing on so many of these values
 			{
 				"Target"				"POINT"
-				"EffectName"			"particles/hero_tempest/tempest_wave_of_terror.vpcf"
+				"EffectName"			"particles/units/heroes/hero_vengeful/vengeful_wave_of_terror.vpcf"
 				"MoveSpeed"				"3000"
 				"StartRadius"			"400"
 				"EndRadius"				"400"
@@ -13847,9 +13861,8 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_alchemist/"
-			"particle_folder"			"particles/hero_thief/"
-			"particle_folder"			"particles/hero_hypnotist/"
-			"model"						"models/particle/coin.vmdl"
+			"particle"					"particles/msg_fx/msg_evade.vpcf"
+			"particle"					"particles/items2_fx/hand_of_midas.vpcf"
 			"soundfile"					"soundevents/game_sounds_items.vsndevts"
 		}
 		"OnSpellStart"
@@ -13866,12 +13879,17 @@
 			//	"EffectAttachType"		"follow_origin"
 			//	"Target"				"CASTER"
 			//}
-			//"AttachEffect"
-			//{
-			//	"EffectName"			"particles/hero_thief/thief_steal_coins_target.vpcf"
-			//	"EffectAttachType"		"follow_origin"
-			//	"Target"				"TARGET"
-			//}
+			"AttachEffect"
+			{
+				"EffectName"			"particles/items2_fx/hand_of_midas.vpcf"
+				"EffectAttachType"		"follow_origin"
+				"Target"				"TARGET"
+				"ControlPointEntities"
+				{
+					"TARGET" "follow_origin"
+					"CASTER" "follow_origin"
+				}
+			}
 			"FireSound"
 			{
 				"EffectName"			"DOTA_Item.Hand_Of_Midas"
@@ -15654,6 +15672,7 @@
 			"particle_folder"			"particles/units/heroes/hero_clinkz/"
 			"particle"					"particles/units/heroes/hero_zuus/zuus_lightning_bolt_start.vpcf"
 			"particle"					"particles/units/heroes/hero_ancient_apparition/ancient_apparition_chilling_touch_buff.vpcf"
+			"particle"					"particles/units/heroes/hero_omniknight/omniknight_degen_aura.vpcf"
 		}
 	
 		"OnSpellStart"
@@ -15697,14 +15716,9 @@
 				{
 					"AttachEffect"
 					{
-						"EffectName"		"particles/test_particle/channel_field_1.vpcf"
+						"EffectName"		"particles/units/heroes/hero_omniknight/omniknight_degen_aura.vpcf"
 						"EffectAttachType"	"follow_origin"
 						"Target"			"CASTER"
-					
-						"ControlPoints"
-						{
-							"00"		"0 0 5"
-						}
 					}
 				}
 			}
@@ -15937,7 +15951,7 @@
 		"Precache"
 		{
 			"particle_folder"			"particles/units/heroes/hero_sven/"
-			"particle_folder"			"particles/hero_weaponsmith/"
+			"particle"					"particles/units/heroes/hero_invoker/invoker_chaos_meteor_land_ring_lrg.vpcf"
 			"particle_folder"			"particles/prototype_fx/"
 			"soundfile"					"soundevents/game_sounds_heroes/game_sounds_sven.vsndevts"
 		}
