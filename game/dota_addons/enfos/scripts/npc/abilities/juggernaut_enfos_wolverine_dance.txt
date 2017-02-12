@@ -5,14 +5,24 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"BaseClass"						"juggernaut_blade_fury"
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"            "juggernaut_blade_fury"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+	"AbilityUnitTargetTeam"         "DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"         "DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_BUILDING"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"	
 	"Aura_Flags" "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
 	"MaxLevel"								"10"
 	"LevelsBetweenUpgrades"		"5"
 	"RequiredLevel"			"10"
-
+	
+	"precache"
+    {
+        "particle"  "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
+        "soundfile" "soundevents/game_sounds_heroes/game_sounds_juggernaut.vsndevts"
+    }
+	
 	// Casting
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"0"
@@ -46,4 +56,69 @@
 			"blade_fury_radius"			"250"
 		}
 	}
+
+    "OnSpellStart"
+    {
+        "ApplyModifier"
+        {
+            "ModifierName"  "modifier_wolverine_dance"
+            "Target"        "CASTER"
+            "Duration"      "%AbilityDuration"
+        }   
+    }
+
+    "Modifiers"
+    {
+        "modifier_wolverine_dance"
+        {   
+            "OverrideAnimation"         "ACT_DOTA_OVERRIDE_ABILITY_1"
+            "States"
+            {
+                "MODIFIER_STATE_MAGIC_IMMUNE"       "MODIFIER_STATE_VALUE_ENABLED"
+                "MODIFIER_STATE_SILENCED"           "MODIFIER_STATE_VALUE_ENABLED"
+            }
+            "OnCreated"
+            {
+                "AttachEffect"
+                {
+                    "EffectName"        "particles/units/heroes/hero_juggernaut/juggernaut_blade_fury.vpcf"
+                    "EffectAttachType"  "follow_origin"
+                    "Target"            "CASTER"
+                    "ControlPoints"
+                    {
+                        "05"    "%blade_fury_radius 0 0"
+                    }                   
+                }
+                "FireSound"
+                {
+                    "EffectName"    "Hero_Juggernaut.BladeFuryStart"
+                    "Target"        "CASTER"
+                }           
+            }
+            
+            "ThinkInterval"  "%blade_fury_damage_tick"
+            "OnIntervalThink"
+            {
+                "RunScript"
+                {
+                    "ScriptFile"    "scripts/vscripts/heroes/blood_dancer.lua"
+                    "Function"      "wolverine_dance"
+                }      
+            }
+
+            "OnDestroy"
+            {
+                "FireSound"
+                {
+                    "EffectName"    "Hero_Juggernaut.BladeFuryStop"
+                    "Target"        "CASTER"
+                }
+                "RunScript"
+                {
+                    "ScriptFile"    "scripts/vscripts/heroes/blood_dancer.lua"
+                    "Function"      "wolverine_dance_stop"
+                }
+            }
+        }
+    }   
 }
