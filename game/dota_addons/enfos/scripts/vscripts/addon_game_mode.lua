@@ -2915,6 +2915,7 @@ function CEnfosGameMode:ModifyLife(team, add_or_remove, amount) -- add is 0, rem
 		return
 	end
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(team, lives)
+	CustomGameEventManager:Send_ServerToAllClients( "lives_update", {leftlives = goodLives, rightlives = badLives} )
 end
 
 
