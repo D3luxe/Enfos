@@ -27,6 +27,8 @@
 	"Ability18"				""
 	
 	"ArmorPhysical"				"3"
+	
+	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 	"AttributeBaseStrength" 	"3"

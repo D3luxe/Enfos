@@ -2,7 +2,7 @@
 {
 	"ID"							"3012"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"spellbringer_greater_darkrift"
+	"AbilityTextureName"			"spellbringer_summon_arhat"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityCooldown"				"90"
 	"AbilityManaCost"				"1"		//475

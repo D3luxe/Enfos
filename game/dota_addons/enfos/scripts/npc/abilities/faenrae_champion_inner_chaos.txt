@@ -86,7 +86,7 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACK_RANGE_BONUS"			"%bonus_range"
-				"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_damage"		
+				"MODIFIER_PROPERTY_HEALTH_BONUS" 				"%bonus_health"		
 				"MODIFIER_PROPERTY_BASE_ATTACK_TIME_CONSTANT" 	"%base_attack_time"				
 			}
 			"OnAttackLanded"

@@ -1623,7 +1623,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	local attacker = EntIndexToHScript(filterTable["entindex_attacker_const"])
 	local victim = EntIndexToHScript(filterTable["entindex_victim_const"])
 	local ability = nil
-
+	
 	--Checks to see if a spell inflicted the damage
 	if filterTable["entindex_inflictor_const"] ~= nil then
 		ability = EntIndexToHScript(filterTable["entindex_inflictor_const"])
@@ -1637,10 +1637,14 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	end
 	
 	if damageType == DAMAGE_TYPE_PHYSICAL then
+		--surely theres a better way to do this
+		if attacker:HasModifier("modifier_wolverine_dance") then damage = 0 end
+		
 		--Calculate the damage before any armor affected it
 		local armor = math.floor(victim:GetPhysicalArmorValue())
 		local preMitigation = ((0.06 * math.abs(armor)) / (1 + 0.06 * math.abs(armor))) + 1
 		
+		--Damage reflection calculation
 		if victim:HasModifier("modifier_tipping_the_scales") or victim:HasModifier("modifier_backfire_aura") or victim:HasModifier("modifier_havroth_thorns") then
 			if attacker:GetAttackCapability() == DOTA_UNIT_CAP_MELEE_ATTACK then
 				local thorn = 0
@@ -2911,6 +2915,7 @@ function CEnfosGameMode:ModifyLife(team, add_or_remove, amount) -- add is 0, rem
 		return
 	end
 	GameRules:GetGameModeEntity():SetTopBarTeamValue(team, lives)
+	CustomGameEventManager:Send_ServerToAllClients( "lives_update", {leftlives = goodLives, rightlives = badLives} )
 end
 
 

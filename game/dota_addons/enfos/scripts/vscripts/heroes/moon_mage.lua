@@ -164,10 +164,11 @@ function Burn(keys)
 		end
 	})
 	
-	if GameRules.BurnNightTime then Timers:RemoveTimer(GameRules.BurnNightTime)
-	else GameRules.BurnStoredTime = GameRules:GetTimeOfDay() end
+	--if GameRules.BurnNightTime then Timers:RemoveTimer(GameRules.BurnNightTime)
+	--else GameRules.BurnStoredTime = GameRules:GetTimeOfDay() end
 	
-	GameRules:SetTimeOfDay(0.75)
+	--GameRules:SetTimeOfDay(0.75)
+	GameRules:BeginTemporaryNight(20.0)
 	Timers:CreateTimer("moonbeam_timer" .. pid, {
 		endTime = 20,
 		callback = function()
@@ -181,9 +182,9 @@ function Burn(keys)
 		end
 	})
 	
-	GameRules.BurnNightTime = Timers:CreateTimer(20, function()		
-			GameRules:SetTimeOfDay(GameRules.BurnStoredTime)
-		end)
+	--GameRules.BurnNightTime = Timers:CreateTimer(20, function()		
+			--GameRules:SetTimeOfDay(GameRules.BurnStoredTime)
+		--end)
 end
 
 function BurnFX(keys)
