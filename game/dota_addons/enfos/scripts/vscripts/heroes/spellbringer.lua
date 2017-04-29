@@ -200,13 +200,13 @@ function purification(keys)
 	local target = keys.target_points[1]
 	local radius = keys.radius
 
+	local soundDummy = FastDummy(target, hero:GetTeam())
+	EmitSoundOnLocationForAllies(soundDummy:GetAbsOrigin(),"Hero_Invoker.EMP.Charge",soundDummy)
+	DelayDestroy(soundDummy, 1.0)
 	for _,hero in pairs(HeroList:GetAllHeroes()) do
 		if hero:GetPlayerID() and hero:GetTeam() == caster:GetTeam() then
 			local preParticle = ParticleManager:CreateParticleForPlayer("particles/units/heroes/hero_invoker/invoker_emp_charge.vpcf", PATTACH_ABSORIGIN, hero, PlayerResource:GetPlayer(hero:GetPlayerID()))
 			ParticleManager:SetParticleControl(preParticle, 0, target)
-			local soundDummy = FastDummy(target, hero:GetTeam())
-			EmitSoundOnLocationForAllies(soundDummy:GetAbsOrigin(),"Hero_Invoker.EMP.Charge",soundDummy)
-			DelayDestroy(soundDummy, 1.0)
 			
 			Timers:CreateTimer(2, function()
 				ParticleManager:DestroyParticle(preParticle, true)
