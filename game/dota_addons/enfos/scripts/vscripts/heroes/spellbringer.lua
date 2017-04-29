@@ -200,7 +200,7 @@ function purification(keys)
 	local target = keys.target_points[1]
 	local radius = keys.radius
 
-	local soundDummy = FastDummy(target, hero:GetTeam())
+	local soundDummy = FastDummy(target, caster:GetTeam())
 	EmitSoundOnLocationForAllies(soundDummy:GetAbsOrigin(),"Hero_Invoker.EMP.Charge",soundDummy)
 	DelayDestroy(soundDummy, 1.0)
 	for _,hero in pairs(HeroList:GetAllHeroes()) do
