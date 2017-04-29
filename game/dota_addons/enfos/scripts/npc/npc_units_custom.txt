@@ -2897,7 +2897,7 @@
 		//----------------------------------------------------------------
 		"Ability1"					"mob_permenant_invisibility"			// Ability 1
 		"Ability2"					"mob_curse"			// Ability 2
-		"Ability3"					""			// Ability 3
+		"Ability3"					"mob_satyr_sight"			// Ability 3
 		"Ability4"					""			// Ability 4
 	
 		// Armor

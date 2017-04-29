@@ -64,12 +64,22 @@
 		}
 		"modifier_faenrae_champion_faenrae_blood_true_sight"
 		{
-			"OnCreated"
+			"Passive"	"1"
+			"Duration"	"-1"
+			"ThinkInterval"	"0.25"
+			"OnIntervalThink"
 			{
-				"RunScript"
+				"ApplyModifier"
 				{
-					"ScriptFile"		"scripts/vscripts/heroes/faenrae_champion.lua"
-					"Function"			"faenrae_blood_true_sight"
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+					"ModifierName"	"modifier_truesight"
+                    "Duration"	"0.50"
 				}
 			}
 		}

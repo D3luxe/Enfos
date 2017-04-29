@@ -1,0 +1,53 @@
+"mob_satyr_sight"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"satyr_trickster_purge"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"MaxLevel"						"1"
+	"AOERadius"						"%radius"
+	"Modifiers"
+	{
+		"modifier_satyr_sight"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"		"modifier_satyr_sight_true_sight"
+					"Target"			"CASTER"
+				}
+			}
+		}
+		"modifier_satyr_sight_true_sight"
+		{
+			"Passive"	"1"
+			"Duration"	"-1"
+			"ThinkInterval"	"0.25"
+			"OnIntervalThink"
+			{
+				"ApplyModifier"
+				{
+					"Target"
+					{
+						"Center"	"CASTER"
+						"Radius"	"%radius"
+						"Teams"	"DOTA_UNIT_TARGET_TEAM_ENEMY"
+						"Types"	"DOTA_UNIT_TARGET_HERO | DOTA_UNIT_TARGET_CREEP"
+					}
+					"ModifierName"	"modifier_truesight"
+                    "Duration"	"0.50"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"900"
+		}			
+	}
+}	
