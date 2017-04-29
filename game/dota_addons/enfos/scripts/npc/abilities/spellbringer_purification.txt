@@ -10,7 +10,13 @@
 
 	"MaxLevel"						"1"
 	"AbilityCastRange"	"0"
-
+	
+	"precache"
+	{
+		"soundfile"	"soundevents/game_sounds_heroes/game_sounds_invoker.vsndevts"
+		"particle"	"particles/units/heroes/hero_invoker/invoker_emp.vpcf"
+	}
+	
 	"OnSpellStart"
 	{
 		"RunScript"
