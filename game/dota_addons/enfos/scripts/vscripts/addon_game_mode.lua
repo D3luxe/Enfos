@@ -2592,7 +2592,9 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
 		--GameRules.Enfos:UpdateBaseStats(hero)
-		--if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
+		local markedLevels = {[17]=true,[19]=true,[21]=true,[22]=true,[23]=true,[24]=true}
+		if markedLevels[hero:GetLevel()] then hero:SetAbilityPoints(hero:GetAbilityPoints()+1) end
+		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
 	else
 		print("Invalid player!")
 	end
