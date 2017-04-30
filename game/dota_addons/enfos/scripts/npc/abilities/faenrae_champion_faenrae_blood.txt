@@ -18,6 +18,7 @@
 		{
 			"Passive"					"1"
 			"IsHidden"					"1"
+			"IsPurgable"				"0"
 			"OnCreated"
 			{
 				"ApplyModifier"
@@ -52,6 +53,7 @@
 		"modifier_faenrae_champion_faenrae_blood_hidden"
 		{
 			"IsHidden"					"1"
+			"IsPurgable"				"0"
 			"Duration"					"%fade_time"
 			"OnDestroy"
 			{
@@ -65,6 +67,7 @@
 		"modifier_faenrae_champion_faenrae_blood_true_sight"
 		{
 			"Passive"	"1"
+			"IsPurgable"	"0"
 			"Duration"	"-1"
 			"ThinkInterval"	"0.25"
 			"OnIntervalThink"

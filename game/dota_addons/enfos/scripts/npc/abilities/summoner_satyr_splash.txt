@@ -10,6 +10,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"OnAttackLanded"
 			{
 				"CleaveAttack" //far

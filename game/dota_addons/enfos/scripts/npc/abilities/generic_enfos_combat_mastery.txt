@@ -18,6 +18,7 @@
 		{
 			"Passive" "1"
 			"IsHidden" "1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -29,6 +30,7 @@
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
+			"IsPurgable"	"0"
 			"OnAttackStart"
 			{
 				"Random"
@@ -53,6 +55,7 @@
 		{
 			"Duration"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"

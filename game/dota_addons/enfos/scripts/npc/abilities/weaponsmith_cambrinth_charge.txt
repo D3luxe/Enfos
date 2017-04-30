@@ -74,6 +74,7 @@
 		}
 		"modifier_weaponsmith_cambrinth_charge"
 		{
+			"IsPurgable"	"0"
 			"Duration"				"-1"
 			"Properties"
 			{
@@ -117,6 +118,7 @@
 
 		"modifier_weaponsmith_cambrinth_charge_linger"
 		{
+			"IsPurgable"	"0"
 			"Duration"				"3"
 			"Properties"
 			{
@@ -135,6 +137,7 @@
 		"modifier_weaponsmith_charge_fx"
 		{
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"Duration"	"1"
 			"OnCreated"
 			{

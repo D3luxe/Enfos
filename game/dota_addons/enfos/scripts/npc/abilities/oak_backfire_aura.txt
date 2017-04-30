@@ -32,6 +32,7 @@
 		{
 			"Passive"				"1"
 			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"Aura"					"modifier_backfire_aura"
 			"Aura_Radius"			"%radius"
 			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"

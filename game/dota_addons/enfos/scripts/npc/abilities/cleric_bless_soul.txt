@@ -21,6 +21,8 @@
 		"modifier_cleric_bless_soul_aura"
 		{
 			"Passive"				"1"
+			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"Aura"					"modifier_cleric_bless_soul"
 			"Aura_Radius"			"900"
 			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"

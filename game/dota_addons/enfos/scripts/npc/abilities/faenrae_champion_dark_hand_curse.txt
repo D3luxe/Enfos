@@ -26,6 +26,7 @@
 		"modifier_faenrae_champion_dark_hand_curse"
 		{
 			"Passive"	"1"
+			"IsPurgable"	"0"
 			"OnKill"
 			{
 				"RunScript"

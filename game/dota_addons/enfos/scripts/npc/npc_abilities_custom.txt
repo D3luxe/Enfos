@@ -19,6 +19,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
 					"Random"
@@ -42,6 +43,7 @@
 			{
 				"Duration"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					//"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -878,6 +880,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"	"0"
 				
 				"Aura"					"modifier_arhat_haste"
 				"Aura_Radius"			"%radius"
@@ -1043,6 +1046,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"0"
+				"IsPurgable"	"0"
 				"OnAttack"
 				{
 					"RunScript"
@@ -1757,6 +1761,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -2034,6 +2039,7 @@
 		{
 			"modifier_mantle_of_flames_buff"
 			{
+				"IsPurgable"	"0"
 				"ThinkInterval"			"0.1"
 				"OnIntervalThink"
 				{
@@ -2327,6 +2333,8 @@
 			"modifier_cleric_bless_soul_aura"
 			{
 				"Passive"				"1"
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"Aura"					"modifier_cleric_bless_soul"
 				"Aura_Radius"			"900"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -2504,6 +2512,7 @@
 			{
 				"Passive"					"1"
 				"IsHidden"					"1"
+				"IsPurgable"				"0"
 				"EffectName"   				"particles/hero_cleric/cleric_shield.vpcf"
 				"EffectAttachType"	 		"attach_hitloc"
 				"ThinkInterval"				"0.03"
@@ -2550,6 +2559,7 @@
 			{
 				"IsBuff"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK" "%damage_blocked"
@@ -2598,6 +2608,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 	
 				"OnAttackLanded"
 				{
@@ -3485,6 +3496,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"Aura"					"modifier_entropist_sure_footing"
 				"Aura_Radius"			"%radius"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -3966,6 +3978,7 @@
 			"modifier_faenrae_champion_dark_hand_curse"
 			{
 				"Passive"	"1"
+				"IsPurgable"	"0"
 				"OnKill"
 				{
 					"RunScript"
@@ -4014,6 +4027,7 @@
 			"modifier_faenrae_champion_dark_hand_curse_active"
 			{
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"OnCreated"
 				{
 					"RunScript"
@@ -4071,6 +4085,7 @@
 			{
 				"Passive"					"1"
 				"IsHidden"					"1"
+				"IsPurgable"				"0"
 				"OnCreated"
 				{
 					"ApplyModifier"
@@ -4105,6 +4120,7 @@
 			"modifier_faenrae_champion_faenrae_blood_hidden"
 			{
 				"IsHidden"					"1"
+				"IsPurgable"				"0"
 				"Duration"					"%fade_time"
 				"OnDestroy"
 				{
@@ -4118,6 +4134,7 @@
 			"modifier_faenrae_champion_faenrae_blood_true_sight"
 			{
 				"Passive"	"1"
+				"IsPurgable"	"0"
 				"Duration"	"-1"
 				"ThinkInterval"	"0.25"
 				"OnIntervalThink"
@@ -4211,6 +4228,7 @@
 		{
 			"modifier_faenrae_champion_inner_chaos"
 			{
+				"IsPurgable"				"0"
 				"Duration"					"%duration"
 				"EffectName" 				"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
 				"EffectAttachType"  		"follow_origin"
@@ -4463,6 +4481,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -4474,6 +4493,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
 					"Random"
@@ -4498,6 +4518,7 @@
 			{
 				"Duration"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -4565,7 +4586,7 @@
 			{
 				"Passive" "1"
 				"IsHidden"	"1"
-				 
+				"IsPurgable"	"0"
 				"OnTakeDamage"
 				{
 					"Random"
@@ -4618,6 +4639,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -4961,6 +4983,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				
 				"Aura"					"modifier_havroth_thorns"
 				"Aura_Radius"			"900"
@@ -5475,6 +5498,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"OnCreated"
 				{
 					"RunScript"
@@ -5854,6 +5878,7 @@
 				"Passive"			"0"
 				"IsHidden"			"0"
 				"IsDebuff"			"0"
+				"IsPurgable"		"0"
 		
 				"EffectName"		"particles/units/heroes/hero_medusa/medusa_mana_shield.vpcf"
 				"EffectAttachType"	"follow_origin"
@@ -5933,6 +5958,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"OnAttackLanded"
 				{
 					"ApplyModifier"
@@ -5989,6 +6015,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -6179,6 +6206,7 @@
 			{
 				"Passive"               "1"
 				"IsHidden"				"1"
+				"IsPurgable"	"0"
 				"Orb"
 				{
 					"Priority"			"DOTA_ORB_PRIORITY_ABILITY"
@@ -6249,6 +6277,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
 					"Random"
@@ -6273,6 +6302,7 @@
 			{
 				"Duration"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -6471,6 +6501,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"OnAttacked"
 				{
 					"ApplyModifier"
@@ -6484,6 +6515,7 @@
 			{
 				"Duration"	"2"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 			}
 		}	
 		// Special
@@ -6517,6 +6549,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"RunScript"
@@ -6669,6 +6702,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 	
 				"OnAttacked"
 				{
@@ -6684,6 +6718,7 @@
 			{
 				"Duration"	"2"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 			}
 	
 		}
@@ -6737,6 +6772,7 @@
 			{
 				"Passive"               "1"
 				"IsHidden"				"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_DISABLE_TURNING"		"1"
@@ -6818,6 +6854,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT"	"%damage_reduction"
@@ -6853,6 +6890,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
@@ -6951,6 +6989,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 	
 				"OnAttacked"
 				{
@@ -6966,6 +7005,7 @@
 			{
 				"Duration"	"2"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 			}
 	
 		}
@@ -6998,6 +7038,7 @@
 		{
 			"modifier_mob_lifesteal"
 			{
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -7108,6 +7149,7 @@
 			{
 				"Passive"				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"OnCreated"
 				{
 					"AttachEffect"
@@ -7130,6 +7172,7 @@
 			{
 				"IsHidden"				"0"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				
 				"Aura"					"mana_drain"
 				"Aura_Radius"			"%health_radius"
@@ -7190,6 +7233,7 @@
 			{
 				"Passive"					"1"
 				"IsHidden"					"1"
+				"IsPurgable"				"0"
 				"OnCreated"
 				{
 					"ApplyModifier"
@@ -7219,6 +7263,7 @@
 			"modifier_mob_permanent_invisibility_hidden"
 			{
 				"IsHidden"					"1"
+				"IsPurgable"				"0"
 				"Duration"					"%fade_time"
 				"OnDestroy"
 				{
@@ -7265,6 +7310,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"ApplyModifier"
@@ -7347,6 +7393,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -7414,6 +7461,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"OnCreated"
 				{
 					"ApplyModifier"
@@ -7425,6 +7473,7 @@
 			}
 			"modifier_satyr_sight_true_sight"
 			{
+				"IsPurgable"	"0"
 				"Passive"	"1"
 				"Duration"	"-1"
 				"ThinkInterval"	"0.25"
@@ -7549,6 +7598,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT"	"%damage_reduction"
@@ -7689,6 +7739,7 @@
 			{
 				"IsHidden"				"0"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"Aura"					"moonbeam_mana_regen"
 				"Aura_Radius"			"200"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -8135,6 +8186,7 @@
 			{
 				"Passive"				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"Aura"					"modifier_backfire_aura"
 				"Aura_Radius"			"%radius"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -8258,6 +8310,7 @@
 			"modifier_oak_hardened_skin"
 			{
 				"Passive" 				"1"
+				"IsPurgable"			"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"	"%strength_bonus"
@@ -8833,7 +8886,8 @@
 			{
 				"Passive" "1"
 				"IsHidden"	"1"
-				 
+				"IsPurgable"	"0"
+				
 				"OnAttackLanded"
 				{
 					"Random"
@@ -8941,6 +8995,7 @@
 		{
 			"modifier_empower_bracers"
 			{
+				"IsPurgable"	"0"
 				"Duration"	"%duration"
 				"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
 				"EffectAttachType"	"attach_hitloc"
@@ -8957,6 +9012,7 @@
 			"modifier_empower_bracers_proc"
 			{
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"RemoveModifier"
@@ -9036,6 +9092,7 @@
 			{
 				"Passive" "1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				 
 				"OnAttackLanded"
 				{
@@ -9340,6 +9397,7 @@
 			{
 				"IsHidden"	"1"
 				"Passive"	"1"
+				"IsPurgable"	"0"
 				 
 				 "Properties"
 				 {
@@ -9379,6 +9437,7 @@
 			{	
 				"IsHidden"	"1"
 				"Passive"	"1"
+				"IsPurgable"	"0"
 	
 				"OnAttacked"
 				{
@@ -9529,6 +9588,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				
 				"Aura"					"modifiers_courage_aura"
 				"Aura_Radius"			"%radius"
@@ -10628,6 +10688,7 @@
 		{
 			"modifier_armageddon"
 			{
+				"IsPurgable"			"0"
 				"Duration"				"%duration"
 				"Attributes"	"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"ThinkInterval"			"%interval"
@@ -11001,6 +11062,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -11267,6 +11329,7 @@
 			"modifier_sniper_lucky_shot"
 			{
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"OnAttackStart"
 				{
 					"Random"
@@ -11319,6 +11382,7 @@
 			{
 				"Passive"				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
@@ -12456,6 +12520,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT" "%evasion"
@@ -12507,7 +12572,8 @@
 			"starlight_sphere_modifier"
 			{
 				"Passive"           	"1"
-				"IsHidden"				"1"    
+				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"States"
 				{
 					"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"
@@ -12717,6 +12783,7 @@
 		{
 			"modifier_summoner_flag_of_summoning_aura"
 			{
+				"IsPurgable"			"0"
 				"Duration"				"%duration"
 				"ThinkInterval"			"0.03"
 				"OnIntervalThink"
@@ -12736,6 +12803,7 @@
 			}
 			"modifier_summoner_flag_of_summoning"
 			{
+				"IsPurgable"	"0"
 				"Duration"				"1"
 				"Properties"
 				{
@@ -12783,6 +12851,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -12803,6 +12872,7 @@
 			{
 				"Duration"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"
@@ -12850,6 +12920,7 @@
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -12919,6 +12990,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"   "%evasion"
@@ -12948,6 +13020,7 @@
 			{
 				"Passive"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -13036,6 +13109,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"OnAttackLanded"
 				{
 					"CleaveAttack" //far
@@ -13636,6 +13710,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				"Aura"					"modifier_tempest_zephyr_proxy_aura"
 				"Aura_Radius"			"500"
 				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
@@ -13931,6 +14006,7 @@
 			{
 				"Passive" 				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"OnAttackLanded"
 				{
 					"Random"
@@ -14183,6 +14259,7 @@
 			{
 				"Duration"	"1"
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_damage"
@@ -14471,6 +14548,7 @@
 				"ThinkInterval"			"0.1"
 				"Passive"				"1"
 				"IsHidden"				"1"
+				"IsPurgable"			"0"
 				"OnIntervalThink"
 				{
 					"RunScript"
@@ -14482,6 +14560,7 @@
 			}	
 			"modifier_soul_feast_passive_timer"
 			{
+				"IsPurgable"			"0"
 				"Duration"				"%passive_spell_duration"
 				"OnDestroy"
 				{
@@ -14764,6 +14843,7 @@
 			{
 				"IsHidden"				"1"
 				"Passive"				"1"
+				"IsPurgable"			"0"
 				
 				"Aura"					"armor_degen"
 				"Aura_Radius"			"%radius"
@@ -14967,6 +15047,7 @@
 			{
 				"Passive" "1"
 				"IsHidden" "1"
+				"IsPurgable"	"0"
 				"OnCreated"
 				{
 					"RunScript"
@@ -15868,6 +15949,7 @@
 			}
 			"modifier_weaponsmith_cambrinth_charge"
 			{
+				"IsPurgable"	"0"
 				"Duration"				"-1"
 				"Properties"
 				{
@@ -15911,6 +15993,7 @@
 	
 			"modifier_weaponsmith_cambrinth_charge_linger"
 			{
+				"IsPurgable"	"0"
 				"Duration"				"3"
 				"Properties"
 				{
@@ -15929,6 +16012,7 @@
 			"modifier_weaponsmith_charge_fx"
 			{
 				"IsHidden"	"1"
+				"IsPurgable"	"0"
 				"Duration"	"1"
 				"OnCreated"
 				{

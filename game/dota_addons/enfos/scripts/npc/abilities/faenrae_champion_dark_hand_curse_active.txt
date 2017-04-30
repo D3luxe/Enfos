@@ -17,6 +17,7 @@
 		"modifier_faenrae_champion_dark_hand_curse_active"
 		{
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"OnCreated"
 			{
 				"RunScript"

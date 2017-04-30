@@ -71,6 +71,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"OnAttacked"
 			{
 				"ApplyModifier"
@@ -84,6 +85,7 @@
 		{
 			"Duration"	"2"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 		}
 	}	
 	// Special

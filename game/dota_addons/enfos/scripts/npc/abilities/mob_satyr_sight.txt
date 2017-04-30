@@ -11,6 +11,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"OnCreated"
 			{
 				"ApplyModifier"
@@ -22,6 +23,7 @@
 		}
 		"modifier_satyr_sight_true_sight"
 		{
+			"IsPurgable"	"0"
 			"Passive"	"1"
 			"Duration"	"-1"
 			"ThinkInterval"	"0.25"

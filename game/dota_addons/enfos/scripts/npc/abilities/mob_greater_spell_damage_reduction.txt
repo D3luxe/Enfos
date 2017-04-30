@@ -14,6 +14,7 @@
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_INCOMING_SPELL_DAMAGE_CONSTANT"	"%damage_reduction"

@@ -23,6 +23,7 @@
 		{
 			"Passive"					"1"
 			"IsHidden"					"1"
+			"IsPurgable"				"0"
 			"OnCreated"
 			{
 				"ApplyModifier"
@@ -52,6 +53,7 @@
 		"modifier_mob_permanent_invisibility_hidden"
 		{
 			"IsHidden"					"1"
+			"IsPurgable"				"0"
 			"Duration"					"%fade_time"
 			"OnDestroy"
 			{

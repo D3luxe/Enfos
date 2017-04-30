@@ -58,6 +58,7 @@
 	{
 		"modifier_faenrae_champion_inner_chaos"
 		{
+			"IsPurgable"				"0"
 			"Duration"					"%duration"
 			"EffectName" 				"particles/units/heroes/hero_terrorblade/terrorblade_metamorphosis.vpcf"
 			"EffectAttachType"  		"follow_origin"

@@ -48,6 +48,7 @@
 		{
 			"Duration"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_damage"

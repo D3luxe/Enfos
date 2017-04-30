@@ -36,6 +36,7 @@
 		{
 			"Passive"               "1"
 			"IsHidden"				"1"
+			"IsPurgable"	"0"
 			"Orb"
 			{
 				"Priority"			"DOTA_ORB_PRIORITY_ABILITY"

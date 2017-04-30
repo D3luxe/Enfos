@@ -15,6 +15,7 @@
 		{
 			"Passive"				"1"
 			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_ATTACKSPEED_BONUS_CONSTANT"	"%attack_speed"
