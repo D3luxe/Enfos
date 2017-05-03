@@ -3,7 +3,7 @@ function faenrae_blood_true_sight(keys)
 	local ability = keys.ability
 	local abilityLevel = ability:GetLevel()
 	local radius = ability:GetLevelSpecialValueFor("radius", abilityLevel - 1)
-	caster:AddNewModifier(caster, nil, 'modifier_greevil_truesight', {true_sight_range = radius})
+	caster:AddNewModifier(caster, nil, 'modifier_truesight', {true_sight_range = radius})
 end
 	
 

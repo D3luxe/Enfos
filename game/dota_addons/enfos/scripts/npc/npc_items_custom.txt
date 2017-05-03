@@ -2633,6 +2633,38 @@
 			}
 		}
 	}
+	"item_manual_of_combat"
+	{
+		// General
+		//-------------------------------------------------------------------------------------------------------------
+		"ID"							"3006"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
+		"BaseClass"						"item_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"AbilityTextureName"			"manual_of_combat"
+		//"ItemStockMax"					"30"
+		//"ItemStockInitial"				"30"
+		//"ItemStockTime"					"1.0"
+	
+		// Item Info
+		//-------------------------------------------------------------------------------------------------------------
+		"ItemCost"						"4000"
+		"ItemShopTags"					"consumable"
+		"ItemQuality"					"consumable"
+		"ItemInitialCharges"			"1"
+		"ItemStackable"					"1"
+		"ItemPermanent"					"0"
+		"IsTome"							"damage"
+		"Bonus_Stat"						"30"
+	
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_stat"			"30"
+			}
+		}
+	}
 	"item_modifier_master"
 	{
 		"ID"							"2101"
@@ -4465,38 +4497,6 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_stat"			"10"
-			}
-		}
-	}
-	"item_manual_of_combat"
-	{
-		// General
-		//-------------------------------------------------------------------------------------------------------------
-		"ID"							"3006"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
-		"BaseClass"						"item_datadriven"
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"manual_of_combat"
-		//"ItemStockMax"					"30"
-		//"ItemStockInitial"				"30"
-		//"ItemStockTime"					"1.0"
-	
-		// Item Info
-		//-------------------------------------------------------------------------------------------------------------
-		"ItemCost"						"4000"
-		"ItemShopTags"					"consumable"
-		"ItemQuality"					"consumable"
-		"ItemInitialCharges"			"1"
-		"ItemStackable"					"1"
-		"ItemPermanent"					"0"
-		"IsTome"							"damage"
-		"Bonus_Stat"						"30"
-	
-		"AbilitySpecial"
-		{
-			"01"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"bonus_stat"			"30"
 			}
 		}
 	}
