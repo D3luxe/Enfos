@@ -3,31 +3,11 @@
 		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
 		<include src="file://{resources}/styles/custom_game/ss_exchange.css"/>
 	</styles>
-	<script>
-		var secretList = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("shop").FindChildTraverse("Main").FindChildTraverse("HeightLimiter").FindChildTraverse("GridSecretShopItems").FindChildTraverse("ShopItems_secretshop");
-		
-		var itemCenter = secretList.Children();
-		for (var ds of itemCenter) {ds.style.horizontalAlign = "center";}
-		//secretList.FindChildTraverse("SecretShopItem").style.horizontalAlign = "center";
-		
-		var exchangeBox = $.CreatePanel("Panel", $.GetContextPanel(), "ExchangeBase");
-		exchangeBox.BLoadLayoutSnippet("ExchangeBase");
-		exchangeBox.SetParent(secretList);
-		
-		var topLabel = $.CreatePanel("Label", $.GetContextPanel(), "ExchangeLabel");
-		topLabel.BLoadLayoutSnippet("ExchangeLabel");
-		topLabel.SetParent(exchangeBox);
-		topLabel.text = "LUMBER EXCHANGE";
-		
-		var itemRemoval = secretList.FindChildrenWithClassTraverse("SecretShopItem");
-		//$.Msg(itemRemoval);
-		for (var bg of itemRemoval) {bg.style.visibility = "collapse";}
-	</script>
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/ss_exchange.js" />
 	</scripts>
 	<Panel hittest="false" class="Main">
-		<Panel id="ExchangeBase">
+		<!--<Panel id="ExchangeBase">
 			<Label id="ExchangeLabel" text="LUMBER EXCHANGE" />
 			<Panel id="ExchangeBuffer">
 				<Panel id="LabelPanel">
@@ -36,16 +16,19 @@
 				<Panel id="ButtonPanel">
 					<Button id="BuyButton1" onactivate="DoExchange(0)">
 						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="1" />
 						<Label id="BuyCostLabel" text="125" />
 					</Button>
 					<Panel id="Buffer1" />
 					<Button id="BuyButton2" onactivate="DoExchange(1)">
 						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="10" />
 						<Label id="BuyCostLabel" text="1250" />
 					</Button>
 					<Panel id="Buffer2" />
 					<Button id="BuyButton3" onactivate="DoExchange(2)">
 						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="100" />
 						<Label id="BuyCostLabel" text="12500" />
 					</Button>
 				</Panel>
@@ -55,20 +38,23 @@
 				<Panel id="ButtonPanel2">
 					<Button id="SellButton1" onactivate="DoExchange(3)">
 						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="100" />
 						<Label id="SellCostLabel" text="1" />
 					</Button>
 					<Panel id="Buffer3" />
 					<Button id="SellButton2" onactivate="DoExchange(4)">
 						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="1000" />
 						<Label id="SellCostLabel" text="10" />
 					</Button>
 					<Panel id="Buffer4" />
 					<Button id="SellButton3" onactivate="DoExchange(5)">
 						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="10000" />
 						<Label id="SellCostLabel" text="100" />
 					</Button>
 				</Panel>
 			</Panel>
-		</Panel>
+		</Panel>-->
 	</Panel>
 </root>
