@@ -4754,6 +4754,20 @@
 		}
 	}	
 	//=================================================================================================================
+	// Secret Shop Dummy for Lumber Trade UI
+	//=================================================================================================================
+	"npc_dummyshop"
+	{
+		"BaseClass"					"npc_dota_creature"
+		"Model"						"models/development/invisiblebox.vmdl"
+		"Ability1"					"spell_dummyshop"
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"BountyXP"					"0"
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		"StatusHealth"				"5000"
+		"TeamName"					"DOTA_TEAM_NEUTRALS"
+	}
+	//=================================================================================================================
 	// Dummy unit.
 	//=================================================================================================================
 	"npc_dummy_unit"
