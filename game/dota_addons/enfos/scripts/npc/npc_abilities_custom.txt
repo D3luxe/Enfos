@@ -12468,7 +12468,7 @@
 		{
 			"modifier_dummyshop"
 			{
-				//"IsHidden"				"1"
+				"IsHidden"				"1"
 				"Passive"				"1"
 				"IsPurgable"			"0"
 				
@@ -12491,7 +12491,7 @@
 			"modifier_get_wood"
 			{
 				"Passive"       "1"
-				//"Hidden"		"1"
+				"IsHidden"		"1"
 				"EffectName"	""
 			}
 		}
