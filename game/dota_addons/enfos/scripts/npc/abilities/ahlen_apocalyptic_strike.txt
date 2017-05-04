@@ -20,6 +20,11 @@
 			"IsPurgable"	"0"
 			"OnAttackStart"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"apocalyptic_strike_crit"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%crit_chance"

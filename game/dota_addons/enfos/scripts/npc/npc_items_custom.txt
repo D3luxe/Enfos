@@ -4818,9 +4818,15 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
-				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
+				"IsPurgable"		"0"
+				//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"uthmors_mirror_blade_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"
@@ -4928,9 +4934,15 @@
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"uthmors_skullcleaver_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"

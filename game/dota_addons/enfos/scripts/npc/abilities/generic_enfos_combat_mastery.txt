@@ -33,6 +33,11 @@
 			"IsPurgable"	"0"
 			"OnAttackStart"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"combat_mastery_crit"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%crit_chance"

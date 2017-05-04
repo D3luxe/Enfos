@@ -25,9 +25,15 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
+			"IsPurgable"		"0"
 			//"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE" //make sure onattackstart doesn't happen twice
 			"OnAttackStart"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"uthmors_skullcleaver_crit"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%crit_chance"
@@ -56,6 +62,7 @@
 		"uthmors_skullcleaver_crit"
 		{
 			"IsHidden"		"1"
+			"IsPurgable"		"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"

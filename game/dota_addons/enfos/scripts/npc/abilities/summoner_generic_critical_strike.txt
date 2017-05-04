@@ -16,6 +16,11 @@
 			"IsPurgable"	"0"
 			"OnAttackLanded"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_summoner_generic_critical_strike_damage"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%chance"

@@ -22,6 +22,11 @@
 				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"apocalyptic_strike_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"
@@ -4496,6 +4501,11 @@
 				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"combat_mastery_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"
@@ -6280,6 +6290,11 @@
 				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"mob_critical_strike_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"
@@ -12895,6 +12910,11 @@
 				"IsPurgable"	"0"
 				"OnAttackLanded"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"modifier_summoner_generic_critical_strike_damage"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%chance"
@@ -14282,6 +14302,11 @@
 				"IsPurgable"	"0"
 				"OnAttackStart"
 				{
+					"RemoveModifier"
+					{
+						"ModifierName"		"modifier_behead_crit"
+						"Target"			"CASTER"	
+					}
 					"Random"
 					{
 						"Chance" "%crit_chance"
