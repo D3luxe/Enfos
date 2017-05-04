@@ -17,6 +17,7 @@ function BlessSoul(keys)
 				endTime = 0.05,
 				callback = function()
 					unit:SetTimeUntilRespawn(ability:GetLevelSpecialValueFor("reincarnate_time",ability:GetLevel()-1))
+					unit.killPro = true
 					--[[print("Time to respawn: "..unit:GetTimeUntilRespawn())
 					Timers:CreateTimer(DoUniqueString("murr"), {
 						endTime = unit:GetTimeUntilRespawn(),

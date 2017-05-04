@@ -2651,6 +2651,20 @@ function CEnfosGameMode:OnNPCSpawned( event )
 		 	print("Base armor: "..spawnedUnit.baseArmor)
 
 			GameRules.PLAYERS_PICKED_HERO=GameRules.PLAYERS_PICKED_HERO+1
+		else
+			spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_invulnerable", {duration = 2.5})
+			Timers:CreateTimer(DoUniqueString("protectKiller"), {
+				endTime = 0.001,
+				callback = function()
+					if spawnedUnit:FindModifierByName("modifier_buyback_gold_penalty") ~= nil then
+						spawnedUnit:RemoveModifierByName("modifier_invulnerable")
+					end
+					if spawnedUnit.killPro ~= nil then
+						spawnedUnit:RemoveModifierByName("modifier_invulnerable")
+						spawnedUnit.killPro = nil
+					end
+				end
+			})
 		end
 
 	 end
