@@ -1385,6 +1385,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
 				unit2:RemoveModifierByName("modifier_tower_truesight_aura")
 				unit2:RemoveModifierByName("modifier_invulnerable")
+				unit2:StartGesture(ACT_DOTA_CAPTURE)
 				spawnedUnitIndex.spellbringer = unit2
 				--unit2:SetRenderColor(r,g,b)
 
