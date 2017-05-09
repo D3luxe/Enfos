@@ -451,7 +451,7 @@ function SummonDarkrift(keys)
 	local curUnits = 0
 	local thisSpell = caster:GetItemInSlot(0)
 	local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
-	local round = Enfos.curRound + math.random(3, 5)
+	local round = Enfos.curRound + 3
 -- filter out invalid rounds
 	if round == 20 then
 		round = 19
