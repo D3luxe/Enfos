@@ -2,7 +2,7 @@
 {
 	"ID"							"3011"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"spellbringer_summon_sidhlot"
+	"AbilityTextureName"			"item_spellbringer_summon_sidhlot"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 	"AbilityCooldown"				"90"
 	"AbilityManaCost"				"1"		//475

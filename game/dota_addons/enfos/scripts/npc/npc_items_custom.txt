@@ -3747,7 +3747,7 @@
 	{
 		"ID"							"3009"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"spellbringer_greater_darkrift"
+		"AbilityTextureName"			"item_spellbringer_greater_darkrift"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"475"		//475
@@ -3845,7 +3845,7 @@
 	{
 		"ID"							"3012"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"spellbringer_summon_arhat"
+		"AbilityTextureName"			"item_spellbringer_summon_arhat"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3873,7 +3873,7 @@
 	{
 		"ID"							"3010"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"spellbringer_summon_havroth"
+		"AbilityTextureName"			"item_spellbringer_summon_havroth"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3904,7 +3904,7 @@
 	{
 		"ID"							"3011"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"spellbringer_summon_sidhlot"
+		"AbilityTextureName"			"item_spellbringer_summon_sidhlot"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3932,7 +3932,7 @@
 	{
 		"ID"							"3013"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"spellbringer_summon_uthmor"
+		"AbilityTextureName"			"item_spellbringer_summon_uthmor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
