@@ -2599,7 +2599,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"bounty_hunter_wind_walk"
+		"AbilityTextureName" 			"dark_fiend_cleave"
 		"MaxLevel"						"1"
 		
 		"Precache"

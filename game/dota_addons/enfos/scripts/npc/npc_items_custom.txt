@@ -3772,7 +3772,7 @@
 			"model"						"models/items/broodmother/spiderling/thistle_crawler/thistle_crawler.vmdl"												
 			"model"						"models/creeps/neutral_creeps/n_creep_golem_b/n_creep_golem_b.vmdl"													
 			"model"						"models/heroes/lone_druid/spirit_bear.vmdl"													
-			"model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"														
+			"model"						"models/creeps/neutral_creeps/n_creep_satyr_spawn_a/n_creep_satyr_spawn_a.vmdl"														
 			"model"						"models/items/lone_druid/bear/spirit_of_the_atniw/spirit_of_the_atniw.vmdl"															
 			"model"						"models/creeps/neutral_creeps/n_creep_ogre_lrg/n_creep_ogre_lrg.vmdl"														
 			"model"						"models/creeps/neutral_creeps/n_creep_beast/n_creep_beast.vmdl"														

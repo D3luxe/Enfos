@@ -5,28 +5,28 @@ var nexWav2Stats = {};
 
 function AbilityShowTooltip(event)
 {
-	if (event == 0){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#CurrentWaveIcon"),	curWavStats.name,
+	if (event == 0){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#CurrentWaveIcon"),	"#"+curWavStats.name,
 	"<b>HP:</b> "+curWavStats.hp.toString()+" (+"+curWavStats.hpRegen.toString()+"/s)<br/> <b>MP:</b> "
 	+curWavStats.mp.toString()+" (+"+curWavStats.mpRegen.toString()+"/s)<br/> <b>Attack:</b> "
 	+curWavStats.atkMin.toString()+"-"+curWavStats.atkMax.toString()+" ("+curWavStats.atkType+")<br/>"
 	+curWavStats.atkRate.toString()+"/s - "+curWavStats.atkRange.toString()+" Range ("+curWavStats.atkMelee+")<br/> <b>Defense:</b> "
 	+curWavStats.armor.toString()+" Armor ("+curWavStats.armorType+") / "+curWavStats.armorMagic.toString()+"% Spell Resistance<br/> <b>Speed:</b> "
 	+curWavStats.speed.toString());}
-	if (event == 1){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#CurrentWaveIcon2"),	curWav2Stats.name,
+	if (event == 1){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#CurrentWaveIcon2"),	"#"+curWav2Stats.name,
 	"<b>HP:</b> "+curWav2Stats.hp.toString()+" (+"+curWav2Stats.hpRegen.toString()+"/s)<br/> <b>MP:</b> "
 	+curWav2Stats.mp.toString()+" (+"+curWav2Stats.mpRegen.toString()+"/s)<br/> <b>Attack:</b> "
 	+curWav2Stats.atkMin.toString()+"-"+curWav2Stats.atkMax.toString()+" ("+curWav2Stats.atkType+")<br/>"
 	+curWav2Stats.atkRate.toString()+"/s - "+curWav2Stats.atkRange.toString()+" Range ("+curWav2Stats.atkMelee+")<br/> <b>Defense:</b> "
 	+curWav2Stats.armor.toString()+" Armor ("+curWav2Stats.armorType+") / "+curWav2Stats.armorMagic.toString()+"% Spell Resistance<br/> <b>Speed:</b> "
 	+curWav2Stats.speed.toString());}
-	if (event == 2){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#NextWaveIcon"),		nexWavStats.name,
+	if (event == 2){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#NextWaveIcon"),		"#"+nexWavStats.name,
 	"<b>HP:</b> "+nexWavStats.hp.toString()+" (+"+nexWavStats.hpRegen.toString()+"/s)<br/> <b>MP:</b> "
 	+nexWavStats.mp.toString()+" (+"+nexWavStats.mpRegen.toString()+"/s)<br/> <b>Attack:</b> "
 	+nexWavStats.atkMin.toString()+"-"+nexWavStats.atkMax.toString()+" ("+nexWavStats.atkType+")<br/>"
 	+nexWavStats.atkRate.toString()+"/s - "+nexWavStats.atkRange.toString()+" Range ("+nexWavStats.atkMelee+")<br/> <b>Defense:</b> "
 	+nexWavStats.armor.toString()+" Armor ("+nexWavStats.armorType+") / "+nexWavStats.armorMagic.toString()+"% Spell Resistance<br/> <b>Speed:</b> "
 	+nexWavStats.speed.toString());}
-	if (event == 3){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#NextWaveIcon2"),	nexWav2Stats.name,
+	if (event == 3){$.DispatchEvent( "DOTAShowTitleTextTooltip",$("#NextWaveIcon2"),	"#"+nexWav2Stats.name,
 	"<b>HP:</b> "+nexWav2Stats.hp.toString()+" (+"+nexWav2Stats.hpRegen.toString()+"/s)<br/> <b>MP:</b> "
 	+nexWav2Stats.mp.toString()+" (+"+nexWav2Stats.mpRegen.toString()+"/s)<br/> <b>Attack:</b> "
 	+nexWav2Stats.atkMin.toString()+"-"+nexWav2Stats.atkMax.toString()+" ("+nexWav2Stats.atkType+")<br/>"
@@ -112,6 +112,9 @@ function UpdateThisWave() {
 	curWav2Stats.abil3 = CustomNetTables.GetTableValue("this_wave_table","abil32").value;
 	curWav2Stats.abil4 = CustomNetTables.GetTableValue("this_wave_table","abil42").value;
 	curWav2Stats.abil5 = CustomNetTables.GetTableValue("this_wave_table","abil52").value;
+	
+	$('#CurrentWaveIcon').style.backgroundImage = 'url("s2r://panorama/images/custom_game/'+curWavStats.name+'_png.vtex")';
+	$('#CurrentWaveIcon2').style.backgroundImage = 'url("s2r://panorama/images/custom_game/'+curWav2Stats.name+'_png.vtex")';
 	
 	if (CustomNetTables.GetTableValue("this_wave_table","hide").value == true) {
 		$('#LabelBox').visible = false;
@@ -294,6 +297,9 @@ function UpdateNextWave() {
 	nexWav2Stats.abil3 = CustomNetTables.GetTableValue("next_wave_table","abil32").value;
 	nexWav2Stats.abil4 = CustomNetTables.GetTableValue("next_wave_table","abil42").value;
 	nexWav2Stats.abil5 = CustomNetTables.GetTableValue("next_wave_table","abil52").value;
+	
+	$('#NextWaveIcon').style.backgroundImage = 'url("s2r://panorama/images/custom_game/'+nexWavStats.name+'_png.vtex")';
+	$('#NextWaveIcon2').style.backgroundImage = 'url("s2r://panorama/images/custom_game/'+nexWav2Stats.name+'_png.vtex")';
 	
 	if (CustomNetTables.GetTableValue("next_wave_table","hideSecond").value == true) {
 		$('#SplitBox4').visible = false;
