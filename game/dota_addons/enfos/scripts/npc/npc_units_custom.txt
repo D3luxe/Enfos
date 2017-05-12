@@ -1467,7 +1467,7 @@
 	{										
 		// General
 		//----------------------------------------------------------------
-		"Model"						"models/items/beastmaster/boar/beast_deming/beast_deming.vmdl"	// Model.
+		"Model"						"models/creeps/neutral_creeps/n_creep_satyr_spawn_a/n_creep_satyr_spawn_a.vmdl"	// Model.
 		"BaseClass"					"npc_dota_creature"
 		"SoundSet"					"Lycan_Wolf"
 		"Level"						"1"

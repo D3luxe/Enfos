@@ -85,7 +85,7 @@
 }
 
 #CurrentWaveIcon, #NextWaveIcon, #CurrentWaveIcon2, #NextWaveIcon2  {
-	background-image: url('s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex');
+	background-image: url("s2r://panorama/images/custom_game/npc_dota_creature_crab_png.vtex");
 	background-size: 100%;
 	width: 57px;
  	height: 30px;
