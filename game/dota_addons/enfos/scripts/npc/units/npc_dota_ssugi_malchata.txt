@@ -19,6 +19,7 @@
 	"Ability2"					"ssugi_malchata_evasion"			// Ability 2
 	"Ability3"					"mob_poison_attack"			// Ability 3
 	"Ability4"					"mob_slow"			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------

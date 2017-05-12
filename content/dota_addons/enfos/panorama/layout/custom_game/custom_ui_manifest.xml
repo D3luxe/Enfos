@@ -73,5 +73,6 @@
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/lives.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/test.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ss_exchange.xml" />
+	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/waveinfo.xml" />
   </Panel>
 </root>

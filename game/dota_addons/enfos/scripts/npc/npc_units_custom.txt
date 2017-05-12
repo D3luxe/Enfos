@@ -20,6 +20,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -119,6 +120,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -225,6 +227,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -325,6 +328,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -427,6 +431,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -531,6 +536,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -566,6 +572,8 @@
 		//----------------------------------------------------------------
 		"StatusHealth"				"180"		// Base health.
 		"StatusHealthRegen"			"0.5"		// Health regeneration rate.
+		"StatusMana"				"0"			// Base mana.
+		"StatusManaRegen"			"0"			// Mana regeneration rate.
 		
 		// Vision
 		//----------------------------------------------------------------
@@ -841,6 +849,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1065,6 +1074,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1170,6 +1180,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1270,6 +1281,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1370,6 +1382,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1468,6 +1481,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1567,6 +1581,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1667,6 +1682,7 @@
 		"Ability2"					"mob_mana_burn"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1777,6 +1793,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1876,6 +1893,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -1977,6 +1995,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2075,6 +2094,7 @@
 		"Ability2"					"mob_ensnare_checker"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2179,6 +2199,7 @@
 		"Ability2"					"mob_poison_attack"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2279,6 +2300,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2380,6 +2402,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2485,6 +2508,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2586,6 +2610,7 @@
 		"Ability2"					"mob_lifesteal"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2695,6 +2720,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2799,6 +2825,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -2899,6 +2926,7 @@
 		"Ability2"					"mob_curse"			// Ability 2
 		"Ability3"					"mob_satyr_sight"			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3001,6 +3029,7 @@
 		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					"mob_frenzy"			// Ability 3
 		"Ability4"					"mob_pulverize"			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3108,6 +3137,7 @@
 		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3205,6 +3235,7 @@
 		"Ability2"					"mob_hardened_skin"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3301,6 +3332,7 @@
 		"Ability2"					"mob_hardened_skin"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3400,6 +3432,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3495,6 +3528,7 @@
 		"Ability2"					"mob_feedback"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3589,6 +3623,7 @@
 		"Ability2"					"mob_war_stomp"			// Ability 2
 		"Ability3"					"slai_screamer_evasion"			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3695,6 +3730,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3792,6 +3828,7 @@
 		"Ability2"					"mob_cold_arrow"			// Ability 2
 		"Ability3"					"mob_greater_spell_damage_reduction"			// Ability 3
 		"Ability4"					"mob_critical_strike"			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3896,6 +3933,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -3996,6 +4034,7 @@
 		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					"mob_hardened_skin"			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4092,6 +4131,7 @@
 		"Ability2"					"brown_bear_evasion"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4188,6 +4228,7 @@
 		"Ability2"					"ssugi_malchata_evasion"			// Ability 2
 		"Ability3"					"mob_poison_attack"			// Ability 3
 		"Ability4"					"mob_slow"			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4290,6 +4331,7 @@
 		"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4389,6 +4431,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4490,6 +4533,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4585,6 +4629,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------
@@ -4680,6 +4725,7 @@
 		"Ability2"					""			// Ability 2
 		"Ability3"					""			// Ability 3
 		"Ability4"					""			// Ability 4
+		"Ability5"					""
 	
 		// Armor
 		//----------------------------------------------------------------

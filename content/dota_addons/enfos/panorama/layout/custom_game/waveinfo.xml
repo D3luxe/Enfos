@@ -1,0 +1,64 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/waveinfo.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/waveinfo.js" />
+	</scripts>
+	<Panel hittest="false" class="Main">
+		<Panel id="WaveBase">
+			<Panel id="LabelBox">
+				<Label id="WaveLabel" text="WAVE 69:" />
+			</Panel>
+			<Panel id="InfoBox">
+				<Panel id="SplitBox">
+					<Panel id="CurrentWaveIcon" onmouseover="AbilityShowTooltip(0)" onmouseout="AbilityHideTooltip()" />
+					<Panel id="AbilBox">
+						<DOTAAbilityImage id="CurrentWaveAbil5" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWaveAbil4" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWaveAbil3" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWaveAbil2" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWaveAbil1" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+					</Panel>
+				</Panel>
+				<Panel id="SplitBox2">
+					<Panel id="CurrentWaveIcon2" onmouseover="AbilityShowTooltip(1)" onmouseout="AbilityHideTooltip()" />
+					<Panel id="AbilBox">
+						<DOTAAbilityImage id="CurrentWave2Abil5" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWave2Abil4" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWave2Abil3" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWave2Abil2" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="CurrentWave2Abil1" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="LabelBox2">
+				<Label id="WaveLabel2" text="NEXT WAVE:" />
+				<Label id="GoldLabel" text="25" />
+			</Panel>
+			<Panel id="InfoBox2" visibility="collapse">
+				<Panel id="SplitBox3">
+					<Panel id="NextWaveIcon" onmouseover="AbilityShowTooltip(2)" onmouseout="AbilityHideTooltip()" />
+					<Panel id="AbilBox">
+						<DOTAAbilityImage id="NextWaveAbil5" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWaveAbil4" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWaveAbil3" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWaveAbil2" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWaveAbil1" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+					</Panel>
+				</Panel>
+				<Panel id="SplitBox4">
+					<Panel id="NextWaveIcon2" onmouseover="AbilityShowTooltip(3)" onmouseout="AbilityHideTooltip()" />
+					<Panel id="AbilBox">
+						<DOTAAbilityImage id="NextWave2Abil5" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWave2Abil4" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWave2Abil3" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWave2Abil2" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+						<DOTAAbilityImage id="NextWave2Abil1" abilityname="" onmouseover="DOTAShowAbilityTooltip('')" onmouseout="DOTAHideAbilityTooltip()" />
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

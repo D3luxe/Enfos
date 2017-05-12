@@ -84,6 +84,142 @@ function CEnfosGameRound:Begin()
 			end
 		end
 	})
+	local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
+	local round = Enfos.curRound
+	local roundString = string.format("Round" .. math.min(round+1,42))
+	local roundString2 = string.format("Round" .. math.min(round+2,42))
+	local roundData = kvRound[roundString]
+	local roundData2 = kvRound[roundString2]
+	local unitInfo = LoadKeyValues("scripts/npc/units/" .. roundData.UnitFodder_1a.NPCName .. ".txt")
+	local unitSecondInfo = nil
+	local failsafe = true
+	if roundData.UnitFodder_2a ~= nil then
+		unitSecondInfo = LoadKeyValues("scripts/npc/units/" .. roundData.UnitFodder_2a.NPCName .. ".txt")
+		failsafe = false
+	end
+	local unitInfo2 = LoadKeyValues("scripts/npc/units/" .. roundData2.UnitFodder_1a.NPCName .. ".txt")
+	local unitSecondInfo2 = nil
+	local failsafe2 = true
+	if roundData2.UnitFodder_2a ~= nil then
+		unitSecondInfo2 = LoadKeyValues("scripts/npc/units/" .. roundData2.UnitFodder_2a.NPCName .. ".txt")
+		failsafe2 = false
+	end
+	--print(roundData.UnitFodder_1a.ArmorType)
+	--[[for k,v in pairs(unitInfo) do
+		print(k,v)
+	end]]
+	
+	local daGold = math.min(round+2,42)
+	if daGold == 42 then daGold = 0 end
+	CustomNetTables:SetTableValue("next_wave_table","gold",{value = daGold*25})
+	CustomNetTables:SetTableValue("next_wave_table","name",{value = "#"..roundData2.UnitFodder_1a.NPCName})
+	CustomNetTables:SetTableValue("next_wave_table","hp",{value = unitInfo2.StatusHealth})
+	CustomNetTables:SetTableValue("next_wave_table","hpRegen",{value = unitInfo2.StatusHealthRegen})
+	CustomNetTables:SetTableValue("next_wave_table","mp",{value = unitInfo2.StatusMana})
+	CustomNetTables:SetTableValue("next_wave_table","mpRegen",{value = unitInfo2.StatusManaRegen})
+	CustomNetTables:SetTableValue("next_wave_table","atkMin",{value = unitInfo2.AttackDamageMin})
+	CustomNetTables:SetTableValue("next_wave_table","atkMax",{value = unitInfo2.AttackDamageMax})
+	CustomNetTables:SetTableValue("next_wave_table","atkType",{value = string.gsub(roundData2.UnitFodder_1a.AttackType,"modifier_attack_","")})
+	CustomNetTables:SetTableValue("next_wave_table","atkRate",{value = unitInfo2.AttackRate})
+	CustomNetTables:SetTableValue("next_wave_table","atkRange",{value = unitInfo2.AttackRange})
+	if unitInfo2.AttackCapabilities == "DOTA_UNIT_CAP_RANGED_ATTACK" then CustomNetTables:SetTableValue("next_wave_table","atkMelee",{value = "Ranged"})
+	elseif unitInfo2.AttackCapabilities == "DOTA_UNIT_CAP_MELEE_ATTACK" then CustomNetTables:SetTableValue("next_wave_table","atkMelee",{value = "Melee"})
+	else CustomNetTables:SetTableValue("next_wave_table","atkMelee",{value = "None"}) end
+	CustomNetTables:SetTableValue("next_wave_table","armor",{value = unitInfo2.ArmorPhysical})
+	CustomNetTables:SetTableValue("next_wave_table","armorType",{value = string.gsub(roundData2.UnitFodder_1a.ArmorType,"modifier_armor_","")})
+	if roundData2.UnitFodder_1a.ArmorType == "modifier_armor_hero" then CustomNetTables:SetTableValue("next_wave_table","armorMagic",{value = 25})
+	elseif roundData2.UnitFodder_1a.ArmorType == "modifier_armor_heavy" then CustomNetTables:SetTableValue("next_wave_table","armorMagic",{value = -25})
+	else CustomNetTables:SetTableValue("next_wave_table","armorMagic",{value = 0}) end
+	CustomNetTables:SetTableValue("next_wave_table","speed",{value = unitInfo2.MovementSpeed})
+	CustomNetTables:SetTableValue("next_wave_table","abil1",{value = unitInfo2.Ability1})
+	CustomNetTables:SetTableValue("next_wave_table","abil2",{value = unitInfo2.Ability2})
+	CustomNetTables:SetTableValue("next_wave_table","abil3",{value = unitInfo2.Ability3})
+	CustomNetTables:SetTableValue("next_wave_table","abil4",{value = unitInfo2.Ability4})
+	CustomNetTables:SetTableValue("next_wave_table","abil5",{value = unitInfo2.Ability5})
+	
+	if failsafe2 == false then
+		CustomNetTables:SetTableValue("next_wave_table","name2",{value = "#"..roundData2.UnitFodder_2a.NPCName})
+		CustomNetTables:SetTableValue("next_wave_table","hp2",{value = unitSecondInfo2.StatusHealth})
+		CustomNetTables:SetTableValue("next_wave_table","hpRegen2",{value = unitSecondInfo2.StatusHealthRegen})
+		CustomNetTables:SetTableValue("next_wave_table","mp2",{value = unitSecondInfo2.StatusMana})
+		CustomNetTables:SetTableValue("next_wave_table","mpRegen2",{value = unitSecondInfo2.StatusManaRegen})
+		CustomNetTables:SetTableValue("next_wave_table","atkMin2",{value = unitSecondInfo2.AttackDamageMin})
+		CustomNetTables:SetTableValue("next_wave_table","atkMax2",{value = unitSecondInfo2.AttackDamageMax})
+		CustomNetTables:SetTableValue("next_wave_table","atkType2",{value = string.gsub(roundData2.UnitFodder_2a.AttackType,"modifier_attack_","")})
+		CustomNetTables:SetTableValue("next_wave_table","atkRate2",{value = unitSecondInfo2.AttackRate})
+		CustomNetTables:SetTableValue("next_wave_table","atkRange2",{value = unitSecondInfo2.AttackRange})
+		if unitSecondInfo2.AttackCapabilities == "DOTA_UNIT_CAP_RANGED_ATTACK" then CustomNetTables:SetTableValue("next_wave_table","atkMelee2",{value = "Ranged"})
+		elseif unitSecondInfo2.AttackCapabilities == "DOTA_UNIT_CAP_MELEE_ATTACK" then CustomNetTables:SetTableValue("next_wave_table","atkMelee2",{value = "Melee"})
+		else CustomNetTables:SetTableValue("next_wave_table","atkMelee2",{value = "None"}) end
+		CustomNetTables:SetTableValue("next_wave_table","armor2",{value = unitSecondInfo2.ArmorPhysical})
+		CustomNetTables:SetTableValue("next_wave_table","armorType2",{value = string.gsub(roundData2.UnitFodder_2a.ArmorType,"modifier_armor_","")})
+		if roundData2.UnitFodder_2a.ArmorType == "modifier_armor_hero" then CustomNetTables:SetTableValue("next_wave_table","armorMagic2",{value = 25})
+		elseif roundData2.UnitFodder_2a.ArmorType == "modifier_armor_heavy" then CustomNetTables:SetTableValue("next_wave_table","armorMagic2",{value = -25})
+		else CustomNetTables:SetTableValue("next_wave_table","armorMagic2",{value = 0}) end
+		CustomNetTables:SetTableValue("next_wave_table","speed2",{value = unitSecondInfo2.MovementSpeed})
+		CustomNetTables:SetTableValue("next_wave_table","abil12",{value = unitSecondInfo2.Ability1})
+		CustomNetTables:SetTableValue("next_wave_table","abil22",{value = unitSecondInfo2.Ability2})
+		CustomNetTables:SetTableValue("next_wave_table","abil32",{value = unitSecondInfo2.Ability3})
+		CustomNetTables:SetTableValue("next_wave_table","abil42",{value = unitSecondInfo2.Ability4})
+		CustomNetTables:SetTableValue("next_wave_table","abil52",{value = unitSecondInfo2.Ability5})
+	end
+	CustomNetTables:SetTableValue("next_wave_table","hide",{value = false})
+	CustomNetTables:SetTableValue("next_wave_table","hideSecond",{value = failsafe2})
+	
+	CustomNetTables:SetTableValue("this_wave_table","round",{value = math.min(round+1,42)})
+	CustomNetTables:SetTableValue("this_wave_table","name",{value = "#"..roundData.UnitFodder_1a.NPCName})
+	CustomNetTables:SetTableValue("this_wave_table","hp",{value = unitInfo.StatusHealth})
+	CustomNetTables:SetTableValue("this_wave_table","hpRegen",{value = unitInfo.StatusHealthRegen})
+	CustomNetTables:SetTableValue("this_wave_table","mp",{value = unitInfo.StatusMana})
+	CustomNetTables:SetTableValue("this_wave_table","mpRegen",{value = unitInfo.StatusManaRegen})
+	CustomNetTables:SetTableValue("this_wave_table","atkMin",{value = unitInfo.AttackDamageMin})
+	CustomNetTables:SetTableValue("this_wave_table","atkMax",{value = unitInfo.AttackDamageMax})
+	CustomNetTables:SetTableValue("this_wave_table","atkType",{value = string.gsub(roundData.UnitFodder_1a.AttackType,"modifier_attack_","")})
+	CustomNetTables:SetTableValue("this_wave_table","atkRate",{value = unitInfo.AttackRate})
+	CustomNetTables:SetTableValue("this_wave_table","atkRange",{value = unitInfo.AttackRange})
+	if unitInfo.AttackCapabilities == "DOTA_UNIT_CAP_RANGED_ATTACK" then CustomNetTables:SetTableValue("this_wave_table","atkMelee",{value = "Ranged"})
+	elseif unitInfo.AttackCapabilities == "DOTA_UNIT_CAP_MELEE_ATTACK" then CustomNetTables:SetTableValue("this_wave_table","atkMelee",{value = "Melee"})
+	else CustomNetTables:SetTableValue("this_wave_table","atkMelee",{value = "None"}) end
+	CustomNetTables:SetTableValue("this_wave_table","armor",{value = unitInfo.ArmorPhysical})
+	CustomNetTables:SetTableValue("this_wave_table","armorType",{value = string.gsub(roundData.UnitFodder_1a.ArmorType,"modifier_armor_","")})
+	if roundData.UnitFodder_1a.ArmorType == "modifier_armor_hero" then CustomNetTables:SetTableValue("this_wave_table","armorMagic",{value = 25})
+	elseif roundData.UnitFodder_1a.ArmorType == "modifier_armor_heavy" then CustomNetTables:SetTableValue("this_wave_table","armorMagic",{value = -25})
+	else CustomNetTables:SetTableValue("this_wave_table","armorMagic",{value = 0}) end
+	CustomNetTables:SetTableValue("this_wave_table","speed",{value = unitInfo.MovementSpeed})
+	CustomNetTables:SetTableValue("this_wave_table","abil1",{value = unitInfo.Ability1})
+	CustomNetTables:SetTableValue("this_wave_table","abil2",{value = unitInfo.Ability2})
+	CustomNetTables:SetTableValue("this_wave_table","abil3",{value = unitInfo.Ability3})
+	CustomNetTables:SetTableValue("this_wave_table","abil4",{value = unitInfo.Ability4})
+	CustomNetTables:SetTableValue("this_wave_table","abil5",{value = unitInfo.Ability5})
+	
+	if failsafe == false then
+		CustomNetTables:SetTableValue("this_wave_table","name2",{value = "#"..roundData.UnitFodder_2a.NPCName})
+		CustomNetTables:SetTableValue("this_wave_table","hp2",{value = unitSecondInfo.StatusHealth})
+		CustomNetTables:SetTableValue("this_wave_table","hpRegen2",{value = unitSecondInfo.StatusHealthRegen})
+		CustomNetTables:SetTableValue("this_wave_table","mp2",{value = unitSecondInfo.StatusMana})
+		CustomNetTables:SetTableValue("this_wave_table","mpRegen2",{value = unitSecondInfo.StatusManaRegen})
+		CustomNetTables:SetTableValue("this_wave_table","atkMin2",{value = unitSecondInfo.AttackDamageMin})
+		CustomNetTables:SetTableValue("this_wave_table","atkMax2",{value = unitSecondInfo.AttackDamageMax})
+		CustomNetTables:SetTableValue("this_wave_table","atkType2",{value = string.gsub(roundData.UnitFodder_2a.AttackType,"modifier_attack_","")})
+		CustomNetTables:SetTableValue("this_wave_table","atkRate2",{value = unitSecondInfo.AttackRate})
+		CustomNetTables:SetTableValue("this_wave_table","atkRange2",{value = unitSecondInfo.AttackRange})
+		if unitSecondInfo.AttackCapabilities == "DOTA_UNIT_CAP_RANGED_ATTACK" then CustomNetTables:SetTableValue("this_wave_table","atkMelee2",{value = "Ranged"})
+		elseif unitSecondInfo.AttackCapabilities == "DOTA_UNIT_CAP_MELEE_ATTACK" then  CustomNetTables:SetTableValue("this_wave_table","atkMelee2",{value = "Melee"})
+		else CustomNetTables:SetTableValue("this_wave_table","atkMelee2",{value = "None"}) end
+		CustomNetTables:SetTableValue("this_wave_table","armor2",{value = unitSecondInfo.ArmorPhysical})
+		CustomNetTables:SetTableValue("this_wave_table","armorType2",{value = string.gsub(roundData.UnitFodder_2a.ArmorType,"modifier_armor_","")})
+		if roundData.UnitFodder_2a.ArmorType == "modifier_armor_hero" then CustomNetTables:SetTableValue("this_wave_table","armorMagic2",{value = 25})
+		elseif roundData.UnitFodder_2a.ArmorType == "modifier_armor_heavy" then CustomNetTables:SetTableValue("this_wave_table","armorMagic2",{value = -25})
+		else CustomNetTables:SetTableValue("this_wave_table","armorMagic2",{value = 0}) end
+		CustomNetTables:SetTableValue("this_wave_table","speed2",{value = unitSecondInfo.MovementSpeed})
+		CustomNetTables:SetTableValue("this_wave_table","abil12",{value = unitSecondInfo.Ability1})
+		CustomNetTables:SetTableValue("this_wave_table","abil22",{value = unitSecondInfo.Ability2})
+		CustomNetTables:SetTableValue("this_wave_table","abil32",{value = unitSecondInfo.Ability3})
+		CustomNetTables:SetTableValue("this_wave_table","abil42",{value = unitSecondInfo.Ability4})
+		CustomNetTables:SetTableValue("this_wave_table","abil52",{value = unitSecondInfo.Ability5})
+	end
+	CustomNetTables:SetTableValue("this_wave_table","hide",{value = false})
+	CustomNetTables:SetTableValue("this_wave_table","hideSecond",{value = failsafe})
 end
 
 -- function to fire when the round ends.
@@ -111,7 +247,7 @@ function CEnfosGameRound:End()
 		nTowersStanding = nTowersStanding,
 		nTowersStandingGoldReward = nTowersStandingGoldReward,
 	}
-
+	CustomNetTables:SetTableValue("this_wave_table","hide",{value = true})
 end
 
 

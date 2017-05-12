@@ -19,6 +19,7 @@
 	"Ability2"					"mob_war_stomp"			// Ability 2
 	"Ability3"					"slai_screamer_evasion"			// Ability 3
 	"Ability4"					""			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------

@@ -19,6 +19,7 @@
 	"Ability2"					"mob_cold_arrow"			// Ability 2
 	"Ability3"					"mob_greater_spell_damage_reduction"			// Ability 3
 	"Ability4"					"mob_critical_strike"			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------
