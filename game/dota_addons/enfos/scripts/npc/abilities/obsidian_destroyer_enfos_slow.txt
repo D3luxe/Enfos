@@ -44,6 +44,11 @@
 			"ModifierName" "modifier_slow"
 
 		}
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/shared.lua"
+			"Function"				"DisableRepick"
+		}
 	}
 	
 	"Modifiers"

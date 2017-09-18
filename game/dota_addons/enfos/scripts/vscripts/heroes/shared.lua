@@ -48,3 +48,7 @@ function mob_bash(keys)
 	end
 end
 
+function DisableRepick(keys)
+	local caster = keys.caster
+	if caster.repick == 0 then caster.repick = 1 end
+end

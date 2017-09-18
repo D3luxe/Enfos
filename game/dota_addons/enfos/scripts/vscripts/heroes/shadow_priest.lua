@@ -7,6 +7,7 @@ function preservation(keys)
 	print (shadowArtsLives)
 	local lives = ability:GetSpecialValueFor("lives") + shadowArtsLives
 	GameRules.Enfos:ModifyLife(caster:GetTeam(), 0, lives)
+	if caster.repick == 0 then caster.repick = 1 end
 end
 
 function enfeeble(keys)
@@ -25,6 +26,7 @@ function enfeeble(keys)
 	else
 		ability:ApplyDataDrivenModifier(caster, target, "modifier_enfeeble_enfos", {duration = totalDuration}) -- the logic for enfeeble is handled in addon_game_mode.lua in the OnEntityKilled block
 		target:RemoveModifierByName("modifier_faenellas_grace")
+		if caster.repick == 0 then caster.repick = 1 end
 	end
 end
 

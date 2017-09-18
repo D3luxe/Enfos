@@ -302,7 +302,7 @@ function UpdateTimer()
 	$.GetContextPanel().SetHasClass( "teams_locked", Game.GetTeamSelectionLocked() );
 	$.GetContextPanel().SetHasClass( "teams_unlocked", Game.GetTeamSelectionLocked() == false );
 		
-	if (Game.GetState() == 3)
+	if (Game.GetState() >= 3)
 	{
 		if (transitionHappened == false && Game.GetLocalPlayerInfo().player_has_host_privileges) {
 			SendVotes()

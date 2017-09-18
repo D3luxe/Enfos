@@ -168,4 +168,6 @@ function Nissas_Binding(keys)
 	end
 	
 	ability:ApplyDataDrivenModifier(caster, target, "modifier_nightmare_datadriven", {})
+	
+	if caster.repick == 0 then caster.repick = 1 end
 end

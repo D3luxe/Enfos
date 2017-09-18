@@ -29,6 +29,8 @@ function SleightOfHand(keys)
 	ParticleManager:SetParticleControl(tParticle,1,Vector(1,totalStolen,0))
 	ParticleManager:SetParticleControl(tParticle,2,Vector(1,characters+1,0))
 	ParticleManager:SetParticleControl(tParticle,3,Vector(255,180,0))
+	
+	if caster.repick == 0 then caster.repick = 1 end
 end
 
 function Khri_Silence(keys)
