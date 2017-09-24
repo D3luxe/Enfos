@@ -3193,6 +3193,30 @@ function CEnfosGameMode:OnAbilityCast( keys )
 	
 end
 
+function CEnfosGameMode:OnPlayerChat(event)
+	if event.text == "-repick" then
+		local pid = event.playerid
+		local uid = event.userid
+		local name = PlayerResource:GetPlayerName(uid)
+		--PrintTable(playerColors)
+		local r = playerColors[uid].r
+		local g = playerColors[uid].g
+		local b = playerColors[uid].b
+		
+		local rgb = string.format("%02x%02x%02x",r,g,b)
+		--[[GameRules:SendCustomMessage(
+		"<font color='#"..rgb.."'>"
+		..name
+		.."</font> is repicking!", 0, 0)]]
+		local data = {}
+		data.player = pid
+		data.hero = "npc_dota_hero_wisp"
+		data.color = rgb
+		data.name = name
+		RepickHero(nil,data)
+	end
+end
+
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
 	local nRewardPerTower = self._nTowerRewardAmount + self._nTowerScalingRewardPerRound * (self._nRoundNumber - 1)
 	return nRewardPerTower * nTowersStanding
@@ -3423,6 +3447,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		return 0
 	end
 	
+	if heroName == "npc_dota_hero_wisp" then
+		GameRules:SendCustomMessage(
+		"<font color='#"..event.color.."'>"
+		..event.name
+		.."</font> is repicking!", 0, 0)
+	end
 	if heroName == "npc_dota_hero_random" then
 		local rng = {
 			[1] = "npc_dota_hero_random_combat",
