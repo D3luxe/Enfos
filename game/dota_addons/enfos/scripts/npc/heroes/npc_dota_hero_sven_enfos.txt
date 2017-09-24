@@ -28,6 +28,7 @@
 	
 	"ArmorPhysical"				"3"
 	
+	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
 	"AttributeBaseStrength" 	"11"
 	"AttributeStrengthGain" 	"3.25"
 	"AttributeBaseAgility" 		"6" 
