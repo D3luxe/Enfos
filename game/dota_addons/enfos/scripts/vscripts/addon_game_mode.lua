@@ -1726,7 +1726,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	local attackType = CEnfosGameMode:GetAttackType(attacker)
 	
 	if ability ~= nil and attacker:IsHero() then
-		damage = math.floor(damage/(1+((attacker:GetIntellect()/16)/100))+0.5)
+		damage = math.floor(damage/(1+((attacker:GetIntellect()/14)/100))+0.5)
 	end
 	
 	if damageType == DAMAGE_TYPE_PHYSICAL then
