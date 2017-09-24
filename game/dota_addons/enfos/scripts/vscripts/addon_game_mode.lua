@@ -3467,18 +3467,42 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	if heroName == "npc_dota_hero_random_combat" then
 		heroName = combatClassTable[math.random(#combatClassTable)]
 		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
+		end
 	end
 	if heroName == "npc_dota_hero_random_caster" then
 		heroName = casterClassTable[math.random(#casterClassTable)]
 		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
+		end
 	end
 	if heroName == "npc_dota_hero_random_support" then
 		heroName = supportClassTable[math.random(#supportClassTable)]
 		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
+		end
 	end
 	if heroName == "npc_dota_hero_random_rounded" then
 		heroName = roundedClassTable[math.random(#roundedClassTable)]
 		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
+		end
 	end
 	print("RANDOM SMALL: "..heroName)
 	
