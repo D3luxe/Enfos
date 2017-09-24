@@ -3118,5 +3118,8 @@ function CEnfosGameMode:_SetArmor( cmdName, armor )
 	end
 end
 
+function CEnfosGameMode:SendErrorMessage(playerID, string)
+   CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_error_message", {message=string}) 
+end
 
 
