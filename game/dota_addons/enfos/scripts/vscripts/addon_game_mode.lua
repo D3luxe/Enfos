@@ -884,7 +884,11 @@ function CEnfosGameMode:InitGameMode()
 		self._idmap[id] = v
 	  end
 	end
-
+	
+	-- Change random seed 
+	local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '^0+','') 
+	math.randomseed(tonumber(timeTxt)) 
+	
 	CustomPurgeInit()
 end
 
