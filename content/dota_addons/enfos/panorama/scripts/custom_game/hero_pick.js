@@ -75,6 +75,7 @@ function UpdatePickUI() {
 		//}
 		order += 1;
 	}
+	PickCheck();
 }
 
 function UpdatePrePickIcon(event) {
@@ -89,11 +90,11 @@ function PickCheck() {
 	} else {
 		$("#PickUIBase").visible = true;
 		
-		$('#PortraitBox').visible = false;
-		$('#StatBox').visible = false;
-		$('#SpellBox').visible = false;
-		$('#PortraitLabel').visible = false;
-		$('#WelcomeBox').visible = true;
+		//$('#PortraitBox').visible = false;
+		//$('#StatBox').visible = false;
+		//$('#SpellBox').visible = false;
+		//$('#PortraitLabel').visible = false;
+		//$('#WelcomeBox').visible = true;
 	};
 }
 
@@ -432,7 +433,12 @@ function HeroDataTableFill() {
 }
 
 function UpdateTimer() {
-	if (CustomNetTables.GetTableValue("this_wave_table","round").value >= 4){$('#PickUIBase').visible = false;}
+	if (CustomNetTables.GetTableValue("this_wave_table","round").value >= 4
+	&& $('#PickUIBase').visible == true){
+		$('#PickUIBase').visible = false;
+		heroData[Game.GetLocalPlayerID()] = "npc_dota_hero_random";
+		PickButtonPressed();
+	}
 	var time = Math.floor(Game.GetDOTATime(false,true));
 	var realTime = 0;
 	if (time < 0) {
@@ -458,7 +464,7 @@ function UpdateTimer() {
 }
 
 (function () {
-	CustomNetTables.SubscribeNetTableListener("this_wave_table",UpdateTimer);
+	//CustomNetTables.SubscribeNetTableListener("this_wave_table",UpdateTimer);
 	CustomNetTables.SubscribeNetTableListener("hero_data",HeroDataTableFill);
 	UpdatePickUI();
 	UpdateTimer();

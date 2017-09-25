@@ -3440,11 +3440,16 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	--local wood = player.lumber
 	local sb = player.spellbringer
 	local heroName = event.hero
+	local playerName = PlayerResource:GetPlayerName(pID)
 	
 	if curRound >= 4 or player.repick > 0 then
 		--Notifications:Bottom(pID, {text="You can no longer repick!", duration=3, style={color="red", ["font-size"]="50px"}})
-		CEnfosGameMode:SendErrorMessage(pID, "You can no longer repick!")
-		return 0
+		if curRound >= 4 and PlayerResource:GetSelectedHeroName(pID) == "npc_dota_hero_wisp" and heroName == "npc_dota_hero_random" then
+			--um???
+		else
+			CEnfosGameMode:SendErrorMessage(pID, "You can no longer repick!")
+			return 0
+		end
 	end
 	
 	if heroName == "npc_dota_hero_wisp" then
