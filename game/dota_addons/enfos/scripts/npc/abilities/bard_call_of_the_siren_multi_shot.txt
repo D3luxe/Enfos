@@ -38,6 +38,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"0"
+			"IsPurgable"	"0"
 			"OnAttack"
 			{
 				"RunScript"

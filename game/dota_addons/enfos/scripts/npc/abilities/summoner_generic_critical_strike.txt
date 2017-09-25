@@ -13,8 +13,14 @@
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
+			"IsPurgable"	"0"
 			"OnAttackLanded"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_summoner_generic_critical_strike_damage"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%chance"
@@ -33,6 +39,7 @@
 		{
 			"Duration"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_bonus"

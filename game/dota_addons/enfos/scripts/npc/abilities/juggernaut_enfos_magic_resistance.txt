@@ -16,6 +16,7 @@
 		{
 			"Passive" "1"
 			"IsHidden" "1"
+			"IsPurgable"	"0"
 			"OnCreated"
 			{
 				"RunScript"

@@ -4,6 +4,7 @@ function nexus(keys)
 	local mana_restored = ability:GetSpecialValueFor("mana_restored")
 	local spellbringer = caster.spellbringer
 	spellbringer:GiveMana(mana_restored)
+	if caster.repick == 0 then caster.repick = 1 end
 end
 	
 function merauds_blessing(keys)
@@ -31,6 +32,8 @@ function FaenellasGracePreCast( event )
 		-- Play Error Sound
 		EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", player)
 
+	elseif caster.repick == 0 then
+		caster.repick = 1
 	end
 end
 

@@ -51,6 +51,8 @@ function Tingle( keys )
 			})
 		end
 	end
+	
+	if caster.repick == 0 then caster.repick = 1 end
 
  end
 

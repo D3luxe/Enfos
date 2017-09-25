@@ -6,8 +6,5 @@
 	<scripts>
 		<include src="file://{resources}/scripts/custom_game/action_bar.js" />
 	</scripts>
-	<Panel hittest="true" class="AbilityOverlayRoot">
-		<Panel hittest="true" id="ability_list" />
-	</Panel>
 </root>
 

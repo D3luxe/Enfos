@@ -14,6 +14,7 @@
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"

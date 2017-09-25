@@ -14,6 +14,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"Aura"					"modifier_tempest_zephyr_proxy_aura"
 			"Aura_Radius"			"500"
 			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"

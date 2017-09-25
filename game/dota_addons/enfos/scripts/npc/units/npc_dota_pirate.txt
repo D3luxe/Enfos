@@ -19,6 +19,7 @@
 	"Ability2"					"mob_spell_damage_reduction"			// Ability 2
 	"Ability3"					"mob_frenzy"			// Ability 3
 	"Ability4"					"mob_pulverize"			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------

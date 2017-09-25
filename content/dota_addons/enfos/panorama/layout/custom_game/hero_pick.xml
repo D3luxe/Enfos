@@ -1,0 +1,437 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/hero_pick.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/hero_pick.js"/>
+	</scripts>
+	<Panel class="Main" hittest="false">
+		<Panel id="PickUIBase">
+			<Panel id="TopBarBox">
+				<Panel id="RadiantBox">
+					<Panel id="RadiantPlayerBox1">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box1" />
+					</Panel>
+					<Panel id="RadiantPlayerBox2">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box2" />
+					</Panel>
+					<Panel id="RadiantPlayerBox3">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box3" />
+					</Panel>
+					<Panel id="RadiantPlayerBox4">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box4" />
+					</Panel>
+					<Panel id="RadiantPlayerBox5">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box5" />
+					</Panel>
+				</Panel>
+				<Panel id="TimeBox">
+					<Label id="RoundLabel" text="PICK TIME REMAINING" />
+					<Label id="TimeLabel" text="0:30" />
+				</Panel>
+				<Panel id="DireBox">
+					<Panel id="DirePlayerBox1">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box1" />
+					</Panel>
+					<Panel id="DirePlayerBox2">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box2" />
+					</Panel>
+					<Panel id="DirePlayerBox3">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box3" />
+					</Panel>
+					<Panel id="DirePlayerBox4">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box4" />
+					</Panel>
+					<Panel id="DirePlayerBox5">
+						<Panel id="PlayerIcon" />
+						<Panel id="PlayerColor" />
+						<Label id="PlayerLabel" text="box5" />
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="MiddleBarBox">
+				<Panel id="InformationBox">
+					<Panel id="PortraitBox">
+						<DOTAHeroMovie id="PortraitWebm" heroname="npc_dota_hero_wisp" />
+						<!--<Label id="PortraitLabel" text="your gay" />-->
+					</Panel>
+					<Panel id="StatBox">
+						<Panel id="AttributeBox">
+							<Panel id="AttStrBox">
+								<Panel id="AttGlowBox" />
+								<Image src="file://{images}/hud/pip_str.png" />
+								<Label id="AttBigLabel" text="00" />
+								<Label id="AttSmallLabel" text="(+0.00)" />
+							</Panel>
+							<Panel id="AttAgiBox">
+								<Panel id="AttGlowBox" />
+								<Image src="file://{images}/hud/pip_agi.png" />
+								<Label id="AttBigLabel" text="00" />
+								<Label id="AttSmallLabel" text="(+0.00)" />
+							</Panel>
+							<Panel id="AttIntBox">
+								<Panel id="AttGlowBox" />
+								<Image src="file://{images}/hud/pip_int.png" />
+								<Label id="AttBigLabel" text="00" />
+								<Label id="AttSmallLabel" text="(+0.00)" />
+							</Panel>
+							<Panel id="AttAtkBox">
+								<Button id="AttLeftBox" onmouseover="DOTAShowTextTooltip(#DOTA_Tooltip_modifier_attack_normal_Description)" onmouseout="DOTAHideTextTooltip()">
+									<Image id="oops" src="file://{images}/items/broadsword.png" />
+									<Label id="AttTinyLabel" text="Normal" />
+								</Button>
+								<Panel id="AttRightBox" onmouseover="DOTAShowTextTooltip(#DOTA_Tooltip_modifier_armor_heavy_Description)" onmouseout="DOTAHideTextTooltip()">
+									<Image id="oops" src="file://{images}/items/belt_of_strength.png" />
+									<Label id="AttTinyLabel" text="Unarmored" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="HeroStatBox">
+							<Panel id="HeroHPBox">
+								<Image src="file://{images}/hud/reborn/ult_ready.psd" scaling="none" />
+								<Label id="AttHeroSmallLabel" text="0" />
+							</Panel>
+							<Panel id="HeroMPBox">
+								<Image src="file://{images}/hud/reborn/ult_no_mana.psd" scaling="none" />
+								<Label id="AttHeroSmallLabel" text="0" />
+							</Panel>
+							<Panel id="HeroAtkBox">
+								<Image src="file://{images}/hud/reborn/icon_damage.psd" />
+								<Label id="AttHeroSmallLabel" text="--" />
+							</Panel>
+							<Panel id="HeroAspBox">
+								<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+								<Label id="AttHeroSmallLabel" text="--" />
+							</Panel>
+							<Panel id="HeroRngBox">
+								<Image src="file://{images}/hud/reborn/icon_attack_range.psd" />
+								<Label id="AttHeroSmallLabel" text="--" />
+							</Panel>
+							<Panel id="HeroArmBox">
+								<Image src="file://{images}/hud/reborn/icon_armor.psd" />
+								<Label id="AttHeroSmallLabel" text="0" />
+							</Panel>
+							<Panel id="HeroMRBox">
+								<Image src="file://{images}/hud/reborn/icon_magic_resist.psd" />
+								<Label id="AttHeroSmallLabel" text="0%" />
+							</Panel>
+							<Panel id="HeroSpdBox">
+								<Image src="file://{images}/hud/reborn/icon_speed.psd" />
+								<Label id="AttHeroSmallLabel" text="0" />
+							</Panel>
+						</Panel>
+						<!--<Panel id="SpellBox">
+							<Panel id="SpellBoxInnards">
+								<Panel id="SpellInfo1">
+									<DOTAAbilityImage abilityname="ahlen_apocalyptic_strike" onmouseover="DOTAShowAbilityTooltip('ahlen_apocalyptic_strike')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+								<Panel id="SpellInfo2">
+									<DOTAAbilityImage abilityname="generic_enfos_combat_mastery" onmouseover="DOTAShowAbilityTooltip('generic_enfos_combat_mastery')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+								<Panel id="SpellInfo3">
+									<DOTAAbilityImage abilityname="ahlen_cataclysmic_strike" onmouseover="DOTAShowAbilityTooltip('ahlen_cataclysmic_strike')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+								<Panel id="SpellInfo4">
+									<DOTAAbilityImage abilityname="ahlen_dragon_dance" onmouseover="DOTAShowAbilityTooltip('ahlen_dragon_dance')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+								<Panel id="SpellInfo5">
+									<DOTAAbilityImage abilityname="ahlen_innate" onmouseover="DOTAShowAbilityTooltip('ahlen_innate')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+								<Panel id="SpellInfo6">
+									<DOTAAbilityImage abilityname="ahlen_apocalyptic_strike" onmouseover="DOTAShowAbilityTooltip('ahlen_apocalyptic_strike')" onmouseout="DOTAHideAbilityTooltip()" />
+								</Panel>
+							</Panel>
+						</Panel>-->
+					</Panel>
+					<Panel id="SpellBox">
+						<Label id="SpellTitleLabel" text="ABILITIES" />
+						<Panel id="SpellBoxInnards">
+							<Panel id="SpellInfo1">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Label id="SpellLabel" text="Lv. 1" />
+							</Panel>
+							<Panel id="SpellInfo2">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Label id="SpellLabel" text="Lv. 1" />
+							</Panel>
+							<Panel id="SpellInfo3">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Label id="SpellLabel" text="Lv. 6" />
+							</Panel>
+							<Panel id="SpellInfo4">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Label id="SpellLabel" text="Lv. 10" />
+							</Panel>
+							<Panel id="SpellInfo5">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text="." />
+								<Label id="SpellLabel" text="Innate" />
+							</Panel>
+							<Panel id="SpellInfo6">
+								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+								<Label id="SpellLevelLabel" text="." />
+								<Label id="SpellLabel" text="Innate" />
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="ChatBox">
+						<DOTAChat id="Chat" chatstyle="hudpregame" class="HudChat ChatExpanded VisGroup_Top" tabindex="auto" defaultfocus="ChatInput" oncancel="DOTAChatCancelMessageMode()" hittest="true"/>
+					</Panel>
+					<Panel id="DOTAChatDoesntWorkCorrectlySoNowIHaveToDoThisBox">
+						<DOTAChat id="Chat" chatstyle="hud" class="HudChat ChatExpanded VisGroup_Top" tabindex="auto" defaultfocus="ChatInput" oncancel="DOTAChatCancelMessageMode()" hittest="true"/>
+					</Panel>
+					<Panel id="Something" />
+					<Label id="PortraitLabel" text="your gay" />
+				</Panel>
+				<Panel id="CompositionBox">
+					<!--<DOTAHeroMovie heroname="npc_dota_hero_omniknight" />-->
+				</Panel>
+				<Panel id="FinalPickBox">
+					<Button id="FinalPickButton" onactivate="PickButtonPressed()">
+						<Label id="FinalPickLabel" text="PICK" />
+					</Button>
+				</Panel>
+				<Panel id="WelcomeBox" />
+				<Label id="WelcomeLabel" text="something about potions blah blah blah this disables repick" />
+			</Panel>
+			<Panel id="BottomBarBox" hittest="false">
+				<Panel id="PickBoxLeft">
+					<Panel id="PickTopLeftBox">
+						<Panel id="PickLeftLabelBox">
+							<Label id="PickClassLabelTopLeft" text="COMBAT" />
+						</Panel>
+						<Panel id="PickLeftButtonBox">
+							<Button id="PickButtonR" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_random_combat')">
+								<Image class="ShiftCombat" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
+							</Button>
+							<Button id="PickButton1" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_omniknight')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_omniknight.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton2" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_beastmaster')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_beastmaster.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton3" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_juggernaut')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_juggernaut.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton4" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_terrorblade')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_terrorblade.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton5" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_dragon_knight')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_dragon_knight.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton6" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_bounty_hunter')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_bounty_hunter.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton7" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_phantom_assassin')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_phantom_assassin.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton8" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_troll_warlord')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_troll_warlord.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton9" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_sven')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_sven.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+						</Panel>
+					</Panel>
+					<Panel id="PickBottomLeftBox">
+						<Panel id="PickLeftLabelBox">
+							<Label id="PickClassLabelBottomLeft" text="SUPPORT" />
+						</Panel>
+						<Panel id="PickLeftButtonBox">
+							<Button id="PickButtonR" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_random_support')">
+								<Image class="ShiftSupport" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
+							</Button>
+							<Button id="PickButton1" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_medusa')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_medusa.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton2" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_ursa')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_ursa.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton3" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_lina')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_lina.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+							</Button>
+							<Button id="PickButton4" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_dazzle')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_dazzle.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton5" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_witch_doctor')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_witch_doctor.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton6" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_skywrath_mage')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_skywrath_mage.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton7" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_meepo')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_meepo.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="PickBox">
+					<Button id="PickButtonRR" onactivate="HeroButtonPressed('npc_dota_hero_random')">
+						<DOTAHeroMovie id="PickRandomVideo" heroname="npc_dota_hero_wisp" />
+						<Label id="PickRRLabel" class="ButtonInner" text="?" />
+					</Button>
+				</Panel>
+				<Panel id="PickBoxRight">
+					<Panel id="PickTopRightBox">
+						<Panel id="PickRightLabelBox">
+							<Label id="PickClassLabelTopRight" text="CASTER" />
+						</Panel>
+						<Panel id="PickRightButtonBox">
+							<Button id="PickButtonR" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_random_caster')">
+								<Image class="ShiftCaster" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
+							</Button>
+							<Button id="PickButton1" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_crystal_maiden')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_crystal_maiden.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton2" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_storm_spirit')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_storm_spirit.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton3" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_silencer')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_silencer.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton4" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_luna')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_luna.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton5" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_lich')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_lich.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton6" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_spirit_breaker')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_spirit_breaker.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton7" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_furion')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_furion.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton8" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_shadow_shaman')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_shadow_shaman.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton9" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_lion')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_lion.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+						</Panel>
+					</Panel>
+					<Panel id="PickBottomRightBox">
+						<Panel id="PickRightLabelBox">
+							<Label id="PickClassLabelBottomRight" text="ROUNDED" />
+						</Panel>
+						<Panel id="PickRightButtonBox">
+							<Button id="PickButtonR" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_random_rounded')">
+								<Image class="ShiftRounded" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
+							</Button>
+							<Button id="PickButton1" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_ember_spirit')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_ember_spirit.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton2" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_naga_siren')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_naga_siren.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton3" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_earth_spirit')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_earth_spirit.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton4" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_treant')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_treant.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+							<Button id="PickButton5" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_drow_ranger')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_drow_ranger.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_agi.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton6" class="NoRepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_sniper')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_sniper.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_int.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_projectile_speed.psd" />
+							</Button>
+							<Button id="PickButton7" class="RepickBorder" onactivate="HeroButtonPressed('npc_dota_hero_antimage')">
+								<Image src="file://{images}/heroes/selection/npc_dota_hero_antimage.png" />
+								<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_agi.png" />
+								<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
+							</Button>
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

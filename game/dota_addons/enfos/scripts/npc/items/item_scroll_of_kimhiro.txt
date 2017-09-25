@@ -12,7 +12,7 @@
 	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"Model"							"models/props_gameplay/salve_blue.vmdl"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"item_scroll_of_kimhiro"
+	"AbilityTextureName"			"scroll_of_kimhiro"
 	"AbilitySharedCooldown" "ManaPot"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"5"

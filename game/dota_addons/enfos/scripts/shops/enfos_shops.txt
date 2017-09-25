@@ -87,9 +87,9 @@
 		"item" "item_tome_of_agility_2"
 		"item" "item_tome_of_intellect"
 		"item" "item_tome_of_intellect_2"
-		"item" "item_tome_of_combat"
+		"item" "item_manual_of_combat"
 		"item" "item_tome_of_retraining"
-		"item" "item_tome_of_knowledge"
+		"item" "item_tome_of_knowledge_enfos"
 	}
 
 	"sideshop1"
@@ -108,16 +108,16 @@
 	
 	"secretshop"
 	{
+		"item"	"item_elite_elven_boots"
+		"item" "item_thirsting_blade"
+		"item" "item_uthmors_mirror_blade"
+		"item" "item_ring_of_victory"
+		"item" "item_scepter_of_the_magi"
 		"item"	"item_bundle_of_gold_1"
 		"item"	"item_bundle_of_gold_10"
 		"item"	"item_bundle_of_gold_100"
 		"item"	"item_bundle_of_lumber_1"
 		"item"	"item_bundle_of_lumber_10"
 		"item"	"item_bundle_of_lumber_100"
-		"item"	"item_elite_elven_boots"
-		"item" "item_thirsting_blade"
-		"item" "item_uthmors_mirror_blade"
-		"item" "item_ring_of_victory"
-		"item" "item_scepter_of_the_magi"
 	}
 }

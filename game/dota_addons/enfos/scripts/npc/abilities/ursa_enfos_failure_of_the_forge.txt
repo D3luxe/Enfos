@@ -20,6 +20,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			
 			"Aura"					"armor_degen"
 			"Aura_Radius"			"%radius"

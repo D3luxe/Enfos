@@ -39,6 +39,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			
 			"Aura"					"modifiers_courage_aura"
 			"Aura_Radius"			"%radius"

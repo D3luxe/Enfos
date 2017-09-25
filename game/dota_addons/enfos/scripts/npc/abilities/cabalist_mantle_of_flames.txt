@@ -39,6 +39,7 @@
 	{
 		"modifier_mantle_of_flames_buff"
 		{
+			"IsPurgable"	"0"
 			"ThinkInterval"			"0.1"
 			"OnIntervalThink"
 			{

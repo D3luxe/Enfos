@@ -56,6 +56,7 @@ function SpellShopUI:InitGameMode()
 	
 	
 	CustomGameEventManager:RegisterListener("trade_ui_event", Dynamic_Wrap(SpellShopUI, 'TradeResources'))
+	CustomGameEventManager:RegisterListener("wood_ui_event", Dynamic_Wrap(SpellShopUI, 'LumberExchange'))
 end
 
 -- function that takes care of buying the spell
@@ -299,6 +300,56 @@ function SpellShopUI:TradeResources(keys)
 			--print("wood "..PlayerResource:GetPlayer(targetID).lumber)
 			ModifyLumber(PlayerResource:GetPlayer(targetID),amount)
 			--print("woode "..PlayerResource:GetPlayer(targetID).lumber)
+		end
+	end
+end
+
+function SpellShopUI:LumberExchange(keys)
+	local playerID = tonumber(keys.player)
+	local amount = tonumber(keys.type)
+	local player = PlayerResource:GetPlayer(playerID)
+	local hero = player:GetAssignedHero()
+	if hero == nil then
+		return 0
+	end
+	if hero:FindModifierByName("modifier_get_wood") == nil then
+		return 0
+	end
+	
+	if amount == 0 then
+		if hero:GetGold() >= 125 then
+			hero:SpendGold(125, DOTA_ModifyGold_Unspecified)
+			ModifyLumber(player,1)
+		end
+	end
+	if amount == 1 then
+		if hero:GetGold() >= 1250 then
+			hero:SpendGold(1250, DOTA_ModifyGold_Unspecified)
+			ModifyLumber(player,10)
+		end
+	end
+	if amount == 2 then
+		if hero:GetGold() >= 12500 then
+			hero:SpendGold(12500, DOTA_ModifyGold_Unspecified)
+			ModifyLumber(player,100)
+		end
+	end
+	if amount == 3 then
+		if player.lumber >= 1 then
+			ModifyLumber(player,-1)
+			hero:ModifyGold(100, false, 1)
+		end
+	end
+	if amount == 4 then
+		if player.lumber >= 10 then
+			ModifyLumber(player,-10)
+			hero:ModifyGold(1000, false, 1)
+		end
+	end
+	if amount == 5 then
+		if player.lumber >= 100 then
+			ModifyLumber(player,-100)
+			hero:ModifyGold(10000, false, 1)
 		end
 	end
 end

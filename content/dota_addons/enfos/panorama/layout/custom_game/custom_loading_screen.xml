@@ -5,6 +5,7 @@
   <Panel class="AddonLoadingRoot">
     <Panel id="CustomBg" >
       <Image id="gamemode" class="SeqImg" src="file://{images}/custom_game/loading_screen/gamemode.png" />
+	  <Image id="discord" src="file://{images}/custom_game/discord_info.png" />
     </Panel>
   </Panel>
 </root>

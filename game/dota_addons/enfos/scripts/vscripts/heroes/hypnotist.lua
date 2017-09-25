@@ -128,6 +128,7 @@ function Prediction(keys)
 -- recalculate the stats
 	target:CalculateStatBonus()
 	
+	if caster.repick == 0 then caster.repick = 1 end
 end
 	
 function Hallucination(keys)

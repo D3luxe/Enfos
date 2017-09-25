@@ -30,6 +30,11 @@
 			"IsPurgable"	"0"
 			"OnAttackStart"
 			{
+				"RemoveModifier"
+				{
+					"ModifierName"		"modifier_behead_crit"
+					"Target"			"CASTER"	
+				}
 				"Random"
 				{
 					"Chance" "%crit_chance"
@@ -48,6 +53,7 @@
 		{
 			"Duration"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_CRITICALSTRIKE"   "%crit_damage"

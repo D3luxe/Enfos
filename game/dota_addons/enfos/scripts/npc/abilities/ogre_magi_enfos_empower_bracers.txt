@@ -47,6 +47,7 @@
 	{
 		"modifier_empower_bracers"
 		{
+			"IsPurgable"	"0"
 			"Duration"	"%duration"
 			"EffectName"	"particles/units/heroes/hero_magnataur/magnataur_empower.vpcf"
 			"EffectAttachType"	"attach_hitloc"
@@ -63,6 +64,7 @@
 		"modifier_empower_bracers_proc"
 		{
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 			"OnAttackLanded"
 			{
 				"RemoveModifier"

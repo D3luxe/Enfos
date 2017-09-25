@@ -37,6 +37,7 @@
 	{
 		"modifier_summoner_flag_of_summoning_aura"
 		{
+			"IsPurgable"			"0"
 			"Duration"				"%duration"
 			"ThinkInterval"			"0.03"
 			"OnIntervalThink"
@@ -56,6 +57,7 @@
 		}
 		"modifier_summoner_flag_of_summoning"
 		{
+			"IsPurgable"	"0"
 			"Duration"				"1"
 			"Properties"
 			{

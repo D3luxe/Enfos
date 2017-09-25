@@ -39,6 +39,7 @@ function EnergyDrainTransfer( event )
 	target:SetMana(target:GetMana() - MP_drain)
 	caster:GiveMana(MP_drain)
 	
+	if caster.repick == 0 then caster.repick = 1 end
 end
 
 function warlock_deflection(keys)
@@ -105,6 +106,7 @@ function StealManaDisrupt(keys)
 		caster.spellbringer:GiveMana(manaReplenished)
 		ParticleManager:CreateParticle("particles/econ/items/antimage/antimage_weapon_basher_ti5/antimage_manavoid_ti_5.vpcf", PATTACH_ABSORIGIN_FOLLOW, targetSB)
 		targetSB:ReduceMana(manaStolen)
+		if caster.repick == 0 then caster.repick = 1 end
 		--caster:GiveMana(manaReplenished)
 	else
 		keys.ability:EndCooldown()

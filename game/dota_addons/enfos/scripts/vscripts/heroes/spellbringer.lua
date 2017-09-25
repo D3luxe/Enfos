@@ -200,12 +200,27 @@ function purification(keys)
 	local target = keys.target_points[1]
 	local radius = keys.radius
 
+	local soundDummy = FastDummy(target, caster:GetTeam())
+	EmitSoundOnLocationForAllies(soundDummy:GetAbsOrigin(),"Hero_Invoker.EMP.Charge",soundDummy)
+	DelayDestroy(soundDummy, 1.0)
+	for _,hero in pairs(HeroList:GetAllHeroes()) do
+		if hero:GetPlayerID() and hero:GetTeam() == caster:GetTeam() then
+			local preParticle = ParticleManager:CreateParticleForPlayer("particles/units/heroes/hero_invoker/invoker_emp_charge.vpcf", PATTACH_ABSORIGIN, hero, PlayerResource:GetPlayer(hero:GetPlayerID()))
+			ParticleManager:SetParticleControl(preParticle, 0, target)
+			
+			Timers:CreateTimer(2, function()
+				ParticleManager:DestroyParticle(preParticle, true)
+			end)
+		end
+	end
+	
 	Timers:CreateTimer(DoUniqueString("purificationDelay"), {
 		endTime = 2,
 		callback = function()
 			local dummy = FastDummy(target, DOTA_TEAM_NOTEAM)
-			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_shadow_demon/shadow_demon_demonic_purge_impact.vpcf", PATTACH_ABSORIGIN, dummy)
-			ParticleManager:SetParticleControl(particle, 1, Vector(radius, 1, radius)) -- smoke cloud radius
+			local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_invoker/invoker_emp_explode.vpcf", PATTACH_ABSORIGIN, dummy)
+			dummy:EmitSound("Hero_Invoker.EMP.Discharge")
+			--ParticleManager:SetParticleControl(particle, 1, Vector(radius, 1, radius)) -- smoke cloud radius
 			DelayDestroy(dummy, 1.0)
 			local units = FindUnitsInRadius(caster:GetTeamNumber(), target, caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_ALL, 0, 0, false)
 			
@@ -436,7 +451,7 @@ function SummonDarkrift(keys)
 	local curUnits = 0
 	local thisSpell = caster:GetItemInSlot(0)
 	local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
-	local round = Enfos.curRound + math.random(3, 5)
+	local round = Enfos.curRound + 3
 -- filter out invalid rounds
 	if round == 20 then
 		round = 19

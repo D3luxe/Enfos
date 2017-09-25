@@ -428,6 +428,47 @@ heroTable = {
 					["armorType"]="modifier_armor_heavy",
 				}
 		}	
+		
+combatClassTable = {
+				"npc_dota_hero_omniknight",
+				"npc_dota_hero_beastmaster",
+				"npc_dota_hero_juggernaut",
+				"npc_dota_hero_terrorblade",
+				"npc_dota_hero_dragon_knight",
+				"npc_dota_hero_bounty_hunter",
+				"npc_dota_hero_phantom_assassin",
+				"npc_dota_hero_troll_warlord",
+				"npc_dota_hero_sven"
+			}
+casterClassTable = {
+				"npc_dota_hero_crystal_maiden",
+				"npc_dota_hero_storm_spirit",
+				"npc_dota_hero_silencer",
+				"npc_dota_hero_luna",
+				"npc_dota_hero_lich",
+				"npc_dota_hero_spirit_breaker",
+				"npc_dota_hero_furion",
+				"npc_dota_hero_shadow_shaman",
+				"npc_dota_hero_lion"
+			}
+supportClassTable = {
+				"npc_dota_hero_medusa",
+				"npc_dota_hero_ursa",
+				"npc_dota_hero_lina",
+				"npc_dota_hero_dazzle",
+				"npc_dota_hero_witch_doctor",
+				"npc_dota_hero_skywrath_mage"--[[,
+				"npc_dota_hero_meepo"]]
+			}
+roundedClassTable = {
+				"npc_dota_hero_ember_spirit",
+				"npc_dota_hero_naga_siren",
+				"npc_dota_hero_earth_spirit",
+				"npc_dota_hero_treant",
+				"npc_dota_hero_drow_ranger",
+				"npc_dota_hero_sniper",
+				"npc_dota_hero_antimage"
+			}
 
 uniqueItems = { "item_nimsha",
 				"item_bloodthirst",
@@ -479,15 +520,43 @@ function Precache( context )
 
 
 	PrecacheItemByNameSync("item_spellbringer_greater_darkrift", context)
-
-	PrecacheUnitByNameSync("npc_dota_hero_omniknight", context)
+	
 	PrecacheUnitByNameSync("npc_dota_hero_invoker", context)
 	PrecacheUnitByNameSync("npc_dota_hero_necrolyte", context)
 	PrecacheUnitByNameSync("npc_dota_hero_elder_titan", context)
+	
+	PrecacheUnitByNameSync("npc_dota_hero_omniknight", context)
 	PrecacheUnitByNameSync("npc_dota_hero_luna", context)
 	PrecacheUnitByNameSync("npc_dota_hero_skywrath_mage", context)
 	PrecacheUnitByNameSync("npc_dota_hero_drow_ranger", context)
 	PrecacheUnitByNameSync("npc_dota_hero_lina", context)
+	PrecacheUnitByNameSync("npc_dota_hero_juggernaut", context)
+	PrecacheUnitByNameSync("npc_dota_hero_naga_siren", context)
+	PrecacheUnitByNameSync("npc_dota_hero_beastmaster", context)
+	PrecacheUnitByNameSync("npc_dota_hero_storm_spirit", context)
+	PrecacheUnitByNameSync("npc_dota_hero_ursa", context)
+	PrecacheUnitByNameSync("npc_dota_hero_shadow_shaman", context)
+	PrecacheUnitByNameSync("npc_dota_hero_antimage", context)
+	PrecacheUnitByNameSync("npc_dota_hero_phantom_assassin", context)
+	PrecacheUnitByNameSync("npc_dota_hero_silencer", context)
+	PrecacheUnitByNameSync("npc_dota_hero_dazzle", context)
+	PrecacheUnitByNameSync("npc_dota_hero_dragon_knight", context)
+	PrecacheUnitByNameSync("npc_dota_hero_lich", context)
+	PrecacheUnitByNameSync("npc_dota_hero_sniper", context)
+	PrecacheUnitByNameSync("npc_dota_hero_sven", context)
+	PrecacheUnitByNameSync("npc_dota_hero_treant", context)
+	PrecacheUnitByNameSync("npc_dota_hero_bounty_hunter", context)
+	PrecacheUnitByNameSync("npc_dota_hero_earth_spirit", context)
+	PrecacheUnitByNameSync("npc_dota_hero_spirit_breaker", context)
+	PrecacheUnitByNameSync("npc_dota_hero_crystal_maiden", context)
+	PrecacheUnitByNameSync("npc_dota_hero_furion", context)
+	PrecacheUnitByNameSync("npc_dota_hero_terrorblade", context)
+	PrecacheUnitByNameSync("npc_dota_hero_ember_spirit", context)
+	PrecacheUnitByNameSync("npc_dota_hero_troll_warlord", context)
+	PrecacheUnitByNameSync("npc_dota_hero_witch_doctor", context)
+	PrecacheUnitByNameSync("npc_dota_hero_medusa", context)
+	PrecacheUnitByNameSync("npc_dota_hero_lion", context)
+	
 	PrecacheUnitByNameSync("npc_spellbringer", context)
 
 	--PrecacheResource( "particle", "particles/units/heroes/hero_bloodseeker/bloodseeker_thirst_owner.vpcf", context )
@@ -524,9 +593,10 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( CEnfosGameMode, "FilterExecuteOrder" ), self )
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
 	GameRules:GetGameModeEntity():SetMaximumAttackSpeed(300)
+	GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
 	--GameRules:GetGameModeEntity():SetMaximumAttackSpeed()
 	GameRules:SetUseUniversalShopMode( false )
-	GameRules:SetPreGameTime( 10.0 )
+	GameRules:SetPreGameTime( 40.0 )
 	GameRules:SetPostGameTime( 60.0 )
 	GameRules:SetTreeRegrowTime( 60.0 )
 	GameRules:SetHeroSelectionTime( 60.0 )
@@ -555,8 +625,175 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:SetCustomGameSetupTimeout(60)
 
 	
+	GameRules.HeroKV = LoadKeyValues("scripts/npc/npc_heroes_custom.txt")
 	GameRules.AbilityKV = LoadKeyValues("scripts/npc/npc_abilities_custom.txt")
 	GameRules.TipKV = LoadKeyValues("scripts/kv/tips.kv")
+	
+	--hero nettables
+	local heroNetTable = {}
+	for k, v in pairs(GameRules.HeroKV) do
+		heroNetTable[v.override_hero] = {
+			baseatt = v.AttributePrimary,
+			str = v.AttributeBaseStrength,
+			strpl = v.AttributeStrengthGain,
+			agi = v.AttributeBaseAgility,
+			agipl = v.AttributeAgilityGain,
+			int = v.AttributeBaseIntelligence,
+			intpl = v.AttributeIntelligenceGain,
+			
+			hp = v.StatusHealth,
+			mp = 1,
+			
+			atkmin = v.AttackDamageMin,
+			atkmax = v.AttackDamageMax,
+			atkspd = v.AttackRate,
+			atkrng = v.AttackRange,
+			
+			armor = v.ArmorPhysical,
+			mr = 0,
+			speed = v.MovementSpeed,
+			
+			atktype = "",
+			armtype = "",
+			
+			spell1 = v.Ability1,
+			spell2 = v.Ability2,
+			spell3 = v.Ability3,
+			spell4 = v.Ability4,
+			spell5 = v.Ability5,
+			spell6 = v.Ability6
+		}
+		--hp/mp arithmetic
+		heroNetTable[v.override_hero].hp = 
+		heroNetTable[v.override_hero].hp+(heroNetTable[v.override_hero].str*HP_PER_STR)
+		heroNetTable[v.override_hero].mp = heroNetTable[v.override_hero].int*MANA_PER_INT
+		
+		--base damage + attribute bonus
+		local damageAdd
+		if heroNetTable[v.override_hero].baseatt == "DOTA_ATTRIBUTE_STRENGTH" then
+			damageAdd = math.floor(heroNetTable[v.override_hero].str*DMG_PER_STAT)
+		end
+		if heroNetTable[v.override_hero].baseatt == "DOTA_ATTRIBUTE_AGILITY" then
+			damageAdd = math.floor(heroNetTable[v.override_hero].agi*DMG_PER_STAT)
+		end
+		if heroNetTable[v.override_hero].baseatt == "DOTA_ATTRIBUTE_INTELLECT" then
+			damageAdd = math.floor(heroNetTable[v.override_hero].int*DMG_PER_STAT)
+		end
+		heroNetTable[v.override_hero].atkmin = heroNetTable[v.override_hero].atkmin+damageAdd
+		heroNetTable[v.override_hero].atkmax = heroNetTable[v.override_hero].atkmax+damageAdd
+		
+		--damage/armor types
+		for i = 1, #heroTable do
+			if heroNetTable[v.override_hero].armtype == "" or heroNetTable[v.override_hero].atktype == "" then
+				if heroTable[i].name == v.override_hero then
+					heroNetTable[v.override_hero].armtype = heroTable[i].armorType
+					heroNetTable[v.override_hero].atktype = heroTable[i].attackType
+					if heroNetTable[v.override_hero].armtype == "modifier_armor_heavy" then
+						heroNetTable[v.override_hero].mr = -25
+					end
+					if heroNetTable[v.override_hero].armtype == "modifier_armor_hero" then
+						heroNetTable[v.override_hero].mr = 25
+					end
+				end
+			end
+		end
+	end
+	--PrintTable(heroNetTable)
+	
+	CustomNetTables:SetTableValue("hero_data","stats",heroNetTable)
+	
+	--wave info nettables (this is super bad, self-reminder to fix this later)
+	CustomNetTables:SetTableValue("next_wave_table","hide",{value = false})
+	CustomNetTables:SetTableValue("next_wave_table","hideSecond",{value = true})
+	CustomNetTables:SetTableValue("next_wave_table","gold",{value = 25})
+	CustomNetTables:SetTableValue("next_wave_table","name",{value = "#npc_dota_creature_crab"})
+	CustomNetTables:SetTableValue("next_wave_table","hp",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","hpRegen",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","mp",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","mpRegen",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMin",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMax",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkType",{value = "Normal"})
+	CustomNetTables:SetTableValue("next_wave_table","atkRate",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkRange",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMelee",{value = "None"})
+	CustomNetTables:SetTableValue("next_wave_table","armor",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","armorType",{value = "Unarmored"})
+	CustomNetTables:SetTableValue("next_wave_table","armorMagic",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","speed",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","abil1",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil2",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil3",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil4",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil5",{value = ""})
+	
+	CustomNetTables:SetTableValue("next_wave_table","name2",{value = "#npc_dota_creature_crab"})
+	CustomNetTables:SetTableValue("next_wave_table","hp2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","hpRegen2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","mp2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","mpRegen2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMin2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMax2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkType2",{value = "Normal"})
+	CustomNetTables:SetTableValue("next_wave_table","atkRate2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkRange2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","atkMelee2",{value = "None"})
+	CustomNetTables:SetTableValue("next_wave_table","armor2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","armorType2",{value = "Unarmored"})
+	CustomNetTables:SetTableValue("next_wave_table","armorMagic2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","speed2",{value = 0})
+	CustomNetTables:SetTableValue("next_wave_table","abil12",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil22",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil32",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil42",{value = ""})
+	CustomNetTables:SetTableValue("next_wave_table","abil52",{value = ""})
+	
+	CustomNetTables:SetTableValue("this_wave_table","hide",{value = true})
+	CustomNetTables:SetTableValue("this_wave_table","hideSecond",{value = true})
+	CustomNetTables:SetTableValue("this_wave_table","round",{value = 1})
+	CustomNetTables:SetTableValue("this_wave_table","name",{value = "#npc_dota_creature_crab"})
+	CustomNetTables:SetTableValue("this_wave_table","hp",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","hpRegen",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","mp",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","mpRegen",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMin",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMax",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkType",{value = "Normal"})
+	CustomNetTables:SetTableValue("this_wave_table","atkRate",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkRange",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMelee",{value = "None"})
+	CustomNetTables:SetTableValue("this_wave_table","armor",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","armorType",{value = "Unarmored"})
+	CustomNetTables:SetTableValue("this_wave_table","armorMagic",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","speed",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","abil1",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil2",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil3",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil4",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil5",{value = ""})
+	
+	CustomNetTables:SetTableValue("this_wave_table","name2",{value = "#npc_dota_creature_crab"})
+	CustomNetTables:SetTableValue("this_wave_table","hp2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","hpRegen2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","mp2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","mpRegen2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMin2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMax2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkType2",{value = "Normal"})
+	CustomNetTables:SetTableValue("this_wave_table","atkRate2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkRange2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","atkMelee2",{value = "None"})
+	CustomNetTables:SetTableValue("this_wave_table","armor2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","armorType2",{value = "Unarmored"})
+	CustomNetTables:SetTableValue("this_wave_table","armorMagic2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","speed2",{value = 0})
+	CustomNetTables:SetTableValue("this_wave_table","abil12",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil22",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil32",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil42",{value = ""})
+	CustomNetTables:SetTableValue("this_wave_table","abil52",{value = ""})
+	
+	
 
 	-- Game options
 	GameRules.ExtraBounty = 1
@@ -570,6 +807,7 @@ function CEnfosGameMode:InitGameMode()
 	Convars:RegisterCommand( "Enfos_Set_Armor", function(...) return self:_SetArmor( ... ) end, "Test a round of Enfos.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_test_repick", function(...) return self:_RepickTestConsoleCommand( ... ) end, "Test repick functionality", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -598,6 +836,9 @@ function CEnfosGameMode:InitGameMode()
 	CustomGameEventManager:RegisterListener( "updateRadiant", UpdateRadiant )
 	CustomGameEventManager:RegisterListener( "clearTeams", ClearTeams )
 	CustomGameEventManager:RegisterListener( "vote_update", VoteUpdate )
+	
+	CustomGameEventManager:RegisterListener( "hero_button_pressed", UpdateHeroHover )
+	CustomGameEventManager:RegisterListener( "player_repick" , RepickHero )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
@@ -643,7 +884,11 @@ function CEnfosGameMode:InitGameMode()
 		self._idmap[id] = v
 	  end
 	end
-
+	
+	-- Change random seed 
+	local timeTxt = string.gsub(string.gsub(GetSystemTime(), ':', ''), '^0+','') 
+	math.randomseed(tonumber(timeTxt)) 
+	
 	CustomPurgeInit()
 end
 
@@ -699,6 +944,20 @@ function CustomPurgeInit( )
     end
 end
 
+function UpdateHeroHover(eventSourceIndex, args)
+	local hero = args.hero
+	local playerID = args.player
+	local player = PlayerResource:GetPlayer(playerID)
+	--[[print(hero)
+	print(player)
+	print(player.lumber)]]
+	player.pickHover = hero
+	local data = {}
+	data.pid = playerID
+	data.hero = hero
+	CustomGameEventManager:Send_ServerToAllClients( "hero_hover", data )
+	
+end
 
 function CEnfosGameMode:UpdateVotes( event )
     local pID = event.pID
@@ -1170,6 +1429,7 @@ function CEnfosGameMode:_ThinkPrepTime()
 			curRound = curRound + 1
 			Enfos.curRound = curRound
 			local goldAmount = curRound * 25
+			if goldAmount == 25 then goldAmount = 0 end
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
 					local player = PlayerResource:GetPlayer(nPlayerID)
@@ -1177,10 +1437,19 @@ function CEnfosGameMode:_ThinkPrepTime()
 						playerGold = PlayerResource:GetGold(nPlayerID)
 						if playerGold ~= nil then
 							PlayerResource:SetGold(nPlayerID,playerGold+goldAmount, false)
+							--repicking breaks SetGold for some reason so now we have to do this. Fun!
+							if PlayerResource:GetGold(nPlayerID) ~= playerGold+goldAmount then
+								PlayerResource:SetGold(nPlayerID,playerGold+goldAmount-25, false)
+							end
 						end
 					end
 				end
 			end
+			if curRound == 4 then 
+				GameRules:SendCustomMessage("Repick is now <font color='#D0D000'>disabled</font>.", 0, 0)
+				GameRules:SendCustomMessage("Players who haven't picked a hero have been randomed.", 0, 0)
+			end
+			
 			if curRound == 6 or curRound == 27 then
 				GameRules:SendCustomMessage("This wave has invisible monsters -", 0, 0)
 				GameRules:SendCustomMessage("Make sure you buy <font color='#58ACFA'>Sentry Wards</font>!!", 0, 0)
@@ -1254,9 +1523,15 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local player = EntIndexToHScript(event.player)
 
 	--Initialize variables for tracking
-	player.lumber = 0 -- Secondary resource of the player
+	player.pickHover = spawnedUnitIndex:GetClassname()
+	if player.lumber == nil then
+		player.lumber = 0 -- Secondary resource of the player
+		player.spawned = false
+		spawnedUnitIndex.repick = 0
+	end
 
 	print(spawnedUnit, spawnedUnitIndex, player, event.PlayerID, event.HeroName)
+	print(spawnedUnitIndex:GetPlayerID())
 	CustomGameEventManager:Send_ServerToAllClients( "hero_change", {} )
 	
 	--Starts the game if everyone has picked and loaded
@@ -1315,85 +1590,89 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 
 	--Handles starting and bonus gold
-	local curRound = self._vRounds[ self._nRoundNumber ]
-	local bonusGold = 0
-	for i=0, curRound._nRoundNumber do
-		bonusGold = (i * 25) + bonusGold
-	end
-		
-	spawnedUnitIndex:SetGold(STARTING_GOLD + bonusGold, false)
-
-	--Sets up the tables to figure out spellbringer colors
-	local playerTeam = spawnedUnitIndex:GetTeam()
-	local playerID = spawnedUnitIndex:GetPlayerID()
-	local playerName = PlayerResource:GetPlayerName(playerID)
-	playerID = playerID + 1
-	local playerHero = spawnedUnitIndex:GetName()
-	local r = 0
-	local g = 0
-	local b = 0
-	local playerSlot = 0
-	
-
-	--Handles spawning the spellbringers
-	local spellbringerName = nil
-	local spellbringerLocation = nil
-	
-	for i = 1, 5 do
-		print(playerID)
-		if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
-			playerSlot = i + ((3 - playerTeam)*5)
+	if player.spawned == false then
+		local curRound = self._vRounds[ self._nRoundNumber ]
+		local bonusGold = 0
+		for i=0, curRound._nRoundNumber do
+			bonusGold = (i * 25) + bonusGold
 		end
-		print(playerSlot)
-	end
-	
-	spellbringerName = "spellbringer_"..playerSlot
-	print(spellbringerName)
-	if spellbringerName ~= nil then
-		spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
-	end
-	Timers:CreateTimer(DoUniqueString("spawnSpellbringer"), {
-		endTime = 0.5,
-		callback = function()
-	
+		if bonusGold == 25 then bonusGold = 0 end
 			
-			--Set the color for the spellbringer
-			for i = 1, #playerColors do
-				if playerColors[i] ~= nil then
-					if playerColors[i].playerID == spawnedUnitIndex:GetPlayerID() then
-						r = playerColors[i].r
-						g = playerColors[i].g
-						b = playerColors[i].b
+		spawnedUnitIndex:SetGold(STARTING_GOLD + bonusGold, false)
+	
+		--Sets up the tables to figure out spellbringer colors
+		local playerTeam = spawnedUnitIndex:GetTeam()
+		local playerID = spawnedUnitIndex:GetPlayerID()
+		local playerName = PlayerResource:GetPlayerName(playerID)
+		playerID = playerID + 1
+		local playerHero = spawnedUnitIndex:GetName()
+		local r = 0
+		local g = 0
+		local b = 0
+		local playerSlot = 0
+		
+
+		--Handles spawning the spellbringers
+		local spellbringerName = nil
+		local spellbringerLocation = nil
+		
+		for i = 1, 5 do
+			print(playerID)
+			if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
+				playerSlot = i + ((3 - playerTeam)*5)
+			end
+			print(playerSlot)
+		end
+		
+		spellbringerName = "spellbringer_"..playerSlot
+		print(spellbringerName)
+		if spellbringerName ~= nil then
+			spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
+		end
+		Timers:CreateTimer(DoUniqueString("spawnSpellbringer"), {
+			endTime = 0.5,
+			callback = function()
+		
+				
+				--Set the color for the spellbringer
+				for i = 1, #playerColors do
+					if playerColors[i] ~= nil then
+						if playerColors[i].playerID == spawnedUnitIndex:GetPlayerID() then
+							r = playerColors[i].r
+							g = playerColors[i].g
+							b = playerColors[i].b
+						end
 					end
 				end
+
+
+				if spellbringerLocation ~= nil then
+					local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
+					unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+					local newItem = CreateItem("item_spellbringer_greater_darkrift", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+					unit2:AddItem(newItem)
+					newItem = CreateItem("item_spellbringer_summon_uthmor", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+					unit2:AddItem(newItem)
+					newItem = CreateItem("item_spellbringer_summon_arhat", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+					unit2:AddItem(newItem)
+					newItem = CreateItem("item_spellbringer_summon_sidhlot", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+					unit2:AddItem(newItem)
+					newItem = CreateItem("item_spellbringer_summon_havroth", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+					unit2:AddItem(newItem)
+					--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
+					unit2:RemoveModifierByName("modifier_tower_truesight_aura")
+					unit2:RemoveModifierByName("modifier_invulnerable")
+					unit2:StartGesture(ACT_DOTA_CAPTURE)
+					spawnedUnitIndex.spellbringer = unit2
+					--unit2:SetRenderColor(r,g,b)
+
+					--print(spawnedUnitIndex:GetTeam())
+				else
+					print("Incorrect spellbringer location!!")
+				end
 			end
-
-
-			if spellbringerLocation ~= nil then
-				local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
-				unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
-				local newItem = CreateItem("item_spellbringer_greater_darkrift", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-				unit2:AddItem(newItem)
-				newItem = CreateItem("item_spellbringer_summon_uthmor", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-				unit2:AddItem(newItem)
-				newItem = CreateItem("item_spellbringer_summon_arhat", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-				unit2:AddItem(newItem)
-				newItem = CreateItem("item_spellbringer_summon_sidhlot", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-				unit2:AddItem(newItem)
-				newItem = CreateItem("item_spellbringer_summon_havroth", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-				unit2:AddItem(newItem)
-				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
-				unit2:RemoveModifierByName("modifier_tower_truesight_aura")
-				unit2:RemoveModifierByName("modifier_invulnerable")
-				spawnedUnitIndex.spellbringer = unit2
-				--unit2:SetRenderColor(r,g,b)
-
-				--print(spawnedUnitIndex:GetTeam())
-			else
-				print("Incorrect spellbringer location!!")
-			end
-		end
-	})
+		})
+	end
 
 	--Sets up the hero armor and attack types
 	local heroPicked = spawnedUnitIndex:GetUnitName()
@@ -1422,14 +1701,16 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	end
 
 	--Adds the initial starting potion
-	local potionItem = CreateItem("item_potion_of_healing", spawnedUnitIndex, nil)
-	potionItem:SetCurrentCharges(1)
-	local potion = spawnedUnitIndex:AddItem(potionItem)
+	--[[if spawnedUnitIndex.repick > 0 then
+		local potionItem = CreateItem("item_potion_of_healing", spawnedUnitIndex, nil)
+		potionItem:SetCurrentCharges(hero.repick)
+		local potion = spawnedUnitIndex:AddItem(potionItem)
+	end]]
 	
 	--Updates the stat bonuses for the hero
 	Stats:ModifyStatBonuses(spawnedUnitIndex)
 	
-	
+	player.spawned = true
 
 end
 
@@ -1545,6 +1826,10 @@ function CEnfosGameMode:GetAttackType(unit)
 	local target = unit
 
 	local attackType = nil
+	if target == nil then
+		print("Invalid Attack Type")
+		return nil
+	end
 	if target:HasModifier("modifier_attack_normal") then
 		attackType = "modifier_attack_normal"
 	elseif target:HasModifier("modifier_attack_pierce") then
@@ -1579,6 +1864,10 @@ function CEnfosGameMode:GetArmorType(unit)
 	local target = unit
 
 	local armorType = nil
+	if target == nil then
+		print("Invalid Armor Type")
+		return nil
+	end
 	if target:HasModifier("modifier_armor_unarmored") then
 		armorType = "modifier_armor_unarmored"
 	elseif target:HasModifier("modifier_armor_light") then
@@ -1618,10 +1907,15 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	--print("Pre adjust---------------------------")
 	--PrintTable(filterTable)
 
+	local attacker
+	local victim
+	
 	local damageType = filterTable["damagetype_const"]
 	local damage = filterTable["damage"]
-	local attacker = EntIndexToHScript(filterTable["entindex_attacker_const"])
-	local victim = EntIndexToHScript(filterTable["entindex_victim_const"])
+	if filterTable.entindex_attacker_const and filterTable.entindex_victim_const then
+		attacker = EntIndexToHScript(filterTable["entindex_attacker_const"])
+		victim = EntIndexToHScript(filterTable["entindex_victim_const"])
+	end
 	local ability = nil
 	
 	--Checks to see if a spell inflicted the damage
@@ -1633,7 +1927,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 	local attackType = CEnfosGameMode:GetAttackType(attacker)
 	
 	if ability ~= nil and attacker:IsHero() then
-		damage = math.floor(damage/(1+((attacker:GetIntellect()/16)/100))+0.5)
+		damage = math.floor(damage/(1+((attacker:GetIntellect()/14)/100))+0.5)
 	end
 	
 	if damageType == DAMAGE_TYPE_PHYSICAL then
@@ -2592,7 +2886,9 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
 		--GameRules.Enfos:UpdateBaseStats(hero)
-		--if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
+		local markedLevels = {[17]=true,[19]=true,[21]=true,[22]=true,[23]=true,[24]=true}
+		if markedLevels[hero:GetLevel()] then hero:SetAbilityPoints(hero:GetAbilityPoints()+1) end
+		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
 	else
 		print("Invalid player!")
 	end
@@ -2649,6 +2945,20 @@ function CEnfosGameMode:OnNPCSpawned( event )
 		 	print("Base armor: "..spawnedUnit.baseArmor)
 
 			GameRules.PLAYERS_PICKED_HERO=GameRules.PLAYERS_PICKED_HERO+1
+		else
+			spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_invulnerable", {duration = 2.5})
+			Timers:CreateTimer(DoUniqueString("protectKiller"), {
+				endTime = 0.001,
+				callback = function()
+					if spawnedUnit:FindModifierByName("modifier_buyback_gold_penalty") ~= nil then
+						spawnedUnit:RemoveModifierByName("modifier_invulnerable")
+					end
+					if spawnedUnit.killPro ~= nil then
+						spawnedUnit:RemoveModifierByName("modifier_invulnerable")
+						spawnedUnit.killPro = nil
+					end
+				end
+			})
 		end
 
 	 end
@@ -2883,6 +3193,30 @@ function CEnfosGameMode:OnAbilityCast( keys )
 	
 end
 
+function CEnfosGameMode:OnPlayerChat(event)
+	if event.text == "-repick" then
+		local pid = event.playerid
+		local uid = event.userid
+		local name = PlayerResource:GetPlayerName(uid)
+		--PrintTable(playerColors)
+		local r = playerColors[uid].r
+		local g = playerColors[uid].g
+		local b = playerColors[uid].b
+		
+		local rgb = string.format("%02x%02x%02x",r,g,b)
+		--[[GameRules:SendCustomMessage(
+		"<font color='#"..rgb.."'>"
+		..name
+		.."</font> is repicking!", 0, 0)]]
+		local data = {}
+		data.player = pid
+		data.hero = "npc_dota_hero_wisp"
+		data.color = rgb
+		data.name = name
+		RepickHero(nil,data)
+	end
+end
+
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
 	local nRewardPerTower = self._nTowerRewardAmount + self._nTowerScalingRewardPerRound * (self._nRoundNumber - 1)
 	return nRewardPerTower * nTowersStanding
@@ -3009,5 +3343,230 @@ function CEnfosGameMode:_SetArmor( cmdName, armor )
 	end
 end
 
+function CEnfosGameMode:SendErrorMessage(playerID, string)
+   CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_error_message", {message=string}) 
+end
 
+function CEnfosGameMode:_RepickTestConsoleCommand( cmdName, hero )
+	print( "*** Enfos Repick Test ***" )
+	--print("npc_dota_hero_"..hero)
+	--print(Convars:GetCommandClient())
+	--print(Convars:GetCommandClient():GetPlayerID())
+	--print(Convars:GetCommandClient():GetAssignedHero())
+	
+	if curRound >= 4 or Convars:GetCommandClient():GetAssignedHero().repick > 0 then
+		--Notifications:Bottom(Convars:GetCommandClient():GetPlayerID(), {text="You can no longer repick!", duration=3, style={color="red", ["font-size"]="50px"}})
+		CEnfosGameMode:SendErrorMessage(Convars:GetCommandClient():GetPlayerID(), "You can no longer repick!")
+		return 0
+	end
+	
+	local player = Convars:GetCommandClient():GetAssignedHero()
+	local pID = Convars:GetCommandClient():GetPlayerID()
+	local glod = player:GetGold()
+	--local wood = player.lumber
+	local sb = player.spellbringer
+	local heroName = "npc_dota_hero_"..hero
+	
+	--remove active starlight sphere
+	if player.sphere ~= nil and player.sphere:IsNull() == false then
+		print("IS IT NULL?")
+		print(player.sphere:IsNull())
+		player.sphere:StopSound("Hero_Wisp.Spirits.Loop")
+		UTIL_Remove(player.sphere)
+		player.sphere = nil
+	end
+	
+	--remove summoned units
+	local summons = player:GetAdditionalOwnedUnits()
+	PrintTable(summons)
+	for k,v in pairs(summons) do
+		print(k..", "..v)
+		UTIL_Remove(v)
+	end
+	
+	--remove active moonbeam
+	if Enfos.moonbeamActive[pID] ~= nil then
+		Enfos.moonbeamActive[pID]:Destroy()
+		Timers:RemoveTimer("moonbeam_timer" .. pID)
+		Enfos.moonbeamActive[pID] = nil
+	end
+	
+	--undo favored enemy if active
+	if player:GetUnitName() == "npc_dota_hero_drow_ranger" then
+		local units = FindUnitsInRadius(player:GetTeamNumber(), player:GetAbsOrigin(), player, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 
+		for k,v in pairs(units) do
+			if v:GetUnitName() == player.FavoredEnemy or v:GetUnitName() == player.FavoredEnemy2 then
+				if v:HasModifier("modifier_favored_enemy_targeted") then
+					--print("Removing favored enemy from "..v:GetUnitName())
+					v:RemoveModifierByName("modifier_favored_enemy_targeted")
+				end
+			end
+		end
+
+		player.FavoredEnemy = nil
+		player.FavoredEnemy2 = nil
+	end
+	
+	--drop inventory on ground
+	for i=0,5 do
+		local item = player:GetItemInSlot(i)
+		if item then
+			player:DropItemAtPositionImmediate(item,player:GetAbsOrigin())
+		end
+	end
+	
+	local newHero = PlayerResource:ReplaceHeroWith(pID, heroName, 0, 0)
+	newHero:SetGold(glod, true)
+	--newHero.lumber = wood
+	newHero.repick = player.repick
+	--sb:SetControllableByPlayer(pID, true)
+	newHero.spellbringer = sb
+	
+	print(heroName)
+	UTIL_Remove(player)
+end
+
+function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
+	print( "*** REPICKING ***" )
+	--print("npc_dota_hero_"..hero)
+	--print(Convars:GetCommandClient())
+	--print(Convars:GetCommandClient():GetPlayerID())
+	--print(Convars:GetCommandClient():GetAssignedHero())
+	
+	local pID = event.player
+	local player = PlayerResource:GetPlayer(pID):GetAssignedHero()
+	local glod = player:GetGold()
+	--local wood = player.lumber
+	local sb = player.spellbringer
+	local heroName = event.hero
+	local playerName = PlayerResource:GetPlayerName(pID)
+	
+	if curRound >= 4 or player.repick > 0 then
+		--Notifications:Bottom(pID, {text="You can no longer repick!", duration=3, style={color="red", ["font-size"]="50px"}})
+		if curRound >= 4 and PlayerResource:GetSelectedHeroName(pID) == "npc_dota_hero_wisp" and heroName == "npc_dota_hero_random" then
+			--um???
+		else
+			CEnfosGameMode:SendErrorMessage(pID, "You can no longer repick!")
+			return 0
+		end
+	end
+	
+	if heroName == "npc_dota_hero_wisp" then
+		GameRules:SendCustomMessage(
+		"<font color='#"..event.color.."'>"
+		..event.name
+		.."</font> is repicking!", 0, 0)
+	end
+	if heroName == "npc_dota_hero_random" then
+		local rng = {
+			[1] = "npc_dota_hero_random_combat",
+			[2] = "npc_dota_hero_random_caster",
+			[3] = "npc_dota_hero_random_support",
+			[4] = "npc_dota_hero_random_rounded"
+		}
+		heroName = rng[math.random(4)]
+		player.repick = 1
+		print("RANDOM BIG: "..heroName)
+	end
+	if heroName == "npc_dota_hero_random_combat" then
+		heroName = combatClassTable[math.random(#combatClassTable)]
+		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
+		end
+	end
+	if heroName == "npc_dota_hero_random_caster" then
+		heroName = casterClassTable[math.random(#casterClassTable)]
+		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
+		end
+	end
+	if heroName == "npc_dota_hero_random_support" then
+		heroName = supportClassTable[math.random(#supportClassTable)]
+		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
+		end
+	end
+	if heroName == "npc_dota_hero_random_rounded" then
+		heroName = roundedClassTable[math.random(#roundedClassTable)]
+		player.repick = player.repick+1
+		
+		if player.repick == 2 then
+			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+		else
+			GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
+		end
+	end
+	print("RANDOM SMALL: "..heroName)
+	
+	--remove active starlight sphere
+	if player.sphere ~= nil and player.sphere:IsNull() == false then
+		print("IS IT NULL?")
+		print(player.sphere:IsNull())
+		player.sphere:StopSound("Hero_Wisp.Spirits.Loop")
+		UTIL_Remove(player.sphere)
+		player.sphere = nil
+	end
+	
+	--remove summoned units
+	local summons = player:GetAdditionalOwnedUnits()
+	PrintTable(summons)
+	for k,v in pairs(summons) do
+		print(k..", "..v)
+		UTIL_Remove(v)
+	end
+	
+	--remove active moonbeam
+	if Enfos.moonbeamActive[pID] ~= nil then
+		Enfos.moonbeamActive[pID]:Destroy()
+		Timers:RemoveTimer("moonbeam_timer" .. pID)
+		Enfos.moonbeamActive[pID] = nil
+	end
+	
+	--undo favored enemy if active
+	if player:GetUnitName() == "npc_dota_hero_drow_ranger" then
+		local units = FindUnitsInRadius(player:GetTeamNumber(), player:GetAbsOrigin(), player, 9999, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+
+		for k,v in pairs(units) do
+			if v:GetUnitName() == player.FavoredEnemy or v:GetUnitName() == player.FavoredEnemy2 then
+				if v:HasModifier("modifier_favored_enemy_targeted") then
+					--print("Removing favored enemy from "..v:GetUnitName())
+					v:RemoveModifierByName("modifier_favored_enemy_targeted")
+				end
+			end
+		end
+
+		player.FavoredEnemy = nil
+		player.FavoredEnemy2 = nil
+	end
+	
+	--drop inventory on ground
+	for i=0,5 do
+		local item = player:GetItemInSlot(i)
+		if item then
+			player:DropItemAtPositionImmediate(item,player:GetAbsOrigin())
+		end
+	end
+	
+	local newHero = PlayerResource:ReplaceHeroWith(pID, heroName, 0, 0)
+	newHero:SetGold(glod, true)
+	--newHero.lumber = wood
+	newHero.repick = player.repick
+	--sb:SetControllableByPlayer(pID, true)
+	newHero.spellbringer = sb
+	
+	print(heroName)
+	UTIL_Remove(player)
+end

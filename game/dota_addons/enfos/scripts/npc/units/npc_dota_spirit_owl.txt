@@ -18,6 +18,7 @@
 	"Ability2"					"brown_bear_evasion"			// Ability 2
 	"Ability3"					""			// Ability 3
 	"Ability4"					""			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------

@@ -9,6 +9,7 @@ function StarlightSphereSummon(keys)
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
 	local ball = CreateUnitByName("npc_starlight_sphere", caster:GetAbsOrigin(), true, caster:GetPlayerOwner(), caster, caster:GetPlayerOwnerID() ) 
+	caster.sphere = ball
 	--[[local findSphere = Entities:FindAllByClassnameWithin("npc_dota_base_additive", caster:GetAbsOrigin(), 300)
 	for k,v in pairs(findSphere) do
 		if v:GetUnitName() == "npc_starlight_sphere" then
@@ -32,6 +33,7 @@ function StarlightSphereDetonate(keys)
 	local damage = keys.damage
 	local unitsFullRadius = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetOrigin(), caster, keys.full_damage_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 	local unitsReducedRadius = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetOrigin(), caster, keys.reduced_damage_radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+	caster.sphere = nil
 -- particle(s)
 	--local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_puck/puck_illusory_orb_explode.vpcf", PATTACH_ABSORIGIN_FOLLOW, Enfos.starlightSphere[pid])
 -- deal the damage in the full radius. because enemies in the inner radius are also in the outer radius, we need to deal reduced damage to inner units to make the total damage amount correct.

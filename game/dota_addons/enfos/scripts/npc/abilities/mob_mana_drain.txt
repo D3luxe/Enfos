@@ -31,6 +31,7 @@
 		{
 			"Passive"				"1"
 			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"OnCreated"
 			{
 				"AttachEffect"
@@ -53,6 +54,7 @@
 		{
 			"IsHidden"				"0"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			
 			"Aura"					"mana_drain"
 			"Aura_Radius"			"%health_radius"

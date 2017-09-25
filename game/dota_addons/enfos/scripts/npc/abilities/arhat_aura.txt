@@ -39,6 +39,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"	"0"
 			
 			"Aura"					"modifier_arhat_haste"
 			"Aura_Radius"			"%radius"

@@ -12,6 +12,7 @@
 		"modifier_sniper_lucky_shot"
 		{
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			"OnAttackStart"
 			{
 				"Random"

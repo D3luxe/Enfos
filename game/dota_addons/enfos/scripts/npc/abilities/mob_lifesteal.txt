@@ -11,6 +11,7 @@
 	{
 		"modifier_mob_lifesteal"
 		{
+			"IsPurgable"	"0"
 			"OnAttackLanded"
 			{
 				"Lifesteal"

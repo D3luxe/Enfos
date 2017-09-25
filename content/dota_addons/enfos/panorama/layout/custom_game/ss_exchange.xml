@@ -1,0 +1,60 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/ss_exchange.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/ss_exchange.js" />
+	</scripts>
+	<Panel hittest="false" class="Main">
+		<!--<Panel id="ExchangeBase">
+			<Label id="ExchangeLabel" text="LUMBER EXCHANGE" />
+			<Panel id="ExchangeBuffer">
+				<Panel id="LabelPanel">
+					<Label id="BuyLabel" text="BUY" />
+				</Panel>
+				<Panel id="ButtonPanel">
+					<Button id="BuyButton1" onactivate="DoExchange(0)">
+						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="1" />
+						<Label id="BuyCostLabel" text="125" />
+					</Button>
+					<Panel id="Buffer1" />
+					<Button id="BuyButton2" onactivate="DoExchange(1)">
+						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="10" />
+						<Label id="BuyCostLabel" text="1250" />
+					</Button>
+					<Panel id="Buffer2" />
+					<Button id="BuyButton3" onactivate="DoExchange(2)">
+						<Panel id="BuyCostBG" />
+						<Label id="BuyAmountLabel" text="100" />
+						<Label id="BuyCostLabel" text="12500" />
+					</Button>
+				</Panel>
+				<Panel id="LabelPanel2">
+					<Label id="SellLabel" text="SELL" />
+				</Panel>
+				<Panel id="ButtonPanel2">
+					<Button id="SellButton1" onactivate="DoExchange(3)">
+						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="100" />
+						<Label id="SellCostLabel" text="1" />
+					</Button>
+					<Panel id="Buffer3" />
+					<Button id="SellButton2" onactivate="DoExchange(4)">
+						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="1000" />
+						<Label id="SellCostLabel" text="10" />
+					</Button>
+					<Panel id="Buffer4" />
+					<Button id="SellButton3" onactivate="DoExchange(5)">
+						<Panel id="SellCostBG" />
+						<Label id="SellAmountLabel" text="10000" />
+						<Label id="SellCostLabel" text="100" />
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>-->
+	</Panel>
+</root>

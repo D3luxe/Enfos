@@ -4,7 +4,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass" 					"ability_datadriven"
-	"AbilityTextureName" 			"bounty_hunter_wind_walk"
+	"AbilityTextureName" 			"dark_fiend_cleave"
 	"MaxLevel"						"1"
 	
 	"Precache"
@@ -18,6 +18,7 @@
 		{
 			"Passive" "1"
 			"IsHidden" "1"
+			"IsPurgable"	"0"
 
 			"OnAttackLanded"
 			{

@@ -79,6 +79,7 @@
 		{
 			"Passive"	"1"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 
 			"OnAttacked"
 			{
@@ -94,6 +95,7 @@
 		{
 			"Duration"	"2"
 			"IsHidden"	"1"
+			"IsPurgable"	"0"
 		}
 
 	}

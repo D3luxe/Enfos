@@ -37,6 +37,7 @@
 		{
 			"IsHidden"				"1"
 			"Passive"				"1"
+			"IsPurgable"			"0"
 			
 			"Aura"					"modifier_havroth_thorns"
 			"Aura_Radius"			"900"

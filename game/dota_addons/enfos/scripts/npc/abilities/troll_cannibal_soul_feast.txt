@@ -18,6 +18,7 @@
 			"ThinkInterval"			"0.1"
 			"Passive"				"1"
 			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"OnIntervalThink"
 			{
 				"RunScript"
@@ -29,6 +30,7 @@
 		}	
 		"modifier_soul_feast_passive_timer"
 		{
+			"IsPurgable"			"0"
 			"Duration"				"%passive_spell_duration"
 			"OnDestroy"
 			{

@@ -30,7 +30,8 @@
 		"starlight_sphere_modifier"
 		{
 			"Passive"           	"1"
-			"IsHidden"				"1"    
+			"IsHidden"				"1"
+			"IsPurgable"			"0"
 			"States"
 			{
 				"MODIFIER_STATE_INVULNERABLE"    "MODIFIER_STATE_VALUE_ENABLED"

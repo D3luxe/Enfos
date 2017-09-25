@@ -1,0 +1,153 @@
+.Main {
+	width: 100%;
+    height: 100%;
+}
+
+#ExchangeBase {
+	vertical-align: bottom;
+	horizontal-align: center;
+	height: 200px;
+	width: 320px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #1c2027 ), to( #010101 ) );
+	background-image: url("s2r://panorama/images/hud/reborn/bg_pinned_items_psd.vtex");
+	background-size: 100%;
+	margin-top: 174px;
+}
+
+#ExchangeLabel {
+	width: 220px;
+ 	height: 30px;
+	text-align: center;
+	//color: #FFE269FF;
+	color: #5b6872;
+	vertical-align: top;
+	horizontal-align: center;
+	//text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 1px 3.0 #FFE26930;
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,Gulim,MingLiU;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin-top: 8px;
+}
+
+#ExchangeBuffer {
+	height: 150px;
+	width: 270px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #090909 ), to( #0d1014 ) );
+	margin-top: 34px;
+	horizontal-align: center;
+	padding: 0px 30px 10px 30px;
+	flow-children: down;
+}
+
+#BuyLabel {
+	width: 220px;
+ 	height: 30px;
+	text-align: center;
+	color: #66ff66;
+	vertical-align: top;
+	horizontal-align: center;
+	//text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 1px 3.0 #FFE26930;
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,Gulim,MingLiU;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin-top: 4px;
+}
+
+#SellLabel {
+	width: 220px;
+ 	height: 30px;
+	text-align: center;
+	color: #ffff66;
+	vertical-align: top;
+	horizontal-align: center;
+	//text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 1px 3.0 #FFE26930;
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,Gulim,MingLiU;
+	font-size: 15px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	margin-top: 2px;
+}
+
+#LabelPanel, #LabelPanel2 {
+	height: 25px;
+	width: 100%;
+}
+
+#ButtonPanel, #ButtonPanel2 {
+	height: 45px;
+	width: 100%;
+	flow-children: right;
+}
+
+#BuyButton1, #BuyButton2, #BuyButton3 {
+	width: 58px;
+	height: width-percentage( 72.7% );
+	background-image: url("s2r://panorama/images/custom_game/bundle_of_lumber_png.vtex");
+}
+
+#SellButton1, #SellButton2, #SellButton3 {
+	width: 58px;
+	height: width-percentage( 72.7% );
+	background-image: url("s2r://panorama/images/custom_game/bundle_of_gold_png.vtex");
+}
+
+#Buffer1, #Buffer2, #Buffer3, #Buffer4 {
+	width: 12px;
+}
+
+#SellCostBG {
+	background-image: url("s2r://panorama/images/hud/reborn/manaamount_bg_png.vtex");
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+#BuyCostBG {
+	background-image: url("s2r://panorama/images/hud/goldamount_bg_png.vtex");
+	background-size: 100% 100%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+#SellCostLabel {
+	margin-right: 2px;
+	margin-bottom: -2px;
+	color: #37af37;
+	font-size: 14px;
+	text-shadow: 0px 0px 3px 3.0 #000000;
+	vertical-align: bottom;
+	horizontal-align: right;
+}
+
+#BuyCostLabel {
+	margin-left: 2px;
+	margin-bottom: -2px;
+	color: #FFFF99;
+	font-size: 14px;
+	text-shadow: 0px 0px 3px 3.0 #000000;
+	vertical-align: bottom;
+	horizontal-align: left;
+}
+
+#SellAmountLabel {
+	color: #FFFF99;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: 0px 0px 4px 5.0 #000000;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+#BuyAmountLabel {
+	color: #37af37;
+	font-size: 20px;
+	font-weight: bold;
+	text-shadow: 0px 0px 4px 5.0 #000000;
+	vertical-align: center;
+	horizontal-align: center;
+}

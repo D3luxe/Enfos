@@ -19,6 +19,7 @@
 	"Ability2"					"mob_hardened_skin"			// Ability 2
 	"Ability3"					""			// Ability 3
 	"Ability4"					""			// Ability 4
+	"Ability5"					""
 
 	// Armor
 	//----------------------------------------------------------------
