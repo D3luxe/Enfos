@@ -1774,4 +1774,66 @@
 	
 		"Team"						"Bad"
 	}
+	//=================================================================================================================
+	// HERO: Io: Dummy Unit for Repick
+	//=================================================================================================================
+	"npc_dota_hero_wisp_enfos"
+	{
+		"override_hero"				"npc_dota_hero_wisp"
+		"Role"						"Jungler" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"SoundSet"					""
+		"GameSoundsFile"			""
+		"IdleSoundLoop"				""
+		"Model"						"models/development/invisiblebox.vmdl"
+		"MinimapIcon"				""
+		
+		"AbilityLayout"				"4"
+		"Ability1"				"spell_dummy_unit"
+		"Ability2"				""
+		"Ability3"				""
+		"Ability4"				""
+		"Ability5"				""
+		"Ability6"				""
+		"Ability7"				""
+		"Ability8"				""
+		"Ability9"				""
+		"Ability10"				""
+		"Ability11"				""
+		"Ability12"				""
+		"Ability13"				""
+		"Ability14"				""
+		"Ability15"				""
+		"Ability16"				""
+		"Ability17"				""
+		"Ability18"				""
+		
+		"ArmorPhysical"				"0"
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" 	"1"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"1" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "1" 
+		"AttributeIntelligenceGain" "0" 
+		
+		"MovementSpeed"				"0"
+		"MovementTurnRate"			"0"									// Turning rate.
+		"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+		
+		"StatusHealth"				"25000"
+		"StatusMana"				"1"
+		
+		"VisionDaytimeRange"		"0"
+		"VisionNighttimeRange"		"0"
+	
+		"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+		"ProjectileModel"			"particles/units/heroes/hero_furion/lina_base_attack.vpcf"			// Particle system model for projectile.
+		"AttackDamageMin" 			"0"
+		"AttackDamageMax" 			"0"
+		"AttackRate"                "1.97"
+		"AttackRange"               "600"
+		"AttackAnimationPoint"		"0.500"									// Normalized time in animation cycle to attack.
+		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	}
 }

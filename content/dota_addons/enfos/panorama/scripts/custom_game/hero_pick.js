@@ -87,8 +87,10 @@ function PickCheck() {
 	if (Players.GetPlayerSelectedHero(Game.GetLocalPlayerID()) != "npc_dota_hero_wisp"
 	&& Math.floor(Game.GetDOTATime(false,true)) >= -10) {
 		$("#PickUIBase").visible = false;
+		GameUI.SetCameraTarget(-1);
 	} else {
 		$("#PickUIBase").visible = true;
+		GameUI.SetCameraTarget(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()));
 		
 		//$('#PortraitBox').visible = false;
 		//$('#StatBox').visible = false;

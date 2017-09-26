@@ -1528,18 +1528,39 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		player.lumber = 0 -- Secondary resource of the player
 		player.spawned = false
 		spawnedUnitIndex.repick = 0
+		spawnedUnitIndex:SetNeverMoveToClearSpace(true)
+		--spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
+		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_persistent_invisibility", {duration = 999})
+		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_phased", {duration = 999})
+		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_invulnerable", {duration = 999})
+		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_no_healthbar", {duration = 999})
+		spawnedUnitIndex:GetAbilityByIndex(0):SetLevel(1)
+		--FindClearSpaceForUnit(spawnedUnitIndex, Vector(0,0,0), false)
+		local point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
+		FindClearSpaceForUnit(spawnedUnitIndex, point, false)
+		--FindClearSpaceForUnit(spawnedUnitIndex, point, false)
+		Timers:CreateTimer(DoUniqueString("repickMover"), {
+			endTime = 0.3,
+			callback = function()
+				spawnedUnitIndex:SetNeverMoveToClearSpace(false)
+				FindClearSpaceForUnit(spawnedUnitIndex, point, false)
+			end
+		})
+		--PlayerResource:SetCameraTarget(player:GetPlayerID(),player)
 	end
 
-	print(spawnedUnit, spawnedUnitIndex, player, event.PlayerID, event.HeroName)
-	print(spawnedUnitIndex:GetPlayerID())
+	--print(spawnedUnit, spawnedUnitIndex, player, event.PlayerID, event.HeroName)
+	--print(spawnedUnitIndex:GetPlayerID())
 	CustomGameEventManager:Send_ServerToAllClients( "hero_change", {} )
 	
 	--Starts the game if everyone has picked and loaded
 	if GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT then
     	CEnfosGameMode:OnEveryonePicked()
     end
-    spawnedUnitIndex:RemoveAbility("attribute_bonus")
-    spawnedUnitIndex:AddAbility("enfos_attribute_bonus")
+    --spawnedUnitIndex:RemoveAbility("attribute_bonus")
+	if spawnedUnit ~= "npc_dota_hero_wisp" then
+		spawnedUnitIndex:AddAbility("enfos_attribute_bonus")
+	end
 
 	--Sets the initial cannibal index for if Troll Warlord is being played.
 	if spawnedUnit == "npc_dota_hero_troll_warlord" then
@@ -1662,6 +1683,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 					--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
 					unit2:RemoveModifierByName("modifier_tower_truesight_aura")
 					unit2:RemoveModifierByName("modifier_invulnerable")
+					unit2:AddNewModifier(unit2, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
 					unit2:StartGesture(ACT_DOTA_CAPTURE)
 					spawnedUnitIndex.spellbringer = unit2
 					--unit2:SetRenderColor(r,g,b)
@@ -3566,6 +3588,36 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	newHero.repick = player.repick
 	--sb:SetControllableByPlayer(pID, true)
 	newHero.spellbringer = sb
+	
+	local point = Vector(0,0,0)
+	
+	if heroName == "npc_dota_hero_wisp" then
+		--newHero:SetNeverMoveToClearSpace(true)
+		newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
+		newHero:AddNewModifier(newHero, nil, "modifier_persistent_invisibility", {duration = 999})
+		newHero:AddNewModifier(newHero, nil, "modifier_phased", {duration = 999})
+		newHero:AddNewModifier(newHero, nil, "modifier_invulnerable", {duration = 999})
+		newHero:AddNewModifier(newHero, nil, "modifier_no_healthbar", {duration = 999})
+		newHero:GetAbilityByIndex(0):SetLevel(1)
+		point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
+		FindClearSpaceForUnit(newHero, point, true)
+		--FindClearSpaceForUnit(newHero, Vector(0,0,0), true)
+	else
+		--newHero:SetNeverMoveToClearSpace(true)
+		if newHero:GetTeam() == DOTA_TEAM_GOODGUYS then
+			point = Entities:FindByName( nil, "repick_radiant" ):GetAbsOrigin()
+		elseif newHero:GetTeam() == DOTA_TEAM_BADGUYS then
+			Entities:FindByName( nil, "repick_dire" ):GetAbsOrigin()
+		end
+		FindClearSpaceForUnit(newHero, point, true)
+		--FindClearSpaceForUnit(newHero, Vector(-4352,-2816,448), true)
+		local stunTime = GameRules:GetDOTATime(false,true)
+		if stunTime < -10 then
+			stunTime = math.abs(stunTime)-10
+			newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = stunTime})
+		end
+		print(stunTime)
+	end
 	
 	print(heroName)
 	UTIL_Remove(player)
