@@ -3649,7 +3649,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		if newHero:GetTeam() == DOTA_TEAM_GOODGUYS then
 			point = Entities:FindByName( nil, "repick_radiant" ):GetAbsOrigin()
 		elseif newHero:GetTeam() == DOTA_TEAM_BADGUYS then
-			Entities:FindByName( nil, "repick_dire" ):GetAbsOrigin()
+			point = Entities:FindByName( nil, "repick_dire" ):GetAbsOrigin()
 		end
 		FindClearSpaceForUnit(newHero, point, true)
 		--FindClearSpaceForUnit(newHero, Vector(-4352,-2816,448), true)
