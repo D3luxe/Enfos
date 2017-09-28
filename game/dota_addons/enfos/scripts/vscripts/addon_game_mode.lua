@@ -1452,6 +1452,17 @@ function CEnfosGameMode:_ThinkPrepTime()
 			if curRound == 4 then 
 				GameRules:SendCustomMessage("Repick is now <font color='#D0D000'>disabled</font>.", 0, 0)
 				GameRules:SendCustomMessage("Players who haven't picked a hero have been randomed.", 0, 0)
+				
+				for pid = 0, 9 do
+					print(pid)
+					if PlayerResource:GetSelectedHeroName(pid) == "npc_dota_hero_wisp" then
+						local data = {}
+						data.player = pid
+						data.hero = "npc_dota_hero_autorandom"
+						data.name = PlayerResource:GetPlayerName(pid)
+						RepickHero(nil,data)
+					end
+				end
 			end
 			
 			if curRound == 6 or curRound == 27 then
@@ -3137,7 +3148,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 
 	local exp = 0
 	local xpKilledUnitTeam = killedUnit:GetTeam()
-	print("xp shiz: "..RADIANT_XP_MULTI..", "..DIRE_XP_MULTI)
+	--print("xp shiz: "..RADIANT_XP_MULTI..", "..DIRE_XP_MULTI)
 	
 	for i = 1, #mobTable do
 			if mobTable[i].name == killedUnit:GetUnitName() then
@@ -3499,19 +3510,32 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	local sb = player.spellbringer
 	local heroName = event.hero
 	local playerName = PlayerResource:GetPlayerName(pID)
+	local autoRandom = false
+	if heroName == "npc_dota_hero_autorandom" then autoRandom = true end
 	
-	if curRound >= 4 or player.repick > 0 then
-		--Notifications:Bottom(pID, {text="You can no longer repick!", duration=3, style={color="red", ["font-size"]="50px"}})
-		if curRound >= 4 and PlayerResource:GetSelectedHeroName(pID) == "npc_dota_hero_wisp" and heroName == "npc_dota_hero_random" then
-			--um???
-		else
-			CEnfosGameMode:SendErrorMessage(pID, "You can no longer repick!")
+	if autoRandom == false then
+		if curRound >= 4 or player.repick > 0 then
+			--Notifications:Bottom(pID, {text="You can no longer repick!", duration=3, style={color="red", ["font-size"]="50px"}})
+			if curRound >= 4 and PlayerResource:GetSelectedHeroName(pID) == "npc_dota_hero_wisp" and heroName == "npc_dota_hero_random" then
+				--um???
+			else
+				CEnfosGameMode:SendErrorMessage(pID, "You can no longer repick!")
+				return 0
+			end
+		end
+		if player.pickCD > 0 then
+			CEnfosGameMode:SendErrorMessage(pID, "Too soon to repick")
 			return 0
 		end
-	end
-	if player.pickCD > 0 then
-		CEnfosGameMode:SendErrorMessage(pID, "Too soon to repick")
-		return 0
+	else
+		if player.pickCD > 0 then
+			--failsafe
+			local data = {}
+			data.player = pID
+			data.hero = "npc_dota_hero_autorandom"
+			data.name = playerName
+			RepickHero(nil,data)
+		end
 	end
 	
 	if heroName == "npc_dota_hero_wisp" then
@@ -3520,7 +3544,8 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		..event.name
 		.."</font> is repicking!", 0, 0)
 	end
-	if heroName == "npc_dota_hero_random" then
+	
+	if heroName == "npc_dota_hero_random" or heroName == "npc_dota_hero_autorandom" then
 		local rng = {
 			[1] = "npc_dota_hero_random_combat",
 			[2] = "npc_dota_hero_random_caster",
@@ -3535,40 +3560,48 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		heroName = combatClassTable[math.random(#combatClassTable)]
 		player.repick = player.repick+1
 		
-		if player.repick == 2 then
-			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-		else
-			GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
+		if autoRandom == false then
+			if player.repick == 2 then
+				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+			else
+				GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
+			end
 		end
 	end
 	if heroName == "npc_dota_hero_random_caster" then
 		heroName = casterClassTable[math.random(#casterClassTable)]
 		player.repick = player.repick+1
 		
-		if player.repick == 2 then
-			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-		else
-			GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
+		if autoRandom == false then
+			if player.repick == 2 then
+				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+			else
+				GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
+			end
 		end
 	end
 	if heroName == "npc_dota_hero_random_support" then
 		heroName = supportClassTable[math.random(#supportClassTable)]
 		player.repick = player.repick+1
 		
-		if player.repick == 2 then
-			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-		else
-			GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
+		if autoRandom == false then
+			if player.repick == 2 then
+				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+			else
+				GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
+			end
 		end
 	end
 	if heroName == "npc_dota_hero_random_rounded" then
 		heroName = roundedClassTable[math.random(#roundedClassTable)]
 		player.repick = player.repick+1
 		
-		if player.repick == 2 then
-			GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-		else
-			GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
+		if autoRandom == false then
+			if player.repick == 2 then
+				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+			else
+				GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
+			end
 		end
 	end
 	print("RANDOM SMALL: "..heroName)

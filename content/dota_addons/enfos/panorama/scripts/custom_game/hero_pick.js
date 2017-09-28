@@ -424,6 +424,12 @@ function PickButtonPressed() {
 	var data = {};
 	data.player = Game.GetLocalPlayerID();
 	data.hero = heroData[data.player];
+	
+	var color = Players.GetPlayerColor(data.player);
+	color = color.toString(16);
+	color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+	
+	data.color = color
 	//$.Msg(data.hero)
 	GameEvents.SendCustomGameEventToServer("player_repick",data);
 	PickCheck();
@@ -435,12 +441,13 @@ function HeroDataTableFill() {
 }
 
 function UpdateTimer() {
-	if (CustomNetTables.GetTableValue("this_wave_table","round").value >= 4
-	&& $('#PickUIBase').visible == true){
-		$('#PickUIBase').visible = false;
-		heroData[Game.GetLocalPlayerID()] = "npc_dota_hero_random";
-		PickButtonPressed();
-	}
+	//if (CustomNetTables.GetTableValue("this_wave_table","round").value >= 4
+	//&& $('#PickUIBase').visible == true){
+		//$('#PickUIBase').visible = false;
+		//$("#UIMask").visible = false;
+		//heroData[Game.GetLocalPlayerID()] = "npc_dota_hero_random";
+		//PickButtonPressed();
+	//}
 	var time = Math.floor(Game.GetDOTATime(false,true));
 	var realTime = 0;
 	if (time < 0) {
