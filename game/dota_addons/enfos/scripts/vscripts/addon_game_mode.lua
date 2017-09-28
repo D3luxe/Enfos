@@ -52,6 +52,9 @@ end
 RADIANT_TEAM_MEMBERS = {}
 DIRE_TEAM_MEMBERS = {}
 
+RADIANT_XP_MULTI = 1
+DIRE_XP_MULTI = 1
+
 VOTING_TIME = 30
 
 TIP_TIMER  = 5
@@ -1632,6 +1635,23 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		local b = 0
 		local playerSlot = 0
 		
+		local radiantPlayers = PlayerResource:GetPlayerCountForTeam(2)
+		local direPlayers = PlayerResource:GetPlayerCountForTeam(3)
+		RADIANT_XP_MULTI = 0
+		DIRE_XP_MULTI = 0
+		
+		for i = 1, radiantPlayers do
+			if PlayerResource:GetSelectedHeroName(PlayerResource:GetNthPlayerIDOnTeam(2,i)) ~= "npc_dota_hero_wisp" then
+				RADIANT_XP_MULTI = RADIANT_XP_MULTI+1
+			end
+		end
+		for i = 1, direPlayers do
+			if PlayerResource:GetSelectedHeroName(PlayerResource:GetNthPlayerIDOnTeam(3,i)) ~= "npc_dota_hero_wisp" then
+				DIRE_XP_MULTI = DIRE_XP_MULTI+1
+			end
+		end
+		if RADIANT_XP_MULTI == 0 then RADIANT_XP_MULTI = 1 end
+		if DIRE_XP_MULTI == 0 then DIRE_XP_MULTI = 1 end
 
 		--Handles spawning the spellbringers
 		local spellbringerName = nil
@@ -3107,8 +3127,8 @@ function CEnfosGameMode:OnEntityKilled( event )
 
 	local exp = 0
 	local xpKilledUnitTeam = killedUnit:GetTeam()
-	local radiantPlayers = PlayerResource:GetPlayerCountForTeam(2)
-	local direPlayers = PlayerResource:GetPlayerCountForTeam(3)
+	print("xp shiz: "..RADIANT_XP_MULTI..", "..DIRE_XP_MULTI)
+	
 	for i = 1, #mobTable do
 			if mobTable[i].name == killedUnit:GetUnitName() then
 				exp = tonumber(mobTable[i].exp)
@@ -3116,29 +3136,32 @@ function CEnfosGameMode:OnEntityKilled( event )
 			end
 	end
 	--exp = math.ceil(exp / PlayerResource:GetPlayerCountForTeam(PlayerResource:GetSelectedHeroEntity(xpPlayerID):GetTeamNumber()))
-	local radiantEXP = math.ceil(exp / radiantPlayers)
-	local direEXP = math.ceil(exp / direPlayers)
+	--local radiantEXP = math.ceil(exp / RADIANT_XP_MULTI)
+	--local direEXP = math.ceil(exp / DIRE_XP_MULTI)
+	local xpMulti = 0
+	if xpKilledUnitTeam == 2 then xpMulti = math.ceil(exp / RADIANT_XP_MULTI) end
+	if xpKilledUnitTeam == 3 then xpMulti = math.ceil(exp / DIRE_XP_MULTI) end
 	 -- Loop for Players
 	for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 		local teamID = PlayerResource:GetTeam(xpPlayerID)
 		local player = PlayerResource:GetSelectedHeroEntity(xpPlayerID)
 		-- If player isn't nil and is on an enemy team, give exp
 		if player ~= nil and player:GetTeam() ~= xpKilledUnitTeam and player:IsAlive() then
-			if player:GetTeam() == 2 then
+			if --[[player:GetTeam() == 2]]player:GetUnitName() ~= "npc_dota_hero_wisp" then
 				if player:HasModifier("modifier_enfeeble_enfos") then -- this is for Shadow Priest's enfeeble
-					local modifiedEXP = radiantEXP / 10
+					local modifiedEXP = xpMulti / 10
 					player:AddExperience(modifiedEXP, false, false)
 					--print("Giving "..modifiedEXP.." exp to "..player:GetName())
 				elseif player:HasModifier("modifier_faenellas_grace") then
-					local modifiedEXP = radiantEXP * 1.5
+					local modifiedEXP = xpMulti * 1.5
 					player:AddExperience(modifiedEXP, false, false)
 					--print("Giving "..modifiedEXP.." exp to "..player:GetName())
 				else
-					player:AddExperience(radiantEXP, false, false)
+					player:AddExperience(xpMulti, false, false)
 					--print("Giving "..radiantEXP.." exp to "..player:GetName())
 				end
 				
-			else
+			--[[else
 				if player:HasModifier("modifier_enfeeble_enfos") then -- this is for Shadow Priest's enfeeble
 					local modifiedEXP = direEXP / 10
 					player:AddExperience(modifiedEXP, false, false)
@@ -3621,4 +3644,22 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	
 	print(heroName)
 	UTIL_Remove(player)
+	
+	local radiantPlayers = PlayerResource:GetPlayerCountForTeam(2)
+	local direPlayers = PlayerResource:GetPlayerCountForTeam(3)
+	RADIANT_XP_MULTI = 0
+	DIRE_XP_MULTI = 0
+	
+	for i = 1, radiantPlayers do
+		if PlayerResource:GetSelectedHeroName(PlayerResource:GetNthPlayerIDOnTeam(2,i)) ~= "npc_dota_hero_wisp" then
+			RADIANT_XP_MULTI = RADIANT_XP_MULTI+1
+		end
+	end
+	for i = 1, direPlayers do
+		if PlayerResource:GetSelectedHeroName(PlayerResource:GetNthPlayerIDOnTeam(3,i)) ~= "npc_dota_hero_wisp" then
+			DIRE_XP_MULTI = DIRE_XP_MULTI+1
+		end
+	end
+	if RADIANT_XP_MULTI == 0 then RADIANT_XP_MULTI = 1 end
+	if DIRE_XP_MULTI == 0 then DIRE_XP_MULTI = 1 end
 end
