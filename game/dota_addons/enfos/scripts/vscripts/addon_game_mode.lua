@@ -1532,6 +1532,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		player.lumber = 0 -- Secondary resource of the player
 		player.spawned = false
 		spawnedUnitIndex.repick = 0
+		spawnedUnitIndex.pickCD = 0
 		spawnedUnitIndex:SetNeverMoveToClearSpace(true)
 		--spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_persistent_invisibility", {duration = 999})
@@ -3497,6 +3498,10 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 			return 0
 		end
 	end
+	if player.pickCD > 0 then
+		CEnfosGameMode:SendErrorMessage(pID, "Too soon to repick")
+		return 0
+	end
 	
 	if heroName == "npc_dota_hero_wisp" then
 		GameRules:SendCustomMessage(
@@ -3626,6 +3631,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
 		FindClearSpaceForUnit(newHero, point, true)
 		--FindClearSpaceForUnit(newHero, Vector(0,0,0), true)
+		newHero.pickCD = 0
 	else
 		--newHero:SetNeverMoveToClearSpace(true)
 		if newHero:GetTeam() == DOTA_TEAM_GOODGUYS then
@@ -3641,6 +3647,13 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 			newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = stunTime})
 		end
 		print(stunTime)
+		newHero.pickCD = 1
+		Timers:CreateTimer(DoUniqueString("pickDelay"), {
+			endTime = 1.01,
+			callback = function()
+				newHero.pickCD = 0
+			end
+		})
 	end
 	
 	print(heroName)
