@@ -3251,8 +3251,11 @@ end
 function CEnfosGameMode:OnPlayerChat(event)
 	if event.text == "-repick" then
 		local pid = event.playerid
+		if PlayerResource:GetSelectedHeroName(pid) == "npc_dota_hero_wisp" then
+			return 0
+		end
 		local uid = event.userid
-		local name = PlayerResource:GetPlayerName(uid)
+		local name = PlayerResource:GetPlayerName(pid)
 		--PrintTable(playerColors)
 		local r = playerColors[uid].r
 		local g = playerColors[uid].g
