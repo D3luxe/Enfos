@@ -33,15 +33,18 @@ function UpdatePickUI() {
 		
 		//$.Msg('#RadiantPlayerBox'+order.toString());
 		if (hero == "npc_dota_hero_wisp") {
-			if (icon == undefined
-			|| icon == "npc_dota_hero_random"
-			|| icon == "npc_dota_hero_random_combat"
-			|| icon == "npc_dota_hero_random_caster"
-			|| icon == "npc_dota_hero_random_support"
-			|| icon == "npc_dota_hero_random_rounded") {
-				$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex")';
+			if (Players.GetTeam(pID) == 2) {
+				if (icon == undefined
+				|| icon == "npc_dota_hero_random"
+				|| icon == "npc_dota_hero_random_combat"
+				|| icon == "npc_dota_hero_random_caster"
+				|| icon == "npc_dota_hero_random_support"
+				|| icon == "npc_dota_hero_random_rounded") {
+					$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex")';
+				}
+				else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ icon +'_png.vtex")';}
 			}
-			else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ icon +'_png.vtex")';}
+			else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("")';}
 		}
 		else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ hero +'_png.vtex")';}
 		$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerColor").style.backgroundColor = '#'+color;
@@ -61,11 +64,26 @@ function UpdatePickUI() {
 		var hero = Players.GetPlayerSelectedHero(parseInt(dirTeam[playerID]));
 		var color = Players.GetPlayerColor(parseInt(dirTeam[playerID]));
 		var name = Players.GetPlayerName(parseInt(dirTeam[playerID]));
+		var icon = heroData[parseInt(radTeam[playerID])];
 		color = color.toString(16);
 		color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
 		
 		//$.Msg('#DirePlayerBox'+order.toString());
-		$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ hero +'_png.vtex")';
+		if (hero == "npc_dota_hero_wisp") {
+			if (Players.GetTeam(pID) == 3) {
+				if (icon == undefined
+				|| icon == "npc_dota_hero_random"
+				|| icon == "npc_dota_hero_random_combat"
+				|| icon == "npc_dota_hero_random_caster"
+				|| icon == "npc_dota_hero_random_support"
+				|| icon == "npc_dota_hero_random_rounded") {
+					$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex")';
+				}
+				else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ icon +'_png.vtex")';}
+			}
+			else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("")';}
+		}
+		else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ hero +'_png.vtex")';}
 		$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerColor").style.backgroundColor = '#'+color;
 		$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerLabel").text = name;
 		$('#DirePlayerBox'+order.toString()).visible = true;
@@ -73,6 +91,8 @@ function UpdatePickUI() {
 			//$('#ButtonGlow'+toString(order)).visible = true;
 			//$('#ButtonArrow'+toString(order)).visible = true;
 		//}
+		if (hero == "npc_dota_hero_wisp") {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").AddClass("Desaturate");}
+		else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").RemoveClass("Desaturate");}
 		order += 1;
 	}
 	PickCheck();

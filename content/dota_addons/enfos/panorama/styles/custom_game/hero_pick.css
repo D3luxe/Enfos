@@ -86,6 +86,7 @@
 	height: 68px;
 	width: 122px;
 	vertical-align: top;
+	background-color: #333333;
 	background-image: url('s2r://panorama/images/heroes/npc_dota_hero_wisp_png.vtex');
 	background-size: 100%;
 	//saturation: 0.1;
