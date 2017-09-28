@@ -1659,7 +1659,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		local spellbringerName = nil
 		local spellbringerLocation = nil
 		
-		for i = 1, 5 do
+		for i = 1, PlayerResource:GetPlayerCountForTeam(playerTeam) do
 			print(playerID)
 			if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
 				playerSlot = i + ((3 - playerTeam)*5)
@@ -1690,27 +1690,35 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 
 				if spellbringerLocation ~= nil then
-					local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
-					unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
-					local newItem = CreateItem("item_spellbringer_greater_darkrift", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-					unit2:AddItem(newItem)
-					newItem = CreateItem("item_spellbringer_summon_uthmor", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-					unit2:AddItem(newItem)
-					newItem = CreateItem("item_spellbringer_summon_arhat", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-					unit2:AddItem(newItem)
-					newItem = CreateItem("item_spellbringer_summon_sidhlot", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-					unit2:AddItem(newItem)
-					newItem = CreateItem("item_spellbringer_summon_havroth", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
-					unit2:AddItem(newItem)
-					--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
-					unit2:RemoveModifierByName("modifier_tower_truesight_aura")
-					unit2:RemoveModifierByName("modifier_invulnerable")
-					unit2:AddNewModifier(unit2, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
-					unit2:StartGesture(ACT_DOTA_CAPTURE)
-					spawnedUnitIndex.spellbringer = unit2
-					--unit2:SetRenderColor(r,g,b)
+					local delay = math.abs(GameRules:GetDOTATime(false,true)+39)
+					Timers:CreateTimer(DoUniqueString("sbDelaySpawn"), {
+						endTime = delay,
+						callback = function()
+							local unit2 = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, spawnedUnitIndex, spawnedUnitIndex, spawnedUnitIndex:GetTeamNumber())
+							unit2:SetControllableByPlayer(spawnedUnitIndex:GetPlayerID(), true)
+							local newItem = CreateItem("item_spellbringer_greater_darkrift", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+							unit2:AddItem(newItem)
+							newItem = CreateItem("item_spellbringer_summon_uthmor", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+							unit2:AddItem(newItem)
+							newItem = CreateItem("item_spellbringer_summon_arhat", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+							unit2:AddItem(newItem)
+							newItem = CreateItem("item_spellbringer_summon_sidhlot", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+							unit2:AddItem(newItem)
+							newItem = CreateItem("item_spellbringer_summon_havroth", spawnedUnitIndex:GetOwner(), spawnedUnitIndex:GetOwner())
+							unit2:AddItem(newItem)
+							--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
+							unit2:RemoveModifierByName("modifier_tower_truesight_aura")
+							unit2:RemoveModifierByName("modifier_invulnerable")
+							unit2:AddNewModifier(unit2, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
+							unit2:SetMana(100+math.floor(GameRules:GetDOTATime(false,true)))
+							unit2:StartGesture(ACT_DOTA_CAPTURE)
+							spawnedUnitIndex.spellbringer = unit2
+							--unit2:SetRenderColor(r,g,b)
 
-					--print(spawnedUnitIndex:GetTeam())
+							--print(spawnedUnitIndex:GetTeam())
+						end
+					})
+					
 				else
 					print("Incorrect spellbringer location!!")
 				end
