@@ -3633,7 +3633,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	
 	if heroName == "npc_dota_hero_wisp" then
 		--newHero:SetNeverMoveToClearSpace(true)
-		newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
+		--newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
 		newHero:AddNewModifier(newHero, nil, "modifier_persistent_invisibility", {duration = 999})
 		newHero:AddNewModifier(newHero, nil, "modifier_phased", {duration = 999})
 		newHero:AddNewModifier(newHero, nil, "modifier_invulnerable", {duration = 999})
@@ -3642,6 +3642,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
 		FindClearSpaceForUnit(newHero, point, true)
 		--FindClearSpaceForUnit(newHero, Vector(0,0,0), true)
+		newHero.spellbringer = sb
 		newHero.pickCD = 0
 	else
 		--newHero:SetNeverMoveToClearSpace(true)
@@ -3657,7 +3658,94 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 			stunTime = math.abs(stunTime)-10
 			newHero:AddNewModifier(newHero, nil, "modifier_faceless_void_chronosphere_freeze", {duration = stunTime})
 		end
-		print(stunTime)
+		--print(stunTime)
+		
+		local spellbringerLocation = sb:GetAbsOrigin()
+		local delay = GameRules:GetDOTATime(false,true)
+		
+		if delay < 0 then delay = math.abs(delay)%1
+		else delay = math.abs((delay%1)-1) end
+		local mp = sb:GetMana()
+		if delay > 0 then mp = mp+1 end
+		
+		--[[local ab1 = sb:FindAbilityByName("spellbringer_battle_sphere"):GetCooldownTimeRemaining()
+		local ab2 = sb:FindAbilityByName("spellbringer_chain_heal"):GetCooldownTimeRemaining()
+		local ab3 = sb:FindAbilityByName("spellbringer_purification"):GetCooldownTimeRemaining()
+		local ab4 = sb:FindAbilityByName("spellbringer_whole_displacement"):GetCooldownTimeRemaining()
+		local ab5 = sb:FindAbilityByName("spellbringer_mana_disruption"):GetCooldownTimeRemaining()
+		local ab6 = sb:FindAbilityByName("spellbringer_spell_disruption"):GetCooldownTimeRemaining()
+		local ab7 = sb:FindAbilityByName("spellbringer_jomays_legacy"):GetCooldownTimeRemaining()
+		local ab8 = sb:FindAbilityByName("spellbringer_glythtides_gift"):GetCooldownTimeRemaining()
+		local ab9 = sb:FindAbilityByName("spellbringer_locate"):GetCooldownTimeRemaining()
+		local ab10 = sb:FindAbilityByName("spellbringer_limb_disruption"):GetCooldownTimeRemaining()
+		local ab11 = sb:FindAbilityByName("spellbringer_mana_recharge"):GetCooldownTimeRemaining()
+		--local ab12 = sb:FindAbilityByName("spellbringer_battle_sphere"):GetCooldownTimeRemaining()]]
+		
+		Timers:CreateTimer(DoUniqueString("sbDelaySpawn"), {
+			endTime = delay,
+			callback = function()
+				
+				local newSb = CreateUnitByName("npc_spellbringer", spellbringerLocation, false, newHero, newHero, newHero:GetTeamNumber())
+				newSb:SetControllableByPlayer(newHero:GetPlayerID(), true)
+				
+				local newItem = CreateItem("item_spellbringer_greater_darkrift", newHero:GetOwner(), newHero:GetOwner())
+				newSb:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_uthmor", newHero:GetOwner(), newHero:GetOwner())
+				newSb:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_arhat", newHero:GetOwner(), newHero:GetOwner())
+				newSb:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_sidhlot", newHero:GetOwner(), newHero:GetOwner())
+				newSb:AddItem(newItem)
+				newItem = CreateItem("item_spellbringer_summon_havroth", newHero:GetOwner(), newHero:GetOwner())
+				newSb:AddItem(newItem)
+				--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
+				local i1 = sb:GetItemInSlot(0):GetCooldownTimeRemaining()
+				newSb:GetItemInSlot(0):StartCooldown(i1)
+				local i2 = sb:GetItemInSlot(1):GetCooldownTimeRemaining()
+				newSb:GetItemInSlot(1):StartCooldown(i2)
+				local i3 = sb:GetItemInSlot(2):GetCooldownTimeRemaining()
+				newSb:GetItemInSlot(2):StartCooldown(i3)
+				local i4 = sb:GetItemInSlot(3):GetCooldownTimeRemaining()
+				newSb:GetItemInSlot(3):StartCooldown(i4)
+				local i5 = sb:GetItemInSlot(4):GetCooldownTimeRemaining()
+				newSb:GetItemInSlot(4):StartCooldown(i5)
+				--local i6 = sb:GetItemInSlot(5):GetCooldownTimeRemaining()
+				--newSb:GetItemInSlot(5):StartCooldown(i6)
+				
+				local ab1 = sb:FindAbilityByName("spellbringer_battle_sphere"):GetCooldownTimeRemaining()
+				local ab2 = sb:FindAbilityByName("spellbringer_chain_heal"):GetCooldownTimeRemaining()
+				local ab3 = sb:FindAbilityByName("spellbringer_purification"):GetCooldownTimeRemaining()
+				local ab4 = sb:FindAbilityByName("spellbringer_whole_displacement"):GetCooldownTimeRemaining()
+				local ab5 = sb:FindAbilityByName("spellbringer_mana_disruption"):GetCooldownTimeRemaining()
+				local ab6 = sb:FindAbilityByName("spellbringer_spell_disruption"):GetCooldownTimeRemaining()
+				local ab7 = sb:FindAbilityByName("spellbringer_jomays_legacy"):GetCooldownTimeRemaining()
+				local ab8 = sb:FindAbilityByName("spellbringer_glythtides_gift"):GetCooldownTimeRemaining()
+				local ab9 = sb:FindAbilityByName("spellbringer_locate"):GetCooldownTimeRemaining()
+				local ab10 = sb:FindAbilityByName("spellbringer_limb_disruption"):GetCooldownTimeRemaining()
+				local ab11 = sb:FindAbilityByName("spellbringer_mana_recharge"):GetCooldownTimeRemaining()
+				--local ab12 = sb:FindAbilityByName("spellbringer_battle_sphere"):GetCooldownTimeRemaining()
+				newSb:FindAbilityByName("spellbringer_battle_sphere"):StartCooldown(ab1)
+				newSb:FindAbilityByName("spellbringer_chain_heal"):StartCooldown(ab2)
+				newSb:FindAbilityByName("spellbringer_purification"):StartCooldown(ab3)
+				newSb:FindAbilityByName("spellbringer_whole_displacement"):StartCooldown(ab4)
+				newSb:FindAbilityByName("spellbringer_mana_disruption"):StartCooldown(ab5)
+				newSb:FindAbilityByName("spellbringer_spell_disruption"):StartCooldown(ab6)
+				newSb:FindAbilityByName("spellbringer_jomays_legacy"):StartCooldown(ab7)
+				newSb:FindAbilityByName("spellbringer_glythtides_gift"):StartCooldown(ab8)
+				newSb:FindAbilityByName("spellbringer_locate"):StartCooldown(ab9)
+				newSb:FindAbilityByName("spellbringer_limb_disruption"):StartCooldown(ab10)
+				newSb:FindAbilityByName("spellbringer_mana_recharge"):StartCooldown(ab11)
+				--newSb:FindAbilityByName("spellbringer_battle_sphere"):StartCooldown(ab12)
+				
+				newSb:RemoveModifierByName("modifier_tower_truesight_aura")
+				newSb:RemoveModifierByName("modifier_invulnerable")
+				--newSb:AddNewModifier(newSb, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
+				newSb:SetMana(mp)
+				newSb:StartGesture(ACT_DOTA_CAPTURE)
+				newHero.spellbringer = newSb
+				UTIL_Remove(sb)
+			end
+		})
 		newHero.pickCD = 1
 		Timers:CreateTimer(DoUniqueString("pickDelay"), {
 			endTime = 1.01,
