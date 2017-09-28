@@ -100,6 +100,9 @@ local heroNames = {
 				{	["name"]="npc_dota_hero_sven",
 					["enfos"]="Weaponsmith",
 				},
+				{	["name"]="npc_dota_hero_wisp",
+					["enfos"]="Unselected",
+				},
 
 }
 ------------------------------
