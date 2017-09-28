@@ -89,6 +89,10 @@ end
 function summon_sidhlot(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	if math.abs(target.x) < 1500 then
+		if target.x < 0 then target.x = -1500
+		else target.x = 1500 end
+	end
 
 	local unit = CreateUnitByName("npc_summon_sidhlot", target, true, caster, caster, caster:GetTeamNumber())
 	unit:GetAbilityByIndex(0):SetLevel(1)
@@ -102,6 +106,10 @@ end
 function summon_uthmor(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	if math.abs(target.x) < 1500 then
+		if target.x < 0 then target.x = -1500
+		else target.x = 1500 end
+	end
 
 	local unit = CreateUnitByName("npc_summon_uthmor", target, true, caster, caster, caster:GetTeamNumber())
 	unit:GetAbilityByIndex(0):SetLevel(1)
@@ -115,6 +123,10 @@ end
 function summon_arhat(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	if math.abs(target.x) < 1500 then
+		if target.x < 0 then target.x = -1500
+		else target.x = 1500 end
+	end
 
 	local unit = CreateUnitByName("npc_summon_arhat", target, true, caster, caster, caster:GetTeamNumber())
 	unit:GetAbilityByIndex(0):SetLevel(1)
@@ -128,6 +140,10 @@ end
 function summon_havroth(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	if math.abs(target.x) < 1500 then
+		if target.x < 0 then target.x = -1500
+		else target.x = 1500 end
+	end
 
 	local unit = CreateUnitByName("npc_summon_havroth", target, true, caster, caster, caster:GetTeamNumber())
 	unit:GetAbilityByIndex(0):SetLevel(1)
@@ -254,6 +270,10 @@ end
 function locate(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	if math.abs(target.x) < 1500 then
+		if target.x < 0 then target.x = -1500
+		else target.x = 1500 end
+	end
 
 	local unit = CreateUnitByName("npc_spellbringer_locate_dummy", target, true, caster, caster, caster:GetTeamNumber())
 	unit:SetAbsOrigin(target) -- CreateUnitByName uses only the x and y coordinates so we have to move it with SetAbsOrigin()
@@ -477,7 +497,12 @@ function SummonDarkrift(keys)
 			curUnits = curUnits + 1
 
 			if curUnits <= maxUnits then
-				spawnLocation = Vector(target.x, target.y, target.z)
+				local antiGrief = target.x
+				if math.abs(antiGrief) < 1500 then
+					if antiGrief < 0 then antiGrief = -1500
+					else antiGrief = 1500 end
+				end
+				spawnLocation = Vector(antiGrief, target.y, target.z)
 				spawnLocation = spawnLocation + RandomVector( RandomFloat( 0, 200 ) )
 				unitToSpawn2 = unitToSpawn
 				if unitToSpawn == "npc_dota_creep_crazed_madmen" then unitToSpawn2 = "npc_dota_creep_crazed_spearman" end if unitToSpawn == "npc_dota_creep_crazed_spearman" then unitToSpawn2 = "npc_dota_creep_crazed_madmen" end
