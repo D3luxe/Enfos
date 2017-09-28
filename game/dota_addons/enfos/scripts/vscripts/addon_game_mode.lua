@@ -3180,7 +3180,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 					player:AddExperience(modifiedEXP, false, false)
 				else
 					player:AddExperience(direEXP, false, false)
-				end
+				end]]
 			end
 		end
 	end
