@@ -811,6 +811,7 @@ function CEnfosGameMode:InitGameMode()
 	Convars:RegisterCommand( "Enfos_status_report", function(...) return self:_StatusReportConsoleCommand( ... ) end, "Report the status of the current Enfos game.", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_test_repick", function(...) return self:_RepickTestConsoleCommand( ... ) end, "Test repick functionality", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_random_bots", function(...) return self:_RandomBots( ... ) end, "Give bots random heroes", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -3662,4 +3663,18 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	end
 	if RADIANT_XP_MULTI == 0 then RADIANT_XP_MULTI = 1 end
 	if DIRE_XP_MULTI == 0 then DIRE_XP_MULTI = 1 end
+end
+
+function CEnfosGameMode:_RandomBots( cmdName, hero )
+	for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
+		if PlayerResource:GetConnectionState(xpPlayerID) == 1 then
+			local name = PlayerResource:GetPlayerName(xpPlayerID)
+			local data = {}
+			data.player = xpPlayerID
+			data.hero = "npc_dota_hero_random"
+			data.color = "999999"
+			data.name = name
+			RepickHero(nil,data)
+		end
+	end
 end
