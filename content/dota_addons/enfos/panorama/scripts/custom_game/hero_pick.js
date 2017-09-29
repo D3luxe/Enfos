@@ -64,7 +64,7 @@ function UpdatePickUI() {
 		var hero = Players.GetPlayerSelectedHero(parseInt(dirTeam[playerID]));
 		var color = Players.GetPlayerColor(parseInt(dirTeam[playerID]));
 		var name = Players.GetPlayerName(parseInt(dirTeam[playerID]));
-		var icon = heroData[parseInt(radTeam[playerID])];
+		var icon = heroData[parseInt(dirTeam[playerID])];
 		color = color.toString(16);
 		color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
 		
