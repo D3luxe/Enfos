@@ -1580,13 +1580,16 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		player.lumber = 0 -- Secondary resource of the player
 		player.spawned = false
 		spawnedUnitIndex.repick = 0
-		spawnedUnitIndex.pickCD = 0
+		spawnedUnitIndex.pickCD = 1
 		spawnedUnitIndex:SetNeverMoveToClearSpace(true)
 		--spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_faceless_void_chronosphere_freeze", {duration = 999})
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_persistent_invisibility", {duration = 999})
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_phased", {duration = 999})
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_invulnerable", {duration = 999})
 		spawnedUnitIndex:AddNewModifier(spawnedUnitIndex, nil, "modifier_no_healthbar", {duration = 999})
+		spawnedUnitIndex:RemoveModifierByName("modifier_tower_truesight_aura")
+		spawnedUnitIndex:RemoveModifierByName("modifier_tower_aura")
+		spawnedUnitIndex:RemoveModifierByName("modifier_tower_armor_bonus")
 		spawnedUnitIndex:GetAbilityByIndex(0):SetLevel(1)
 		--FindClearSpaceForUnit(spawnedUnitIndex, Vector(0,0,0), false)
 		local point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
@@ -1757,6 +1760,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 							--FindClearSpaceForUnit(unit2, spellbringerLocation, true)
 							unit2:RemoveModifierByName("modifier_tower_truesight_aura")
 							unit2:RemoveModifierByName("modifier_invulnerable")
+							unit2:RemoveModifierByName("modifier_tower_aura")
+							unit2:RemoveModifierByName("modifier_tower_armor_bonus")
 							unit2:AddNewModifier(unit2, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
 							unit2:SetMana(100+math.floor(GameRules:GetDOTATime(false,true)))
 							unit2:StartGesture(ACT_DOTA_CAPTURE)
@@ -1764,6 +1769,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 							--unit2:SetRenderColor(r,g,b)
 
 							--print(spawnedUnitIndex:GetTeam())
+							spawnedUnitIndex.pickCD = 0
 						end
 					})
 					
@@ -3582,7 +3588,15 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 			data.player = pID
 			data.hero = "npc_dota_hero_autorandom"
 			data.name = playerName
-			RepickHero(nil,data)
+			
+			Timers:CreateTimer(DoUniqueString("autoRandomRetry"), {
+				endTime = 0.25,
+				callback = function()
+					RepickHero(nil,data)
+				end
+			})
+			
+			return 0
 		end
 	end
 	
@@ -3730,7 +3744,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	--newHero.lumber = wood
 	newHero.repick = player.repick
 	--sb:SetControllableByPlayer(pID, true)
-	newHero.spellbringer = sb
+	--newHero.spellbringer = sb
 	
 	local point = Vector(0,0,0)
 	
@@ -3741,6 +3755,9 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		newHero:AddNewModifier(newHero, nil, "modifier_phased", {duration = 999})
 		newHero:AddNewModifier(newHero, nil, "modifier_invulnerable", {duration = 999})
 		newHero:AddNewModifier(newHero, nil, "modifier_no_healthbar", {duration = 999})
+		newHero:RemoveModifierByName("modifier_tower_truesight_aura")
+		newHero:RemoveModifierByName("modifier_tower_aura")
+		newHero:RemoveModifierByName("modifier_tower_armor_bonus")
 		newHero:GetAbilityByIndex(0):SetLevel(1)
 		point = Entities:FindByName( nil, "repick_center" ):GetAbsOrigin()
 		FindClearSpaceForUnit(newHero, point, true)
@@ -3840,8 +3857,10 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				newSb:FindAbilityByName("spellbringer_mana_recharge"):StartCooldown(ab11)
 				--newSb:FindAbilityByName("spellbringer_battle_sphere"):StartCooldown(ab12)
 				
-				newSb:RemoveModifierByName("modifier_tower_truesight_aura")
+				newSb:RemoveModifierByName("modifier_tower_truesight_aura") 
 				newSb:RemoveModifierByName("modifier_invulnerable")
+				newSb:RemoveModifierByName("modifier_tower_aura")
+				newSb:RemoveModifierByName("modifier_tower_armor_bonus")
 				--newSb:AddNewModifier(newSb, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
 				newSb:SetMana(mp)
 				newSb:StartGesture(ACT_DOTA_CAPTURE)
