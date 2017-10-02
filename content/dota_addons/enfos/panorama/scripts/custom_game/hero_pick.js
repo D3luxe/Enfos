@@ -6,6 +6,7 @@ var shifter = 0;
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
+GameEvents.Subscribe("pause_check",PauseCheck);
 GameEvents.Subscribe("ui_chat_update",ChatUpdate);
 
 function UpdatePickUI() {
@@ -551,6 +552,17 @@ function ChatUpdate(event) {
 		//newLine.text = "             "+newLine.text;
 	}
 	$("#ChatLines").ScrollToTop();
+}
+
+function TogglePause() {
+	var data = {};
+	data.player = Game.GetLocalPlayerID();
+	GameEvents.SendCustomGameEventToServer("toggle_pause",data);
+}
+
+function PauseCheck() {
+	if(Game.IsGamePaused()) {$('#PauseLabel').text = "UNPAUSE";}
+	else {$('#PauseLabel').text = "PAUSE";}
 }
 
 (function () {

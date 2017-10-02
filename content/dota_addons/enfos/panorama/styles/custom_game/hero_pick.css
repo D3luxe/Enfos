@@ -479,18 +479,41 @@
 }
 
 #FinalPickBox {
-	width: 450px;
+	width: 1440px;
 	height: 88px;
 	horizontal-align: center;
 	vertical-align: bottom;
-	background-color: #FF0000;
+	//background-color: #FF0000;
 }
+
+#PauseButton {
+	width: 150px;
+	height: 40px;
+	background-color: #FF0000;
+	horizontal-align: left;
+	vertical-align: center;
+	x: 20px;
+}
+#PauseLabel {
+	font-size: 28px;
+	font-weight: bold;
+	width: 450px;
+	color: #FFFF;
+	height: 100px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: center;
+	y: 3px;
+}
+
 #FinalPickButton {
 	width: 450px;
 	height: 88px;
+	background-color: #FF0000;
+	horizontal-align: center;
 }
 #FinalPickLabel {
-	font-size: 30px;
+	font-size: 28px;
 	font-weight: bold;
 	width: 450px;
 	color: #FFFF;

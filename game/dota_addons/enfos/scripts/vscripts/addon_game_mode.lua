@@ -833,8 +833,9 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent("dota_player_used_ability", Dynamic_Wrap(CEnfosGameMode, "OnPlayerCastAbility"), self)
 	ListenToGameEvent("dota_item_gifted", Dynamic_Wrap(CEnfosGameMode, "OnItemGifted"), self)
 	ListenToGameEvent('player_chat', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerChat'), self)
+	ListenToGameEvent('dota_pause_event', Dynamic_Wrap(CEnfosGameMode, 'OnPause'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
-
+ 
 	CustomGameEventManager:RegisterListener( "get_player_color", GetPlayerColor )
 	CustomGameEventManager:RegisterListener( "updateDire", UpdateDire )
 	CustomGameEventManager:RegisterListener( "updateRadiant", UpdateRadiant )
@@ -844,6 +845,7 @@ function CEnfosGameMode:InitGameMode()
 	CustomGameEventManager:RegisterListener( "hero_button_pressed", UpdateHeroHover )
 	CustomGameEventManager:RegisterListener( "player_repick" , RepickHero )
 	CustomGameEventManager:RegisterListener( "pick_ui_chat" , PanoramaChatMsg )
+	CustomGameEventManager:RegisterListener( "toggle_pause" , TogglePause )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
@@ -3326,6 +3328,12 @@ function CEnfosGameMode:OnPlayerChat(event)
 	CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 end
 
+function CEnfosGameMode:OnPause(event)
+	--seems that you cant actually listen to see if the game has been paused. shoutouts to valve software
+	print("PAWZ")
+	CustomGameEventManager:Send_ServerToAllClients( "pause_check", {} )
+end
+
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
 	local nRewardPerTower = self._nTowerRewardAmount + self._nTowerScalingRewardPerRound * (self._nRoundNumber - 1)
 	return nRewardPerTower * nTowersStanding
@@ -3892,4 +3900,12 @@ function PanoramaChatMsg(ThisFieldHasBeenIntentionallyLeftBlank, event)
 	if bool == 1 then bool = true end
 	if bool == 0 then bool = false end
 	Say(PlayerResource:GetPlayer(event.player), event.msg, bool)
+end
+
+function TogglePause(d,event)
+	--[[if GameRules:IsGamePaused() then
+		PauseGame(false)
+	else PauseGame(true) end]]
+	if GameRules:GetDOTATime(false,true) >= -38 then SendToConsole("dota_pause")
+	else CEnfosGameMode:SendErrorMessage(event.player, "Too soon to pause") end
 end

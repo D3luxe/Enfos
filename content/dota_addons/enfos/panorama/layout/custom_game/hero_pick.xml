@@ -222,6 +222,9 @@
 					<Button id="FinalPickButton" onactivate="PickButtonPressed()">
 						<Label id="FinalPickLabel" text="PICK" />
 					</Button>
+					<Button id="PauseButton" onactivate="TogglePause()">
+						<Label id="PauseLabel" text="PAUSE" />
+					</Button>
 				</Panel>
 				<Panel id="WelcomeBox" />
 				<Label id="WelcomeLabel" text="something about potions blah blah blah this disables repick" />
