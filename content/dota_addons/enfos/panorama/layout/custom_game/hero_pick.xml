@@ -197,11 +197,20 @@
 							</Panel>
 						</Panel>
 					</Panel>
-					<Panel id="ChatBox">
+					<!--<Panel id="ChatBox">
 						<DOTAChat id="Chat" chatstyle="hudpregame" class="HudChat ChatExpanded VisGroup_Top" tabindex="auto" defaultfocus="ChatInput" oncancel="DOTAChatCancelMessageMode()" hittest="true"/>
 					</Panel>
 					<Panel id="DOTAChatDoesntWorkCorrectlySoNowIHaveToDoThisBox">
 						<DOTAChat id="Chat" chatstyle="hud" class="HudChat ChatExpanded VisGroup_Top" tabindex="auto" defaultfocus="ChatInput" oncancel="DOTAChatCancelMessageMode()" hittest="true"/>
+					</Panel>-->
+					<Panel id="ChatLines">
+						<Panel id="ChatLinesInner">
+							<Label class="AChatLine" text="/all to send to all players" />
+						</Panel>
+						<Panel id="ChatLinesOverlay" />
+					</Panel>
+					<Panel id="HmmWhatsThis">
+						<TextEntry id="ChatField" placeholder="/all to send to all players" onblur="ChatBoxCheck()" oncancel="ChatBoxClear()" oninputsubmit="ChatBoxEnter()" />
 					</Panel>
 					<Panel id="Something" />
 					<Label id="PortraitLabel" text="your gay" />

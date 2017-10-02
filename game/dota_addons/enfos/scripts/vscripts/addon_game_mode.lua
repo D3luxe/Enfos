@@ -843,6 +843,7 @@ function CEnfosGameMode:InitGameMode()
 	
 	CustomGameEventManager:RegisterListener( "hero_button_pressed", UpdateHeroHover )
 	CustomGameEventManager:RegisterListener( "player_repick" , RepickHero )
+	CustomGameEventManager:RegisterListener( "pick_ui_chat" , PanoramaChatMsg )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
@@ -1248,33 +1249,63 @@ function CEnfosGameMode:OnGameRulesStateChange()
 			    GameRules.difficulty_selected = true
 
 			    -- Change this to the proper strings later
+				local data = {}
+				data.pid = -1
 			    if GameRules.DIFFICULTY == 0 then
-			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Casual</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Hey, Not Too Rough. <font color='#2EFE2E'>75% Life and Damage</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2E7EFE'>Casual</font>", 0, 0)
+					data.msg = "Difficulty Level: <font color='#2E7EFE'>Casual</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
+			    	GameRules:SendCustomMessage("Hey, Not Too Rough. <font color='#2E7EFE'>75% Life and Damage</font>", 0, 0)
+					data.msg = "Hey, Not Too Rough. <font color='#2E7EFE'>75% Life and Damage</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    elseif GameRules.DIFFICULTY == 1 then
 			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Ascendant (1)</font>", 0, 0)
+					data.msg = "Difficulty Level: <font color='#2EFE2E'>Ascendant (1)</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    	GameRules:SendCustomMessage("Bring it on! <font color='#2EFE2E'>100% Life and Damage</font>", 0, 0)
+					data.msg = "Bring it on! <font color='#2EFE2E'>100% Life and Damage</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    elseif GameRules.DIFFICULTY == 2 then
-			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Elder (2)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Hurt Me Plenty. <font color='#2EFE2E'>125% Life and Damage</font>", 0, 0)
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#FEFE2E'>Elder (2)</font>", 0, 0)
+					data.msg = "Difficulty Level: <font color='#FEFE2E'>Elder (2)</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
+			    	GameRules:SendCustomMessage("Hurt Me Plenty. <font color='#FEFE2E'>125% Life and Damage</font>", 0, 0)
+					data.msg = "Hurt Me Plenty. <font color='#FEFE2E'>125% Life and Damage</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    elseif GameRules.DIFFICULTY == 3 then
-			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Mythical (3)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Ultra-Violence. <font color='#2EFE2E'>150% Life and Damage</font>" , 0, 0)
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#FE7E2E'>Mythical (3)</font>", 0, 0)
+					data.msg = "Difficulty Level: <font color='#FE7E2E'>Mythical (3)</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
+			    	GameRules:SendCustomMessage("Ultra-Violence. <font color='#FE7E2E'>150% Life and Damage</font>" , 0, 0)
+					data.msg = "Ultra-Violence. <font color='#FE7E2E'>150% Life and Damage</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    elseif GameRules.DIFFICULTY == 4 then
-			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#2EFE2E'>Legendary (4)</font>", 0, 0)
-			    	GameRules:SendCustomMessage("Nightmare! <font color='#2EFE2E'>200% Life and Damage</font>" , 0, 0)
+			    	GameRules:SendCustomMessage("Difficulty Level: <font color='#F00000'>Legendary (4)</font>", 0, 0)
+					data.msg = "Difficulty Level: <font color='#F00000'>Legendary (4)</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
+			    	GameRules:SendCustomMessage("Nightmare! <font color='#F00000'>200% Life and Damage</font>" , 0, 0)
+					data.msg = "Nightmare! <font color='#F00000'>200% Life and Damage</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    end	
 			    if GameRules.ExtraBounty > 1 then
-			   		GameRules:SendCustomMessage("Extra bounty is set at <font color='#2EFE2E'>"..GameRules.ExtraBounty.."x</font>", 0,0)
+			   		GameRules:SendCustomMessage("Extra bounty is set at <font color='#FEFE2E'>"..GameRules.ExtraBounty.."x</font>", 0,0)
+					data.msg = "Extra bounty is set at <font color='#FEFE2E'>"..GameRules.ExtraBounty.."x</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			   	end
 			    if GameRules.SharedBounty then
 			    	GameRules:SendCustomMessage("Bounty will be shared between team members!", 0,0)
+					data.msg = "Bounty will be shared between team members!"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    end
 			    if GameRules.AllRandom then
 					GameRules:SendCustomMessage("All players are <font color='#2EFE2E'>randomed!</font>", 0,0)
+					data.msg = "All players are <font color='#2EFE2E'>randomed!</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    end
 			    if not GameRules.ItemSharing then
-					GameRules:SendCustomMessage("Item sharing is <font color='#2EFE2E'>disabled!</font>", 0,0)
+					GameRules:SendCustomMessage("Item sharing is <font color='#F00000'>disabled!</font>", 0,0)
+					data.msg = "Item sharing is <font color='#F00000'>disabled!</font>"
+					CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			    end
 
 
@@ -1325,6 +1356,10 @@ function CEnfosGameMode:OnThink()
 			--print("Tip value: "..tip)
 			print(GameRules.TipKV[tostring(tip)])
 			GameRules:SendCustomMessage(GameRules.TipKV[tostring(tip)], 0, 0)
+			local data = {}
+			data.msg = GameRules.TipKV[tostring(tip)]
+			data.pid = -1
+			CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data )
 			TIP_TIMER = 45
 		end
 
@@ -3284,6 +3319,11 @@ function CEnfosGameMode:OnPlayerChat(event)
 		data.name = name
 		RepickHero(nil,data)
 	end
+	local data2 = {}
+	data2.msg = event.text
+	data2.pid = event.playerid
+	data2.team = event.teamonly
+	CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 end
 
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
@@ -3538,11 +3578,17 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		end
 	end
 	
+	local data2 = {}
+	data2.pid = -1
+	
 	if heroName == "npc_dota_hero_wisp" then
 		GameRules:SendCustomMessage(
 		"<font color='#"..event.color.."'>"
 		..event.name
 		.."</font> is repicking!", 0, 0)
+		
+		data2.msg = "<font color='#"..event.color.."'>"..event.name.."</font> is repicking!"
+		CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 	end
 	
 	if heroName == "npc_dota_hero_random" or heroName == "npc_dota_hero_autorandom" then
@@ -3563,8 +3609,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		if autoRandom == false then
 			if player.repick == 2 then
 				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+				data2.msg = playerName.." has randomed!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
 				GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
+				data2.msg = playerName.." has <font color='#FF3333'>randomed</font>!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
 	end
@@ -3575,8 +3625,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		if autoRandom == false then
 			if player.repick == 2 then
 				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+				data2.msg = playerName.." has randomed!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
 				GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
+				data2.msg = playerName.." has <font color='#3399FF'>randomed</font>!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
 	end
@@ -3587,8 +3641,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		if autoRandom == false then
 			if player.repick == 2 then
 				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+				data2.msg = playerName.." has randomed!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
 				GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
+				data2.msg = playerName.." has <font color='#33FF33'>randomed</font>!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
 	end
@@ -3599,8 +3657,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		if autoRandom == false then
 			if player.repick == 2 then
 				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
+				data2.msg = playerName.." has randomed!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
 				GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
+				data2.msg = playerName.." has <font color='#FF33FF'>randomed</font>!"
+				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
 	end
@@ -3822,4 +3884,12 @@ function CEnfosGameMode:_RandomBots( cmdName, hero )
 			RepickHero(nil,data)
 		end
 	end
+end
+
+function PanoramaChatMsg(ThisFieldHasBeenIntentionallyLeftBlank, event)
+	--[B]oolin
+	local bool = event.team
+	if bool == 1 then bool = true end
+	if bool == 0 then bool = false end
+	Say(PlayerResource:GetPlayer(event.player), event.msg, bool)
 end

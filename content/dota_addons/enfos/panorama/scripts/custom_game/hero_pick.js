@@ -6,6 +6,7 @@ var shifter = 0;
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
+GameEvents.Subscribe("ui_chat_update",ChatUpdate);
 
 function UpdatePickUI() {
 	var pID = Game.GetLocalPlayerID();
@@ -117,7 +118,8 @@ function PickCheck() {
 		//$('#SpellBox').visible = false;
 		//$('#PortraitLabel').visible = false;
 		//$('#WelcomeBox').visible = true;
-	};
+	}
+	ChatBoxCheck();
 }
 
 function HeroButtonPressed(event) {
@@ -475,7 +477,7 @@ function UpdateTimer() {
 		if (time >= -10) {
 			realTime = Math.abs(time);
 			$('#RoundLabel').text = "GAME STARTS IN";
-			PickCheck();
+			if($("#PickUIBase").visible == true) PickCheck();
 		}
 	}
 	else {
@@ -490,6 +492,65 @@ function UpdateTimer() {
 	if(shifter == 120) shifter = 0;
 	$('#PickRandomVideo').AddClass("OhGodNoItsTerrible"+shifter);
 	$.Schedule(0.1,function() {UpdateTimer();});
+}
+
+function ChatBoxCheck() {
+	//$('#ChatBox').DOTAChatCancelMessageMode();
+	//$('#DOTAChatDoesntWorkCorrectlySoNowIHaveToDoThisBox').DOTAChatCancelMessageMode();
+	$.Msg($("#PickUIBase").visible);
+	if($("#PickUIBase").visible == false) {
+		$('#ChatField').SetAcceptsFocus(false);
+		$.DispatchEvent("DropInputFocus", $('#ChatField'));
+	}
+	else
+	{
+		$('#ChatField').SetAcceptsFocus(true);
+		$('#ChatField').SetFocus();
+	}
+}
+
+function ChatBoxClear() {
+	$('#ChatField').text = "";
+}
+
+function ChatBoxEnter() {
+	var data = {};
+	data.player = Game.GetLocalPlayerID();
+	data.msg = $('#ChatField').text;
+	data.team = true;
+	$.Msg(data.msg);
+	if (data.msg.substr(0,5) == "/all ")
+	{
+		data.team = false;
+		data.msg = data.msg.replace("/all ","");
+	}
+	$.Msg(data.msg);
+	GameEvents.SendCustomGameEventToServer("pick_ui_chat",data);
+	
+	ChatBoxClear();
+}
+
+function ChatUpdate(event) {
+	if (event.msg.substr(0,1) == "/" || event.msg.substr(0,1) == "-") return 0;
+	if (Players.GetTeam(Game.GetLocalPlayerID()) != Players.GetTeam(event.pid) && event.team) return 0;
+	var hero = Players.GetPlayerSelectedHero(event.pid);
+	var color = Players.GetPlayerColor(event.pid);
+	var name = Players.GetPlayerName(event.pid);
+	color = color.toString(16);
+	color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+	var newLine = $.CreatePanel("Label", $("#ChatLinesInner"), "");
+	newLine.AddClass("AChatLine");
+	newLine.html = true;
+	newLine.text = event.msg;
+	if (event.pid != -1)
+	{
+		var img = $.CreatePanel("Image", newLine, "ChatLinePic");
+		img.SetImage("s2r://panorama/images/heroes/"+hero+"_png.vtex");
+		if(event.team) newLine.text = "|||||||||||| (Allies) <font color='#"+color+"'>"+name+":</font> "+newLine.text;
+		else newLine.text = "|||||||||||| <font color='#"+color+"'>"+name+"</font>: "+newLine.text;
+		//newLine.text = "             "+newLine.text;
+	}
+	$("#ChatLines").ScrollToTop();
 }
 
 (function () {
@@ -517,4 +578,6 @@ function UpdateTimer() {
 	$('#SpellBox').visible = false;
 	$('#PortraitLabel').visible = false;
 	$('#WelcomeLabel').visible = false;
+	
+	$('#ChatField').SetFocus();
 })();
