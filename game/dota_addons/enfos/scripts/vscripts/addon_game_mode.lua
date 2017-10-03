@@ -3635,12 +3635,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		
 		if autoRandom == false then
 			if player.repick == 2 then
-				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-				data2.msg = playerName.." has randomed!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has randomed!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has randomed!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
-				GameRules:SendCustomMessage(playerName.." has <font color='#FF3333'>randomed</font>!", 0, 0)
-				data2.msg = playerName.." has <font color='#FF3333'>randomed</font>!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#FF3333'>randomed</font>!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#FF3333'>randomed</font>!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
@@ -3651,12 +3651,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		
 		if autoRandom == false then
 			if player.repick == 2 then
-				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-				data2.msg = playerName.." has randomed!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has randomed!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has randomed!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
-				GameRules:SendCustomMessage(playerName.." has <font color='#3399FF'>randomed</font>!", 0, 0)
-				data2.msg = playerName.." has <font color='#3399FF'>randomed</font>!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#3399FF'>randomed</font>!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#3399FF'>randomed</font>!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
@@ -3667,12 +3667,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		
 		if autoRandom == false then
 			if player.repick == 2 then
-				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-				data2.msg = playerName.." has randomed!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has randomed!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has randomed!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
-				GameRules:SendCustomMessage(playerName.." has <font color='#33FF33'>randomed</font>!", 0, 0)
-				data2.msg = playerName.." has <font color='#33FF33'>randomed</font>!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#33FF33'>randomed</font>!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#33FF33'>randomed</font>!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
@@ -3683,12 +3683,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		
 		if autoRandom == false then
 			if player.repick == 2 then
-				GameRules:SendCustomMessage(playerName.." has randomed!", 0, 0)
-				data2.msg = playerName.." has randomed!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has randomed!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has randomed!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			else
-				GameRules:SendCustomMessage(playerName.." has <font color='#FF33FF'>randomed</font>!", 0, 0)
-				data2.msg = playerName.." has <font color='#FF33FF'>randomed</font>!"
+				GameRules:SendCustomMessage("<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#FF33FF'>randomed</font>!", 0, 0)
+				data2.msg = "<font color='#"..event.color.."'>"..playerName.."</font> has <font color='#FF33FF'>randomed</font>!"
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
