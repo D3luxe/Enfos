@@ -1239,9 +1239,14 @@ function CEnfosGameMode:OnGameRulesStateChange()
 		    		for player_id = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 						if PlayerResource:IsValidPlayer( player_id ) then
 							local player = PlayerResource:GetPlayer(player_id)
-							player:MakeRandomHeroSelection()
-							PlayerResource:SetHasRandomed(player_id)
-							PlayerResource:SetHasRepicked(player_id)
+							--player:MakeRandomHeroSelection()
+							--PlayerResource:SetHasRandomed(player_id)
+							--PlayerResource:SetHasRepicked(player_id)
+							local data2 = {}
+							data2.player = player_id
+							data2.hero = "npc_dota_hero_autorandom"
+							data2.name = PlayerResource:GetPlayerName(player_id)
+							RepickHero(nil,data2)
 						end
 					end
 				end
