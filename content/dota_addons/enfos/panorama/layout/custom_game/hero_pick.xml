@@ -212,7 +212,65 @@
 					<Panel id="HmmWhatsThis">
 						<TextEntry id="ChatField" placeholder="/all to send to all players" onblur="ChatBoxCheck()" oncancel="ChatBoxClear()" oninputsubmit="ChatBoxEnter()" />
 					</Panel>
-					<Panel id="Something" />
+					<Panel id="MapBox">
+						<Image id="MapImage" src="file://panorama/images/custom_game/enfomap.png">
+							<Image id="ShopIconMain" src="file://{images}/control_icons/shop_icon_main.psd" />
+							<Image id="ShopIconSide" src="file://{images}/control_icons/shop_icon_side.psd" />
+							<Image id="ShopIconSecret" src="file://{images}/control_icons/shop_icon_secret.psd" />
+							<Panel id="IconContainer">
+								<Image id="HeroMapIcon5" class="MarginMinusTwenty" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="MarginMinusTwenty" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="MarginMinusTwenty" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="MarginMinusTwenty" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="MarginMinusTwenty" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Panel>
+							<Button id="LeftLaneButton" onmouseover="MapButtonHover(1)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(1)">
+								<Image id="HeroMapIcon5" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Button>
+							<Button id="RightLaneButton" onmouseover="MapButtonHover(2)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(2)">
+								<Image id="HeroMapIcon5" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="YetMoreClasses" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Button>
+							<Button id="MidLaneButton" onmouseover="MapButtonHover(3)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(3)">
+								<Image id="HeroMapIcon5" class="OneByOneUntilMyHeadExplodes" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="OneByOneUntilMyHeadExplodes" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="OneByOneUntilMyHeadExplodes" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="OneByOneUntilMyHeadExplodes" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="OneByOneUntilMyHeadExplodes" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Button>
+							<Button id="LeftHighLaneButton" onmouseover="MapButtonHover(4)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(4)">
+								<Image id="HeroMapIcon5" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Button>
+							<Button id="RightHighLaneButton" onmouseover="MapButtonHover(5)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(5)">
+								<Image id="HeroMapIcon5" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon4" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon3" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon2" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								<Image id="HeroMapIcon1" class="SideMargin" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+							</Button>
+							<Button id="ShopLaneButton" onmouseover="MapButtonHover(6)" onmouseout="MapButtonHover(0)" onactivate="MapButtonPressed(6)">
+								<Panel id="StretcherBox">
+									<Image id="HeroMapIcon5" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+									<Image id="HeroMapIcon4" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+									<Image id="HeroMapIcon3" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+									<Image id="HeroMapIcon2" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+									<Image id="HeroMapIcon1" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
+								</Panel>
+							</Button>
+							<Label id="MapLaneLabel" text="Right Teleport" />
+						</Image>
+					</Panel>
 					<Label id="PortraitLabel" text="your gay" />
 				</Panel>
 				<Panel id="CompositionBox">

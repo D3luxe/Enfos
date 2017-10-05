@@ -958,12 +958,19 @@ function UpdateHeroHover(eventSourceIndex, args)
 	--[[print(hero)
 	print(player)
 	print(player.lumber)]]
-	player.pickHover = hero
-	local data = {}
-	data.pid = playerID
-	data.hero = hero
-	CustomGameEventManager:Send_ServerToAllClients( "hero_hover", data )
-	
+	if hero == "mapupdate" then
+		local data = {}
+		data.pid = playerID
+		data.hero = hero
+		data.mapnum = args.mapnum
+		CustomGameEventManager:Send_ServerToAllClients( "hero_hover", data )
+	else
+		player.pickHover = hero
+		local data = {}
+		data.pid = playerID
+		data.hero = hero
+		CustomGameEventManager:Send_ServerToAllClients( "hero_hover", data )
+	end
 end
 
 function CEnfosGameMode:UpdateVotes( event )

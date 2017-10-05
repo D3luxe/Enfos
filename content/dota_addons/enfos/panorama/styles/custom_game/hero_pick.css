@@ -462,12 +462,159 @@
 	height: 100%;
 }
 
-#Something {
+#MapBox {
 	width: 396px;
 	height: 349px;
 	horizontal-align: right;
 	vertical-align: top;
-	background-color: #0000ff;
+	//background-color: #0000ff;
+}
+#MapImage {
+	horizontal-align: left;
+	vertical-align: center;
+	x: 12px;
+}
+#ShopIconMain {
+	horizontal-align: center;
+	vertical-align: center;
+	y: 68px;
+	width: 40px;
+	height: 40px;
+}
+#ShopIconSide {
+	horizontal-align: left;
+	vertical-align: center;
+	y: 11px;
+	x: 11px;
+	width: 40px;
+	height: 40px;
+}
+#ShopIconSecret {
+	horizontal-align: right;
+	vertical-align: center;
+	y: 11px;
+	x: -11px;
+	width: 40px;
+	height: 40px;
+}
+#LeftLaneButton {
+	background-color: #ff000033;
+	width: 36px;
+	height: 150px;
+	horizontal-align: left;
+	vertical-align: top;
+	flow-children: down;
+	padding-top: 30px;
+}
+#RightLaneButton {
+	background-color: #ff000033;
+	width: 36px;
+	height: 150px;
+	horizontal-align: right;
+	vertical-align: top;
+	flow-children: down;
+	padding-top: 30px;
+}
+#MidLaneButton {
+	background-color: #ff000033;
+	width: 60px;
+	height: 72px;
+	y: -2px;
+	horizontal-align: center;
+	vertical-align: center;
+	flow-children: up;
+}
+#LeftHighLaneButton {
+	background-color: #ffff0033;
+	width: 50px;
+	height: 50px;
+	y: 13px;
+	horizontal-align: left;
+	vertical-align: center;
+	flow-children: right-wrap;
+}
+#RightHighLaneButton {
+	background-color: #ffff0033;
+	width: 50px;
+	height: 50px;
+	y: 13px;
+	horizontal-align: right;
+	vertical-align: center;
+	flow-children: left-wrap;
+}
+#ShopLaneButton {
+	background-color: #ff000033;
+	width: 70px;
+	height: 50px;
+	y: 59px;
+	horizontal-align: center;
+	vertical-align: center;
+	//flow-children: right-wrap;
+}
+#MapLaneLabel {
+	font-size: 18px;
+	font-weight: bold;
+	width: 124px;
+	height: 22px;
+	color: #EEEE;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	y: -28px;
+	horizontal-align: center;
+	vertical-align: bottom;
+}
+#IconContainer {
+	//background-color: red;
+	width: 32px;
+	height: 80px;
+	horizontal-align: center;
+	vertical-align: center;
+	y: -95px;
+	flow-children: down;
+}
+#StretcherBox {
+	height: 100%;
+	flow-children: right;
+	horizontal-align: center;
+	//overflow: squish clip;
+}
+.ThirtyTwo {
+	//background-color: red;
+	width: 32px;
+	height: 32px;
+	margin-bottom: -20px;
+	horizontal-align: center;
+	border: 12px solid #ff000033;
+}
+#HeroMapIcon1, #HeroMapIcon2, #HeroMapIcon3, #HeroMapIcon4, #HeroMapIcon5 {
+	width: 32px;
+	height: 32px;
+	//horizontal-align: center;
+	//vertical-align: center;
+}
+.MarginMinusTwenty {
+	margin-bottom: -20px;
+}
+.SideMargin {
+	margin: -2px -8px -10px -8px;
+}
+.YetMoreClasses {
+	margin: -5px 0px -5px 0px;
+	horizontal-align: center;
+}
+.OneByOneUntilMyHeadExplodes {
+	margin-top: -15px;
+	margin-bottom: -5px;
+	horizontal-align: center;
+}
+.AttentionShoppers {
+	margin: 0px -12px 0px -12px;
+}
+.AttentionShoppersMini {
+	margin: 0px -6px 0px -6px;
+}
+.AttentionShoppersSmall {
+	margin: 0px -9px 0px -9px;
 }
 
 #CompositionBox {

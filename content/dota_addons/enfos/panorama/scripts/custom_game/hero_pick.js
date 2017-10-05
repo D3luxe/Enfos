@@ -3,6 +3,7 @@ var dirTeam = {};
 var selectedPlayer = -1;
 var heroData = {};
 var shifter = 0;
+var mapData = {};
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
@@ -98,11 +99,18 @@ function UpdatePickUI() {
 		order += 1;
 	}
 	PickCheck();
+	MapIconUpdate(0);
 }
 
 function UpdatePrePickIcon(event) {
-	heroData[event.pid] = event.hero;
-	UpdatePickUI();
+	if (event.hero == "mapupdate") {
+		mapData[event.pid] = event.mapnum;
+		MapIconUpdate(0);
+	}
+	else {
+		heroData[event.pid] = event.hero;
+		UpdatePickUI();
+	}
 }
 
 function PickCheck() {
@@ -565,6 +573,355 @@ function PauseCheck() {
 	else {$('#PauseLabel').text = "PAUSE";}
 }
 
+function MapButtonHover(event) {
+	if(event == 0) $('#MapLaneLabel').text = "";
+	if(event == 1) $('#MapLaneLabel').text = "Left Lane";
+	if(event == 2) $('#MapLaneLabel').text = "Right Lane";
+	if(event == 3) $('#MapLaneLabel').text = "Middle Lane";
+	if(event == 4) $('#MapLaneLabel').text = "Left Teleport";
+	if(event == 5) $('#MapLaneLabel').text = "Right Teleport";
+	if(event == 6) $('#MapLaneLabel').text = "Shop";
+}
+function MapButtonPressed(event) {
+	//mapData[Game.GetLocalPlayerID()] = event;
+	var table = {};
+	table.hero = "mapupdate";
+	table.player = Game.GetLocalPlayerID();
+	table.mapnum = event;
+	GameEvents.SendCustomGameEventToServer("hero_button_pressed",table);
+	/*$('#IconContainer').FindChildTraverse("HeroMapIcon1").SetImage("");
+	$('#IconContainer').FindChildTraverse("HeroMapIcon2").SetImage("");
+	$('#IconContainer').FindChildTraverse("HeroMapIcon3").SetImage("");
+	$('#IconContainer').FindChildTraverse("HeroMapIcon4").SetImage("");
+	$('#IconContainer').FindChildTraverse("HeroMapIcon5").SetImage("");
+	
+	$('#LeftLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#LeftLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#LeftLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#LeftLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#LeftLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#RightLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#RightLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#RightLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#RightLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#RightLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#MidLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#MidLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#MidLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#MidLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#MidLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").visible = false;
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").visible = false;
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").visible = false;
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").visible = false;
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").RemoveClass("AttentionShoppers");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").RemoveClass("AttentionShoppersMini");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").RemoveClass("AttentionShoppersSmall");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").RemoveClass("AttentionShoppers");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").RemoveClass("AttentionShoppersMini");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").RemoveClass("AttentionShoppersSmall");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").RemoveClass("AttentionShoppers");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").RemoveClass("AttentionShoppersMini");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").RemoveClass("AttentionShoppersSmall");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").RemoveClass("AttentionShoppers");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").RemoveClass("AttentionShoppersMini");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").RemoveClass("AttentionShoppersSmall");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").RemoveClass("AttentionShoppers");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").RemoveClass("AttentionShoppersMini");
+	$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").RemoveClass("AttentionShoppersSmall");
+	
+	if(event > 1) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").SetImage("file://{images}/heroes/icons/npc_dota_hero_omniknight.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").visible = true;
+	}
+	if(event > 2) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").SetImage("file://{images}/heroes/icons/npc_dota_hero_dragon_knight.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").visible = true;
+	}
+	if(event > 3) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").SetImage("file://{images}/heroes/icons/npc_dota_hero_troll_warlord.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").AddClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").AddClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").AddClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").AddClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").AddClass("AttentionShoppersMini");
+	}
+	if(event > 4) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").SetImage("file://{images}/heroes/icons/npc_dota_hero_storm_spirit.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").RemoveClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").RemoveClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").RemoveClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").RemoveClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").RemoveClass("AttentionShoppersMini");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").AddClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").AddClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").AddClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").AddClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").AddClass("AttentionShoppersSmall");
+	}
+	if(event > 5) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_earth_spirit.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").visible = true;
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").RemoveClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").RemoveClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").RemoveClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").RemoveClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").RemoveClass("AttentionShoppersSmall");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon1").AddClass("AttentionShoppers");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon2").AddClass("AttentionShoppers");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon3").AddClass("AttentionShoppers");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon4").AddClass("AttentionShoppers");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").AddClass("AttentionShoppers");
+	}
+	if(event > 6) {
+		$('#IconContainer').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#LeftLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#RightLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#MidLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#LeftHighLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#RightHighLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+		$('#ShopLaneButton').FindChildTraverse("HeroMapIcon5").SetImage("file://{images}/heroes/icons/npc_dota_hero_wisp.png");
+	}*/
+	//MapIconUpdate(event);
+}
+function MapIconUpdate(event) {
+	var base = $('#IconContainer');
+	var left = $('#LeftLaneButton');
+	var right = $('#RightLaneButton');
+	var mid = $('#MidLaneButton');
+	var upleft = $('#LeftHighLaneButton');
+	var upright = $('#RightHighLaneButton');
+	var shop = $('#ShopLaneButton');
+	
+	base.FindChildTraverse("HeroMapIcon1").SetImage("");
+	base.FindChildTraverse("HeroMapIcon2").SetImage("");
+	base.FindChildTraverse("HeroMapIcon3").SetImage("");
+	base.FindChildTraverse("HeroMapIcon4").SetImage("");
+	base.FindChildTraverse("HeroMapIcon5").SetImage("");
+	
+	left.FindChildTraverse("HeroMapIcon1").visible = false;
+	left.FindChildTraverse("HeroMapIcon2").visible = false;
+	left.FindChildTraverse("HeroMapIcon3").visible = false;
+	left.FindChildTraverse("HeroMapIcon4").visible = false;
+	left.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	right.FindChildTraverse("HeroMapIcon1").visible = false;
+	right.FindChildTraverse("HeroMapIcon2").visible = false;
+	right.FindChildTraverse("HeroMapIcon3").visible = false;
+	right.FindChildTraverse("HeroMapIcon4").visible = false;
+	right.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	mid.FindChildTraverse("HeroMapIcon1").visible = false;
+	mid.FindChildTraverse("HeroMapIcon2").visible = false;
+	mid.FindChildTraverse("HeroMapIcon3").visible = false;
+	mid.FindChildTraverse("HeroMapIcon4").visible = false;
+	mid.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	upleft.FindChildTraverse("HeroMapIcon1").visible = false;
+	upleft.FindChildTraverse("HeroMapIcon2").visible = false;
+	upleft.FindChildTraverse("HeroMapIcon3").visible = false;
+	upleft.FindChildTraverse("HeroMapIcon4").visible = false;
+	upleft.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	upright.FindChildTraverse("HeroMapIcon1").visible = false;
+	upright.FindChildTraverse("HeroMapIcon2").visible = false;
+	upright.FindChildTraverse("HeroMapIcon3").visible = false;
+	upright.FindChildTraverse("HeroMapIcon4").visible = false;
+	upright.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	shop.FindChildTraverse("HeroMapIcon1").visible = false;
+	shop.FindChildTraverse("HeroMapIcon2").visible = false;
+	shop.FindChildTraverse("HeroMapIcon3").visible = false;
+	shop.FindChildTraverse("HeroMapIcon4").visible = false;
+	shop.FindChildTraverse("HeroMapIcon5").visible = false;
+	
+	var order = 1;
+	if (Players.GetTeam(Game.GetLocalPlayerID()) == 2) {
+		for (var playerID in radTeam) {
+			//var pData = Game.GetPlayerInfo(parseInt(playerID));
+			var hero = Players.GetPlayerSelectedHero(parseInt(radTeam[playerID]));
+			var color = Players.GetPlayerColor(parseInt(radTeam[playerID]));
+			var name = Players.GetPlayerName(parseInt(radTeam[playerID]));
+			var icon = heroData[parseInt(radTeam[playerID])];
+			color = color.toString(16);
+			color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+			
+			if (mapData[parseInt(radTeam[playerID])] == undefined) mapData[parseInt(radTeam[playerID])] = 0;
+			var mapPlace
+			switch(mapData[parseInt(radTeam[playerID])]) {
+				case 0:
+					mapPlace = base;
+					break;
+				case 1:
+					mapPlace = left;
+					break;
+				case 2:
+					mapPlace = right;
+					break;
+				case 3:
+					mapPlace = mid;
+					break;
+				case 4:
+					mapPlace = upleft;
+					break;
+				case 5:
+					mapPlace = upright;
+					break;
+				case 6:
+					mapPlace = shop;
+					break;
+			}
+			
+			mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).visible = true;
+			if (hero == "npc_dota_hero_wisp") {
+				if (icon == undefined
+				|| icon == "npc_dota_hero_random"
+				|| icon == "npc_dota_hero_random_combat"
+				|| icon == "npc_dota_hero_random_caster"
+				|| icon == "npc_dota_hero_random_support"
+				|| icon == "npc_dota_hero_random_rounded") {
+					mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/npc_dota_hero_wisp.png');
+				}
+				else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/'+ icon +'.png');}
+			}
+			else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/'+ hero +'.png');}
+			
+			if (hero == "npc_dota_hero_wisp") {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).AddClass("Desaturate");}
+			else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).RemoveClass("Desaturate");}
+			order += 1;
+		}
+	}
+	if (Players.GetTeam(Game.GetLocalPlayerID()) == 3) {
+		for (var playerID in dirTeam) {
+			//var pData = Game.GetPlayerInfo(parseInt(playerID));
+			var hero = Players.GetPlayerSelectedHero(parseInt(dirTeam[playerID]));
+			var color = Players.GetPlayerColor(parseInt(dirTeam[playerID]));
+			var name = Players.GetPlayerName(parseInt(dirTeam[playerID]));
+			var icon = heroData[parseInt(dirTeam[playerID])];
+			color = color.toString(16);
+			color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+			
+			if (mapData[parseInt(dirTeam[playerID])] == undefined) mapData[parseInt(dirTeam[playerID])] = 0;
+			var mapPlace
+			switch(mapData[parseInt(dirTeam[playerID])]) {
+				case 0:
+					mapPlace = base;
+					break;
+				case 1:
+					mapPlace = left;
+					break;
+				case 2:
+					mapPlace = right;
+					break;
+				case 3:
+					mapPlace = mid;
+					break;
+				case 4:
+					mapPlace = upleft;
+					break;
+				case 5:
+					mapPlace = upright;
+					break;
+				case 6:
+					mapPlace = shop;
+					break;
+			}
+			
+			mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).visible = true;
+			if (hero == "npc_dota_hero_wisp") {
+				if (icon == undefined
+				|| icon == "npc_dota_hero_random"
+				|| icon == "npc_dota_hero_random_combat"
+				|| icon == "npc_dota_hero_random_caster"
+				|| icon == "npc_dota_hero_random_support"
+				|| icon == "npc_dota_hero_random_rounded") {
+					mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/npc_dota_hero_wisp.png');
+				}
+				else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/'+ icon +'.png');}
+			}
+			else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).SetImage('file://{images}/heroes/icons/'+ hero +'.png');}
+			
+			if (hero == "npc_dota_hero_wisp") {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).AddClass("Desaturate");}
+			else {mapPlace.FindChildTraverse("HeroMapIcon"+order.toString()).RemoveClass("Desaturate");}
+			order += 1;
+		}
+	}
+}
+
 (function () {
 	//CustomNetTables.SubscribeNetTableListener("this_wave_table",UpdateTimer);
 	CustomNetTables.SubscribeNetTableListener("hero_data",HeroDataTableFill);
@@ -592,4 +949,6 @@ function PauseCheck() {
 	$('#WelcomeLabel').visible = false;
 	
 	$('#ChatField').SetFocus();
+	
+	MapIconUpdate(0);
 })();
