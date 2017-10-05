@@ -140,10 +140,11 @@ function HeroButtonPressed(event) {
 	var table = {};
 	table.hero = event;
 	table.player = Game.GetLocalPlayerID();
-	$.Msg(table.player);
+	//$.Msg(table.player);
 	GameEvents.SendCustomGameEventToServer("hero_button_pressed",table);
 	$('#FinalPickLabel').text = ("PICK "+$.Localize("#"+event)).toUpperCase();
 	$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
+	$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/'+ event +'.png")';
 	
 	if(event == "npc_dota_hero_random"
 	|| event == "npc_dota_hero_random_combat"
@@ -154,8 +155,10 @@ function HeroButtonPressed(event) {
 		$('#StatBox').visible = false;
 		$('#SpellBox').visible = false;
 		$('#PortraitLabel').visible = true;
-		//$('#WelcomeBox').visible = true;
+		$('#PortraitLabel').text = "RANDOM";
+		$('#WelcomeBox').visible = true;
 		$('#WelcomeLabel').visible = true;
+		$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_wisp.png")';
 		return 0;
 	}
 	
@@ -163,7 +166,7 @@ function HeroButtonPressed(event) {
 	$('#StatBox').visible = true;
 	$('#SpellBox').visible = true;
 	$('#PortraitLabel').visible = true;
-	$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
+	//$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
 	$('#WelcomeBox').visible = false;
 	$('#WelcomeLabel').visible = false;
 	
@@ -475,7 +478,6 @@ function UpdateTimer() {
 	//if (CustomNetTables.GetTableValue("this_wave_table","round").value >= 4
 	//&& $('#PickUIBase').visible == true){
 		//$('#PickUIBase').visible = false;
-		//$("#UIMask").visible = false;
 		//heroData[Game.GetLocalPlayerID()] = "npc_dota_hero_random";
 		//PickButtonPressed();
 	//}
