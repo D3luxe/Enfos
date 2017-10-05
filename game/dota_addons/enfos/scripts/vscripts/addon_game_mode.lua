@@ -3744,10 +3744,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 	end
 	
 	--drop inventory on ground
-	for i=0,5 do
+	for i=0,8 do
 		local item = player:GetItemInSlot(i)
 		if item then
-			player:DropItemAtPositionImmediate(item,player:GetAbsOrigin())
+			--player:DropItemAtPositionImmediate(item,player:GetAbsOrigin())
+			CreateItemOnPositionSync(player:GetAbsOrigin(),item)
+			--player:RemoveItem(item)
 		end
 	end
 	
