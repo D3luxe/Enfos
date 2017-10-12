@@ -2241,6 +2241,9 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 	if order_type == DOTA_UNIT_ORDER_GLYPH then
 		return false
 	end
+	if order_type == DOTA_UNIT_ORDER_RADAR then
+		return false
+	end
 
 	if order_type == DOTA_UNIT_ORDER_MOVE_ITEM then
 		--print("Taking from stash")
