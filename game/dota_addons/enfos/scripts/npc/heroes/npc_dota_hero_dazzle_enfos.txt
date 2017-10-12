@@ -57,4 +57,13 @@
 		"particle_folder"				"particles/units/heroes/hero_luna/"
 		"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
 	}
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"2"
+	"AspectBuff"				"3"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

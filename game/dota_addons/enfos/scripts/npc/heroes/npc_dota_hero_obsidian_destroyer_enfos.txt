@@ -68,4 +68,13 @@
 		"particle_folder"				"particles/units/heroes/hero_ogre_magi/"
 
 	}
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"3"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

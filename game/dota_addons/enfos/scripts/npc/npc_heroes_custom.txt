@@ -52,6 +52,15 @@
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"1000"									// Range within a target can be acquired.
 		"ProjectileSpeed"			"1500"										// Speed of projectile.
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"2"
+		"AspectBuff"				"3"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}		
 	//=================================================================================================================
 	// HERO: Beastmaster - Grim Stonecrusher, the Barbarian
@@ -118,6 +127,15 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"4"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Ember Spirit: Cabalist
@@ -170,6 +188,15 @@
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"180"									// Range within a target can be acquired.
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"0"
+		"AspectCaster"				"3"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Crystal Maiden: Arcane Mistress
@@ -223,6 +250,15 @@
 		"AttackRange"               "450"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"450"									// Range within a target can be acquired.
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"4"
+		
+		"AspectStun"				"3"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Dazzle (Hypnotist)
@@ -283,6 +319,15 @@
 			"particle_folder"				"particles/units/heroes/hero_luna/"
 			"model"					"particles/units/heroes/hero_luna/luna_base_attack_model.vpcf"
 		}
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"2"
+		"AspectBuff"				"3"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Dragon Knight - Grake the Holy Warrior
@@ -365,6 +410,15 @@
 		}
 	
 		"Team"						"Bad"
+		
+		"AspectTank"				"5"
+		"AspectCarry"				"1"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Earth Spirit: Entropist
@@ -414,6 +468,15 @@
 		"AttackDamageMax" 			"10"
 		"AttackAcquisitionRange"	"400"
 		"Team"						"Bad"
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"0"
+		"AspectCaster"				"2"
+		
+		"AspectStun"				"3"
+		"AspectBuff"				"2"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Faenrae Champion
@@ -468,6 +531,15 @@
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Furion: Tempest
@@ -522,6 +594,15 @@
 		"AttackRange"               "700"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"700"									// Range within a target can be acquired.
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"4"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"1"
+		"AspectHeal"				"1"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Juggernaut - Doko the Blood Dancer
@@ -591,6 +672,15 @@
 		"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
 	
 		"Team"						"Bad"
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}	
 	//=================================================================================================================
 	// HERO: Lich (Revenant)
@@ -640,6 +730,15 @@
 		"AttackDamageMax"			"8"									// Damage range max.
 		"ProjectileSpeed"			"1200"										// Speed of projectile.
 		"AttackAcquisitionRange"	"550"
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"0"
+		"AspectCaster"				"3"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Lina: Empath
@@ -694,6 +793,15 @@
 		"AttackRange"               "600"
 		"AttackAnimationPoint"		"0.500"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"0"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"2"
+		"AspectHeal"				"3"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Lion: Warrior Mage
@@ -747,6 +855,15 @@
 		"AttackRange"               "180"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"300"									// Range within a target can be acquired.
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"0"
+		"AspectCaster"				"2"
+		
+		"AspectStun"				"2"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Queen of Pain (Moon Mage)
@@ -803,6 +920,15 @@
 			"particle_folder"					"particles/units/heroes/hero_queenofpain/"
 			"particle_folder"					"particles/base_attacks/"
 		}
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"5"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Naga Siren: Cleric
@@ -857,6 +983,15 @@
 		"AttackRange"               "160"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+		
+		"AspectTank"				"3"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Obsidian Destroyer - Anduin, the Time Mage
@@ -928,6 +1063,15 @@
 			"particle_folder"				"particles/units/heroes/hero_ogre_magi/"
 	
 		}
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"3"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Ogre Magi - Moradinn the Magic Infuser
@@ -1002,6 +1146,15 @@
 			"particle"	"particles/units/heroes/hero_huskar/huskar_inner_vitality_cast.vpcf"
 			"particle_folder"	"particles/units/heroes/hero_zuus/"
 		}
+		
+		"AspectTank"				"3"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Omniknight - Marcus, the Ahlen
@@ -1068,6 +1221,14 @@
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
 	
+		"AspectTank"				"3"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Phantom Assassin - Steelrose, the Paladin
@@ -1135,6 +1296,15 @@
 		{
 			"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
 		}
+		
+		"AspectTank"				"4"
+		"AspectCarry"				"2"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"1"
+		"AspectHeal"				"1"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Ranger (Drow)
@@ -1184,6 +1354,15 @@
 		"StatusMana"				"1"
 		"AttackDamageMin" 			"7"
 		"AttackDamageMax" 			"17"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"3"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"2"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Riki: Thief
@@ -1232,6 +1411,15 @@
 		"AttackDamageMin" 			"9"
 		"AttackDamageMax" 			"16"	
 		"AttackAcquisitionRange"	"400"
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"3"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Dazzle: Shadow Priest
@@ -1285,6 +1473,15 @@
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 		"ProjectileSpeed"			"900"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"1"
+		"AspectHeal"				"1"
+		"AspectDisrupt"				"2"
 	}		
 	//=================================================================================================================
 	// HERO: Shadow shaman - - Okk'thok the Warlock
@@ -1352,6 +1549,15 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"StatusHealth"				"10"
 		"StatusMana"				"1"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"4"
 	}
 	//=================================================================================================================
 	// HERO: Silencer (Mentalist)
@@ -1402,6 +1608,15 @@
 		"AttackDamageMin"			"3"									// Damage range min.
 		"AttackDamageMax"			"10"									// Damage range max.
 		"AttackAcquisitionRange"	"400"
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"4"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Sniper (Sniper)
@@ -1451,6 +1666,15 @@
 		"StatusMana"				"1"
 		"AttackDamageMin" 			"2"
 		"AttackDamageMax" 			"12"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Spirit Breaker: Summoner
@@ -1505,6 +1729,15 @@
 		"AttackRange"               "550"
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"1"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Storm Spirit (Evoker)
@@ -1554,6 +1787,15 @@
 		"AttackDamageMax"			"8"									// Damage range max.
 		"AttackAcquisitionRange"	"550"
 		"ProjectileSpeed"			"1200"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"4"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Sven (Weaponsmith)
@@ -1602,6 +1844,15 @@
 		"AttackDamageMin" 			"11"
 		"AttackDamageMax" 			"30" 
 		"AttackAcquisitionRange"	"400"
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"2"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Treant Protector: Oak
@@ -1653,6 +1904,15 @@
 		"ModelScale" 				"0.80"		
 	
 		"Team"						"Bad"
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"1"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"1"
+		"AspectBuff"				"1"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Troll Warlord: Troll Cannibal
@@ -1706,6 +1966,15 @@
 		"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 		"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.
 		"ProjectileSpeed"			"1400"
+		
+		"AspectTank"				"2"
+		"AspectCarry"				"3"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"0"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"1"
 	}
 	//=================================================================================================================
 	// HERO: Ursa - GoGo, the Battle Chanter
@@ -1773,6 +2042,15 @@
 		"StatusMana"				"1"
 	
 		"Team"						"Bad"
+		
+		"AspectTank"				"1"
+		"AspectCarry"				"1"
+		"AspectCaster"				"0"
+		
+		"AspectStun"				"2"
+		"AspectBuff"				"2"
+		"AspectHeal"				"0"
+		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
 	// HERO: Io: Dummy Unit for Repick

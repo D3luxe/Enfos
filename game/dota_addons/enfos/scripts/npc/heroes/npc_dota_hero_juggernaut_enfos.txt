@@ -66,4 +66,13 @@
 	"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
 
 	"Team"						"Bad"
+	
+	"AspectTank"				"2"
+	"AspectCarry"				"2"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }	

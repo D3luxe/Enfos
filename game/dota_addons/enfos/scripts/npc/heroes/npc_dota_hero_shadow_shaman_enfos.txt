@@ -64,4 +64,13 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"StatusHealth"				"10"
 	"StatusMana"				"1"
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"4"
 }

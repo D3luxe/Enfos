@@ -632,6 +632,211 @@
 	vertical-align: top;
 	background-color: #FFFF00;
 }
+#CompositionLabel {
+	font-size: 28px;
+	font-weight: bold;
+	width: 450px;
+	color: #FFFF;
+	height: 100px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: top;
+}
+#MainAspectBox {
+	width: 340px;
+	height: 290px;
+	//background-color: black;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 10px;
+}
+#MainTankBox {
+	width: 300px;
+	height: 50px;
+	//background-color: red;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 40px;
+}
+#MainCarryBox {
+	width: 300px;
+	height: 50px;
+	//background-color: green;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 100px;
+}
+#MainCasterBox {
+	width: 300px;
+	height: 50px;
+	//background-color: blue;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 160px;
+}
+#MainStunBox {
+	width: 145px;
+	height: 30px;
+	//background-color: yellow;
+	horizontal-align: left;
+	vertical-align: top;
+	y: 220px;
+	x: 20px;
+}
+#MainBuffBox {
+	width: 145px;
+	height: 30px;
+	//background-color: yellow;
+	horizontal-align: right;
+	vertical-align: top;
+	y: 220px;
+	x: -20px;
+}
+#MainHealBox {
+	width: 145px;
+	height: 30px;
+	//background-color: yellow;
+	horizontal-align: left;
+	vertical-align: top;
+	y: 260px;
+	x: 20px;
+}
+#MainDisruptBox {
+	width: 145px;
+	height: 30px;
+	//background-color: yellow;
+	horizontal-align: right;
+	vertical-align: top;
+	y: 260px;
+	x: -20px;
+}
+#TeamAspectBox {
+	width: 340px;
+	height: 300px;
+	//background-color: black;
+	horizontal-align: center;
+	vertical-align: bottom;
+	y: -10px;
+}
+#TeamTankBox {
+	width: 300px;
+	height: 35px;
+	//background-color: red;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 40px;
+}
+#TeamCarryBox {
+	width: 300px;
+	height: 35px;
+	//background-color: green;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 80px;
+}
+#TeamCasterBox {
+	width: 300px;
+	height: 35px;
+	//background-color: blue;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 120px;
+}
+#TeamStunBox {
+	width: 300px;
+	height: 25px;
+	//background-color: yellow;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 165px;
+	padding-right: 3px;
+}
+#TeamBuffBox {
+	width: 300px;
+	height: 25px;
+	//background-color: yellow;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 195px;
+	padding-right: 3px;
+}
+#TeamHealBox {
+	width: 300px;
+	height: 25px;
+	//background-color: yellow;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 225px;
+	padding-right: 3px;
+}
+#TeamDisruptBox {
+	width: 300px;
+	height: 25px;
+	//background-color: yellow;
+	horizontal-align: center;
+	vertical-align: top;
+	y: 255px;
+	padding-right: 3px;
+}
+
+#AspectContainer {
+	height: 100%;
+	width: 80%;
+	horizontal-align: right;
+	//background-color: black;
+	flow-children: right;
+}
+#AspectContainerLeft {
+	height: 100%;
+	width: 43%;
+	horizontal-align: left;
+	//background-color: black;
+	flow-children: right;
+	x: 12%;
+}
+#AspectContainerRight {
+	height: 100%;
+	width: 43%;
+	horizontal-align: right;
+	//background-color: black;
+	flow-children: right;
+}
+#AspectPip1, #AspectPip2, #AspectPip3, #AspectPip4, #AspectPip5, #AspectPip6, #AspectPip7, #AspectPip8, #AspectPip9, #AspectPip10 {
+	height: 100%;
+	width: 18%;
+	background-color: #999999;
+	border-radius: 5px;
+	//margin-left: 2%;
+	//margin-right: 2%;
+}
+#PipBuffer1, #PipBuffer2, #PipBuffer3, #PipBuffer4 {
+	height: 100%;
+	width: 2.5%;
+}
+#PipGlow {
+	width: 100%;
+	height: 100%;
+	background-color: #ffffff00, gradient( radial, 50% 30%, 0px 0px, 130% 30%, from( #ffffff99 ), color-stop( 0.6, #ffffff22 ), to( #ffffff00 ) );
+}
+#PipShadow {
+	width: 100%;
+	height: 100%;
+	background-color: gradient( linear, 0% 50%, 0% 100%, from( #09090900 ), to( #0d1014ff ) );
+}
+#PipEdge {
+	width: 100%;
+	height: 100%;
+	box-shadow: inset #000000ff 3px 3px 4px 6px;
+}
+#PipLine {
+	height: 38%;
+	width: 4px;
+	background-color: red;
+	horizontal-align: center;
+	vertical-align: center;
+	x: 18px;
+	y: -52px;
+}
 
 #FinalPickBox {
 	width: 1440px;

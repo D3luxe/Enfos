@@ -71,4 +71,13 @@
 		"particle"	"particles/units/heroes/hero_huskar/huskar_inner_vitality_cast.vpcf"
 		"particle_folder"	"particles/units/heroes/hero_zuus/"
 	}
+	
+	"AspectTank"				"3"
+	"AspectCarry"				"2"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

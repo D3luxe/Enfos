@@ -46,4 +46,13 @@
 	"AttackDamageMax" 			"10"
 	"AttackAcquisitionRange"	"400"
 	"Team"						"Bad"
+	
+	"AspectTank"				"1"
+	"AspectCarry"				"0"
+	"AspectCaster"				"2"
+	
+	"AspectStun"				"3"
+	"AspectBuff"				"2"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

@@ -46,4 +46,13 @@
 	"StatusMana"				"1"
 	"AttackDamageMin" 			"2"
 	"AttackDamageMax" 			"12"
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"2"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

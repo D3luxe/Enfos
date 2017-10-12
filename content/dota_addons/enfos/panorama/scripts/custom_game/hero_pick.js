@@ -4,6 +4,7 @@ var selectedPlayer = -1;
 var heroData = {};
 var shifter = 0;
 var mapData = {};
+var aspectData = {};
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
@@ -24,6 +25,32 @@ function UpdatePickUI() {
 	$('#DirePlayerBox3').visible = false;
 	$('#DirePlayerBox4').visible = false;
 	$('#DirePlayerBox5').visible = false;
+	
+	for (i=1; i<=10; i++) {
+		$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+	}
+	
+	var aspect1 = 0;
+	var aspect2 = 0;
+	var aspect3 = 0;
+	var aspect4 = 0;
+	var aspect5 = 0;
+	var aspect6 = 0;
+	var aspect7 = 0;
+	var aspect1max = 0;
+	var aspect2max = 0;
+	var aspect3max = 0;
+	var aspect4max = 0;
+	var aspect5max = 0;
+	var aspect6max = 0;
+	var aspect7max = 0;
+	
 	var order = 1;
 	for (var playerID in radTeam) {
 		//var pData = Game.GetPlayerInfo(parseInt(playerID));
@@ -59,9 +86,106 @@ function UpdatePickUI() {
 		//}
 		if (hero == "npc_dota_hero_wisp") {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").AddClass("Desaturate");}
 		else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").RemoveClass("Desaturate");}
+		
+		if (Players.GetTeam(pID) == 2) {
+			if (hero == "npc_dota_hero_wisp")
+			{
+				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
+				{aspect1 = 0;
+				aspect2 = 0;
+				aspect3 = 0;
+				aspect4 = 0;
+				aspect5 = 0;
+				aspect6 = 0;
+				aspect7 = 0;}
+				else {
+					aspect1 = aspectData[icon].stattank;
+					aspect2 = aspectData[icon].statcarry;
+					aspect3 = aspectData[icon].statcaster;
+					aspect4 = aspectData[icon].statstun;
+					aspect5 = aspectData[icon].statbuff;
+					aspect6 = aspectData[icon].statheal;
+					aspect7 = aspectData[icon].statdisrupt;
+				}
+			}
+			else {
+				aspect1 = aspectData[hero].stattank;
+				aspect2 = aspectData[hero].statcarry;
+				aspect3 = aspectData[hero].statcaster;
+				aspect4 = aspectData[hero].statstun;
+				aspect5 = aspectData[hero].statbuff;
+				aspect6 = aspectData[hero].statheal;
+				aspect7 = aspectData[hero].statdisrupt;
+			}
+			aspect1max += aspect1;
+			aspect2max += aspect2;
+			aspect3max += aspect3;
+			aspect4max += aspect4;
+			aspect5max += aspect5;
+			aspect6max += aspect6;
+			aspect7max += aspect7;
+			
+			if (1+aspect1max-aspect1 <= 10 && aspect1 > 0) {
+				for (i = 1+aspect1max - aspect1; i <= Math.min(aspect1max,10); i++) {
+					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect2max-aspect2 <= 10 && aspect2 > 0) {
+				for (i = 1+aspect2max - aspect2; i <= Math.min(aspect2max,10); i++) {
+					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect3max-aspect3 <= 10 && aspect3 > 0) {
+				for (i = 1+aspect3max - aspect3; i <= Math.min(aspect3max,10); i++) {
+					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect4max-aspect4 <= 10 && aspect4 > 0) {
+				for (i = 1+aspect4max - aspect4; i <= Math.min(aspect4max,10); i++) {
+					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect5max-aspect5 <= 10 && aspect5 > 0) {
+				for (i = 1+aspect5max - aspect5; i <= Math.min(aspect5max,10); i++) {
+					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect6max-aspect6 <= 10 && aspect6 > 0) {
+				for (i = 1+aspect6max - aspect6; i <= Math.min(aspect6max,10); i++) {
+					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect7max-aspect7 <= 10 && aspect7 > 0) {
+				for (i = 1+aspect7max - aspect7; i <= Math.min(aspect7max,10); i++) {
+					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+		}
 		order += 1;
 	}
 	order = 1;
+	aspect1 = 0;
+	aspect2 = 0;
+	aspect3 = 0;
+	aspect4 = 0;
+	aspect5 = 0;
+	aspect6 = 0;
+	aspect7 = 0;
+	aspect1max = 0;
+	aspect2max = 0;
+	aspect3max = 0;
+	aspect4max = 0;
+	aspect5max = 0;
+	aspect6max = 0;
+	aspect7max = 0;
+	
 	for (var playerID in dirTeam) {
 		//var pData = Game.GetPlayerInfo(parseInt(playerID));
 		var hero = Players.GetPlayerSelectedHero(parseInt(dirTeam[playerID]));
@@ -96,6 +220,89 @@ function UpdatePickUI() {
 		//}
 		if (hero == "npc_dota_hero_wisp") {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").AddClass("Desaturate");}
 		else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").RemoveClass("Desaturate");}
+		
+		if (Players.GetTeam(pID) == 3) {
+			if (hero == "npc_dota_hero_wisp")
+			{
+				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
+				{aspect1 = 0;
+				aspect2 = 0;
+				aspect3 = 0;
+				aspect4 = 0;
+				aspect5 = 0;
+				aspect6 = 0;
+				aspect7 = 0;}
+				else {
+					aspect1 = aspectData[icon].stattank;
+					aspect2 = aspectData[icon].statcarry;
+					aspect3 = aspectData[icon].statcaster;
+					aspect4 = aspectData[icon].statstun;
+					aspect5 = aspectData[icon].statbuff;
+					aspect6 = aspectData[icon].statheal;
+					aspect7 = aspectData[icon].statdisrupt;
+				}
+			}
+			else {
+				aspect1 = aspectData[hero].stattank;
+				aspect2 = aspectData[hero].statcarry;
+				aspect3 = aspectData[hero].statcaster;
+				aspect4 = aspectData[hero].statstun;
+				aspect5 = aspectData[hero].statbuff;
+				aspect6 = aspectData[hero].statheal;
+				aspect7 = aspectData[hero].statdisrupt;
+			}
+			aspect1max += aspect1;
+			aspect2max += aspect2;
+			aspect3max += aspect3;
+			aspect4max += aspect4;
+			aspect5max += aspect5;
+			aspect6max += aspect6;
+			aspect7max += aspect7;
+			
+			if (1+aspect1max-aspect1 <= 10 && aspect1 > 0) {
+				for (i = 1+aspect1max - aspect1; i <= Math.min(aspect1max,10); i++) {
+					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect2max-aspect2 <= 10 && aspect2 > 0) {
+				for (i = 1+aspect2max - aspect2; i <= Math.min(aspect2max,10); i++) {
+					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect3max-aspect3 <= 10 && aspect3 > 0) {
+				for (i = 1+aspect3max - aspect3; i <= Math.min(aspect3max,10); i++) {
+					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect4max-aspect4 <= 10 && aspect4 > 0) {
+				for (i = 1+aspect4max - aspect4; i <= Math.min(aspect4max,10); i++) {
+					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect5max-aspect5 <= 10 && aspect5 > 0) {
+				for (i = 1+aspect5max - aspect5; i <= Math.min(aspect5max,10); i++) {
+					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect6max-aspect6 <= 10 && aspect6 > 0) {
+				for (i = 1+aspect6max - aspect6; i <= Math.min(aspect6max,10); i++) {
+					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+			if (1+aspect7max-aspect7 <= 10 && aspect7 > 0) {
+				for (i = 1+aspect7max - aspect7; i <= Math.min(aspect7max,10); i++) {
+					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+				}
+			}
+		}
+		
 		order += 1;
 	}
 	PickCheck();
@@ -452,6 +659,23 @@ function HeroButtonPressed(event) {
 			$.DispatchEvent("DOTAHideAbilityTooltip",slot6);
 		});
 	}
+	
+	for (i=1; i<=5; i++) {
+		if(aspectData[event].stattank >= i) $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statcarry >= i) $('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statcaster >= i) $('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statstun >= i) $('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statbuff >= i) $('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statheal >= i) $('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statdisrupt >= i) $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+	}
 }
 
 function PickButtonPressed() {
@@ -471,6 +695,7 @@ function PickButtonPressed() {
 
 function HeroDataTableFill() {
 	heroData = CustomNetTables.GetTableValue("hero_data","stats");
+	aspectData = CustomNetTables.GetTableValue("hero_data","aspect");
 	//$.Msg(heroData.npc_dota_hero_bounty_hunter.str);
 }
 
@@ -952,5 +1177,34 @@ function MapIconUpdate(event) {
 	
 	$('#ChatField').SetFocus();
 	
+	var color = Players.GetPlayerColor(Game.GetLocalPlayerID());
+	color = color.toString(16);
+	color = color.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+	
+	for (i=1; i<=10; i++) {
+		if (i <= 5) {
+			$('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+			$('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+			$('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		}
+		$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+	}
 	MapIconUpdate(0);
 })();

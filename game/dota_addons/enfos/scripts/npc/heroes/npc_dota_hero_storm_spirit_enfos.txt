@@ -46,4 +46,13 @@
 	"AttackDamageMax"			"8"									// Damage range max.
 	"AttackAcquisitionRange"	"550"
 	"ProjectileSpeed"			"1200"
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"4"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

@@ -45,4 +45,13 @@
 	"AttackDamageMin" 			"9"
 	"AttackDamageMax" 			"16"	
 	"AttackAcquisitionRange"	"400"
+	
+	"AspectTank"				"1"
+	"AspectCarry"				"3"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

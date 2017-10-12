@@ -64,4 +64,13 @@
 	{
 		"particle_folder"				"particles/econ/items/axe/axe_helm_shoutmask/"
 	}
+	
+	"AspectTank"				"4"
+	"AspectCarry"				"2"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"1"
+	"AspectHeal"				"1"
+	"AspectDisrupt"				"0"
 }

@@ -53,4 +53,13 @@
 		"particle_folder"					"particles/units/heroes/hero_queenofpain/"
 		"particle_folder"					"particles/base_attacks/"
 	}
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"5"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

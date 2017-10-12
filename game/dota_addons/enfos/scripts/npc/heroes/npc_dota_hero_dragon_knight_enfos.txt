@@ -79,4 +79,13 @@
 	}
 
 	"Team"						"Bad"
+	
+	"AspectTank"				"5"
+	"AspectCarry"				"1"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

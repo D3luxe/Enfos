@@ -274,6 +274,706 @@
 					<Label id="PortraitLabel" text="your gay" />
 				</Panel>
 				<Panel id="CompositionBox">
+					<Panel id="MainAspectBox">
+						<Label id="CompositionLabel" text="HERO ASPECT" />
+						<Panel id="MainTankBox">
+							<Image src="file://{images}/hud/reborn/icon_armor.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainCarryBox">
+							<Image src="file://{images}/hud/reborn/icon_damage.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainCasterBox">
+							<Image src="file://{images}/hud/reborn/icon_magic_resist.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainStunBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainBuffBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainHealBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="MainDisruptBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainer">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel id="TeamAspectBox">
+						<Label id="CompositionLabel" text="TEAM ASPECT" />
+						<Panel id="TeamTankBox">
+							<Image src="file://{images}/hud/reborn/icon_armor.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamCarryBox">
+							<Image src="file://{images}/hud/reborn/icon_damage.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamCasterBox">
+							<Image src="file://{images}/hud/reborn/icon_magic_resist.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamStunBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamBuffBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamHealBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="TeamDisruptBox">
+							<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="AspectContainerLeft">
+								<Panel id="AspectPip1">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip2">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip3">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip4">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip5">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+							<Panel id="AspectContainerRight">
+								<Panel id="AspectPip6">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer1" />
+								<Panel id="AspectPip7">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer2" />
+								<Panel id="AspectPip8">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer3" />
+								<Panel id="AspectPip9">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+								<Panel id="PipBuffer4" />
+								<Panel id="AspectPip10">
+									<Panel id="PipGlow" />
+									<Panel id="PipShadow" />
+									<Panel id="PipEdge" />
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="PipLine" />
+					</Panel>
 					<!--<DOTAHeroMovie heroname="npc_dota_hero_omniknight" />-->
 				</Panel>
 				<Panel id="FinalPickBox">
@@ -288,6 +988,7 @@
 				<Label id="WelcomeLabel" text="something about potions blah blah blah this disables repick" />
 			</Panel>
 			<Panel id="BottomBarBox" hittest="false">
+				<Panel id="RoundedBorder" />
 				<Panel id="PickBoxLeft">
 					<Panel id="PickTopLeftBox">
 						<Panel id="PickLeftLabelBox">
@@ -298,8 +999,8 @@
 								<Panel id="RepickBorder" />
 								<Panel id="PadBox">
 									<Image class="ShiftCombat" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
-									<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 								</Panel>
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 							</Button>
 							<Button id="PickButton1" onactivate="HeroButtonPressed('npc_dota_hero_omniknight')">
 								<Panel id="NoRepickBorder" />
@@ -384,8 +1085,8 @@
 								<Panel id="RepickBorder" />
 								<Panel id="PadBox">
 									<Image class="ShiftSupport" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
-									<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 								</Panel>
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 							</Button>
 							<Button id="PickButton1" onactivate="HeroButtonPressed('npc_dota_hero_medusa')">
 								<Panel id="RepickBorder" />
@@ -461,8 +1162,8 @@
 								<Panel id="RepickBorder" />
 								<Panel id="PadBox">
 									<Image class="ShiftCaster" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
-									<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 								</Panel>
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 							</Button>
 							<Button id="PickButton1" onactivate="HeroButtonPressed('npc_dota_hero_crystal_maiden')">
 								<Panel id="NoRepickBorder" />
@@ -547,8 +1248,8 @@
 								<Panel id="RepickBorder" />
 								<Panel id="PadBox">
 									<Image class="ShiftRounded" src="file://{images}/heroes/selection/npc_dota_hero_wisp.png" />
-									<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 								</Panel>
+								<Label id="PickRandomLabel" class="ButtonInner" text="?" />
 							</Button>
 							<Button id="PickButton1" onactivate="HeroButtonPressed('npc_dota_hero_ember_spirit')">
 								<Panel id="NoRepickBorder" />

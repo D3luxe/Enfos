@@ -50,4 +50,13 @@
 	"AttackRange"               "180"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"300"									// Range within a target can be acquired.
+	
+	"AspectTank"				"1"
+	"AspectCarry"				"0"
+	"AspectCaster"				"2"
+	
+	"AspectStun"				"2"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

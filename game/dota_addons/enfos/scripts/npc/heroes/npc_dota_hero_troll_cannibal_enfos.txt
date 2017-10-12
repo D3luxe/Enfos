@@ -50,4 +50,13 @@
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.
 	"ProjectileSpeed"			"1400"
+	
+	"AspectTank"				"2"
+	"AspectCarry"				"3"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

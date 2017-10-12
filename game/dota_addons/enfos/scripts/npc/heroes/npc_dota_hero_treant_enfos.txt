@@ -48,4 +48,13 @@
 	"ModelScale" 				"0.80"		
 
 	"Team"						"Bad"
+	
+	"AspectTank"				"2"
+	"AspectCarry"				"1"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

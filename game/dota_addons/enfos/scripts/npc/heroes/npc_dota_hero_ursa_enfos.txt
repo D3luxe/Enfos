@@ -64,4 +64,13 @@
 	"StatusMana"				"1"
 
 	"Team"						"Bad"
+	
+	"AspectTank"				"1"
+	"AspectCarry"				"1"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"2"
+	"AspectBuff"				"2"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }
