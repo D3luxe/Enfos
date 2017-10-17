@@ -278,6 +278,10 @@
 	padding-top: 10px;
 	padding-left: 10px;
 }
+.HeroStatIconSizer {
+	width: 30px;
+	height: 30px;
+}
 #HeroHPBox, #HeroMPBox, #HeroAtkBox, #HeroAspBox, #HeroRngBox, #HeroArmBox, #HeroMRBox, #HeroSpdBox {
 	width: 200px;
 	height: 30px;
