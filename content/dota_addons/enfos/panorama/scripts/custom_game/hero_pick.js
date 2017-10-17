@@ -593,7 +593,7 @@ function HeroButtonPressed(event) {
 		heroData[event].atkmin+"-"+heroData[event].atkmax;
 		$('#HeroAspBox').FindChildTraverse("AttHeroSmallLabel").text = Math.round((1/heroData[event].atkspd) * 100) / 100+"/s";
 		if (heroData[event].atkrng < 200){
-			$('#HeroRngBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].atkrng+" (Melee)";
+			$('#HeroRngBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].atkrng+" ("+$.Localize("#DOTA_HeroSelectorCategory_AttackRange_Melee")+")";
 		}
 		else {
 			if(event == "npc_dota_hero_drow_ranger") $('#HeroRngBox').FindChildTraverse("AttHeroSmallLabel").text = "250-"+heroData[event].atkrng;
@@ -849,7 +849,7 @@ function UpdateTimer() {
 function ChatBoxCheck() {
 	//$('#ChatBox').DOTAChatCancelMessageMode();
 	//$('#DOTAChatDoesntWorkCorrectlySoNowIHaveToDoThisBox').DOTAChatCancelMessageMode();
-	$.Msg($("#PickUIBase").visible);
+	//$.Msg($("#PickUIBase").visible);
 	if($("#PickUIBase").visible == false) {
 		$('#ChatField').SetAcceptsFocus(false);
 		$.DispatchEvent("DropInputFocus", $('#ChatField'));
@@ -898,8 +898,8 @@ function ChatUpdate(event) {
 	{
 		var img = $.CreatePanel("Image", newLine, "ChatLinePic");
 		img.SetImage("s2r://panorama/images/heroes/"+hero+"_png.vtex");
-		if(event.team) newLine.text = "|||||||||||| (Allies) <font color='#"+color+"'>"+name+":</font> "+newLine.text;
-		else newLine.text = "|||||||||||| <font color='#"+color+"'>"+name+"</font>: "+newLine.text;
+		if(event.team) newLine.text = "||||||||||||. (Allies) <font color='#"+color+"'>"+name+":</font> "+newLine.text;
+		else newLine.text = "||||||||||||. <font color='#"+color+"'>"+name+"</font>: "+newLine.text;
 		//newLine.text = "             "+newLine.text;
 	}
 	$("#ChatLines").ScrollToTop();

@@ -319,6 +319,7 @@
 	text-align: center;
 	text-shadow: 0px 1px 0px 3.0 #00000077;
 	y: 10px;
+	text-transform: uppercase;
 }
 #SpellBoxInnards {
 	height: 160px;
@@ -877,6 +878,7 @@
 	text-shadow: 0px 1px 0px 3.0 #00000077;
 	vertical-align: center;
 	y: 3px;
+	text-transform: uppercase;
 }
 
 #FinalPickButton {

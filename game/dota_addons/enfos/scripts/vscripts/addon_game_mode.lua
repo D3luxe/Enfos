@@ -634,6 +634,7 @@ function CEnfosGameMode:InitGameMode()
 	
 	--hero nettables
 	local heroNetTable = {}
+	local aspectNetTable = {}
 	local abilityNetTable = {}
 	for k, v in pairs(GameRules.HeroKV) do
 		heroNetTable[v.override_hero] = {
@@ -702,6 +703,17 @@ function CEnfosGameMode:InitGameMode()
 			end
 		end
 	end
+	for k, v in pairs(GameRules.HeroKV) do
+		aspectNetTable[v.override_hero] = {
+			stattank = v.AspectTank,
+			statcarry = v.AspectCarry,
+			statcaster = v.AspectCaster,
+			statstun = v.AspectStun,
+			statbuff = v.AspectBuff,
+			statheal = v.AspectHeal,
+			statdisrupt = v.AspectDisrupt
+		}
+	end
 	for k, v in pairs(GameRules.AbilityKV) do
 		local castoff = 0
 		local casttype = v.AbilityBehavior
@@ -717,6 +729,7 @@ function CEnfosGameMode:InitGameMode()
 	
 	CustomNetTables:SetTableValue("hero_data","cast",abilityNetTable)
 	CustomNetTables:SetTableValue("hero_data","stats",heroNetTable)
+	CustomNetTables:SetTableValue("hero_data","aspect",aspectNetTable)
 	
 	--wave info nettables (this is super bad, self-reminder to fix this later)
 	CustomNetTables:SetTableValue("next_wave_table","hide",{value = false})
