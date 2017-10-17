@@ -76,19 +76,19 @@
 					</Panel>
 					<Panel id="StatBox">
 						<Panel id="AttributeBox">
-							<Panel id="AttStrBox">
+							<Panel id="AttStrBox" onmouseover="DOTAShowTextTooltip('Strength (+Per Level)')" onmouseout="DOTAHideTextTooltip()">
 								<Panel id="AttGlowBox" />
 								<Image src="file://{images}/hud/pip_str.png" />
 								<Label id="AttBigLabel" text="00" />
 								<Label id="AttSmallLabel" text="(+0.00)" />
 							</Panel>
-							<Panel id="AttAgiBox">
+							<Panel id="AttAgiBox" onmouseover="DOTAShowTextTooltip('Agility (+Per Level)')" onmouseout="DOTAHideTextTooltip()">
 								<Panel id="AttGlowBox" />
 								<Image src="file://{images}/hud/pip_agi.png" />
 								<Label id="AttBigLabel" text="00" />
 								<Label id="AttSmallLabel" text="(+0.00)" />
 							</Panel>
-							<Panel id="AttIntBox">
+							<Panel id="AttIntBox" onmouseover="DOTAShowTextTooltip('Intelligence (+Per Level)')" onmouseout="DOTAHideTextTooltip()">
 								<Panel id="AttGlowBox" />
 								<Image src="file://{images}/hud/pip_int.png" />
 								<Label id="AttBigLabel" text="00" />
@@ -106,36 +106,36 @@
 							</Panel>
 						</Panel>
 						<Panel id="HeroStatBox">
-							<Panel id="HeroHPBox">
-								<Image src="file://{images}/hud/reborn/ult_ready.psd" scaling="none" />
+							<Panel id="HeroHPBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_MaxHealth_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/ult_ready.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="0" />
 							</Panel>
-							<Panel id="HeroMPBox">
-								<Image src="file://{images}/hud/reborn/ult_no_mana.psd" scaling="none" />
+							<Panel id="HeroMPBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_MaxMana_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/ult_no_mana.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="0" />
 							</Panel>
-							<Panel id="HeroAtkBox">
-								<Image src="file://{images}/hud/reborn/icon_damage.psd" />
+							<Panel id="HeroAtkBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_Damage_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_damage.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="--" />
 							</Panel>
-							<Panel id="HeroAspBox">
-								<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" />
+							<Panel id="HeroAspBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_AttackRate_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_attack_speed.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="--" />
 							</Panel>
-							<Panel id="HeroRngBox">
-								<Image src="file://{images}/hud/reborn/icon_attack_range.psd" />
+							<Panel id="HeroRngBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_AttackRange_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_attack_range.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="--" />
 							</Panel>
-							<Panel id="HeroArmBox">
-								<Image src="file://{images}/hud/reborn/icon_armor.psd" />
+							<Panel id="HeroArmBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_Armor_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_armor.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="0" />
 							</Panel>
-							<Panel id="HeroMRBox">
-								<Image src="file://{images}/hud/reborn/icon_magic_resist.psd" />
+							<Panel id="HeroMRBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_MagicResistance_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_magic_resist.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="0%" />
 							</Panel>
-							<Panel id="HeroSpdBox">
-								<Image src="file://{images}/hud/reborn/icon_speed.psd" />
+							<Panel id="HeroSpdBox" onmouseover="DOTAShowTextTooltip(#DOTA_HeroStats_MovementSpeed_Name)" onmouseout="DOTAHideTextTooltip()">
+								<Image src="file://{images}/hud/reborn/icon_speed.psd" class="HeroStatIconSizer" />
 								<Label id="AttHeroSmallLabel" text="0" />
 							</Panel>
 						</Panel>
@@ -163,7 +163,7 @@
 						</Panel>-->
 					</Panel>
 					<Panel id="SpellBox">
-						<Label id="SpellTitleLabel" text="ABILITIES" />
+						<Label id="SpellTitleLabel" text="#dota_settings_abilities" />
 						<Panel id="SpellBoxInnards">
 							<Panel id="SpellInfo1">
 								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
@@ -268,7 +268,7 @@
 									<Image id="HeroMapIcon1" class="AttentionShoppers" src="file://{images}/heroes/icons/npc_dota_hero_wisp.png" />
 								</Panel>
 							</Button>
-							<Label id="MapLaneLabel" text="Right Teleport" />
+							<Label id="MapLaneLabel" text="" />
 						</Image>
 					</Panel>
 					<Label id="PortraitLabel" text="your gay" />
