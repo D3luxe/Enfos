@@ -1161,6 +1161,55 @@
 	height: 100%;
 }
 
+#HudButtonBar {
+	flow-children: right;
+}
+#DashboardButton {
+	tooltip-position: bottom;
+	width: 38px;
+	height: 38px;
+	background-repeat: no-repeat;
+	background-size: 80%;
+	margin-left: 10px;
+	margin-right: 4px;
+	margin-top: 8px;
+	vertical-align: middle;/*???*/
+	horizontal-align: center;
+	background-position: 50% 65%;
+	opacity: 0.5;
+	//wash-color: #CDF;
+	background-color: #000;
+	
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	border-radius: 18px;
+	
+	background-image: url("s2r://panorama/images/control_icons/return_to_game_png.vtex");
+	transform: scaleY(-1);
+}
+#SettingsButton {
+	tooltip-position: bottom;
+	width: 38px;
+	height: 38px;
+	background-repeat: no-repeat;
+	background-size: 80%;
+	margin-left: 4px;
+	margin-right: 4px;
+	margin-top: 8px;
+	vertical-align: middle;/*???*/
+	horizontal-align: center;
+	background-position: center;
+	opacity: 0.5;
+	//wash-color: #CDF;
+	background-color: #000;
+	
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	border-radius: 18px;
+	
+	background-image: url("s2r://panorama/images/control_icons/gear_png.vtex");
+}
+
 
 
 

@@ -7,7 +7,7 @@
 		<include src="file://{resources}/scripts/custom_game/hero_pick.js"/>
 	</scripts>
 	<Panel class="Main" hittest="false">
-		<Panel id="PickUIBase">
+		<Button id="PickUIBase">
 			<Panel id="TopBarBox">
 				<Panel id="RadiantBox">
 					<Panel id="RadiantPlayerBox1">
@@ -1399,6 +1399,10 @@
 					</Panel>
 				</Panel>
 			</Panel>
-		</Panel>
+			<Panel id="HudButtonBar" hittest="false">
+				<Button id="DashboardButton" onactivate="DOTAHUDShowDashboard();" onmouseover="UIShowTextTooltip( DOTA_HUD_BackToDashboard )"  onmouseout="UIHideTextTooltip()"/>
+				<Button id="SettingsButton" onactivate="DOTASettings();" onmouseover="UIShowTextTooltip( DOTA_HUD_Settings )"  onmouseout="UIHideTextTooltip()"/>
+			</Panel>
+		</Button>
 	</Panel>
 </root>
