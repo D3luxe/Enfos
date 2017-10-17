@@ -634,6 +634,7 @@ function CEnfosGameMode:InitGameMode()
 	
 	--hero nettables
 	local heroNetTable = {}
+	local abilityNetTable = {}
 	for k, v in pairs(GameRules.HeroKV) do
 		heroNetTable[v.override_hero] = {
 			baseatt = v.AttributePrimary,
@@ -701,8 +702,20 @@ function CEnfosGameMode:InitGameMode()
 			end
 		end
 	end
+	for k, v in pairs(GameRules.AbilityKV) do
+		local castoff = 0
+		local casttype = v.AbilityBehavior
+		if casttype ~= nil then
+			if string.find(casttype,"DOTA_ABILITY_BEHAVIOR_PASSIVE") ~= nil then castoff = 1 end
+			if string.find(casttype,"DOTA_ABILITY_BEHAVIOR_AUTOCAST") ~= nil then castoff = 2 end
+		end
+		abilityNetTable[tostring(k)] = {
+			casttype = castoff
+		}
+	end
 	--PrintTable(heroNetTable)
 	
+	CustomNetTables:SetTableValue("hero_data","cast",abilityNetTable)
 	CustomNetTables:SetTableValue("hero_data","stats",heroNetTable)
 	
 	--wave info nettables (this is super bad, self-reminder to fix this later)

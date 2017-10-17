@@ -5,6 +5,7 @@ var heroData = {};
 var shifter = 0;
 var mapData = {};
 var aspectData = {};
+var isAutoOrPassive = {};
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
@@ -612,6 +613,7 @@ function HeroButtonPressed(event) {
 	var slot4 = $('#SpellInfo4').FindChildTraverse("IWasTagged")
 	var slot5 = $('#SpellInfo5').FindChildTraverse("IWasTagged")
 	var slot6 = $('#SpellInfo6').FindChildTraverse("IWasTagged")
+	
 	slot1.abilityname = heroData[event].spell1;
 	slot1.SetPanelEvent("onmouseover",function(){
 		$.DispatchEvent("DOTAShowAbilityTooltip", slot1, heroData[event].spell1);
@@ -619,6 +621,25 @@ function HeroButtonPressed(event) {
 	slot1.SetPanelEvent("onmouseout",function(){
 		$.DispatchEvent("DOTAHideAbilityTooltip",slot1);
 	});
+	if(isAutoOrPassive[slot1.abilityname].casttype == 1 && slot1.abilityname != "faenrae_champion_dark_hand_curse") {
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		slot1.AddClass("FitToPassive");
+		slot1.RemoveClass("FitToActive");
+		slot1.RemoveClass("FitToAuto");
+	}
+	else if(isAutoOrPassive[slot1.abilityname].casttype == 2) {
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		slot1.RemoveClass("FitToPassive");
+		slot1.RemoveClass("FitToActive");
+		slot1.AddClass("FitToAuto");
+	}
+	else {
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		slot1.RemoveClass("FitToPassive");
+		slot1.AddClass("FitToActive");
+		slot1.RemoveClass("FitToAuto");
+	}
+	
 	slot2.abilityname = heroData[event].spell2;
 	slot2.SetPanelEvent("onmouseover",function(){
 		$.DispatchEvent("DOTAShowAbilityTooltip", slot2, heroData[event].spell2);
@@ -626,6 +647,25 @@ function HeroButtonPressed(event) {
 	slot2.SetPanelEvent("onmouseout",function(){
 		$.DispatchEvent("DOTAHideAbilityTooltip",slot2);
 	});
+	if(isAutoOrPassive[slot2.abilityname].casttype == 1) {
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		slot2.AddClass("FitToPassive");
+		slot2.RemoveClass("FitToActive");
+		slot2.RemoveClass("FitToAuto");
+	}
+	else if(isAutoOrPassive[slot2.abilityname].casttype == 2) {
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		slot2.RemoveClass("FitToPassive");
+		slot2.RemoveClass("FitToActive");
+		slot2.AddClass("FitToAuto");
+	}
+	else {
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		slot2.RemoveClass("FitToPassive");
+		slot2.AddClass("FitToActive");
+		slot2.RemoveClass("FitToAuto");
+	}
+	
 	slot3.abilityname = heroData[event].spell3;
 	slot3.SetPanelEvent("onmouseover",function(){
 		$.DispatchEvent("DOTAShowAbilityTooltip", slot3, heroData[event].spell3);
@@ -633,6 +673,25 @@ function HeroButtonPressed(event) {
 	slot3.SetPanelEvent("onmouseout",function(){
 		$.DispatchEvent("DOTAHideAbilityTooltip",slot3);
 	});
+	if(isAutoOrPassive[slot3.abilityname].casttype == 1) {
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		slot3.AddClass("FitToPassive");
+		slot3.RemoveClass("FitToActive");
+		slot3.RemoveClass("FitToAuto");
+	}
+	else if(isAutoOrPassive[slot3.abilityname].casttype == 2) {
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		slot3.RemoveClass("FitToPassive");
+		slot3.RemoveClass("FitToActive");
+		slot3.AddClass("FitToAuto");
+	}
+	else {
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		slot3.RemoveClass("FitToPassive");
+		slot3.AddClass("FitToActive");
+		slot3.RemoveClass("FitToAuto");
+	}
+	
 	slot4.abilityname = heroData[event].spell4;
 	slot4.SetPanelEvent("onmouseover",function(){
 		$.DispatchEvent("DOTAShowAbilityTooltip", slot4, heroData[event].spell4);
@@ -640,6 +699,25 @@ function HeroButtonPressed(event) {
 	slot4.SetPanelEvent("onmouseout",function(){
 		$.DispatchEvent("DOTAHideAbilityTooltip",slot4);
 	});
+	if(isAutoOrPassive[slot4.abilityname].casttype == 1) {
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		slot4.AddClass("FitToPassive");
+		slot4.RemoveClass("FitToActive");
+		slot4.RemoveClass("FitToAuto");
+	}
+	else if(isAutoOrPassive[slot4.abilityname].casttype == 2) {
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		slot4.RemoveClass("FitToPassive");
+		slot4.RemoveClass("FitToActive");
+		slot4.AddClass("FitToAuto");
+	}
+	else {
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		slot4.RemoveClass("FitToPassive");
+		slot4.AddClass("FitToActive");
+		slot4.RemoveClass("FitToAuto");
+	}
+	
 	slot5.abilityname = heroData[event].spell5;
 	slot5.SetPanelEvent("onmouseover",function(){
 		$.DispatchEvent("DOTAShowAbilityTooltip", slot5, heroData[event].spell5);
@@ -647,6 +725,25 @@ function HeroButtonPressed(event) {
 	slot5.SetPanelEvent("onmouseout",function(){
 		$.DispatchEvent("DOTAHideAbilityTooltip",slot5);
 	});
+	if(isAutoOrPassive[slot5.abilityname].casttype == 1) {
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		slot5.AddClass("FitToPassive");
+		slot5.RemoveClass("FitToActive");
+		slot5.RemoveClass("FitToAuto");
+	}
+	else if(isAutoOrPassive[slot5.abilityname].casttype == 2) {
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		slot5.RemoveClass("FitToPassive");
+		slot5.RemoveClass("FitToActive");
+		slot5.AddClass("FitToAuto");
+	}
+	else {
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		slot5.RemoveClass("FitToPassive");
+		slot5.AddClass("FitToActive");
+		slot5.RemoveClass("FitToAuto");
+	}
+	
 	if (heroData[event].spell6 == "" || heroData[event].spell6 == "ahlen_cataclysmic_strike_proxy") {
 		$('#SpellInfo6').visible = false;
 	} else {
@@ -658,6 +755,24 @@ function HeroButtonPressed(event) {
 		slot6.SetPanelEvent("onmouseout",function(){
 			$.DispatchEvent("DOTAHideAbilityTooltip",slot6);
 		});
+		if(isAutoOrPassive[slot6.abilityname].casttype == 1) {
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+			slot6.AddClass("FitToPassive");
+			slot6.RemoveClass("FitToActive");
+			slot6.RemoveClass("FitToAuto");
+		}
+		else if(isAutoOrPassive[slot6.abilityname].casttype == 2) {
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+			slot6.RemoveClass("FitToPassive");
+			slot6.RemoveClass("FitToActive");
+			slot6.AddClass("FitToAuto");
+		}
+		else {
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+			slot6.RemoveClass("FitToPassive");
+			slot6.AddClass("FitToActive");
+			slot6.RemoveClass("FitToAuto");
+		}
 	}
 	
 	for (i=1; i<=5; i++) {
@@ -696,6 +811,7 @@ function PickButtonPressed() {
 function HeroDataTableFill() {
 	heroData = CustomNetTables.GetTableValue("hero_data","stats");
 	aspectData = CustomNetTables.GetTableValue("hero_data","aspect");
+	isAutoOrPassive = CustomNetTables.GetTableValue("hero_data","cast");
 	//$.Msg(heroData.npc_dota_hero_bounty_hunter.str);
 }
 

@@ -166,33 +166,51 @@
 						<Label id="SpellTitleLabel" text="#dota_settings_abilities" />
 						<Panel id="SpellBoxInnards">
 							<Panel id="SpellInfo1">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text=".....&#xD;....." hittest="false" />
 								<Label id="SpellLabel" text="Lv. 1" />
 							</Panel>
 							<Panel id="SpellInfo2">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text=".....&#xD;....." hittest="false" />
 								<Label id="SpellLabel" text="Lv. 1" />
 							</Panel>
 							<Panel id="SpellInfo3">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text=".....&#xD;....." hittest="false" />
 								<Label id="SpellLabel" text="Lv. 6" />
 							</Panel>
 							<Panel id="SpellInfo4">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text=".....&#xD;....." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text=".....&#xD;....." hittest="false" />
 								<Label id="SpellLabel" text="Lv. 10" />
 							</Panel>
 							<Panel id="SpellInfo5">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text="." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text="." hittest="false" />
 								<Label id="SpellLabel" text="Innate" />
 							</Panel>
 							<Panel id="SpellInfo6">
-								<DOTAAbilityImage id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
-								<Label id="SpellLevelLabel" text="." />
+								<Panel id="SpellWell">
+									<DOTAAbilityImage class="FitToPassive" id="IWasTagged" abilityname="generic_ethereal_shield" onmouseover="DOTAShowAbilityTooltip('generic_ethereal_shield')" onmouseout="DOTAHideAbilityTooltip()" />
+									<Image id="IWasTagged2" hittest="false" src="s2r://panorama/images/hud/passive_ability_border_png.vtex" />
+								</Panel>
+								<Label id="SpellLevelLabel" text="." hittest="false" />
 								<Label id="SpellLabel" text="Innate" />
 							</Panel>
 						</Panel>

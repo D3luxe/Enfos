@@ -335,18 +335,31 @@
 	padding-left: 2px;
 	padding-right: 2px;
 }
+#SpellWell {
+	height: 100px;
+	width: 100px;
+}
+.FitToPassive {
+	margin: 2px 2px 2px 2px;
+}
+.FitToActive {
+	margin: 4px 4px 4px 4px;
+}
+.FitToAuto {
+	margin: 6px 6px 6px 6px;
+}
 #SpellLevelLabel {
 	font-size: 50px;
 	font-weight: bold;
 	width: 100px;
 	color: #FF2F;
-	height: 300px;
+	height: 70px;
 	text-align: center;
 	text-shadow: 0px 1px 0px 3.0 #00000077;
 	//text-overflow: ellipsis;
-	y: 65px;
+	y: 67px;
 	line-height: 5px;
-	vertical-align: bottom;
+	vertical-align: top;
 }
 #SpellLabel {
 	font-size: 20px;
