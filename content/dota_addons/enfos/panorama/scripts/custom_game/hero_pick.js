@@ -51,6 +51,7 @@ function UpdatePickUI() {
 	var aspect5max = 0;
 	var aspect6max = 0;
 	var aspect7max = 0;
+	var prepip = false;
 	
 	var order = 1;
 	for (var playerID in radTeam) {
@@ -91,6 +92,7 @@ function UpdatePickUI() {
 		if (Players.GetTeam(pID) == 2) {
 			if (hero == "npc_dota_hero_wisp")
 			{
+				prepip = true;
 				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
 				{aspect1 = 0;
 				aspect2 = 0;
@@ -110,6 +112,7 @@ function UpdatePickUI() {
 				}
 			}
 			else {
+				prepip = false;
 				aspect1 = aspectData[hero].stattank;
 				aspect2 = aspectData[hero].statcarry;
 				aspect3 = aspectData[hero].statcaster;
@@ -129,43 +132,141 @@ function UpdatePickUI() {
 			if (1+aspect1max-aspect1 <= 10 && aspect1 > 0) {
 				for (i = 1+aspect1max - aspect1; i <= Math.min(aspect1max,10); i++) {
 					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect2max-aspect2 <= 10 && aspect2 > 0) {
 				for (i = 1+aspect2max - aspect2; i <= Math.min(aspect2max,10); i++) {
 					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect3max-aspect3 <= 10 && aspect3 > 0) {
 				for (i = 1+aspect3max - aspect3; i <= Math.min(aspect3max,10); i++) {
 					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect4max-aspect4 <= 10 && aspect4 > 0) {
 				for (i = 1+aspect4max - aspect4; i <= Math.min(aspect4max,10); i++) {
 					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect5max-aspect5 <= 10 && aspect5 > 0) {
 				for (i = 1+aspect5max - aspect5; i <= Math.min(aspect5max,10); i++) {
 					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect6max-aspect6 <= 10 && aspect6 > 0) {
 				for (i = 1+aspect6max - aspect6; i <= Math.min(aspect6max,10); i++) {
 					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect7max-aspect7 <= 10 && aspect7 > 0) {
 				for (i = 1+aspect7max - aspect7; i <= Math.min(aspect7max,10); i++) {
 					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 		}
@@ -225,6 +326,7 @@ function UpdatePickUI() {
 		if (Players.GetTeam(pID) == 3) {
 			if (hero == "npc_dota_hero_wisp")
 			{
+				prepip = true;
 				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
 				{aspect1 = 0;
 				aspect2 = 0;
@@ -244,6 +346,7 @@ function UpdatePickUI() {
 				}
 			}
 			else {
+				prepip = false;
 				aspect1 = aspectData[hero].stattank;
 				aspect2 = aspectData[hero].statcarry;
 				aspect3 = aspectData[hero].statcaster;
@@ -263,43 +366,141 @@ function UpdatePickUI() {
 			if (1+aspect1max-aspect1 <= 10 && aspect1 > 0) {
 				for (i = 1+aspect1max - aspect1; i <= Math.min(aspect1max,10); i++) {
 					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamTankBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect2max-aspect2 <= 10 && aspect2 > 0) {
 				for (i = 1+aspect2max - aspect2; i <= Math.min(aspect2max,10); i++) {
 					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamCarryBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect3max-aspect3 <= 10 && aspect3 > 0) {
 				for (i = 1+aspect3max - aspect3; i <= Math.min(aspect3max,10); i++) {
 					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamCasterBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect4max-aspect4 <= 10 && aspect4 > 0) {
 				for (i = 1+aspect4max - aspect4; i <= Math.min(aspect4max,10); i++) {
 					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamStunBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect5max-aspect5 <= 10 && aspect5 > 0) {
 				for (i = 1+aspect5max - aspect5; i <= Math.min(aspect5max,10); i++) {
 					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamBuffBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect6max-aspect6 <= 10 && aspect6 > 0) {
 				for (i = 1+aspect6max - aspect6; i <= Math.min(aspect6max,10); i++) {
 					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamHealBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 			if (1+aspect7max-aspect7 <= 10 && aspect7 > 0) {
 				for (i = 1+aspect7max - aspect7; i <= Math.min(aspect7max,10); i++) {
 					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
-					$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+					if (prepip == true) {
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = false;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").style.borderColor = '#'+color;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#00000099';
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = true;
+					}
+					else {
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipGlow").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipShadow").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PipEdge").visible = true;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).style.backgroundColor = '#'+color;
+						$('#TeamDisruptBox').FindChildTraverse("AspectPip"+i.toString()).FindChildTraverse("PrePip").visible = false;
+					}
 				}
 			}
 		}
