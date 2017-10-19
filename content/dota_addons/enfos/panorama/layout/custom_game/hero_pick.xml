@@ -223,7 +223,7 @@
 					</Panel>-->
 					<Panel id="ChatLines">
 						<Panel id="ChatLinesInner">
-							<Label class="AChatLine" text="/all to send to all players" />
+							<Label class="ChatLineStarter" text="/all to send to all players" />
 						</Panel>
 					</Panel>
 					<Panel id="HmmWhatsThis">

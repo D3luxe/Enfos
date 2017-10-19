@@ -552,7 +552,7 @@ function HeroButtonPressed(event) {
 	table.player = Game.GetLocalPlayerID();
 	//$.Msg(table.player);
 	GameEvents.SendCustomGameEventToServer("hero_button_pressed",table);
-	$('#FinalPickLabel').text = ("PICK "+$.Localize("#"+event)).toUpperCase();
+	$('#FinalPickLabel').text = ($.Localize("#DOTA_HeroSelector_SelectHero_Label")+" "+$.Localize("#"+event)).toUpperCase();
 	$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
 	$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/'+ event +'.png")';
 	
