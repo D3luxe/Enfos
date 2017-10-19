@@ -1512,13 +1512,23 @@ function CEnfosGameMode:_ThinkPrepTime()
 			for nPlayerID = 0, 9 do
 				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
 					local player = PlayerResource:GetPlayer(nPlayerID)
+					local repickCheck = player:GetAssignedHero()
+					print("gold "..goldAmount)
+					if repickCheck.repick == 1 then goldAmount = goldAmount*1.1 end
+					if repickCheck.repick == 2 then goldAmount = goldAmount*1.5 end
+					print("goldrandom "..goldAmount)
 					if player ~= nil then
-						playerGold = PlayerResource:GetGold(nPlayerID)
+						playerGold = repickCheck:GetGold()
+						print("currentgold "..playerGold)
 						if playerGold ~= nil then
-							PlayerResource:SetGold(nPlayerID,playerGold+goldAmount, false)
+							print("total "..playerGold+goldAmount)
+							repickCheck:SetGold(playerGold+goldAmount, false)
+							print("after "..repickCheck:GetGold())
 							--repicking breaks SetGold for some reason so now we have to do this. Fun!
-							if PlayerResource:GetGold(nPlayerID) ~= playerGold+goldAmount then
-								PlayerResource:SetGold(nPlayerID,playerGold+goldAmount-25, false)
+							if repickCheck:GetGold() ~= playerGold+goldAmount then
+								local thanksValve = repickCheck:GetGold() - (playerGold+goldAmount)
+								repickCheck:SetGold(playerGold+goldAmount-thanksValve, false)
+								print("itdidntwork "..playerGold+goldAmount)
 							end
 						end
 					end
@@ -3830,6 +3840,12 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		else delay = math.abs((delay%1)-1) end
 		local mp = sb:GetMana()
 		if delay > 0 then mp = mp+1 end
+		
+		if newHero.repick > 0 then
+			local potionItem = CreateItem("item_potion_of_healing", newHero, nil)
+			potionItem:SetCurrentCharges(newHero.repick)
+			local potion = newHero:AddItem(potionItem)
+		end
 		
 		--[[local ab1 = sb:FindAbilityByName("spellbringer_battle_sphere"):GetCooldownTimeRemaining()
 		local ab2 = sb:FindAbilityByName("spellbringer_chain_heal"):GetCooldownTimeRemaining()
