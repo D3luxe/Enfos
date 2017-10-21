@@ -353,6 +353,10 @@
 .FitToAuto {
 	margin: 6px 6px 6px 6px;
 }
+.FitToActiveOuter {
+	margin: -6px -6px -6px -6px;
+	opacity-mask: url( "file://panorama/images/custom_game/spellmask.png" );
+}
 #SpellLevelLabel {
 	font-size: 50px;
 	font-weight: bold;

@@ -843,18 +843,21 @@ function HeroButtonPressed(event) {
 	});
 	if(isAutoOrPassive[slot1.abilityname].casttype == 1 && slot1.abilityname != "faenrae_champion_dark_hand_curse") {
 		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot1.AddClass("FitToPassive");
 		slot1.RemoveClass("FitToActive");
 		slot1.RemoveClass("FitToAuto");
 	}
 	else if(isAutoOrPassive[slot1.abilityname].casttype == 2) {
 		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot1.RemoveClass("FitToPassive");
 		slot1.RemoveClass("FitToActive");
 		slot1.AddClass("FitToAuto");
 	}
 	else {
 		$('#SpellInfo1').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		$('#SpellInfo1').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 		slot1.RemoveClass("FitToPassive");
 		slot1.AddClass("FitToActive");
 		slot1.RemoveClass("FitToAuto");
@@ -869,18 +872,21 @@ function HeroButtonPressed(event) {
 	});
 	if(isAutoOrPassive[slot2.abilityname].casttype == 1) {
 		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot2.AddClass("FitToPassive");
 		slot2.RemoveClass("FitToActive");
 		slot2.RemoveClass("FitToAuto");
 	}
 	else if(isAutoOrPassive[slot2.abilityname].casttype == 2) {
 		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot2.RemoveClass("FitToPassive");
 		slot2.RemoveClass("FitToActive");
 		slot2.AddClass("FitToAuto");
 	}
 	else {
 		$('#SpellInfo2').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		$('#SpellInfo2').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 		slot2.RemoveClass("FitToPassive");
 		slot2.AddClass("FitToActive");
 		slot2.RemoveClass("FitToAuto");
@@ -895,18 +901,21 @@ function HeroButtonPressed(event) {
 	});
 	if(isAutoOrPassive[slot3.abilityname].casttype == 1) {
 		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot3.AddClass("FitToPassive");
 		slot3.RemoveClass("FitToActive");
 		slot3.RemoveClass("FitToAuto");
 	}
 	else if(isAutoOrPassive[slot3.abilityname].casttype == 2) {
 		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot3.RemoveClass("FitToPassive");
 		slot3.RemoveClass("FitToActive");
 		slot3.AddClass("FitToAuto");
 	}
 	else {
 		$('#SpellInfo3').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		$('#SpellInfo3').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 		slot3.RemoveClass("FitToPassive");
 		slot3.AddClass("FitToActive");
 		slot3.RemoveClass("FitToAuto");
@@ -921,18 +930,21 @@ function HeroButtonPressed(event) {
 	});
 	if(isAutoOrPassive[slot4.abilityname].casttype == 1) {
 		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot4.AddClass("FitToPassive");
 		slot4.RemoveClass("FitToActive");
 		slot4.RemoveClass("FitToAuto");
 	}
 	else if(isAutoOrPassive[slot4.abilityname].casttype == 2) {
 		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot4.RemoveClass("FitToPassive");
 		slot4.RemoveClass("FitToActive");
 		slot4.AddClass("FitToAuto");
 	}
 	else {
 		$('#SpellInfo4').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		$('#SpellInfo4').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 		slot4.RemoveClass("FitToPassive");
 		slot4.AddClass("FitToActive");
 		slot4.RemoveClass("FitToAuto");
@@ -947,18 +959,21 @@ function HeroButtonPressed(event) {
 	});
 	if(isAutoOrPassive[slot5.abilityname].casttype == 1) {
 		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot5.AddClass("FitToPassive");
 		slot5.RemoveClass("FitToActive");
 		slot5.RemoveClass("FitToAuto");
 	}
 	else if(isAutoOrPassive[slot5.abilityname].casttype == 2) {
 		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 		slot5.RemoveClass("FitToPassive");
 		slot5.RemoveClass("FitToActive");
 		slot5.AddClass("FitToAuto");
 	}
 	else {
 		$('#SpellInfo5').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+		$('#SpellInfo5').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 		slot5.RemoveClass("FitToPassive");
 		slot5.AddClass("FitToActive");
 		slot5.RemoveClass("FitToAuto");
@@ -977,18 +992,21 @@ function HeroButtonPressed(event) {
 		});
 		if(isAutoOrPassive[slot6.abilityname].casttype == 1) {
 			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/passive_ability_border_png.vtex");
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 			slot6.AddClass("FitToPassive");
 			slot6.RemoveClass("FitToActive");
 			slot6.RemoveClass("FitToAuto");
 		}
 		else if(isAutoOrPassive[slot6.abilityname].casttype == 2) {
 			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/autocastable_ability_border_png.vtex");
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").RemoveClass("FitToActiveOuter");
 			slot6.RemoveClass("FitToPassive");
 			slot6.RemoveClass("FitToActive");
 			slot6.AddClass("FitToAuto");
 		}
 		else {
 			$('#SpellInfo6').FindChildTraverse("IWasTagged2").SetImage("s2r://panorama/images/hud/active_ability_border_png.vtex");
+			$('#SpellInfo6').FindChildTraverse("IWasTagged2").AddClass("FitToActiveOuter");
 			slot6.RemoveClass("FitToPassive");
 			slot6.AddClass("FitToActive");
 			slot6.RemoveClass("FitToAuto");
