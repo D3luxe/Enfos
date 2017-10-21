@@ -860,6 +860,7 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent("dota_item_gifted", Dynamic_Wrap(CEnfosGameMode, "OnItemGifted"), self)
 	ListenToGameEvent('player_chat', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerChat'), self)
 	ListenToGameEvent('dota_pause_event', Dynamic_Wrap(CEnfosGameMode, 'OnPause'), self)
+	ListenToGameEvent('dota_player_killed', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerKilled'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
  
 	CustomGameEventManager:RegisterListener( "get_player_color", GetPlayerColor )
@@ -3383,6 +3384,10 @@ function CEnfosGameMode:OnPlayerChat(event)
 	data2.pid = event.playerid
 	data2.team = event.teamonly
 	CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
+end
+
+function CEnfosGameMode:OnPlayerKilled(event)
+	CustomGameEventManager:Send_ServerToAllClients( "lives_update", {leftlives = goodLives, rightlives = badLives} )
 end
 
 function CEnfosGameMode:OnPause(event)
