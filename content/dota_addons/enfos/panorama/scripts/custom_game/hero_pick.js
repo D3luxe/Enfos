@@ -565,10 +565,27 @@ function HeroButtonPressed(event) {
 		$('#StatBox').visible = false;
 		$('#SpellBox').visible = false;
 		$('#PortraitLabel').visible = true;
-		$('#PortraitLabel').text = "RANDOM";
-		$('#WelcomeBox').visible = true;
+		$('#PortraitLabel').text = $('#PortraitLabel').text.replace(" HERO","");
+		$('#WelcomeBox').visible = false;
+		$('#RandomBox').visible = true;
 		$('#WelcomeLabel').visible = true;
 		$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/npc_dota_hero_wisp.png")';
+		$('#DiceBox').RemoveClass("ShiftCombat");
+		$('#DiceBox').RemoveClass("ShiftCaster");
+		$('#DiceBox').RemoveClass("ShiftSupport");
+		$('#DiceBox').RemoveClass("ShiftRounded");
+		if (event == "npc_dota_hero_random_combat") $('#DiceBox').AddClass("ShiftCombat");
+		if (event == "npc_dota_hero_random_caster") $('#DiceBox').AddClass("ShiftCaster");
+		if (event == "npc_dota_hero_random_support") $('#DiceBox').AddClass("ShiftSupport");
+		if (event == "npc_dota_hero_random_rounded") $('#DiceBox').AddClass("ShiftRounded");
+		if (event == "npc_dota_hero_random") {
+			$('#RewardLabelLeft').text = "50% more gold per wave";
+			$('#RewardLabelRight').text = "Potion of Healing x2";
+		}
+		else {
+			$('#RewardLabelLeft').text = "10% more gold per wave";
+			$('#RewardLabelRight').text = "Potion of Healing";
+		}
 		return 0;
 	}
 	
@@ -578,6 +595,7 @@ function HeroButtonPressed(event) {
 	$('#PortraitLabel').visible = true;
 	//$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
 	$('#WelcomeBox').visible = false;
+	$('#RandomBox').visible = false;
 	$('#WelcomeLabel').visible = false;
 	
 	//switching webms rawdog causes render errors. need to delay it slightly
@@ -1042,9 +1060,11 @@ function UpdateTimer() {
 	}
 	$('#TimeLabel').text = realTime;
 	$('#PickRandomVideo').RemoveClass("OhGodNoItsTerrible"+shifter);
+	$('#DiceBox').RemoveClass("OhGodNoItsTerrible"+((shifter%5)*24));
 	shifter += 1;
 	if(shifter == 120) shifter = 0;
 	$('#PickRandomVideo').AddClass("OhGodNoItsTerrible"+shifter);
+	if (heroData[Game.GetLocalPlayerID()] == "npc_dota_hero_random") $('#DiceBox').AddClass("OhGodNoItsTerrible"+((shifter%5)*24));
 	$.Schedule(0.1,function() {UpdateTimer();});
 }
 
@@ -1323,7 +1343,10 @@ function MapIconUpdate(event) {
 	$('#StatBox').visible = false;
 	$('#SpellBox').visible = false;
 	$('#PortraitLabel').visible = false;
-	$('#WelcomeLabel').visible = false;
+	$('#RandomBox').visible = false;
+	$('#SteamBox1').FindChildTraverse("DUN").GetChild(0).AddClass("Dunn");
+	$('#SteamBox2').FindChildTraverse("DUN").GetChild(0).AddClass("Dunn");
+	$('#SteamBox3').FindChildTraverse("DUN").GetChild(0).AddClass("Dunn");
 	
 	$('#ChatField').SetFocus();
 	

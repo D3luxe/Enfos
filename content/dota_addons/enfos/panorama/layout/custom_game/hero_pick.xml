@@ -1072,8 +1072,44 @@
 						<Label id="PauseLabel" text="#dota_settings_pause" />
 					</Button>
 				</Panel>
-				<Panel id="WelcomeBox" />
-				<Label id="WelcomeLabel" text="something about potions blah blah blah this disables repick" />
+				<Panel id="RandomBox">
+					<Label id="RandomLabel" text="Picks a random hero for the player" />
+					<Label id="RandomRepickLabel" text="Picking a random hero will disable repick" />
+					<Panel id="DiceBox">
+						<Image id="Dice" src="s2r://panorama/images/control_icons/random_dice_psd.vtex" />
+					</Panel>
+					<Panel id="RewardBox">
+						<Panel id="RewardLeft">
+							<Image id="RewardImage" src="s2r://panorama/images/custom_game/bundle_of_gold.png" />
+						</Panel>
+						<Panel id="RewardRight">
+							<Image id="RewardImage" src="s2r://panorama/images/custom_game/potion_of_healing.png" />
+						</Panel>
+						<Label id="RewardLabelLeft" text="10% more gold per wave" />
+						<Label id="RewardLabelRight" text="Potion of Healing" />
+					</Panel>
+				</Panel>
+				<Panel id="WelcomeBox">
+					<Label id="WelcomeLabel" text="ENFO'S TEAM SURVIVAL:&#xD;MT EDITION" />
+					<Label id="WelcomeSubSubLabel" text="Welcome to Enfo's Team Survival! Outlast your opponents against waves of enemies, or play as one team to see how long you can survive. Try to put together a balanced team, and remember to use your spellbringer." />
+					<Panel id="SteamBoxContainerContainer">
+						<Label id="WelcomeSubLabel" text="Ported to DotA 2 by:" />
+						<Panel id="SteamBoxContainer">
+							<Panel id="SteamBox3">
+								<DOTAAvatarImage id="DAI" steamid="76561197990365903" nocompendiumborder="true" />
+								<DOTAUserName id="DUN" steamid="76561197990365903" />
+							</Panel>
+							<Panel id="SteamBox2">
+								<DOTAAvatarImage id="DAI" steamid="76561197968066132" nocompendiumborder="true" />
+								<DOTAUserName id="DUN" steamid="76561197968066132" />
+							</Panel>
+							<Panel id="SteamBox1">
+								<DOTAAvatarImage id="DAI" steamid="76561198032577270" nocompendiumborder="true" />
+								<DOTAUserName id="DUN" steamid="76561198032577270" />
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
 			</Panel>
 			<Panel id="BottomBarBox" hittest="false">
 				<Panel id="RoundedBorder" />

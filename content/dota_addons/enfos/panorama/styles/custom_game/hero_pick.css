@@ -384,18 +384,197 @@
 	height: 614px;
 	horizontal-align: left;
 	vertical-align: top;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #090909 ), to( #0d1014 ) );
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #090909 ), to( #0d1014 ) );
+	//background-color: #000;
 }
 #WelcomeLabel {
+	font-size: 60px;
+	font-weight: bold;
+	width: 684px;
+	color: #FFFF;
+	height: 200px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: top;
+	horizontal-align: center;
+	line-height: 50px;
+}
+#WelcomeSubLabel {
+	font-size: 40px;
+	font-weight: bold;
+	width: 400px;
+	color: #FFFF;
+	height: 60px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: top;
+	horizontal-align: center;
+	line-height: 50px;
+	y: 30px;
+}
+#WelcomeSubSubLabel {
+	font-size: 20px;
+	font-weight: bold;
+	width: 500px;
+	color: #FFFF;
+	height: 220px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: top;
+	horizontal-align: center;
+	//line-height: 50px;
+	y: 130px;
+}
+#SteamBoxContainerContainer {
+	vertical-align: bottom;
+	width: 100%;
+	height: 247px;
+}
+#SteamBoxContainer {
+	vertical-align: bottom;
+	//width: 100%;
+	height: 247px;
+	flow-children: left;
+	//background-color: #00f;
+	padding-right: 7px;
+	padding-left: 14px;
+	horizontal-align: center;
+}
+#SteamBox1, #SteamBox2, #SteamBox3 {
+	width: 120px;
+	height: 120px;
+	//background-color: #f00;
+	margin: 83px 7px 44px 0px;
+}
+#DAI {
+	width: 80px;
+	height: 80px;
+	horizontal-align: center;
+	vertical-align: center;
+	y: -5px;
+}
+#DUN {
+	horizontal-align: center;
+	vertical-align: bottom;
+	y: -4px;
+}
+.Dunn {
+	text-align: center;
+	width: 100px;
+	height: 20px;
+	font-size: 15px;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+}
+#RandomBox {
+	width: 684px;
+	height: 614px;
+	horizontal-align: left;
+	vertical-align: top;
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #090909 ), to( #0d1014 ) );
+}
+#RandomLabel {
 	font-size: 30px;
 	font-weight: bold;
 	width: 450px;
+	color: #FFFF;
+	height: 230px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: top;
+	horizontal-align: center;
+	y: 80px;
+	line-height: 28px;
+}
+#RandomRepickLabel {
+	font-size: 30px;
+	font-weight: bold;
+	width: 550px;
+	color: #FF8800;
+	height: 40px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: center;
+	horizontal-align: center;
+	y: 30px;
+}
+#RewardBox {
+	width: 684px;
+	height: 247px;
+	horizontal-align: left;
+	vertical-align: bottom;
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #090909 ), to( #0d1014 ) );
+}
+#RewardLabel {
+	font-size: 30px;
+	font-weight: bold;
+	width: 250px;
 	color: #FFFF;
 	height: 100px;
 	text-align: center;
 	text-shadow: 0px 1px 0px 3.0 #00000077;
 	vertical-align: center;
-	y: 25px;
+}
+#RewardLeft {
+	horizontal-align: left;
+	height: 128px;
+	width: 248px;
+	margin-right: -72px;
+	x: 100px;
+	y: 80px;
+}
+#RewardRight {
+	horizontal-align: right;
+	height: 128px;
+	width: 248px;
+	margin-right: -72px;
+	x: -100px;
+	y: 80px;
+}
+#RewardImage {
+	//margin-right: -29%;
+	height: 100%;
+	width: 100%;
+}
+#RewardLabelLeft {
+	font-size: 30px;
+	font-weight: bold;
+	width: 248px;
+	color: #FFFF;
+	height: 80px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: bottom;
+	horizontal-align: left;
+	x: 68px;
+	line-height: 22px;
+}
+#RewardLabelRight {
+	font-size: 30px;
+	font-weight: bold;
+	width: 248px;
+	color: #FFFF;
+	height: 80px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #00000077;
+	vertical-align: bottom;
+	horizontal-align: right;
+	x: -68px;
+	line-height: 22px;
+}
+#DiceBox {
+	vertical-align: center;
+	horizontal-align: center;
+	y: -90px;
+	//background-color: #f00;
+	width: 180px;
+	height: 180px;
+	border-radius: 90px;
+	border: 3px solid white;
+	background-color: #ffffff00, gradient( radial, 50% 50%, 0px 0px, 50% 50%, from( #0094ff99 ), color-stop( 0.6, #0094ff11 ), to( #0094ff00 ) );
+}
+#Dice {
+	vertical-align: center;
+	horizontal-align: center;
 }
 
 #ChatBox {
