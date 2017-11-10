@@ -623,6 +623,19 @@ function CEnfosGameMode:InitGameMode()
 	GameRules.radiantPlayers = {}
 	GameRules.direPlayers = {}
 	GameRules:SetStrategyTime( 0.1 )
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_DAMAGE, 2.5)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP, 40)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_HP_REGEN_PERCENT, 0)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_STRENGTH_STATUS_RESISTANCE_PERCENT, 0)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_DAMAGE, 2.5)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ARMOR, 0.05)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_ATTACK_SPEED, 1)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_AGILITY_MOVE_SPEED_PERCENT, 0)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_DAMAGE, 2.5)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA, 16)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MANA_REGEN_PERCENT, 0)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_SPELL_AMP_PERCENT, 0)
+	GameRules:GetGameModeEntity():SetCustomAttributeDerivedStatValue(DOTA_ATTRIBUTE_INTELLIGENCE_MAGIC_RESISTANCE_PERCENT, 0)
 
 	--GameRules:GetGameModeEntity():SetCustomGameForceHero( "npc_dota_hero_lina" )
 	GameRules:SetCustomGameSetupTimeout(60)
@@ -1662,10 +1675,10 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	if GameRules.PLAYERS_PICKED_HERO==GameRules.PLAYER_COUNT then
     	CEnfosGameMode:OnEveryonePicked()
     end
-    --spawnedUnitIndex:RemoveAbility("attribute_bonus")
+    --[[spawnedUnitIndex:RemoveAbility("attribute_bonus")
 	if spawnedUnit ~= "npc_dota_hero_wisp" then
 		spawnedUnitIndex:AddAbility("enfos_attribute_bonus")
-	end
+	end]]
 
 	--Sets the initial cannibal index for if Troll Warlord is being played.
 	if spawnedUnit == "npc_dota_hero_troll_warlord" then
@@ -1760,15 +1773,15 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		local spellbringerLocation = nil
 		
 		for i = 1, PlayerResource:GetPlayerCountForTeam(playerTeam) do
-			print(playerID)
+			--print(playerID)
 			if PlayerResource:GetNthPlayerIDOnTeam(playerTeam,i) == playerID-1 then
 				playerSlot = i + ((3 - playerTeam)*5)
 			end
-			print(playerSlot)
+			--print(playerSlot)
 		end
 		
 		spellbringerName = "spellbringer_"..playerSlot
-		print(spellbringerName)
+		--print(spellbringerName)
 		if spellbringerName ~= nil then
 			spellbringerLocation = Entities:FindByName( nil, spellbringerName ):GetAbsOrigin()
 		end
