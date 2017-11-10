@@ -8,7 +8,7 @@
 	"ID"							"3027"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 	"BaseClass"						"item_datadriven"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-	"AbilityTextureName"			"bundle_of_gold_100"
+	"AbilityTextureName"			"enfos\bundle_of_gold_100"
 	"Model"							"models/props_gameplay/gold_coin001.vmdl"
 	"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 	"AbilityCastPoint"				"0.1"

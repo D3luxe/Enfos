@@ -6,7 +6,7 @@
 	"ID"                            "2013"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_ruby_inset_ring"
+	"AbilityTextureName"			"enfos\ruby_inset_ring"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"4"
 	"ItemStockInitial"				"4"

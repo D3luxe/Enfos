@@ -6,7 +6,7 @@
 	"ID"                            "2025"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_emerald_inset_ring"
+	"AbilityTextureName"			"enfos\emerald_inset_ring"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "750" 		

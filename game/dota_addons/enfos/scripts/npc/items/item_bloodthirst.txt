@@ -52,6 +52,7 @@
 		"modifier_bloodthirst_leech"
 		{
 			"IsHidden"		"1"
+			"IsPurgable"		"0"
 			"OnAttackLanded"
 			{
 				"Lifesteal"

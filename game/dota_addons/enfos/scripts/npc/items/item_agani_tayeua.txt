@@ -6,7 +6,7 @@
 	"ID"                            "2010"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_agani_tayeua"
+	"AbilityTextureName"			"enfos\agani_tayeua"
 
 	"ItemQuality"					"rare"
 	"ItemCost"                      "0" 		
@@ -25,6 +25,7 @@
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
+			"IsPurgable"		"0"
 			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 			"Properties"
 			{

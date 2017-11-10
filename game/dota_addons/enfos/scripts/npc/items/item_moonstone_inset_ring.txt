@@ -6,7 +6,7 @@
 	"ID"                            "2018"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_moonstone_inset_ring"
+	"AbilityTextureName"			"enfos\moonstone_inset_ring"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "2000" 		
