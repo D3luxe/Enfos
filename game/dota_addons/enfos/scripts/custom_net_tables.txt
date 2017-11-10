@@ -3,6 +3,7 @@
 	custom_net_tables =
     [
         "this_wave_table",
-        "next_wave_table"
+        "next_wave_table",
+	"hero_data"
     ]
 }
