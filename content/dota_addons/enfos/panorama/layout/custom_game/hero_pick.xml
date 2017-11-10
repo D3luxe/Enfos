@@ -70,6 +70,9 @@
 			</Panel>
 			<Panel id="MiddleBarBox">
 				<Panel id="InformationBox">
+					<Panel id="YouGodDamnedBetterBelieveImMakingAPanelJustToFitABorderInIt">
+						<Panel id="RoundedBorder" />
+					</Panel>
 					<Panel id="PortraitBox">
 						<DOTAHeroMovie id="PortraitWebm" heroname="npc_dota_hero_wisp" />
 						<!--<Label id="PortraitLabel" text="your gay" />-->
@@ -163,6 +166,7 @@
 						</Panel>-->
 					</Panel>
 					<Panel id="SpellBox">
+						<Panel id="RoundedBorder" />
 						<Label id="SpellTitleLabel" text="#dota_settings_abilities" />
 						<Panel id="SpellBoxInnards">
 							<Panel id="SpellInfo1">
@@ -231,6 +235,7 @@
 						<TextEntry id="ChatField" placeholder="/all to send to all players" onblur="ChatBoxCheck()" oncancel="ChatBoxClear()" oninputsubmit="ChatBoxEnter()" />
 					</Panel>
 					<Panel id="MapBox">
+						<Panel id="RoundedBorder" />
 						<Image id="MapImage" src="file://panorama/images/custom_game/enfomap.png">
 							<Image id="ShopIconMain" src="file://{images}/control_icons/shop_icon_main.psd" />
 							<Image id="ShopIconSide" src="file://{images}/control_icons/shop_icon_side.psd" />
@@ -292,6 +297,7 @@
 					<Label id="PortraitLabel" text="your gay" />
 				</Panel>
 				<Panel id="CompositionBox">
+					<Panel id="RoundedBorder" />
 					<Panel id="MainAspectBox">
 						<Label id="CompositionLabel" text="HERO ASPECT" />
 						<Panel id="MainTankBox">
@@ -1079,6 +1085,7 @@
 						<Image id="Dice" src="s2r://panorama/images/control_icons/random_dice_psd.vtex" />
 					</Panel>
 					<Panel id="RewardBox">
+						<Panel id="RoundedBorder" />
 						<Panel id="RewardLeft">
 							<Image id="RewardImage" src="s2r://panorama/images/custom_game/bundle_of_gold.png" />
 						</Panel>
@@ -1093,17 +1100,21 @@
 					<Label id="WelcomeLabel" text="ENFO'S TEAM SURVIVAL:&#xD;MT EDITION" />
 					<Label id="WelcomeSubSubLabel" text="Welcome to Enfo's Team Survival! Outlast your opponents against waves of enemies, or play as one team to see how long you can survive. Try to put together a balanced team, and remember to use your spellbringer." />
 					<Panel id="SteamBoxContainerContainer">
+						<Panel id="RoundedBorder" />
 						<Label id="WelcomeSubLabel" text="Ported to DotA 2 by:" />
 						<Panel id="SteamBoxContainer">
 							<Panel id="SteamBox3">
+								<Panel id="RoundedBorder" />
 								<DOTAAvatarImage id="DAI" steamid="76561197990365903" nocompendiumborder="true" />
 								<DOTAUserName id="DUN" steamid="76561197990365903" />
 							</Panel>
 							<Panel id="SteamBox2">
+								<Panel id="RoundedBorder" />
 								<DOTAAvatarImage id="DAI" steamid="76561197968066132" nocompendiumborder="true" />
 								<DOTAUserName id="DUN" steamid="76561197968066132" />
 							</Panel>
 							<Panel id="SteamBox1">
+								<Panel id="RoundedBorder" />
 								<DOTAAvatarImage id="DAI" steamid="76561198032577270" nocompendiumborder="true" />
 								<DOTAUserName id="DUN" steamid="76561198032577270" />
 							</Panel>

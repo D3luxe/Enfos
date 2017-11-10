@@ -113,13 +113,23 @@ function UpdatePickUI() {
 			}
 			else {
 				prepip = false;
-				aspect1 = aspectData[hero].stattank;
-				aspect2 = aspectData[hero].statcarry;
-				aspect3 = aspectData[hero].statcaster;
-				aspect4 = aspectData[hero].statstun;
-				aspect5 = aspectData[hero].statbuff;
-				aspect6 = aspectData[hero].statheal;
-				aspect7 = aspectData[hero].statdisrupt;
+				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
+				{aspect1 = 0;
+				aspect2 = 0;
+				aspect3 = 0;
+				aspect4 = 0;
+				aspect5 = 0;
+				aspect6 = 0;
+				aspect7 = 0;}
+				else {
+					aspect1 = aspectData[hero].stattank;
+					aspect2 = aspectData[hero].statcarry;
+					aspect3 = aspectData[hero].statcaster;
+					aspect4 = aspectData[hero].statstun;
+					aspect5 = aspectData[hero].statbuff;
+					aspect6 = aspectData[hero].statheal;
+					aspect7 = aspectData[hero].statdisrupt;
+				}
 			}
 			aspect1max += aspect1;
 			aspect2max += aspect2;
@@ -347,13 +357,23 @@ function UpdatePickUI() {
 			}
 			else {
 				prepip = false;
-				aspect1 = aspectData[hero].stattank;
-				aspect2 = aspectData[hero].statcarry;
-				aspect3 = aspectData[hero].statcaster;
-				aspect4 = aspectData[hero].statstun;
-				aspect5 = aspectData[hero].statbuff;
-				aspect6 = aspectData[hero].statheal;
-				aspect7 = aspectData[hero].statdisrupt;
+				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
+				{aspect1 = 0;
+				aspect2 = 0;
+				aspect3 = 0;
+				aspect4 = 0;
+				aspect5 = 0;
+				aspect6 = 0;
+				aspect7 = 0;}
+				else {
+					aspect1 = aspectData[hero].stattank;
+					aspect2 = aspectData[hero].statcarry;
+					aspect3 = aspectData[hero].statcaster;
+					aspect4 = aspectData[hero].statstun;
+					aspect5 = aspectData[hero].statbuff;
+					aspect6 = aspectData[hero].statheal;
+					aspect7 = aspectData[hero].statdisrupt;
+				}
 			}
 			aspect1max += aspect1;
 			aspect2max += aspect2;
@@ -524,6 +544,7 @@ function UpdatePrePickIcon(event) {
 
 function PickCheck() {
 	if (Players.GetPlayerSelectedHero(Game.GetLocalPlayerID()) != "npc_dota_hero_wisp"
+	&& Players.GetPlayerSelectedHero(Game.GetLocalPlayerID()) != ""
 	&& Math.floor(Game.GetDOTATime(false,true)) >= -10) {
 		if ($("#PickUIBase").visible == true) GameUI.SetCameraTarget(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()));
 		$("#PickUIBase").visible = false;
@@ -554,7 +575,24 @@ function HeroButtonPressed(event) {
 	GameEvents.SendCustomGameEventToServer("hero_button_pressed",table);
 	$('#FinalPickLabel').text = ($.Localize("#DOTA_HeroSelector_SelectHero_Label")+" "+$.Localize("#"+event)).toUpperCase();
 	$('#PortraitLabel').text = $.Localize("#"+event).toUpperCase();
-	$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/'+ event +'.png")';
+	//$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/'+ event +'.png")';
+	
+	for (i=1; i<=5; i++) {
+		if(aspectData[event].stattank >= i) $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statcarry >= i) $('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statcaster >= i) $('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainCasterBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statstun >= i) $('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainStunBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statbuff >= i) $('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainBuffBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statheal >= i) $('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+		if(aspectData[event].statdisrupt >= i) $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
+		else $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
+	}
 	
 	if(event == "npc_dota_hero_random"
 	|| event == "npc_dota_hero_random_combat"
@@ -589,6 +627,7 @@ function HeroButtonPressed(event) {
 		return 0;
 	}
 	
+	$('#PortraitBox').style.backgroundImage = 'url("file://{images}/heroes/selection/'+ event +'.png")';
 	$('#PortraitBox').visible = true;
 	$('#StatBox').visible = true;
 	$('#SpellBox').visible = true;
@@ -979,7 +1018,9 @@ function HeroButtonPressed(event) {
 		slot5.RemoveClass("FitToAuto");
 	}
 	
-	if (heroData[event].spell6 == "" || heroData[event].spell6 == "ahlen_cataclysmic_strike_proxy") {
+	if (heroData[event].spell6 == "" || heroData[event].spell6 == "ahlen_cataclysmic_strike_proxy"
+	|| heroData[event].spell6 == "enfos_attribute_bonus"
+	|| heroData[event].spell6 == "generic_hidden") {
 		$('#SpellInfo6').visible = false;
 	} else {
 		$('#SpellInfo6').visible = true;
@@ -1013,7 +1054,7 @@ function HeroButtonPressed(event) {
 		}
 	}
 	
-	for (i=1; i<=5; i++) {
+	/*for (i=1; i<=5; i++) {
 		if(aspectData[event].stattank >= i) $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
 		else $('#MainTankBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
 		if(aspectData[event].statcarry >= i) $('#MainCarryBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
@@ -1028,7 +1069,7 @@ function HeroButtonPressed(event) {
 		else $('#MainHealBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
 		if(aspectData[event].statdisrupt >= i) $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = true;
 		else $('#MainDisruptBox').FindChildTraverse("AspectPip"+i.toString()).visible = false;
-	}
+	}*/
 }
 
 function PickButtonPressed() {
@@ -1042,7 +1083,7 @@ function PickButtonPressed() {
 	
 	data.color = color
 	//$.Msg(data.hero)
-	GameEvents.SendCustomGameEventToServer("player_repick",data);
+	if (data.hero != undefined) GameEvents.SendCustomGameEventToServer("player_repick",data);
 	PickCheck();
 }
 
@@ -1050,6 +1091,13 @@ function HeroDataTableFill() {
 	heroData = CustomNetTables.GetTableValue("hero_data","stats");
 	aspectData = CustomNetTables.GetTableValue("hero_data","aspect");
 	isAutoOrPassive = CustomNetTables.GetTableValue("hero_data","cast");
+	if (aspectData["npc_dota_hero_random"] == undefined) {
+		aspectData["npc_dota_hero_random"] = {}; aspectData["npc_dota_hero_random"].stattank = 0; aspectData["npc_dota_hero_random"].statcarry = 0; aspectData["npc_dota_hero_random"].statcaster = 0; aspectData["npc_dota_hero_random"].statstun = 0; aspectData["npc_dota_hero_random"].statbuff = 0; aspectData["npc_dota_hero_random"].statheal = 0; aspectData["npc_dota_hero_random"].statdisrupt = 0;
+		aspectData["npc_dota_hero_random_combat"] = {}; aspectData["npc_dota_hero_random_combat"].stattank = 0; aspectData["npc_dota_hero_random_combat"].statcarry = 0; aspectData["npc_dota_hero_random_combat"].statcaster = 0; aspectData["npc_dota_hero_random_combat"].statstun = 0; aspectData["npc_dota_hero_random_combat"].statbuff = 0; aspectData["npc_dota_hero_random_combat"].statheal = 0; aspectData["npc_dota_hero_random_combat"].statdisrupt = 0;
+		aspectData["npc_dota_hero_random_caster"] = {}; aspectData["npc_dota_hero_random_caster"].stattank = 0; aspectData["npc_dota_hero_random_caster"].statcarry = 0; aspectData["npc_dota_hero_random_caster"].statcaster = 0; aspectData["npc_dota_hero_random_caster"].statstun = 0; aspectData["npc_dota_hero_random_caster"].statbuff = 0; aspectData["npc_dota_hero_random_caster"].statheal = 0; aspectData["npc_dota_hero_random_caster"].statdisrupt = 0;
+		aspectData["npc_dota_hero_random_support"] = {}; aspectData["npc_dota_hero_random_support"].stattank = 0; aspectData["npc_dota_hero_random_support"].statcarry = 0; aspectData["npc_dota_hero_random_support"].statcaster = 0; aspectData["npc_dota_hero_random_support"].statstun = 0; aspectData["npc_dota_hero_random_support"].statbuff = 0; aspectData["npc_dota_hero_random_support"].statheal = 0; aspectData["npc_dota_hero_random_support"].statdisrupt = 0;
+		aspectData["npc_dota_hero_random_rounded"] = {}; aspectData["npc_dota_hero_random_rounded"].stattank = 0; aspectData["npc_dota_hero_random_rounded"].statcarry = 0; aspectData["npc_dota_hero_random_rounded"].statcaster = 0; aspectData["npc_dota_hero_random_rounded"].statstun = 0; aspectData["npc_dota_hero_random_rounded"].statbuff = 0; aspectData["npc_dota_hero_random_rounded"].statheal = 0; aspectData["npc_dota_hero_random_rounded"].statdisrupt = 0;
+	}
 	//$.Msg(heroData.npc_dota_hero_bounty_hunter.str);
 }
 
@@ -1356,6 +1404,9 @@ function MapIconUpdate(event) {
 	
 	//$('#ChatBox').FindChildTraverse("Chat").enabled = true;
 	//$('#DOTAChatDoesntWorkCorrectlySoNowIHaveToDoThisBox').FindChildTraverse("Chat").enabled = true;
+	//$('#ChatBox').FindChildTraverse("Chat").FindChildTraverse("ChatCorePanel").FindChildTraverse("ChatMainPanel").FindChildTraverse("ChatControls").FindChildTraverse("ChatInput").visible = false;
+	
+	//SetInputFocus('PickUIBase')
 	
 	$('#PortraitBox').visible = false;
 	$('#StatBox').visible = false;

@@ -123,7 +123,7 @@
 	height: 614px;
 	horizontal-align: left;
 	vertical-align: top;
-	background-color: #00FF00;
+	//background-color: #00FF00;
 }
 
 #PortraitBox {
@@ -717,7 +717,7 @@
 	height: 40px;
 }
 #LeftLaneButton {
-	background-color: #ff000033;
+	//background-color: #ff000033;
 	width: 36px;
 	height: 150px;
 	horizontal-align: left;
@@ -726,7 +726,7 @@
 	padding-top: 30px;
 }
 #RightLaneButton {
-	background-color: #ff000033;
+	//background-color: #ff000033;
 	width: 36px;
 	height: 150px;
 	horizontal-align: right;
@@ -735,7 +735,7 @@
 	padding-top: 30px;
 }
 #MidLaneButton {
-	background-color: #ff000033;
+	//background-color: #ff000033;
 	width: 60px;
 	height: 72px;
 	y: -2px;
@@ -744,7 +744,7 @@
 	flow-children: up;
 }
 #LeftHighLaneButton {
-	background-color: #ffff0033;
+	//background-color: #ffff0033;
 	width: 50px;
 	height: 50px;
 	y: 13px;
@@ -753,7 +753,7 @@
 	flow-children: right-wrap;
 }
 #RightHighLaneButton {
-	background-color: #ffff0033;
+	//background-color: #ffff0033;
 	width: 50px;
 	height: 50px;
 	y: 13px;
@@ -762,7 +762,7 @@
 	flow-children: left-wrap;
 }
 #ShopLaneButton {
-	background-color: #ff000033;
+	//background-color: #ff000033;
 	width: 70px;
 	height: 50px;
 	y: 59px;
@@ -841,7 +841,7 @@
 	height: 614px;
 	horizontal-align: right;
 	vertical-align: top;
-	background-color: #FFFF00;
+	//background-color: #FFFF00;
 }
 #CompositionLabel {
 	font-size: 28px;
@@ -1327,6 +1327,7 @@
 	//margin-top: 58px;
 	//background-image: url('file://{images}/heroes/selection/npc_dota_hero_wisp.png');
 	padding: 2px 2px 2px 2px;
+	y: 15px;
 }
 
 #PickButtonRR:hover {
@@ -1413,6 +1414,20 @@
 
 #oops {
 	border-radius: 3px;
+}
+
+#RoundedBorder {
+	width: 100%;
+	height: 100%;
+	border: 3px solid #fff;
+	border-radius: 5px;
+	margin: 2px 2px 2px 2px;
+}
+#YouGodDamnedBetterBelieveImMakingAPanelJustToFitABorderInIt {
+	width: 684px;
+	height: 367px;
+	horizontal-align: left;
+	vertical-align: top;
 }
 
 .ShiftCombat {
