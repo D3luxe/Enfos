@@ -10,6 +10,8 @@
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 	"AbilityTextureName"			"dazzle_shadow_wave"
 	"MaxLevel"						"1"
+	
+	"HotKeyOverride"	"E"
 
 	// Precache
 	//-------------------------------------------------------------------------------------------------------------

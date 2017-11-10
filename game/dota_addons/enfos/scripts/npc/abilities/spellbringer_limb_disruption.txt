@@ -5,6 +5,8 @@
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 	"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+	
+	"HotKeyOverride"	"W"
 
 	"AbilityManaCost"	"75"
 	"AbilityCooldown"	"10"

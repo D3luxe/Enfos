@@ -9,6 +9,8 @@
 	"BaseClass" 					"ability_datadriven"
 	"AbilityTextureName" 			"keeper_of_the_light_chakra_magic"
 	"MaxLevel"						"1"
+	
+	"HotKeyOverride"	"Z"
 
 	// Time		
 	//-------------------------------------------------------------------------------------------------------------
