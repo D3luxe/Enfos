@@ -3112,8 +3112,9 @@ function CEnfosGameMode:OnNPCSpawned( event )
 		if spawnedUnit.bFirstSpawned == nil then
 			spawnedUnit.bFirstSpawned = true
 
-		 	spawnedUnit.baseArmor = spawnedUnit:GetPhysicalArmorBaseValue()
+		 	spawnedUnit.baseArmor = spawnedUnit:GetPhysicalArmorBaseValue()-2
 		 	print("Base armor: "..spawnedUnit.baseArmor)
+			spawnedUnit:SetPhysicalArmorBaseValue(spawnedUnit.baseArmor)
 
 			GameRules.PLAYERS_PICKED_HERO=GameRules.PLAYERS_PICKED_HERO+1
 		else
