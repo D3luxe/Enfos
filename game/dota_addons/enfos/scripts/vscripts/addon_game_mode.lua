@@ -1727,6 +1727,10 @@ function CEnfosGameMode:OnPlayerPicked( event )
 		end
 	end
 
+	local item = spawnedUnitIndex:GetItemInSlot(0)
+	if item then
+		spawnedUnitIndex:RemoveItem(item)
+	end
 
 	--Handles starting and bonus gold
 	if player.spawned == false then
