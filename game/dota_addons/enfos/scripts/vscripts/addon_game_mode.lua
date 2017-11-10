@@ -1807,7 +1807,14 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 
 				if spellbringerLocation ~= nil then
-					local delay = math.abs(GameRules:GetDOTATime(false,true)+39)
+					local actualGameTime = GameRules:GetDOTATime(false,true)
+					--print(actualGameTime)
+					local delay = math.abs(actualGameTime+39)
+					if actualGameTime > -39 then
+						if actualGameTime < 0 then delay = math.abs(actualGameTime%1)
+						else delay = 1 - (actualGameTime%1) end
+					end
+					--print(delay)
 					Timers:CreateTimer(DoUniqueString("sbDelaySpawn"), {
 						endTime = delay,
 						callback = function()
