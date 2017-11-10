@@ -9,7 +9,7 @@
 	"LevelsBetweenUpgrades"			"5"
 	"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 	"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-	"AbilityTextureName"			"warrior_mage_firerain"
+	"AbilityTextureName"			"enfos\warrior_mage_firerain"
 	"AbilityChannelTime"			"3.5"
 	"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
 	
