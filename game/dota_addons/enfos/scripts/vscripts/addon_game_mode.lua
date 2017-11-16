@@ -1843,6 +1843,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 							--print(spawnedUnitIndex:GetTeam())
 							spawnedUnitIndex.pickCD = 0
+							CustomGameEventManager:Send_ServerToPlayer(player, "spellbringer_mana_update", {sb=spawnedUnitIndex.spellbringer:GetEntityIndex()}) 
 						end
 					})
 					
@@ -3964,6 +3965,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				newSb:SetMana(mp)
 				newSb:StartGesture(ACT_DOTA_CAPTURE)
 				newHero.spellbringer = newSb
+				CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(pID), "spellbringer_mana_update", {sb=newHero.spellbringer:GetEntityIndex()}) 
 				UTIL_Remove(sb)
 			end
 		})
