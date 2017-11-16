@@ -1524,25 +1524,32 @@ function CEnfosGameMode:_ThinkPrepTime()
 			local goldAmount = curRound * 25
 			if goldAmount == 25 then goldAmount = 0 end
 			for nPlayerID = 0, 9 do
-				if ( PlayerResource:IsValidPlayer( nPlayerID ) ) then
-					local player = PlayerResource:GetPlayer(nPlayerID)
-					local repickCheck = player:GetAssignedHero()
-					print("gold "..goldAmount)
+				--print("IVP")
+				--print(PlayerResource:IsValidPlayer( nPlayerID ))
+				--print("GP")
+				--print(PlayerResource:GetPlayer(nPlayerID):GetAssignedHero())
+				if PlayerResource:IsValidPlayer( nPlayerID ) and PlayerResource:GetSelectedHeroEntity(nPlayerID) ~= nil then
+					local player = PlayerResource:GetSelectedHeroEntity(nPlayerID):GetPlayerOwner()
+					--PrintTable(player)
+					local repickCheck = PlayerResource:GetSelectedHeroEntity(nPlayerID)
+					--print("TABLE BEGIN")
+					--PrintTable(repickCheck)
+					--print("gold "..goldAmount)
 					if repickCheck.repick == 1 then goldAmount = goldAmount*1.1 end
 					if repickCheck.repick == 2 then goldAmount = goldAmount*1.5 end
-					print("goldrandom "..goldAmount)
-					if player ~= nil then
+					--print("goldrandom "..goldAmount)
+					if repickCheck ~= nil then
 						playerGold = repickCheck:GetGold()
-						print("currentgold "..playerGold)
+						--print("currentgold "..playerGold)
 						if playerGold ~= nil then
-							print("total "..playerGold+goldAmount)
+							--print("total "..playerGold+goldAmount)
 							repickCheck:SetGold(playerGold+goldAmount, false)
-							print("after "..repickCheck:GetGold())
+							--print("after "..repickCheck:GetGold())
 							--repicking breaks SetGold for some reason so now we have to do this. Fun!
 							if repickCheck:GetGold() ~= playerGold+goldAmount then
 								local thanksValve = repickCheck:GetGold() - (playerGold+goldAmount)
 								repickCheck:SetGold(playerGold+goldAmount-thanksValve, false)
-								print("itdidntwork "..playerGold+goldAmount)
+								--print("itdidntwork "..playerGold+goldAmount)
 							end
 						end
 					end
