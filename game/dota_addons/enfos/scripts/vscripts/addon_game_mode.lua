@@ -3280,8 +3280,8 @@ function CEnfosGameMode:OnEntityKilled( event )
 	--local radiantEXP = math.ceil(exp / RADIANT_XP_MULTI)
 	--local direEXP = math.ceil(exp / DIRE_XP_MULTI)
 	local xpMulti = 0
-	if xpKilledUnitTeam == 2 then xpMulti = math.ceil(exp / RADIANT_XP_MULTI) end
-	if xpKilledUnitTeam == 3 then xpMulti = math.ceil(exp / DIRE_XP_MULTI) end
+	if xpKilledUnitTeam == 3 then xpMulti = math.ceil(exp / RADIANT_XP_MULTI) end
+	if xpKilledUnitTeam == 2 then xpMulti = math.ceil(exp / DIRE_XP_MULTI) end
 	 -- Loop for Players
 	for xpPlayerID = 0, DOTA_MAX_TEAM_PLAYERS-1 do
 		local teamID = PlayerResource:GetTeam(xpPlayerID)
