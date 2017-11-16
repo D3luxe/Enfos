@@ -3404,6 +3404,16 @@ function CEnfosGameMode:OnPlayerChat(event)
 		data.name = name
 		RepickHero(nil,data)
 	end
+	if string.sub(event.text,1,7) == "-range " then
+		if tonumber(string.sub(event.text,8)) ~= nil then
+			local pid2 = event.playerid
+			local rangeNum = tonumber(string.sub(event.text,8))
+			--print(math.min(rangeNum,9999))
+			PlayerResource:GetSelectedHeroEntity(pid2):SetAcquisitionRange(math.min(rangeNum,9999))
+			--PlayerResource:GetPlayer(pid2):GetAssignedHero():SetAcquisitionRange(math.min(rangeNum,9999))
+			print(PlayerResource:GetSelectedHeroEntity(pid2):GetAcquisitionRange())
+		end
+	end
 	local data2 = {}
 	data2.msg = event.text
 	data2.pid = event.playerid
