@@ -6,6 +6,7 @@ var shifter = 0;
 var mapData = {};
 var aspectData = {};
 var isAutoOrPassive = {};
+var randoCheck = false;
 
 GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
@@ -113,7 +114,7 @@ function UpdatePickUI() {
 			}
 			else {
 				prepip = false;
-				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
+				if (icon == undefined)
 				{aspect1 = 0;
 				aspect2 = 0;
 				aspect3 = 0;
@@ -529,6 +530,14 @@ function UpdatePickUI() {
 	}
 	PickCheck();
 	MapIconUpdate(0);
+	if (randoCheck) {
+		if (Players.GetPlayerSelectedHero(pID) != "npc_dota_hero_wisp") {
+			$.Schedule(0.1,function() {
+				HeroButtonPressed(Players.GetPlayerSelectedHero(pID));
+			});
+		}
+		randoCheck = false;
+	}
 }
 
 function UpdatePrePickIcon(event) {
@@ -1083,6 +1092,11 @@ function PickButtonPressed() {
 	
 	data.color = color
 	//$.Msg(data.hero)
+	if (data.hero == "npc_dota_hero_random"
+	|| data.hero == "npc_dota_hero_random_combat"
+	|| data.hero == "npc_dota_hero_random_caster"
+	|| data.hero == "npc_dota_hero_random_support"
+	|| data.hero == "npc_dota_hero_random_rounded") randoCheck = true;
 	if (data.hero != undefined) GameEvents.SendCustomGameEventToServer("player_repick",data);
 	PickCheck();
 }
