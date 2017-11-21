@@ -98,6 +98,7 @@ function summon_sidhlot(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
 	unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
+	unit:SetOwner(caster:GetOwner())
 	unit:SetRenderColor(82, 235, 41)
 
 	ParticleManager:CreateParticle("particles/items_fx/aegis_respawn_aegis_starfall.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
@@ -162,27 +163,35 @@ function sidhlot_resurrect(keys)
 	local spellDuration = keys.duration
 	local unitsRaised = 1
 	local thisSpell = caster:GetAbilityByIndex(0)
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
-	local validTargets = {}
+	local units = Corpses:FindAlliedInRadius(pid, caster:GetAbsOrigin(), radius)
 	if units[1] == nil then
+		thisSpell:EndCooldown()
+		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel()-1)
+		caster:GiveMana(manaCost)
+		CEnfosGameMode:SendErrorMessage(pid, "No usable corpses nearby")
 		return
 	end
-	for k,v in pairs(units) do
-		if not v:IsAlive() and not v.noCorpse then
-			table.insert(validTargets, v)
+	--[[for i = #units,1,-1 do
+		if units[i]:GetTeamNumber() ~= caster:GetTeamNumber() then
+			table.remove(units, i)
 		end
 	end
+	if units[1] == nil then
+		print("two")
+		thisSpell:EndCooldown()
+		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel()-1)
+		caster:GiveMana(manaCost)
+		CEnfosGameMode:SendErrorMessage(pid, "No usable corpses nearby")
+		return
+	end]]
 -- find all the nearby dead units and reraise them
 	for i=1,unitsRaised	do
-		if validTargets[i] == nil then
-			return
-		end
-		local raisedUnit = CreateUnitByName(validTargets[i]:GetUnitName(), validTargets[i]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
+		local raisedUnit = CreateUnitByName(units[i].unit_name, units[i]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 		local waypoint = Entities:FindByNameNearest("*_wp_*", raisedUnit:GetAbsOrigin(), 0)
 
 		raisedUnit:SetInitialGoalEntity(waypoint)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
-		validTargets[i]:Destroy()
+		units[i]:RemoveCorpse()
 		raisedUnit:SetRenderColor(0, 84, 255)
 		raisedUnit.noCorpse = true
 		thisSpell:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_sidhlot_resurrect", {})
@@ -537,6 +546,7 @@ function SummonDarkrift(keys)
 				end
 				unit:SetControllableByPlayer(caster:GetPlayerOwnerID(), true)
 				unit:SetOwner(caster:GetOwner())
+				unit:SetNoCorpse()
 				--unit:SetMaximumGoldBounty(0)
 				--unit:SetMinimumGoldBounty(0)
 				--print(unit:GetGoldBounty())

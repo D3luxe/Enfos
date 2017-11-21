@@ -39,6 +39,8 @@ require('developer')
 require('libraries/popups')
 
 require("statcollection/init")
+--https://github.com/MNoya/DotaCraft/blob/master/game/dota_addons/dotacraft/scripts/vscripts/mechanics/corpses.lua
+require("corpses")
 
 MAX_LEVEL = 149
 XP_PER_LEVEL_TABLE = {}
@@ -2730,9 +2732,18 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		--Soul drain cannot be casted if Troll is already at full health
 		if ability:GetAbilityName() == "troll_cannibal_soul_drain" then
 			if first_unit:GetHealth() >= first_unit:GetMaxHealth() then
-				Notifications:Bottom(first_unit:GetPlayerID(), {text="Cannot be casted at full health!", duration=3, style={color="red", ["font-size"]="50px"}})
-				EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
+				--Notifications:Bottom(first_unit:GetPlayerID(), {text="Cannot be casted at full health!", duration=3, style={color="red", ["font-size"]="50px"}})
+				--EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
+				CEnfosGameMode:SendErrorMessage(first_unit:GetPlayerOwnerID(), "Already at full health")
 				return false
+			else
+				local corpse = Corpses:FindClosestInRadius(first_unit:GetPlayerOwnerID(), first_unit:GetAbsOrigin(), 200)
+				if corpse then
+					corpse:RemoveCorpse()
+				else 
+					CEnfosGameMode:SendErrorMessage(first_unit:GetPlayerOwnerID(), "No usable corpses nearby")
+					return false
+				end
 			end
 		end
 		--print("No Target "..ability:GetAbilityName())
@@ -3197,6 +3208,7 @@ function CEnfosGameMode:OnEntityKilled( event )
 				"npc_dota_death_spirit",
 				"npc_dota_rock_guardian",
 				"npc_dota_skeletal_sailor",
+				"npc_dota_spirit_owl",
 				"npc_dota_armored_warklin",
 				"npc_dota_snaer_hafwa",
 				"npc_dota_slai_screamer"
@@ -3215,6 +3227,8 @@ function CEnfosGameMode:OnEntityKilled( event )
 			end
 		end
 
+		Corpses:CreateFromUnit(killedUnit)
+		
 		if killedUnit:GetUnitName() == "npc_dota_spirit_hawk" or killedUnit:GetUnitName() == "npc_dota_spirit_owl" then
 			if killer:IsOwnedByAnyPlayer()  then
 				local killerTeam = killer:GetTeam()
