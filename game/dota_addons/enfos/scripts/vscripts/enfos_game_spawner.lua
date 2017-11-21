@@ -348,6 +348,8 @@ function CEnfosGameSpawner:_DoSpawn()
 				entUnit:SetHullRadius(self._hullSize)
 				entUnit.hullSize = self._hullSize --just in case
 				entUnit:AddNewModifier(entUnit, nil, "modifier_phased", {duration = 0.2})
+				Enfos.RADIANT_CREEPCOUNT = Enfos.RADIANT_CREEPCOUNT+1
+				entUnit.countOnDeath = true
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
@@ -379,6 +381,8 @@ function CEnfosGameSpawner:_DoSpawn()
 				entUnit2:SetHullRadius(self._hullSize)
 				entUnit2.hullSize = self._hullSize
 				entUnit2:AddNewModifier(entUnit2, nil, "modifier_phased", {duration = 0.2})
+				Enfos.DIRE_CREEPCOUNT = Enfos.DIRE_CREEPCOUNT+1
+				entUnit2.countOnDeath = true
 			end
 		else
 			self._nUnitsCurrentlyAlive = self._nUnitsCurrentlyAlive + 1
@@ -386,7 +390,9 @@ function CEnfosGameSpawner:_DoSpawn()
 		end
 
 	end
-	
+	CustomGameEventManager:Send_ServerToAllClients("creep_count_update", { radC = Enfos.RADIANT_CREEPCOUNT, dirC = Enfos.DIRE_CREEPCOUNT })
+	if Enfos.RADIANT_CREEPCOUNT >= 200 and Enfos.RadCreepCheck == false then CreepControl(2) end
+	if Enfos.DIRE_CREEPCOUNT >= 200 and Enfos.DirCreepCheck == false then CreepControl(3) end
 end
 
 

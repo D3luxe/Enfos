@@ -75,6 +75,8 @@
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/test.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ss_exchange.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/waveinfo.xml" />
+	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/creepcount.xml" />
+	
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_pick.xml" />
   </Panel>
 </root>

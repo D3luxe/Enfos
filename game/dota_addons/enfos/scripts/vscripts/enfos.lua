@@ -26,6 +26,10 @@ Enfos.DropTable = LoadKeyValues("scripts/kv/item_drops.kv")
 Enfos.tremorDummy = 0
 Enfos.damageSpillValue = {}
 Enfos.damageSpillTarget = {} -- value for the moonbeam
+Enfos.RADIANT_CREEPCOUNT = 0
+Enfos.DIRE_CREEPCOUNT = 0
+Enfos.RadCreepCheck = false
+Enfos.DirCreepCheck = false
 
 
 function spellAbsorb(keys)
@@ -363,4 +367,77 @@ function DamageReflect(keys)
 		ability = ability
 	}
 	ApplyDamage(dTable)
+end
+
+function CreepControl(event)
+	local team = event
+	local teamName = ""
+	if team == 2 then
+		teamName = "Radiant"
+		Enfos.RadCreepCheck = true
+	end
+	if team == 3 then
+		teamName = "Dire"
+		Enfos.DirCreepCheck = true
+	end
+	print("CREEP CHECK BEGIN")
+	print(team)
+	
+	Timers:CreateTimer(DoUniqueString("controlTimer"), {
+		endTime = 10,
+		callback = function()
+		
+			GameRules:SendCustomMessage(
+				"The "..teamName.." are not killing fast enough!", 0,0)
+			GameRules:SendCustomMessage(
+				"If there are over 200 creeps, they will be randomly teleported to the goal until there are only 190.", 0,0)
+			
+			local finalCheck
+			if team == 2 then finalCheck = Enfos.RADIANT_CREEPCOUNT end
+			if team == 3 then finalCheck = Enfos.DIRE_CREEPCOUNT end
+			if finalCheck < 200 then
+				if team == 2 then Enfos.RadCreepCheck = false end
+				if team == 3 then Enfos.DirCreepCheck = false end
+				return 
+			end
+			
+			Timers:CreateTimer(DoUniqueString("controlTimerTwo"), {
+				endTime = 2,
+				callback = function()
+					
+					local units = FindUnitsInRadius(team, Vector(0,0,0), nil, FIND_UNITS_EVERYWHERE, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+					--make sure units are elligible for warp
+					for k,v in pairs(units) do
+						if v.countOnDeath ~= true then
+							table.remove(k,v)
+						end
+					end
+					--shuffle the table
+					local t = #units
+					for i = 1, t do
+						local o = math.random( 1, t )
+						units[ o ], units[ i ] = units[ i ], units[ o ]
+					end
+					--do it
+					local creepNumber = -190
+					if team == 2 then creepNumber = creepNumber + Enfos.RADIANT_CREEPCOUNT end
+					if team == 3 then creepNumber = creepNumber + Enfos.DIRE_CREEPCOUNT end
+					
+					for i = 1, creepNumber do
+						local goal
+						if team == 2 then goal = Entities:FindByName( nil, "repick_radiant" ):GetAbsOrigin() end
+						if team == 3 then goal = Entities:FindByName( nil, "repick_dire" ):GetAbsOrigin() end
+						
+						units[i]:SetAbsOrigin(goal)
+					end
+					
+					GameRules:SendCustomMessage(
+						"The "..teamName.." have had "..creepNumber.." units teleported to the goal!", 0,0)
+					
+					if team == 2 then Enfos.RadCreepCheck = false end
+					if team == 3 then Enfos.DirCreepCheck = false end
+				end
+			})
+		end
+	})
 end
