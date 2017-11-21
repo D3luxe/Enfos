@@ -1893,7 +1893,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	--Adds the initial starting potion
 	--[[if spawnedUnitIndex.repick > 0 then
 		local potionItem = CreateItem("item_potion_of_healing", spawnedUnitIndex, nil)
-		potionItem:SetCurrentCharges(hero.repick)
+		potionItem:SetCurrentCharges(spawnedUnitIndex.repick)
 		local potion = spawnedUnitIndex:AddItem(potionItem)
 	end]]
 	
@@ -3769,6 +3769,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
+		print("RANDOM SMALL: "..heroName)
 	end
 	if heroName == "npc_dota_hero_random_caster" then
 		heroName = casterClassTable[math.random(#casterClassTable)]
@@ -3785,6 +3786,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
+		print("RANDOM SMALL: "..heroName)
 	end
 	if heroName == "npc_dota_hero_random_support" then
 		heroName = supportClassTable[math.random(#supportClassTable)]
@@ -3801,6 +3803,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
+		print("RANDOM SMALL: "..heroName)
 	end
 	if heroName == "npc_dota_hero_random_rounded" then
 		heroName = roundedClassTable[math.random(#roundedClassTable)]
@@ -3817,8 +3820,9 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				CustomGameEventManager:Send_ServerToAllClients( "ui_chat_update", data2 )
 			end
 		end
+		print("RANDOM SMALL: "..heroName)
 	end
-	print("RANDOM SMALL: "..heroName)
+	print("Hero picked: "..heroName)
 	
 	--remove active starlight sphere
 	if player.sphere ~= nil and player.sphere:IsNull() == false then
@@ -3917,8 +3921,8 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		
 		if delay < 0 then delay = math.abs(delay)%1
 		else delay = math.abs((delay%1)-1) end
-		local mp = sb:GetMana()
-		if delay > 0 then mp = mp+1 end
+		--[[local mp = sb:GetMana()
+		if delay > 0 then mp = mp+1 end]]
 		
 		if newHero.repick > 0 then
 			local potionItem = CreateItem("item_potion_of_healing", newHero, nil)
@@ -4000,6 +4004,7 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 				newSb:RemoveModifierByName("modifier_tower_aura")
 				newSb:RemoveModifierByName("modifier_tower_armor_bonus")
 				--newSb:AddNewModifier(newSb, nil, "modifier_silence", {duration = math.abs(GameRules:GetDOTATime(false,true))-10})
+				local mp = sb:GetMana()
 				newSb:SetMana(mp)
 				newSb:StartGesture(ACT_DOTA_CAPTURE)
 				newHero.spellbringer = newSb
