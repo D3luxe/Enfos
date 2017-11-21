@@ -3176,11 +3176,19 @@ function CEnfosGameMode:OnEntityKilled( event )
 		return
 	end
 
+	--Lower creep count if applicable
+	if killedUnit.countOnDeath then
+		local team = killedUnit:GetTeam()
+		if team == 3 then Enfos.RADIANT_CREEPCOUNT = Enfos.RADIANT_CREEPCOUNT-1 end
+		if team == 2 then Enfos.DIRE_CREEPCOUNT = Enfos.DIRE_CREEPCOUNT-1 end
+		CustomGameEventManager:Send_ServerToAllClients("creep_count_update", { radC = Enfos.RADIANT_CREEPCOUNT, dirC = Enfos.DIRE_CREEPCOUNT })
+	end
+	
 	--This double checks if the unit killed itself by walking onto the base triggers, and prevents gold or exp from being distributed.
 	if killer == killedUnit then
 		return
 	end
-
+	
 	local corpseBlacklist = {
 				"npc_dota_creature_wood_troll",
 				"npc_dota_rock_troll",
