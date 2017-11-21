@@ -597,6 +597,7 @@ function CEnfosGameMode:InitGameMode()
 	GameRules:GetGameModeEntity():SetRecommendedItemsDisabled( true )
 	GameRules:GetGameModeEntity():SetExecuteOrderFilter( Dynamic_Wrap( CEnfosGameMode, "FilterExecuteOrder" ), self )
 	GameRules:GetGameModeEntity():SetDamageFilter( Dynamic_Wrap( CEnfosGameMode, "FilterDamage" ), self )
+	GameRules:GetGameModeEntity():SetModifyExperienceFilter( Dynamic_Wrap( CEnfosGameMode, "FilterXP" ), self )
 	GameRules:GetGameModeEntity():SetMaximumAttackSpeed(300)
 	GameRules:GetGameModeEntity():SetCustomGameForceHero("npc_dota_hero_wisp")
 	--GameRules:GetGameModeEntity():SetMaximumAttackSpeed()
@@ -2811,6 +2812,14 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		--print("Toggle "..ability:GetAbilityName())
 	end
 	return true
+end
+
+function CEnfosGameMode:FilterXP( filterTable )
+	--print("xp table")
+	--PrintTable(filterTable)
+	if filterTable["reason_const"] == 1 then
+		filterTable["experience"] = 0
+	end
 end
 
 function CEnfosGameMode:OnInventoryChanged( event )
