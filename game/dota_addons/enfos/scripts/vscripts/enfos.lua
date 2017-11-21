@@ -30,6 +30,7 @@ Enfos.RADIANT_CREEPCOUNT = 0
 Enfos.DIRE_CREEPCOUNT = 0
 Enfos.RadCreepCheck = false
 Enfos.DirCreepCheck = false
+Enfos.lumber = {} --secondary resource
 
 
 function spellAbsorb(keys)
@@ -205,14 +206,15 @@ end
   
 -- Modifies the lumber of this player. Accepts negative values
 function ModifyLumber( player, lumber_value )
+	local pid = player:GetPlayerID()
 	if lumber_value == 0 then return end
 	if lumber_value > 0 then
-		player.lumber = player.lumber + lumber_value
-	    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(player.lumber) })
+		Enfos.lumber[pid] = Enfos.lumber[pid] + lumber_value
+	    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(Enfos.lumber[pid]) })
 	else
 		if PlayerHasEnoughLumber( player, math.abs(lumber_value) ) then
-			player.lumber = player.lumber + lumber_value
-		    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(player.lumber) })
+			Enfos.lumber[pid] = Enfos.lumber[pid] + lumber_value
+		    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(Enfos.lumber[pid]) })
 		end
 	end
 end
@@ -256,7 +258,7 @@ end
 function PlayerHasEnoughLumber( player, lumber_cost )
 	local pID = player:GetAssignedHero():GetPlayerID()
 
-	if player.lumber < lumber_cost then
+	if Enfos.lumber[pID] < lumber_cost then
 		SendErrorMessage(pID, "#error_not_enough_lumber")
 		return false
 	else

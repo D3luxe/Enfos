@@ -1651,6 +1651,13 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	if player.spawned == nil then
 		player.lumber = 0 -- Secondary resource of the player
 		player.spawned = false
+	--if player.spawned == nil then
+	local firstspawn = false
+	if Enfos.lumber[player:GetPlayerID()] == nil then
+		print("first spawn")
+		Enfos.lumber[player:GetPlayerID()] = 0 -- Secondary resource of the player
+		--player.spawned = false
+		firstspawn = true
 		spawnedUnitIndex.repick = 0
 		spawnedUnitIndex.pickCD = 1
 		spawnedUnitIndex:SetNeverMoveToClearSpace(true)
@@ -1743,7 +1750,8 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	end
 
 	--Handles starting and bonus gold
-	if player.spawned == false then
+	--if player.spawned == false then
+	if firstspawn then
 		local curRound = self._vRounds[ self._nRoundNumber ]
 		local bonusGold = 0
 		for i=0, curRound._nRoundNumber do
@@ -1900,7 +1908,7 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	--Updates the stat bonuses for the hero
 	Stats:ModifyStatBonuses(spawnedUnitIndex)
 	
-	player.spawned = true
+	--player.spawned = true
 
 end
 
@@ -3566,7 +3574,7 @@ function CEnfosGameMode:_StatusReportConsoleCommand( cmdName )
 			local hero = PlayerResource:GetSelectedHeroEntity(nPlayerID)
 			local player = PlayerResource:GetPlayer(nPlayerID)
 			ModifyLumber(player, 5)
-			print(hero:GetName().." has "..player.lumber)
+			print(hero:GetName().." has "..Enfos.lumber[nPlayerID])
 		end
 	end
 	print( "*** Enfos Status Report End *** ")
