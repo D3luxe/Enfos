@@ -1400,6 +1400,10 @@ function MapIconUpdate(event) {
 }
 
 (function () {
+	if (Players.IsSpectator(Game.GetLocalPlayerID())) {
+		$('#PickUIBase').visible = false;
+		return;
+	}
 	//CustomNetTables.SubscribeNetTableListener("this_wave_table",UpdateTimer);
 	CustomNetTables.SubscribeNetTableListener("hero_data",HeroDataTableFill);
 	UpdatePickUI();
