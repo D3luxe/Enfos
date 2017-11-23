@@ -70,6 +70,7 @@ function SummonHellbearWarriors(keys)
 			v:SetMaxHealth(keys.health)
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
+			v:SetNoCorpse()
 
 			if thisSpellLevel == 10 then
 				v:SetMana(200)
@@ -110,6 +111,7 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 			v:SetMaxHealth(keys.health)
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
+			v:SetNoCorpse()
 		end
 	end
 end
@@ -169,6 +171,7 @@ function SummonDarkrift(keys)
 			end
 		end
 		unit:SetRenderColor(0, 84, 255)
+		unit:SetNoCorpse()
 		--unit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
 	end
 end

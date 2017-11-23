@@ -35,40 +35,32 @@ function AnimateDead(keys)
 	local pid = caster:GetPlayerID()
 	local radius = keys.radius
 	local unitsRaised = keys.units_raised
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
-	local validTargets = {}
+	--local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
+	local units = Corpses:FindInRadius(pid, caster:GetAbsOrigin(), radius)
 
-	if units[1] == nil then
-		return
-	end
-	for k,v in pairs(units) do
-		if not v:IsAlive() and not v.noCorpse then
-			table.insert(validTargets, v)
-		end
-	end
 	local thisSpell = caster:GetAbilityByIndex(0)
-	if #validTargets == 0 then
+	if #units == 0 then
 		thisSpell:EndCooldown()
 		local manaCost = thisSpell:GetManaCost(thisSpell:GetLevel()-1)
 		caster:GiveMana(manaCost)
+		CEnfosGameMode:SendErrorMessage(pid, "No usable corpses nearby")
+		return
 	end
 -- find all the nearby dead units and reraise them
-	for i=1,unitsRaised	do
-		if validTargets[i] == nil then
-			return
-		end
-		local raisedUnit = CreateUnitByName(validTargets[i]:GetUnitName(), validTargets[i]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
-		raisedUnit:SetControllableByPlayer(caster:GetPlayerID(), true)
-		raisedUnit:SetHullRadius(validTargets[i].hullSize)
-		raisedUnit.hullSize = validTargets[i].hullSize --just in case
+	for i=1,math.min(unitsRaised,#units) do
+		local raisedUnit = CreateUnitByName(units[i].unit_name, units[i]:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
+		raisedUnit:SetControllableByPlayer(pid, true)
+		raisedUnit:SetHullRadius(units[i].hullSize)
+		raisedUnit.hullSize = units[i].hullSize --just in case
 		FindClearSpaceForUnit(raisedUnit, raisedUnit:GetAbsOrigin(), true)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_visage/visage_summon_familiars.vpcf", PATTACH_ABSORIGIN_FOLLOW, raisedUnit)
 		thisSpell:ApplyDataDrivenModifier(raisedUnit, raisedUnit, "modifier_revenant_animate_dead_buff", {})
-		validTargets[i]:Destroy()
+		units[i]:RemoveCorpse()
 		raisedUnit:SetRenderColor(0, 84, 255)
 		raisedUnit:CreatureLevelUp(math.floor(GameRules.DIFFICULTY+(0.25*GameRules.DIFFICULTY)-1))
+		raisedUnit:SetNoCorpse()
 
-		AddTypes(raisedUnit, validTargets[i].armorType, validTargets[i].attackType)
+		AddTypes(raisedUnit, units[i].armorType, units[i].attackType)
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end
@@ -81,50 +73,39 @@ function CorpseExplosion(keys)
 	local ability = keys.ability
 	local searchrange = keys.searchrange
 	local spell = caster:FindAbilityByName("revenant_corpse_explosion")
-	local units = FindUnitsInRadius(caster:GetTeamNumber(), caster:GetAbsOrigin(), caster, searchrange, DOTA_UNIT_TARGET_TEAM_ENEMY + DOTA_UNIT_TARGET_TEAM_FRIENDLY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_DEAD, 1, false)
-	local validTargets = {}
+	local pid = caster:GetPlayerID()
+	local units = Corpses:FindInRadius(pid, caster:GetAbsOrigin(), searchrange)
 -- fail if no units found.
 	if units[1] == nil then
 		spell:EndCooldown()
 		local manaCost = spell:GetManaCost(spell:GetLevel()-1)
 		caster:GiveMana(manaCost)
+		CEnfosGameMode:SendErrorMessage(pid, "No usable corpses nearby")
 		return
 	end
--- place dead units into a table
-	for k,v in pairs(units) do
-		if not v:IsAlive() and not v.noCorpse then
-			table.insert(validTargets, v)
-		end
-	end
--- fail if no units are dead
-	if #validTargets == 0 then
-		spell:EndCooldown()
-		local manaCost = spell:GetManaCost(spell:GetLevel()-1)
-		caster:GiveMana(manaCost)
-		return
-	end
-	local targetUnits = FindUnitsInRadius(caster:GetTeamNumber(), validTargets[1]:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
+	local targetUnits = FindUnitsInRadius(caster:GetTeamNumber(), units[1]:GetAbsOrigin(), caster, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, 0, 0, false)
 -- deal the damage and detonate the corpse
-	print(validTargets[1]:GetMaxHealth() * (damage/100))
+	print(units[1].bomb_health * (damage/100))
 	for k,v in pairs(targetUnits) do
 		--DealDamage(caster, v, validTargets[1]:GetMaxHealth() * (damage/100), DAMAGE_TYPE_MAGICAL, 0)
 		local dTable = {
 			victim = v,
 			attacker = caster,
-			damage = validTargets[1]:GetMaxHealth() * (1/3),
+			damage = units[1].bomb_health * (1/3),
 			damage_type = DAMAGE_TYPE_PHYSICAL,
 			damage_flags = DOTA_DAMAGE_FLAG_IGNORES_PHYSICAL_ARMOR,
 			ability = ability
 		}
 		ApplyDamage(dTable)
 	end
-	local corpsedummy = FastDummy(validTargets[1]:GetAbsOrigin(), caster:GetTeamNumber())
+	local corpsedummy = FastDummy(units[1]:GetAbsOrigin(), caster:GetTeamNumber())
 	local particle = ParticleManager:CreateParticle("particles/units/heroes/hero_axe/axe_culling_blade_kill.vpcf", PATTACH_ABSORIGIN_FOLLOW, corpsedummy)
 	--ParticleManager:SetParticleControl(particle, 62, Vector(radius, 0, 400))
 	ParticleManager:SetParticleControl(particle, 4, corpsedummy:GetAbsOrigin())
-	validTargets[1]:EmitSound("Hero_LifeStealer.Consume")
+	units[1]:EmitSound("Hero_LifeStealer.Consume")
 	corpsedummy:ForceKill(false)
-	DelayDestroy(validTargets[1], 0.2)
+	--DelayDestroy(units[1], 0.2)
+	units[1]:RemoveCorpse()
 end
 		
 function SpiritualSwarmCast(keys)

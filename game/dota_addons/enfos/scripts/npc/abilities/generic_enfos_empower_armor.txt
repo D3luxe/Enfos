@@ -7,7 +7,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 	"BaseClass" 					"ability_datadriven"
-	"AbilityTextureName" 			"tiny_craggy_exterior"
+	"AbilityTextureName" 			"enfos\tiny_craggy_exterior"
 	"MaxLevel"					"1"
 	"Innate"						"1"
 	"AbilityManaCost"	"20"

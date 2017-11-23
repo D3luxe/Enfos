@@ -2645,6 +2645,32 @@
 		}	
 	
 	}
+	"dummy_passive"
+	{
+		"BaseClass" 		"ability_datadriven"
+		"AbilityBehavior" 	"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"Modifiers"
+		{
+			"dummy_modifier"
+			{
+				"Passive"	"1"
+				"States"
+				{
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_MOVE_TO"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_TEAM_SELECT"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_COMMAND_RESTRICTED"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_ATTACK_IMMUNE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					//"MODIFIER_STATE_FLYING"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"		   "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+		}
+	}
 	//=================================================================================================================	//=================================================================================================================
 	// Alchemy
 	//=================================================================================================================
@@ -4583,7 +4609,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
 		"BaseClass" 					"ability_datadriven"
-		"AbilityTextureName" 			"tiny_craggy_exterior"
+		"AbilityTextureName" 			"enfos\tiny_craggy_exterior"
 		"MaxLevel"					"1"
 		"Innate"						"1"
 		"AbilityManaCost"	"20"
@@ -8317,7 +8343,7 @@
 	"oak_hardened_skin"
 	{
 		"BaseClass"						"ability_datadriven"
-		"AbilityTextureName"			"tiny_craggy_exterior"
+		"AbilityTextureName"			"enfos\tiny_craggy_exterior"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"MaxLevel"						"10"
 		"Modifiers"
@@ -8670,6 +8696,11 @@
 				"Target"	   "TARGET"	
 				"ModifierName" "modifier_slow"
 	
+			}
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/shared.lua"
+				"Function"				"DisableRepick"
 			}
 		}
 		
@@ -11605,6 +11636,8 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	
+		"HotKeyOverride"	"Q"
+		
 		"AbilityManaCost"	"75"
 		"AbilityCooldown"	"60"
 		"AbilityCastPoint"	"1"
@@ -11753,6 +11786,8 @@
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_YES"
 		"AbilityTextureName"			"dazzle_shadow_wave"
 		"MaxLevel"						"1"
+		
+		"HotKeyOverride"	"E"
 	
 		// Precache
 		//-------------------------------------------------------------------------------------------------------------
@@ -11839,6 +11874,8 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	
+		"HotKeyOverride"	"C"
+		
 		"AbilityManaCost"	"90"
 		"AbilityCooldown"	"90"
 		"MaxLevel"						"1"
@@ -11910,6 +11947,8 @@
 		"AbilityTextureName"		"alchemist_acid_spray"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 	
+		"HotKeyOverride"	"R"
+		
 		"AbilityManaCost"	"230"
 		"AbilityCooldown"	"60"
 		"AOERadius"			"%radius"
@@ -12061,6 +12100,8 @@
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
+		
+		"HotKeyOverride"	"W"
 	
 		"AbilityManaCost"	"75"
 		"AbilityCooldown"	"10"
@@ -12138,6 +12179,8 @@
 		"BaseClass"					"ability_datadriven"
 		"AbilityTextureName"		"lone_druid_spirit_bear_return"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		
+		"HotKeyOverride"	"D"
 	
 		"AbilityManaCost"	"50"
 		"AbilityCooldown"	"20"
@@ -12223,6 +12266,8 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		
+		"HotKeyOverride"	"S"
 	
 		"AbilityManaCost"	"85"
 		"AbilityCooldown"	"60"
@@ -12272,6 +12317,8 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"keeper_of_the_light_chakra_magic"
 		"MaxLevel"						"1"
+		
+		"HotKeyOverride"	"Z"
 	
 		// Time		
 		//-------------------------------------------------------------------------------------------------------------
@@ -12316,6 +12363,8 @@
 		"BaseClass"					"ability_datadriven"
 		"AbilityTextureName"		"shadow_demon_demonic_purge"
 		"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		
+		"HotKeyOverride"	"F"
 	
 		"AbilityManaCost"	"100"
 		"AbilityCooldown"	"60"
@@ -12375,6 +12424,8 @@
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 	
+		"HotKeyOverride"	"X"
+		
 		"AbilityManaCost"	"390"
 		"AbilityCooldown"	"10"
 	
@@ -12410,6 +12461,8 @@
 		"AbilityUnitTargetTeam"		"DOTA_UNIT_TARGET_TEAM_ENEMY"
 		"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_CREEP"
 		"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+		
+		"HotKeyOverride"	"A"
 	
 		"AbilityManaCost"	"15"
 		"AbilityCooldown"	"0"
@@ -15610,7 +15663,7 @@
 		"LevelsBetweenUpgrades"			"5"
 		"AbilityUnitDamageType"			"DAMAGE_TYPE_MAGICAL"
 		"SpellImmunityType"				"SPELL_IMMUNITY_ENEMIES_NO"
-		"AbilityTextureName"			"warrior_mage_firerain"
+		"AbilityTextureName"			"enfos\warrior_mage_firerain"
 		"AbilityChannelTime"			"3.5"
 		"AbilityCastAnimation"			"ACT_DOTA_VICTORY"
 		

@@ -14,18 +14,18 @@
 	"Ability4"					"empath_alchemy"
 	"Ability5"					"empath_vitality_healing"
 	"Ability6"					"empath_nissas_binding"
-	"Ability7"				""
-	"Ability8"				""
-	"Ability9"				""
-	"Ability10"				""
-	"Ability11"				""
-	"Ability12"				""
-	"Ability13"				""
-	"Ability14"				""
-	"Ability15"				""
-	"Ability16"				""
-	"Ability17"				""
-	"Ability18"				""
+	"Ability7"				"enfos_attribute_bonus"
+	"Ability8"				"generic_hidden"
+	"Ability9"				"generic_hidden"
+	"Ability10"				"generic_hidden"
+	"Ability11"				"generic_hidden"
+	"Ability12"				"generic_hidden"
+	"Ability13"				"generic_hidden"
+	"Ability14"				"generic_hidden"
+	"Ability15"				"generic_hidden"
+	"Ability16"				"generic_hidden"
+	"Ability17"				"generic_hidden"
+	"Ability18"				"generic_hidden"
 	
 	"ArmorPhysical"				"0"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
@@ -40,8 +40,9 @@
 	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
-	"StatusMana"				"1"
-		
+	"StatusMana"				"0"
+	"StatusHealthRegen"			"0.75"
+	"StatusManaRegen"			"0.02"
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
 	"ProjectileModel"			"particles/units/heroes/hero_furion/lina_base_attack.vpcf"			// Particle system model for projectile.
@@ -51,4 +52,13 @@
 	"AttackRange"               "600"
 	"AttackAnimationPoint"		"0.500"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"800"									// Range within a target can be acquired.
+	
+	"AspectTank"				"1"
+	"AspectCarry"				"0"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"2"
+	"AspectHeal"				"3"
+	"AspectDisrupt"				"1"
 }

@@ -20,37 +20,37 @@
 		//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
 		"modifier_attack_normal"
 		{
-			"TextureName" "item_normal_attack"
+			"TextureName" "enfos\normal_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}
 		"modifier_attack_pierce"
 		{
-			"TextureName" "item_pierce_attack"
+			"TextureName" "enfos\pierce_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}
 		"modifier_attack_siege"
 		{
-			"TextureName" "item_seige_attack"
+			"TextureName" "enfos\seige_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}
 		"modifier_attack_chaos"
 		{
-			"TextureName" "item_chaos_attack"
+			"TextureName" "enfos\chaos_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}
 		"modifier_attack_magical"
 		{
-			"TextureName" "item_magic_attack"
+			"TextureName" "enfos\magic_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}
 		"modifier_attack_hero"
 		{
-			"TextureName" "item_hero_attack"
+			"TextureName" "enfos\hero_attack"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 		}

@@ -6,7 +6,7 @@
 	"ID"                            "2019"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_diamond_etched_ring"
+	"AbilityTextureName"			"enfos\diamond_etched_ring"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"2"
 	"ItemStockInitial"				"2"

@@ -14,19 +14,19 @@
 	"Ability3"				"juggernaut_enfos_earth_shaking_strike"					// Ability 3
 	"Ability4"				"juggernaut_enfos_wolverine_dance"						// Ability 4
 	"Ability5"				"generic_enfos_bloodlust"
-	"Ability6"				""
-	"Ability7"				""
-	"Ability8"				""
-	"Ability9"				""
-	"Ability10"				""
-	"Ability11"				""
-	"Ability12"				""
-	"Ability13"				""
-	"Ability14"				""
-	"Ability15"				""
-	"Ability16"				""
-	"Ability17"				""
-	"Ability18"				""
+	"Ability6"				"enfos_attribute_bonus"
+	"Ability7"				"generic_hidden"
+	"Ability8"				"generic_hidden"
+	"Ability9"				"generic_hidden"
+	"Ability10"				"generic_hidden"
+	"Ability11"				"generic_hidden"
+	"Ability12"				"generic_hidden"
+	"Ability13"				"generic_hidden"
+	"Ability14"				"generic_hidden"
+	"Ability15"				"generic_hidden"
+	"Ability16"				"generic_hidden"
+	"Ability17"				"generic_hidden"
+	"Ability18"				"generic_hidden"
 
 	// Armor
 	//-------------------------------------------------------------------------------------------------------------
@@ -57,7 +57,9 @@
 	// Status
 	//-------------------------------------------------------------------------------------------------------------
 	"StatusHealth"				"10"
-	"StatusMana"				"1"
+	"StatusMana"				"0"
+	"StatusHealthRegen"			"0.25"
+	"StatusManaRegen"			"0.02"
 
 	// Movement
 	//-------------------------------------------------------------------------------------------------------------
@@ -66,4 +68,13 @@
 	"HasAggressiveStance"		"1"										// Plays alternate idle/run animation when near enemies
 
 	"Team"						"Bad"
+	
+	"AspectTank"				"2"
+	"AspectCarry"				"2"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }	

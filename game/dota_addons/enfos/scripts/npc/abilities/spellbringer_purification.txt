@@ -3,6 +3,8 @@
 	"BaseClass"					"ability_datadriven"
 	"AbilityTextureName"		"shadow_demon_demonic_purge"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+	
+	"HotKeyOverride"	"F"
 
 	"AbilityManaCost"	"100"
 	"AbilityCooldown"	"60"

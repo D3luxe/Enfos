@@ -6,7 +6,7 @@
 	"ID"                            "2001"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_gleaming_longsword"
+	"AbilityTextureName"			"enfos\gleaming_longsword"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"5"
 	"ItemStockInitial"				"5"

@@ -11,7 +11,7 @@
 			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1.5"
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"2.5"
 			}
 		}
 		"modifier_health_bonus"

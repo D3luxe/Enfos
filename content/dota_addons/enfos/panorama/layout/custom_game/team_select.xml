@@ -14,41 +14,42 @@
 			<Panel hittest="false" id="TeamsSelectEmptySpace" />
 
 			<!--Teams List, left hand panel-->
-			<Panel id="OptionsList" >
-				<Label id="VoteListLabel" text="VOTE" />
-				<Panel id="VoteGroup" >
-					<Panel id="VoteGroupKills">
-						<Label id="VoteGroupKillsTitle" text="SELECT OPTIONS" />
-						<Label id="ExtraBountyTitle" text="Extra Bounty:" />
-						<DropDown id="#bountyDropdown" oninputsubmit="OnDropDownChanged()">
-						  <Label text="1x" id="bounty1"/>
-						  <Label text="2x" id="bounty2"/>
-						  <Label text="3x" id="bounty3"/>
-						  <Label text="4x" id="bounty4"/>
-						  <Label text="5x" id="bounty5"/>
-						</DropDown>
-						<ToggleButton group="GameKills" id="ShareBounty" text="Shared Bounty"/>
-						<ToggleButton group="GameKills" id="AllRandom" text="All Random"/>
-						<ToggleButton group="GameKills" id="NoShare" text="No Item Sharing"/>
-					</Panel>
+			<Panel id="VoteContainer">
+				<Panel id="OptionsList" >
+					<Label id="VoteListLabel" text="VOTE" />
+					<Panel id="VoteGroup" >
+						<Panel id="VoteGroupKills">
+							<Label id="VoteGroupKillsTitle" text="SELECT OPTIONS" />
+							<Label id="ExtraBountyTitle" text="Extra Bounty:" />
+							<DropDown id="#bountyDropdown" oninputsubmit="OnDropDownChanged()">
+							  <Label text="1x" id="bounty1"/>
+							  <Label text="2x" id="bounty2"/>
+							  <Label text="3x" id="bounty3"/>
+							  <Label text="4x" id="bounty4"/>
+							  <Label text="5x" id="bounty5"/>
+							</DropDown>
+							<ToggleButton group="GameKills" id="ShareBounty" text="Shared Bounty"/>
+							<ToggleButton group="GameKills" id="AllRandom" text="All Random"/>
+							<ToggleButton group="GameKills" id="NoShare" text="No Item Sharing"/>
+						</Panel>
 
+					</Panel>
+				</Panel>
+				<Panel id="VotesList" >
+					<Label id="VoteListLabel" text="VOTE" />
+					<Panel id="VoteGroup" >
+						<Panel id="VoteGroupKills">
+							<Label id="VoteGroupKillsTitle" text="SELECT DIFFICULTY" />
+							<RadioButton group="GameKills" id="KillsButton1" text="Casual (75% HP/Dmg)"/>
+							<RadioButton checked="checked" group="GameKills" id="KillsButton2" text="Ascendant (100% HP/Dmg)"/>
+							<RadioButton group="GameKills" id="KillsButton3" text="Elder (125% HP/Dmg)"/>
+							<RadioButton group="GameKills" id="KillsButton4" text="Mythical (150% HP/Dmg)"/>
+							<RadioButton group="GameKills" id="KillsButton5" text="Legendary (200% HP/Dmg)"/>
+						</Panel>
+
+					</Panel>
 				</Panel>
 			</Panel>
-			<Panel id="VotesList" >
-				<Label id="VoteListLabel" text="VOTE" />
-				<Panel id="VoteGroup" >
-					<Panel id="VoteGroupKills">
-						<Label id="VoteGroupKillsTitle" text="SELECT DIFFICULTY" />
-						<RadioButton group="GameKills" id="KillsButton1" text="Casual (75% HP/Dmg)"/>
-						<RadioButton checked="checked" group="GameKills" id="KillsButton2" text="Ascendant (100% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton3" text="Elder (125% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton4" text="Mythical (150% HP/Dmg)"/>
-						<RadioButton group="GameKills" id="KillsButton5" text="Legendary (200% HP/Dmg)"/>
-					</Panel>
-
-				</Panel>
-			</Panel>
-
 
 			<!--Teams List, left hand panel-->
 			<Panel id="TeamsList" >

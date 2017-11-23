@@ -3,7 +3,7 @@
 	"ID"                            "2044"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_uthmors_mirror_blade"
+	"AbilityTextureName"			"enfos\uthmors_mirror_blade"
 
 	"ItemDroppable"					"0"
 	"ItemSellable"					"0"

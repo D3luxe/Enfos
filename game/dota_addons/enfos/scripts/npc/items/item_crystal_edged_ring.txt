@@ -6,7 +6,7 @@
 	"ID"                            "2015"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_crystal_edged_ring"
+	"AbilityTextureName"			"enfos\crystal_edged_ring"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"3"
 	"ItemStockInitial"				"3"

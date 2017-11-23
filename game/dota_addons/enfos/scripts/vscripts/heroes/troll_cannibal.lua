@@ -3,9 +3,16 @@ function soul_drain_start(keys)
 	local ability = keys.ability
 	local manacost = keys.manacost
 
-	if caster:GetHealth() < caster:GetMaxHealth() then
-		print("Applying modifier")
-		ability:ApplyDataDrivenModifier(caster, caster, "modifier_soul_drain", {})
+	--entire function rendered pointless by order filter. lol
+	ability:ApplyDataDrivenModifier(caster, caster, "modifier_soul_drain", {})
+	--[[if caster:GetHealth() < caster:GetMaxHealth() then
+		print("Searching for corpse")
+		local corpse = Corpses:FindClosestInRadius(caster:GetPlayerOwnerID(), caster:GetAbsOrigin(), 200)
+		if corpse then
+			print("Applying modifier")
+			ability:ApplyDataDrivenModifier(caster, caster, "modifier_soul_drain", {})
+			corpse:RemoveCorpse()
+		else CEnfosGameMode:SendErrorMessage(caster:GetPlayerOwnerID(), "No usable corpses nearby") end
 	else
 		print("Already at max health")
 		Timers:CreateTimer(DoUniqueString("soul_drain_cancel"), {
@@ -14,16 +21,17 @@ function soul_drain_start(keys)
 				ability:EndChannel(true)
 				ability:EndCooldown()
 				caster:GiveMana(manacost)
+				--CEnfosGameMode:SendErrorMessage(caster:GetPlayerOwnerID(), "Already at full health")
 			end
 		})
 		
-	end
+	end]]
 end
 
 function soul_drain_heal(keys)
 	keys.caster:Heal(keys.caster:GetMaxHealth() * (keys.ability:GetSpecialValueFor("heal") / 1000), keys.caster) -- 0.8% of his max health per tick. 10 ticks per second
 	if keys.caster:GetHealth() >= keys.caster:GetMaxHealth() then
-		keys.ability:EndChannel(true)
+		keys.caster:Interrupt()
 	end
 end
 

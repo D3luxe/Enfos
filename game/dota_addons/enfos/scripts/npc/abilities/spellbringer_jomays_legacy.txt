@@ -4,6 +4,8 @@
 	"AbilityTextureName"		"alchemist_acid_spray"
 	"AbilityBehavior"			"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
 
+	"HotKeyOverride"	"R"
+	
 	"AbilityManaCost"	"230"
 	"AbilityCooldown"	"60"
 	"AOERadius"			"%radius"

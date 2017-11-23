@@ -18,7 +18,7 @@
 		//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
 		"modifier_armor_unarmored"
 		{
-			"TextureName" "item_unarmored"
+			"TextureName" "enfos\unarmored"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"
@@ -33,7 +33,7 @@
 		}
 		"modifier_armor_light"
 		{
-			"TextureName" "item_light_armor"
+			"TextureName" "enfos\light_armor"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"
@@ -48,7 +48,7 @@
 		}
 		"modifier_armor_medium"
 		{
-			"TextureName" "item_medium_armor"
+			"TextureName" "enfos\medium_armor"
 			"IsHidden"				"0" 
 			"IsPurgable" "0"
 			"OnCreated"
@@ -63,7 +63,7 @@
 		}
 		"modifier_armor_heavy"
 		{
-			"TextureName" "item_heavy_armor"
+			"TextureName" "enfos\heavy_armor"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"
@@ -78,7 +78,7 @@
 		}
 		"modifier_armor_fortified"
 		{
-			"TextureName" "item_fortified_armor"
+			"TextureName" "enfos\fortified_armor"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"
@@ -93,7 +93,7 @@
 		}
 		"modifier_armor_hero"
 		{
-			"TextureName" "item_hero_armor"
+			"TextureName" "enfos\hero_armor"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"
@@ -108,7 +108,7 @@
 		}
 		"modifier_armor_divine"
 		{
-			"TextureName" "item_divine_armor"
+			"TextureName" "enfos\divine_armor"
 			"IsHidden"				"0"  
 			"IsPurgable" "0"
 			"OnCreated"

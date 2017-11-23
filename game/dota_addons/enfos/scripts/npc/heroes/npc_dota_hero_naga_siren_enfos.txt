@@ -13,19 +13,19 @@
 	"Ability3"					"cleric_shield_of_light"
 	"Ability4"					"cleric_aesrela_everild"
 	"Ability5"					"cleric_bless_soul"
-	"Ability6"				""
-	"Ability7"				""
-	"Ability8"				""
-	"Ability9"				""
-	"Ability10"				""
-	"Ability11"				""
-	"Ability12"				""
-	"Ability13"				""
-	"Ability14"				""
-	"Ability15"				""
-	"Ability16"				""
-	"Ability17"				""
-	"Ability18"				""
+	"Ability6"				"enfos_attribute_bonus"
+	"Ability7"				"generic_hidden"
+	"Ability8"				"generic_hidden"
+	"Ability9"				"generic_hidden"
+	"Ability10"				"generic_hidden"
+	"Ability11"				"generic_hidden"
+	"Ability12"				"generic_hidden"
+	"Ability13"				"generic_hidden"
+	"Ability14"				"generic_hidden"
+	"Ability15"				"generic_hidden"
+	"Ability16"				"generic_hidden"
+	"Ability17"				"generic_hidden"
+	"Ability18"				"generic_hidden"
 	
 	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
@@ -40,8 +40,9 @@
 	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
-	"StatusMana"				"1"
-		
+	"StatusMana"				"0"
+	"StatusHealthRegen"			"0.25"
+	"StatusManaRegen"			"0.02"
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	"ProjectileModel"			"particles/units/heroes/hero_enchantress/enchantress_base_attack.vpcf"			// Particle system model for projectile.
@@ -51,4 +52,13 @@
 	"AttackRange"               "160"
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"400"									// Range within a target can be acquired.
+	
+	"AspectTank"				"3"
+	"AspectCarry"				"0"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"1"
+	"AspectBuff"				"1"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"0"
 }

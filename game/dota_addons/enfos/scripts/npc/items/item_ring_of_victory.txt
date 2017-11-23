@@ -6,7 +6,7 @@
 	"ID"                            "2049"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_ring_of_victory"
+	"AbilityTextureName"			"enfos\ring_of_victory"
 	
 	"ItemDroppable"					"0"
 	"ItemSellable"					"0"

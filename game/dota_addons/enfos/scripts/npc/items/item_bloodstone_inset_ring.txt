@@ -6,7 +6,7 @@
 	"ID"                            "2016"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_bloodstone_inset_ring"
+	"AbilityTextureName"			"enfos\bloodstone_inset_ring"
 	"ItemStockMax"					"6"
 	"ItemStockInitial"				"6"
 	"ItemStockTime"					"2.0"

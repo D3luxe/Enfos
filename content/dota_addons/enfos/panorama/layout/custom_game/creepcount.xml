@@ -1,0 +1,18 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/creepcount.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/creepcount.js" />
+	</scripts>
+	<script>
+		$.Msg( "Compiled Panorama Resource!" );
+	</script>
+	<Panel hittest="false" class='Main'>
+		<Panel id="CountBox" onmouseover="AbilityShowTooltip()" onmouseout="AbilityHideTooltip()">
+			<Label id="RadCounter" text="0" />
+			<Label id="DirCounter" text="0" />
+			<Image id="Dunkey" src="file://{images}/hud/reborn/icon_courier_dead.psd" />
+		</Panel>
+	</Panel>
+</root>

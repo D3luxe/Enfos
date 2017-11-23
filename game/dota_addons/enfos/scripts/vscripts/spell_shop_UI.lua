@@ -290,9 +290,9 @@ function SpellShopUI:TradeResources(keys)
 		if resource == "lumber" then
 				
 			if amount == 0 then amount = 99999 end
-			local wood = player.lumber
+			local wood = Enfos.lumber[playerID]
 			if amount > wood then amount = wood end
-			local targetWood = PlayerResource:GetPlayer(targetID).lumber
+			local targetWood = Enfos.lumber[targetID]
 			if targetWood + amount > 99999 then amount = (99999 - targetWood) end
 			
 			ModifyLumber(player,-amount)
@@ -335,19 +335,19 @@ function SpellShopUI:LumberExchange(keys)
 		end
 	end
 	if amount == 3 then
-		if player.lumber >= 1 then
+		if Enfos.lumber[playerID] >= 1 then
 			ModifyLumber(player,-1)
 			hero:ModifyGold(100, false, 1)
 		end
 	end
 	if amount == 4 then
-		if player.lumber >= 10 then
+		if Enfos.lumber[playerID]  >= 10 then
 			ModifyLumber(player,-10)
 			hero:ModifyGold(1000, false, 1)
 		end
 	end
 	if amount == 5 then
-		if player.lumber >= 100 then
+		if Enfos.lumber[playerID]  >= 100 then
 			ModifyLumber(player,-100)
 			hero:ModifyGold(10000, false, 1)
 		end

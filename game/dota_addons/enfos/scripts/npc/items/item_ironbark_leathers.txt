@@ -9,7 +9,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"item_ironbark_leathers"
+	"AbilityTextureName"			"enfos\ironbark_leathers"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"2"
 	"ItemStockInitial"				"2"

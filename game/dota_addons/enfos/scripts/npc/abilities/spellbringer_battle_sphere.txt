@@ -7,6 +7,8 @@
 	"AbilityUnitTargetType"		"DOTA_UNIT_TARGET_HERO"
 	"AbilityUnitTargetFlags"	"DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
 
+	"HotKeyOverride"	"Q"
+	
 	"AbilityManaCost"	"75"
 	"AbilityCooldown"	"60"
 	"AbilityCastPoint"	"1"

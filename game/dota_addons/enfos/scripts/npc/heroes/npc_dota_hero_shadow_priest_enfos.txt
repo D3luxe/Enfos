@@ -13,19 +13,19 @@
 	"Ability3"					"shadow_priest_greater_hallucination"
 	"Ability4"					"shadow_priest_armageddon"
 	"Ability5"					"shadow_priest_preservation"
-	"Ability6"				""
-	"Ability7"				""
-	"Ability8"				""
-	"Ability9"				""
-	"Ability10"				""
-	"Ability11"				""
-	"Ability12"				""
-	"Ability13"				""
-	"Ability14"				""
-	"Ability15"				""
-	"Ability16"				""
-	"Ability17"				""
-	"Ability18"				""
+	"Ability6"				"enfos_attribute_bonus"
+	"Ability7"				"generic_hidden"
+	"Ability8"				"generic_hidden"
+	"Ability9"				"generic_hidden"
+	"Ability10"				"generic_hidden"
+	"Ability11"				"generic_hidden"
+	"Ability12"				"generic_hidden"
+	"Ability13"				"generic_hidden"
+	"Ability14"				"generic_hidden"
+	"Ability15"				"generic_hidden"
+	"Ability16"				"generic_hidden"
+	"Ability17"				"generic_hidden"
+	"Ability18"				"generic_hidden"
 	
 	"ArmorPhysical"				"2"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
@@ -40,7 +40,9 @@
 	"MovementTurnRate"			"0.6"									// Turning rate.
 	
 	"StatusHealth"				"10"
-	"StatusMana"				"1"			
+	"StatusMana"				"0"			
+	"StatusHealthRegen"			"0.25"
+	"StatusManaRegen"			"0.06"
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin" 			"3"
@@ -50,4 +52,13 @@
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"550"									// Range within a target can be acquired.
 	"ProjectileSpeed"			"900"
+	
+	"AspectTank"				"0"
+	"AspectCarry"				"0"
+	"AspectCaster"				"1"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"1"
+	"AspectHeal"				"1"
+	"AspectDisrupt"				"2"
 }		

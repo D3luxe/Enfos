@@ -6,7 +6,7 @@
 	"ID"                            "2050"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"stone_axe"
+	"AbilityTextureName"			"enfos\stone_axe"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "40" 		

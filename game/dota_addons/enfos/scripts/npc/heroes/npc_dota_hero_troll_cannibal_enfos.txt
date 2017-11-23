@@ -13,19 +13,19 @@
 	"Ability3"					"troll_cannibal_bloodboil"
 	"Ability4"					"troll_cannibal_soul_feast"
 	"Ability5"					"troll_cannibal_soul_drain"
-	"Ability6"				""
-	"Ability7"				""
-	"Ability8"				""
-	"Ability9"				""
-	"Ability10"				""
-	"Ability11"				""
-	"Ability12"				""
-	"Ability13"				""
-	"Ability14"				""
-	"Ability15"				""
-	"Ability16"				""
-	"Ability17"				""
-	"Ability18"				""
+	"Ability6"					"enfos_attribute_bonus"
+	"Ability7"					"generic_hidden"
+	"Ability8"					"generic_hidden"
+	"Ability9"					"generic_hidden"
+	"Ability10"					"generic_hidden"
+	"Ability11"					"generic_hidden"
+	"Ability12"					"generic_hidden"
+	"Ability13"					"generic_hidden"
+	"Ability14"					"generic_hidden"
+	"Ability15"					"generic_hidden"
+	"Ability16"					"generic_hidden"
+	"Ability17"					"generic_hidden"
+	"Ability18"					"generic_hidden"
 	
 	"ArmorPhysical"				"3"
 	"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
@@ -40,7 +40,9 @@
 	"MovementTurnRate"			"2.0"									// Turning rate.
 	
 	"StatusHealth"				"10"
-	"StatusMana"				"1"			
+	"StatusMana"				"0"			
+	"StatusHealthRegen"			"0.25"
+	"StatusManaRegen"			"0.02"
 
 	"AttackCapabilities"		"DOTA_UNIT_CAP_RANGED_ATTACK"
 	"AttackDamageMin" 			"3"
@@ -50,4 +52,13 @@
 	"AttackAnimationPoint"		"0.3"									// Normalized time in animation cycle to attack.
 	"AttackAcquisitionRange"	"650"									// Range within a target can be acquired.
 	"ProjectileSpeed"			"1400"
+	
+	"AspectTank"				"2"
+	"AspectCarry"				"3"
+	"AspectCaster"				"0"
+	
+	"AspectStun"				"0"
+	"AspectBuff"				"0"
+	"AspectHeal"				"0"
+	"AspectDisrupt"				"1"
 }

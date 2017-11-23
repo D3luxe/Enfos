@@ -9,7 +9,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"item_dragonscale_shield"
+	"AbilityTextureName"			"enfos\dragonscale_shield"
 
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------

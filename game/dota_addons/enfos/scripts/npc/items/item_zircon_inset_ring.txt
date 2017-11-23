@@ -6,7 +6,7 @@
 	"ID"                            "2017"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_zircon_inset_ring"
+	"AbilityTextureName"			"enfos\zircon_inset_ring"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"3"
 	"ItemStockInitial"				"3"

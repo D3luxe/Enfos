@@ -6,7 +6,7 @@
 	"ID"                            "2047"
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-	"AbilityTextureName"			"item_scepter_of_the_magi"
+	"AbilityTextureName"			"enfos\scepter_of_the_magi"
 
 	"ItemDroppable"					"0"
 	"ItemSellable"					"0"

@@ -26,15 +26,20 @@
     visibility: visible;
 }
 
+#VoteContainer {
+	height: 100%;
+	flow-children: up;
+}
+
 #VotesList
 {
     width: 250px;
     height: 20%;
     flow-children: down;    
     padding-left: 16px;
-    margin-left: 0px;
+    margin-left: 16px;
     padding-right: 16px;
-    vertical-align: bottom;
+    //vertical-align: bottom;
     background-color: gradient( linear, 0% 0%, 100% 0%, from( #111111 ), color-stop( 0.01, #202327 ), color-stop( 0.2, #141619ff ), to( #000000dd ) );
     box-shadow: black -4px -4px 8px 8px;
     visibility: collapse;
@@ -52,7 +57,7 @@
     margin-left: 16px;
     padding-right: 16px;
     padding-top: 10px;
-    vertical-align: bottom;
+    //vertical-align: bottom;
     background-color: gradient( linear, 0% 0%, 100% 0%, from( #111111 ), color-stop( 0.01, #202327 ), color-stop( 0.2, #141619ff ), to( #000000dd ) );
     box-shadow: black -4px -4px 8px 8px;
     visibility: collapse;

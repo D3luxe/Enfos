@@ -4,7 +4,7 @@
 "oak_hardened_skin"
 {
 	"BaseClass"						"ability_datadriven"
-	"AbilityTextureName"			"tiny_craggy_exterior"
+	"AbilityTextureName"			"enfos\tiny_craggy_exterior"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"MaxLevel"						"10"
 	"Modifiers"

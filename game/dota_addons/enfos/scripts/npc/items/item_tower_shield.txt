@@ -9,7 +9,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"BaseClass"						"item_datadriven"
-	"AbilityTextureName"			"item_tower_shield"
+	"AbilityTextureName"			"enfos\tower_shield"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"3"
 	"ItemStockInitial"				"3"

@@ -215,7 +215,7 @@
 		"ID"                            "2010"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_agani_tayeua"
+		"AbilityTextureName"			"enfos\agani_tayeua"
 	
 		"ItemQuality"					"rare"
 		"ItemCost"                      "0" 		
@@ -282,7 +282,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_anti_magic_potion"
+		"AbilityTextureName"			"enfos\anti_magic_potion"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"10"
 		"ItemStockInitial"				"10"
@@ -675,7 +675,7 @@
 			//Fortified = DOTA_COMBAT_CLASS_DEFEND_STRUCTURE
 			"modifier_armor_unarmored"
 			{
-				"TextureName" "item_unarmored"
+				"TextureName" "enfos\unarmored"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -690,7 +690,7 @@
 			}
 			"modifier_armor_light"
 			{
-				"TextureName" "item_light_armor"
+				"TextureName" "enfos\light_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -705,7 +705,7 @@
 			}
 			"modifier_armor_medium"
 			{
-				"TextureName" "item_medium_armor"
+				"TextureName" "enfos\medium_armor"
 				"IsHidden"				"0" 
 				"IsPurgable" "0"
 				"OnCreated"
@@ -720,7 +720,7 @@
 			}
 			"modifier_armor_heavy"
 			{
-				"TextureName" "item_heavy_armor"
+				"TextureName" "enfos\heavy_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -735,7 +735,7 @@
 			}
 			"modifier_armor_fortified"
 			{
-				"TextureName" "item_fortified_armor"
+				"TextureName" "enfos\fortified_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -750,7 +750,7 @@
 			}
 			"modifier_armor_hero"
 			{
-				"TextureName" "item_hero_armor"
+				"TextureName" "enfos\hero_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -765,7 +765,7 @@
 			}
 			"modifier_armor_divine"
 			{
-				"TextureName" "item_divine_armor"
+				"TextureName" "enfos\divine_armor"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 				"OnCreated"
@@ -802,37 +802,37 @@
 			//Hero = DOTA_COMBAT_CLASS_ATTACK_HERO
 			"modifier_attack_normal"
 			{
-				"TextureName" "item_normal_attack"
+				"TextureName" "enfos\normal_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
 			"modifier_attack_pierce"
 			{
-				"TextureName" "item_pierce_attack"
+				"TextureName" "enfos\pierce_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
 			"modifier_attack_siege"
 			{
-				"TextureName" "item_seige_attack"
+				"TextureName" "enfos\seige_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
 			"modifier_attack_chaos"
 			{
-				"TextureName" "item_chaos_attack"
+				"TextureName" "enfos\chaos_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
 			"modifier_attack_magical"
 			{
-				"TextureName" "item_magic_attack"
+				"TextureName" "enfos\magic_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
 			"modifier_attack_hero"
 			{
-				"TextureName" "item_hero_attack"
+				"TextureName" "enfos\hero_attack"
 				"IsHidden"				"0"  
 				"IsPurgable" "0"
 			}
@@ -846,7 +846,7 @@
 		"ID"                            "2016"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_bloodstone_inset_ring"
+		"AbilityTextureName"			"enfos\bloodstone_inset_ring"
 		"ItemStockMax"					"6"
 		"ItemStockInitial"				"6"
 		"ItemStockTime"					"2.0"
@@ -979,7 +979,7 @@
 		"ID"							"3025"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityTextureName"			"bundle_of_gold_1"
+		"AbilityTextureName"			"enfos\bundle_of_gold_1"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1001,7 +1001,7 @@
 		"ID"							"3026"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityTextureName"			"bundle_of_gold_10"
+		"AbilityTextureName"			"enfos\bundle_of_gold_10"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1023,7 +1023,7 @@
 		"ID"							"3027"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityTextureName"			"bundle_of_gold_100"
+		"AbilityTextureName"			"enfos\bundle_of_gold_100"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1045,7 +1045,7 @@
 		"ID"							"3022"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityTextureName"			"bundle_of_lumber_1"
+		"AbilityTextureName"			"enfos\bundle_of_lumber_1"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1066,7 +1066,7 @@
 		"ID"							"3023"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-		"AbilityTextureName"			"bundle_of_lumber_10"
+		"AbilityTextureName"			"enfos\bundle_of_lumber_10"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1087,7 +1087,7 @@
 		"ID"							"3024"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"bundle_of_lumber_100"
+		"AbilityTextureName"			"enfos\bundle_of_lumber_100"
 		"Model"							"models/props_gameplay/gold_coin001.vmdl"
 		"Effect"						"particles/econ/courier/courier_trail_international_2013/courier_international_2013.vpcf"
 		"AbilityCastPoint"				"0.1"
@@ -1106,7 +1106,7 @@
 		"ID"                            "2015"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_crystal_edged_ring"
+		"AbilityTextureName"			"enfos\crystal_edged_ring"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"3"
 		"ItemStockInitial"				"3"
@@ -1269,7 +1269,7 @@
 		"ID"                            "2019"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_diamond_etched_ring"
+		"AbilityTextureName"			"enfos\diamond_etched_ring"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"2"
 		"ItemStockInitial"				"2"
@@ -1320,7 +1320,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_dragonscale_shield"
+		"AbilityTextureName"			"enfos\dragonscale_shield"
 	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
@@ -1430,7 +1430,7 @@
 	{
 		"ID"                            "2039"
 		"BaseClass"                     "item_datadriven"
-		"AbilityTextureName"			"item_elite_elven_boots"
+		"AbilityTextureName"			"enfos\elite_elven_boots"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
@@ -1610,7 +1610,7 @@
 		"ID"                            "2025"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_emerald_inset_ring"
+		"AbilityTextureName"			"enfos\emerald_inset_ring"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "750" 		
@@ -2076,7 +2076,7 @@
 		"ID"                            "2001"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_gleaming_longsword"
+		"AbilityTextureName"			"enfos\gleaming_longsword"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
 		"ItemStockInitial"				"5"
@@ -2285,7 +2285,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_hisan_salve"
+		"AbilityTextureName"			"enfos\hisan_salve"
 		"AbilitySharedCooldown" "ClarityPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -2379,7 +2379,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_ironbark_leathers"
+		"AbilityTextureName"			"enfos\ironbark_leathers"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"2"
 		"ItemStockInitial"				"2"
@@ -2643,7 +2643,7 @@
 		"ID"							"3006"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"manual_of_combat"
+		"AbilityTextureName"			"enfos\manual_of_combat"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -2709,7 +2709,7 @@
 		"ID"                            "2018"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_moonstone_inset_ring"
+		"AbilityTextureName"			"enfos\moonstone_inset_ring"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "2000" 		
@@ -2887,7 +2887,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_potion_of_greater_healing"
+		"AbilityTextureName"			"enfos\potion_of_greater_healing"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -2955,7 +2955,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_potion_of_healing"
+		"AbilityTextureName"			"enfos\potion_of_healing"
 		"ItemKillable"					"0"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemStockMax"					"5"
@@ -3024,7 +3024,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_potion_of_kimhiro_draught"
+		"AbilityTextureName"			"enfos\potion_of_kimhiro_draught"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -3092,7 +3092,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_potion_of_large_kimhiro_draught"
+		"AbilityTextureName"			"enfos\potion_of_large_kimhiro_draught"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -3160,7 +3160,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_potion_of_ultra_healing"
+		"AbilityTextureName"			"enfos\potion_of_ultra_healing"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -3355,7 +3355,7 @@
 		"ID"                            "2049"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_ring_of_victory"
+		"AbilityTextureName"			"enfos\ring_of_victory"
 		
 		"ItemDroppable"					"0"
 		"ItemSellable"					"0"
@@ -3405,7 +3405,7 @@
 		"ID"                            "2013"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_ruby_inset_ring"
+		"AbilityTextureName"			"enfos\ruby_inset_ring"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"4"
 		"ItemStockInitial"				"4"
@@ -3451,7 +3451,7 @@
 		"ID"                            "2014"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_sapphire_inset_ring"
+		"AbilityTextureName"			"enfos\sapphire_inset_ring"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"4"
 		"ItemStockInitial"				"4"
@@ -3497,7 +3497,7 @@
 		"ID"                            "2047"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_scepter_of_the_magi"
+		"AbilityTextureName"			"enfos\scepter_of_the_magi"
 	
 		"ItemDroppable"					"0"
 		"ItemSellable"					"0"
@@ -3562,7 +3562,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"scroll_of_full_healing"
+		"AbilityTextureName"			"enfos\scroll_of_full_healing"
 		"AbilitySharedCooldown" "HealPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -3630,7 +3630,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_blue.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"scroll_of_kimhiro"
+		"AbilityTextureName"			"enfos\scroll_of_kimhiro"
 		"AbilitySharedCooldown" "ManaPot"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -3747,7 +3747,7 @@
 	{
 		"ID"							"3009"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_spellbringer_greater_darkrift"
+		"AbilityTextureName"			"enfos\spellbringer_greater_darkrift"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"475"		//475
@@ -3845,7 +3845,7 @@
 	{
 		"ID"							"3012"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_spellbringer_summon_arhat"
+		"AbilityTextureName"			"enfos\spellbringer_summon_arhat"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3873,7 +3873,7 @@
 	{
 		"ID"							"3010"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_spellbringer_summon_havroth"
+		"AbilityTextureName"			"enfos\spellbringer_summon_havroth"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3904,7 +3904,7 @@
 	{
 		"ID"							"3011"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_spellbringer_summon_sidhlot"
+		"AbilityTextureName"			"enfos\spellbringer_summon_sidhlot"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -3932,7 +3932,7 @@
 	{
 		"ID"							"3013"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_spellbringer_summon_uthmor"
+		"AbilityTextureName"			"enfos\spellbringer_summon_uthmor"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
 		"AbilityCooldown"				"90"
 		"AbilityManaCost"				"1"		//475
@@ -4136,7 +4136,7 @@
 				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1.5"
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"2.5"
 				}
 			}
 			"modifier_health_bonus"
@@ -4234,7 +4234,7 @@
 		"ID"                            "2050"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"stone_axe"
+		"AbilityTextureName"			"enfos\stone_axe"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "40" 		
@@ -4446,7 +4446,7 @@
 		"ID"							"3002"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_agility"
+		"AbilityTextureName"			"enfos\tome_of_agility"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4478,7 +4478,7 @@
 		"ID"							"3003"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_agility_2"
+		"AbilityTextureName"			"enfos\tome_of_agility_2"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4510,7 +4510,7 @@
 		"ID"							"3004"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_intellect"
+		"AbilityTextureName"			"enfos\tome_of_intellect"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4542,7 +4542,7 @@
 		"ID"							"3005"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_intellect_2"
+		"AbilityTextureName"			"enfos\tome_of_intellect_2"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4574,7 +4574,7 @@
 		"ID"							"3008"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_knowledge_enfos"
+		"AbilityTextureName"			"enfos\tome_of_knowledge_enfos"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4606,7 +4606,7 @@
 		"ID"							"3007"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_retraining"
+		"AbilityTextureName"			"enfos\tome_of_retraining"
 		//"ItemStockMax"					"5"
 		//"ItemStockInitial"				"5"
 		//"ItemStockTime"					"600.0"
@@ -4641,7 +4641,7 @@
 		"ID"							"3000"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_strength"
+		"AbilityTextureName"			"enfos\tome_of_strength"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4673,7 +4673,7 @@
 		"ID"							"3001"														// unique ID number for this item.  Do not change this once established or it will invalidate collected stats.
 		"BaseClass"						"item_datadriven"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
-		"AbilityTextureName"			"tome_of_strength_2"
+		"AbilityTextureName"			"enfos\tome_of_strength_2"
 		//"ItemStockMax"					"30"
 		//"ItemStockInitial"				"30"
 		//"ItemStockTime"					"1.0"
@@ -4709,7 +4709,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_tower_shield"
+		"AbilityTextureName"			"enfos\tower_shield"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"3"
 		"ItemStockInitial"				"3"
@@ -4799,7 +4799,7 @@
 		"ID"                            "2044"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_uthmors_mirror_blade"
+		"AbilityTextureName"			"enfos\uthmors_mirror_blade"
 	
 		"ItemDroppable"					"0"
 		"ItemSellable"					"0"
@@ -5037,7 +5037,7 @@
 		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"Model"							"models/props_gameplay/salve_red.vmdl"
 		"BaseClass"						"item_datadriven"
-		"AbilityTextureName"			"item_vampiric_potion"
+		"AbilityTextureName"			"enfos\vampiric_potion"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"1"
 		"ItemStockInitial"				"1"
@@ -5234,7 +5234,7 @@
 		//--------------------------------------------------------------------
 		"BaseClass"						"item_datadriven"
 	
-		"AbilityTextureName"			"item_boots"
+		"AbilityTextureName"			"enfos\winged_leather_boots"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
 	
@@ -5291,7 +5291,7 @@
 		"ID"                            "2017"
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
-		"AbilityTextureName"			"item_zircon_inset_ring"
+		"AbilityTextureName"			"enfos\zircon_inset_ring"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"3"
 		"ItemStockInitial"				"3"

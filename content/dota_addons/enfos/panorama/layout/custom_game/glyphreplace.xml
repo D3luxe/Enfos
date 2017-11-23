@@ -1,0 +1,10 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/glyphreplace.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/glyphreplace.js"/>
+	</scripts>
+	<Panel hittest="false" class="Main">
+	</Panel>
+</root>
