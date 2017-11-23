@@ -1648,9 +1648,6 @@ function CEnfosGameMode:OnPlayerPicked( event )
 
 	--Initialize variables for tracking
 	player.pickHover = spawnedUnitIndex:GetClassname()
-	if player.spawned == nil then
-		player.lumber = 0 -- Secondary resource of the player
-		player.spawned = false
 	--if player.spawned == nil then
 	local firstspawn = false
 	if Enfos.lumber[player:GetPlayerID()] == nil then
