@@ -1903,6 +1903,65 @@
 		"AspectDisrupt"				"0"
 	}
 	//=================================================================================================================
+	// HERO: Meepo: Odo, the Trader
+	//=================================================================================================================
+	"npc_dota_hero_trader_enfos"
+	{
+		"override_hero"				"npc_dota_hero_meepo"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"trader_collect_assets"
+		"Ability2"					"trader_guild_shop"
+		"Ability3"					"trader_glittering_prizes"
+		"Ability4"					"trader_caravan_bomb"
+		"Ability5"					"trader_cloak_of_invisibility"
+		"Ability6"				"enfos_attribute_bonus"
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"generic_hidden"
+		"Ability11"				"generic_hidden"
+		"Ability12"				"generic_hidden"
+		"Ability13"				"generic_hidden"
+		"Ability14"				"generic_hidden"
+		"Ability15"				"generic_hidden"
+		"Ability16"				"generic_hidden"
+		"Ability17"				"generic_hidden"
+		"Ability18"				"generic_hidden"
+		
+		"ArmorPhysical"				"2"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		"AttributeBaseStrength" 	"6"
+		"AttributeStrengthGain" 	"2"
+		"AttributeBaseAgility" 		"6" 
+		"AttributeAgilityGain" 		"2"
+		"AttributeBaseIntelligence" "6" 
+		"AttributeIntelligenceGain" "2" 
+		
+		"MovementSpeed"				"450"
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"AttackRate"                "1.6"
+		"AttackRange"               "140"
+		"StatusHealth"				"10"
+		"StatusMana"				"0"
+		"StatusHealthRegen"			"0.25"
+		"StatusManaRegen"			"0.02"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"8" 
+		"AttackAcquisitionRange"	"400"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"3"
+		"AspectHeal"				"1"
+		"AspectDisrupt"				"2"
+	}
+	//=================================================================================================================
 	// HERO: Treant Protector: Oak
 	//=================================================================================================================
 	"npc_dota_hero_treant_enfos"
