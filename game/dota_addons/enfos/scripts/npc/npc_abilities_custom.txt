@@ -4980,6 +4980,78 @@
 		"BaseClass" 					"ability_datadriven"
 		"AbilityTextureName" 			"give_gold_all"
 	}
+	//=================================================================================================================
+	// Guild Shop Passive/Aura
+	//=================================================================================================================
+	"guild_shop_spell"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+		"MaxLevel"						"1"
+	
+		"Modifiers"
+		{
+			"modifier_guild_shop_passive"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_guild_shop_aura"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"0"
+				
+				"States"
+				{
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnDeath"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+						"Function"				"ShopAura"
+						"onoff"					"2"
+					}
+				}
+			}
+			
+			"modifier_guild_shop_aura"
+			{
+				"IsHidden"				"1"
+				"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+						"Function"				"ShopAura"
+						"onoff"					"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+						"Function"				"ShopAura"
+						"onoff"					"0"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"450"
+			}
+		}
+	}
 	"havroth_aura"
 	{
 		// General
@@ -14320,6 +14392,358 @@
 			{
 				"var_type"				"FIELD_FLOAT" //do not localize this one
 				"damage_over_time"		"20 30.4 46.2 70.2 106.7 162.3 246.6 374.9 569.8 866.2"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Trader: Caravan Bomb
+	//=================================================================================================================
+	"trader_caravan_bomb"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"techies_suicide"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+		"RequiredLevel"					"10"
+		"LevelsBetweenUpgrades"			"5"
+		"MaxLevel"						"10"
+		"AbilityCastRange"				"1000"
+		"AbilityCooldown"				"150"
+		"AbilityManaCost"				"200 220 240 260 280 300 320 340 360 380"
+		"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+	
+		"Precache"
+		{
+			"particle"			"particles/hero_trader/trader_caravan_bomb_explosion.vpcf"
+			"particle"			"particles/hero_trader/trader_caravan_bomb.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+				"Function"				"CaravanBomb"
+				"Target"				"POINT"
+				"radius"				"%radius"
+				"collision_radius"		"%collision_radius"
+				"cart_speed"			"%cart_speed"
+			}
+		}
+		"OnProjectileHitUnit"
+		{
+			"DeleteOnHit"	"1"
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+				"Function"				"CaravanExplosion"
+				"Target"				"POINT"
+				"damage"				"%damage"
+				"damage_radius"			"%damage_radius"
+			}
+			"ActOnTargets"
+			{
+				"Target"
+				{
+					"Center"  				"POINT"
+					"Radius" 				"%damage_radius"
+					"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+					"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+				}
+	
+				"Action"
+				{
+					"Damage"
+					{
+						"Type"		"DAMAGE_TYPE_MAGICAL"
+						"Target"	"TARGET"
+						"Damage"	"%damage"
+					}
+	
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage"				"1500 2250 3375 5062 7593 11390 17085 25628 38443 57665"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1000"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_radius"			"650"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"collision_radius"		"100"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"cart_speed"			"160"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Trader: Cloak of Invisibility
+	//=================================================================================================================
+	"trader_cloak_of_invisibility"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"bounty_hunter_twinblade_wind_walk"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+		"MaxLevel"						"1"
+		"Innate"						"1"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"15"
+		"AbilityManaCost"				"75"
+	
+		"Precache"
+		{
+		}
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"ModifierName"			"modifier_trader_cloak_fade"
+				"Target"				"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_trader_cloak_fade"
+			{
+				"ThinkInterval"			"%fade_time"
+				"OnIntervalThink"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_trader_cloak"
+						"Target"		"CASTER"
+					}
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_trader_cloak_fade"
+						"Target"		"CASTER"
+					}
+				}
+			}
+			"modifier_trader_cloak"
+			{
+				"Duration"				"%duration"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
+				}
+				"States"				
+				{
+					"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+				}
+				"OnCreated"
+				{
+					"ApplyModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+				"OnAttackLanded"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_trader_cloak"
+						"Target"		"CASTER"
+					}
+				}
+				"OnAbilityExecuted"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_trader_cloak"
+						"Target"		"CASTER"
+					}
+				}
+				"OnDestroy"
+				{
+					"RemoveModifier"
+					{
+						"ModifierName"	"modifier_invisible"
+						"Target"		"CASTER"
+					}
+				}
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_speed"			"500"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"20"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"fade_time"				"0.1"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Trader: Collect Assets
+	//=================================================================================================================
+	"trader_collect_assets"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"treant_eyes_in_the_forest"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"100 92.5 85 77.5 70 62.5 55 47.5 40 32.5"
+		"AbilityManaCost"				"40"
+		"AbilityCastAnimation"			"ACT_DOTA_POOF_END"
+		"AbilityCastPoint"				"0.2"
+	
+		"Precache"
+		{
+			"particle"			"particles/hero_trader/trader_collect_assets_flash.vpcf"
+			"particle"			"particles/msg_fx/msg_poison.vpcf"
+			"soundfile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+		}
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+				"Function"				"CollectAssets"
+				"lumber_base"			"%lumber_base"
+				"lumber_per_level"		"%lumber_per_level"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"lumber_base"			"3"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_FLOAT"
+				"lumber_per_level"		"0.25"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Trader: Glittering Prizes
+	//=================================================================================================================
+	"trader_glittering_prizes"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"alchemist_goblins_greed"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"RequiredLevel"					"6"
+		"LevelsBetweenUpgrades"			"3"
+		"MaxLevel"						"10"
+	
+		"Precache"
+		{
+			"particle"			"particles/hero_trader/glittering_prizes_coins.vpcf"
+		}
+		"OnUpgrade"
+		{
+			"RemoveModifier"
+			{
+				"ModifierName"				"modifier_glittering_prizes"
+				"Target"					"CASTER"
+			}
+			"ApplyModifier"
+			{
+				"ModifierName"				"modifier_glittering_prizes"
+				"Target"					"CASTER"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_glittering_prizes"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_glittering_prizes_aura"
+				"Aura_Radius"			"%radius"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Aura_Types"			"DOTA_UNIT_TARGET_CREEP"
+				"Aura_ApplyToCaster"	"0"
+			}
+			
+			"modifier_glittering_prizes_aura"
+			{
+				"EffectName"			"particles/hero_trader/glittering_prizes_coins.vpcf"
+				"EffectAttachType"		"follow_origin"
+			}
+		}
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"radius"				"1200"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"gold_bonus"			"5 10 15 20 25 30 35 40 45 50"
+			}
+		}
+	}
+	//=================================================================================================================
+	// Trader: Guild Shop
+	//=================================================================================================================
+	"trader_guild_shop"
+	{
+		"BaseClass"						"ability_datadriven"
+		"AbilityTextureName"			"courier_go_to_secretshop"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_AOE"
+		"MaxLevel"						"10"
+		"AbilityCastPoint"				"0.5"
+		"AbilityCooldown"				"80"
+		"AbilityManaCost"				"20 26 33 43 57 74 96 125 163 212"
+		"AOERadius"						"50"
+	
+		"Precache"
+		{
+		}
+		
+		"OnSpellStart"
+		{
+			"RunScript"
+			{
+				"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+				"Function"				"GuildShop"
+				"Target"				"POINT"
+				"duration"				"%duration"
+			}
+		}
+		
+		"AbilitySpecial"
+		{
+			"01"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"25"
 			}
 		}
 	}

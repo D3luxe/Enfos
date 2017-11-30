@@ -1,0 +1,86 @@
+//===============================================
+// Dwarven Pride
+//===============================================
+"item_dwarven_pride"
+{
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"enfos\dwarven_pride"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "2500" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemDroppable"					"1"
+	"IsUnique"							"1"
+	
+	"ActiveDescriptionLine"         "2"
+
+	"Modifiers"
+	{
+		"modifier_bloodthirst"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsPurgable"		"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"EquipBloodthirst"
+				}
+			}
+
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"UnequipBloodthirst"
+				}
+			}
+		}
+		"modifier_bloodthirst_leech"
+		{
+			"IsHidden"		"1"
+			"IsPurgable"		"0"
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}	
+
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"120"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"10"
+		}
+	}
+}

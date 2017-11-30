@@ -1,0 +1,140 @@
+.Main {
+	width: 100%;
+    height: 100%;
+}
+
+#GuildShopMenu {
+	vertical-align: center;
+	horizontal-align: right;
+	width: 400px;
+	height: 240px;
+	background-color: gradient( linear, 100% 100%, -100% 100%, from( #333333 ), to( #666666 ) );
+	margin-right: 16px;
+	margin-top: 150px;
+}
+
+#TimeBox {
+	background-image: url("s2r://panorama/images/control_icons/clock_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 64px;
+	background-position: 50% 83%;
+	background-color: #38c;
+	width: 350px;
+	height: 102px;
+	margin-bottom: 20px;
+	vertical-align: bottom;
+	horizontal-align: center;
+}
+#TimeFont {
+	vertical-align: top;
+	horizontal-align: center;
+	text-align: center;
+	color: #fff;
+	font-size: 24px;
+	y: 2px;
+}
+#RangeBox {
+	background-image: url("s2r://panorama/images/control_icons/x_close_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 96px;
+	background-position: 50% 50%;
+	background-color: #000;
+	width: 350px;
+	height: 102px;
+	margin-bottom: 20px;
+	vertical-align: bottom;
+	horizontal-align: center;
+}
+#RangeFont {
+	vertical-align: center;
+	horizontal-align: center;
+	text-align: center;
+	color: #f20;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+#TitleFont {
+	vertical-align: top;
+	horizontal-align: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 24px;
+}
+
+#CloseButton {
+	background-image: url("s2r://panorama/images/control_icons/quit_png.vtex");
+	width: 32px;
+	height: 32px;
+	vertical-align: top;
+	horizontal-align: right;
+}
+
+#ItemBox {
+	vertical-align: bottom;
+	horizontal-align: center;
+	width: 350px;
+	height: 102px;
+	background-color: #000000;
+	flow-children: right-wrap;
+	margin-bottom: 20px;
+}
+
+#ItemSlot1, #ItemSlot2, #ItemSlot3, #ItemSlot4, #ItemSlot5, #ItemSlot6, #ItemSlot7, #ItemSlot8, #ItemSlot9, #ItemSlot10 {
+	width: 70px;
+	height: 51px;
+}
+#ItemFont {
+	vertical-align: bottom;
+	horizontal-align: right;
+	text-align: right;
+	color: #fff;
+	font-size: 24px;
+}
+
+#OutOfStock {
+	width: 100%;
+	height: 100%;
+	background-color: #000e;
+}
+#StockWaitFont {
+	vertical-align: center;
+	horizontal-align: center;
+	text-align: center;
+	color: #f80;
+	font-size: 16px;
+}
+#StockFont {
+	vertical-align: center;
+	horizontal-align: center;
+	text-align: center;
+	color: #f00;
+	font-size: 16px;
+}
+
+#Nope {
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/control_icons/lock_medium_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 52px;
+	background-position: center;
+	background-color: #000e;
+}
+#NopeFont {
+	vertical-align: center;
+	horizontal-align: center;
+	y: 10px;
+	color: #000;
+	font-weight: bold;
+	font-size: 24px;
+	text-shadow: 0px 0px 0px 1.5 #000000;
+	text-align: center;
+}
+
+#gotitem {}
+
+.ItemSize {
+	width: 70px;
+	height: 51px;
+}

@@ -1,0 +1,64 @@
+//=================================================================================================================
+// Trader: Glittering Prizes
+//=================================================================================================================
+"trader_glittering_prizes"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"alchemist_goblins_greed"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"RequiredLevel"					"6"
+	"LevelsBetweenUpgrades"			"3"
+	"MaxLevel"						"10"
+
+	"Precache"
+	{
+		"particle"			"particles/hero_trader/glittering_prizes_coins.vpcf"
+	}
+	"OnUpgrade"
+	{
+		"RemoveModifier"
+		{
+			"ModifierName"				"modifier_glittering_prizes"
+			"Target"					"CASTER"
+		}
+		"ApplyModifier"
+		{
+			"ModifierName"				"modifier_glittering_prizes"
+			"Target"					"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_glittering_prizes"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"IsPurgable"			"0"
+			
+			"Aura"					"modifier_glittering_prizes_aura"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_CREEP"
+			"Aura_ApplyToCaster"	"0"
+		}
+		
+		"modifier_glittering_prizes_aura"
+		{
+			"EffectName"			"particles/hero_trader/glittering_prizes_coins.vpcf"
+			"EffectAttachType"		"follow_origin"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"1200"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"gold_bonus"			"5 10 15 20 25 30 35 40 45 50"
+		}
+	}
+}

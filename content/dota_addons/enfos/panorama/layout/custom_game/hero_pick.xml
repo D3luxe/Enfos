@@ -1273,7 +1273,7 @@
 							<Button id="PickButton7" onactivate="HeroButtonPressed('npc_dota_hero_meepo')">
 								<Panel id="RepickBorder" />
 								<Panel id="PadBox">
-									<Image src="file://{images}/heroes/selection/npc_dota_hero_meepo.png" class="Desaturate"/>
+									<Image src="file://{images}/heroes/selection/npc_dota_hero_meepo.png" />
 									<Image id="PickAttIcon" class="ButtonInner" src="file://{images}/hud/pip_str.png" />
 									<Image id="PickAtkIcon" class="ButtonInner" src="file://{images}/hud/reborn/icon_damage.psd" />
 								</Panel>

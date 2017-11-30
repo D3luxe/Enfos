@@ -1,0 +1,123 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dotastyles.vcss_c"/>
+		<include src="file://{resources}/styles/custom_game/trader.css"/>
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/trader.js"/>
+	</scripts>
+	<Panel hittest="false" class="Main">
+		<Panel id="GuildShopMenu">
+			<Panel id="ItemBox">
+				<Panel id="ItemSlot1">
+					<DOTAItemImage id="gotitem" itemname="item_cebi_root" onactivate="GuildShopBuyItem(1)" />
+					<Label id="ItemFont" text="5" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockWaitFont" text="PLEASE WAIT..." hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="1" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot2">
+					<DOTAItemImage id="gotitem" itemname="item_trader_potion_of_healing" onactivate="GuildShopBuyItem(2)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="2" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot3">
+					<DOTAItemImage id="gotitem" itemname="item_greater_hisan_salve" onactivate="GuildShopBuyItem(3)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="3" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot4">
+					<DOTAItemImage id="gotitem" itemname="item_scroll_of_teleportation" onactivate="GuildShopBuyItem(4)" />
+					<Label id="ItemFont" text="2" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="4" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot5">
+					<DOTAItemImage id="gotitem" itemname="item_lure_pouch" onactivate="GuildShopBuyItem(5)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="5" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot6">
+					<DOTAItemImage id="gotitem" itemname="item_orb_of_absorption" onactivate="GuildShopBuyItem(6)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockWaitFont" text="PLEASE WAIT..." hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="6" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot7">
+					<DOTAItemImage id="gotitem" itemname="item_ivory_mail" onactivate="GuildShopBuyItem(7)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="7" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot8">
+					<DOTAItemImage id="gotitem" itemname="item_sunstone" onactivate="GuildShopBuyItem(8)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="8" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot9">
+					<DOTAItemImage id="gotitem" itemname="item_dwarven_pride" onactivate="GuildShopBuyItem(9)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="9" />
+					</Panel>
+				</Panel>
+				<Panel id="ItemSlot10">
+					<DOTAItemImage id="gotitem" itemname="item_bloodstone_enfos" onactivate="GuildShopBuyItem(10)" />
+					<Label id="ItemFont" text="1" hittest="false" />
+					<Panel id="OutOfStock" hittest="false">
+						<Label id="StockFont" text="OUT OF STOCK" hittest="false" />
+					</Panel>
+					<Panel id="Nope">
+						<Label id="NopeFont" text="10" />
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="RangeBox">
+				<Label id="RangeFont" text="NO HERO NEARBY" />
+			</Panel>
+			<Panel id="TimeBox">
+				<Label id="TimeFont" text="LOADING" />
+			</Panel>
+			<Label id="TitleFont" text="'s Guild Shop" />
+			<Button id="CloseButton" onactivate="CloseButton()" />
+		</Panel>
+	</Panel>
+</root>

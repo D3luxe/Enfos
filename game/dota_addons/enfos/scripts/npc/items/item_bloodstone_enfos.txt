@@ -1,0 +1,46 @@
+//===============================================
+// Bloodstone
+//===============================================
+"item_bloodstone_enfos"
+{
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityTextureName"			"enfos\bloodstone"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
+	"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "3000" 		
+	"ItemShopTags"					"caster"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemDroppable"					"1"
+	"IsUnique"						"1"
+
+	"Modifiers"
+	{
+		"modifier_bloodstone"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_HEALTH_BONUS" 		"%bonus_stat"
+			}	
+		}
+	}
+
+
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_stat"				"3000"
+		}
+	}
+}

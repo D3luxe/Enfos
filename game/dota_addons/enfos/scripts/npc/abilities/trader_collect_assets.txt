@@ -1,0 +1,45 @@
+//=================================================================================================================
+// Trader: Collect Assets
+//=================================================================================================================
+"trader_collect_assets"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"treant_eyes_in_the_forest"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"MaxLevel"						"10"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"100 92.5 85 77.5 70 62.5 55 47.5 40 32.5"
+	"AbilityManaCost"				"40"
+	"AbilityCastAnimation"			"ACT_DOTA_POOF_END"
+	"AbilityCastPoint"				"0.2"
+
+	"Precache"
+	{
+		"particle"			"particles/hero_trader/trader_collect_assets_flash.vpcf"
+		"particle"			"particles/msg_fx/msg_poison.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_furion.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+			"Function"				"CollectAssets"
+			"lumber_base"			"%lumber_base"
+			"lumber_per_level"		"%lumber_per_level"
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"lumber_base"			"3"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"lumber_per_level"		"0.25"
+		}
+	}
+}

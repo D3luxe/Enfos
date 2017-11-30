@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Sunstone
+//=================================================================================================================
+"item_sunstone"
+{
+	"BaseClass"                     "item_datadriven"
+	"AbilityTextureName"			"enfos\sunstone"
+	"Model"							"models/props_gameplay/tpscroll.vmdl"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityCooldown"				"30.0"
+
+	"ItemCost"                      "750" 		
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStockMax"					"2"
+	"ItemStockInitial"				"2"
+	"ItemStockTime"					"120.0"
+
+	"ItemDroppable"					"1"
+	"ItemSellable"					"1"
+	"ItemKillable"					"0"
+	"ItemStackable"					"0"
+	"ItemQuality"					"consumable"
+	"AbilitySharedCooldown" "Blink"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+
+	"AbilityCastRange"	"0"
+
+
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"blink"
+			"Target"	"POINT"
+			"Range"	"%blink_range"
+		}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"blink_range"			"1000"
+		}
+	}
+}

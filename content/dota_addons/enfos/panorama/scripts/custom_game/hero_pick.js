@@ -574,7 +574,7 @@ function PickCheck() {
 function HeroButtonPressed(event) {
 	//$.Msg(event);
 	//var hero = CustomNetTables.GetTableValue("hero_data", "stats");
-	if(event == "npc_dota_hero_meepo") {return 0;}
+	//if(event == "npc_dota_hero_meepo") {return 0;}
 	
 	//but first, this
 	var table = {};

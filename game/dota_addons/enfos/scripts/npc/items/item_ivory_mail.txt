@@ -1,0 +1,50 @@
+//=================================================================================================================
+// Ivory Mail
+//=================================================================================================================
+"item_ivory_mail"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"enfos\ivory_mail"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"3"
+	"ItemStockInitial"				"3"
+	"ItemStockTime"					"120.0"
+
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"1500"
+	"ItemShopTags"					"move_speed;boost_mana;mana_pool"
+	"ItemQuality"					"rare"
+	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
+	"ItemAliases"					"mana;mb"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"IsArtifact"							"1"
+
+	"Modifiers"
+	{
+		"modifier_elven_plate_mail"
+		{
+			"Passive"	 "1"
+			"IsHidden"	 "1"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+			}
+		}
+	}
+	
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor"			"25"
+		}
+	}
+}

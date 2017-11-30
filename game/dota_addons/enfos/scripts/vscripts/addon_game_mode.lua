@@ -431,6 +431,10 @@ heroTable = {
 				{	["name"]="npc_dota_hero_furion",
 					["attackType"]="modifier_attack_magical",
 					["armorType"]="modifier_armor_heavy",
+				},
+				{	["name"]="npc_dota_hero_meepo",
+					["attackType"]="modifier_attack_hero",
+					["armorType"]="modifier_armor_heavy",
 				}
 		}	
 		
@@ -462,8 +466,8 @@ supportClassTable = {
 				"npc_dota_hero_lina",
 				"npc_dota_hero_dazzle",
 				"npc_dota_hero_witch_doctor",
-				"npc_dota_hero_skywrath_mage"--[[,
-				"npc_dota_hero_meepo"]]
+				"npc_dota_hero_skywrath_mage",
+				"npc_dota_hero_meepo"
 			}
 roundedClassTable = {
 				"npc_dota_hero_ember_spirit",
@@ -561,6 +565,7 @@ function Precache( context )
 	PrecacheUnitByNameSync("npc_dota_hero_witch_doctor", context)
 	PrecacheUnitByNameSync("npc_dota_hero_medusa", context)
 	PrecacheUnitByNameSync("npc_dota_hero_lion", context)
+	PrecacheUnitByNameSync("npc_dota_hero_meepo", context)
 	
 	PrecacheUnitByNameSync("npc_spellbringer", context)
 
@@ -889,6 +894,7 @@ function CEnfosGameMode:InitGameMode()
 	CustomGameEventManager:RegisterListener( "player_repick" , RepickHero )
 	CustomGameEventManager:RegisterListener( "pick_ui_chat" , PanoramaChatMsg )
 	CustomGameEventManager:RegisterListener( "toggle_pause" , TogglePause )
+	CustomGameEventManager:RegisterListener( "guild_shop_lua_interaction" , UpdateGuildShop )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
@@ -3265,6 +3271,24 @@ function CEnfosGameMode:OnEntityKilled( event )
 			end
 	end
 	
+	if tonumber(bounty) > 0 then
+		local prizecheck = killedUnit:FindAllModifiersByName("modifier_glittering_prizes_aura")
+		if prizecheck ~= nil then
+			local bountyAdd = 0
+			for i = 1, #prizecheck do
+				local prizespell = prizecheck[i]:GetCaster():FindAbilityByName("trader_glittering_prizes")
+				local prizelevel = prizespell:GetLevel()-1
+				local prizevalue = prizespell:GetLevelSpecialValueFor("gold_bonus",prizelevel)
+				bountyAdd = math.max(bountyAdd,prizevalue)
+			end
+			if bountyAdd > 0 then
+				bountyAdd = (bountyAdd/100)+1
+				bounty = bounty*bountyAdd
+				print(bountyAdd)
+			end
+		end
+	end
+	
 	if GameRules.SharedBounty and killer:IsHero() then
 		if killer:IsHero() then
 			local team = killer:GetTeamNumber()
@@ -4076,4 +4100,119 @@ function TogglePause(d,event)
 	else PauseGame(true) end]]
 	if GameRules:GetDOTATime(false,true) >= -38 then SendToConsole("dota_pause")
 	else CEnfosGameMode:SendErrorMessage(event.player, "Too soon to pause") end
+end
+
+function UpdateGuildShop(one,event)
+	--PrintTable(event)
+	local shopNumber = event.shop
+	local shop = EntIndexToHScript(shopNumber)
+	local playerNumber = event.player
+	local player = EntIndexToHScript(playerNumber)
+	local auracheck = player:FindAllModifiersByName("modifier_guild_shop_aura")
+	local shoprange = false
+	if auracheck ~= nil then
+		for i = 1, #auracheck do
+			local auraunit = auracheck[i]:GetCaster()
+			if auraunit == shop then shoprange = true end
+		end
+	end
+	
+	if event.mode == 1 then
+		local item = event.item
+		--this is a mess. fix this later
+		if item == "item_cebi_root" and shop.CebiRoot <= 0 then return end
+		if item == "item_trader_potion_of_healing" and shop.HealPot <= 0 then return end
+		if item == "item_trader_potion_of_greater_healing" and shop.GreatHealPot <= 0 then return end
+		if item == "item_greater_hisan_salve" and shop.GreatHisan <= 0 then return end
+		if item == "item_scroll_of_teleportation" and shop.BlinkScroll <= 0 then return end
+		if item == "item_lure_pouch" and shop.LurePouch <= 0 then return end
+		if item == "item_orb_of_absorption" and shop.BlockOrb <= 0 then return end
+		if item == "item_ivory_mail" and shop.IvoryMail <= 0 then return end
+		if item == "item_sunstone" and shop.SunStone <= 0 then return end
+		if item == "item_dwarven_pride" and shop.DwarvenPride <= 0 then return end
+		if item == "item_bloodstone_enfos" and shop.Bloodstone <= 0 then return end
+		if GetItemCost(item) <= player:GetGold() then
+			local newItem = CreateItem(item, player, player)
+			player:AddItem(newItem)
+			PlayerResource:SpendGold(player:GetPlayerID(), GetItemCost(item), 1)
+			if item == "item_cebi_root" then shop.CebiRoot = shop.CebiRoot -1 end
+			if item == "item_trader_potion_of_healing" then shop.HealPot = shop.HealPot -1 end
+			if item == "item_trader_potion_of_greater_healing" then shop.GreatHealPot = shop.GreatHealPot -1 end
+			if item == "item_greater_hisan_salve" then shop.GreatHisan = shop.GreatHisan -1 end
+			if item == "item_scroll_of_teleportation" then shop.BlinkScroll = shop.BlinkScroll -1 end
+			if item == "item_lure_pouch" then shop.LurePouch = shop.LurePouch -1 end
+			if item == "item_orb_of_absorption" then shop.BlockOrb = shop.BlockOrb -1 end
+			if item == "item_ivory_mail" then shop.IvoryMail = shop.IvoryMail -1 end
+			if item == "item_sunstone" then shop.SunStone = shop.SunStone -1 end
+			if item == "item_dwarven_pride" then shop.DwarvenPride = shop.DwarvenPride -1 end
+			if item == "item_bloodstone_enfos" then shop.Bloodstone = shop.Bloodstone -1 end
+			
+			if shop.CebiRoot < 5 and shop.CebiRoot > -1 and shop.CebiRestock == false then
+				shop.CebiRestock = true
+				print("RESTOCK ROOT")
+				Timers:CreateTimer(5,function()
+					if shop:IsAlive() then
+						shop.CebiRoot = shop.CebiRoot+1
+						local ministockone = {}
+						ministockone.shop = shopNumber
+						ministockone.CebiRoot = shop.CebiRoot
+						CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", ministockone )
+						print("RESTOCK ROOT DONE")
+						print(shop.CebiRoot)
+						if shop.CebiRoot < 5 then
+							return 5
+						else
+							shop.CebiRestock = false
+						end
+					end
+				end)
+			end
+			
+			if shop.BlockOrb == 0 and shop.OrbRestock == false then
+				shop.OrbRestock = true
+				print("RESTOCK ORB")
+				Timers:CreateTimer(5,function()
+					if shop:IsAlive() then
+						shop.BlockOrb = shop.BlockOrb+1
+						local ministocktwo = {}
+						ministocktwo.shop = shopNumber
+						ministocktwo.BlockOrb = shop.BlockOrb
+						CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", ministocktwo )
+						print("RESTOCK ORB DONE")
+						print(shop.BlockOrb)
+						if shop.BlockOrb < 1 then
+							return 5
+						else
+							shop.OrbRestock = false
+						end
+					end
+				end)
+			end
+			
+			print("cool")
+		else print("oops") end
+	end
+
+	local stock = {}
+	stock.shop = shopNumber
+	stock.InRange = shoprange
+	if shoprange == true then
+		stock.CebiRoot = shop.CebiRoot
+		stock.HealPot = shop.HealPot
+		stock.GreatHealPot = shop.GreatHealPot
+		stock.GreatHisan = shop.GreatHisan
+		stock.BlinkScroll = shop.BlinkScroll
+		stock.LurePouch = shop.LurePouch
+		stock.BlockOrb = shop.BlockOrb
+		stock.IvoryMail = shop.IvoryMail
+		stock.SunStone = shop.SunStone
+		stock.DwarvenPride = shop.DwarvenPride
+		stock.Bloodstone = shop.Bloodstone
+	end
+	if event.mode == 0 then
+		CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", stock )
+	end
+	if event.mode == 1 then
+		CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", stock )
+	end
 end
