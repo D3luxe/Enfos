@@ -25,12 +25,22 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_aether_lens"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_ancient_janggo"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
 	"item_arcane_boots"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_arcane_boots_2"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -85,12 +95,22 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_blight_stone"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_blink"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
 	"item_bloodstone"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_bloodthorn"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -165,6 +185,21 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_combo_breaker"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_crimson_guard"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_cyclone"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_dagon"
 	{
 		"ItemPurchasable"				"0"
@@ -200,12 +235,22 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_desolator_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_diffusal_blade"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
 	"item_diffusal_blade_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_dragon_lance"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -220,6 +265,16 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_echo_sabre"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_enchanted_mango"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_energy_booster"
 	{
 		"ItemPurchasable"				"0"
@@ -230,7 +285,17 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
-	"item_cyclone"
+	"item_faerie_fire"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_firecrackers"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_firework_mine"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -241,6 +306,11 @@
 		"ItemDroppable"					"0"
 	}
 	"item_flask2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_force_boots"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -275,6 +345,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_glimmer_cape"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_gloves"
 	{
 		"ItemPurchasable"				"0"
@@ -291,6 +366,36 @@
 		"ItemDroppable"					"0"
 	}
 	"item_greater_crit"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_greater_flask"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_greevil_whistle"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_greevil_whistle_toggle"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_guardian_greaves"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_halloween_candy_corn"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_halloween_rapier"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -330,12 +435,27 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_hurricane_pike"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_hyperstone"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_infused_raindrop"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_invis_sword"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_iron_talon"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -351,6 +471,11 @@
 		"ItemDroppable"					"0"
 	}
 	"item_lifesteal"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_lotus_orb"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -395,6 +520,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_meteor_hammer"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_mithril_hammer"
 	{
 		"ItemPurchasable"				"0"
@@ -406,6 +536,36 @@
 		"ItemDroppable"					"0"
 	}
 	"item_monkey_king_bar"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_moon_shard"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_mystery_arrow"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_mystery_hook"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_mystery_missile"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_mystery_toss"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_mystery_vacuum"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -435,7 +595,17 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_nullifier"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_oblivion_staff"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_octarine_core"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -490,6 +660,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_present"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_quarterstaff"
 	{
 		"ItemPurchasable"				"0"
@@ -516,6 +691,11 @@
 		"ItemDroppable"					"0"
 	}
 	"item_refresher"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_refresher_shard"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -550,6 +730,41 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_river_painter"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter3"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter4"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter5"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter6"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_river_painter7"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_robe"
 	{
 		"ItemPurchasable"				"0"
@@ -580,6 +795,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_scare_the_beast"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_shadow_amulet"
 	{
 		"ItemPurchasable"				"0"
@@ -591,6 +811,11 @@
 		"ItemDroppable"					"0"
 	}
 	"item_shivas_guard"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_silver_edge"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -620,6 +845,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_solar_crest"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_soul_booster"
 	{
 		"ItemPurchasable"				"0"
@@ -631,6 +861,11 @@
 		"ItemDroppable"					"0"
 	}
 	"item_sphere"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_spirit_vessel"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -660,6 +895,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_tome_of_knowledge"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_tombstone"
 	{
 		"ItemPurchasable"				"0"
@@ -675,7 +915,22 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_tranquil_boots_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_travel_boots"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_travel_boots_2"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_trident"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
@@ -705,6 +960,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_vermillion_robe"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_vitality_booster"
 	{
 		"ItemPurchasable"				"0"
@@ -720,6 +980,11 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_ward_dispenser"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_ward_observer"
 	{
 		"ItemPurchasable"				"0"
@@ -730,12 +995,78 @@
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
+	"item_wind_lace"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_cake"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_coco"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_cookie"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_greevil_garbage"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_greevil_treat"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_grevil_chewy"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_ham"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_kringle"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_mushroom"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_skates"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	"item_winter_stocking"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
 	"item_wraith_band"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
 	}
 	"item_yasha"
+	{
+		"ItemPurchasable"				"0"
+		"ItemDroppable"					"0"
+	}
+	
+	"item_grimstone_inset_ring"
 	{
 		"ItemPurchasable"				"0"
 		"ItemDroppable"					"0"
