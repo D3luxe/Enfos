@@ -403,6 +403,7 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_tranquil_boots"
+		"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "500" 		
@@ -1710,6 +1711,7 @@
 		"ID"                            "2039"
 		"BaseClass"                     "item_datadriven"
 		"AbilityTextureName"			"enfos\elite_elven_boots"
+		"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 	
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
@@ -1724,6 +1726,7 @@
 		"ItemDisassemblable"			"0"
 		"ItemQuality"					"epic"
 		"IsUnique"							"1"
+		"AbilitySharedCooldown" "Blink"
 	
 		"AbilityCastRange"	"0"
 	
@@ -1845,6 +1848,7 @@
 		"BaseClass"                     "item_datadriven"
 		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"AbilityTextureName"			"item_travel_boots"
+		"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 	
 		"ItemQuality"					"component"
 		"ItemCost"                      "300" 		
@@ -3576,6 +3580,12 @@
 				"heal_amount"		"%heal_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
@@ -3593,6 +3603,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"heal_amount"				"5000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"5"
 			}
 		}
 	}
@@ -3645,6 +3660,12 @@
 				"heal_amount"		"%heal_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
@@ -3662,6 +3683,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"heal_amount"				"600"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"2"
 			}
 		}
 	}
@@ -3713,10 +3739,16 @@
 				"mana_amount"		"%mana_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/mango_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
-				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+				"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
 			}
 			"SpendCharge"
 			{}
@@ -3781,10 +3813,16 @@
 				"mana_amount"		"%mana_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/mango_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
-				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+				"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
 			}
 			"SpendCharge"
 			{}
@@ -3848,6 +3886,12 @@
 				"Target"			"UNIT"
 				"heal_amount"		"%heal_amount"
 	
+			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+				"EffectAttachType"	"follow_origin"
 			}
 			"FireSound"
 			{
@@ -4251,6 +4295,12 @@
 				"heal_amount"		"%heal_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
@@ -4319,10 +4369,16 @@
 				"mana_amount"		"%mana_amount"
 	
 			}
+			"AttachEffect"
+			{
+				"Target"			"CASTER"
+				"EffectName"		"particles/items3_fx/mango_active.vpcf"
+				"EffectAttachType"	"follow_origin"
+			}
 			"FireSound"
 			{
 				"Target" 		"UNIT"
-				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+				"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
 			}
 			"SpendCharge"
 			{}
@@ -5959,6 +6015,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityCastRange"				"100"
 		"AbilityCastPoint"				"0.0"
+		"AbilitySharedCooldown" 		"Vamp"
 		"AbilityCooldown"				"120.0"
 		
 		// Item Info
@@ -6145,10 +6202,12 @@
 		// Item Info
 		//--------------------------------------------------------------------
 		"BaseClass"						"item_datadriven"
+		"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 	
 		"AbilityTextureName"			"enfos\winged_leather_boots"
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 		"AbilityCooldown"				"30.0"
+		"AbilitySharedCooldown" "Blink"
 	
 		"AbilityCastRange"				"0"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"

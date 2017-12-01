@@ -46,6 +46,12 @@
 			"heal_amount"		"%heal_amount"
 
 		}
+		"AttachEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
 		"FireSound"
 		{
 			"Target" 		"UNIT"
@@ -63,6 +69,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"heal_amount"				"5000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"5"
 		}
 	}
 }

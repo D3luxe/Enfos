@@ -6,6 +6,7 @@
 		"item" "item_potion_of_healing"
 		"item" "item_potion_of_greater_healing"
 		"item" "item_potion_of_ultra_healing"
+		"item" "item_scroll_of_full_healing"
 		"item" "item_potion_of_kimhiro_draught"
 		"item" "item_potion_of_large_kimhiro_draught"
 		"item" "item_scroll_of_kimhiro"

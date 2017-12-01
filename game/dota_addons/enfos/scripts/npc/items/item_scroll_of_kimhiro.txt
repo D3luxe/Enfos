@@ -46,10 +46,16 @@
 			"mana_amount"		"%mana_amount"
 
 		}
+		"AttachEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/items3_fx/mango_active.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
 		"FireSound"
 		{
 			"Target" 		"UNIT"
-			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
 		}
 		"SpendCharge"
 		{}
