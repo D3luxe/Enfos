@@ -14,6 +14,14 @@ Cost[9] = 2500;
 Cost[10] = 3000;
 Cost[11] = 100;
 
+var sunnyboy = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements");
+var sunstonepanel = $.CreatePanel("Panel", $.GetContextPanel(), "Sunstone");
+var huddy = sunnyboy.FindChildTraverse("topbar");
+sunstonepanel.BLoadLayoutSnippet("Sunstone");
+sunstonepanel.SetParent(sunnyboy);
+sunstonepanel.hittest = false;
+sunnyboy.MoveChildBefore(sunstonepanel,huddy);
+
 function ShopSelectedCheck() {
 	if (SelectedUnit == -1) $("#GuildShopMenu").visible = false;
 	else {
@@ -143,11 +151,24 @@ function CloseButton() {
 	ShopSelectedCheck();
 }
 
+function SunstoneToggle(event) {
+	if (event.isTrue) {
+		sunstonepanel.RemoveClass("Off");
+		sunstonepanel.AddClass("On");
+		Game.EmitSound("Hero_Silencer.GlobalSilence.Effect");
+	}
+	if (!event.isTrue) {
+		sunstonepanel.RemoveClass("On");
+		sunstonepanel.AddClass("Off");
+	}
+}
+
 (function () {
 	ShopSelectedCheck();
 	GameEvents.Subscribe("dota_player_update_selected_unit", UnitSelect);
 	GameEvents.Subscribe("dota_player_update_query_unit", UnitQuery);
 	GameEvents.Subscribe("guild_shop_update", UpdateStock);
+	GameEvents.Subscribe("sunstone_use", SunstoneToggle);
 	
 	/*$("#ItemSlot1").FindChildTraverse("Nope").visible = false;
 	$("#ItemSlot2").FindChildTraverse("Nope").visible = true;
@@ -175,4 +196,6 @@ function CloseButton() {
 	$("#RangeBox").visible = false;
 	
 	GameEvents.Subscribe("dota_pause_event", WasThisTheAnswerAllAlong);
+	
+	sunstonepanel.AddClass("Off");
 })();

@@ -5,34 +5,56 @@
 {
 	// General
 	//-------------------------------------------------------------------------------------------------------------
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"BaseClass"						"item_datadriven"
 	"AbilityTextureName"			"enfos\ivory_mail"
 	"ItemKillable"					"0"
-	"ItemStockMax"					"3"
-	"ItemStockInitial"				"3"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
 	"ItemStockTime"					"120.0"
 
 
 	// Item Info
 	//-------------------------------------------------------------------------------------------------------------
 	"ItemCost"						"1500"
-	"ItemShopTags"					"move_speed;boost_mana;mana_pool"
 	"ItemQuality"					"rare"
 	"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 	"ItemAliases"					"mana;mb"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	"IsArtifact"							"1"
+	
+	"AbilitySharedCooldown"			"Ivory"
+	"AbilityCooldown"				"50.0"
+	
+	"ActiveDescriptionLine"         "2"
 
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_ivory_mail_active"
+		}
+	}
 	"Modifiers"
 	{
-		"modifier_elven_plate_mail"
+		"modifier_ivory_mail"
 		{
 			"Passive"	 "1"
 			"IsHidden"	 "1"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+			}
+		}
+		"modifier_ivory_mail_active"
+		{
+			"Duration"	"%duration"
+			"TextureName" "item_ivory_mail"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor_active"
 			}
 		}
 	}
@@ -44,7 +66,22 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_armor"			"25"
+			"bonus_armor"			"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_block"			"50"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_armor_active"	"80"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"15"
 		}
 	}
 }

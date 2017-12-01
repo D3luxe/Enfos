@@ -26,6 +26,45 @@
 				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
 				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
 			}
+			"OnCreated"
+			{
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_streak_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_ground_flash_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_flash_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_b_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_l_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireSound"
+				{
+					"Target" "CASTER"
+					"EffectName" "Portal.Hero_Appear"
+				}
+				
+			}
 			"OnDeath"
 			{
 				"RunScript"

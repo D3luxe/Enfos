@@ -5,15 +5,17 @@
 {
 	"BaseClass"                     "item_datadriven"
 	"AbilityTextureName"			"enfos\lure_pouch"
-	"Model"							"models/props_gameplay/tpscroll.vmdl"
+	"Model"							"models/props_gameplay/dust.vmdl"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+	"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+	"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 	"AbilityCooldown"				"30.0"
 
 	"ItemCost"                      "250" 		
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemStockMax"					"2"
-	"ItemStockInitial"				"2"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
 	"ItemStockTime"					"120.0"
 
 	"ItemDroppable"					"1"
@@ -21,21 +23,95 @@
 	"ItemKillable"					"0"
 	"ItemStackable"					"0"
 	"ItemQuality"					"consumable"
-	"AbilitySharedCooldown" "Blink"
+	"AbilitySharedCooldown" "Pouch"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
 
 	"AbilityCastRange"	"0"
-
-
+	
+	
 	"OnSpellStart"
 	{
-		"RunScript"
+		"FireSound"
 		{
-			"ScriptFile"	"items/items_shared.lua"
-			"Function"		"blink"
-			"Target"	"POINT"
-			"Range"	"%blink_range"
+			"EffectName"	"Hero_Axe.Berserkers_Call"
+			"Target" 		"TARGET"
+		}
+
+		"RemoveModifier"
+		{
+			"ModifierName"	"modifier_lure_pouch_caster"
+			"Target" 		"TARGET"
+		}
+
+		"ApplyModifier"
+		{
+			"ModifierName"	"modifier_lure_pouch_caster"
+			"Target" 		"TARGET"
+			"Duration"		"%duration"
+		}
+	}
+
+	"Modifiers"
+	{
+		"modifier_lure_pouch_caster"
+		{
+			"IsPurgable"		"0"
+			"IsDebuff"			"1"
+	
+			"OnCreated"
+			{
+				"AttachEffect"
+				{
+					"Target"			"TARGET"
+					"EffectName"        "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+					"EffectAttachType" 	"follow_origin"
+					"ControlPoints"
+					{
+						"02"		"%radius 1 1"	//Required for Rampant Outrage (axe immortal)
+					}
+					"ControlPointEntities"
+					{
+						"TARGET"	"follow_origin"
+						"TARGET"	"follow_origin"
+						"TARGET"	"follow_origin"
+					}
+				}
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"lure"
+					"radius"		"%radius"
+				}
+			}
+		}
+
+		"modifier_lure_pouch_target"
+		{
+			"IsPurgable"		"0"
+			"IsDebuff"			"1"
+
+			"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+			"StatusEffectPriority"  "10"
+
+			"ThinkInterval"  "0.1"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"lure_on"
+				}
+			}
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"lure_off"
+				}
+			}
 		}
 	}
 
@@ -44,7 +120,12 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"blink_range"			"1000"
+			"radius"			"750"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"			"1"
 		}
 	}
 }

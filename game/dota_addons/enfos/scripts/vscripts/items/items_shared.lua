@@ -147,3 +147,59 @@ function purge(keys)
 	CustomPurge(caster, true, true)
 end
 
+function sunstone(keys)
+	local duration = keys.duration
+	local info = {}
+	info.isTrue = true
+	Enfos.sunstone = GameRules:GetGameTime()+duration
+	CustomGameEventManager:Send_ServerToAllClients( "sunstone_use", info )
+	Timers:CreateTimer(duration,function()
+		info.isTrue = false
+		if Enfos.sunstone <= GameRules:GetGameTime() then CustomGameEventManager:Send_ServerToAllClients( "sunstone_use", info ) end
+	end)
+end
+
+function lure(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	local radius = keys.radius
+
+	local targets = FindUnitsInRadius(target:GetTeamNumber(), target:GetAbsOrigin(), target, radius, DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_CREEP, DOTA_UNIT_TARGET_FLAG_NONE, 1, false)
+	for k,v in pairs(targets) do
+		ability:ApplyDataDrivenModifier(target, v, "modifier_lure_pouch_target", {})
+	end
+end
+
+function lure_on(keys)
+	--lifted from https://github.com/Pizzalol/SpellLibrary/blob/master/game/scripts/vscripts/heroes/hero_axe/berserkers_call.lua
+	local caster = keys.caster
+	local target = keys.target
+
+	-- Clear the force attack target
+	target:SetForceAttackTarget(nil)
+
+	-- Give the attack order if the caster is alive
+	-- otherwise forces the target to sit and do nothing
+	if caster:IsAlive() then
+		local order = 
+		{
+			UnitIndex = target:entindex(),
+			OrderType = DOTA_UNIT_ORDER_ATTACK_TARGET,
+			TargetIndex = caster:entindex()
+		}
+
+		ExecuteOrderFromTable(order)
+	else
+		target:Stop()
+	end
+
+	-- Set the force attack target to be the caster
+	target:SetForceAttackTarget(caster)
+end
+
+function lure_off(keys)
+	local target = keys.target
+
+	target:SetForceAttackTarget(nil)
+end

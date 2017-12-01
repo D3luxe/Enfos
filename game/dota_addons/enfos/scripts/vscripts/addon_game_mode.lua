@@ -4213,6 +4213,6 @@ function UpdateGuildShop(one,event)
 		CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", stock )
 	end
 	if event.mode == 1 then
-		CustomGameEventManager:Send_ServerToPlayer( player:GetPlayerOwner(), "guild_shop_update", stock )
+		CustomGameEventManager:Send_ServerToAllClients( "guild_shop_update", stock )
 	end
 end

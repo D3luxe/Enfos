@@ -4,7 +4,7 @@
 "item_dwarven_pride"
 {
 	"BaseClass"                     "item_datadriven"
-	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityTextureName"			"enfos\dwarven_pride"
 	"ItemKillable"					"0"
 	"ItemStockMax"					"5"
@@ -18,7 +18,26 @@
 	"ItemDroppable"					"1"
 	"IsUnique"							"1"
 	
+	"AbilitySharedCooldown" 		"Vamp"
+	"AbilityCooldown"				"80.0"
+	
 	"ActiveDescriptionLine"         "2"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_vampiric_potion"
+		}
+		"FireSound"
+		{
+			"Target" 		"UNIT"
+			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}
+	}
 
 	"Modifiers"
 	{
@@ -29,14 +48,28 @@
 			"IsPurgable"		"0"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%damage"
+				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
 			}
+		}
+		"modifier_vampiric_potion"
+		{
+			"Duration"	"%duration"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+			}
+			"EffectName" 				"particles/items_fx/armlet.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+
 			"OnCreated"
 			{
 				"RunScript"
 				{
 					"ScriptFile"		"items/items_shared.lua"
-					"Function"			"EquipBloodthirst"
+					"Function"			"EquipVampiricPotion"
 				}
 			}
 
@@ -46,14 +79,14 @@
 				"RunScript"
 				{
 					"ScriptFile"		"items/items_shared.lua"
-					"Function"			"UnequipBloodthirst"
+					"Function"			"UnequipVampiricPotion"
 				}
 			}
 		}
-		"modifier_bloodthirst_leech"
+		"modifier_vampiric_potion_leech"
 		{
-			"IsHidden"		"1"
-			"IsPurgable"		"0"
+			"IsHidden"		"0"
+			"Duration"	"%duration"
 			"OnAttackLanded"
 			{
 				"Lifesteal"
@@ -61,12 +94,17 @@
 					"Target" 				"CASTER"
 					"LifestealPercent"		"%leech"
 				}
-			}	
+			}
 
 		}
+		"modifier_vampiric_potion_nope"
+		{
+			"IsHidden"		"0"
+			"Duration"	"%duration"
+
+		}
+
 	}
-
-
 
 	// Special	
 	//-------------------------------------------------------------------------------------------------------------
@@ -75,12 +113,27 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"bonus_damage"			"120"
+			"damage"				"120"
 		}
 		"02"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"leech"					"10"
+			"strength"				"12"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"75"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"25"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"10"
 		}
 	}
 }

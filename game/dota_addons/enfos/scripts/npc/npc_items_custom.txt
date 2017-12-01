@@ -1511,7 +1511,7 @@
 	"item_dwarven_pride"
 	{
 		"BaseClass"                     "item_datadriven"
-		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityTextureName"			"enfos\dwarven_pride"
 		"ItemKillable"					"0"
 		"ItemStockMax"					"5"
@@ -1525,7 +1525,26 @@
 		"ItemDroppable"					"1"
 		"IsUnique"							"1"
 		
+		"AbilitySharedCooldown" 		"Vamp"
+		"AbilityCooldown"				"80.0"
+		
 		"ActiveDescriptionLine"         "2"
+	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_vampiric_potion"
+			}
+			"FireSound"
+			{
+				"Target" 		"UNIT"
+				"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			}
+			"SpendCharge"
+			{}
+		}
 	
 		"Modifiers"
 		{
@@ -1536,14 +1555,28 @@
 				"IsPurgable"		"0"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%damage"
+					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
 				}
+			}
+			"modifier_vampiric_potion"
+			{
+				"Duration"	"%duration"
+				"IsHidden"	"1"
+				"Properties"
+				{
+					// You may use "modifierProperty" completions within quotes here. Below is an example
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+				}
+				"EffectName" 				"particles/items_fx/armlet.vpcf"
+				"EffectAttachType"			"attach_hitloc"
+	
 				"OnCreated"
 				{
 					"RunScript"
 					{
 						"ScriptFile"		"items/items_shared.lua"
-						"Function"			"EquipBloodthirst"
+						"Function"			"EquipVampiricPotion"
 					}
 				}
 	
@@ -1553,14 +1586,14 @@
 					"RunScript"
 					{
 						"ScriptFile"		"items/items_shared.lua"
-						"Function"			"UnequipBloodthirst"
+						"Function"			"UnequipVampiricPotion"
 					}
 				}
 			}
-			"modifier_bloodthirst_leech"
+			"modifier_vampiric_potion_leech"
 			{
-				"IsHidden"		"1"
-				"IsPurgable"		"0"
+				"IsHidden"		"0"
+				"Duration"	"%duration"
 				"OnAttackLanded"
 				{
 					"Lifesteal"
@@ -1568,12 +1601,17 @@
 						"Target" 				"CASTER"
 						"LifestealPercent"		"%leech"
 					}
-				}	
+				}
 	
 			}
+			"modifier_vampiric_potion_nope"
+			{
+				"IsHidden"		"0"
+				"Duration"	"%duration"
+	
+			}
+	
 		}
-	
-	
 	
 		// Special	
 		//-------------------------------------------------------------------------------------------------------------
@@ -1582,12 +1620,27 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_damage"			"120"
+				"damage"				"120"
 			}
 			"02"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"leech"					"10"
+				"strength"				"12"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_damage"			"75"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"leech"					"25"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"10"
 			}
 		}
 	}
@@ -2717,7 +2770,7 @@
 		"LumberCost"	"150"
 		"IsArtifact"							"1"
 	
-		"AbilityCooldown"				"30.0"
+		"AbilityCooldown"				"8.0"
 		
 		
 		"Modifiers"
@@ -2839,34 +2892,56 @@
 	{
 		// General
 		//-------------------------------------------------------------------------------------------------------------
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"BaseClass"						"item_datadriven"
 		"AbilityTextureName"			"enfos\ivory_mail"
 		"ItemKillable"					"0"
-		"ItemStockMax"					"3"
-		"ItemStockInitial"				"3"
+		"ItemStockMax"					"1"
+		"ItemStockInitial"				"1"
 		"ItemStockTime"					"120.0"
 	
 	
 		// Item Info
 		//-------------------------------------------------------------------------------------------------------------
 		"ItemCost"						"1500"
-		"ItemShopTags"					"move_speed;boost_mana;mana_pool"
 		"ItemQuality"					"rare"
 		"ItemDeclarations"				"DECLARE_PURCHASES_TO_SPECTATORS"
 		"ItemAliases"					"mana;mb"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"IsArtifact"							"1"
+		
+		"AbilitySharedCooldown"			"Ivory"
+		"AbilityCooldown"				"50.0"
+		
+		"ActiveDescriptionLine"         "2"
 	
+		"OnSpellStart"
+		{
+			"ApplyModifier"
+			{
+				"Target"				"CASTER"
+				"ModifierName"			"modifier_ivory_mail_active"
+			}
+		}
 		"Modifiers"
 		{
-			"modifier_elven_plate_mail"
+			"modifier_ivory_mail"
 			{
 				"Passive"	 "1"
 				"IsHidden"	 "1"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS_UNIQUE"	"%bonus_armor"
+					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"	"%damage_block"
+				}
+			}
+			"modifier_ivory_mail_active"
+			{
+				"Duration"	"%duration"
+				"TextureName" "item_ivory_mail"
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PHYSICAL_ARMOR_BONUS"	"%bonus_armor_active"
 				}
 			}
 		}
@@ -2878,7 +2953,22 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"bonus_armor"			"25"
+				"bonus_armor"			"30"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"damage_block"			"50"
+			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_armor_active"	"80"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"				"15"
 			}
 		}
 	}
@@ -2889,15 +2979,17 @@
 	{
 		"BaseClass"                     "item_datadriven"
 		"AbilityTextureName"			"enfos\lure_pouch"
-		"Model"							"models/props_gameplay/tpscroll.vmdl"
+		"Model"							"models/props_gameplay/dust.vmdl"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE | DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+		"AbilityUnitTargetTeam"			"DOTA_UNIT_TARGET_TEAM_ENEMY"
+		"AbilityUnitTargetType"			"DOTA_UNIT_TARGET_HERO"
 		"AbilityCooldown"				"30.0"
 	
 		"ItemCost"                      "250" 		
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStockMax"					"2"
-		"ItemStockInitial"				"2"
+		"ItemStockMax"					"1"
+		"ItemStockInitial"				"1"
 		"ItemStockTime"					"120.0"
 	
 		"ItemDroppable"					"1"
@@ -2905,21 +2997,95 @@
 		"ItemKillable"					"0"
 		"ItemStackable"					"0"
 		"ItemQuality"					"consumable"
-		"AbilitySharedCooldown" "Blink"
+		"AbilitySharedCooldown" "Pouch"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
 	
 		"AbilityCastRange"	"0"
-	
-	
+		
+		
 		"OnSpellStart"
 		{
-			"RunScript"
+			"FireSound"
 			{
-				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"blink"
-				"Target"	"POINT"
-				"Range"	"%blink_range"
+				"EffectName"	"Hero_Axe.Berserkers_Call"
+				"Target" 		"TARGET"
+			}
+	
+			"RemoveModifier"
+			{
+				"ModifierName"	"modifier_lure_pouch_caster"
+				"Target" 		"TARGET"
+			}
+	
+			"ApplyModifier"
+			{
+				"ModifierName"	"modifier_lure_pouch_caster"
+				"Target" 		"TARGET"
+				"Duration"		"%duration"
+			}
+		}
+	
+		"Modifiers"
+		{
+			"modifier_lure_pouch_caster"
+			{
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
+		
+				"OnCreated"
+				{
+					"AttachEffect"
+					{
+						"Target"			"TARGET"
+						"EffectName"        "particles/units/heroes/hero_axe/axe_beserkers_call_owner.vpcf"
+						"EffectAttachType" 	"follow_origin"
+						"ControlPoints"
+						{
+							"02"		"%radius 1 1"	//Required for Rampant Outrage (axe immortal)
+						}
+						"ControlPointEntities"
+						{
+							"TARGET"	"follow_origin"
+							"TARGET"	"follow_origin"
+							"TARGET"	"follow_origin"
+						}
+					}
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"lure"
+						"radius"		"%radius"
+					}
+				}
+			}
+	
+			"modifier_lure_pouch_target"
+			{
+				"IsPurgable"		"0"
+				"IsDebuff"			"1"
+	
+				"StatusEffectName" 		"particles/status_fx/status_effect_beserkers_call.vpcf" 	   
+				"StatusEffectPriority"  "10"
+	
+				"ThinkInterval"  "0.1"
+				"OnIntervalThink"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"lure_on"
+					}
+				}
+	
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"lure_off"
+					}
+				}
 			}
 		}
 	
@@ -2928,7 +3094,12 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"1000"
+				"radius"			"750"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"duration"			"1"
 			}
 		}
 	}
@@ -3266,13 +3437,14 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
-	
-		"AbilityCooldown"				"60.0"
+		
+		"AbilitySharedCooldown" "Linkens"
+		"AbilityCooldown"				"8.0"
 		
 		
 		"Modifiers"
 		{
-			"modifier_ironbark_spell_block"
+			"modifier_orb_spell_block"
 			{
 				"Passive" "1"
 				"IsHidden" "1"
@@ -4836,38 +5008,42 @@
 	{
 		"BaseClass"                     "item_datadriven"
 		"AbilityTextureName"			"enfos\sunstone"
-		"Model"							"models/props_gameplay/tpscroll.vmdl"
 	
-		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 		"AbilityCooldown"				"30.0"
 	
 		"ItemCost"                      "750" 		
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-		"ItemStockMax"					"2"
-		"ItemStockInitial"				"2"
-		"ItemStockTime"					"120.0"
+		"ItemStockMax"					"1"
+		"ItemStockInitial"				"1"
+		"ItemStockTime"					"180.0"
 	
 		"ItemDroppable"					"1"
 		"ItemSellable"					"1"
 		"ItemKillable"					"0"
 		"ItemStackable"					"0"
 		"ItemQuality"					"consumable"
-		"AbilitySharedCooldown" "Blink"
+		"AbilitySharedCooldown" 		"Sunstone"
+		"AbilityCooldown"				"30.0"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
 	
 		"AbilityCastRange"	"0"
 	
-	
+		"Precache"
+		{
+			"soundfile"			"sounds/weapons/hero/silencer/global_silence_effect.vsnd"
+		}
 		"OnSpellStart"
 		{
 			"RunScript"
 			{
 				"ScriptFile"	"items/items_shared.lua"
-				"Function"		"blink"
-				"Target"	"POINT"
-				"Range"	"%blink_range"
+				"Function"		"sunstone"
+				"duration"		"%duration"
 			}
+			"SpendCharge"
+			{}
 		}
 	
 		"AbilitySpecial"
@@ -4875,7 +5051,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"			"1000"
+				"duration"				"5"
 			}
 		}
 	}

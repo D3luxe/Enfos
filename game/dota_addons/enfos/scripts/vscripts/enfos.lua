@@ -31,6 +31,7 @@ Enfos.DIRE_CREEPCOUNT = 0
 Enfos.RadCreepCheck = false
 Enfos.DirCreepCheck = false
 Enfos.lumber = {} --secondary resource
+Enfos.sunstone = 0
 
 
 function spellAbsorb(keys)
@@ -157,14 +158,30 @@ function magic_block_check(target)
 	local ability_jug = target:FindAbilityByName("juggernaut_enfos_magic_resistance")
 	local ability_war = target:FindAbilityByName("warlock_enfos_deflection")
 	local ironbark_leathers = target:HasItemInInventory("item_ironbark_leathers")
+	local item_orb = target:HasItemInInventory("item_orb_of_absorption")
 	local leatherSlot
+	local orbSlot
+	local leatherCd = false
+	local orbCd = false
 	
 	if ironbark_leathers ~= nil then
 		local itemSlot = -1
-		for item = 0, 18 do
+		for item = 0, 5 do
 			if target:GetItemInSlot(item) ~= nil then
 				if target:GetItemInSlot(item):GetName() == "item_ironbark_leathers" then
 					leatherSlot = target:GetItemInSlot(item)
+					leatherCd = leatherSlot:IsCooldownReady()
+				end
+			end
+		end
+	end
+	if item_orb ~= nil then
+		local itemSlot = -1
+		for item = 0, 5 do
+			if target:GetItemInSlot(item) ~= nil then
+				if target:GetItemInSlot(item):GetName() == "item_orb_of_absorption" then
+					orbSlot = target:GetItemInSlot(item)
+					orbCd = orbSlot:IsCooldownReady()
 				end
 			end
 		end
@@ -189,11 +206,31 @@ function magic_block_check(target)
 			ability_war:StartCooldown(40)
 			return true
 		end
-	elseif ironbark_leathers ~= nil then
+	elseif ironbark_leathers ~= nil and leatherCd then
 		if target:HasModifier("modifier_item_sphere_target") then
 			target:RemoveModifierByName("modifier_item_sphere_target")
 			target:EmitSound("DOTA_Item.LinkensSphere.Activate")
-			leatherSlot:StartCooldown(4)
+			leatherSlot:StartCooldown(8)
+			
+			return true
+		end
+	elseif item_orb ~= nil and orbCd then
+		if target:HasModifier("modifier_item_sphere_target") then
+			Timers:CreateTimer(0.1,function()
+				target:RemoveModifierByName("modifier_item_sphere_target")
+				target:EmitSound("DOTA_Item.LinkensSphere.Activate")
+			end)
+			
+			for item = 0, 5 do
+				if target:GetItemInSlot(item) ~= nil and target:GetItemInSlot(item):IsNull() == false then
+					if target:GetItemInSlot(item):GetName() == "item_orb_of_absorption" then
+						if target:GetItemInSlot(item):IsCooldownReady() then
+							target:GetItemInSlot(item):StartCooldown(8)
+						end
+					end
+				end
+			end
+			target:RemoveItem(orbSlot)
 			
 			return true
 		end

@@ -97,8 +97,15 @@ function ShopAura(keys)
 	stock.shop = caster_entindex
 	
 	if onoff == 2 then
-		caster:AddNoDraw()
 		print("DIE")
+		caster:AddNoDraw()
+		local blastDummy = FastDummy(caster:GetAbsOrigin(), caster:GetTeamNumber())
+		blastDummy:EmitSound("Portal.Hero_Disappear")
+		local p1 = ParticleManager:CreateParticle("particles/econ/events/ti5/teleport_start_l_ti5.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+		local p2 = ParticleManager:CreateParticle("particles/econ/events/ti5/teleport_start_dust_bits_ti5.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+		local p3 = ParticleManager:CreateParticle("particles/econ/events/ti5/teleport_start_dust_ti5.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+		local p4 = ParticleManager:CreateParticle("particles/econ/events/ti5/teleport_start_n_endcap_ti5.vpcf", PATTACH_ABSORIGIN_FOLLOW, blastDummy)
+		DelayDestroy(blastDummy, 1)
 		stock.dead = true
 		CustomGameEventManager:Send_ServerToAllClients( "guild_shop_update", stock )
 		return

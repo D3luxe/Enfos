@@ -5,38 +5,42 @@
 {
 	"BaseClass"                     "item_datadriven"
 	"AbilityTextureName"			"enfos\sunstone"
-	"Model"							"models/props_gameplay/tpscroll.vmdl"
 
-	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
 	"AbilityCooldown"				"30.0"
 
 	"ItemCost"                      "750" 		
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
-	"ItemStockMax"					"2"
-	"ItemStockInitial"				"2"
-	"ItemStockTime"					"120.0"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
+	"ItemStockTime"					"180.0"
 
 	"ItemDroppable"					"1"
 	"ItemSellable"					"1"
 	"ItemKillable"					"0"
 	"ItemStackable"					"0"
 	"ItemQuality"					"consumable"
-	"AbilitySharedCooldown" "Blink"
+	"AbilitySharedCooldown" 		"Sunstone"
+	"AbilityCooldown"				"30.0"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
 
 	"AbilityCastRange"	"0"
 
-
+	"Precache"
+	{
+		"soundfile"			"sounds/weapons/hero/silencer/global_silence_effect.vsnd"
+	}
 	"OnSpellStart"
 	{
 		"RunScript"
 		{
 			"ScriptFile"	"items/items_shared.lua"
-			"Function"		"blink"
-			"Target"	"POINT"
-			"Range"	"%blink_range"
+			"Function"		"sunstone"
+			"duration"		"%duration"
 		}
+		"SpendCharge"
+		{}
 	}
 
 	"AbilitySpecial"
@@ -44,7 +48,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"blink_range"			"1000"
+			"duration"				"5"
 		}
 	}
 }

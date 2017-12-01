@@ -22,13 +22,14 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
-
-	"AbilityCooldown"				"60.0"
+	
+	"AbilitySharedCooldown" "Linkens"
+	"AbilityCooldown"				"8.0"
 	
 	
 	"Modifiers"
 	{
-		"modifier_ironbark_spell_block"
+		"modifier_orb_spell_block"
 		{
 			"Passive" "1"
 			"IsHidden" "1"
