@@ -880,7 +880,6 @@ function CEnfosGameMode:InitGameMode()
 	ListenToGameEvent("dota_player_used_ability", Dynamic_Wrap(CEnfosGameMode, "OnPlayerCastAbility"), self)
 	ListenToGameEvent("dota_item_gifted", Dynamic_Wrap(CEnfosGameMode, "OnItemGifted"), self)
 	ListenToGameEvent('player_chat', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerChat'), self)
-	ListenToGameEvent('dota_pause_event', Dynamic_Wrap(CEnfosGameMode, 'OnPause'), self)
 	ListenToGameEvent('dota_player_killed', Dynamic_Wrap(CEnfosGameMode, 'OnPlayerKilled'), self)
 	--ListenToGameEvent( "entity_hurt", Dynamic_Wrap( CEnfosGameMode, "OnEntityHurt" ), self )
  
@@ -3491,12 +3490,6 @@ end
 
 function CEnfosGameMode:OnPlayerKilled(event)
 	CustomGameEventManager:Send_ServerToAllClients( "lives_update", {leftlives = goodLives, rightlives = badLives} )
-end
-
-function CEnfosGameMode:OnPause(event)
-	--seems that you cant actually listen to see if the game has been paused. shoutouts to valve software
-	print("PAWZ")
-	CustomGameEventManager:Send_ServerToAllClients( "pause_check", {} )
 end
 
 function CEnfosGameMode:ComputeTowerBonusGold( nTowersTotal, nTowersStanding )
