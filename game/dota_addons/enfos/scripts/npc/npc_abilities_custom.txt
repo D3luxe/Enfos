@@ -16735,10 +16735,16 @@
 		{
 			"modifier_weaponsmith_forge_stack"
 			{
-				"IsBuff"	"1"
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"IsBuff"		"1"
 				"IsPurgable"	"0"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1"
+				}
 			}
-	
+
 		}
 		"AbilitySpecial"
 		{

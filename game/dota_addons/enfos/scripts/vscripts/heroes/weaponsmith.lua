@@ -44,12 +44,12 @@ function Forge(keys)
 		caster.forge = 0
 	end
 
-	local strength = caster:GetStrength() * 2.5
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() - caster.forge - strength)
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() - caster.forge - strength)
+	--local strength = caster:GetStrength() * 2.5
+	--caster:SetBaseDamageMin(caster:GetBaseDamageMin() - caster.forge - strength)
+	--caster:SetBaseDamageMax(caster:GetBaseDamageMax() - caster.forge - strength)
 	caster.forge = caster.forge + damageBonus
-	caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - strength)
-	caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - strength)
+	--caster:SetBaseDamageMin(caster:GetBaseDamageMin() + caster.forge - strength)
+	--caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.forge - strength)
 
 	if not caster:HasModifier("modifier_weaponsmith_forge_stack") then
 		ability:ApplyDataDrivenModifier(caster, caster, "modifier_weaponsmith_forge_stack", {})
