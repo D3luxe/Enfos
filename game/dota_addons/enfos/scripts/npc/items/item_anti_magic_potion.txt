@@ -80,5 +80,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"duration"				"30"
 		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"2"
+		}
 	}
 }

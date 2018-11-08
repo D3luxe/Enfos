@@ -70,5 +70,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"heal_amount"				"20000"
 		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"10"
+		}
 	}
 }

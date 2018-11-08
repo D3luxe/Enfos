@@ -70,5 +70,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"mana_amount"				"99999"
 		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"4"
+		}
 	}
 }

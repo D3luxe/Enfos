@@ -350,6 +350,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"duration"				"30"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"2"
+			}
 		}
 	}
 	//===============================================
@@ -2752,6 +2757,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"mana_per_tick"			"4.4"  // %total_mana / %buff_duration
 			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"5"
+			}
 		}
 	}
 	//=================================================================================================================
@@ -3862,6 +3872,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"mana_amount"				"2000"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"2"
+			}
 		}
 	}
 	//=================================================================================================================
@@ -3935,6 +3950,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"heal_amount"				"20000"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"10"
 			}
 		}
 	}
@@ -4344,6 +4364,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"heal_amount"				"999999"
 			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"10"
+			}
 		}
 	}
 	//=================================================================================================================
@@ -4417,6 +4442,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"mana_amount"				"99999"
+			}
+			"02"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"4"
 			}
 		}
 	}
@@ -5079,6 +5109,11 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_damage"			"60"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"30"
 			}
 		}
 	}	
@@ -6208,6 +6243,16 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"health"				"200"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_range"			"500"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"tooltip_charges"		"3"
 			}
 		}
 	}

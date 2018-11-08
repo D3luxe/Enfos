@@ -66,5 +66,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"bonus_damage"			"60"
 		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"30"
+		}
 	}
 }	
