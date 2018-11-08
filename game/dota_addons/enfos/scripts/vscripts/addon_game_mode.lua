@@ -1958,7 +1958,7 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 			caster.tome_combat = 0
 		end
 		-- 0 = str, 1 = agi, 2 = int
-		local primaryAttribute = caster:GetPrimaryAttribute()
+		--[[local primaryAttribute = caster:GetPrimaryAttribute()
 
 		if primaryAttribute == 0 then
 			local strength = math.floor(caster:GetStrength() * 2.5)
@@ -1983,7 +1983,19 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 			caster:SetBaseDamageMax(caster:GetBaseDamageMax() + caster.tome_combat - intellect)
 		else
 			print("Invalid primary attribute!")
+		end]]
+		
+		caster.tome_combat = caster.tome_combat + statBonus
+		
+		if not caster:HasModifier("modifier_manual_of_combat_stack") then
+			local hurtBook = CreateItem("item_manual_of_combat", nil, nil) 
+			hurtBook:ApplyDataDrivenModifier(caster, caster, "modifier_manual_of_combat_stack", {})
+			UTIL_RemoveImmediate(hurtBook)
+			hurtBook = nil
 		end
+
+		caster:SetModifierStackCount("modifier_manual_of_combat_stack", caster, caster.tome_combat)
+		
 	elseif stat == "all" then
 		hero:ModifyStrength(value)
 		hero:ModifyAgility(value)

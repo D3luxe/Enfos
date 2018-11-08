@@ -3254,7 +3254,24 @@
 		"ItemPermanent"					"0"
 		"IsTome"							"damage"
 		"Bonus_Stat"						"30"
+		
+		"Modifiers"
+		{
+			"modifier_manual_of_combat_stack"
+			{
+				"Attributes"	"MODIFIER_ATTRIBUTE_PERMANENT"
+				"IsBuff"		"1"
+				"IsPurgable"	"0"
+				"IsHidden"		"1"
+				
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"1"
+				}
+			}
 	
+		}
+		
 		"AbilitySpecial"
 		{
 			"01"
