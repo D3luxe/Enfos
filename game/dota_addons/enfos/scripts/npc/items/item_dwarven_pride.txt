@@ -20,8 +20,6 @@
 	
 	"AbilitySharedCooldown" 		"Vamp"
 	"AbilityCooldown"				"80.0"
-	
-	"ActiveDescriptionLine"         "2"
 
 	"OnSpellStart"
 	{
