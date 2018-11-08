@@ -89,12 +89,7 @@
 		"03"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"mana_per_tick"			"17.77778"  // %total_mana / %buff_duration
-		}
-		"04"
-		{
-			"var_type"				"FIELD_INTEGER"
-			"tooltip_charges"		"2"
+			"mana_per_tick"			"17.7"  // %total_mana / %buff_duration
 		}
 	}
 }

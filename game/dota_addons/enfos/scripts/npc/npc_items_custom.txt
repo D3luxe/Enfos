@@ -1237,11 +1237,6 @@
 				"var_type"				"FIELD_INTEGER"
 				"health_per_tick"			"25"  // %total_mana / %buff_duration
 			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tooltip_charges"		"8"
-			}
 		}
 	}
 	//===============================================
@@ -1533,6 +1528,8 @@
 		
 		"AbilitySharedCooldown" 		"Vamp"
 		"AbilityCooldown"				"80.0"
+		
+		"ActiveDescriptionLine"         "2"
 	
 		"OnSpellStart"
 		{
@@ -2491,12 +2488,7 @@
 			"03"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"mana_per_tick"			"17.77778"  // %total_mana / %buff_duration
-			}
-			"04"
-			{
-				"var_type"				"FIELD_INTEGER"
-				"tooltip_charges"		"2"
+				"mana_per_tick"			"17.7"  // %total_mana / %buff_duration
 			}
 		}
 	}
@@ -2925,7 +2917,7 @@
 		"AbilitySharedCooldown"			"Ivory"
 		"AbilityCooldown"				"50.0"
 		
-		"ActiveDescriptionLine"         "1"
+		"ActiveDescriptionLine"         "2"
 	
 		"OnSpellStart"
 		{
