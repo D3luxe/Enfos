@@ -2005,9 +2005,16 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 		local pointsUsed = 0
 
 		for i=0,7 do
-			if caster:GetAbilityByIndex(i) ~= nil and GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()].Innate == nil and caster:GetAbilityByIndex(i):IsCooldownReady() then
-				pointsUsed = pointsUsed + caster:GetAbilityByIndex(i):GetLevel()
-				caster:GetAbilityByIndex(i):SetLevel(0)
+			--print(caster:GetAbilityByIndex(i))
+			--print(GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()])
+			--print(GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()].Innate)
+			local nilCheck = GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()]
+			if nilCheck ~= nil then
+				local innateCheck = GameRules.AbilityKV[caster:GetAbilityByIndex(i):GetAbilityName()].Innate
+				if innateCheck == nil and caster:GetAbilityByIndex(i):IsCooldownReady() then
+					pointsUsed = pointsUsed + caster:GetAbilityByIndex(i):GetLevel()
+					caster:GetAbilityByIndex(i):SetLevel(0)
+				end
 			end
 		end
 		
