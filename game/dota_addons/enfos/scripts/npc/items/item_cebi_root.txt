@@ -90,5 +90,10 @@
 			"var_type"				"FIELD_INTEGER"
 			"health_per_tick"			"25"  // %total_mana / %buff_duration
 		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"8"
+		}
 	}
 }

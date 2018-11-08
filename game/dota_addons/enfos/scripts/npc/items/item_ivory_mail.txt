@@ -26,7 +26,7 @@
 	"AbilitySharedCooldown"			"Ivory"
 	"AbilityCooldown"				"50.0"
 	
-	"ActiveDescriptionLine"         "2"
+	"ActiveDescriptionLine"         "1"
 
 	"OnSpellStart"
 	{
