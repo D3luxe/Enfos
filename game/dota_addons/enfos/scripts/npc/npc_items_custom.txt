@@ -2854,6 +2854,11 @@
 				"var_type"				"FIELD_INTEGER"
 				"bonus_attack_speed"			"20"
 			}
+			"03"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"block_cooldown"		"8"
+			}
 		}
 	}
 	//=================================================================================================================
@@ -4289,6 +4294,21 @@
 			{
 				"var_type"				"FIELD_INTEGER"
 				"bonus_mana"			"675"
+			}
+			"04"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_int_tooltip"				"166"
+			}
+			"05"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"mana_regen_tooltip"			"755"
+			}
+			"06"
+			{
+				"var_type"				"FIELD_INTEGER"
+				"bonus_mana_tooltip"			"6755"
 			}
 		}
 	}
@@ -6310,7 +6330,7 @@
 			"01"
 			{
 				"var_type"				"FIELD_INTEGER"
-				"blink_range"		"1050"
+				"blink_range"		"1000"
 			}
 			"02"
 			{

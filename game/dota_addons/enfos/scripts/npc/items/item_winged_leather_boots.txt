@@ -52,7 +52,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"blink_range"		"1050"
+			"blink_range"		"1000"
 		}
 		"02"
 		{

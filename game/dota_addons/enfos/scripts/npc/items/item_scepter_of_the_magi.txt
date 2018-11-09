@@ -55,5 +55,20 @@
 			"var_type"				"FIELD_INTEGER"
 			"bonus_mana"			"675"
 		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int_tooltip"				"166"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen_tooltip"			"755"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana_tooltip"			"6755"
+		}
 	}
 }
