@@ -870,7 +870,7 @@ function HeroButtonPressed(event) {
 	}
 	
 	//armor and speed
-	$('#HeroArmBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].armor;
+	$('#HeroArmBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].armor - 2;
 	$('#HeroMRBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].mr+"%";
 	$('#HeroSpdBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].speed;
 	

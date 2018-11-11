@@ -5062,6 +5062,11 @@
 			}
 		}
 	}
+	"item_stat_modifier_lua"
+	{
+		"BaseClass"						"item_lua"
+		"ScriptFile"                    "items/luastats.lua"
+	}
 	//===============================================
 	// Stone Axe
 	//===============================================
