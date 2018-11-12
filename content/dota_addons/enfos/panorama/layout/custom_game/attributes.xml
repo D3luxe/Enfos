@@ -1,0 +1,12 @@
+<root>
+	<styles>
+		<include src="file://{resources}/styles/custom_game/attributes.css" />
+	</styles>
+	<scripts>
+		<include src="file://{resources}/scripts/custom_game/attributes.js" />
+	</scripts>
+	<Panel hittest="false" class="Main">
+		<Panel hittest="false" id="AbilityButton" />
+	</Panel>
+</root>
+

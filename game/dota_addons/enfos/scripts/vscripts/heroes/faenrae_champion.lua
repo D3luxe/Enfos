@@ -192,7 +192,12 @@ function ModelSwapStart( keys )
 	attackItem:ApplyDataDrivenModifier(caster, caster, "modifier_attack_chaos", {})
 	UTIL_RemoveImmediate(attackItem)
 	attackItem = nil
-
+	
+	local heroNetTable = {}
+	heroNetTable["npc_dota_hero_terrorblade"] = {
+		atktype = "modifier_attack_chaos",
+		armtype = "modifier_armor_hero"}
+	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 end
 
 function ModelSwapEnd( keys )
@@ -235,6 +240,12 @@ function ModelSwapEnd( keys )
 		attackItem:ApplyDataDrivenModifier(caster, caster, caster.attackType, {})
 		UTIL_RemoveImmediate(attackItem)
 		attackItem = nil
+		
+		local heroNetTable = {}
+		heroNetTable["npc_dota_hero_terrorblade"] = {
+			atktype = caster.attackType,
+			armtype = caster.armorType}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 	end
 end
 

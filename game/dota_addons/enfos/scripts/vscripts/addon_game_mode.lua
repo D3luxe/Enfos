@@ -1400,6 +1400,22 @@ function CEnfosGameMode:OnGameRulesStateChange()
 
 		Notifications:TopToAll({text="Remember to use your spellbringers!", duration=5.0})
 		
+		local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
+		local monNetTable = {}
+		local i = 1
+		while i < 43 do
+			local roundData = kvRound[string.format("Round"..i)]
+			monNetTable[roundData.UnitFodder_1a.NPCName] = {
+			atktype = roundData.UnitFodder_1a.AttackType,
+			armtype = roundData.UnitFodder_1a.ArmorType}
+			if roundData.UnitFodder_2a ~= nil then
+				monNetTable[roundData.UnitFodder_2a.NPCName] = {
+				atktype = roundData.UnitFodder_2a.AttackType,
+				armtype = roundData.UnitFodder_2a.ArmorType}
+			end
+			i=i+1
+		end
+		CustomNetTables:SetTableValue("monster_data_pretaped","dont_crash",monNetTable)
 	end
 end
 
@@ -3409,8 +3425,8 @@ function CEnfosGameMode:OnEntityKilled( event )
 
 		--print("No murrulas")
 		local level = killedUnit:GetLevel()
-		local baseRespawnTime = 45
-		killedUnit:SetTimeUntilRespawn(45 + level)
+		local baseRespawnTime = 30
+		killedUnit:SetTimeUntilRespawn(29 + level)
 		if killedUnit:GetTimeUntilRespawn() > 150 then
 			killedUnit:SetTimeUntilRespawn(150)
 		end
@@ -3867,6 +3883,11 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 		print("RANDOM SMALL: "..heroName)
 	end
 	print("Hero picked: "..heroName)
+	
+	--remove cannibal index
+	if cannibalIndex ~= nil then
+		cannibalIndex = nil
+	end
 	
 	--remove active starlight sphere
 	if player.sphere ~= nil and player.sphere:IsNull() == false then

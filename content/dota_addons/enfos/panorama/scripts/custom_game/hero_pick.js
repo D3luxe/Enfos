@@ -561,6 +561,7 @@ function PickCheck() {
 	} else {
 		$("#PickUIBase").visible = true;
 		GameUI.SetCameraTarget(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()));
+		$.Schedule(0.1,function() {GameUI.SelectUnit(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()),false);});
 		
 		//$('#PortraitBox').visible = false;
 		//$('#StatBox').visible = false;

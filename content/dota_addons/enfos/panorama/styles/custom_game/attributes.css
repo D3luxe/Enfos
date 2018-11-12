@@ -1,0 +1,117 @@
+.Main {
+	width: 100%;
+    height: 100%;
+}
+
+#AbilityButton
+{
+	border: 2px solid white;
+	background-color: #FF000000;
+	width: 100%;
+    height: 100%;
+}
+
+#DamageMask
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	//background-color: #ffdd00ff;
+	opacity: 0.8;
+}
+#DamageMaskPiercing
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	background-color: #00ff00FF;
+	opacity: 0.8;
+}
+#DamageMaskSiege
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	background-color: #ff0000FF;
+	opacity: 0.8;
+}
+#DamageMaskMagic
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	background-color: #00ffffFF;
+	opacity: 0.8;
+}
+#DamageMaskChaos
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	background-color: #aa00ccFF;
+	opacity: 0.8;
+}
+#DamageMaskHero
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex") 1;
+	background-color: #ffdd00ff;
+	opacity: 0.8;
+}
+#ArmorMask
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	//background-color: #ffdd00ff;
+	opacity: 0.8;
+}
+#ArmorMaskLight
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #00ff00FF;
+	opacity: 0.8;
+}
+#ArmorMaskMedium
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #ff0000FF;
+	opacity: 0.8;
+}
+#ArmorMaskHeavy
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #00ffffFF;
+	opacity: 0.8;
+}
+#ArmorMaskFortified
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #aa00ccFF;
+	opacity: 0.8;
+}
+#ArmorMaskHero
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #ffdd00ff;
+	opacity: 0.8;
+}
+#ArmorMaskNone
+{
+	width: 100%;
+    height: 100%;
+	opacity-mask: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex") 1;
+	background-color: #000000ff;
+	opacity: 0.8;
+}
