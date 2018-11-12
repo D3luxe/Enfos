@@ -116,7 +116,7 @@
 			<Panel id="TimeBox">
 				<Label id="TimeFont" text="LOADING" />
 			</Panel>
-			<Label id="TitleFont" text="'s Guild Shop" />
+			<Label id="TitleFont" text="Guild Shop" />
 			<Button id="CloseButton" onactivate="CloseButton()" />
 		</Panel>
 	</Panel>
