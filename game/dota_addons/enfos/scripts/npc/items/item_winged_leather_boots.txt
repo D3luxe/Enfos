@@ -40,10 +40,32 @@
 		{
 			"Passive"		"1"
 			"IsHidden"		"1"
-			"Properties"
+			//"Properties"
+			//{
+			//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
+			//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+			//}
+			"OnCreated"
 			{
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"-1"
+				}
 			}
 		}
 	}

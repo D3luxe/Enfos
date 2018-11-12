@@ -60,6 +60,21 @@ function Stats:ModifyStatBonuses(unit)
 	local damage_adjustment = DMG_PER_STAT - DEFAULT_DMG_PER_STAT]]
 	
 	local att = hero:GetPrimaryAttribute()
+	
+	--[[if att == DOTA_ATTRIBUTE_STRENGTH then
+		hp_adjustment = HP_PER_STR - DEFAULT_HP_PER_STR_HERO
+		hp_regen_adjustment = HP_REGEN_PER_STR - DEFAULT_HP_REGEN_PER_STR_HERO
+		magic_resist_adjustment = RESIST_PER_STR - DEFAULT_RESIST_PER_STR_HERO
+	end
+	if att == DOTA_ATTRIBUTE_INTELLECT then
+		local mana_adjustment = MANA_PER_INT - DEFAULT_MANA_PER_INT_HERO
+		local mana_regen_adjustment = MANA_REGEN_PER_INT - DEFAULT_MANA_REGEN_PER_INT_HERO
+		local spell_amp_adjustment = AMP_PER_INT - DEFAULT_AMP_PER_INT_HERO
+	end
+	if att == DOTA_ATTRIBUTE_AGILITY then
+		local armor_adjustment = ARMOR_PER_AGI - DEFAULT_ARMOR_PER_AGI
+		local attackspeed_adjustment = ATKSPD_PER_AGI - DEFAULT_ATKSPD_PER_AGI
+	end]]
 
 	print("Modifying Stats Bonus of hero "..hero:GetUnitName())
 
@@ -112,9 +127,23 @@ function Stats:ModifyStatBonuses(unit)
 		local movespeed = hero:GetIdealSpeed()
 		local basespeed = hero:GetBaseMoveSpeed()
 		local damageStat = 0
-		if att == DOTA_ATTRIBUTE_STRENGTH then damageStat = strength end
-		if att == DOTA_ATTRIBUTE_AGILITY then damageStat = agility end
-		if att == DOTA_ATTRIBUTE_INTELLECT then damageStat = intellect end
+		local damageStatBase = 0
+		local damageStatPlus = 0
+		if att == DOTA_ATTRIBUTE_STRENGTH then
+			damageStat = strength
+			damageStatBase = hero.strength
+			damageStatPlus = hero.strength_bonus
+		end
+		if att == DOTA_ATTRIBUTE_AGILITY then
+			damageStat = agility
+			damageStatBase = hero.agility
+			damageStatPlus = hero.agility_bonus
+		end
+		if att == DOTA_ATTRIBUTE_INTELLECT then
+			damageStat = intellect
+			damageStatBase = hero.intellect
+			damageStatPlus = hero.intellect_bonus
+		end
 		-- Adjustments
 
 		-- STR
@@ -126,7 +155,7 @@ function Stats:ModifyStatBonuses(unit)
 			end
 
 			--local health_stacks = strength * hp_adjustment
-			local health_stacks = hero.strength * HP_PER_STR
+			local health_stacks = strength * HP_PER_STR
 			--print("Giving "..health_stacks.." health stacks of "..hp_adjustment.." adjustment")
 			hero:SetModifierStackCount("modifier_health_bonus", hero, health_stacks)
 
@@ -174,13 +203,13 @@ function Stats:ModifyStatBonuses(unit)
 			-- To remove armor (such as in Enfos 20 agi = 1 armor instead of 7 agi) you have to also remove the default armor gained
 			
 			--local armorAdjustment = (ARMOR_PER_AGI * agility) - (DEFAULT_ARMOR_PER_AGI * agility) + (hero.baseArmor - 2)
-			local armorAdjustment = (ARMOR_PER_AGI * agility) + hero.baseArmor
+			local armorAdjustment = (ARMOR_PER_AGI * hero.agility) + hero.baseArmor
 			hero:SetPhysicalArmorBaseValue(armorAdjustment)
-			--[[if not hero:HasModifier("modifier_physical_armor_bonus") then
+			if not hero:HasModifier("modifier_physical_armor_bonus") then
 				applier:ApplyDataDrivenModifier(hero, hero, "modifier_physical_armor_bonus", {})
 			end
-			local armorAdjustment = (ARMOR_PER_AGI * agility * 100) - 2
-			hero:SetModifierStackCount("modifier_physical_armor_bonus", hero, armorAdjustment)]]
+			local armorAdjustment = ARMOR_PER_AGI * hero.agility_bonus * 100
+			hero:SetModifierStackCount("modifier_physical_armor_bonus", hero, armorAdjustment)
 			
 			--Move Speed Bonus
 			hero:SetBaseMoveSpeed(hero.speedbase + (MOVE_SPEED_PER_AGI * agility))
@@ -250,9 +279,20 @@ function Stats:ModifyStatBonuses(unit)
 				applier:ApplyDataDrivenModifier(hero, hero, "modifier_damage_bonus", {})
 			end
 
-			local damage_stacks = damageStat
+			local damage_stacks = damageStatBase
 			--print("Giving "..damage_stacks.." stacks of "..damage_adjustment.." damage")
 			hero:SetModifierStackCount("modifier_damage_bonus", hero, damage_stacks)
+			
+			if not hero:HasModifier("modifier_damage_bonus_plus") then
+				applier:ApplyDataDrivenModifier(hero, hero, "modifier_damage_bonus_plus", {})
+			end
+			if not hero:HasModifier("modifier_damage_bonus_minus") then
+				applier:ApplyDataDrivenModifier(hero, hero, "modifier_damage_bonus_minus", {})
+				hero:SetModifierStackCount("modifier_damage_bonus_minus", hero, 1)
+			end
+			
+			local damage_stacks_plus = damageStatPlus
+			hero:SetModifierStackCount("modifier_damage_bonus_plus", hero, damage_stacks_plus+1)
 		end
 		
 		-- Update the stored values for next timer cycle

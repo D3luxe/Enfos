@@ -238,10 +238,32 @@
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
 					"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
 				}	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -916,10 +938,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				//}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -1275,12 +1319,34 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				//}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -1438,12 +1504,34 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -1557,7 +1645,7 @@
 	
 		"Modifiers"
 		{
-			"modifier_bloodthirst"
+			"modifier_dwarven_pride"
 			{
 				"Passive"			"1"
 				"IsHidden"			"1"
@@ -1565,7 +1653,29 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%damage"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
+					//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%strength"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%strength"
+						"gain"			"-1"
+					}
 				}
 			}
 			"modifier_vampiric_potion"
@@ -1682,9 +1792,31 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MANA_BONUS" 					"%bonus_mana"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
 				}	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -1759,10 +1891,32 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%move_speed"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
+					//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
 					"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%evasion"
 				}	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"double_bonus"
+						"amount"		"%bonus_agi"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"double_bonus"
+						"amount"		"%bonus_agi"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -1919,10 +2073,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"agility_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"agility_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -3363,10 +3539,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -4124,12 +4322,34 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -4172,10 +4392,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"strength_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -4218,10 +4460,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -4267,10 +4531,32 @@
 				"IsHidden"			"1"
 				"Properties"
 				{
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
 					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
 					"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
 				}	
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"intellect_bonus"
+						"amount"		"%bonus_int"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	
@@ -4975,6 +5261,24 @@
 					"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"2.5"
 				}
 			}
+			"modifier_damage_bonus_plus"
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"2.5"
+				}
+			}
+			"modifier_damage_bonus_minus" //because stacks are always on
+			{
+				"IsHidden"				"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
+				"Properties"
+				{
+					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"-2.5"
+				}
+			}
 			"modifier_health_bonus"
 			{
 				"IsHidden"			"1"  
@@ -4996,6 +5300,17 @@
 					"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"0.01"
 				}
 			}
+			
+			"modifier_health_regen_percentage"
+			{
+				"IsHidden"			"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					
+					"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"0.01"
+				}
+			} 
 	
 			"modifier_mana_bonus"
 			{
@@ -5018,6 +5333,17 @@
 					"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"0.01"
 				}
 			}
+			
+			"modifier_mana_regen_percentage"
+			{
+				"IsHidden"			"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					
+					"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"0.01"
+				}
+			} 
 	
 			"modifier_physical_armor_bonus"
 			{
@@ -5058,6 +5384,17 @@
 				{
 					
 					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1"
+				}
+			}
+			
+			"modifier_movespeed_bonus_constant"
+			{
+				"IsHidden"			"1"  
+				"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+				"Properties"
+				{
+					
+					"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"1"
 				}
 			}
 		}
@@ -5313,9 +5650,31 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"-1"
+					}
 				}
 			}
 		}
@@ -5899,9 +6258,31 @@
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"-1"
+					}
 				}
 			}
 	
@@ -6011,13 +6392,40 @@
 						}
 					}
 				}
-	
+			}
+			"modifier_uthmors_skullcleaver_stats" //oops
+			{
+				"Passive"			"1"
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				"Properties"
 				{
 					"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-					"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+					//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				}
+				"OnCreated"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"all_bonus"
+						"amount"		"%all_stats"
+						"gain"			"-1"
+					}
 				}
 			}
 	
@@ -6323,10 +6731,32 @@
 			{
 				"Passive"		"1"
 				"IsHidden"		"1"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
+				//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+				//}
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
-					"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"double_bonus"
+						"amount"		"%bonus_agi"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"double_bonus"
+						"amount"		"%bonus_agi"
+						"gain"			"-1"
+					}
 				}
 			}
 		}
@@ -6375,10 +6805,32 @@
 				"Passive"			"1"
 				"IsHidden"			"1"
 				"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-				"Properties"
+				//"Properties"
+				//{
+				//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
+				//}	
+				"OnCreated"
 				{
-					"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 		"%bonus_stat"
-				}	
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"agility_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"1"
+					}
+				}
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"items/items_shared.lua"
+						"Function"		"attribute_bonus_update"
+						"attname"		"agility_bonus"
+						"amount"		"%bonus_stat"
+						"gain"			"-1"
+					}
+				}
 			}
 		}
 	

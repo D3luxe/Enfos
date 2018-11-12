@@ -203,3 +203,33 @@ function lure_off(keys)
 
 	target:SetForceAttackTarget(nil)
 end
+
+function attribute_bonus_update(keys)
+	local caster = keys.caster
+	local attname = keys.attname
+	local amount = keys.amount
+	local gain = keys.gain
+	--print(attname)
+	if attname == "double_bonus" then
+		--print(caster.agility_bonus)
+		--print(caster.intellect_bonus)
+		caster.agility_bonus = caster.agility_bonus + (amount * gain)
+		caster.intellect_bonus = caster.intellect_bonus + (amount * gain)
+		--print(caster.agility_bonus)
+		--print(caster.intellect_bonus)
+	elseif attname == "all_bonus" then
+		--print(caster.strength_bonus)
+		--print(caster.agility_bonus)
+		--print(caster.intellect_bonus)
+		caster.strength_bonus = caster.strength_bonus + (amount * gain)
+		caster.agility_bonus = caster.agility_bonus + (amount * gain)
+		caster.intellect_bonus = caster.intellect_bonus + (amount * gain)
+		--print(caster.strength_bonus)
+		--print(caster.agility_bonus)
+		--print(caster.intellect_bonus)
+	else
+		--print(caster[attname])
+		caster[attname] = caster[attname] + (amount * gain)
+		--print(caster[attname])
+	end
+end

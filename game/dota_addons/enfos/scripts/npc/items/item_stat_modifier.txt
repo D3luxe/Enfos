@@ -14,6 +14,24 @@
 				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"2.5"
 			}
 		}
+		"modifier_damage_bonus_plus"
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"2.5"
+			}
+		}
+		"modifier_damage_bonus_minus" //because stacks are always on
+		{
+			"IsHidden"				"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"  
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE"	"-2.5"
+			}
+		}
 		"modifier_health_bonus"
 		{
 			"IsHidden"			"1"  
@@ -35,6 +53,17 @@
 				"MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT"	"0.01"
 			}
 		}
+		
+		"modifier_health_regen_percentage"
+		{
+			"IsHidden"			"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE"	"0.01"
+			}
+		} 
 
 		"modifier_mana_bonus"
 		{
@@ -57,6 +86,17 @@
 				"MODIFIER_PROPERTY_BASE_MANA_REGEN"	"0.01"
 			}
 		}
+		
+		"modifier_mana_regen_percentage"
+		{
+			"IsHidden"			"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE"	"0.01"
+			}
+		} 
 
 		"modifier_physical_armor_bonus"
 		{
@@ -97,6 +137,17 @@
 			{
 				
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"-1"
+			}
+		}
+		
+		"modifier_movespeed_bonus_constant"
+		{
+			"IsHidden"			"1"  
+			"Attributes"		"MODIFIER_ATTRIBUTE_PERMANENT"
+			"Properties"
+			{
+				
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_CONSTANT"	"1"
 			}
 		}
 	}

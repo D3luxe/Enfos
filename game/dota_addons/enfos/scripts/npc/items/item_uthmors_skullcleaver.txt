@@ -49,13 +49,40 @@
 					}
 				}
 			}
-
+		}
+		"modifier_uthmors_skullcleaver_stats" //oops
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsPurgable"		"0"
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%bonus_damage"
-				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+				//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS" 			"%all_stats"
+				//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS" 			"%all_stats"
+				//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%all_stats"
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"all_bonus"
+					"amount"		"%all_stats"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"all_bonus"
+					"amount"		"%all_stats"
+					"gain"			"-1"
+				}
 			}
 		}
 

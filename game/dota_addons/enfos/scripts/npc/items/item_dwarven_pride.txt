@@ -39,7 +39,7 @@
 
 	"Modifiers"
 	{
-		"modifier_bloodthirst"
+		"modifier_dwarven_pride"
 		{
 			"Passive"			"1"
 			"IsHidden"			"1"
@@ -47,7 +47,29 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%damage"
-				"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
+				//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"strength_bonus"
+					"amount"		"%strength"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"strength_bonus"
+					"amount"		"%strength"
+					"gain"			"-1"
+				}
 			}
 		}
 		"modifier_vampiric_potion"
