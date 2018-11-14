@@ -3463,8 +3463,8 @@ function CEnfosGameMode:OnEntityKilled( event )
 		local level = killedUnit:GetLevel()
 		local baseRespawnTime = 30
 		killedUnit:SetTimeUntilRespawn(29 + level)
-		if killedUnit:GetTimeUntilRespawn() > 150 then
-			killedUnit:SetTimeUntilRespawn(150)
+		if killedUnit:GetTimeUntilRespawn() > 180 then
+			killedUnit:SetTimeUntilRespawn(180)
 		end
 
 		killedUnit:SetBuybackGoldLimitTime(0)
