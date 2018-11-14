@@ -126,7 +126,7 @@ end
 function lua_attribute_bonus_modifier:GetAttributes() 
 	return MODIFIER_ATTRIBUTE_IGNORE_INVULNERABLE + MODIFIER_ATTRIBUTE_PERMANENT
 end
-
+--[[
 function lua_attribute_bonus_modifier:GetModifierBonusStats_Strength()
 	return self:GetModifierBonusStats_All(0, self:GetParent():GetStrengthGain())
 end
@@ -142,4 +142,4 @@ function lua_attribute_bonus_modifier:GetModifierBonusStats_All(nType, nBonus)
 	local nLevel = hAbility:GetLevel()
 	--
 	return (attribute_table[nLevel])
-end
+end]]

@@ -194,7 +194,7 @@ function ModelSwapStart( keys )
 	attackItem = nil
 	
 	local heroNetTable = {}
-	heroNetTable["npc_dota_hero_terrorblade"] = {
+	heroNetTable[caster:GetPlayerID()] = {
 		atktype = "modifier_attack_chaos",
 		armtype = "modifier_armor_hero"}
 	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
@@ -242,7 +242,7 @@ function ModelSwapEnd( keys )
 		attackItem = nil
 		
 		local heroNetTable = {}
-		heroNetTable["npc_dota_hero_terrorblade"] = {
+		heroNetTable[caster:GetPlayerID()] = {
 			atktype = caster.attackType,
 			armtype = caster.armorType}
 		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)

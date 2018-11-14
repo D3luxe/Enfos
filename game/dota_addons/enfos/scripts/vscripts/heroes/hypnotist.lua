@@ -20,9 +20,9 @@ function Prediction(keys)
 		minIncrease = minIncrease - 2
 	end 
 -- reset the values
-	target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
+	--[[target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
 	target:SetBaseAgility(target:GetBaseAgility() - Enfos.agiPrediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])
+	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])]]
 
 -- Add the stacking modifier if player doesnt have them
 	if not target:HasModifier("modifier_prediction_str") then
@@ -48,9 +48,12 @@ function Prediction(keys)
 	Enfos.intPrediction[pid] = Enfos.intPrediction[pid] + intIncreaseAmount
 	print("Str: "..strIncreaseAmount.." | Agi: "..agiIncreaseAmount.." | Int: "..intIncreaseAmount)
 -- set the increase
-	target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
-	target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
+	--target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
+	target.strength = target.strength + strIncreaseAmount
+	--target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
+	target.agility = target.agility + agiIncreaseAmount
+	--target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
+	target.intellect = target.intellect + intIncreaseAmount
 -- Adjust the stacks for display only
 	target:SetModifierStackCount("modifier_prediction_str", caster, Enfos.strPrediction[pid])
 	target:SetModifierStackCount("modifier_prediction_agi", caster, Enfos.agiPrediction[pid])
@@ -127,6 +130,13 @@ function Prediction(keys)
 	
 -- recalculate the stats
 	target:CalculateStatBonus()
+	--stat update
+	local heroNetTable = {}
+	heroNetTable[target:GetPlayerID()] = {
+		str = target.strength,
+		agi = target.agility,
+		int = target.intellect}
+	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 	
 	if caster.repick == 0 then caster.repick = 1 end
 end

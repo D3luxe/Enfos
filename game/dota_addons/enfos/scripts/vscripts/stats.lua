@@ -103,6 +103,7 @@ function Stats:ModifyStatBonuses(unit)
 			hero.speedagi = 0
 			hero.speedbase = hero:GetBaseMoveSpeed()
 			hero.damage_bonus = 0
+			hero.attribute_level = 0
 			
 			for k, v in pairs(GameRules.HeroKV) do
 				if hero:GetUnitName() == v.override_hero then
@@ -118,6 +119,16 @@ function Stats:ModifyStatBonuses(unit)
 			if not hero:HasModifier("modifier_movespeed_cap") then
 				hero:AddNewModifier( hero, applier2, "modifier_movespeed_cap", {} )
 			end
+			
+			local heroNetTable = {}
+			heroNetTable[hero:GetPlayerID()] = {
+				str = hero.strength,
+				strbn = 0,
+				agi = hero.agility,
+				agibn = 0,
+				int = hero.intellect,
+				intbn = 0}
+			CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 		end
 
 		-- Get player attribute values

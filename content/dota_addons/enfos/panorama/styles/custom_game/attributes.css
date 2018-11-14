@@ -115,3 +115,48 @@
 	background-color: #000000ff;
 	opacity: 0.8;
 }
+
+#StatNumberBase
+{
+    font-size: 14px;
+    font-weight: medium;
+	letter-spacing: 0px;
+    color: #45DD3B;
+    margin-top: 0px;
+    margin-left: 1px;
+    text-shadow: 1px 1px 2px 3 #00000066;
+    font-family: RadianceM;
+    text-align: left;
+    vertical-align: center;
+    pre-transform-scale2d: 1;
+    transition-property: transform, opacity, width, pre-transform-scale2d;
+	transition-duration: 0.12s;
+	transition-timing-function: ease-in-out;
+}
+
+.StatAnimator
+{
+	pre-transform-scale2d: 1.25;
+	text-shadow: 0px 0px 2px 3 #33993366;
+	color: #A5FF9B;
+}
+
+.StatPlus
+{
+	color: #45DD3B;
+}
+
+.StatPlusUp
+{
+	color: #A5FF9B;
+}
+
+.StatNormal
+{
+	color: #A1A1A2;
+}
+
+.StatMinus
+{
+	color: #FF3300;
+}

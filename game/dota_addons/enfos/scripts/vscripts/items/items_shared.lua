@@ -232,4 +232,15 @@ function attribute_bonus_update(keys)
 		caster[attname] = caster[attname] + (amount * gain)
 		--print(caster[attname])
 	end
+	
+	--stat update
+	local heroNetTable = {}
+	heroNetTable[caster:GetPlayerID()] = {
+		str = caster.strength,
+		strbn = caster.strength_bonus,
+		agi = caster.agility,
+		agibn = caster.agility_bonus,
+		int = caster.intellect,
+		intbn = caster.intellect_bonus}
+	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 end

@@ -1666,7 +1666,11 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	local spawnedUnit = event.hero
 	local spawnedUnitIndex = EntIndexToHScript(event.heroindex)
 	local player = EntIndexToHScript(event.player)
-
+	
+	if player == nil then
+		print("WARNING: NOT A REAL BOY")
+		return
+	end
 	--Initialize variables for tracking
 	player.pickHover = spawnedUnitIndex:GetClassname()
 	--if player.spawned == nil then
@@ -1957,12 +1961,19 @@ end
 function CEnfosGameMode:UseTome(hero, stat, value)
 	print(hero:GetName().." "..stat.." "..value)
 	EmitSoundOn("DOTA_Item.Refresher.Activate", hero)
+	local update = false
 	if stat == "strength" then
-		hero:ModifyStrength(value)
+		--hero:ModifyStrength(value)
+		hero.strength = hero.strength+value
+		update = true
 	elseif stat == "intellect" then
-		hero:ModifyIntellect(value)
+		--hero:ModifyIntellect(value)
+		hero.intellect = hero.intellect+value
+		update = true
 	elseif stat == "agility" then
-		hero:ModifyAgility(value)
+		--hero:ModifyAgility(value)
+		hero.agility = hero.agility+value
+		update = true
 	elseif stat == "gold" then
 		local oldGold = hero:GetGold()
 		local newGold = oldGold + value
@@ -2013,9 +2024,13 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 		caster:SetModifierStackCount("modifier_manual_of_combat_stack", caster, caster.tome_combat)
 		
 	elseif stat == "all" then
-		hero:ModifyStrength(value)
-		hero:ModifyAgility(value)
-		hero:ModifyIntellect(value)
+		--hero:ModifyStrength(value)
+		--hero:ModifyAgility(value)
+		--hero:ModifyIntellect(value)
+		hero.strength = hero.strength+value
+		hero.agility = hero.agility+value
+		hero.intellect = hero.intellect+value
+		update = true
 	elseif stat == "respec" then
 		local caster = hero
 		local pointsUsed = 0
@@ -2039,6 +2054,16 @@ function CEnfosGameMode:UseTome(hero, stat, value)
 	elseif stat == "lumber" then
 		local player = hero:GetPlayerOwner()
 		ModifyLumber(player, value)
+	end
+	
+	if update == true then
+		--stat update
+		local heroNetTable = {}
+		heroNetTable[hero:GetPlayerID()] = {
+			str = hero.strength,
+			agi = hero.agility,
+			int = hero.intellect}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 	end
 end
 
@@ -3147,6 +3172,17 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 		local markedLevels = {[17]=true,[19]=true,[21]=true,[22]=true,[23]=true,[24]=true}
 		if markedLevels[hero:GetLevel()] then hero:SetAbilityPoints(hero:GetAbilityPoints()+1) end
 		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
+		
+		--stat update
+		local heroNetTable = {}
+		heroNetTable[hero:GetPlayerID()] = {
+			str = hero.strength,
+			strbn = hero.strength_bonus,
+			agi = hero.agility,
+			agibn = hero.agility_bonus,
+			int = hero.intellect,
+			intbn = hero.intellect_bonus}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 	else
 		print("Invalid player!")
 	end
