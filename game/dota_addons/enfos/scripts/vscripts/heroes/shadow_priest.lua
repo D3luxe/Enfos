@@ -253,10 +253,13 @@ function greater_hallucination(keys)
 	heroNetTable[illusion:entindex()] = {
 		strength = illusion.strength,
 		strength_bonus = illusion.strength_bonus,
+		strength_gain = illusion.strength_gain,
 		agility = illusion.agility,
 		agility_bonus = illusion.agility_bonus,
+		agility_gain = illusion.agility_gain,
 		intellect = illusion.intellect,
-		intellect_bonus = illusion.intellect_bonus}
+		intellect_bonus = illusion.intellect_bonus,
+		intellect_gain = illusion.intellect_gain}
 	CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 end
 

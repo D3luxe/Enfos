@@ -160,3 +160,180 @@
 {
 	color: #FF3300;
 }
+
+#TooltipNumberBase
+{
+	color: #3ed038;
+	font-size: 18px;
+	font-weight: bold;
+}
+.NoBonus
+{
+	visibility: collapse;
+}
+
+.SuperInflator
+{
+	height: 374px;
+}
+
+#Tha_Epic_Box
+{
+	width: 100%;
+	height: 100%;
+	//background-color: #FF0000FF;
+	background-image: url("file://{images}/items/belt_of_strength.png");
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 100% 80%;
+	opacity: 0.2;
+}
+
+#AttackTypeContainer, #DefenseTypeContainer
+{
+	width: 100%;
+	height: 100%;
+	//background-color: #FF0000FF;
+	//background-image: url("file://{images}/items/belt_of_strength.png");
+	//background-position: center top;
+	//background-repeat: no-repeat;
+	//background-size: 100% 80%;
+	//opacity: 0.2;
+	flow-children: none;
+}
+
+#BGBox
+{
+	width: 100%;
+	height: 80%;
+	margin-top: 28px;
+	background-image: url("file://{images}/items/belt_of_strength.png");
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	opacity: 0.2;
+	//background-color: #0000FFFF;
+	opacity-mask: url("s2r://panorama/images/custom_game/gradient_mask.png") 1.05;
+}
+
+#FlowBox
+{
+	width: 100%;
+	height: 100%;
+	//background-color: #00FF0033;
+	flow-children: down;
+}
+
+#OverBox
+{
+	width: 100%;
+	height: 100%;
+	background-color: #000000FF;
+}
+#OverLabel
+{
+	font-weight: normal;
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 32px;
+	color: #d9d9d9;
+}
+
+#AttackTypeHeader, #DefenseTypeHeader
+{
+	font-size: 20px;
+	horizontal-align: center;
+	letter-spacing: 2px;
+	font-weight: bold;
+	//color: #656565;
+	margin-bottom: 5px;
+}
+
+#TypeStatLabel
+{
+	font-weight: normal;
+	horizontal-align: left;
+	font-size: 16px;
+	margin-left: 19px;
+	color: #a2a2a2;
+	text-shadow: 1px 1px 2px 3 #00000066;
+}
+
+#LeftRightFlow
+{
+	flow-children: right;
+}
+
+#TypeStatLabelRight
+{
+	//color: white;
+	text-align: left;
+	margin-left: 101px;
+	font-size: 16px;
+	text-shadow: 1px 1px 2px 3 #00000066;
+}
+
+#TypeIconAttack
+{
+	background-image: url("s2r://panorama/images/hud/reborn/icon_damage_psd.vtex");
+	width: 14px;
+	height: 14px;
+	margin-top: 2px;
+	margin-left: 5px;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+}
+#TypeIconArmor
+{
+	background-image: url("s2r://panorama/images/hud/reborn/icon_armor_psd.vtex");
+	width: 14px;
+	height: 14px;
+	margin-top: 2px;
+	margin-left: 5px;
+	background-position: left center;
+	background-repeat: no-repeat;
+	background-size: 14px 14px;
+}
+.TypeLabelGood
+{
+	color: #66ff66;
+}
+.TypeLabelNormal
+{
+	color: white;
+}
+.TypeLabelBad
+{
+	color: #ff6666;
+}
+
+.StatLabelBlack
+{
+	color: #545454;
+	//color: #656565;
+}
+.StatLabelNormal
+{
+	color: #b2b2b2;
+}
+.StatLabelGreen
+{
+	color: #54f254;
+}
+.StatLabelRed
+{
+	color: #f25454;
+}
+.StatLabelBlue
+{
+	color: #54f2f2;
+}
+.StatLabelPurple
+{
+	color: #ac54c7;
+}
+.StatLabelYellow
+{
+	color: #f2d554;
+}

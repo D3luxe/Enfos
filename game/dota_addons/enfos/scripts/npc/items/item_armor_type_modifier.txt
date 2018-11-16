@@ -19,7 +19,7 @@
 		"modifier_armor_unarmored"
 		{
 			"TextureName" "enfos\unarmored"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -34,7 +34,7 @@
 		"modifier_armor_light"
 		{
 			"TextureName" "enfos\light_armor"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -49,7 +49,7 @@
 		"modifier_armor_medium"
 		{
 			"TextureName" "enfos\medium_armor"
-			"IsHidden"				"0" 
+			"IsHidden"				"1" 
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -64,7 +64,7 @@
 		"modifier_armor_heavy"
 		{
 			"TextureName" "enfos\heavy_armor"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -79,7 +79,7 @@
 		"modifier_armor_fortified"
 		{
 			"TextureName" "enfos\fortified_armor"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -94,7 +94,7 @@
 		"modifier_armor_hero"
 		{
 			"TextureName" "enfos\hero_armor"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{
@@ -109,7 +109,7 @@
 		"modifier_armor_divine"
 		{
 			"TextureName" "enfos\divine_armor"
-			"IsHidden"				"0"  
+			"IsHidden"				"1"  
 			"IsPurgable" "0"
 			"OnCreated"
 			{

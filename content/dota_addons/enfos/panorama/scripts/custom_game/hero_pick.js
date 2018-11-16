@@ -707,7 +707,7 @@ function HeroButtonPressed(event) {
 		}
 		if(heroData[event].atktype == "modifier_attack_siege") {
 			$('#AttLeftBox').FindChildTraverse("AttTinyLabel").text = "Siege";
-			$('#AttLeftBox').FindChildTraverse("oops").SetImage("file://{images}/items/mythril_hammer.png");
+			$('#AttLeftBox').FindChildTraverse("oops").SetImage("file://{images}/items/mithril_hammer.png");
 			$('#AttLeftBox').SetPanelEvent(
 			"onmouseover",
 			function(){

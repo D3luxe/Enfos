@@ -159,7 +159,31 @@ function Hallucination(keys)
 	unit:SetHullRadius(targetHull)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
+	
+	local armorItem = CreateItem("item_armor_type_modifier", nil, nil) 
+	if target:HasModifier("modifier_armor_unarmored") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_unarmored", {}) end
+	if target:HasModifier("modifier_armor_light") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_light", {}) end
+	if target:HasModifier("modifier_armor_medium") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_medium", {}) end
+	if target:HasModifier("modifier_armor_heavy") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_heavy", {}) end
+	if target:HasModifier("modifier_armor_fortified") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_fortified", {}) end
+	if target:HasModifier("modifier_armor_hero") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_hero", {}) end
+	UTIL_RemoveImmediate(armorItem)
+	armorItem = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	if target:HasModifier("modifier_attack_normal") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_normal", {}) end
+	if target:HasModifier("modifier_attack_pierce") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_pierce", {}) end
+	if target:HasModifier("modifier_attack_siege") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_siege", {}) end
+	if target:HasModifier("modifier_attack_chaos") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_chaos", {}) end
+	if target:HasModifier("modifier_attack_hero") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_hero", {}) end
+	if target:HasModifier("modifier_attack_magical") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_magical", {}) end
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+	
+	if target:HasModifier("modifier_armor_unarmored") then end
+	
 	thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
+	--PrintTable(target:FindAllModifiers());
 end
 
 function MindShout(keys) -- warning: the sound effect for this can get a bit loud.

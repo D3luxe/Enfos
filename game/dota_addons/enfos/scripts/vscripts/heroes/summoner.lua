@@ -75,6 +75,12 @@ function SummonHellbearWarriors(keys)
 			if thisSpellLevel == 10 then
 				v:SetMana(200)
 			end
+			
+			local heroNetTable = {}
+			heroNetTable[v:entindex()] = {
+				attack = "modifier_attack_normal",
+				armor = "modifier_armor_heavy"}
+			CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 		end
 	end
 end
@@ -112,6 +118,12 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
 			v:SetNoCorpse()
+			
+			local heroNetTable = {}
+			heroNetTable[v:entindex()] = {
+				attack = "modifier_attack_chaos",
+				armor = "modifier_armor_medium"}
+			CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 		end
 	end
 end
