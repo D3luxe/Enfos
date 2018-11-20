@@ -210,6 +210,8 @@ function greater_hallucination(keys)
 	---
 	---
 	
+	--illusion:AddNewModifier(illusion, nil, "modifier_kill", {duration = sDuration})
+	applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
 	
 	-- Level Up the unit to the casters level
 	local targetLevel = target:GetLevel()
@@ -226,9 +228,29 @@ function greater_hallucination(keys)
 			local abilityName = ability:GetAbilityName()
 			local illusionAbility = illusion:FindAbilityByName(abilityName)
 			if illusionAbility ~= nil then
-				illusionAbility:SetLevel(abilityLevel)
+				if CEnfosGameMode:CheckEffigySpell(abilityName,abilitySlot) == true then
+					illusionAbility:SetLevel(abilityLevel)
+				end
 			end
 		end
+	end
+	
+	if target:FindModifierByName("modifier_sniper_technique") ~= nil then
+		illusion:RemoveAbility("sniper_standard_technique")
+		illusion:AddAbility("sniper_sniper_technique")
+		illusion:FindAbilityByName("sniper_sniper_technique"):SetLevel(1)
+		illusion:AddNewModifier(illusion, illusion:FindAbilityByName("sniper_sniper_technique"), "modifier_sniper_technique", {})
+		illusion:FindAbilityByName("sniper_sniper_technique"):SetLevel(0)
+	end
+	
+	if target:FindModifierByName("modifier_weaponsmith_forge_stack") ~= nil then
+		illusion:AddAbility("weaponsmith_forge")
+		illusion:FindAbilityByName("weaponsmith_forge"):SetLevel(
+			target:FindAbilityByName("weaponsmith_forge"):GetLevel()
+		)
+		illusion::FindAbilityByName("weaponsmith_forge"):ApplyDataDrivenModifier( illusion, illusion, "modifier_weaponsmith_forge_stack", {} )
+		illusion:SetModifierStackCount("modifier_weaponsmith_forge_stack", illusion, target:GetModifierStackCount("modifier_weaponsmith_forge_stack",target))
+		illusion:FindAbilityByName("weaponsmith_forge"):SetLevel(0)
 	end
 
 	-- Recreate the items of the caster
@@ -245,9 +267,22 @@ function greater_hallucination(keys)
 	-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
 	illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
 	ability:ApplyDataDrivenModifier(caster, illusion, "modifier_illusion_lifesteal", {})
+	ability:ApplyDataDrivenModifier(caster, illusion, "modifier_purification_target", {})
 	
 	-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
 	illusion:MakeIllusion()
+	
+	local atkchange = false
+	
+	if target:FindModifierByName("modifier_faenrae_champion_inner_chaos") ~= nil then
+		illusion:FindAbilityByName("faenrae_champion_inner_chaos"):SetLevel(
+			target:FindAbilityByName("faenrae_champion_inner_chaos"):GetLevel()
+		)
+		illusion:FindAbilityByName("faenrae_champion_inner_chaos"):ApplyDataDrivenModifier( illusion, illusion, "modifier_faenrae_champion_inner_chaos", {duration = 45} )
+		--illusion:AddNewModifier(illusion, illusion:FindAbilityByName("faenrae_champion_inner_chaos"), "modifier_faenrae_champion_inner_chaos", {duration = 45})
+		illusion:FindAbilityByName("faenrae_champion_inner_chaos"):SetLevel(0)
+		atkchange = true
+	end
 	
 	local heroNetTable = {}
 	heroNetTable[illusion:entindex()] = {
@@ -260,24 +295,37 @@ function greater_hallucination(keys)
 		intellect = illusion.intellect,
 		intellect_bonus = illusion.intellect_bonus,
 		intellect_gain = illusion.intellect_gain}
+		
+	if atkchange == true then
+		heroNetTable[illusion:entindex()].attack = "modifier_attack_chaos"
+		heroNetTable[illusion:entindex()].armor = "modifier_armor_hero"
+	end
+		
 	CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 end
 
 function greater_hallucination_lifesteal(keys)
 	--Adds life steal to the illusions since it is hardcoded for normal lifesteal not to work.
-	PrintTable(keys)
+	--PrintTable(keys)
 	local caster = keys.caster
 	local attacker = keys.attacker
 	local ability = keys.ability
 	local damage = keys.DamageDealt
 	--Defined in item_bloodthirst
-	local lifesteal = 10
-	print("Illusion life steal check")
+	--local lifesteal = 10
+	--print("Illusion life steal check")
 	--Checks to see if the illusion has a bloodthirst
-	if attacker:HasItemInInventory("item_bloodthirst") then
-		local healAmount = damage / lifesteal
-		print("Illusion has bloodthirst - healing for "..healAmount)
+	if attacker:HasItemInInventory("item_bloodthirst") or attacker:HasItemInInventory("item_thirsting_blade") then
+		local healAmount = damage * 0.1
+		--print("Illusion has bloodthirst - healing for "..healAmount)
 		attacker:Heal(healAmount, attacker)
+		ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf",PATTACH_ABSORIGIN_FOLLOW, attacker)
+	end
+	if attacker:FindAbilityByName("ahlen_innate")~= nil then
+		local healAmount = damage * 0.04
+		--print("Illusion is Ahlen - healing for "..healAmount)
+		attacker:Heal(healAmount, attacker)
+		ParticleManager:CreateParticle("particles/generic_gameplay/generic_lifesteal.vpcf",PATTACH_ABSORIGIN_FOLLOW, attacker)
 	end
 end
 function armageddon(keys)

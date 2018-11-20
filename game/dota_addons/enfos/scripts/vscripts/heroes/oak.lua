@@ -28,6 +28,7 @@ end
 function HardenedSkin(keys)
 	local caster = keys.caster
 	local ability = keys.ability
+	if caster:FindModifierByName("modifier_kill") ~= nil then return false end
 	print("before "..caster.strength)
 	if ability:GetLevel() > 0 then
 		if caster:GetModifierStackCount("modifier_oak_hardened_skin",caster) == 0 then

@@ -158,6 +158,23 @@
 			"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 			"Aura_Types" 	"DOTA_UNIT_TARGET_BASIC"
 			"Aura_ApplyToCaster"	"0"
+			
+			"OnAttackStart"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/ranger.lua"
+					"Function"		"MinimumRangeCheck"
+				}
+			}
+			"OnAttacked"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/generic.lua"
+					"Function"		"FleeCheck"
+				}
+			}
 		}
 
 		"modifier_ranger_check_aura"

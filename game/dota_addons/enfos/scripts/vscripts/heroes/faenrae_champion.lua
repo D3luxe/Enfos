@@ -140,6 +140,7 @@ end
 
 -- All functions beyond this by Pizzalol/Noya. https://github.com/Pizzalol/SpellLibrary
 function ModelSwapStart( keys )
+	print("angryman")
 	local caster = keys.caster
 	local model = keys.model
 	local projectile_model = keys.projectile_model
@@ -193,14 +194,23 @@ function ModelSwapStart( keys )
 	UTIL_RemoveImmediate(attackItem)
 	attackItem = nil
 	
-	local heroNetTable = {}
-	heroNetTable[caster:GetPlayerID()] = {
-		atktype = "modifier_attack_chaos",
-		armtype = "modifier_armor_hero"}
-	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+	if not caster:IsIllusion() then
+		local heroNetTable = {}
+		heroNetTable[caster:GetPlayerID()] = {
+			atktype = "modifier_attack_chaos",
+			armtype = "modifier_armor_hero"}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+	--[[else
+		local heroNetTable = {}
+		heroNetTable[caster:GetPlayerID()] = {
+			atktype = "modifier_attack_chaos",
+			armtype = "modifier_armor_hero"}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)]]
+	end
 end
 
 function ModelSwapEnd( keys )
+	print("angryman undone")
 	local caster = keys.caster
 	local lifeMod = nil
 	local lifeItem = nil
@@ -241,15 +251,24 @@ function ModelSwapEnd( keys )
 		UTIL_RemoveImmediate(attackItem)
 		attackItem = nil
 		
-		local heroNetTable = {}
-		heroNetTable[caster:GetPlayerID()] = {
-			atktype = caster.attackType,
-			armtype = caster.armorType}
-		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+		if not caster:IsIllusion() then
+			local heroNetTable = {}
+			heroNetTable[caster:GetPlayerID()] = {
+				atktype = caster.attackType,
+				armtype = caster.armorType}
+			CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+		--[[else
+			local heroNetTable = {}
+			heroNetTable[caster:GetPlayerID()] = {
+				atktype = caster.attackType,
+				armtype = caster.armorType}
+			CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)]]
+		end
 	end
 end
 
 function HideWearables( event )
+	print("hiding")
 	local hero = event.caster
 	local ability = event.ability
 	local duration = ability:GetLevelSpecialValueFor( "duration", ability:GetLevel() - 1 )
@@ -278,6 +297,7 @@ function HideWearables( event )
 end
 
 function ShowWearables( event )
+	print("showing")
 	local hero = event.caster
 
 	-- Iterate on both tables to set each item back to their original modelName

@@ -209,6 +209,7 @@ function attribute_bonus_update(keys)
 	local attname = keys.attname
 	local amount = keys.amount
 	local gain = keys.gain
+	if caster:FindModifierByName("modifier_kill") ~= nil then return false end
 	--print(attname)
 	if attname == "double_bonus" then
 		--print(caster.agility_bonus)
@@ -243,4 +244,12 @@ function attribute_bonus_update(keys)
 		int = caster.intellect,
 		intbn = caster.intellect_bonus}
 	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+end
+
+function clear_summon_table(keys)
+	local caster = keys.caster
+	
+	local heroNetTable = {}
+	heroNetTable[caster:entindex()] = {destroy = true}
+	CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 end

@@ -47,6 +47,14 @@
 		{
 			"Passive"           	"1"
 			"IsHidden"				"0"    
+			"OnAttacked"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"heroes/generic.lua"
+					"Function"		"FleeCheck"
+				}
+			}
 		}
 		"empath_vitality_healing_effect"
 		{

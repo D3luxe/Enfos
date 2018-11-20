@@ -494,6 +494,49 @@ artifactItems = { "item_stone_axe",
 				"item_elven_plate_mail",
 				"item_ironbark_leathers",
 			}
+			
+effigySpellTable = {
+				[0]={
+					"ogre_magi_enfos_empower_hammer",
+					"phantom_assassin_enfos_courage",
+					"thief_khri_strike"--[[,
+					"oak_hardened_skin"]]
+				},
+				[1]={
+					"generic_enfos_combat_mastery",
+					"omniknight_enfos_sentinels_resolve",
+					"generic_enfos_evasion_mastery",
+					"ranger_nature_lore",
+					"shadow_priest_shadow_art_mastery",
+					"sniper_lucky_shot"
+				},
+				[2]={
+					"empath_divine_protection",
+					"obsidian_destroyer_enfos_slow_aura",
+					"ogre_magi_enfos_empower_axe"
+				},
+				[3]={
+					"oak_backfire_aura",
+					"ursa_enfos_failure_of_the_forge",
+					"sniper_rapid_reload"
+				},
+				[4]={
+					"entropist_sure_footing",
+					"generic_enfos_empower_armor",
+					"ahlen_innate"
+				},
+				[5]={},
+				[6]={},
+				[7]={},
+				[8]={},
+				[9]={},
+				[10]={},
+				[11]={},
+				[12]={},
+				[13]={},
+				[14]={},
+				[15]={}
+		}	
 
 
 -- Precache resources
@@ -859,6 +902,8 @@ function CEnfosGameMode:InitGameMode()
 	Convars:RegisterCommand( "Enfos_reset_lives", function(...) return self:_ResetLivesConsoleCommand( ... ) end, "Reset the lives in the game", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_test_repick", function(...) return self:_RepickTestConsoleCommand( ... ) end, "Test repick functionality", FCVAR_CHEAT )
 	Convars:RegisterCommand( "Enfos_random_bots", function(...) return self:_RandomBots( ... ) end, "Give bots random heroes", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_pick_bot", function(...) return self:_PickBot( ... ) end, "Pick a hero for the bot with the selected pID", FCVAR_CHEAT )
+	Convars:RegisterCommand( "Enfos_level_bot", function(...) return self:_LevelBot( ... ) end, "Level up a bot hero one level at a time because being able to level a bot a set number is asking too much of this game I guess", FCVAR_CHEAT )
 	-- Set all towers invulnerable
 	for _, tower in pairs( Entities:FindAllByName( "npc_dota_Enfos_tower_spawn_protection" ) ) do
 		tower:AddNewModifier( tower, nil, "modifier_invulnerable", {} )
@@ -1669,6 +1714,10 @@ function CEnfosGameMode:OnPlayerPicked( event )
 	
 	if player == nil then
 		print("WARNING: NOT A REAL BOY")
+		local item = spawnedUnitIndex:GetItemInSlot(0)
+		if item then
+			spawnedUnitIndex:RemoveItem(item)
+		end
 		return
 	end
 	--Initialize variables for tracking
@@ -2255,24 +2304,55 @@ function CEnfosGameMode:FilterDamage( filterTable )
 		end
 		
 		--self-reminder to remove this later after i figure out order filters
-		if attacker:GetUnitName() == "npc_dota_hero_drow_ranger" then
+		--[[if attacker:GetUnitName() == "npc_dota_hero_drow_ranger" then
 			if victim:HasModifier("modifier_ranger_check_aura") then
 				return false
 			end
 		end
+		done did it]]
 		
 		if attacker:GetUnitName() == "npc_dota_hero_sniper" then
-			if attacker:HasModifier("modifier_sniper_technique") then
-				if ability == nil then
-					local pID = attacker:GetPlayerID()
-					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
-					else Enfos.damageSpillValue[pID] = damage end
-					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
-				elseif ability:GetAbilityName() == "sniper_fire_ammo_2" then
-					local pID = attacker:GetPlayerID()
-					if Enfos.damageSpillValue[pID] ~= nil then Enfos.damageSpillValue[pID] = damage + Enfos.damageSpillValue[pID]
-					else Enfos.damageSpillValue[pID] = damage end
+			local runOff = 0
+			if ability == nil then
+				--whoops its a fucking nilcheck everybody!
+			elseif ability:GetAbilityName() == "sniper_fire_ammo" or ability:GetAbilityName() == "sniper_fire_ammo_2" then
+				local victimHP = victim:GetHealth()
+				print("Pre-Damage: "..damage)
+				print("Victim HP: "..victimHP)
+				if damage > victimHP then
+					runOff = damage - victimHP+1
+					damage = victimHP-1
+					print("Post-Damage: "..damage)
 				end
+			end
+			if attacker:HasModifier("modifier_sniper_technique") then
+				--print("--DAMAGE CYCLE--")
+				--print("before "..damage)
+				if ability == nil then
+					print("ability nil")
+					local pID = attacker:GetPlayerID()
+					if attacker.damageSpillValue ~= nil then attacker.damageSpillValue = damage + attacker.damageSpillValue
+					else attacker.damageSpillValue = damage end
+					attacker.damageSpillTarget = victim
+					DamageSpill({caster = attacker, target = victim, damage = damage, ability = ability})
+					print("Attack Damage: ".. damage)
+					print("Spill Total: ".. attacker.damageSpillValue)
+					Timers:CreateTimer(DoUniqueString("spillend"..pID), {
+						endTime = 0.20,
+						callback = function()
+							attacker.damageSpillValue = nil
+							attacker.damageSpillTarget = nil
+							--print("damage clear - ammo")
+						end
+					})
+					--print("ability spill")
+				elseif ability:GetAbilityName() == "sniper_fire_ammo_2" then
+					--print("ability fire2")
+					local pID = attacker:GetPlayerID()
+					if attacker.damageSpillValue ~= nil then attacker.damageSpillValue = damage + runOff + attacker.damageSpillValue
+					else attacker.damageSpillValue = damage + runOff end
+				end
+				--print("after "..damage)
 			end
 		end
 		
@@ -2682,6 +2762,15 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			return false
 		end
 		
+		Timers:CreateTimer(function()
+			if first_unit:IsIdle() == false then
+				first_unit.hold = false
+				if first_unit.acq_limit ~= nil then
+					first_unit.acq_limit = false
+					first_unit:SetAcquisitionRange(first_unit.acq_range)
+				end
+			end
+		end)
 	end
 	
 	if order_type == DOTA_UNIT_ORDER_GIVE_ITEM then
@@ -2769,9 +2858,18 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			return false
 		end
 			
+		Timers:CreateTimer(function()
+			if first_unit:IsIdle() == false then
+				first_unit.hold = false
+				if first_unit.acq_limit ~= nil then
+					first_unit.acq_limit = false
+					first_unit:SetAcquisitionRange(first_unit.acq_range)
+				end
+			end
+		end)
 	end
 	
-	--[[if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
+	if order_type == DOTA_UNIT_ORDER_DROP_ITEM then
 		local first_unit = EntIndexToHScript(units["0"])
 		local item = EntIndexToHScript( filterTable["entindex_ability"] )
 		local uniqueItem = false
@@ -2780,7 +2878,17 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			return true
 		end
 		
-		for p=1, #uniqueItems do
+		Timers:CreateTimer(function()
+			if first_unit:IsIdle() == false then
+				first_unit.hold = false
+				if first_unit.acq_limit ~= nil then
+					first_unit.acq_limit = false
+					first_unit:SetAcquisitionRange(first_unit.acq_range)
+				end
+			end
+		end)
+		
+		--[[for p=1, #uniqueItems do
 			if item:GetAbilityName() == uniqueItems[p] then
 				uniqueItem = true
 			end
@@ -2791,8 +2899,8 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			Notifications:Bottom(first_unit:GetPlayerID(), {text="Unique items cannot be dropped!", duration=3, style={color="red", ["font-size"]="50px"}})
 			EmitSoundOnClient("General.CastFail_InvalidTarget_Hero", first_unit:GetPlayerOwner())
 			return false
-		end
-	end]]
+		end]]
+	end
 	
 	if order_type == DOTA_UNIT_ORDER_CAST_NO_TARGET then
 		local first_unit = EntIndexToHScript(units["0"])
@@ -2817,12 +2925,24 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 				end
 			end
 		end
+		
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
 		--print("No Target "..ability:GetAbilityName())
 	end
 	
 	if order_type == DOTA_UNIT_ORDER_CAST_POSITION then
 		local first_unit = EntIndexToHScript(units["0"])
 		local ability = EntIndexToHScript( filterTable["entindex_ability"] )
+		
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
 		
 		--print("Position "..ability:GetAbilityName())
 	end
@@ -2865,7 +2985,11 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 			end
 		end
 		
-		
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
 	end
 	
 	if order_type == DOTA_UNIT_ORDER_CAST_RUNE then
@@ -2881,6 +3005,100 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		
 		--print("Toggle "..ability:GetAbilityName())
 	end
+	
+	if order_type == DOTA_UNIT_ORDER_ATTACK_TARGET then
+		local first_unit = EntIndexToHScript(units["0"])
+		local target = EntIndexToHScript(filterTable["entindex_target"])
+		if target:FindModifierByNameAndCaster("modifier_ranger_check_aura",first_unit) then
+			CEnfosGameMode:SendErrorMessage(first_unit:GetPlayerID(), "#dota_hud_error_target_out_of_range")
+			return false
+		else
+			first_unit.hold = false
+			if first_unit.acq_limit ~= nil then
+				first_unit.acq_limit = false
+				first_unit:SetAcquisitionRange(first_unit.acq_range)
+			end
+		end
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_MOVE_TO_POSITION then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	if order_type == DOTA_UNIT_ORDER_MOVE_TO_TARGET then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	if order_type == DOTA_UNIT_ORDER_ATTACK_MOVE then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_HOLD_POSITION then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = true
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_SELL_ITEM then
+		Timers:CreateTimer(function()
+			if first_unit:IsIdle() == false then
+				first_unit.hold = false
+				if first_unit.acq_limit ~= nil then
+					first_unit.acq_limit = false
+					first_unit:SetAcquisitionRange(first_unit.acq_range)
+				end
+			end
+		end)
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_STOP then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_MOVE_TO_DIRECTION then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_PATROL then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	
+	if order_type == DOTA_UNIT_ORDER_VECTOR_TARGET_POSITION then
+		local first_unit = EntIndexToHScript(units["0"])
+		first_unit.hold = false
+		if first_unit.acq_limit ~= nil then
+			first_unit.acq_limit = false
+			first_unit:SetAcquisitionRange(first_unit.acq_range)
+		end
+	end
+	
 	return true
 end
 
@@ -3546,13 +3764,22 @@ function CEnfosGameMode:OnPlayerChat(event)
 		RepickHero(nil,data)
 	end
 	if string.sub(event.text,1,7) == "-range " then
-		if tonumber(string.sub(event.text,8)) ~= nil then
+		print(type(tonumber(string.sub(event.text,8))))
+		if type(tonumber(string.sub(event.text,8))) == "number" then
 			local pid2 = event.playerid
-			local rangeNum = tonumber(string.sub(event.text,8))
+			local rangeNum = math.min(tonumber(string.sub(event.text,8)),9999)
+			local hero = PlayerResource:GetSelectedHeroEntity(pid2)
 			--print(math.min(rangeNum,9999))
-			PlayerResource:GetSelectedHeroEntity(pid2):SetAcquisitionRange(math.min(rangeNum,9999))
+			if hero.acq_limit ~= nil then
+				if hero.acq_limit == false then hero:SetAcquisitionRange(rangeNum) end
+			else
+				hero.acq_limit = false
+				hero:SetAcquisitionRange(rangeNum)
+			end
+			CEnfosGameMode:SendErrorMessage(pid2, "Acquisition range has been changed to "..rangeNum)
+			hero.acq_range = rangeNum
 			--PlayerResource:GetPlayer(pid2):GetAssignedHero():SetAcquisitionRange(math.min(rangeNum,9999))
-			print(PlayerResource:GetSelectedHeroEntity(pid2):GetAcquisitionRange())
+			print(hero:GetAcquisitionRange())
 		end
 	end
 	local data2 = {}
@@ -4158,6 +4385,24 @@ function CEnfosGameMode:_RandomBots( cmdName, hero )
 	end
 end
 
+function CEnfosGameMode:_PickBot( cmdName, pID, hero )
+	if PlayerResource:GetConnectionState(tonumber(pID)) == 1 then
+		local name = PlayerResource:GetPlayerName(tonumber(pID))
+		local data = {}
+		data.player = tonumber(pID)
+		data.hero = "npc_dota_hero_"..hero
+		data.color = "999999"
+		data.name = name
+		RepickHero(nil,data)
+	else print("not a bot") end
+end
+
+function CEnfosGameMode:_LevelBot( cmdName, pID )
+	if PlayerResource:GetConnectionState(tonumber(pID)) == 1 then
+		PlayerResource:GetSelectedHeroEntity(tonumber(pID)):HeroLevelUp(true)
+	else print("not a bot") end
+end
+
 function PanoramaChatMsg(ThisFieldHasBeenIntentionallyLeftBlank, event)
 	--[B]oolin
 	local bool = event.team
@@ -4287,4 +4532,16 @@ function UpdateGuildShop(one,event)
 	if event.mode == 1 then
 		CustomGameEventManager:Send_ServerToAllClients( "guild_shop_update", stock )
 	end
+end
+
+function CEnfosGameMode:CheckEffigySpell(name, number)
+	for k,v in pairs(effigySpellTable[number]) do
+		print(k..", "..v)
+		if v == name then 
+			print(name.." true")
+			return true
+		end
+	end
+	print(name.." false")
+	return false
 end

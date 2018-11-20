@@ -3208,6 +3208,14 @@
 			{
 				"Passive"           	"1"
 				"IsHidden"				"0"    
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/generic.lua"
+						"Function"		"FleeCheck"
+					}
+				}
 			}
 			"empath_vitality_healing_effect"
 			{
@@ -10081,6 +10089,23 @@
 				"Aura_Teams" 	"DOTA_UNIT_TARGET_TEAM_ENEMY"
 				"Aura_Types" 	"DOTA_UNIT_TARGET_BASIC"
 				"Aura_ApplyToCaster"	"0"
+				
+				"OnAttackStart"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/ranger.lua"
+						"Function"		"MinimumRangeCheck"
+					}
+				}
+				"OnAttacked"
+				{
+					"RunScript"
+					{
+						"ScriptFile"	"heroes/generic.lua"
+						"Function"		"FleeCheck"
+					}
+				}
 			}
 	
 			"modifier_ranger_check_aura"
@@ -11024,7 +11049,20 @@
 				}
 	
 			}
-	
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
+			}
 		}
 		"AbilitySpecial"
 		{

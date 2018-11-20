@@ -524,13 +524,14 @@ function DVonGetTheTables()
 	//This nettable is for illusions/summons because I can't plan ahead
 	var bam = CustomNetTables.GetTableValue("hero_data_live","summons");
 	for (var skrrt in bam) {
-		$.Msg("d "+skrrt);
-		$.Msg("d "+skrrt.destroy);
-		if(skrrt.destroy == undefined) pINs[skrrt] = bam[skrrt];
+		//$.Msg("d "+skrrt);
+		//$.Msg("d "+bam[skrrt]);
+		//$.Msg("d "+bam[skrrt].destroy);
+		if(bam[skrrt].destroy == undefined) pINs[skrrt] = bam[skrrt];
 		else delete pINs[skrrt];
 	}
-	$.Msg("a brand new hip");
-	$.Msg(pINs);
+	//$.Msg("a brand new hip");
+	//$.Msg(pINs);
 	
 	//This nettable literally exists JUST for faen. I hate this game
 	var heroData2 = CustomNetTables.GetTableValue("hero_data_live","stats");
@@ -538,15 +539,18 @@ function DVonGetTheTables()
 	for (var playerID in pIDs) {
 		//var hero = Players.GetPlayerSelectedHero(parseInt(playerID));
 		//$.Msg("argh "+heroData2[hero].atktype);
-		if(heroData2[playerID].str != undefined)		pIDs[playerID].strength = heroData2[playerID].str;
-		if(heroData2[playerID].strbn != undefined)		pIDs[playerID].strength_bonus = heroData2[playerID].strbn;
-		if(heroData2[playerID].agi != undefined)		pIDs[playerID].agility = heroData2[playerID].agi;
-		if(heroData2[playerID].agibn != undefined)		pIDs[playerID].agility_bonus = heroData2[playerID].agibn;
-		if(heroData2[playerID].int != undefined)		pIDs[playerID].intellect = heroData2[playerID].int;
-		if(heroData2[playerID].intbn != undefined)		pIDs[playerID].intellect_bonus = heroData2[playerID].intbn;
-		if(heroData2[playerID].atktype != undefined)	pIDs[playerID].attack = heroData2[playerID].atktype;
-		if(heroData2[playerID].armtype != undefined)	pIDs[playerID].armor = heroData2[playerID].armtype;
-		if(heroData2[playerID] != undefined)			checkem = playerID;
+		if(heroData2[playerID] != undefined)
+		{
+			if(heroData2[playerID].str != undefined)		pIDs[playerID].strength = heroData2[playerID].str;
+			if(heroData2[playerID].strbn != undefined)		pIDs[playerID].strength_bonus = heroData2[playerID].strbn;
+			if(heroData2[playerID].agi != undefined)		pIDs[playerID].agility = heroData2[playerID].agi;
+			if(heroData2[playerID].agibn != undefined)		pIDs[playerID].agility_bonus = heroData2[playerID].agibn;
+			if(heroData2[playerID].int != undefined)		pIDs[playerID].intellect = heroData2[playerID].int;
+			if(heroData2[playerID].intbn != undefined)		pIDs[playerID].intellect_bonus = heroData2[playerID].intbn;
+			if(heroData2[playerID].atktype != undefined)	pIDs[playerID].attack = heroData2[playerID].atktype;
+			if(heroData2[playerID].armtype != undefined)	pIDs[playerID].armor = heroData2[playerID].armtype;
+			if(heroData2[playerID] != undefined)			checkem = playerID;
+		}
 		//$.Msg("urgh "+pIDs[playerID].attack);
 		//$.Msg(checkem);
 	}

@@ -76,6 +76,9 @@ function SummonHellbearWarriors(keys)
 				v:SetMana(200)
 			end
 			
+			local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
+			
 			local heroNetTable = {}
 			heroNetTable[v:entindex()] = {
 				attack = "modifier_attack_normal",
@@ -118,6 +121,9 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
 			v:SetNoCorpse()
+			
+			local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
 			
 			local heroNetTable = {}
 			heroNetTable[v:entindex()] = {

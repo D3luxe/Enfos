@@ -89,3 +89,21 @@ function FrostSplash(keys)
 		ability:ApplyDataDrivenModifier(caster,v,"modifier_enfos_slow_generic",{duration = duration})
 	end
 end
+
+function FleeCheck(keys)
+	local caster = keys.caster
+	local attacker = keys.attacker
+	if caster:IsMoving() == false and caster:IsIdle() == true and caster.hold ~= nil then
+		if caster.hold == false then
+			--flee function, from https://github.com/MNoya/DotaCraft/blob/6d9c6444974f7ae6e5cd7a3442a19de70abe405b/game/dota_addons/dotacraft/scripts/vscripts/units/aggro_filter.lua
+			local unit_origin = caster:GetAbsOrigin()
+			local target_origin = attacker:GetAbsOrigin()
+			local flee_position = unit_origin + (unit_origin - target_origin):Normalized() * 200
+			caster:MoveToPosition(flee_position)
+		end
+	end
+end
+
+function purify_summon(keys)
+	PrintTable(keys)
+end

@@ -150,11 +150,14 @@ function Hallucination(keys)
 	local targetName = target:GetUnitName()
 	local targetHealth = target:GetHealth()
 	local targetHull = target.hullSize --just in case
+	local sDuration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1 )
+	local outgoingDamage = ability:GetLevelSpecialValueFor("damage_dealt_percent_value", ability:GetLevel() - 1 )
+	local incomingDamage = ability:GetLevelSpecialValueFor("damage_taken_percent_value", ability:GetLevel() - 1 )
 -- make the unit and give it the modifiers
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 	unit:SetHealth(targetHealth)
-	unit:SetRenderColor(0,84,255)
+	--unit:SetRenderColor(0,84,255)
 	unit.hullSize = targetHull
 	unit:SetHullRadius(targetHull)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
@@ -180,9 +183,9 @@ function Hallucination(keys)
 	UTIL_RemoveImmediate(attackItem)
 	attackItem = nil
 	
-	if target:HasModifier("modifier_armor_unarmored") then end
-	
-	thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
+	unit:MakeIllusion()
+	unit:AddNewModifier(caster, ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	--thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
 	--PrintTable(target:FindAllModifiers());
 end
 
