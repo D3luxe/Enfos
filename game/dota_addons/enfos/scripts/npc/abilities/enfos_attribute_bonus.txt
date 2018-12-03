@@ -5,10 +5,11 @@
 {
 	"BaseClass"                     "ability_lua"
     "ScriptFile"                    "abilities/attribute.lua"
-    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
     "AbilityTextureName" 			"attribute_bonus"
     "MaxLevel"  "100"
     "LevelsBetweenUpgrades" "1"
+	"IsCastableWhileHidden" "1"
     "AbilitySpecial"
     {
         "01"

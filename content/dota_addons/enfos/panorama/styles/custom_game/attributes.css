@@ -337,3 +337,79 @@
 {
 	color: #f2d554;
 }
+
+#LevelUpGlowAtt
+{
+	width: 62px;
+	height: 62px;
+	
+	margin-top: 91px;
+	horizontal-align: center;
+	//margin-left: 7px;
+	
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/custom_game/attribute_button_lvlup.png");
+	background-size: 100% 100%;
+	
+	background-position: 50% 50%;	
+	opacity: 1;
+	
+	transition-property: opacity;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	brightness: 1.5;
+	
+	animation-name: OpacityPulse;
+	animation-duration: .82s;
+	animation-iteration-count: infinite;	
+}
+@keyframes 'OpacityPulse'
+{
+	0%
+	{
+		opacity: 1.0;
+	}
+
+	50%
+	{
+		opacity: 0.2;
+	}
+
+	100%
+	{
+		opacity: 1.0;
+	}
+}
+
+#StatNumberTalent
+{
+    font-size: 13px;
+    font-weight: medium;
+	//letter-spacing: 1px;
+    color: #45DD3B;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px 3 #00000066;
+    font-family: RadianceM;
+    text-align: center;
+    vertical-align: center;
+	horizontal-align: center;
+	font-weight: bold;
+}
+#StatNumberTalentLevel
+{
+    font-size: 8px;
+    font-weight: medium;
+	//letter-spacing: 1px;
+    color: white;
+    margin-top: 20px;
+    text-shadow: 1px 1px 2px 3 #00000066;
+    font-family: RadianceM;
+    text-align: center;
+    vertical-align: center;
+	horizontal-align: center;
+}
+
+.CmonMan
+{
+	background-position: center;
+}

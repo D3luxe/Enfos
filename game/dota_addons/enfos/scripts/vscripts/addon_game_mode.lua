@@ -939,6 +939,7 @@ function CEnfosGameMode:InitGameMode()
 	CustomGameEventManager:RegisterListener( "pick_ui_chat" , PanoramaChatMsg )
 	CustomGameEventManager:RegisterListener( "toggle_pause" , TogglePause )
 	CustomGameEventManager:RegisterListener( "guild_shop_lua_interaction" , UpdateGuildShop )
+	CustomGameEventManager:RegisterListener( "level_up_attributes" , GodDammitValve )
 
 	--Initialize difficulty voting and selection
 	CustomGameEventManager:RegisterListener( "player_voted_difficulty", Dynamic_Wrap(CEnfosGameMode, 'UpdateVotes'))
@@ -3391,7 +3392,31 @@ end
 
 
 function CEnfosGameMode:OnPlayerLevelledUp( event )
-
+	--PrintTable(event)
+	--CEnfosGameMode:SendErrorMessage(event.player - 1, "Bastard")
+	local player = EntIndexToHScript(event.player)
+	if player then
+		local playerID = player:GetPlayerID()
+		local hero = player:GetAssignedHero()
+		hero.strength = hero.strength + hero.strength_gain
+		hero.agility = hero.agility + hero.agility_gain
+		hero.intellect = hero.intellect + hero.intellect_gain
+		local markedLevels = {[17]=true,[19]=true,[21]=true,[22]=true,[23]=true,[24]=true}
+		if markedLevels[hero:GetLevel()] then hero:SetAbilityPoints(hero:GetAbilityPoints()+1) end
+		if hero:GetLevel() > 140 then hero:SetAbilityPoints(hero:GetAbilityPoints()-1) end
+		
+		--stat update
+		local heroNetTable = {}
+		heroNetTable[hero:GetPlayerID()] = {
+			str = hero.strength,
+			strbn = hero.strength_bonus,
+			agi = hero.agility,
+			agibn = hero.agility_bonus,
+			int = hero.intellect,
+			intbn = hero.intellect_bonus}
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+	--[[end
+	
 	local player = event.player - 1
 	if PlayerResource:IsValidPlayer( player ) then
 		local hero = PlayerResource:GetSelectedHeroEntity(player)
@@ -3412,7 +3437,7 @@ function CEnfosGameMode:OnPlayerLevelledUp( event )
 			agibn = hero.agility_bonus,
 			int = hero.intellect,
 			intbn = hero.intellect_bonus}
-		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
+		CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)]]
 	else
 		print("Invalid player!")
 	end
@@ -4556,4 +4581,11 @@ function CEnfosGameMode:CheckEffigySpell(name, number)
 	end
 	print(name.." false")
 	return false
+end
+
+function GodDammitValve(fuck, you)
+	local pid = you.pid
+	local hero = EntIndexToHScript(you.hero)
+	if hero:GetAbilityPoints() <= 0 or hero:FindAbilityByName("enfos_attribute_bonus"):GetLevel() > 99 then return end
+	hero:UpgradeAbility(hero:FindAbilityByName("enfos_attribute_bonus"))
 end

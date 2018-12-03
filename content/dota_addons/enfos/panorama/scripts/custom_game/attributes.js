@@ -66,6 +66,142 @@ var defBoxNo;
 var atkPrev;
 var defPrev;
 
+var newUI = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
+newUI.FindChildTraverse("StatBranchBG").style.backgroundImage = "url('s2r://panorama/images/custom_game/attribute_button_bg.png')";
+var attGlowBox = newUI.FindChildTraverse("level_stats_frame").FindChildTraverse("LevelUpGlow");
+attGlowBox.style.backgroundImage = "url('s2r://panorama/images/custom_game/attribute_button_lvlup.png')";
+newUI.FindChildTraverse("StatBranchChannel").style.visibility = "collapse";
+
+var atrPlus = $.CreatePanel("Label", $.GetContextPanel(), "StatNumberTalent");
+atrPlus.SetParent(newUI.FindChildTraverse("StatBranchGraphics"));
+atrPlus.text = "+0";
+var atrLevel = $.CreatePanel("Label", $.GetContextPanel(), "StatNumberTalentLevel");
+atrLevel.SetParent(newUI.FindChildTraverse("StatBranchGraphics"));
+atrLevel.text = "0/100";
+
+var atrTable = {};
+atrTable[0] = 0;
+atrTable[1] = 2;
+atrTable[2] = 3;
+atrTable[3] = 5;
+atrTable[4] = 6;
+atrTable[5] = 8;
+atrTable[6] = 11;
+atrTable[7] = 13;
+atrTable[8] = 16;
+atrTable[9] = 18;
+atrTable[10] = 21;
+atrTable[11] = 25;
+atrTable[12] = 28;
+atrTable[13] = 32;
+atrTable[14] = 35;
+atrTable[15] = 39;
+atrTable[16] = 44;
+atrTable[17] = 48;
+atrTable[18] = 53;
+atrTable[19] = 57;
+atrTable[20] = 62;
+atrTable[21] = 68;
+atrTable[22] = 73;
+atrTable[23] = 79;
+atrTable[24] = 84;
+atrTable[25] = 90;
+atrTable[26] = 97;
+atrTable[27] = 103;
+atrTable[28] = 110;
+atrTable[29] = 116;
+atrTable[30] = 123;
+atrTable[31] = 131;
+atrTable[32] = 138;
+atrTable[33] = 146;
+atrTable[34] = 153;
+atrTable[35] = 161;
+atrTable[36] = 170;
+atrTable[37] = 178;
+atrTable[38] = 187;
+atrTable[39] = 195;
+atrTable[40] = 204;
+atrTable[41] = 214;
+atrTable[42] = 223;
+atrTable[43] = 233;
+atrTable[44] = 242;
+atrTable[45] = 252;
+atrTable[46] = 263;
+atrTable[47] = 273;
+atrTable[48] = 284;
+atrTable[49] = 294;
+atrTable[50] = 305;
+atrTable[51] = 317;
+atrTable[52] = 328;
+atrTable[53] = 340;
+atrTable[54] = 351;
+atrTable[55] = 363;
+atrTable[56] = 376;
+atrTable[57] = 388;
+atrTable[58] = 401;
+atrTable[59] = 413;
+atrTable[60] = 426;
+atrTable[61] = 440;
+atrTable[62] = 453;
+atrTable[63] = 467;
+atrTable[64] = 480;
+atrTable[65] = 494;
+atrTable[66] = 509;
+atrTable[67] = 523;
+atrTable[68] = 538;
+atrTable[69] = 552;
+atrTable[70] = 567;
+atrTable[71] = 583;
+atrTable[72] = 598;
+atrTable[73] = 614;
+atrTable[74] = 629;
+atrTable[75] = 645;
+atrTable[76] = 662;
+atrTable[77] = 678;
+atrTable[78] = 695;
+atrTable[79] = 711;
+atrTable[80] = 728;
+atrTable[81] = 746;
+atrTable[82] = 763;
+atrTable[83] = 781;
+atrTable[84] = 798;
+atrTable[85] = 816;
+atrTable[86] = 835;
+atrTable[87] = 853;
+atrTable[88] = 872;
+atrTable[89] = 890;
+atrTable[90] = 909;
+atrTable[91] = 929;
+atrTable[92] = 948;
+atrTable[93] = 968;
+atrTable[94] = 987;
+atrTable[95] = 1007;
+atrTable[96] = 1028;
+atrTable[97] = 1048;
+atrTable[98] = 1069;
+atrTable[99] = 1089;
+atrTable[100] = 1110;
+
+/*var attGlowBox = $.CreatePanel("Panel", $.GetContextPanel(), "LevelUpGlowAtt");
+attGlowBox.SetParent(newUI.FindChildTraverse("level_stats_frame"));
+bastard = newUI.FindChildTraverse("level_stats_frame").FindChildTraverse("ButtonWell");
+bastard.SetParent(newUI);
+bastard.SetParent(newUI.FindChildTraverse("level_stats_frame"));*/
+
+var wholeShebang = newUI.FindChildTraverse("level_stats_frame");
+wholeShebang.style.visibility = "visible";
+
+var wholeShebox = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("StatBranchDrawer").FindChildTraverse("statbranchdialog").FindChildTraverse("DOTAStatBranch");
+//wholeShebox.style.visibility = "visible";
+//wholeShebox.RemoveAndDeleteChildren();
+newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){Jevil();});
+newUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){Jevil2();});
+wholeShebang.FindChildTraverse("LevelUpTab").SetPanelEvent("onactivate", function(){Game.AttributeHotkey();});
+
+//newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "visible";
+
+var pATs = {};
+
 function SkrrtSkrrt()
 {
 	var query = Players.GetQueryUnit(Players.GetLocalPlayer());
@@ -219,9 +355,14 @@ function SkrrtSkrrt()
 			else intDigit.text = "";
 			intPlast = pINs[query].intellect_bonus;
 		}
+		atrPlus.style.visibility = "collapse";
+		atrLevel.style.visibility = "collapse";
+		newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
 	}
 	else if(Entities.IsHero(query))
 	{
+		var localLevel = 0;
+		if(Abilities.GetLevel(Entities.GetAbilityByName(query,"enfos_attribute_bonus")) != -1) localLevel = Abilities.GetLevel(Entities.GetAbilityByName(query,"enfos_attribute_bonus"));
 		if(strBlast != pIDs[pOwner].strength)
 		{
 			statStr.FindChildTraverse("StrengthLabel").text = Math.round(parseInt(pIDs[pOwner].strength));
@@ -255,6 +396,37 @@ function SkrrtSkrrt()
 			else intDigit.text = "";
 			intPlast = pIDs[pOwner].intellect_bonus;
 		}
+		
+		atrPlus.style.visibility = "visible";
+		atrLevel.style.visibility = "visible";
+		atrPlus.text = "+"+atrTable[localLevel];
+		atrLevel.text = localLevel+"/100";
+		
+		if(Entities.IsControllableByPlayer(query,Players.GetLocalPlayer()))
+		{
+			//if(pOwner == Players.GetLocalPlayer())
+			//&& Entities.GetAbilityByName(query,"enfos_attribute_bonus") != undefined)
+			if(Entities.GetAbilityPoints(query) > 0 && localLevel < 100)
+			{
+				wholeShebang.style.visibility = "visible";
+				newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "visible";
+			}
+			else
+			{
+				wholeShebang.style.visibility = "collapse";
+				newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+			}
+		}
+		else
+		{
+			wholeShebang.style.visibility = "collapse";
+			newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+		}
+	}
+	else
+	{
+		wholeShebang.style.visibility = "collapse";
+		newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
 	}
 	//$.Msg(bufs);
 	//$.Msg(dmgtypeLast);
@@ -535,21 +707,25 @@ function DVonGetTheTables()
 	
 	//This nettable literally exists JUST for faen. I hate this game
 	var heroData2 = CustomNetTables.GetTableValue("hero_data_live","stats");
+	//$.Msg(heroData2);
 	var checkem;
 	for (var playerID in pIDs) {
 		//var hero = Players.GetPlayerSelectedHero(parseInt(playerID));
 		//$.Msg("argh "+heroData2[hero].atktype);
-		if(heroData2[playerID] != undefined)
+		if(heroData2 != undefined)
 		{
-			if(heroData2[playerID].str != undefined)		pIDs[playerID].strength = heroData2[playerID].str;
-			if(heroData2[playerID].strbn != undefined)		pIDs[playerID].strength_bonus = heroData2[playerID].strbn;
-			if(heroData2[playerID].agi != undefined)		pIDs[playerID].agility = heroData2[playerID].agi;
-			if(heroData2[playerID].agibn != undefined)		pIDs[playerID].agility_bonus = heroData2[playerID].agibn;
-			if(heroData2[playerID].int != undefined)		pIDs[playerID].intellect = heroData2[playerID].int;
-			if(heroData2[playerID].intbn != undefined)		pIDs[playerID].intellect_bonus = heroData2[playerID].intbn;
-			if(heroData2[playerID].atktype != undefined)	pIDs[playerID].attack = heroData2[playerID].atktype;
-			if(heroData2[playerID].armtype != undefined)	pIDs[playerID].armor = heroData2[playerID].armtype;
-			if(heroData2[playerID] != undefined)			checkem = playerID;
+			if(heroData2[playerID] != undefined)
+			{
+				if(heroData2[playerID].str != undefined)		pIDs[playerID].strength = heroData2[playerID].str;
+				if(heroData2[playerID].strbn != undefined)		pIDs[playerID].strength_bonus = heroData2[playerID].strbn;
+				if(heroData2[playerID].agi != undefined)		pIDs[playerID].agility = heroData2[playerID].agi;
+				if(heroData2[playerID].agibn != undefined)		pIDs[playerID].agility_bonus = heroData2[playerID].agibn;
+				if(heroData2[playerID].int != undefined)		pIDs[playerID].intellect = heroData2[playerID].int;
+				if(heroData2[playerID].intbn != undefined)		pIDs[playerID].intellect_bonus = heroData2[playerID].intbn;
+				if(heroData2[playerID].atktype != undefined)	pIDs[playerID].attack = heroData2[playerID].atktype;
+				if(heroData2[playerID].armtype != undefined)	pIDs[playerID].armor = heroData2[playerID].armtype;
+				if(heroData2[playerID] != undefined)			checkem = playerID;
+			}
 		}
 		//$.Msg("urgh "+pIDs[playerID].attack);
 		//$.Msg(checkem);
@@ -1196,11 +1372,80 @@ function DetermineDamageNumbers(base, type, number)
 	//$.Msg(number);
 }
 
+function AttributeLevelCheck(event)
+{
+	var bah = {};
+	bah = event;
+	$.Msg(bah);
+	var pid = event.PlayerID;
+	var pidder = Players.GetPlayerHeroEntityIndex(parseInt(pid));
+	$.Msg("a "+pid);
+	$.Msg("b "+pidder);
+	//var query = Players.GetQueryUnit(Players.GetLocalPlayer());
+	//if(query == -1) query = Players.GetLocalPlayerPortraitUnit();
+	/*
+	if(Entities.IsHero(query))
+	{
+		var pOwner = Entities.GetPlayerOwnerID(query);
+		if (pid == pOwner)
+		{
+			if(Entities.GetAbilityPoints(query) > 0
+			&& Abilities.GetLevel(Entities.GetAbilityByName(query,"enfos_attribute_bonus")) < 100) pATs[pid] = "visible";
+			else pATs[pid] = "collapse";
+		}
+	}*/
+	if(Entities.GetAbilityPoints(pidder) > 0
+	&& Abilities.GetLevel(Entities.GetAbilityByName(pidder,"enfos_attribute_bonus")) < 100) pATs[pid] = "visible";
+	else pATs[pid] = "collapse";
+	SkrrtSkrrt();
+}
+
+function Jevil()
+{
+	$.Msg("CHAOS, CHAOS");
+}
+function Jevil2()
+{
+	$.Msg("I CAN DO ANYTHING");
+}
+
+Game.AttributeHotkey = function()
+{
+    //you already know what the FUCK goin on
+	//$.Msg("welcome. to Bitch");
+	var pid = Players.GetLocalPlayer()
+	//$.Msg("Local pID: "+pid);
+	var query = Players.GetQueryUnit(pid);
+	if(query == -1) query = Players.GetLocalPlayerPortraitUnit();
+	//$.Msg("EntIndex: "+query);
+	var pOwner = Entities.GetPlayerOwnerID(query);
+	//$.Msg("Entity pID: "+pOwner);
+	if(Entities.IsHero(query))//(pATs[pOwner] != undefined)
+	{
+		//$.Msg("Entity is hero");
+		if(Entities.IsControllableByPlayer(query,pid)
+		&& Entities.GetAbilityByName(query,"enfos_attribute_bonus") != undefined)
+		{
+			//Abilities.AttemptToUpgrade(Entities.GetAbilityByName(query,"enfos_attribute_bonus"));
+			//CANT FUCKING UPGRADE HIDDEN ABILITIES THIS WAY SO NOW I HAVE TO DO THIS
+			var fucksSake = {};
+			fucksSake.pid = pOwner;
+			fucksSake.hero = query;
+			GameEvents.SendCustomGameEventToServer("level_up_attributes",fucksSake);
+			SkrrtSkrrt();
+		}
+	}
+};
+
 (function()
 {
 	GameEvents.Subscribe( "dota_player_update_query_unit", SkrrtSkrrt );
 	GameEvents.Subscribe( "dota_player_update_selected_unit", SkrrtSkrrt );
 	GameEvents.Subscribe( "dota_player_pick_hero", Bah );
+	//GameEvents.Subscribe( "dota_player_gained_level", AttributeLevelCheck );
+	//GameEvents.Subscribe( "dota_player_learned_ability", AttributeLevelCheck );
+	GameEvents.Subscribe( "dota_player_gained_level", SkrrtSkrrt );
+	GameEvents.Subscribe( "dota_player_learned_ability", SkrrtSkrrt );
 	CustomNetTables.SubscribeNetTableListener("hero_data", Bah );
 	CustomNetTables.SubscribeNetTableListener("hero_data_live", DVonGetTheTables );
 	CustomNetTables.SubscribeNetTableListener("monster_data_pretaped", MaybeUberMaybeCab );
@@ -1211,4 +1456,6 @@ function DetermineDamageNumbers(base, type, number)
 	//SkrrtSkrrt(); // initial update
 	//$.Schedule(1,function() {Bah();});
 	WaitForToolTipBox();
+	Bah();
+	DVonGetTheTables();
 })();
