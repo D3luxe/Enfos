@@ -2582,6 +2582,18 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		--Checks to see if the item costs lumber
 		if itemdata.LumberCost ~= nil then
 			local player = first_unit:GetPlayerOwner()
+			if first_unit:FindModifierByName("modifier_stop_players_from_cheating_and_buying_lumber_items_at_main") == nil then
+				CEnfosGameMode:SendErrorMessage(first_unit:GetPlayerOwnerID(), "#dota_hud_error_side_shop_not_in_range")
+				
+				--[[local units = Entities:FindAllByClassname("npc_dummyshop")
+
+				for k,v in pairs(units) do
+					print(v)
+					CEnfosGameMode:MinimapEventClient(playerID, v:GetAbsoluteOrigin())
+				end]]
+				
+				return 0
+			end
 			if PlayerHasEnoughLumber(player, tonumber(itemdata.LumberCost)) then
 				ModifyLumber(player, tonumber(itemdata.LumberCost) * -1)
 

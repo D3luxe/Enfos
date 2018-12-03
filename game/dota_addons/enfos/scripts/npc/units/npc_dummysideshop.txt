@@ -1,0 +1,14 @@
+//=================================================================================================================
+// Side Shop Dummy because Valve Software is here to crush your god damned dreams
+//=================================================================================================================
+"npc_dummysideshop"
+{
+	"BaseClass"					"npc_dota_creature"
+	"Model"						"models/development/invisiblebox.vmdl"
+	"Ability1"					"spell_dummysideshop"
+	"AttackCapabilities"		"DOTA_UNIT_CAP_NO_ATTACK"
+	"BountyXP"					"0"
+	"MovementCapabilities"		"DOTA_UNIT_CAP_MOVE_NONE"
+	"StatusHealth"				"5000"
+	"TeamName"					"DOTA_TEAM_NEUTRALS"
+}

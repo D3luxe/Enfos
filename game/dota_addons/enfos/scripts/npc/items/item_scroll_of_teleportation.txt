@@ -24,6 +24,7 @@
 	"AbilitySharedCooldown" "Blink"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
+	"ItemPurchasable" "0"
 
 	"AbilityCastRange"	"0"
 

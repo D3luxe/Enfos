@@ -24,6 +24,7 @@
 	"AbilityCooldown"				"30.0"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
+	"ItemPurchasable" "0"
 
 	"AbilityCastRange"	"0"
 

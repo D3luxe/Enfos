@@ -11,7 +11,8 @@
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #1c2027 ), to( #010101 ) );
 	background-image: url("s2r://panorama/images/hud/reborn/bg_pinned_items_psd.vtex");
 	background-size: 100%;
-	margin-top: 174px;
+	//margin-top: 174px;
+	margin-bottom: 75px;
 }
 
 #ExchangeLabel {
@@ -55,6 +56,7 @@
 	font-weight: bold;
 	letter-spacing: 2px;
 	margin-top: 4px;
+	text-transform: uppercase;
 }
 
 #SellLabel {
@@ -71,6 +73,7 @@
 	font-weight: bold;
 	letter-spacing: 2px;
 	margin-top: 2px;
+	text-transform: uppercase;
 }
 
 #LabelPanel, #LabelPanel2 {

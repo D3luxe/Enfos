@@ -313,6 +313,8 @@ function SpellShopUI:LumberExchange(keys)
 		return 0
 	end
 	if hero:FindModifierByName("modifier_get_wood") == nil then
+		CEnfosGameMode:SendErrorMessage(playerID, "#dota_hud_error_secret_shop_not_in_range")
+		
 		return 0
 	end
 	

@@ -33,7 +33,6 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
-	"SideShop"						"1"
 
 	"OnSpellStart"
 	{

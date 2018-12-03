@@ -25,6 +25,7 @@
 	
 	"AbilitySharedCooldown"			"Ivory"
 	"AbilityCooldown"				"50.0"
+	"ItemPurchasable" "0"
 	
 	"ActiveDescriptionLine"         "1"
 

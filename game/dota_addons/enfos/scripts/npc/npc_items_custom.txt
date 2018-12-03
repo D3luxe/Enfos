@@ -325,7 +325,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -478,6 +477,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -693,6 +693,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -818,6 +819,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -885,6 +887,7 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemDroppable"					"1"
 		"IsUnique"						"1"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -1086,6 +1089,7 @@
 		"SecretShop"					"1"
 		"LumberCost"	"1"
 		"GoldRefund"	"100"
+		"ItemPurchasable" "0"
 	}	
 	//===============================================
 	// Bundle of 1000 gold
@@ -1108,6 +1112,7 @@
 		"SecretShop"					"1"
 		"LumberCost"	"10"
 		"GoldRefund"	"1000"
+		"ItemPurchasable" "0"
 	}	
 	//===============================================
 	// Bundle of 10000 gold
@@ -1130,6 +1135,7 @@
 		"SecretShop"					"1"
 		"LumberCost"	"100"
 		"GoldRefund"	"10000"
+		"ItemPurchasable" "0"
 	}	
 	//===============================================
 	// Bundle of 1 lumber
@@ -1151,6 +1157,7 @@
 		"ItemCost"						"125"
 		"SecretShop"					"1"
 		"Lumber"			"1"
+		"ItemPurchasable" "0"
 	}	
 	//===============================================
 	// Bundle of 10 lumber
@@ -1172,6 +1179,7 @@
 		"ItemCost"						"1250"
 		"SecretShop"					"1"
 		"Lumber"			"10"
+		"ItemPurchasable" "0"
 	}	
 	//===============================================
 	// Bundle of 100 lumber
@@ -1193,6 +1201,7 @@
 		"ItemCost"						"12500"
 		"SecretShop"					"1"
 		"Lumber"			"100"
+		"ItemPurchasable" "0"
 	}	
 	//=================================================================================================================
 	// Cebi Root
@@ -1212,6 +1221,7 @@
 		"ItemStockMax"					"5"
 		"ItemStockInitial"				"5"
 		"ItemStockTime"					"5.0"
+		"ItemPurchasable" "0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -1373,6 +1383,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -1623,6 +1634,7 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 		"ItemDroppable"					"1"
 		"IsUnique"							"1"
+		"ItemPurchasable" "0"
 		
 		"AbilitySharedCooldown" 		"Vamp"
 		"AbilityCooldown"				"80.0"
@@ -2599,6 +2611,7 @@
 		"ItemStockMax"					"1"
 		"ItemStockInitial"				"1"
 		"ItemStockTime"					"120.0"
+		"ItemPurchasable" "0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -2695,6 +2708,7 @@
 		"ItemCost"                      "10000" 		
 		"ItemShopTags"					"caster"
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -2733,6 +2747,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -2873,7 +2888,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"5"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -3115,6 +3129,7 @@
 		
 		"AbilitySharedCooldown"			"Ivory"
 		"AbilityCooldown"				"50.0"
+		"ItemPurchasable" "0"
 		
 		"ActiveDescriptionLine"         "1"
 	
@@ -3203,6 +3218,7 @@
 		"AbilitySharedCooldown" "Pouch"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
+		"ItemPurchasable" "0"
 	
 		"AbilityCastRange"	"0"
 		
@@ -3316,6 +3332,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -3488,6 +3505,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -3679,6 +3697,7 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
+		"ItemPurchasable" "0"
 		
 		"AbilitySharedCooldown" "Linkens"
 		"AbilityCooldown"				"8.0"
@@ -3806,7 +3825,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"5"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -3886,7 +3904,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -3965,7 +3982,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -4039,7 +4055,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"2"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -4118,7 +4133,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"10"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -4634,7 +4648,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"10"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -4713,7 +4726,6 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"4"
-		"SideShop"						"1"
 	
 		"OnSpellStart"
 		{
@@ -4782,6 +4794,7 @@
 		"AbilitySharedCooldown" "Blink"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
+		"ItemPurchasable" "0"
 	
 		"AbilityCastRange"	"0"
 	
@@ -5221,6 +5234,7 @@
 		//-------------------------------------------------------------------------------------------------------------
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	 
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -5338,6 +5352,7 @@
 	{
 		"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
 		"BaseClass"						"item_datadriven"
+		"ItemPurchasable" "0"
 	
 		"Modifiers"
 		{
@@ -5490,6 +5505,7 @@
 			"modifier_illusion_tracker"
 			{
 				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				"StatusEffectName"     "particles/status_fx/status_effect_illusion.vpcf"
 				"OnDestroy"
 				{
@@ -5503,7 +5519,8 @@
 			
 			"modifier_illusion_tracker_nofx"
 			{
-				"IsHidden"			"1"  
+				"IsHidden"			"1"
+				"IsPurgable"		"0"
 				"OnDestroy"
 				{
 					"RunScript"
@@ -5519,6 +5536,7 @@
 	{
 		"BaseClass"						"item_lua"
 		"ScriptFile"                    "items/luastats.lua"
+		"ItemPurchasable" "0"
 	}
 	//===============================================
 	// Stone Axe
@@ -5621,6 +5639,7 @@
 		"AbilityCooldown"				"30.0"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
+		"ItemPurchasable" "0"
 	
 		"AbilityCastRange"	"0"
 	
@@ -6141,6 +6160,7 @@
 		"ItemStockMax"					"1"
 		"ItemStockInitial"				"1"
 		"ItemStockTime"					"60.0"
+		"ItemPurchasable" "0"
 	
 		// Stats
 		//-------------------------------------------------------------------------------------------------------------
@@ -6217,6 +6237,7 @@
 		"ItemStockMax"					"1"
 		"ItemStockInitial"				"1"
 		"ItemStockTime"					"60.0"
+		"ItemPurchasable" "0"
 		
 	
 		// Stats
@@ -6636,7 +6657,7 @@
 		"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 		"ItemPermanent"					"0"
 		"ItemInitialCharges"			"1"
-		"SideShop"						"1"
+		"SideShop"						"0"
 	
 		"OnSpellStart"
 		{

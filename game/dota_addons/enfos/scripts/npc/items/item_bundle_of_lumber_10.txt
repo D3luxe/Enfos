@@ -18,4 +18,5 @@
 	"ItemCost"						"1250"
 	"SecretShop"					"1"
 	"Lumber"			"10"
+	"ItemPurchasable" "0"
 }	

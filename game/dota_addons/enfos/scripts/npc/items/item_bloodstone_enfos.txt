@@ -17,6 +17,7 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
 	"ItemDroppable"					"1"
 	"IsUnique"						"1"
+	"ItemPurchasable" "0"
 
 	"Modifiers"
 	{

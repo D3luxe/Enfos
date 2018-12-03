@@ -8,6 +8,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
 	"BaseClass"						"item_datadriven"
+	"ItemPurchasable" "0"
 
 	"Modifiers"
 	{

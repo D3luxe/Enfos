@@ -12764,6 +12764,47 @@
 		}
 	}
 	//=================================================================================================================
+	// Copy of A Spell I stole from Overthrow
+	//=================================================================================================================
+	"spell_dummysideshop"
+	{
+		"BaseClass"          			    "ability_datadriven"
+		"AbilityBehavior"					"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+		"MaxLevel"						"1"
+	
+		"Modifiers"
+		{
+			"modifier_dummysideshop"
+			{
+				"IsHidden"				"1"
+				"Passive"				"1"
+				"IsPurgable"			"0"
+				
+				"Aura"					"modifier_stop_players_from_cheating_and_buying_lumber_items_at_main"
+				"Aura_Radius"			"720"
+				"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_BOTH"
+				"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+				"Aura_ApplyToCaster"	"0"
+				"Aura_Flags"    		"DOTA_UNIT_TARGET_FLAG_NOT_ILLUSIONS"
+	
+				"States"
+				{
+					"MODIFIER_STATE_UNSELECTABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NO_HEALTH_BAR"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_OUT_OF_GAME"	"MODIFIER_STATE_VALUE_ENABLED"
+					"MODIFIER_STATE_NOT_ON_MINIMAP" "MODIFIER_STATE_VALUE_ENABLED"
+				}
+			}
+			"modifier_stop_players_from_cheating_and_buying_lumber_items_at_main"
+			{
+				"Passive"       "1"
+				"IsHidden"		"1"
+				"EffectName"	""
+			}
+		}
+	}
+	//=================================================================================================================
 	// Dummy unit spell
 	//=================================================================================================================
 	"spell_dummy_modifier"

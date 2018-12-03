@@ -2,7 +2,6 @@
 {
 	"consumables"
 	{
-		"item" "item_ward_sentry_enfos"
 		"item" "item_potion_of_healing"
 		"item" "item_potion_of_greater_healing"
 		"item" "item_potion_of_ultra_healing"
@@ -13,13 +12,10 @@
 		"item" "item_hisan_salve"
 		"item" "item_anti_magic_potion"
 		"item" "item_vampiric_potion"
-		"item"	"item_stone_axe"
 	}
 
 	"attributes"
 	{
-		"item"	"item_elder_staff"
-		"item"	"item_tribal_staff"
 		"item"	"item_ruby_inset_ring"
 		"item"	"item_emerald_inset_ring"
 		"item"	"item_sapphire_inset_ring"
@@ -33,11 +29,14 @@
 
 	"weapons_armor"
 	{
+		"item"	"item_stone_axe"
 		"item"	"item_gleaming_longsword"
 		"item"	"item_polished_elven_telo"
 		"item"	"item_spineripper"
 		"item"	"item_nimsha"
 		"item"	"item_bloodthirst"
+		"item"	"item_elder_staff"
+		"item"	"item_tribal_staff"
 	}
 	
 	"misc"
@@ -49,6 +48,7 @@
 		"item"	"item_elven_plate_mail"
 		"item"	"item_small_round_shield"
 		"item"	"item_tower_shield"
+		"item" "item_ward_sentry_enfos"
 	}	
 	
 	// Level 1 - Green Recipes
@@ -114,11 +114,11 @@
 		"item" "item_uthmors_mirror_blade"
 		"item" "item_ring_of_victory"
 		"item" "item_scepter_of_the_magi"
-		"item"	"item_bundle_of_gold_1"
-		"item"	"item_bundle_of_gold_10"
-		"item"	"item_bundle_of_gold_100"
-		"item"	"item_bundle_of_lumber_1"
-		"item"	"item_bundle_of_lumber_10"
 		"item"	"item_bundle_of_lumber_100"
+		"item"	"item_agani_tayeua"
+		"item"	"item_tkashi_mirror_blade"
+		"item"	"item_uthmors_skullcleaver"
+		"item"	"item_dragonscale_shield"
+		"item"	"item_ironbark_leathers"
 	}
 }

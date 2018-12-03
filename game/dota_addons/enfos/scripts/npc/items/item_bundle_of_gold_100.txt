@@ -19,4 +19,5 @@
 	"SecretShop"					"1"
 	"LumberCost"	"100"
 	"GoldRefund"	"10000"
+	"ItemPurchasable" "0"
 }	

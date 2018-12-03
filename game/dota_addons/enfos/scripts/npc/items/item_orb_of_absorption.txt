@@ -22,6 +22,7 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
+	"ItemPurchasable" "0"
 	
 	"AbilitySharedCooldown" "Linkens"
 	"AbilityCooldown"				"8.0"
