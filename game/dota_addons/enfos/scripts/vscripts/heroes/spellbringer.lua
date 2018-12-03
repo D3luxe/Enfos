@@ -75,13 +75,24 @@ function spell_disruption(keys)
 	else
 		damage = 90000
 	end
+	
 	local sphereCheck = magic_block_check(target)
 	if sphereCheck then
 		return
 	else	
 		target:SetMana(targetMana - manaBurn)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-
+		
+		local dmgNumAmount = math.floor(damage*math.abs((target:GetBaseMagicalResistanceValue()-100)/100))
+		local dmgCharacters = string.len(tostring(dmgNumAmount))
+		
+		local effect = ParticleManager:CreateParticle("particles/hero_spellbringer/spellbringer_spell_disrupt_msg.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+		ParticleManager:SetParticleControl(effect,3,Vector(0,dmgNumAmount,0))
+		ParticleManager:SetParticleControl(effect,4,Vector(1.2,dmgCharacters,0))
+		ParticleManager:SetParticleControl(effect,1,Vector(0,0,6))
+		ParticleManager:SetParticleControl(effect,2,Vector(1,1,0))
+		
+		target:EmitSound("Hero_Antimage.ManaVoid")
 		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
 	end
 end

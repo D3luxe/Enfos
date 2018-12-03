@@ -24,6 +24,17 @@
 			"mana_burn"		"%mana_burn"
 		}
 	}
+	
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_antimage.vsndevts"
+		"particle"			"particles/units/heroes/hero_antimage/antimage_manavoid.vpcf"
+		"particle"			"particles/hero_spellbringer/spellbringer_spell_disrupt_msg.vpcf"
+		"particle"			"particles/hero_spellbringer/spellbringer_spell_disrupt_msg_b.vpcf"
+		"particle"			"particles/hero_spellbringer/spellbringer_spell_disrupt_msg_c.vpcf"
+		"particle"			"particles/hero_spellbringer/spellbringer_spell_disrupt_msg_d.vpcf"
+		"particle"			"particles/hero_spellbringer/spellbringer_spell_disrupt_msg_e.vpcf"
+	}
 
 	// Special
 	//-------------------------------------------------------------------------------------------------------------
