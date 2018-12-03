@@ -624,6 +624,11 @@ end
 
 
 function CEnfosGameMode:InitGameMode()
+	if CEnfosGameMode._reentrantCheck then
+		return
+	end
+
+
 	SpellShopUI:InitGameMode()
 	STARTING_GOLD = 25
 	curRound = 0
@@ -991,6 +996,10 @@ function CEnfosGameMode:InitGameMode()
 	math.randomseed(tonumber(timeTxt)) 
 	
 	CustomPurgeInit()
+	
+	CEnfosGameMode._reentrantCheck = true
+	CEnfosGameMode:InitGameMode()
+	CEnfosGameMode._reentrantCheck = false
 end
 
 function CEnfosGameMode:OnTip()
@@ -1428,23 +1437,6 @@ function CEnfosGameMode:OnGameRulesStateChange()
 	elseif nNewState == DOTA_GAMERULES_STATE_GAME_IN_PROGRESS then
 		--self:_RespawnPlayers()
 		self._flPrepTimeEnd = GameRules:GetGameTime() + self._flPrepTimeBetweenRounds
-
-		for player_id = 0, 9 do
-			local hero = PlayerResource:GetSelectedHeroEntity(player_id) 
-			if hero ~= nil then
-				
-				local nTeam = hero:GetTeamNumber()
-				local tower
-				if hero.spellbringer ~= nil then
-					tower = hero.spellbringer:GetAbsOrigin()
-				end
-				MinimapEvent( nTeam, hero, tower.x, tower.y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 5 )
-
-				
-			end
-		end
-
-		Notifications:TopToAll({text="Remember to use your spellbringers!", duration=5.0})
 		
 		local kvRound = LoadKeyValues( "scripts/maps/" .. GetMapName() .. ".txt" )
 		local monNetTable = {}
@@ -1461,7 +1453,26 @@ function CEnfosGameMode:OnGameRulesStateChange()
 			end
 			i=i+1
 		end
+		
 		CustomNetTables:SetTableValue("monster_data_pretaped","dont_crash",monNetTable)
+
+		for player_id = 0, 9 do
+			local hero = PlayerResource:GetSelectedHeroEntity(player_id) 
+			if hero ~= nil then
+				
+				local nTeam = hero:GetTeamNumber()
+				local tower
+				if hero.spellbringer ~= nil then
+					tower = hero.spellbringer:GetAbsOrigin()
+				end
+				--MinimapEvent( nTeam, hero, tower.x, tower.y, DOTA_MINIMAP_EVENT_HINT_LOCATION, 5 )
+				CEnfosGameMode:MinimapEventClient(player_id, tower)
+
+				
+			end
+		end
+
+		Notifications:TopToAll({text="Remember to use your spellbringers!", duration=5.0})
 	end
 end
 
@@ -2951,6 +2962,8 @@ function CEnfosGameMode:FilterExecuteOrder( filterTable )
 		local first_unit = EntIndexToHScript(units["0"])
 		local ability = EntIndexToHScript( filterTable["entindex_ability"] )
 		
+		if ability:GetAbilityName() == "item_tpscroll" then return false end
+		
 		first_unit.hold = false
 		if first_unit.acq_limit ~= nil then
 			first_unit.acq_limit = false
@@ -3778,17 +3791,32 @@ end
 function CEnfosGameMode:OnPlayerChat(event)
 	if event.text == "-repick" then
 		local pid = event.playerid
+		--CEnfosGameMode:SendErrorMessage(pid, "IMMA KEEP IT REAL WITH YOU CHIEF! THIS FEATURE IS BROKEN RN")
 		if PlayerResource:GetSelectedHeroName(pid) == "npc_dota_hero_wisp" then
 			return 0
 		end
 		local uid = event.userid
 		local name = PlayerResource:GetPlayerName(pid)
+		--CEnfosGameMode:SendDebugMessage(pid, "uid and name")
 		--PrintTable(playerColors)
-		local r = playerColors[uid].r
-		local g = playerColors[uid].g
-		local b = playerColors[uid].b
+		local r
+		local g
+		local b
+		for i = 1, #playerColors do
+			if playerColors[i] ~= nil then
+				if playerColors[i].playerID == pid then
+					r = playerColors[i].r
+					g = playerColors[i].g
+					b = playerColors[i].b
+				end
+			end
+		end
+		--local r = playerColors[pid].r
+		--local g = playerColors[pid].g
+		--local b = playerColors[pid].b
 		
 		local rgb = string.format("%02x%02x%02x",r,g,b)
+		--CEnfosGameMode:SendDebugMessage(pid, "colours")
 		--[[GameRules:SendCustomMessage(
 		"<font color='#"..rgb.."'>"
 		..name
@@ -3798,7 +3826,9 @@ function CEnfosGameMode:OnPlayerChat(event)
 		data.hero = "npc_dota_hero_wisp"
 		data.color = rgb
 		data.name = name
+		--CEnfosGameMode:SendDebugMessage(pid, "send table")
 		RepickHero(nil,data)
+		--CEnfosGameMode:SendDebugMessage(pid, "repick function")
 	end
 	if string.sub(event.text,1,7) == "-range " then
 		print(type(tonumber(string.sub(event.text,8))))
@@ -3957,7 +3987,15 @@ function CEnfosGameMode:_SetArmor( cmdName, armor )
 end
 
 function CEnfosGameMode:SendErrorMessage(playerID, string)
-   CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_error_message", {message=string}) 
+	CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_error_message", {message=string}) 
+end
+
+function CEnfosGameMode:MinimapEventClient(playerID, vector)
+	CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "custom_ping", {vector=vector}) 
+end
+
+function CEnfosGameMode:SendDebugMessage(playerID, string)
+	CustomGameEventManager:Send_ServerToPlayer(PlayerResource:GetPlayer(playerID), "enfos_debug", {message=string}) 
 end
 
 function CEnfosGameMode:_RepickTestConsoleCommand( cmdName, hero )
@@ -4041,6 +4079,7 @@ function CEnfosGameMode:_RepickTestConsoleCommand( cmdName, hero )
 end
 
 function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
+	--CEnfosGameMode:SendErrorMessage(event.player, "Bastard")
 	print( "*** REPICKING ***" )
 	--print("npc_dota_hero_"..hero)
 	--print(Convars:GetCommandClient())
