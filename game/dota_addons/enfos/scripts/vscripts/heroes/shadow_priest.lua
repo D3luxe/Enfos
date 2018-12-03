@@ -248,7 +248,7 @@ function greater_hallucination(keys)
 		illusion:FindAbilityByName("weaponsmith_forge"):SetLevel(
 			target:FindAbilityByName("weaponsmith_forge"):GetLevel()
 		)
-		illusion::FindAbilityByName("weaponsmith_forge"):ApplyDataDrivenModifier( illusion, illusion, "modifier_weaponsmith_forge_stack", {} )
+		illusion:FindAbilityByName("weaponsmith_forge"):ApplyDataDrivenModifier( illusion, illusion, "modifier_weaponsmith_forge_stack", {} )
 		illusion:SetModifierStackCount("modifier_weaponsmith_forge_stack", illusion, target:GetModifierStackCount("modifier_weaponsmith_forge_stack",target))
 		illusion:FindAbilityByName("weaponsmith_forge"):SetLevel(0)
 	end

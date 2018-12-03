@@ -61,6 +61,9 @@ function AnimateDead(keys)
 		raisedUnit:SetNoCorpse()
 
 		AddTypes(raisedUnit, units[i].armorType, units[i].attackType)
+		
+		keys.ability:ApplyDataDrivenModifier(caster, raisedUnit, "modifier_purification_target", {})
+		raisedUnit:AddNewModifier(raisedUnit, nil, "modifier_kill", {duration = keys.duration})
 	end
 	caster:EmitSound("Hero_ObsidianDestroyer.ArcaneOrb.Impact")
 end

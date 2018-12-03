@@ -162,6 +162,10 @@ function SummonMeraudsCompanion(keys)
 			v:SetMaxHealth(keys.health)
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
+			
+			--[[local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})]]
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
 		end
 	end
 end

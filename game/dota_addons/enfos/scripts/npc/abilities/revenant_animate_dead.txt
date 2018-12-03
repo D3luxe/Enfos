@@ -36,13 +36,27 @@
 			{
 				"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"      "%damage_block"
 			}
+			//"OnDestroy"
+			//{
+			//	"Damage"
+			//	{
+			//		"Target"		"TARGET"
+			//		"Damage"		"9999999"
+			//		"Type"			"DAMAGE_TYPE_PURE"
+			//	}
+			//}
+		}
+		"modifier_purification_target"
+		{
+			"IsPurgable"		"1"
+			"IsHidden"			"1"
+			
 			"OnDestroy"
 			{
-				"Damage"
+				"RunScript"
 				{
-					"Target"		"TARGET"
-					"Damage"		"9999999"
-					"Type"			"DAMAGE_TYPE_PURE"
+					"ScriptFile"			"heroes/generic.lua"
+					"Function"				"purify_summon"
 				}
 			}
 		}

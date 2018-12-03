@@ -150,14 +150,15 @@ function Hallucination(keys)
 	local targetName = target:GetUnitName()
 	local targetHealth = target:GetHealth()
 	local targetHull = target.hullSize --just in case
-	local sDuration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1 )
-	local outgoingDamage = ability:GetLevelSpecialValueFor("damage_dealt_percent_value", ability:GetLevel() - 1 )
-	local incomingDamage = ability:GetLevelSpecialValueFor("damage_taken_percent_value", ability:GetLevel() - 1 )
+	local sDuration = keys.ability:GetLevelSpecialValueFor("duration", keys.ability:GetLevel() - 1 )
+	local outgoingDamage = keys.ability:GetLevelSpecialValueFor("damage_dealt_percent_value", keys.ability:GetLevel() - 1 )
+	local incomingDamage = keys.ability:GetLevelSpecialValueFor("damage_taken_percent_value", keys.ability:GetLevel() - 1 )
 -- make the unit and give it the modifiers
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 	unit:SetHealth(targetHealth)
 	--unit:SetRenderColor(0,84,255)
+	if unit:GetUnitName() == "npc_dota_creature_crab" then unit:SetRenderColor(0,84,255) end
 	unit.hullSize = targetHull
 	unit:SetHullRadius(targetHull)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
@@ -184,7 +185,8 @@ function Hallucination(keys)
 	attackItem = nil
 	
 	unit:MakeIllusion()
-	unit:AddNewModifier(caster, ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	unit:AddNewModifier(caster, keys.ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	keys.ability:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
 	--thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
 	--PrintTable(target:FindAllModifiers());
 end

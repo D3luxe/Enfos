@@ -561,9 +561,11 @@ function SummonDarkrift(keys)
 				--unit:SetMaximumGoldBounty(0)
 				--unit:SetMinimumGoldBounty(0)
 				--print(unit:GetGoldBounty())
-				thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
 				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
 				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
+				unit:AddNewModifier(unit, nil, "modifier_kill", {duration = 60})
 				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 					if unit:GetAbilityByIndex(i) ~= nil then
 						unit:GetAbilityByIndex(i):SetLevel(1)

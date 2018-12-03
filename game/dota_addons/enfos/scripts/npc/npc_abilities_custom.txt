@@ -5220,7 +5220,21 @@
 						"Damage"		"999999"
 					}
 				}
-			}			
+			}
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
+			}		
 		}
 		"AbilitySpecial"
 		{
@@ -10270,6 +10284,23 @@
 				"health"				"%health"
 			}
 		}
+		"Modifiers"
+		{
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
+			}
+		}
 		"AbilitySpecial"
 		{			
 			"01"
@@ -10524,13 +10555,27 @@
 				{
 					"MODIFIER_PROPERTY_PHYSICAL_CONSTANT_BLOCK"      "%damage_block"
 				}
+				//"OnDestroy"
+				//{
+				//	"Damage"
+				//	{
+				//		"Target"		"TARGET"
+				//		"Damage"		"9999999"
+				//		"Type"			"DAMAGE_TYPE_PURE"
+				//	}
+				//}
+			}
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
 				"OnDestroy"
 				{
-					"Damage"
+					"RunScript"
 					{
-						"Target"		"TARGET"
-						"Damage"		"9999999"
-						"Type"			"DAMAGE_TYPE_PURE"
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
 					}
 				}
 			}
@@ -13472,6 +13517,20 @@
 					}
 				}
 			}
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
+			}
 		}
 		"AbilitySpecial"
 		{
@@ -13521,6 +13580,23 @@
 				"base_attack_time"		"%base_attack_time"
 				"damage"				"%damage"
 				"health"				"%health"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
 			}
 		}
 		"AbilitySpecial"
@@ -13590,6 +13666,23 @@
 				"base_attack_time"		"%base_attack_time"
 				"damage"				"%damage"
 				"health"				"%health"
+			}
+		}
+		"Modifiers"
+		{
+			"modifier_purification_target"
+			{
+				"IsPurgable"		"1"
+				"IsHidden"			"1"
+				
+				"OnDestroy"
+				{
+					"RunScript"
+					{
+						"ScriptFile"			"heroes/generic.lua"
+						"Function"				"purify_summon"
+					}
+				}
 			}
 		}
 		"AbilitySpecial"

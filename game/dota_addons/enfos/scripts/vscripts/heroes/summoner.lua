@@ -77,7 +77,8 @@ function SummonHellbearWarriors(keys)
 			end
 			
 			local applier = CreateItem("item_stat_modifier", nil, nil)
-			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
 			
 			local heroNetTable = {}
 			heroNetTable[v:entindex()] = {
@@ -123,7 +124,8 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 			v:SetNoCorpse()
 			
 			local applier = CreateItem("item_stat_modifier", nil, nil)
-			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
 			
 			local heroNetTable = {}
 			heroNetTable[v:entindex()] = {
@@ -180,7 +182,11 @@ function SummonDarkrift(keys)
 			FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 		end
 		unit:SetControllableByPlayer(caster:GetPlayerID(), true)
-		thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {})
+		--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {})
+		
+		thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
+		unit:AddNewModifier(unit, nil, "modifier_kill", {duration = 60})
+		
 		--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
 		unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
 		for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
