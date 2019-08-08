@@ -724,7 +724,7 @@ function DVonGetTheTables()
 				if(heroData2[playerID].intbn != undefined)		pIDs[playerID].intellect_bonus = heroData2[playerID].intbn;
 				if(heroData2[playerID].atktype != undefined)	pIDs[playerID].attack = heroData2[playerID].atktype;
 				if(heroData2[playerID].armtype != undefined)	pIDs[playerID].armor = heroData2[playerID].armtype;
-				if(heroData2[playerID] != undefined)			checkem = playerID;
+				checkem = playerID;
 			}
 		}
 		//$.Msg("urgh "+pIDs[playerID].attack);
