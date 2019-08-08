@@ -962,6 +962,7 @@ function CEnfosGameMode:InitGameMode()
 	-- Lua Modifiers
     LinkLuaModifier("modifier_sniper_ms_limit_lua", "abilities/modifier_sniper_ms_limit_lua", LUA_MODIFIER_MOTION_NONE)
     LinkLuaModifier("lua_attribute_bonus_modifier", "abilities/lua_attribute_bonus_modifier", LUA_MODIFIER_MOTION_NONE)
+	LinkLuaModifier("modifier_custom_armor_formula", "abilities/modifier_custom_armor_formula", LUA_MODIFIER_MOTION_NONE)
 
 
 	local playercounter = 0
@@ -2256,7 +2257,7 @@ function CEnfosGameMode:FilterDamage( filterTable )
 		if attacker:HasModifier("modifier_wolverine_dance") then damage = 0 end
 		
 		--Calculate the damage before any armor affected it
-		local armor = math.floor(victim:GetPhysicalArmorValue())
+		local armor = math.floor(victim:GetPhysicalArmorValue(false))
 		local preMitigation = ((0.06 * math.abs(armor)) / (1 + 0.06 * math.abs(armor))) + 1
 		
 		--Damage reflection calculation
@@ -3463,6 +3464,8 @@ function CEnfosGameMode:OnNPCSpawned( event )
 		return
 	end
 
+	spawnedUnit:AddNewModifier(spawnedUnit, nil, "modifier_custom_armor_formula", {})
+	
 	 if spawnedUnit:IsCreature() then
 	 	if spawnedUnit:GetUnitName() == "npc_dota_neutral_satyr_reaver" then
 			spawnedUnit:AddNewModifier(caster, nil, "modifier_tower_truesight_aura", {})
