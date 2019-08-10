@@ -105,5 +105,32 @@ function FleeCheck(keys)
 end
 
 function purify_summon(keys)
-	PrintTable(keys)
+	--[[
+	--PrintTable(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	--print(caster:entindex())
+	--print(target:entindex())
+	print("abname "..ability:GetAbilityName())
+	
+	if not target:IsNull() and target:IsAlive() then
+		local dTable = {
+			victim = target,
+			attacker = target,
+			damage = 50000,
+			damage_type = DAMAGE_TYPE_MAGICAL,
+			damage_flags = DOTA_DAMAGE_FLAG_NONE,
+			ability = ability
+		}
+		ApplyDamage(dTable)
+		if not target:IsNull() and target:IsAlive() then
+			print("reapplying mod")
+			ability:ApplyDataDrivenModifier(ability, target, "modifier_purification_target", {})
+		else
+			print("bye fail")
+		end
+	end
+	--print(caster:entindex())
+	]]
 end

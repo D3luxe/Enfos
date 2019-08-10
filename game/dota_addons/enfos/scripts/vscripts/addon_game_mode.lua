@@ -4113,6 +4113,10 @@ function RepickHero( PuttingThisHereBecauseIForgotTheseNeedTwoOfThese , event )
 			CEnfosGameMode:SendErrorMessage(pID, "Too soon to repick")
 			return 0
 		end
+		if not player:IsAlive() then
+			CEnfosGameMode:SendErrorMessage(pID, "Dead")
+			return 0
+		end
 	else
 		if player.pickCD > 0 then
 			--failsafe
