@@ -1,9 +1,15 @@
 var glyph = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("minimap_container").FindChildTraverse("GlyphScanContainer").FindChildTraverse("glyph");
 var glyphBack = $.CreatePanel("Panel", $.GetContextPanel(), "ManaDial");
+var glyphTip = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("Tooltips").FindChildTraverse("DOTAHUDGlyphTooltip");
 glyphBack.BLoadLayoutSnippet("ManaDial");
 glyphBack.SetParent(glyph);
 glyphBack.hittest = false;
-glyph.FindChildTraverse("GlyphButton").style.backgroundImage = 'url("s2r://panorama/images/custom_game/icon_glyph_on_psd_png.vtex")';
+var glyphNew = $.CreatePanel("Button", $.GetContextPanel(), "SpellbringerButton");
+glyphNew.BLoadLayoutSnippet("SpellbringerButton");
+glyphNew.SetParent($.GetContextPanel().FindChildTraverse("SpellbringerButtonBox"));
+glyph.FindChildTraverse("GlyphButton").style.visibility = "collapse";
+glyph.FindChildTraverse("GlyphButton").hittest = false;
+//glyph.FindChildTraverse("GlyphButton").style.backgroundImage = 'url("s2r://panorama/images/custom_game/icon_glyph_on_psd_png.vtex")';
 //glyph.FindChildTraverse("GlyphButton").SetPanelEvent("onmouseover","GlyphTooltip()");
 //glyph.FindChildTraverse("GlyphButton").SetPanelEvent("onmouseout","DOTAHideTitleTextTooltip()");
 //var manaBar = 0;
@@ -11,12 +17,20 @@ var sbActive = 0;
 var nowMana = 0;
 var prevMana = 0;
 var ttOn = false;
-glyph.FindChildTraverse("GlyphButton").SetPanelEvent("onmouseover",function(){
+glyphNew.SetPanelEvent("onmouseover",function(){
 	GlyphTooltipOn();
 });
-glyph.FindChildTraverse("GlyphButton").SetPanelEvent("onmouseout",function(){
+glyphNew.SetPanelEvent("onmouseout",function(){
 	GlyphTooltipOff();
 });
+glyph.FindChildTraverse("GlyphCooldown").style.visibility = "collapse";
+//glyph.FindChildTraverse("GlyphCooldown").RemoveAndDeleteChildren();
+//glyph.FindChildTraverse("GlyphCooldown").contentheight = "0px";
+glyph.FindChildTraverse("GlyphCooldown").hittest = false;
+//glyphTip.style.visibility = "collapse";
+//glyphTip.FindChildTraverse("Contents").contentheight = "0px";
+//glyphTip.GetChild(1).RemoveAndDeleteChildren();
+//glyphTip.RemoveAndDeleteChildren();
 
 function ManaBarUpdate(event) {
 	var sb = event.sb;
@@ -38,7 +52,7 @@ function ManaBarUpdate(event) {
 }
 function ManaBarUpdateNew(event) {
 	sbActive = event.sb;
-	glyph.FindChildTraverse("GlyphButton").SetPanelEvent(
+	glyphNew.SetPanelEvent(
 	"onactivate",
 	function(){
 		GameUI.SelectUnit(sbActive,false);
@@ -49,14 +63,14 @@ function ManaBarUpdateNew(event) {
 }
 
 function GlyphTooltipOn() {
-	$.DispatchEvent( "DOTAShowTitleTextTooltip",glyph.FindChildTraverse("GlyphButton"),
+	$.DispatchEvent( "DOTAShowTitleTextTooltip",glyphNew,
 	"Spellbringer",
 	"<b>Mana: "+nowMana+"/2000</b>");
 	//$.Localize("#DOTA_HeroSelector_SelectHero_Label")
 	ttOn = true;
 }
 function GlyphTooltipOff() {
-	$.DispatchEvent("DOTAHideTitleTextTooltip", glyph.FindChildTraverse("GlyphButton"));
+	$.DispatchEvent("DOTAHideTitleTextTooltip", glyphNew);
 	ttOn = false;
 }
 

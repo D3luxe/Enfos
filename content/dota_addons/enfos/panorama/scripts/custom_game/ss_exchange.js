@@ -153,6 +153,19 @@ innerBox.SetParent(exchangeBox);
 			reusableLabel.SetParent(sellButtonThree);
 			reusableLabel.text = "100";
 
+var sideShopCategory = $.CreatePanel("Panel", $.GetContextPanel(), "ShopItems_sideshop");
+sideShopCategory.BLoadLayoutSnippet("ShopItems_misc");
+sideShopCategory.SetParent(secretList.GetParent());
+
+	var sideShopLabel = $.CreatePanel("Label", $.GetContextPanel(), "ShopItemsHeader");
+	sideShopLabel.BLoadLayoutSnippet("ShopItemsHeader");
+	sideShopLabel.SetParent(sideShopCategory);
+	sideShopLabel.text = $.Localize("#DOTA_SHOP_NAME_SIDE");
+	
+	var sideShopContents = $.CreatePanel("Panel", $.GetContextPanel(), "ShopItemsContainer");
+	sideShopContents.BLoadLayoutSnippet("ShopItemsContainer");
+	sideShopContents.SetParent(sideShopCategory);
+
 var itemRemoval = secretList.FindChildrenWithClassTraverse("MainShopItem");
 //$.Msg(itemRemoval);
 for (var bg of itemRemoval)
@@ -163,7 +176,9 @@ for (var bg of itemRemoval)
 		bg.FindChildTraverse("SecretShop").style.backgroundImage = 'url("s2r://panorama/images/hud/secret_psd.vtex")';
 		bg.FindChildTraverse("SecretShop").style.backgroundSize = "100%";
 	}
+	else bg.SetParent(sideShopContents);
 }
+	
 
 function DoExchange(event){
 	var data = {};
