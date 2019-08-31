@@ -13,6 +13,12 @@
 	"MaxLevel"						"1"
 	"AbilityCastRange"	"0"
 
+	"precache"
+	{
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_tinker.vsndevts"
+		"particle"			"particles/hero_spellbringer/spellbringer_locate.vpcf"
+	}
+
 	"OnSpellStart"
 	{
 		"RunScript"

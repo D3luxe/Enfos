@@ -290,6 +290,7 @@ end
 function locate(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	local ability = keys.ability
 	if math.abs(target.x) < 1500 then
 		if target.x < 0 then target.x = -1500
 		else target.x = 1500 end
@@ -300,12 +301,17 @@ function locate(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:SetDayTimeVisionRange(1200)
 	unit:SetNightTimeVisionRange(1200)
-	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
-	unit:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
+	unit:AddNewModifier(dummy, nil, "modifier_phased", {})
+	unit:AddNewModifier(dummy, nil, "modifier_invulnerable", {})
 	unit:AddNewModifier(caster, nil, "modifier_tower_truesight_aura", {})
+	unit:AddNewModifier(dummy, nil, "modifier_kill", {duration = ability:GetLevelSpecialValueFor("duration",0)})
 
-	ParticleManager:CreateParticle("particles/items_fx/dust_of_appearance.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
-	ParticleManager:CreateParticle("particles/econ/wards/f2p/f2p_ward/ward_true_sight.vpcf", PATTACH_OVERHEAD_FOLLOW, unit)
+	--ParticleManager:CreateParticle("particles/items_fx/dust_of_appearance.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	--ParticleManager:CreateParticle("particles/econ/wards/f2p/f2p_ward/ward_true_sight.vpcf", PATTACH_OVERHEAD_FOLLOW, unit)
+	local scan = ParticleManager:CreateParticle("particles/hero_spellbringer/spellbringer_locate.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	ParticleManager:SetParticleControl(scan,1,target)
+	
+	unit:EmitSound("Hero_Tinker.GridEffect")
 end
 
 function whole_displacement(keys)
