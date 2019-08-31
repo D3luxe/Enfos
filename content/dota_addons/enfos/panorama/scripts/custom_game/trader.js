@@ -141,10 +141,6 @@ function UpdateStock(event) {
 	}
 }
 
-function WasThisTheAnswerAllAlong() {
-	$.Msg("oh god dammit");
-}
-
 function CloseButton() {
 	SelectedUnit = -1;
 	$("#TimeBox").visible = true;
@@ -194,8 +190,6 @@ function SunstoneToggle(event) {
 	
 	$("#TimeBox").visible = true;
 	$("#RangeBox").visible = false;
-	
-	GameEvents.Subscribe("dota_pause_event", WasThisTheAnswerAllAlong);
 	
 	sunstonepanel.AddClass("Off");
 })();

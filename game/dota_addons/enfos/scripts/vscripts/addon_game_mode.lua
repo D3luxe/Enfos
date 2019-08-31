@@ -4499,7 +4499,7 @@ function TogglePause(d,event)
 		PauseGame(false)
 	else PauseGame(true) end]]
 	if GameRules:GetDOTATime(false,true) >= -38 then SendToConsole("dota_pause")
-	else CEnfosGameMode:SendErrorMessage(event.player, "Too soon to pause") end
+	else CEnfosGameMode:SendErrorMessage(event.player, "#DOTA_Chat_CantPauseYet") end
 end
 
 function UpdateGuildShop(one,event)

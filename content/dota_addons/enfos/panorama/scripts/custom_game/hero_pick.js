@@ -12,6 +12,7 @@ GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
 GameEvents.Subscribe("pause_check",PauseCheck);
 GameEvents.Subscribe("ui_chat_update",ChatUpdate);
+GameEvents.Subscribe("dota_pause_event", TurnPauseCheckIntoThisLater);
 
 function UpdatePickUI() {
 	var pID = Game.GetLocalPlayerID();
@@ -1276,6 +1277,22 @@ function TogglePause() {
 function PauseCheck() {
 	if(Game.IsGamePaused()) {$('#PauseLabel').text = "UNPAUSE";}
 	else {$('#PauseLabel').text = "PAUSE";}
+}
+
+function TurnPauseCheckIntoThisLater(event) {
+	$.Msg(event);
+	var data = {};
+	data.pid = -1;
+	var col = Players.GetPlayerColor(event.userid);
+	var name = Players.GetPlayerName(event.userid);
+	col = col.toString(16);
+	col = col.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+	var pausetext = "";
+	if(Game.IsGamePaused()) {pausetext = $.Localize("#DOTA_Chat_Paused");}
+	else {pausetext = $.Localize("#DOTA_Chat_Unpaused");}
+	pausetext = pausetext.replace("%s1 ","");
+	data.msg = "<font color='#"+col+"'>"+name+"</font> "+pausetext;
+	ChatUpdate(data);
 }
 
 function MapButtonHover(event) {

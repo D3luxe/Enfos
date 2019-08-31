@@ -12,6 +12,7 @@
 		"item" "item_hisan_salve"
 		"item" "item_anti_magic_potion"
 		"item" "item_vampiric_potion"
+		"item" "item_ward_sentry_enfos"
 	}
 
 	"attributes"
@@ -48,7 +49,6 @@
 		"item"	"item_elven_plate_mail"
 		"item"	"item_small_round_shield"
 		"item"	"item_tower_shield"
-		"item" "item_ward_sentry_enfos"
 	}	
 	
 	// Level 1 - Green Recipes
