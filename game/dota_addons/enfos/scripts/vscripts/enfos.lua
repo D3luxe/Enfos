@@ -247,14 +247,15 @@ end
 -- Modifies the lumber of this player. Accepts negative values
 function ModifyLumber( player, lumber_value )
 	local pid = player:GetPlayerID()
+	local team = player:GetTeam()
 	if lumber_value == 0 then return end
 	if lumber_value > 0 then
 		Enfos.lumber[pid] = Enfos.lumber[pid] + lumber_value
-	    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(Enfos.lumber[pid]) })
+	    CustomGameEventManager:Send_ServerToTeam(team, "player_lumber_changed", { pid = pid, lumber = math.floor(Enfos.lumber[pid]) })
 	else
 		if PlayerHasEnoughLumber( player, math.abs(lumber_value) ) then
 			Enfos.lumber[pid] = Enfos.lumber[pid] + lumber_value
-		    CustomGameEventManager:Send_ServerToPlayer(player, "player_lumber_changed", { lumber = math.floor(Enfos.lumber[pid]) })
+		    CustomGameEventManager:Send_ServerToTeam(team, "player_lumber_changed", { pid = pid, lumber = math.floor(Enfos.lumber[pid]) })
 		end
 	end
 end

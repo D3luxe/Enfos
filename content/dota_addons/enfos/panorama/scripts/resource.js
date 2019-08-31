@@ -3,8 +3,11 @@
 function OnPlayerLumberChanged ( args ) {
 	var iPlayerID = Players.GetLocalPlayer()
 	var lumber = args.lumber
-	$.Msg("Player "+iPlayerID+" Lumber: "+lumber)
-	$('#LumberText').text = lumber
+	if (iPlayerID == args.pid)
+	{
+		$.Msg("Player "+iPlayerID+" Lumber: "+lumber)
+		$('#LumberText').text = lumber
+	}
 }
 
 function AbilityShowTooltip()
