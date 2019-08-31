@@ -26,7 +26,7 @@
 	"LumberCost"	"150"
 	"IsArtifact"							"1"
 
-	"AbilityCooldown"				"30.0"
+	"AbilityCooldown"				"8.0"
 	
 	
 	"Modifiers"
@@ -87,6 +87,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"bonus_attack_speed"			"20"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"block_cooldown"		"8"
 		}
 	}
 }

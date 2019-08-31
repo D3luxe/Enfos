@@ -12,6 +12,7 @@
 	"ItemCost"                      "10000" 		
 	"ItemShopTags"					"caster"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemPurchasable" "0"
 
 	"Modifiers"
 	{

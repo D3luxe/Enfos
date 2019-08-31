@@ -1,0 +1,64 @@
+//=================================================================================================================
+// Orb of Absorption
+//=================================================================================================================
+"item_orb_of_absorption"
+{
+	// General
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_PASSIVE"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"item_sphere"
+	"AbilitySharedCooldown" "Orb"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
+	"ItemStockTime"					"5.0"
+
+	// Item Info
+	//-------------------------------------------------------------------------------------------------------------
+	"ItemCost"						"150"
+	"ItemQuality"					"rare"
+	"ItemDroppable"					"1"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"ItemPurchasable" "0"
+	
+	"AbilitySharedCooldown" "Linkens"
+	"AbilityCooldown"				"8.0"
+	
+	
+	"Modifiers"
+	{
+		"modifier_orb_spell_block"
+		{
+			"Passive" "1"
+			"IsHidden" "1"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"scripts/vscripts/items/items_shared.lua"
+					"Function"		"ironbark_leathers"
+				}
+			}
+			"ThinkInterval"			".03"
+			"OnIntervalThink"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+					"Function"			"ironbark_leathers_thinker"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"scripts/vscripts/items/items_shared.lua"
+					"Function"			"ironbark_leathers_drop"
+				}
+			}
+		}	
+	}
+}

@@ -34,7 +34,6 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
-	"SideShop"						"1"
 
 	"OnSpellStart"
 	{
@@ -46,10 +45,16 @@
 			"mana_amount"		"%mana_amount"
 
 		}
+		"AttachEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/items3_fx/mango_active.vpcf"
+			"EffectAttachType"	"follow_origin"
+		}
 		"FireSound"
 		{
 			"Target" 		"UNIT"
-			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+			"EffectName" 	"DOTA_Item.FaerieSpark.Activate"
 		}
 		"SpendCharge"
 		{}
@@ -63,6 +68,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"mana_amount"				"2000"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"2"
 		}
 	}
 }

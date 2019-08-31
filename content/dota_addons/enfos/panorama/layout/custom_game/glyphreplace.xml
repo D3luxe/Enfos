@@ -6,5 +6,7 @@
 		<include src="file://{resources}/scripts/custom_game/glyphreplace.js"/>
 	</scripts>
 	<Panel hittest="false" class="Main">
+		<Panel id="SpellbringerButtonBox">
+		</Panel>
 	</Panel>
 </root>

@@ -75,6 +75,16 @@ function SummonHellbearWarriors(keys)
 			if thisSpellLevel == 10 then
 				v:SetMana(200)
 			end
+			
+			local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
+			
+			local heroNetTable = {}
+			heroNetTable[v:entindex()] = {
+				attack = "modifier_attack_normal",
+				armor = "modifier_armor_heavy"}
+			CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 		end
 	end
 end
@@ -112,6 +122,16 @@ function SummonSatyrRangers(keys) -- this violates DRY a bit, but whatever. it m
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
 			v:SetNoCorpse()
+			
+			local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
+			
+			local heroNetTable = {}
+			heroNetTable[v:entindex()] = {
+				attack = "modifier_attack_chaos",
+				armor = "modifier_armor_medium"}
+			CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 		end
 	end
 end
@@ -162,7 +182,11 @@ function SummonDarkrift(keys)
 			FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 		end
 		unit:SetControllableByPlayer(caster:GetPlayerID(), true)
-		thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {})
+		--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {})
+		
+		thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
+		unit:AddNewModifier(unit, nil, "modifier_kill", {duration = 60})
+		
 		--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
 		unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
 		for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...

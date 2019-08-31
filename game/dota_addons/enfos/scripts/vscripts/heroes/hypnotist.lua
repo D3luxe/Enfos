@@ -20,9 +20,9 @@ function Prediction(keys)
 		minIncrease = minIncrease - 2
 	end 
 -- reset the values
-	target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
+	--[[target:SetBaseStrength(target:GetBaseStrength() - Enfos.strPrediction[pid])
 	target:SetBaseAgility(target:GetBaseAgility() - Enfos.agiPrediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])
+	target:SetBaseIntellect(target:GetBaseIntellect() - Enfos.intPrediction[pid])]]
 
 -- Add the stacking modifier if player doesnt have them
 	if not target:HasModifier("modifier_prediction_str") then
@@ -48,9 +48,12 @@ function Prediction(keys)
 	Enfos.intPrediction[pid] = Enfos.intPrediction[pid] + intIncreaseAmount
 	print("Str: "..strIncreaseAmount.." | Agi: "..agiIncreaseAmount.." | Int: "..intIncreaseAmount)
 -- set the increase
-	target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
-	target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
-	target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
+	--target:SetBaseStrength(target:GetBaseStrength() + Enfos.strPrediction[pid])
+	target.strength = target.strength + strIncreaseAmount
+	--target:SetBaseAgility(target:GetBaseAgility() + Enfos.agiPrediction[pid])
+	target.agility = target.agility + agiIncreaseAmount
+	--target:SetBaseIntellect(target:GetBaseIntellect() + Enfos.intPrediction[pid])
+	target.intellect = target.intellect + intIncreaseAmount
 -- Adjust the stacks for display only
 	target:SetModifierStackCount("modifier_prediction_str", caster, Enfos.strPrediction[pid])
 	target:SetModifierStackCount("modifier_prediction_agi", caster, Enfos.agiPrediction[pid])
@@ -127,6 +130,13 @@ function Prediction(keys)
 	
 -- recalculate the stats
 	target:CalculateStatBonus()
+	--stat update
+	local heroNetTable = {}
+	heroNetTable[target:GetPlayerID()] = {
+		str = target.strength,
+		agi = target.agility,
+		int = target.intellect}
+	CustomNetTables:SetTableValue("hero_data_live","stats",heroNetTable)
 	
 	if caster.repick == 0 then caster.repick = 1 end
 end
@@ -140,16 +150,45 @@ function Hallucination(keys)
 	local targetName = target:GetUnitName()
 	local targetHealth = target:GetHealth()
 	local targetHull = target.hullSize --just in case
+	local sDuration = keys.ability:GetLevelSpecialValueFor("duration", keys.ability:GetLevel() - 1 )
+	local outgoingDamage = keys.ability:GetLevelSpecialValueFor("damage_dealt_percent_value", keys.ability:GetLevel() - 1 )
+	local incomingDamage = keys.ability:GetLevelSpecialValueFor("damage_taken_percent_value", keys.ability:GetLevel() - 1 )
 -- make the unit and give it the modifiers
 	local unit = CreateUnitByName(targetName, target:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber())
 	unit:SetControllableByPlayer(caster:GetPlayerID(), true)
 	unit:SetHealth(targetHealth)
-	unit:SetRenderColor(0,84,255)
+	--unit:SetRenderColor(0,84,255)
+	if unit:GetUnitName() == "npc_dota_creature_crab" then unit:SetRenderColor(0,84,255) end
 	unit.hullSize = targetHull
 	unit:SetHullRadius(targetHull)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
 	FindClearSpaceForUnit(unit, unit:GetAbsOrigin(), true)
-	thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
+	
+	local armorItem = CreateItem("item_armor_type_modifier", nil, nil) 
+	if target:HasModifier("modifier_armor_unarmored") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_unarmored", {}) end
+	if target:HasModifier("modifier_armor_light") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_light", {}) end
+	if target:HasModifier("modifier_armor_medium") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_medium", {}) end
+	if target:HasModifier("modifier_armor_heavy") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_heavy", {}) end
+	if target:HasModifier("modifier_armor_fortified") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_fortified", {}) end
+	if target:HasModifier("modifier_armor_hero") then armorItem:ApplyDataDrivenModifier(unit, unit, "modifier_armor_hero", {}) end
+	UTIL_RemoveImmediate(armorItem)
+	armorItem = nil
+
+	local attackItem = CreateItem("item_attack_type_modifier", nil, nil) 
+	if target:HasModifier("modifier_attack_normal") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_normal", {}) end
+	if target:HasModifier("modifier_attack_pierce") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_pierce", {}) end
+	if target:HasModifier("modifier_attack_siege") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_siege", {}) end
+	if target:HasModifier("modifier_attack_chaos") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_chaos", {}) end
+	if target:HasModifier("modifier_attack_hero") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_hero", {}) end
+	if target:HasModifier("modifier_attack_magical") then attackItem:ApplyDataDrivenModifier(unit, unit, "modifier_attack_magical", {}) end
+	UTIL_RemoveImmediate(attackItem)
+	attackItem = nil
+	
+	unit:MakeIllusion()
+	unit:AddNewModifier(caster, keys.ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	keys.ability:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
+	--thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_hypnotist_hallucination", {})
+	--PrintTable(target:FindAllModifiers());
 end
 
 function MindShout(keys) -- warning: the sound effect for this can get a bit loud.

@@ -22,6 +22,7 @@
 	//-------------------------------------------------------------------------------------------------------------
 	"AbilityCastRange"				"100"
 	"AbilityCastPoint"				"0.0"
+	"AbilitySharedCooldown" 		"Vamp"
 	"AbilityCooldown"				"120.0"
 	
 	// Item Info
@@ -33,7 +34,7 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"1"
-	"SideShop"						"1"
+	"SideShop"						"0"
 
 	"OnSpellStart"
 	{

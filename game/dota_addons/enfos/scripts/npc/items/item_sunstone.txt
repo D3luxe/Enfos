@@ -1,0 +1,55 @@
+//=================================================================================================================
+// Sunstone
+//=================================================================================================================
+"item_sunstone"
+{
+	"BaseClass"                     "item_datadriven"
+	"AbilityTextureName"			"enfos\sunstone"
+
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityCooldown"				"30.0"
+
+	"ItemCost"                      "750" 		
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
+	"ItemStockMax"					"1"
+	"ItemStockInitial"				"1"
+	"ItemStockTime"					"180.0"
+
+	"ItemDroppable"					"1"
+	"ItemSellable"					"1"
+	"ItemKillable"					"0"
+	"ItemStackable"					"0"
+	"ItemQuality"					"consumable"
+	"AbilitySharedCooldown" 		"Sunstone"
+	"AbilityCooldown"				"30.0"
+	"ItemPermanent"					"0"
+	"ItemInitialCharges"			"1"
+	"ItemPurchasable" "0"
+
+	"AbilityCastRange"	"0"
+
+	"Precache"
+	{
+		"soundfile"			"sounds/weapons/hero/silencer/global_silence_effect.vsnd"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"	"items/items_shared.lua"
+			"Function"		"sunstone"
+			"duration"		"%duration"
+		}
+		"SpendCharge"
+		{}
+	}
+
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"5"
+		}
+	}
+}

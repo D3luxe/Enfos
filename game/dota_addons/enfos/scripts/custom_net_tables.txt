@@ -4,6 +4,8 @@
     [
         "this_wave_table",
         "next_wave_table",
-	"hero_data"
+		"hero_data",
+		"hero_data_live",
+		"monster_data_pretaped"
     ]
 }

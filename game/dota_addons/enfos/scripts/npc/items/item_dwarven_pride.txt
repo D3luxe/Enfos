@@ -1,0 +1,160 @@
+//===============================================
+// Dwarven Pride
+//===============================================
+"item_dwarven_pride"
+{
+	"BaseClass"                     "item_datadriven"
+	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+	"AbilityTextureName"			"enfos\dwarven_pride"
+	"ItemKillable"					"0"
+	"ItemStockMax"					"5"
+	"ItemStockInitial"				"5"
+	"ItemStockTime"					"120.0"
+
+	"ItemQuality"					"component"
+	"ItemCost"                      "2500" 		
+	"ItemShopTags"					"damage"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	"ItemDroppable"					"1"
+	"IsUnique"							"1"
+	"ItemPurchasable" "0"
+	
+	"AbilitySharedCooldown" 		"Vamp"
+	"AbilityCooldown"				"80.0"
+
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"Target"				"CASTER"
+			"ModifierName"			"modifier_vampiric_potion"
+		}
+		"FireSound"
+		{
+			"Target" 		"UNIT"
+			"EffectName" 	"DOTA_Item.HealingSalve.Activate"
+		}
+		"SpendCharge"
+		{}
+	}
+
+	"Modifiers"
+	{
+		"modifier_dwarven_pride"
+		{
+			"Passive"			"1"
+			"IsHidden"			"1"
+			"IsPurgable"		"0"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_PREATTACK_BONUS_DAMAGE" 			"%damage"
+				//"MODIFIER_PROPERTY_STATS_STRENGTH_BONUS"			"%strength"
+			}
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"strength_bonus"
+					"amount"		"%strength"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"strength_bonus"
+					"amount"		"%strength"
+					"gain"			"-1"
+				}
+			}
+		}
+		"modifier_vampiric_potion"
+		{
+			"Duration"	"%duration"
+			"IsHidden"	"1"
+			"Properties"
+			{
+				// You may use "modifierProperty" completions within quotes here. Below is an example
+				"MODIFIER_PROPERTY_BASEATTACK_BONUSDAMAGE"	"%bonus_damage"
+			}
+			"EffectName" 				"particles/items_fx/armlet.vpcf"
+			"EffectAttachType"			"attach_hitloc"
+
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"EquipVampiricPotion"
+				}
+			}
+
+
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"		"items/items_shared.lua"
+					"Function"			"UnequipVampiricPotion"
+				}
+			}
+		}
+		"modifier_vampiric_potion_leech"
+		{
+			"IsHidden"		"0"
+			"Duration"	"%duration"
+			"OnAttackLanded"
+			{
+				"Lifesteal"
+				{
+					"Target" 				"CASTER"
+					"LifestealPercent"		"%leech"
+				}
+			}
+
+		}
+		"modifier_vampiric_potion_nope"
+		{
+			"IsHidden"		"0"
+			"Duration"	"%duration"
+
+		}
+
+	}
+
+	// Special	
+	//-------------------------------------------------------------------------------------------------------------
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"120"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"strength"				"12"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_damage"			"75"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"leech"					"25"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"10"
+		}
+	}
+}

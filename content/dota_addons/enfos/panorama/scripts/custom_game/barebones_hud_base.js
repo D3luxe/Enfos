@@ -120,14 +120,25 @@ function CreateErrorMessage(msg){
     }
 }
 
+function PingMinimapClientside(vector){
+	if (vector.vector) GameUI.PingMinimapAtLocation(vector.vector);
+}
+
+function SendMessageToConsole(msg)
+{
+	$.Msg(msg);
+}
+
 GameUI.CreateErrorMessage = CreateErrorMessage;
 
 (function () {
-  GameEvents.Subscribe("custom_error_message", CreateErrorMessage)
+  GameEvents.Subscribe("custom_ping", PingMinimapClientside);
+  GameEvents.Subscribe("custom_error_message", CreateErrorMessage);
   GameEvents.Subscribe( "top_notification", TopNotification );
   GameEvents.Subscribe( "bottom_notification", BottomNotification );
   GameEvents.Subscribe( "top_remove_notification", TopRemoveNotification );
   GameEvents.Subscribe( "bottom_remove_notification", BottomRemoveNotification );
+  GameEvents.Subscribe( "enfos_debug" , SendMessageToConsole);
 })();
 
 

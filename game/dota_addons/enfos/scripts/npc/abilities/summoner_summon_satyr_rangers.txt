@@ -38,6 +38,23 @@
 			"health"				"%health"
 		}
 	}
+	"Modifiers"
+	{
+		"modifier_purification_target"
+		{
+			"IsPurgable"		"1"
+			"IsHidden"			"1"
+			
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/generic.lua"
+					"Function"				"purify_summon"
+				}
+			}
+		}
+	}
 	"AbilitySpecial"
 	{
 		"01"

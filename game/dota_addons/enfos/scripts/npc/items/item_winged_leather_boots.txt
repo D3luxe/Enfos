@@ -14,10 +14,12 @@
 	// Item Info
 	//--------------------------------------------------------------------
 	"BaseClass"						"item_datadriven"
+	"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 
 	"AbilityTextureName"			"enfos\winged_leather_boots"
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 	"AbilityCooldown"				"30.0"
+	"AbilitySharedCooldown" "Blink"
 
 	"AbilityCastRange"				"0"
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
@@ -38,10 +40,32 @@
 		{
 			"Passive"		"1"
 			"IsHidden"		"1"
-			"Properties"
+			//"Properties"
+			//{
+			//	"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
+			//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+			//}
+			"OnCreated"
 			{
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"					"%bonus_agi"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"				"%bonus_int"
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"-1"
+				}
 			}
 		}
 	}
@@ -50,7 +74,7 @@
 		"01"
 		{
 			"var_type"				"FIELD_INTEGER"
-			"blink_range"		"1050"
+			"blink_range"		"1000"
 		}
 		"02"
 		{

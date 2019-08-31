@@ -836,6 +836,14 @@
 	margin: 0px -9px 0px -9px;
 }
 
+#ShopBox {
+	width: 244px;
+	height: 349px;
+	horizontal-align: right;
+	vertical-align: top;
+	background-color: #0000ff;
+}
+
 #CompositionBox {
 	width: 360px;
 	height: 614px;
@@ -936,6 +944,7 @@
 	horizontal-align: center;
 	vertical-align: top;
 	y: 40px;
+	border-radius: 3px;
 }
 #TeamCarryBox {
 	width: 300px;
@@ -944,6 +953,7 @@
 	horizontal-align: center;
 	vertical-align: top;
 	y: 80px;
+	border-radius: 3px;
 }
 #TeamCasterBox {
 	width: 300px;
@@ -952,6 +962,7 @@
 	horizontal-align: center;
 	vertical-align: top;
 	y: 120px;
+	border-radius: 3px;
 }
 #TeamStunBox {
 	width: 300px;
@@ -1053,9 +1064,15 @@
 	background-color: red;
 	horizontal-align: center;
 	vertical-align: center;
-	x: 18px;
+	//x: 18px;
 	y: -52px;
 }
+
+.PipLineBastard1 {x: -90px;}
+.PipLineBastard2 {x: -63px;}
+.PipLineBastard3 {x: -36px;}
+.PipLineBastard4 {x: -9px;}
+.PipLineBastard5 {x: 18px;}
 
 #FinalPickBox {
 	width: 1440px;
@@ -1133,43 +1150,59 @@
 	width: 585px;
 	height: 135px;
 	//background-color: #FFFF00;
-	background-image: url("s2r://panorama/images/custom_game/classicon_combat.png");
-	background-repeat: no-repeat;
-	background-position: right top;
+	//background-image: url("file://panorama/images/custom_game/class_combat_icon.png");
+	//background-repeat: no-repeat;
+	//background-position: right top;
 	vertical-align: top;
-	flow-children: down;
+	//flow-children: down;
 }
 
 #PickTopRightBox {
 	width: 585px;
 	height: 135px;
 	//background-color: #FFFF00;
-	background-image: url("s2r://panorama/images/custom_game/classicon_caster.png");
-	background-repeat: no-repeat;
-	background-position: left top;
+	//background-image: url("file://panorama/images/custom_game/class_caster_icon.png");
+	//background-repeat: no-repeat;
+	//background-position: left top;
 	vertical-align: top;
-	flow-children: down;
+	//flow-children: down;
 }
 
 #PickBottomLeftBox {
 	width: 585px;
 	height: 135px;
 	//background-color: #FFFF00;
-	background-image: url("s2r://panorama/images/custom_game/classicon_support.png");
-	background-repeat: no-repeat;
-	background-position: right top;
+	//background-image: url("file://panorama/images/custom_game/class_support_icon.png");
+	//background-repeat: no-repeat;
+	//background-position: right top;
 	vertical-align: bottom;
-	flow-children: down;
+	//flow-children: down;
 }
 
 #PickBottomRightBox {
 	width: 585px;
 	height: 135px;
 	//background-color: #FFFF00;
-	background-image: url("s2r://panorama/images/custom_game/classicon_rounded.png");
-	background-repeat: no-repeat;
-	background-position: left top;
+	//background-image: url("file://panorama/images/custom_game/class_rounded_icon.png");
+	//background-repeat: no-repeat;
+	//background-position: left top;
 	vertical-align: bottom;
+	//flow-children: down;
+}
+
+#PickIconLeft {
+	vertical-align: top;
+	horizontal-align: right;
+	width: 56px;
+	height: 56px;
+}
+#PickIconRight {
+	vertical-align: top;
+	horizontal-align: left;
+	width: 56px;
+	height: 56px;
+}
+#FlowChildrenDownBox {
 	flow-children: down;
 }
 
@@ -1409,6 +1442,61 @@
 	background-image: url("s2r://panorama/images/control_icons/gear_png.vtex");
 }
 
+.PickWarning
+{
+	transition-property: background-color;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	
+	animation-name: PickFade;
+	animation-duration: 4s;
+	animation-iteration-count: infinite;	
+}
+@keyframes 'PickFade'
+{
+	0%
+	{
+		background-color: #ff990099;
+	}
+
+	50%
+	{
+		background-color: #ff990033;
+	}
+
+	100%
+	{
+		background-color: #ff990099;
+	}
+}
+.PickDanger
+{
+	transition-property: background-color;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	
+	animation-name: PickFadeFast;
+	animation-duration: .83s;
+	animation-iteration-count: infinite;	
+}
+@keyframes 'PickFadeFast'
+{
+	0%
+	{
+		background-color: #ff0000ff;
+	}
+
+	50%
+	{
+		background-color: #ff000033;
+	}
+
+	100%
+	{
+		background-color: #ff0000ff;
+	}
+}
+
 
 
 
@@ -1428,6 +1516,11 @@
 	height: 367px;
 	horizontal-align: left;
 	vertical-align: top;
+}
+
+#KeepSameHeight {
+	height: 100%;
+	width: height-percentage(100%);
 }
 
 .ShiftCombat {

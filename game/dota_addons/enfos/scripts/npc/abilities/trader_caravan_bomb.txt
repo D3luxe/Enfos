@@ -1,0 +1,96 @@
+//=================================================================================================================
+// Trader: Caravan Bomb
+//=================================================================================================================
+"trader_caravan_bomb"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"techies_suicide"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_UNIT_TARGET | DOTA_ABILITY_BEHAVIOR_POINT"
+	"RequiredLevel"					"10"
+	"LevelsBetweenUpgrades"			"5"
+	"MaxLevel"						"10"
+	"AbilityCastRange"				"1000"
+	"AbilityCooldown"				"150"
+	"AbilityManaCost"				"200 220 240 260 280 300 320 340 360 380"
+	"AbilityCastAnimation"			"ACT_DOTA_TELEPORT"
+
+	"Precache"
+	{
+		"particle"			"particles/hero_trader/trader_caravan_bomb_explosion.vpcf"
+		"particle"			"particles/hero_trader/trader_caravan_bomb.vpcf"
+		"soundfile"			"soundevents/game_sounds_heroes/game_sounds_techies.vsndevts"
+	}
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+			"Function"				"CaravanBomb"
+			"Target"				"POINT"
+			"radius"				"%radius"
+			"collision_radius"		"%collision_radius"
+			"cart_speed"			"%cart_speed"
+		}
+	}
+	"OnProjectileHitUnit"
+	{
+		"DeleteOnHit"	"1"
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+			"Function"				"CaravanExplosion"
+			"Target"				"POINT"
+			"damage"				"%damage"
+			"damage_radius"			"%damage_radius"
+		}
+		"ActOnTargets"
+		{
+			"Target"
+			{
+				"Center"  				"POINT"
+				"Radius" 				"%damage_radius"
+				"Teams" 				"DOTA_UNIT_TARGET_TEAM_ENEMY"
+				"Types" 				"DOTA_UNIT_TARGET_BASIC | DOTA_UNIT_TARGET_HERO"
+			}
+
+			"Action"
+			{
+				"Damage"
+				{
+					"Type"		"DAMAGE_TYPE_MAGICAL"
+					"Target"	"TARGET"
+					"Damage"	"%damage"
+				}
+
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage"				"1500 2250 3375 5062 7593 11390 17085 25628 38443 57665"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"1000"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"damage_radius"			"650"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"collision_radius"		"100"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"cart_speed"			"160"
+		}
+	}
+}

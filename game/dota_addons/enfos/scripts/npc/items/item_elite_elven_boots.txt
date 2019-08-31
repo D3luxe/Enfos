@@ -6,6 +6,7 @@
 	"ID"                            "2039"
 	"BaseClass"                     "item_datadriven"
 	"AbilityTextureName"			"enfos\elite_elven_boots"
+	"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 
 	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT | DOTA_ABILITY_BEHAVIOR_DIRECTIONAL | DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
 	"AbilityCooldown"				"30.0"
@@ -20,6 +21,7 @@
 	"ItemDisassemblable"			"0"
 	"ItemQuality"					"epic"
 	"IsUnique"							"1"
+	"AbilitySharedCooldown" "Blink"
 
 	"AbilityCastRange"	"0"
 
@@ -44,10 +46,32 @@
 			"Properties"
 			{
 				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"		"%move_speed"
-				"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
+				//"MODIFIER_PROPERTY_STATS_AGILITY_BONUS"				"%bonus_agi"
+				//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS"			"%bonus_int"
 				"MODIFIER_PROPERTY_EVASION_CONSTANT"				"%evasion"
 			}	
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"double_bonus"
+					"amount"		"%bonus_agi"
+					"gain"			"-1"
+				}
+			}
 		}
 	}
 

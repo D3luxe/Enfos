@@ -151,7 +151,7 @@ function SummonMeraudsCompanion(keys)
 	local thisSpellLevel = caster:FindAbilityByName("ranger_merauds_companion"):GetLevel()
 	local findUnits = Entities:FindAllByClassnameWithin("npc_dota_creature", caster:GetAbsOrigin(), 1000)
 -- logic
-	print("Spawning unit")
+	--print("Spawning unit")
 	for k,v in pairs(findUnits) do
 		if v:GetUnitName() == "npc_merauds_companion" and not v.summonerUnit then -- in case the cooldowns get refreshed, we don't want to upgrade existing units
 			v:AddNewModifier(unit, nil, "modifier_phased", {duration = 3}) -- to prevent them from getting stuck
@@ -162,6 +162,10 @@ function SummonMeraudsCompanion(keys)
 			v:SetMaxHealth(keys.health)
 			v:SetBaseMaxHealth(keys.health)
 			v:SetHealth(keys.health)
+			
+			--[[local applier = CreateItem("item_stat_modifier", nil, nil)
+			applier:ApplyDataDrivenModifier(v, v, "modifier_illusion_tracker_nofx", {})]]
+			keys.ability:ApplyDataDrivenModifier(caster, v, "modifier_purification_target", {})
 		end
 	end
 end
@@ -180,4 +184,63 @@ function AddTypes(mob, armor, attack)
 	attackItem:ApplyDataDrivenModifier(spawnedUnitIndex, spawnedUnitIndex, attackType, {})
 	UTIL_RemoveImmediate(attackItem)
 	attackItem = nil
+end
+
+function MinimumRangeCheck(keys)
+	local caster = keys.caster
+	local target = keys.target
+	
+	if caster.acq_range == nil then caster.acq_range = caster:GetAcquisitionRange() end
+	--print(target:FindModifierByNameAndCaster("modifier_ranger_check_aura",caster))
+	if target:FindModifierByNameAndCaster("modifier_ranger_check_aura",caster) ~= nil then
+		
+		--print("FINDING TARGET")
+		local potential_targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, caster.acq_range+caster:GetHullRadius(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
+        for k,v in pairs(potential_targets) do
+			--PrintTable(v:FindAllModifiers())
+			--print(v:FindModifierByNameAndCaster("modifier_ranger_check_aura",caster))
+			--print(v)
+			if v:FindModifierByNameAndCaster("modifier_ranger_check_aura",caster) == nil then
+				--print((v:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D())
+				if (v:GetAbsOrigin() - caster:GetAbsOrigin()):Length2D() >= 250 then
+					caster:MoveToTargetToAttack(v)
+					caster.acq_limit = false
+					caster:SetAcquisitionRange(caster.acq_range)
+					print("NOOB ACQUIRED")
+					return
+				end
+            end
+        end
+		
+		caster:Stop()
+		caster.acq_limit = true
+		caster.acq_range = caster:GetAcquisitionRange()
+		caster:SetAcquisitionRange(0)
+		if caster.acq_loop == nil then caster.acq_loop = 1
+		else caster.acq_loop = caster.acq_loop + 1 end
+		if caster.acq_loop == 101 then caster.acq_loop = 1 end
+		local timeLoop = caster.acq_loop
+		
+		Timers:CreateTimer("rangerLoop", {
+			endTime = GameRules:GetGameTime()+0.25,
+			callback = function()
+				--print("SEARCHING FOR NOOB")
+				if caster.acq_limit == false then return end
+				if caster.acq_loop ~= timeLoop then return end
+				
+				potential_targets = FindUnitsInRadius(caster:GetTeam(), caster:GetAbsOrigin(), nil, caster.acq_range+caster:GetHullRadius(), DOTA_UNIT_TARGET_TEAM_ENEMY, DOTA_UNIT_TARGET_HERO + DOTA_UNIT_TARGET_BASIC, DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES, FIND_CLOSEST, false)
+				for k,v in pairs(potential_targets) do
+
+					if v:FindModifierByNameAndCaster("modifier_ranger_check_aura",caster) == nil then
+						caster:SetAttacking(v)
+						caster.acq_limit = false
+						caster:SetAcquisitionRange(caster.acq_range)
+						return
+					end
+				end
+				
+				if caster.acq_limit == true then return GameRules:GetGameTime()+0.25 end
+			end
+		})
+	end
 end

@@ -31,12 +31,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength" 	"7"
-		"AttributeStrengthGain" 	"2.33"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "8" 
-		"AttributeIntelligenceGain" "2.66" 
+		//"AttributeBaseStrength" 	"7"
+		//"AttributeStrengthGain" 	"2.33"
+		//"AttributeBaseAgility" 		"3"
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "8"
+		//"AttributeIntelligenceGain" "2.66"
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0"
+		"AttributeBaseStrength2" 	"7"
+		"AttributeStrengthGain2" 	"2.33"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "8" 
+		"AttributeIntelligenceGain2" "2.66" 
 		
 		"MovementSpeed"				"400"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -113,12 +125,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"9"								// Base strength
-		"AttributeStrengthGain"			"3"								// Strength bonus per level.
-		"AttributeBaseIntelligence"		"3"								// Base intelligence
-		"AttributeIntelligenceGain"		"1"								// Intelligence bonus per level.
-		"AttributeBaseAgility"			"6"								// Base agility
-		"AttributeAgilityGain"			"2"								// Agility bonus per level.
+		//"AttributeBaseStrength"			"9"								// Base strength
+		//"AttributeStrengthGain"			"3"								// Strength bonus per level.
+		//"AttributeBaseIntelligence"		"3"								// Base intelligence
+		//"AttributeIntelligenceGain"		"1"								// Intelligence bonus per level.
+		//"AttributeBaseAgility"			"6"								// Base agility
+		//"AttributeAgilityGain"			"2"								// Agility bonus per level.
+		"AttributeBaseStrength"			"0"								// Base strength
+		"AttributeStrengthGain"			"0"								// Strength bonus per level.
+		"AttributeBaseIntelligence"		"0"								// Base intelligence
+		"AttributeIntelligenceGain"		"0"								// Intelligence bonus per level.
+		"AttributeBaseAgility"			"0"								// Base agility
+		"AttributeAgilityGain"			"0"								// Agility bonus per level.
+		"AttributeBaseStrength2"			"9"								// Base strength
+		"AttributeStrengthGain2"			"3"								// Strength bonus per level.
+		"AttributeBaseIntelligence2"		"3"								// Base intelligence
+		"AttributeIntelligenceGain2"		"1"								// Intelligence bonus per level.
+		"AttributeBaseAgility2"			"6"								// Base agility
+		"AttributeAgilityGain2"			"2"								// Agility bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -172,12 +196,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "6" 
-		"AttributeIntelligenceGain" "2" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -234,12 +270,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -298,12 +346,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "6" 
-		"AttributeIntelligenceGain" "2" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"2.0"									// Turning rate.
@@ -388,12 +448,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"9"									// Base strength
-		"AttributeStrengthGain"		"3.25"									// Strength bonus per level.
-		"AttributeBaseAgility"		"6"									// Base agility
-		"AttributeAgilityGain"		"2"									// Agility bonus per level.
-		"AttributeBaseIntelligence"	"3"									// Base intelligence
-		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"		"9"									// Base strength
+		//"AttributeStrengthGain"		"3.25"									// Strength bonus per level.
+		//"AttributeBaseAgility"		"6"									// Base agility
+		//"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"	"3"									// Base intelligence
+		//"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"		"9"									// Base strength
+		"AttributeStrengthGain2"		"3.25"									// Strength bonus per level.
+		"AttributeBaseAgility2"		"6"									// Base agility
+		"AttributeAgilityGain2"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"	"3"									// Base intelligence
+		"AttributeIntelligenceGain2"	"1"									// Intelligence bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -462,12 +534,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "6" 
-		"AttributeIntelligenceGain" "2" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -522,12 +606,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"3"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"3"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"3"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -585,12 +681,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -668,12 +776,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"6"									// Base strength
-		"AttributeStrengthGain"		"2"									// Strength bonus per level.
-		"AttributeBaseIntelligence"	"3"									// Base intelligence
-		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
-		"AttributeBaseAgility"		"9"									// Base agility
-		"AttributeAgilityGain"		"3"									// Agility bonus per level.
+		//"AttributeBaseStrength"		"6"									// Base strength
+		//"AttributeStrengthGain"		"2"									// Strength bonus per level.
+		//"AttributeBaseIntelligence"	"3"									// Base intelligence
+		//"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		//"AttributeBaseAgility"		"9"									// Base agility
+		//"AttributeAgilityGain"		"3"									// Agility bonus per level.
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"AttributeBaseStrength2"		"6"									// Base strength
+		"AttributeStrengthGain2"		"2"									// Strength bonus per level.
+		"AttributeBaseIntelligence2"	"3"									// Base intelligence
+		"AttributeIntelligenceGain2"	"1"									// Intelligence bonus per level.
+		"AttributeBaseAgility2"		"9"									// Base agility
+		"AttributeAgilityGain2"		"3"									// Agility bonus per level.
 	
 		// Status
 		//-------------------------------------------------------------------------------------------------------------
@@ -730,12 +850,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -790,12 +922,24 @@
 		
 		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"5"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "6" 
-		"AttributeIntelligenceGain" "2" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"5"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"5"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -853,12 +997,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"		
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "6" 
-		"AttributeIntelligenceGain" "2" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -917,12 +1073,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
-		"AttributeBaseStrength" 	"3"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"3"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"3"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -984,12 +1152,24 @@
 		
 		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH" //Verified
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1065,12 +1245,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"			"6"									// Base strength
-		"AttributeStrengthGain"			"2"									// Strength bonus per level.
-		"AttributeBaseAgility"			"3"									// Base agility
-		"AttributeAgilityGain"			"1"									// Agility bonus per level.
-		"AttributeBaseIntelligence"		"9"									// Base intelligence
-		"AttributeIntelligenceGain"		"3"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"			"6"									// Base strength
+		//"AttributeStrengthGain"			"2"									// Strength bonus per level.
+		//"AttributeBaseAgility"			"3"									// Base agility
+		//"AttributeAgilityGain"			"1"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"		"9"									// Base intelligence
+		//"AttributeIntelligenceGain"		"3"									// Intelligence bonus per level.
+		"AttributeBaseStrength"			"0"									// Base strength
+		"AttributeStrengthGain"			"0"									// Strength bonus per level.
+		"AttributeBaseAgility"			"0"									// Base agility
+		"AttributeAgilityGain"			"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"0"									// Base intelligence
+		"AttributeIntelligenceGain"		"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"			"6"									// Base strength
+		"AttributeStrengthGain2"			"2"									// Strength bonus per level.
+		"AttributeBaseAgility2"			"3"									// Base agility
+		"AttributeAgilityGain2"			"1"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"		"9"									// Base intelligence
+		"AttributeIntelligenceGain2"		"3"									// Intelligence bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -1149,12 +1341,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"9"									// Base strength
-		"AttributeStrengthGain"			"3"									// Strength bonus per level.
-		"AttributeBaseAgility"			"6"									// Base agility
-		"AttributeAgilityGain"			"1.7"									// Agility bonus per level.
-		"AttributeBaseIntelligence"		"3"									// Base intelligence
-		"AttributeIntelligenceGain"		"1.5"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"			"9"									// Base strength
+		//"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		//"AttributeBaseAgility"			"6"									// Base agility
+		//"AttributeAgilityGain"			"1.7"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"		"3"									// Base intelligence
+		//"AttributeIntelligenceGain"		"1.5"									// Intelligence bonus per level.
+		"AttributeBaseStrength"			"0"									// Base strength
+		"AttributeStrengthGain"			"0"									// Strength bonus per level.
+		"AttributeBaseAgility"			"0"									// Base agility
+		"AttributeAgilityGain"			"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"0"									// Base intelligence
+		"AttributeIntelligenceGain"		"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"			"9"									// Base strength
+		"AttributeStrengthGain2"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility2"			"6"									// Base agility
+		"AttributeAgilityGain2"			"1.7"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"		"3"									// Base intelligence
+		"AttributeIntelligenceGain2"		"1.5"									// Intelligence bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -1231,12 +1435,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"9"									// Base strength
-		"AttributeStrengthGain"		"3"									// Strength bonus per level.
-		"AttributeBaseAgility"		"6"									// Base agility
-		"AttributeAgilityGain"		"2"									// Agility bonus per level.
-		"AttributeBaseIntelligence"	"3"									// Base intelligence
-		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"		"9"									// Base strength
+		//"AttributeStrengthGain"		"3"									// Strength bonus per level.
+		//"AttributeBaseAgility"		"6"									// Base agility
+		//"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"	"3"									// Base intelligence
+		//"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"		"9"									// Base strength
+		"AttributeStrengthGain2"		"3"									// Strength bonus per level.
+		"AttributeBaseAgility2"		"6"									// Base agility
+		"AttributeAgilityGain2"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"	"3"									// Base intelligence
+		"AttributeIntelligenceGain2"	"1"									// Intelligence bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -1306,12 +1522,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"		"9"									// Base strength
-		"AttributeStrengthGain"		"3.7"									// Strength bonus per level.
-		"AttributeBaseAgility"		"6"									// Base agility
-		"AttributeAgilityGain"		"2"									// Agility bonus per level.
-		"AttributeBaseIntelligence"	"3"									// Base intelligence
-		"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"		"9"									// Base strength
+		//"AttributeStrengthGain"		"3.7"									// Strength bonus per level.
+		//"AttributeBaseAgility"		"6"									// Base agility
+		//"AttributeAgilityGain"		"2"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"	"3"									// Base intelligence
+		//"AttributeIntelligenceGain"	"1"									// Intelligence bonus per level.
+		"AttributeBaseStrength"		"0"									// Base strength
+		"AttributeStrengthGain"		"0"									// Strength bonus per level.
+		"AttributeBaseAgility"		"0"									// Base agility
+		"AttributeAgilityGain"		"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"	"0"									// Base intelligence
+		"AttributeIntelligenceGain"	"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"		"9"									// Base strength
+		"AttributeStrengthGain2"		"3.7"									// Strength bonus per level.
+		"AttributeBaseAgility2"		"6"									// Base agility
+		"AttributeAgilityGain2"		"2"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"	"3"									// Base intelligence
+		"AttributeIntelligenceGain2"	"1"									// Intelligence bonus per level.
 	
 		"StatusHealth"				"10"
 		"StatusMana"				"0"
@@ -1368,12 +1596,24 @@
 		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"
 		
-		"AttributeBaseStrength" 	"4"
-		"AttributeStrengthGain" 	"1.5"
-		"AttributeBaseAgility" 		"11" 
-		"AttributeAgilityGain" 		"3.5"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"4"
+		//"AttributeStrengthGain" 	"1.5"
+		//"AttributeBaseAgility" 		"11" 
+		//"AttributeAgilityGain" 		"3.5"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"4"
+		"AttributeStrengthGain2" 	"1.5"
+		"AttributeBaseAgility2" 		"11" 
+		"AttributeAgilityGain2" 		"3.5"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"2.0"									// Turning rate.
@@ -1428,12 +1668,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_AGILITY"	
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"9" 
-		"AttributeAgilityGain" 		"3"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"9" 
+		//"AttributeAgilityGain" 		"3"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"9" 
+		"AttributeAgilityGain2" 		"3"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1487,12 +1739,24 @@
 		
 		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1569,12 +1833,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength"			"9"									// Base strength
-		"AttributeStrengthGain"			"2.75"									// Strength bonus per level.
-		"AttributeBaseIntelligence"		"13"									// Base intelligence
-		"AttributeIntelligenceGain"		"4.5"									// Intelligence bonus per level.
-		"AttributeBaseAgility"			"6"									// Base agility
-		"AttributeAgilityGain"			"1.0"										// Agility bonus per level.
+		//"AttributeBaseStrength"			"9"									// Base strength
+		//"AttributeStrengthGain"			"2.75"									// Strength bonus per level.
+		//"AttributeBaseIntelligence"		"13"									// Base intelligence
+		//"AttributeIntelligenceGain"		"4.5"									// Intelligence bonus per level.
+		//"AttributeBaseAgility"			"6"									// Base agility
+		//"AttributeAgilityGain"			"1.0"										// Agility bonus per level.
+		"AttributeBaseStrength"			"0"									// Base strength
+		"AttributeStrengthGain"			"0"									// Strength bonus per level.
+		"AttributeBaseIntelligence"		"0"									// Base intelligence
+		"AttributeIntelligenceGain"		"0"									// Intelligence bonus per level.
+		"AttributeBaseAgility"			"0"									// Base agility
+		"AttributeAgilityGain"			"0"										// Agility bonus per level.
+		"AttributeBaseStrength2"			"9"									// Base strength
+		"AttributeStrengthGain2"			"2.75"									// Strength bonus per level.
+		"AttributeBaseIntelligence2"		"13"									// Base intelligence
+		"AttributeIntelligenceGain2"		"4.5"									// Intelligence bonus per level.
+		"AttributeBaseAgility2"			"6"									// Base agility
+		"AttributeAgilityGain2"			"1.0"										// Agility bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -1631,12 +1907,24 @@
 		"AttackCapabilities"		"DOTA_UNIT_CAP_MELEE_ATTACK"
 	
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
-		"AttributeBaseStrength" 	"3"
-		"AttributeStrengthGain" 	"1.5"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"3"
+		//"AttributeStrengthGain" 	"1.5"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"3"
+		"AttributeStrengthGain2" 	"1.5"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1690,12 +1978,24 @@
 		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"
 		//I had to guess for most of these values. They need to be verified.
-		"AttributeBaseStrength" 	"3"
-		"AttributeStrengthGain" 	"1.5"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"0.2"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3.5" 
+		//"AttributeBaseStrength" 	"3"
+		//"AttributeStrengthGain" 	"1.5"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"0.2"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3.5" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"3"
+		"AttributeStrengthGain2" 	"1.5"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"0.2"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3.5" 
 		
 		"MovementSpeed"				"250"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1749,12 +2049,24 @@
 		
 		"ArmorPhysical"				"2"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"		
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1814,12 +2126,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_INTELLECT"	
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"2"
-		"AttributeBaseAgility" 		"3" 
-		"AttributeAgilityGain" 		"1"
-		"AttributeBaseIntelligence" "9" 
-		"AttributeIntelligenceGain" "3" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"3" 
+		//"AttributeAgilityGain" 		"1"
+		//"AttributeBaseIntelligence" "9" 
+		//"AttributeIntelligenceGain" "3" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"3" 
+		"AttributeAgilityGain2" 		"1"
+		"AttributeBaseIntelligence2" "9" 
+		"AttributeIntelligenceGain2" "3" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1874,12 +2198,24 @@
 		"ArmorPhysical"				"3"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength" 	"11"
-		"AttributeStrengthGain" 	"3.25"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "1" 
-		"AttributeIntelligenceGain" "0.33" 
+		//"AttributeBaseStrength" 	"11"
+		//"AttributeStrengthGain" 	"3.25"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "1" 
+		//"AttributeIntelligenceGain" "0.33" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"11"
+		"AttributeStrengthGain2" 	"3.25"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "1" 
+		"AttributeIntelligenceGain2" "0.33" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1901,6 +2237,77 @@
 		"AspectBuff"				"0"
 		"AspectHeal"				"0"
 		"AspectDisrupt"				"0"
+	}
+	//=================================================================================================================
+	// HERO: Meepo: Odo, the Trader
+	//=================================================================================================================
+	"npc_dota_hero_trader_enfos"
+	{
+		"override_hero"				"npc_dota_hero_meepo"
+		"Role"						"Support" //Carry = Combat, Nuker = Caster, Disabler = Rounded, Support = Support
+		"Rolelevels"				"1"
+		"AbilityLayout"				"5"
+		"Ability1"					"trader_collect_assets"
+		"Ability2"					"trader_guild_shop"
+		"Ability3"					"trader_glittering_prizes"
+		"Ability4"					"trader_caravan_bomb"
+		"Ability5"					"trader_cloak_of_invisibility"
+		"Ability6"				"enfos_attribute_bonus"
+		"Ability7"				"generic_hidden"
+		"Ability8"				"generic_hidden"
+		"Ability9"				"generic_hidden"
+		"Ability10"				"generic_hidden"
+		"Ability11"				"generic_hidden"
+		"Ability12"				"generic_hidden"
+		"Ability13"				"generic_hidden"
+		"Ability14"				"generic_hidden"
+		"Ability15"				"generic_hidden"
+		"Ability16"				"generic_hidden"
+		"Ability17"				"generic_hidden"
+		"Ability18"				"generic_hidden"
+		
+		"ArmorPhysical"				"2"
+		
+		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"2"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "6" 
+		//"AttributeIntelligenceGain" "2" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"2"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "6" 
+		"AttributeIntelligenceGain2" "2" 
+		
+		"MovementSpeed"				"450"
+		"MovementTurnRate"			"0.6"									// Turning rate.
+		"AttackRate"                "1.6"
+		"AttackRange"               "140"
+		"StatusHealth"				"10"
+		"StatusMana"				"0"
+		"StatusHealthRegen"			"0.25"
+		"StatusManaRegen"			"0.02"
+		"AttackDamageMin" 			"3"
+		"AttackDamageMax" 			"8" 
+		"AttackAcquisitionRange"	"400"
+		
+		"AspectTank"				"0"
+		"AspectCarry"				"0"
+		"AspectCaster"				"1"
+		
+		"AspectStun"				"0"
+		"AspectBuff"				"3"
+		"AspectHeal"				"1"
+		"AspectDisrupt"				"2"
 	}
 	//=================================================================================================================
 	// HERO: Treant Protector: Oak
@@ -1933,12 +2340,24 @@
 		"ArmorPhysical"				"5"
 		
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"	
-		"AttributeBaseStrength" 	"9"
-		"AttributeStrengthGain" 	"3.25"
-		"AttributeBaseAgility" 		"6" 
-		"AttributeAgilityGain" 		"2"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"9"
+		//"AttributeStrengthGain" 	"3.25"
+		//"AttributeBaseAgility" 		"6" 
+		//"AttributeAgilityGain" 		"2"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"9"
+		"AttributeStrengthGain2" 	"3.25"
+		"AttributeBaseAgility2" 		"6" 
+		"AttributeAgilityGain2" 		"2"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"0.6"									// Turning rate.
@@ -1995,12 +2414,24 @@
 		
 		"ArmorPhysical"				"3"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength" 	"6"
-		"AttributeStrengthGain" 	"1.7"
-		"AttributeBaseAgility" 		"9" 
-		"AttributeAgilityGain" 		"2.5"
-		"AttributeBaseIntelligence" "3" 
-		"AttributeIntelligenceGain" "1" 
+		//"AttributeBaseStrength" 	"6"
+		//"AttributeStrengthGain" 	"1.7"
+		//"AttributeBaseAgility" 		"9" 
+		//"AttributeAgilityGain" 		"2.5"
+		//"AttributeBaseIntelligence" "3" 
+		//"AttributeIntelligenceGain" "1" 
+		"AttributeBaseStrength" 	"0"
+		"AttributeStrengthGain" 	"0"
+		"AttributeBaseAgility" 		"0" 
+		"AttributeAgilityGain" 		"0"
+		"AttributeBaseIntelligence" "0" 
+		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"6"
+		"AttributeStrengthGain2" 	"1.7"
+		"AttributeBaseAgility2" 		"9" 
+		"AttributeAgilityGain2" 		"2.5"
+		"AttributeBaseIntelligence2" "3" 
+		"AttributeIntelligenceGain2" "1" 
 		
 		"MovementSpeed"				"350"
 		"MovementTurnRate"			"2.0"									// Turning rate.
@@ -2076,12 +2507,24 @@
 		// Attributes
 		//-------------------------------------------------------------------------------------------------------------
 		"AttributePrimary"				"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength"			"9"									// Base strength
-		"AttributeStrengthGain"			"3"									// Strength bonus per level.
-		"AttributeBaseAgility"			"5"									// Base agility
-		"AttributeAgilityGain"			"1.66"									// Agility bonus per level.
-		"AttributeBaseIntelligence"		"4"									// Base intelligence
-		"AttributeIntelligenceGain"		"1.33"									// Intelligence bonus per level.
+		//"AttributeBaseStrength"			"9"									// Base strength
+		//"AttributeStrengthGain"			"3"									// Strength bonus per level.
+		//"AttributeBaseAgility"			"5"									// Base agility
+		//"AttributeAgilityGain"			"1.66"									// Agility bonus per level.
+		//"AttributeBaseIntelligence"		"4"									// Base intelligence
+		//"AttributeIntelligenceGain"		"1.33"									// Intelligence bonus per level.
+		"AttributeBaseStrength"			"0"									// Base strength
+		"AttributeStrengthGain"			"0"									// Strength bonus per level.
+		"AttributeBaseAgility"			"0"									// Base agility
+		"AttributeAgilityGain"			"0"									// Agility bonus per level.
+		"AttributeBaseIntelligence"		"0"									// Base intelligence
+		"AttributeIntelligenceGain"		"0"									// Intelligence bonus per level.
+		"AttributeBaseStrength2"			"9"									// Base strength
+		"AttributeStrengthGain2"			"3"									// Strength bonus per level.
+		"AttributeBaseAgility2"			"5"									// Base agility
+		"AttributeAgilityGain2"			"1.66"									// Agility bonus per level.
+		"AttributeBaseIntelligence2"		"4"									// Base intelligence
+		"AttributeIntelligenceGain2"		"1.33"									// Intelligence bonus per level.
 	
 		// Movement
 		//-------------------------------------------------------------------------------------------------------------
@@ -2142,12 +2585,24 @@
 		
 		"ArmorPhysical"				"0"
 		"AttributePrimary"			"DOTA_ATTRIBUTE_STRENGTH"
-		"AttributeBaseStrength" 	"1"
+		//"AttributeBaseStrength" 	"1"
+		//"AttributeStrengthGain" 	"0"
+		//"AttributeBaseAgility" 		"1" 
+		//"AttributeAgilityGain" 		"0"
+		//"AttributeBaseIntelligence" "1" 
+		//"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength" 	"0"
 		"AttributeStrengthGain" 	"0"
-		"AttributeBaseAgility" 		"1" 
+		"AttributeBaseAgility" 		"0" 
 		"AttributeAgilityGain" 		"0"
-		"AttributeBaseIntelligence" "1" 
+		"AttributeBaseIntelligence" "0" 
 		"AttributeIntelligenceGain" "0" 
+		"AttributeBaseStrength2" 	"1"
+		"AttributeStrengthGain2" 	"0"
+		"AttributeBaseAgility2" 		"1" 
+		"AttributeAgilityGain2" 		"0"
+		"AttributeBaseIntelligence2" "1" 
+		"AttributeIntelligenceGain2" "0" 
 		
 		"MovementSpeed"				"0"
 		"MovementTurnRate"			"0"									// Turning rate.

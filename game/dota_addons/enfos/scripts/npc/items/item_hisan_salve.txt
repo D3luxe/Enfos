@@ -33,7 +33,6 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"5"
-	"SideShop"						"1"
 
 	"OnSpellStart"
 	{
@@ -92,6 +91,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"mana_per_tick"			"4.4"  // %total_mana / %buff_duration
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"5"
 		}
 	}
 }

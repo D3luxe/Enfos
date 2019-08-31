@@ -1,0 +1,111 @@
+//=================================================================================================================
+// Guild Shop Passive/Aura
+//=================================================================================================================
+"guild_shop_spell"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_AURA | DOTA_ABILITY_BEHAVIOR_PASSIVE | DOTA_ABILITY_BEHAVIOR_HIDDEN"
+	"MaxLevel"						"1"
+
+	"Modifiers"
+	{
+		"modifier_guild_shop_passive"
+		{
+			"IsHidden"				"1"
+			"Passive"				"1"
+			"IsPurgable"			"0"
+			
+			"Aura"					"modifier_guild_shop_aura"
+			"Aura_Radius"			"%radius"
+			"Aura_Teams"			"DOTA_UNIT_TARGET_TEAM_FRIENDLY"
+			"Aura_Types"			"DOTA_UNIT_TARGET_HERO"
+			"Aura_ApplyToCaster"	"0"
+			
+			"States"
+			{
+				"MODIFIER_STATE_INVULNERABLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnCreated"
+			{
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_streak_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_ground_flash_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_flash_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_b_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireEffect"
+				{
+					"Target"			"CASTER"
+					"EffectName"		"particles/econ/events/ti5/teleport_end_l_ti5.vpcf"
+					"EffectAttachType"	"follow_origin"
+				}
+				"FireSound"
+				{
+					"Target" "CASTER"
+					"EffectName" "Portal.Hero_Appear"
+				}
+				
+			}
+			"OnDeath"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+					"Function"				"ShopAura"
+					"onoff"					"2"
+				}
+			}
+		}
+		
+		"modifier_guild_shop_aura"
+		{
+			"IsHidden"				"1"
+			"Attributes"			"MODIFIER_ATTRIBUTE_MULTIPLE"
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+					"Function"				"ShopAura"
+					"onoff"					"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/trader.lua"
+					"Function"				"ShopAura"
+					"onoff"					"0"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"radius"				"450"
+		}
+	}
+}

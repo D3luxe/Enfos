@@ -1,0 +1,75 @@
+//=================================================================================================================
+// Sepllbringer: Grazhir's Effigy 
+//=================================================================================================================
+"item_spellbringer_grazhirs_effigy" //This unit isn't going to have the lifetime indicator. There is no way around this
+{
+	"ID"							"3999"
+	"BaseClass"						"item_datadriven"
+	"AbilityTextureName"			"enfos\spellbringer_grazhirs_effigy"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_POINT"
+	"AbilityCooldown"				"45"
+	"AbilityManaCost"				"375"
+	"AbilityCastRange"				"0"
+	"ItemDroppable"					"1"
+	"ItemSellable"					"0"
+	"ItemPurchasable"				"0"
+	"ItemShareability"				"ITEM_FULLY_SHAREABLE"
+	
+	"OnSpellStart"
+	{
+		"RunScript"
+		{
+			"ScriptFile"			"scripts/vscripts/heroes/spellbringer.lua"
+			"Function"				"Grazhirs_Effigy"
+		}
+		"FireSound"
+		{
+			"EffectName"			"Hero_Morphling.Replicate"
+			"Target"				"TARGET"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_illusion_lifesteal"
+		{
+			"IsPurgable"		"0"
+			"Passive"			"0"
+			"IsHidden"			"1"
+
+			"OnAttackLanded"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"scripts/vscripts/heroes/shadow_priest.lua"
+					"Function"				"greater_hallucination_lifesteal"
+					"DamageDealt"			"%attack_damage"
+				}
+
+			}
+
+		}
+		"modifier_purification_target"
+		{
+			"IsPurgable"		"1"
+			"IsHidden"			"1"
+			
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"			"heroes/generic.lua"
+					"Function"				"purify_summon"
+				}
+			}
+		}
+
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"45"
+		}
+	}
+}

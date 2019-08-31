@@ -1,0 +1,109 @@
+//=================================================================================================================
+// Trader: Cloak of Invisibility
+//=================================================================================================================
+"trader_cloak_of_invisibility"
+{
+	"BaseClass"						"ability_datadriven"
+	"AbilityTextureName"			"bounty_hunter_twinblade_wind_walk"
+	"AbilityBehavior"				"DOTA_ABILITY_BEHAVIOR_NO_TARGET | DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+	"MaxLevel"						"1"
+	"Innate"						"1"
+	"AbilityCastPoint"				"0.5"
+	"AbilityCooldown"				"15"
+	"AbilityManaCost"				"75"
+
+	"Precache"
+	{
+	}
+	"OnSpellStart"
+	{
+		"ApplyModifier"
+		{
+			"ModifierName"			"modifier_trader_cloak_fade"
+			"Target"				"CASTER"
+		}
+	}
+	"Modifiers"
+	{
+		"modifier_trader_cloak_fade"
+		{
+			"ThinkInterval"			"%fade_time"
+			"OnIntervalThink"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_trader_cloak"
+					"Target"		"CASTER"
+				}
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_trader_cloak_fade"
+					"Target"		"CASTER"
+				}
+			}
+		}
+		"modifier_trader_cloak"
+		{
+			"Duration"				"%duration"
+			"Properties"
+			{
+				"MODIFIER_PROPERTY_MOVESPEED_BONUS_PERCENTAGE"	"%bonus_speed"
+			}
+			"States"				
+			{
+				"MODIFIER_STATE_INVISIBLE"	"MODIFIER_STATE_VALUE_ENABLED"
+				"MODIFIER_STATE_NO_UNIT_COLLISION"	"MODIFIER_STATE_VALUE_ENABLED"
+			}
+			"OnCreated"
+			{
+				"ApplyModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+			"OnAttackLanded"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_trader_cloak"
+					"Target"		"CASTER"
+				}
+			}
+			"OnAbilityExecuted"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_trader_cloak"
+					"Target"		"CASTER"
+				}
+			}
+			"OnDestroy"
+			{
+				"RemoveModifier"
+				{
+					"ModifierName"	"modifier_invisible"
+					"Target"		"CASTER"
+				}
+			}
+		}
+	}
+	"AbilitySpecial"
+	{
+		"01"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_speed"			"500"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"duration"				"20"
+		}
+		"03"
+		{
+			"var_type"				"FIELD_FLOAT"
+			"fade_time"				"0.1"
+		}
+	}
+}

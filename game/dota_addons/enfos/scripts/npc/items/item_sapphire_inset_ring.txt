@@ -24,10 +24,32 @@
 			"Passive"			"1"
 			"IsHidden"			"1"
 			"Attributes"		"MODIFIER_ATTRIBUTE_MULTIPLE"
-			"Properties"
+			//"Properties"
+			//{
+			//	"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
+			//}	
+			"OnCreated"
 			{
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_stat"
-			}	
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"intellect_bonus"
+					"amount"		"%bonus_stat"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"intellect_bonus"
+					"amount"		"%bonus_stat"
+					"gain"			"-1"
+				}
+			}
 		}
 	}
 

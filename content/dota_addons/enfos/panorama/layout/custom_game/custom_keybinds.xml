@@ -1,0 +1,6 @@
+<root>
+    <scripts>
+        <include src="file://{resources}/scripts/custom_game/custom_keybinds.js" />
+    </scripts>
+    <Panel hittest="false" />
+</root>

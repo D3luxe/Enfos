@@ -19,6 +19,7 @@ function TechniqueAcqRangeUp(keys)
 end
 
 function TechniqueAcqRangeDown(keys)
+	if keys.caster:IsIllusion() == true then return end
 	local ammo = keys.caster:FindAbilityByName("sniper_fire_ammo_2")
 	local ammoLevel = ammo:GetLevel()
 	local ammoCast = ammo:GetAutoCastState()
@@ -47,10 +48,11 @@ function TechniquePierce(keys)
 	local caster = keys.caster
 	local pID = caster:GetPlayerID()
 	local target = keys.target
-	local damage = Enfos.damageSpillValue[pID]
+	local damage = caster.damageSpillValue
 	local ability = keys.ability
 	--print("spill dmg "..damage)
-	if target ~= Enfos.damageSpillTarget[pID] then
+	print(caster.damageSpillTarget)
+	if target ~= caster.damageSpillTarget then
 		local dTable = {
 			victim = target,
 			attacker = caster,
@@ -84,7 +86,7 @@ end
 end]]
 
 function DamageSpill(keys)
-	--print("keep the Os")
+	print("keep the Os")
 	local caster = keys.caster
 	local target = keys.target
 	local pID = caster:GetPlayerID()
@@ -100,6 +102,7 @@ function DamageSpill(keys)
 	Timers:CreateTimer(DoUniqueString("spill"..pID), {
 		endTime = 0.15,
 		callback = function()
+			print("--SPILL CHECK??????--")
 			local shot = 
 			{
 				Ability = keys.ability,
@@ -120,6 +123,7 @@ function DamageSpill(keys)
 				iVisionRadius = 0,
 				iVisionTeamNumber = nil
 			}
+			print("--SPILL CHECK??--")
 			print(caster.damageSpillValue)
 			print(caster.damageSpillTarget)
 			print(velocity)
@@ -143,18 +147,18 @@ function FireAmmo(keys)
 		attacker = caster,
 		damage = damage,
 		damage_type = DAMAGE_TYPE_PHYSICAL,
-		damage_flags = DOTA_DAMAGE_FLAG_NON_LETHAL,
+		damage_flags = DOTA_DAMAGE_FLAG_NONE,
 		ability = ability
 	}
 	ApplyDamage(dTable)
-	Timers:CreateTimer(DoUniqueString("spillend"..pID), {
+	--[[Timers:CreateTimer(DoUniqueString("spillend"..pID), {
 		endTime = 0.20,
 		callback = function()
-			Enfos.damageSpillValue[pID] = nil
-			Enfos.damageSpillTarget[pID] = nil
+			caster.damageSpillValue = nil
+			caster.damageSpillTarget = nil
 			--print("damage clear - ammo")
 		end
-	})
+	})]]
 end
 
 -- Returns true if the element can be found on the list, false otherwise

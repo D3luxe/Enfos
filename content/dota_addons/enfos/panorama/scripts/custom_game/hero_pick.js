@@ -12,6 +12,7 @@ GameEvents.Subscribe("hero_change",UpdatePickUI);
 GameEvents.Subscribe("hero_hover",UpdatePrePickIcon);
 GameEvents.Subscribe("pause_check",PauseCheck);
 GameEvents.Subscribe("ui_chat_update",ChatUpdate);
+GameEvents.Subscribe("dota_pause_event", TurnPauseCheckIntoThisLater);
 
 function UpdatePickUI() {
 	var pID = Game.GetLocalPlayerID();
@@ -53,6 +54,7 @@ function UpdatePickUI() {
 	var aspect6max = 0;
 	var aspect7max = 0;
 	var prepip = false;
+	var pickcount = 0;
 	
 	var order = 1;
 	for (var playerID in radTeam) {
@@ -79,7 +81,12 @@ function UpdatePickUI() {
 			}
 			else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("")';}
 		}
-		else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ hero +'_png.vtex")';}
+		else
+		{
+			$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").style.backgroundImage = 'url("s2r://panorama/images/heroes/'+ hero +'_png.vtex")';
+			if (icon == undefined) icon = hero;
+			$.Msg(icon);
+		}
 		$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerColor").style.backgroundColor = '#'+color;
 		$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerLabel").text = name;
 		$('#RadiantPlayerBox'+order.toString()).visible = true;
@@ -91,6 +98,18 @@ function UpdatePickUI() {
 		else {$('#RadiantPlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").RemoveClass("Desaturate");}
 		
 		if (Players.GetTeam(pID) == 2) {
+			//$.Msg($("#PipLine"));
+			//$("#PipLine").style.x = -63 + (radTeam.length * 27)+"px";
+			//$("#PipLine")style.position-x = -63;
+			//$.Msg($("#PipLine").style.x);
+			$("#PipLine").RemoveClass("PipLineBastard1");
+			$("#PipLine").RemoveClass("PipLineBastard2");
+			$("#PipLine").RemoveClass("PipLineBastard3");
+			$("#PipLine").RemoveClass("PipLineBastard4");
+			$("#PipLine").RemoveClass("PipLineBastard5");
+			
+			$("#PipLine").AddClass("PipLineBastard"+radTeam.length.toString());
+			
 			if (hero == "npc_dota_hero_wisp")
 			{
 				prepip = true;
@@ -113,6 +132,7 @@ function UpdatePickUI() {
 				}
 			}
 			else {
+				pickcount++;
 				prepip = false;
 				if (icon == undefined)
 				{aspect1 = 0;
@@ -283,7 +303,26 @@ function UpdatePickUI() {
 		}
 		order += 1;
 	}
+	
+	$('#TeamTankBox').RemoveClass("PickDanger");
+	$('#TeamTankBox').RemoveClass("PickWarning");
+	$('#TeamCarryBox').RemoveClass("PickDanger");
+	$('#TeamCarryBox').RemoveClass("PickWarning");
+	$('#TeamCasterBox').RemoveClass("PickDanger");
+	$('#TeamCasterBox').RemoveClass("PickWarning");
+	
+	if (Players.GetTeam(pID) == 2 && pickcount >= radTeam.length -1)
+	{
+		if (aspect1max < radTeam.length +1) $('#TeamTankBox').AddClass("PickDanger");
+		if (aspect1max == radTeam.length +1) $('#TeamTankBox').AddClass("PickWarning");
+		if (aspect2max < radTeam.length +1) $('#TeamCarryBox').AddClass("PickDanger");
+		if (aspect2max == radTeam.length +1) $('#TeamCarryBox').AddClass("PickWarning");
+		if (aspect3max < radTeam.length +1) $('#TeamCasterBox').AddClass("PickDanger");
+		if (aspect3max == radTeam.length +1) $('#TeamCasterBox').AddClass("PickWarning");
+	}
+	
 	order = 1;
+	pickcount = 0;
 	aspect1 = 0;
 	aspect2 = 0;
 	aspect3 = 0;
@@ -335,6 +374,15 @@ function UpdatePickUI() {
 		else {$('#DirePlayerBox'+order.toString()).FindChildTraverse("PlayerIcon").RemoveClass("Desaturate");}
 		
 		if (Players.GetTeam(pID) == 3) {
+			
+			$("#PipLine").RemoveClass("PipLineBastard1");
+			$("#PipLine").RemoveClass("PipLineBastard2");
+			$("#PipLine").RemoveClass("PipLineBastard3");
+			$("#PipLine").RemoveClass("PipLineBastard4");
+			$("#PipLine").RemoveClass("PipLineBastard5");
+			
+			$("#PipLine").AddClass("PipLineBastard"+dirTeam.length.toString());
+			
 			if (hero == "npc_dota_hero_wisp")
 			{
 				prepip = true;
@@ -357,6 +405,7 @@ function UpdatePickUI() {
 				}
 			}
 			else {
+				pickcount++;
 				prepip = false;
 				if (icon == undefined || icon == "npc_dota_hero_random" || icon == "npc_dota_hero_random_combat" || icon == "npc_dota_hero_random_caster" || icon == "npc_dota_hero_random_support" || icon == "npc_dota_hero_random_rounded")
 				{aspect1 = 0;
@@ -528,6 +577,17 @@ function UpdatePickUI() {
 		
 		order += 1;
 	}
+	
+	if (Players.GetTeam(pID) == 3 && pickcount >= dirTeam.length -1)
+	{
+		if (aspect1max < dirTeam.length +1) $('#TeamTankBox').AddClass("PickDanger");
+		if (aspect1max == dirTeam.length +1) $('#TeamTankBox').AddClass("PickWarning");
+		if (aspect2max < dirTeam.length +1) $('#TeamCarryBox').AddClass("PickDanger");
+		if (aspect2max == dirTeam.length +1) $('#TeamCarryBox').AddClass("PickWarning");
+		if (aspect3max < dirTeam.length +1) $('#TeamCasterBox').AddClass("PickDanger");
+		if (aspect3max == dirTeam.length +1) $('#TeamCasterBox').AddClass("PickWarning");
+	}
+	
 	PickCheck();
 	MapIconUpdate(0);
 	if (randoCheck) {
@@ -561,6 +621,7 @@ function PickCheck() {
 	} else {
 		$("#PickUIBase").visible = true;
 		GameUI.SetCameraTarget(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()));
+		$.Schedule(0.1,function() {GameUI.SelectUnit(Players.GetPlayerHeroEntityIndex(Game.GetLocalPlayerID()),false);});
 		
 		//$('#PortraitBox').visible = false;
 		//$('#StatBox').visible = false;
@@ -574,7 +635,7 @@ function PickCheck() {
 function HeroButtonPressed(event) {
 	//$.Msg(event);
 	//var hero = CustomNetTables.GetTableValue("hero_data", "stats");
-	if(event == "npc_dota_hero_meepo") {return 0;}
+	//if(event == "npc_dota_hero_meepo") {return 0;}
 	
 	//but first, this
 	var table = {};
@@ -706,7 +767,7 @@ function HeroButtonPressed(event) {
 		}
 		if(heroData[event].atktype == "modifier_attack_siege") {
 			$('#AttLeftBox').FindChildTraverse("AttTinyLabel").text = "Siege";
-			$('#AttLeftBox').FindChildTraverse("oops").SetImage("file://{images}/items/mythril_hammer.png");
+			$('#AttLeftBox').FindChildTraverse("oops").SetImage("file://{images}/items/mithril_hammer.png");
 			$('#AttLeftBox').SetPanelEvent(
 			"onmouseover",
 			function(){
@@ -870,7 +931,7 @@ function HeroButtonPressed(event) {
 	}
 	
 	//armor and speed
-	$('#HeroArmBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].armor;
+	$('#HeroArmBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].armor - 2;
 	$('#HeroMRBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].mr+"%";
 	$('#HeroSpdBox').FindChildTraverse("AttHeroSmallLabel").text = heroData[event].speed;
 	
@@ -1216,6 +1277,22 @@ function TogglePause() {
 function PauseCheck() {
 	if(Game.IsGamePaused()) {$('#PauseLabel').text = "UNPAUSE";}
 	else {$('#PauseLabel').text = "PAUSE";}
+}
+
+function TurnPauseCheckIntoThisLater(event) {
+	$.Msg(event);
+	var data = {};
+	data.pid = -1;
+	var col = Players.GetPlayerColor(event.userid);
+	var name = Players.GetPlayerName(event.userid);
+	col = col.toString(16);
+	col = col.match(/[a-fA-F0-9]{2}/g).reverse().join('');
+	var pausetext = "";
+	if(Game.IsGamePaused()) {pausetext = $.Localize("#DOTA_Chat_Paused");}
+	else {pausetext = $.Localize("#DOTA_Chat_Unpaused");}
+	pausetext = pausetext.replace("%s1 ","");
+	data.msg = "<font color='#"+col+"'>"+name+"</font> "+pausetext;
+	ChatUpdate(data);
 }
 
 function MapButtonHover(event) {

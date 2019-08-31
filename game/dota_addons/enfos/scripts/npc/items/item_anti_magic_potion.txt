@@ -33,7 +33,6 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
-	"SideShop"						"1"
 
 	"OnSpellStart"
 	{
@@ -79,6 +78,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"duration"				"30"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"2"
 		}
 	}
 }

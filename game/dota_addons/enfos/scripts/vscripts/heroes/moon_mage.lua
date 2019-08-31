@@ -8,7 +8,7 @@ function StarlightSphereSummon(keys)
 -- vars
 	local caster = keys.caster
 	local pid = caster:GetPlayerID()
-	local ball = CreateUnitByName("npc_starlight_sphere", caster:GetAbsOrigin(), true, caster:GetPlayerOwner(), caster, caster:GetPlayerOwnerID() ) 
+	local ball = CreateUnitByName("npc_starlight_sphere", caster:GetAbsOrigin(), true, caster, caster, caster:GetTeamNumber() ) 
 	caster.sphere = ball
 	--[[local findSphere = Entities:FindAllByClassnameWithin("npc_dota_base_additive", caster:GetAbsOrigin(), 300)
 	for k,v in pairs(findSphere) do

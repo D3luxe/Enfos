@@ -5,22 +5,26 @@
 	var newUI = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud").FindChildTraverse("center_with_stats").FindChildTraverse("center_block");
 	
 	//Use this line if you want to keep 4 ability minimum size, and only use 160 if you want ~2 ability min size
-	newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
+	//newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "284px";
 	//newUI.FindChildTraverse("AbilitiesAndStatBranch").style.minWidth = "160px";
 
-	newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
+	//newUI.FindChildTraverse("StatBranch").style.visibility = "collapse";
 	//you are not spawning the talent UI, fuck off (Disabling mouseover and onactivate)
 	//We also don't want to crash, valve plz
-	newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
-	newUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){});
+	//newUI.FindChildTraverse("StatBranch").SetPanelEvent("onmouseover", function(){});
+	//newUI.FindChildTraverse("StatBranch").SetPanelEvent("onactivate", function(){});
 
 	//Fuck that levelup button
-	newUI.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
+	//newUI.FindChildTraverse("level_stats_frame").style.visibility = "collapse";
 	
 	//^ taken from https://github.com/SinZ163/TwilightsEveORPG/blob/master/content/panorama/layout/custom_game/custom_ui_manifest.xml#L6-L19 to remove talent tree
-	var newerUI = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud");
-	newerUI.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
-	newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+	
+	//var newerUI = $.GetContextPanel().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("lower_hud");
+	//newerUI.FindChildTraverse("StatBranchDrawer").style.visibility = "collapse";
+	//newUI.FindChildTraverse("StatBranchHotkey").style.visibility = "collapse";
+	
+	var newestUI = newUI.FindChildTraverse("inventory_tpscroll_container");
+	newestUI.style.visibility = "collapse";
 	
 	
 	// Uncomment any of the following lines in order to disable that portion of the default UI
@@ -64,7 +68,9 @@
   <Panel>
     <!-- CustomUIElements go here.  They are not provided currently as valve's parser reads commented lines and attempts to link them in.-->
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/barebones_hud_base.xml" /> 
-    <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_bar.xml" />
+    <!-- <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/action_bar.xml" />-->
+	 <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/custom_keybinds.xml" /> 
+	<CustomUIElement type="Hud"	layoutfile="file://{resources}/layout/custom_game/attributes.xml" />
     <CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/player_color.xml" />
     <CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/resource.xml" />
     <!--<CustomUIElement type="Hud"         layoutfile="file://{resources}/layout/custom_game/enfos_diff.xml" />-->
@@ -76,6 +82,7 @@
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/ss_exchange.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/waveinfo.xml" />
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/creepcount.xml" />
+	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/trader.xml" />
 	
 	<CustomUIElement type="Hud" layoutfile="file://{resources}/layout/custom_game/hero_pick.xml" />
   </Panel>

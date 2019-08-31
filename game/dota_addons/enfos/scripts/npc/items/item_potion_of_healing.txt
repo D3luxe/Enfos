@@ -35,7 +35,6 @@
 	"ItemShareability"				"ITEM_FULLY_SHAREABLE_STACKING"
 	"ItemPermanent"					"0"
 	"ItemInitialCharges"			"2"
-	"SideShop"						"1"
 
 	"OnSpellStart"
 	{
@@ -46,6 +45,12 @@
 			"Target"			"UNIT"
 			"heal_amount"		"%heal_amount"
 
+		}
+		"AttachEffect"
+		{
+			"Target"			"CASTER"
+			"EffectName"		"particles/items3_fx/fish_bones_active.vpcf"
+			"EffectAttachType"	"follow_origin"
 		}
 		"FireSound"
 		{
@@ -64,6 +69,11 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"heal_amount"				"600"
+		}
+		"02"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"2"
 		}
 	}
 }

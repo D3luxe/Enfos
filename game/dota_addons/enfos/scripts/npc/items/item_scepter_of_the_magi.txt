@@ -27,10 +27,32 @@
 			"IsHidden"			"1"
 			"Properties"
 			{
-				"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
+				//"MODIFIER_PROPERTY_STATS_INTELLECT_BONUS" 		"%bonus_int"
 				"MODIFIER_PROPERTY_MANA_REGEN_PERCENTAGE" 		"%mana_regen"
 				"MODIFIER_PROPERTY_MANA_BONUS"					"%bonus_mana"
 			}	
+			"OnCreated"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"intellect_bonus"
+					"amount"		"%bonus_int"
+					"gain"			"1"
+				}
+			}
+			"OnDestroy"
+			{
+				"RunScript"
+				{
+					"ScriptFile"	"items/items_shared.lua"
+					"Function"		"attribute_bonus_update"
+					"attname"		"intellect_bonus"
+					"amount"		"%bonus_int"
+					"gain"			"-1"
+				}
+			}
 		}
 	}
 
@@ -54,6 +76,21 @@
 		{
 			"var_type"				"FIELD_INTEGER"
 			"bonus_mana"			"675"
+		}
+		"04"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_int_tooltip"				"166"
+		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"mana_regen_tooltip"			"755"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"bonus_mana_tooltip"			"6755"
 		}
 	}
 }

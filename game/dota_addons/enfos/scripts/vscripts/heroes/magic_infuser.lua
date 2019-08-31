@@ -11,7 +11,8 @@ function Empower_Armor(keys)
 		caster:SetMana(casterMana - manaCost)
 		caster:FindAbilityByName("generic_enfos_empower_armor"):StartCooldown(cooldown)
 		--Heal caster
-		local strength = caster:GetStrength()
+		--local strength = caster:GetStrength()
+		local strength = caster.strength_total
 		local healed = strength * healMultiplier
 
 		caster:Heal(healed, keys.caster)

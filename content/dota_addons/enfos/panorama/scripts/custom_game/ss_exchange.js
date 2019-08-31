@@ -1,13 +1,16 @@
-var secretList = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("shop").FindChildTraverse("Main").FindChildTraverse("HeightLimiter").FindChildTraverse("GridSecretShopItems").FindChildTraverse("ShopItems_secretshop");
+//var pLum = {};
+
+var shopHackeryBase = $.GetContextPanel().GetParent().GetParent().GetParent().FindChildTraverse("HUDElements").FindChildTraverse("shop").FindChildTraverse("Main").FindChildTraverse("HeightLimiter");
+var secretList = shopHackeryBase.FindChildTraverse("GridBasicItems").FindChildTraverse("ShopItems_secretshop");
 
 //forgive me for what i am about to do
-var itemCenter = secretList.Children();
-for (var ds of itemCenter) {ds.style.horizontalAlign = "center";}
+//var itemCenter = secretList.Children();
+//for (var ds of itemCenter) {ds.style.horizontalAlign = "center";}
 //secretList.FindChildTraverse("SecretShopItem").style.horizontalAlign = "center";
 
 var exchangeBox = $.CreatePanel("Panel", $.GetContextPanel(), "ExchangeBase");
 exchangeBox.BLoadLayoutSnippet("ExchangeBase");
-exchangeBox.SetParent(secretList);
+exchangeBox.SetParent(shopHackeryBase);
 
 var topLabel = $.CreatePanel("Label", $.GetContextPanel(), "ExchangeLabel");
 topLabel.BLoadLayoutSnippet("ExchangeLabel");
@@ -25,7 +28,7 @@ innerBox.SetParent(exchangeBox);
 		var topLabel = $.CreatePanel("Label", $.GetContextPanel(), "BuyLabel");
 		topLabel.BLoadLayoutSnippet("BuyLabel");
 		topLabel.SetParent(labelBoxOne);
-		topLabel.text = "BUY";
+		topLabel.text = $.Localize("#DOTA_Workshop_Cursor_buy");
 	
 	var buttonBoxOne = $.CreatePanel("Panel", $.GetContextPanel(), "ButtonPanel");
 	buttonBoxOne.BLoadLayoutSnippet("ButtonPanel");
@@ -91,7 +94,7 @@ innerBox.SetParent(exchangeBox);
 		var botLabel = $.CreatePanel("Label", $.GetContextPanel(), "SellLabel");
 		botLabel.BLoadLayoutSnippet("SellLabel");
 		botLabel.SetParent(labelBoxTwo);
-		botLabel.text = "SELL";
+		botLabel.text = $.Localize("#DOTA_InventoryMenu_Sell");
 		
 	var buttonBoxTwo = $.CreatePanel("Panel", $.GetContextPanel(), "ButtonPanel2");
 	buttonBoxTwo.BLoadLayoutSnippet("ButtonPanel2");
@@ -150,9 +153,32 @@ innerBox.SetParent(exchangeBox);
 			reusableLabel.SetParent(sellButtonThree);
 			reusableLabel.text = "100";
 
-var itemRemoval = secretList.FindChildrenWithClassTraverse("SecretShopItem");
+var sideShopCategory = $.CreatePanel("Panel", $.GetContextPanel(), "ShopItems_sideshop");
+sideShopCategory.BLoadLayoutSnippet("ShopItems_misc");
+sideShopCategory.SetParent(secretList.GetParent());
+
+	var sideShopLabel = $.CreatePanel("Label", $.GetContextPanel(), "ShopItemsHeader");
+	sideShopLabel.BLoadLayoutSnippet("ShopItemsHeader");
+	sideShopLabel.SetParent(sideShopCategory);
+	sideShopLabel.text = $.Localize("#DOTA_SHOP_NAME_SIDE");
+	
+	var sideShopContents = $.CreatePanel("Panel", $.GetContextPanel(), "ShopItemsContainer");
+	sideShopContents.BLoadLayoutSnippet("ShopItemsContainer");
+	sideShopContents.SetParent(sideShopCategory);
+
+var itemRemoval = secretList.FindChildrenWithClassTraverse("MainShopItem");
 //$.Msg(itemRemoval);
-for (var bg of itemRemoval) {bg.style.visibility = "collapse";}
+for (var bg of itemRemoval)
+{
+	if(bg.BHasClass("SideShopItem") == false)
+	{
+		bg.FindChildTraverse("SecretShop").style.visibility = "visible";
+		bg.FindChildTraverse("SecretShop").style.backgroundImage = 'url("s2r://panorama/images/hud/secret_psd.vtex")';
+		bg.FindChildTraverse("SecretShop").style.backgroundSize = "100%";
+	}
+	else bg.SetParent(sideShopContents);
+}
+	
 
 function DoExchange(event){
 	var data = {};
@@ -164,3 +190,15 @@ function DoExchange(event){
 	data.type = event;
 	GameEvents.SendCustomGameEventToServer("wood_ui_event",data);
 }
+/*
+function OnPlayerLumberChanged(event);
+{
+	var iPlayerID = Players.GetLocalPlayer();
+	var lumber = args.lumber;
+	pLum[iPlayerID] = lumber;
+}
+
+(function()
+{
+	GameEvents.Subscribe( "player_lumber_changed", OnPlayerLumberChanged );
+})();*/

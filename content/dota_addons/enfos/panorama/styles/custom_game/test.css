@@ -4,13 +4,22 @@
 }
 
 #TradeUIButton {
-	vertical-align: center;
+	vertical-align: bottom;
 	horizontal-align: left;
-	background-color: #630;
-	width: 200px;
-	height: 40px;
-	margin-left: 16px;
-	margin-top: 450px;
+	width: 45px;
+	height: 45px;
+	x: 250px;
+	y: -50px;
+	background-image: url("file://panorama/images/custom_game/icon_scan_on_psd.png");
+	background-size: 100%;
+}
+#TradeButtonVisuals {
+	width: 38px;
+	height: 38px;
+	border-radius: 20px;
+	background-color: #6300;
+	vertical-align: center;
+	horizontal-align: center;
 }
 #TradeButtonText {
 	color: #ffc;
@@ -21,19 +30,75 @@
 	margin-top: 6px;
 }
 
+.ClickThisYouAsshole
+{
+	transition-property: background-color;
+	transition-duration: .4s;
+	transition-timing-function: ease-in-out;
+	
+	animation-name: PickFadeFast;
+	animation-duration: .83s;
+	animation-iteration-count: infinite;	
+}
+@keyframes 'PickFadeFast'
+{
+	0%
+	{
+		background-color: #fff0;
+	}
+
+	50%
+	{
+		background-color: #fff;
+	}
+
+	100%
+	{
+		background-color: #fff0;
+	}
+}
+
 #goldMenu {
-	vertical-align: center;
+	vertical-align: bottom;
 	horizontal-align: left;
-	padding-top: 36px;
-	padding-bottom: 12px;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-top: 4px;
+	padding-left: 18px;
+	padding-right: 18px;
 	width: 400px;
 	height: 240px;
-	background-color: gradient( linear, 100% 100%, -100% 100%, from( #333333 ), to( #666666 ) );
+	//background-color: gradient( linear, 100% 100%, -100% 100%, from( #333333 ), to( #666666 ) );
+	//background-image: url("s2r://panorama/images/hud/reborn/courier_gold_bg_262_psd.vtex");
+	background-image: url("s2r://panorama/images/hud/reborn/bg_minimap_psd.vtex");
+	//background-position: center;
+	background-size: 100% 100%;
 	flow-children: down;
-	margin-left: 16px;
-	margin-top: 150px;
+	x: 16px;
+	y: -260px;
+}
+
+#TitleText {
+	height: 40px;
+	width: 364px;
+	//background-color: #000;
+	vertical-align: top;
+	text-align: center;
+	color: #DDDDDDFF;
+	font-size: 32px;
+	text-overflow: clip;
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,Gulim,MingLiU;
+	font-weight: bold;
+	text-shadow: 0px 1px 2px 3.0 #00000066;
+}
+
+#newPanelFromTheFuture {
+	height: 50px;
+	width: 364px;
+	flow-children: down;
+	border-bottom: 2px solid #FFFFFF22;
+	border-top: 2px solid #00000099;
+	border-left: 2px solid #99999922;
+	border-right: 2px solid #00000022;
+	background-color: #00000044;
 }
 
 #newPanel {
@@ -48,7 +113,7 @@
 }
 #EvenNewerPanel {
 	height: 194px;
-	width: 360px;
+	width: 364px;
 	flow-children: right-wrap;
 }
 #AnEvenNewerStillPanel {
@@ -58,7 +123,7 @@
 }
 #CashPanelLeft, #CashPanelRight {
 	height: 146px;
-	width: 82px;
+	width: 84px;
 	//background-color: #000;
 	vertical-align: bottom;
 	//text-align: center;
@@ -66,6 +131,67 @@
 	//font-size: 16px;
 	//text-overflow: clip;
 }
+
+#GoldAmountBox {
+	width: 100%;
+	height: 50%;
+	//background-color: #f00;
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/hud/reborn/gold_small_psd.vtex");
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 25px;
+}
+#LumberAmountBox {
+	width: 100%;
+	height: 60%;
+	//background-color: #00f;
+	vertical-align: bottom;
+	background-image: url("s2r://panorama/images/custom_game/lumber_icon.png");
+	background-position: 50% 17%;
+	background-repeat: no-repeat;
+	background-size: 26px 18px;
+}
+#GoldAmountLabel {
+	font-family: monospaceNumbersFont;
+	font-weight: bold;
+	font-size: 22px;
+	color: #f90;
+	//align: right center;
+	y: 9px;
+	//x: -2px;
+}
+#WoodAmountLabel {
+	font-family: monospaceNumbersFont;
+	font-weight: bold;
+	font-size: 22px;
+	color: #9f0;
+	//align: right center;
+	y: 9px;
+	//x: -2px;
+}
+#AmountBackBox {
+	width: 70px;
+	height: 30px;
+	border-bottom: 2px solid #FFFFFF22;
+	border-top: 2px solid #00000099;
+	border-left: 2px solid #99999922;
+	border-right: 2px solid #00000022;
+	background-color: #00000044;
+	//vertical-align: center;
+	y: 9px;
+	margin-left: -4px;
+	margin-right: -1px;
+}
+.RegularClass {
+	align: right center;
+	x: -11px;
+}
+.ReverseClass {
+	align: left center;
+	x: 11px;
+}
+
 #PurchaseTextPanel1, #PurchaseTextPanel2 {
 	height: 26px;
 	width: 196px;
@@ -73,9 +199,12 @@
 	vertical-align: top;
 	flow-children: right-wrap;
 	text-align: center;
-	color: #DDFFAAFF;
-	font-size: 24px;
+	color: #DDDDDDFF;
+	font-size: 22px;
 	text-overflow: clip;
+	font-family: Radiance,FZLanTingHei-R-GBK,TH Sarabun New,Gulim,MingLiU;
+	font-weight: bold;
+	text-shadow: 0px 1px 2px 3.0 #00000066;
 }
 #PurchaseButtonPanel1, #PurchaseButtonPanel2 {
 	height: 40px;
@@ -90,14 +219,19 @@
 	background-size: 100%;
 	width: 72px;
  	height: 40px;
+	//brightness: 0.6;
 }
 
 #GoldButton1:hover, #GoldButton2:hover, #GoldButton3:hover, #GoldButton4:hover, #GoldButton5:hover {
- 	border: 3px solid #999;
+ 	//border: 3px solid #999;
+	brightness: 0.9;
 }
 #GoldButton1:active, #GoldButton2:active, #GoldButton3:active, #GoldButton4:active, #GoldButton5:active {
- 	border: 3px solid #fff;
+ 	//border: 3px solid #fff;
+	brightness: 1.5;
 }
+.GoldButton {brightness: 0.4;}
+.GoldButtonBright {brightness: 1.1;}
 
 #ButtonGlow1, #ButtonGlow2, #ButtonGlow3, #ButtonGlow4, #ButtonGlow5 {
  	width: 100%;
@@ -113,43 +247,69 @@
 }
 
 #GiveGold10, #GiveGold100, #GiveGold1000, #GiveWood1, #GiveWood10, #GiveWood100 {
-	background-image: url('s2r://panorama/images/custom_game/trade_button.png');
+	//background-image: url('s2r://panorama/images/custom_game/trade_button.png');
 	background-color: #999;
 	background-size: 100%;
 	width: 40px;
  	height: 40px;
 	margin-right: 12px;
+	border: 3px solid;
+	border-top-color: #aaaaaa77;
+	border-left-color: #aaaaaa33;
+	border-bottom-color: #333333;
+	border-right-color: #404040;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5c5561 ), to( #7c7d88 ) );
+	//wash-color: #74EAFE66;
 }
 #GiveGoldAll, #GiveWoodAll {
-	background-image: url('s2r://panorama/images/custom_game/trade_button.png');
+	//background-image: url('s2r://panorama/images/custom_game/trade_button.png');
 	background-color: #999;
 	background-size: 100%;
 	width: 40px;
  	height: 40px;
+	border: 3px solid;
+	border-top-color: #aaaaaa77;
+	border-left-color: #aaaaaa33;
+	border-bottom-color: #333333;
+	border-right-color: #404040;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #5c5561 ), to( #7c7d88 ) );
 }
 #GiveGold10:active, #GiveGold100:active, #GiveGold1000:active, #GiveGoldAll:active, #GiveWood1:active, #GiveWood10:active, #GiveWood100:active, #GiveWoodAll:active {
-	background-image: url('s2r://panorama/images/custom_game/trade_button_pressed.png');
+	//background-image: url('s2r://panorama/images/custom_game/trade_button_pressed.png');
+	border: 3px solid;
+	border-top-color: #333333;
+	border-left-color: #404040;
+	border-bottom-color: #aaaaaa77;
+	border-right-color: #aaaaaa33;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2c2531 ), to( #4c4d58 ) );
 }
 
 #GiveGoldText {
 	width: 40px;
- 	height: 30px;
+ 	height: 40px;
 	text-align: center;
 	color: #FFE269FF;
-	vertical-align: bottom;
-	horizontal-align: center;
-	text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 8px 2.0 #000000AA;
 	//text-shadow: 0px 0px 1px 3.0 #FFE26930;
+	text-shadow: 0px 1px 2px 3.0 #00000066;
+	text-overflow: clip;
+	position: -1px 6px 0px;
+	font-size: 17px;
 }
 #GiveWoodText {
-	width: 40px;
- 	height: 30px;
+	width: 34px;
+ 	height: 34px;
 	text-align: center;
 	color: #00DB2BFF;
-	vertical-align: bottom;
-	horizontal-align: center;
-	text-shadow: 0px 0px 8px 2.0 #000000AA;
+	//text-shadow: 0px 0px 8px 2.0 #000000AA;
 	//text-shadow: 0px 0px 1px 3.0 #00DB2B30;
+	text-shadow: 0px 1px 2px 3.0 #00000066;
+	text-overflow: clip;
+	position: -1px 6px 0px;
+	font-size: 17px;
+}
+#GiveGoldText:active, #GiveWoodText:active {
+	color: #000000FF;
 }
 
 #ButtonArrow1, #ButtonArrow2, #ButtonArrow3, #ButtonArrow4, #ButtonArrow5 {

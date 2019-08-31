@@ -89,3 +89,48 @@ function FrostSplash(keys)
 		ability:ApplyDataDrivenModifier(caster,v,"modifier_enfos_slow_generic",{duration = duration})
 	end
 end
+
+function FleeCheck(keys)
+	local caster = keys.caster
+	local attacker = keys.attacker
+	if caster:IsMoving() == false and caster:IsIdle() == true and caster.hold ~= nil then
+		if caster.hold == false then
+			--flee function, from https://github.com/MNoya/DotaCraft/blob/6d9c6444974f7ae6e5cd7a3442a19de70abe405b/game/dota_addons/dotacraft/scripts/vscripts/units/aggro_filter.lua
+			local unit_origin = caster:GetAbsOrigin()
+			local target_origin = attacker:GetAbsOrigin()
+			local flee_position = unit_origin + (unit_origin - target_origin):Normalized() * 200
+			caster:MoveToPosition(flee_position)
+		end
+	end
+end
+
+function purify_summon(keys)
+	--[[
+	--PrintTable(keys)
+	local caster = keys.caster
+	local target = keys.target
+	local ability = keys.ability
+	--print(caster:entindex())
+	--print(target:entindex())
+	print("abname "..ability:GetAbilityName())
+	
+	if not target:IsNull() and target:IsAlive() then
+		local dTable = {
+			victim = target,
+			attacker = target,
+			damage = 50000,
+			damage_type = DAMAGE_TYPE_MAGICAL,
+			damage_flags = DOTA_DAMAGE_FLAG_NONE,
+			ability = ability
+		}
+		ApplyDamage(dTable)
+		if not target:IsNull() and target:IsAlive() then
+			print("reapplying mod")
+			ability:ApplyDataDrivenModifier(ability, target, "modifier_purification_target", {})
+		else
+			print("bye fail")
+		end
+	end
+	--print(caster:entindex())
+	]]
+end

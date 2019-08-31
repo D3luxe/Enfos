@@ -7,6 +7,7 @@
 	"BaseClass"                     "item_datadriven"
 	"AbilityBehavior"               "DOTA_ABILITY_BEHAVIOR_PASSIVE"
 	"AbilityTextureName"			"item_travel_boots"
+	"Model"							"models/props_gameplay/boots_of_speed.vmdl"
 
 	"ItemQuality"					"component"
 	"ItemCost"                      "300" 		

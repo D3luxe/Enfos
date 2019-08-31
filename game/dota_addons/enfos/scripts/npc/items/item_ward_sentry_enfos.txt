@@ -60,5 +60,15 @@
 			"var_type"				"FIELD_INTEGER"
 			"health"				"200"
 		}
+		"05"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_range"			"500"
+		}
+		"06"
+		{
+			"var_type"				"FIELD_INTEGER"
+			"tooltip_charges"		"3"
+		}
 	}
 }

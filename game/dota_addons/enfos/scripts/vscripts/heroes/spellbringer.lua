@@ -75,13 +75,24 @@ function spell_disruption(keys)
 	else
 		damage = 90000
 	end
+	
 	local sphereCheck = magic_block_check(target)
 	if sphereCheck then
 		return
 	else	
 		target:SetMana(targetMana - manaBurn)
 		ParticleManager:CreateParticle("particles/units/heroes/hero_antimage/antimage_manavoid.vpcf", PATTACH_ABSORIGIN_FOLLOW, target)
-
+		
+		local dmgNumAmount = math.floor(damage*math.abs((target:GetBaseMagicalResistanceValue()-100)/100))
+		local dmgCharacters = string.len(tostring(dmgNumAmount))
+		
+		local effect = ParticleManager:CreateParticle("particles/hero_spellbringer/spellbringer_spell_disrupt_msg.vpcf", PATTACH_OVERHEAD_FOLLOW, target)
+		ParticleManager:SetParticleControl(effect,3,Vector(0,dmgNumAmount,0))
+		ParticleManager:SetParticleControl(effect,4,Vector(1.2,dmgCharacters,0))
+		ParticleManager:SetParticleControl(effect,1,Vector(0,0,6))
+		ParticleManager:SetParticleControl(effect,2,Vector(1,1,0))
+		
+		target:EmitSound("Hero_Antimage.ManaVoid")
 		DealDamage(caster, target, damage, DAMAGE_TYPE_MAGICAL, 0)
 	end
 end
@@ -279,6 +290,7 @@ end
 function locate(keys)
 	local caster = keys.caster
 	local target = keys.target_points[1]
+	local ability = keys.ability
 	if math.abs(target.x) < 1500 then
 		if target.x < 0 then target.x = -1500
 		else target.x = 1500 end
@@ -289,12 +301,17 @@ function locate(keys)
 	unit:GetAbilityByIndex(0):SetLevel(1)
 	unit:SetDayTimeVisionRange(1200)
 	unit:SetNightTimeVisionRange(1200)
-	unit:AddNewModifier(dummy, nil, "modifier_phased", { duration = 9999})
-	unit:AddNewModifier(dummy, nil, "modifier_invulnerable", { duration = 9999})
+	unit:AddNewModifier(dummy, nil, "modifier_phased", {})
+	unit:AddNewModifier(dummy, nil, "modifier_invulnerable", {})
 	unit:AddNewModifier(caster, nil, "modifier_tower_truesight_aura", {})
+	unit:AddNewModifier(dummy, nil, "modifier_kill", {duration = ability:GetLevelSpecialValueFor("duration",0)})
 
-	ParticleManager:CreateParticle("particles/items_fx/dust_of_appearance.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
-	ParticleManager:CreateParticle("particles/econ/wards/f2p/f2p_ward/ward_true_sight.vpcf", PATTACH_OVERHEAD_FOLLOW, unit)
+	--ParticleManager:CreateParticle("particles/items_fx/dust_of_appearance.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	--ParticleManager:CreateParticle("particles/econ/wards/f2p/f2p_ward/ward_true_sight.vpcf", PATTACH_OVERHEAD_FOLLOW, unit)
+	local scan = ParticleManager:CreateParticle("particles/hero_spellbringer/spellbringer_locate.vpcf", PATTACH_ABSORIGIN_FOLLOW, unit)
+	ParticleManager:SetParticleControl(scan,1,target)
+	
+	unit:EmitSound("Hero_Tinker.GridEffect")
 end
 
 function whole_displacement(keys)
@@ -550,9 +567,11 @@ function SummonDarkrift(keys)
 				--unit:SetMaximumGoldBounty(0)
 				--unit:SetMinimumGoldBounty(0)
 				--print(unit:GetGoldBounty())
-				thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summoner_summon_darkrift", {duration = 60})
+				thisSpell:ApplyDataDrivenModifier(caster, unit, "modifier_purification_target", {})
 				--thisSpell:ApplyDataDrivenModifier(unit, unit, "modifier_summon_purge_target", {})
 				unit:AddNewModifier(unit, nil, "modifier_phased", {duration = 0.2})
+				unit:AddNewModifier(unit, nil, "modifier_kill", {duration = 60})
 				for i=1,15 do -- bit of a hacky way to make sure the units learn their abilities...
 					if unit:GetAbilityByIndex(i) ~= nil then
 						unit:GetAbilityByIndex(i):SetLevel(1)
@@ -808,4 +827,232 @@ end
 function mana_recharge(keys)
 	local caster = keys.caster
 	caster:GiveMana(30)
+end
+
+function Grazhirs_Effigy(keys)
+	-- illusion code largely taken from SpellLibrary: https://github.com/Pizzalol/SpellLibrary
+	local caster = keys.caster
+	local player = caster:GetPlayerID()
+	local target = keys.target
+	local ability = keys.ability
+	local unit_name = target:GetUnitName()
+	local origin = target:GetAbsOrigin() + RandomVector(100)
+	local sDuration = ability:GetLevelSpecialValueFor("duration", ability:GetLevel() - 1 )
+
+	-- handle_UnitOwner needs to be nil, else it will crash the game.
+	local illusion = CreateUnitByName(unit_name, origin, true, caster, nil, caster:GetTeamNumber())
+	illusion:SetPlayerID(target:GetPlayerID())
+	illusion:SetControllableByPlayer(player, true)
+	
+	illusion.custom_stats = true
+	illusion.strength = target.strength
+	illusion.strength_gain = target.strength_gain
+	illusion.strength_bonus = target.strength_bonus
+	illusion.strength_total = target.strength_total
+	illusion.agility = target.agility
+	illusion.agility_gain = target.agility_gain
+	illusion.agility_bonus = target.agility_bonus
+	illusion.agility_total = target.agility_total
+	illusion.intellect = target.intellect
+	illusion.intellect_gain = target.intellect_gain
+	illusion.intellect_bonus = target.intellect_bonus
+	illusion.intellect_total = target.intellect_total
+	illusion.movespeed = target.movespeed
+	illusion.speedagi = target.speedagi
+	illusion.speedbase = target.speedbase
+	illusion.damage_bonus = target.damage_bonus
+	illusion.attribute_level = target.attribute_level
+	
+	--Stats:ModifyStatBonuses(illusion)
+	--okay im just gonna copy and paste the entire stat page here
+	
+	---
+	---
+	---
+	
+	local applier = CreateItem("item_stat_modifier", nil, nil)
+	local applier2 = CreateItem("item_stat_modifier_lua", nil, nil)
+	
+	if not illusion:HasModifier("modifier_movespeed_cap") then
+		illusion:AddNewModifier( illusion, applier2, "modifier_movespeed_cap", {} )
+	end
+	
+	-- Get player attribute values
+	local strength = illusion.strength + illusion.strength_bonus
+	local agility = illusion.agility + illusion.agility_bonus
+	local intellect = illusion.intellect + illusion.intellect_bonus
+	local movespeed = illusion:GetIdealSpeed()
+	local basespeed = illusion:GetBaseMoveSpeed()
+	local att = illusion:GetPrimaryAttribute()
+	local damageStat = 0
+	local damageStatBase = 0
+	local damageStatPlus = 0
+	if att == DOTA_ATTRIBUTE_STRENGTH then
+		damageStat = strength
+		damageStatBase = illusion.strength
+		damageStatPlus = illusion.strength_bonus
+	end
+	if att == DOTA_ATTRIBUTE_AGILITY then
+		damageStat = agility
+		damageStatBase = illusion.agility
+		damageStatPlus = illusion.agility_bonus
+	end
+	if att == DOTA_ATTRIBUTE_INTELLECT then
+		damageStat = intellect
+		damageStatBase = illusion.intellect
+		damageStatPlus = illusion.intellect_bonus
+	end
+	-- Adjustments
+
+	-- STR
+	
+		-- HP Bonus
+		if not illusion:HasModifier("modifier_health_bonus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_health_bonus", {})
+		end
+
+		local health_stacks = strength * HP_PER_STR
+		illusion:SetModifierStackCount("modifier_health_bonus", illusion, health_stacks)
+		
+		illusion:SetHealth(target:GetHealth())
+
+		-- HP Regen Bonus (flat)
+		if not illusion:HasModifier("modifier_health_regen_constant") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_health_regen_constant", {})
+		end
+
+		local health_regen_stacks = strength * HP_REGEN_PER_STR * 100
+		illusion:SetModifierStackCount("modifier_health_regen_constant", illusion, health_regen_stacks)
+
+	-- AGI
+
+		-- Attack Speed Bonus
+		if not illusion:HasModifier("modifier_attackspeed_bonus_constant") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_attackspeed_bonus_constant", {})
+		end
+
+		local attackspeed_stacks = agility * ATKSPD_PER_AGI
+		illusion:SetModifierStackCount("modifier_attackspeed_bonus_constant", illusion, attackspeed_stacks)
+
+		-- Armor bonus
+		local armorAdjustment = (ARMOR_PER_AGI * illusion.agility) + illusion.baseArmor
+		illusion:SetPhysicalArmorBaseValue(armorAdjustment)
+		if not illusion:HasModifier("modifier_physical_armor_bonus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_physical_armor_bonus", {})
+		end
+		local armorAdjustment = ARMOR_PER_AGI * illusion.agility_bonus * 100
+		illusion:SetModifierStackCount("modifier_physical_armor_bonus", illusion, armorAdjustment)
+		
+		--Move Speed Bonus
+		illusion:SetBaseMoveSpeed(illusion.speedbase + (MOVE_SPEED_PER_AGI * agility))
+
+	-- INT
+		
+		-- Mana Bonus
+		if not illusion:HasModifier("modifier_mana_bonus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_mana_bonus", {})
+			--illusion:GiveMana(1)
+		end
+
+		local mana_stacks = intellect * MANA_PER_INT
+		illusion:SetModifierStackCount("modifier_mana_bonus", illusion, mana_stacks)
+		
+		illusion:SetMana(target:GetMana())
+
+		-- Mana Regen Bonus (flat)
+		if not illusion:HasModifier("modifier_base_mana_regen") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_base_mana_regen", {})
+		end
+
+		--local mana_regen_stacks = intellect * mana_regen_adjustment_flat * 100
+		local mana_regen_stacks = intellect * MANA_REGEN_PER_INT * 100
+		illusion:SetModifierStackCount("modifier_base_mana_regen", illusion, mana_regen_stacks)
+
+	-- Damage
+
+	-- Get player primary stat value
+		if not illusion:HasModifier("modifier_damage_bonus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_damage_bonus", {})
+		end
+
+		local damage_stacks = damageStatBase
+		illusion:SetModifierStackCount("modifier_damage_bonus", illusion, damage_stacks)
+		
+		if not illusion:HasModifier("modifier_damage_bonus_plus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_damage_bonus_plus", {})
+		end
+		if not illusion:HasModifier("modifier_damage_bonus_minus") then
+			applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_damage_bonus_minus", {})
+			illusion:SetModifierStackCount("modifier_damage_bonus_minus", illusion, 1)
+		end
+		
+		local damage_stacks_plus = damageStatPlus
+		illusion:SetModifierStackCount("modifier_damage_bonus_plus", illusion, damage_stacks_plus+1)
+	
+	-- Update the stored values for next timer cycle
+	illusion.strength_total = strength
+	illusion.agility_total = agility
+	illusion.intellect_total = intellect
+	illusion.movespeed = movespeed
+	illusion.damage_bonus = damageStat
+		
+	---
+	---
+	---
+	
+	--illusion:AddNewModifier(illusion, nil, "modifier_kill", {duration = sDuration})
+	applier:ApplyDataDrivenModifier(illusion, illusion, "modifier_illusion_tracker_nofx", {})
+	
+	-- Level Up the unit to the casters level
+	local targetLevel = target:GetLevel()
+	for i=1,targetLevel-1 do
+		illusion:HeroLevelUp(false)
+	end
+
+	-- Set the skill points to 0 and learn the skills of the caster
+	illusion:SetAbilityPoints(0)
+	for abilitySlot=0,15 do
+		local ability = target:GetAbilityByIndex(abilitySlot)
+		if ability ~= nil then 
+			local abilityLevel = ability:GetLevel()
+			local abilityName = ability:GetAbilityName()
+			local illusionAbility = illusion:FindAbilityByName(abilityName)
+			if illusionAbility ~= nil then
+				if CEnfosGameMode:CheckEffigySpell(abilityName,abilitySlot) == true then
+					illusionAbility:SetLevel(abilityLevel)
+				end
+			end
+		end
+	end
+
+	-- Recreate the items of the caster
+	for itemSlot=0,5 do
+		local item = target:GetItemInSlot(itemSlot)
+		if item ~= nil then
+			local itemName = item:GetName()
+			local newItem = CreateItem(itemName, illusion, illusion)
+			illusion:AddItem(newItem)
+		end
+	end
+
+	-- Set the unit as an illusion
+	-- modifier_illusion controls many illusion properties like +Green damage not adding to the unit damage, not being able to cast spells and the team-only blue particle
+	illusion:AddNewModifier(caster, ability, "modifier_illusion", { duration = sDuration, outgoing_damage = outgoingDamage, incoming_damage = incomingDamage })
+	ability:ApplyDataDrivenModifier(caster, illusion, "modifier_illusion_lifesteal", {})
+	
+	-- Without MakeIllusion the unit counts as a hero, e.g. if it dies to neutrals it says killed by neutrals, it respawns, etc.
+	illusion:MakeIllusion()
+	
+	local heroNetTable = {}
+	heroNetTable[illusion:entindex()] = {
+		strength = illusion.strength,
+		strength_bonus = illusion.strength_bonus,
+		strength_gain = illusion.strength_gain,
+		agility = illusion.agility,
+		agility_bonus = illusion.agility_bonus,
+		agility_gain = illusion.agility_gain,
+		intellect = illusion.intellect,
+		intellect_bonus = illusion.intellect_bonus,
+		intellect_gain = illusion.intellect_gain}
+	CustomNetTables:SetTableValue("hero_data_live","summons",heroNetTable)
 end
